@@ -1,0 +1,490 @@
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PSoC_Master_Class.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	tempTemp,4,4
+  18              		.comm	tempHum,4,4
+  19              		.comm	tempSoilHum,12,4
+  20              		.comm	tempLight,4,4
+  21              		.section	.text.initPSoC_Master,"ax",%progbits
+  22              		.align	2
+  23              		.global	initPSoC_Master
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	initPSoC_Master, %function
+  27              	initPSoC_Master:
+  28              	.LFB33:
+  29              		.file 1 ".\\PSoC_Master_Class.c"
+   1:.\PSoC_Master_Class.c **** /* ========================================
+   2:.\PSoC_Master_Class.c ****  * 
+   3:.\PSoC_Master_Class.c ****  * AutoGreen - PSoC_Master
+   4:.\PSoC_Master_Class.c ****  * PSoC_Master_Class.c
+   5:.\PSoC_Master_Class.c ****  * (Description)
+   6:.\PSoC_Master_Class.c ****  * PRJ3 - GRP9
+   7:.\PSoC_Master_Class.c ****  * 2015-04-15
+   8:.\PSoC_Master_Class.c ****  *
+   9:.\PSoC_Master_Class.c ****  * ========================================
+  10:.\PSoC_Master_Class.c **** */
+  11:.\PSoC_Master_Class.c **** 
+  12:.\PSoC_Master_Class.c **** // Include files
+  13:.\PSoC_Master_Class.c **** #include "PSoC_Master_Class.h"
+  14:.\PSoC_Master_Class.c **** #include "DSP_Class.h"
+  15:.\PSoC_Master_Class.c **** #include "I2C_Class.h"
+  16:.\PSoC_Master_Class.c **** #include "UART_Class.h"
+  17:.\PSoC_Master_Class.c **** 
+  18:.\PSoC_Master_Class.c **** // Private data members
+  19:.\PSoC_Master_Class.c **** int32 tempTemp;
+  20:.\PSoC_Master_Class.c **** int32 tempHum;
+  21:.\PSoC_Master_Class.c **** int16 tempSoilHum[6];
+  22:.\PSoC_Master_Class.c **** int32 tempLight;
+  23:.\PSoC_Master_Class.c **** 
+  24:.\PSoC_Master_Class.c **** // Private prototypes
+  25:.\PSoC_Master_Class.c **** 
+  26:.\PSoC_Master_Class.c **** 
+  27:.\PSoC_Master_Class.c **** 
+  28:.\PSoC_Master_Class.c **** void initPSoC_Master(void){
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 2
+
+
+  30              		.loc 1 28 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  29:.\PSoC_Master_Class.c **** 
+  30:.\PSoC_Master_Class.c **** }
+  38              		.loc 1 30 0
+  39 0004 BD46     		mov	sp, r7
+  40              		@ sp needed
+  41 0006 80BD     		pop	{r7, pc}
+  42              		.cfi_endproc
+  43              	.LFE33:
+  44              		.size	initPSoC_Master, .-initPSoC_Master
+  45              		.text
+  46              	.Letext0:
+  47              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+  48              		.section	.debug_info,"",%progbits
+  49              	.Ldebug_info0:
+  50 0000 FF000000 		.4byte	0xff
+  51 0004 0400     		.2byte	0x4
+  52 0006 00000000 		.4byte	.Ldebug_abbrev0
+  53 000a 04       		.byte	0x4
+  54 000b 01       		.uleb128 0x1
+  55 000c 33010000 		.4byte	.LASF19
+  56 0010 01       		.byte	0x1
+  57 0011 2E000000 		.4byte	.LASF20
+  58 0015 BE000000 		.4byte	.LASF21
+  59 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  60 001d 00000000 		.4byte	0
+  61 0021 00000000 		.4byte	.Ldebug_line0
+  62 0025 02       		.uleb128 0x2
+  63 0026 01       		.byte	0x1
+  64 0027 06       		.byte	0x6
+  65 0028 11010000 		.4byte	.LASF0
+  66 002c 02       		.uleb128 0x2
+  67 002d 01       		.byte	0x1
+  68 002e 08       		.byte	0x8
+  69 002f 9B000000 		.4byte	.LASF1
+  70 0033 02       		.uleb128 0x2
+  71 0034 02       		.byte	0x2
+  72 0035 05       		.byte	0x5
+  73 0036 29010000 		.4byte	.LASF2
+  74 003a 02       		.uleb128 0x2
+  75 003b 02       		.byte	0x2
+  76 003c 07       		.byte	0x7
+  77 003d 0E000000 		.4byte	.LASF3
+  78 0041 02       		.uleb128 0x2
+  79 0042 04       		.byte	0x4
+  80 0043 05       		.byte	0x5
+  81 0044 AE000000 		.4byte	.LASF4
+  82 0048 02       		.uleb128 0x2
+  83 0049 04       		.byte	0x4
+  84 004a 07       		.byte	0x7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 3
+
+
+  85 004b 44000000 		.4byte	.LASF5
+  86 004f 02       		.uleb128 0x2
+  87 0050 08       		.byte	0x8
+  88 0051 05       		.byte	0x5
+  89 0052 00000000 		.4byte	.LASF6
+  90 0056 02       		.uleb128 0x2
+  91 0057 08       		.byte	0x8
+  92 0058 07       		.byte	0x7
+  93 0059 62000000 		.4byte	.LASF7
+  94 005d 03       		.uleb128 0x3
+  95 005e 04       		.byte	0x4
+  96 005f 05       		.byte	0x5
+  97 0060 696E7400 		.ascii	"int\000"
+  98 0064 02       		.uleb128 0x2
+  99 0065 04       		.byte	0x4
+ 100 0066 07       		.byte	0x7
+ 101 0067 21000000 		.4byte	.LASF8
+ 102 006b 04       		.uleb128 0x4
+ 103 006c 23010000 		.4byte	.LASF9
+ 104 0070 02       		.byte	0x2
+ 105 0071 A5       		.byte	0xa5
+ 106 0072 33000000 		.4byte	0x33
+ 107 0076 04       		.uleb128 0x4
+ 108 0077 B8010000 		.4byte	.LASF10
+ 109 007b 02       		.byte	0x2
+ 110 007c A6       		.byte	0xa6
+ 111 007d 41000000 		.4byte	0x41
+ 112 0081 02       		.uleb128 0x2
+ 113 0082 04       		.byte	0x4
+ 114 0083 04       		.byte	0x4
+ 115 0084 1D010000 		.4byte	.LASF11
+ 116 0088 02       		.uleb128 0x2
+ 117 0089 08       		.byte	0x8
+ 118 008a 04       		.byte	0x4
+ 119 008b B7000000 		.4byte	.LASF12
+ 120 008f 02       		.uleb128 0x2
+ 121 0090 01       		.byte	0x1
+ 122 0091 08       		.byte	0x8
+ 123 0092 A9000000 		.4byte	.LASF13
+ 124 0096 02       		.uleb128 0x2
+ 125 0097 04       		.byte	0x4
+ 126 0098 07       		.byte	0x7
+ 127 0099 AF010000 		.4byte	.LASF14
+ 128 009d 05       		.uleb128 0x5
+ 129 009e 8B000000 		.4byte	.LASF22
+ 130 00a2 01       		.byte	0x1
+ 131 00a3 1C       		.byte	0x1c
+ 132 00a4 00000000 		.4byte	.LFB33
+ 133 00a8 08000000 		.4byte	.LFE33-.LFB33
+ 134 00ac 01       		.uleb128 0x1
+ 135 00ad 9C       		.byte	0x9c
+ 136 00ae 06       		.uleb128 0x6
+ 137 00af 08010000 		.4byte	.LASF15
+ 138 00b3 01       		.byte	0x1
+ 139 00b4 13       		.byte	0x13
+ 140 00b5 76000000 		.4byte	0x76
+ 141 00b9 05       		.uleb128 0x5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 4
+
+
+ 142 00ba 03       		.byte	0x3
+ 143 00bb 00000000 		.4byte	tempTemp
+ 144 00bf 06       		.uleb128 0x6
+ 145 00c0 79000000 		.4byte	.LASF16
+ 146 00c4 01       		.byte	0x1
+ 147 00c5 14       		.byte	0x14
+ 148 00c6 76000000 		.4byte	0x76
+ 149 00ca 05       		.uleb128 0x5
+ 150 00cb 03       		.byte	0x3
+ 151 00cc 00000000 		.4byte	tempHum
+ 152 00d0 07       		.uleb128 0x7
+ 153 00d1 6B000000 		.4byte	0x6b
+ 154 00d5 E0000000 		.4byte	0xe0
+ 155 00d9 08       		.uleb128 0x8
+ 156 00da 96000000 		.4byte	0x96
+ 157 00de 05       		.byte	0x5
+ 158 00df 00       		.byte	0
+ 159 00e0 06       		.uleb128 0x6
+ 160 00e1 56000000 		.4byte	.LASF17
+ 161 00e5 01       		.byte	0x1
+ 162 00e6 15       		.byte	0x15
+ 163 00e7 D0000000 		.4byte	0xd0
+ 164 00eb 05       		.uleb128 0x5
+ 165 00ec 03       		.byte	0x3
+ 166 00ed 00000000 		.4byte	tempSoilHum
+ 167 00f1 06       		.uleb128 0x6
+ 168 00f2 81000000 		.4byte	.LASF18
+ 169 00f6 01       		.byte	0x1
+ 170 00f7 16       		.byte	0x16
+ 171 00f8 76000000 		.4byte	0x76
+ 172 00fc 05       		.uleb128 0x5
+ 173 00fd 03       		.byte	0x3
+ 174 00fe 00000000 		.4byte	tempLight
+ 175 0102 00       		.byte	0
+ 176              		.section	.debug_abbrev,"",%progbits
+ 177              	.Ldebug_abbrev0:
+ 178 0000 01       		.uleb128 0x1
+ 179 0001 11       		.uleb128 0x11
+ 180 0002 01       		.byte	0x1
+ 181 0003 25       		.uleb128 0x25
+ 182 0004 0E       		.uleb128 0xe
+ 183 0005 13       		.uleb128 0x13
+ 184 0006 0B       		.uleb128 0xb
+ 185 0007 03       		.uleb128 0x3
+ 186 0008 0E       		.uleb128 0xe
+ 187 0009 1B       		.uleb128 0x1b
+ 188 000a 0E       		.uleb128 0xe
+ 189 000b 55       		.uleb128 0x55
+ 190 000c 17       		.uleb128 0x17
+ 191 000d 11       		.uleb128 0x11
+ 192 000e 01       		.uleb128 0x1
+ 193 000f 10       		.uleb128 0x10
+ 194 0010 17       		.uleb128 0x17
+ 195 0011 00       		.byte	0
+ 196 0012 00       		.byte	0
+ 197 0013 02       		.uleb128 0x2
+ 198 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 5
+
+
+ 199 0015 00       		.byte	0
+ 200 0016 0B       		.uleb128 0xb
+ 201 0017 0B       		.uleb128 0xb
+ 202 0018 3E       		.uleb128 0x3e
+ 203 0019 0B       		.uleb128 0xb
+ 204 001a 03       		.uleb128 0x3
+ 205 001b 0E       		.uleb128 0xe
+ 206 001c 00       		.byte	0
+ 207 001d 00       		.byte	0
+ 208 001e 03       		.uleb128 0x3
+ 209 001f 24       		.uleb128 0x24
+ 210 0020 00       		.byte	0
+ 211 0021 0B       		.uleb128 0xb
+ 212 0022 0B       		.uleb128 0xb
+ 213 0023 3E       		.uleb128 0x3e
+ 214 0024 0B       		.uleb128 0xb
+ 215 0025 03       		.uleb128 0x3
+ 216 0026 08       		.uleb128 0x8
+ 217 0027 00       		.byte	0
+ 218 0028 00       		.byte	0
+ 219 0029 04       		.uleb128 0x4
+ 220 002a 16       		.uleb128 0x16
+ 221 002b 00       		.byte	0
+ 222 002c 03       		.uleb128 0x3
+ 223 002d 0E       		.uleb128 0xe
+ 224 002e 3A       		.uleb128 0x3a
+ 225 002f 0B       		.uleb128 0xb
+ 226 0030 3B       		.uleb128 0x3b
+ 227 0031 0B       		.uleb128 0xb
+ 228 0032 49       		.uleb128 0x49
+ 229 0033 13       		.uleb128 0x13
+ 230 0034 00       		.byte	0
+ 231 0035 00       		.byte	0
+ 232 0036 05       		.uleb128 0x5
+ 233 0037 2E       		.uleb128 0x2e
+ 234 0038 00       		.byte	0
+ 235 0039 3F       		.uleb128 0x3f
+ 236 003a 19       		.uleb128 0x19
+ 237 003b 03       		.uleb128 0x3
+ 238 003c 0E       		.uleb128 0xe
+ 239 003d 3A       		.uleb128 0x3a
+ 240 003e 0B       		.uleb128 0xb
+ 241 003f 3B       		.uleb128 0x3b
+ 242 0040 0B       		.uleb128 0xb
+ 243 0041 27       		.uleb128 0x27
+ 244 0042 19       		.uleb128 0x19
+ 245 0043 11       		.uleb128 0x11
+ 246 0044 01       		.uleb128 0x1
+ 247 0045 12       		.uleb128 0x12
+ 248 0046 06       		.uleb128 0x6
+ 249 0047 40       		.uleb128 0x40
+ 250 0048 18       		.uleb128 0x18
+ 251 0049 9742     		.uleb128 0x2117
+ 252 004b 19       		.uleb128 0x19
+ 253 004c 00       		.byte	0
+ 254 004d 00       		.byte	0
+ 255 004e 06       		.uleb128 0x6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 6
+
+
+ 256 004f 34       		.uleb128 0x34
+ 257 0050 00       		.byte	0
+ 258 0051 03       		.uleb128 0x3
+ 259 0052 0E       		.uleb128 0xe
+ 260 0053 3A       		.uleb128 0x3a
+ 261 0054 0B       		.uleb128 0xb
+ 262 0055 3B       		.uleb128 0x3b
+ 263 0056 0B       		.uleb128 0xb
+ 264 0057 49       		.uleb128 0x49
+ 265 0058 13       		.uleb128 0x13
+ 266 0059 3F       		.uleb128 0x3f
+ 267 005a 19       		.uleb128 0x19
+ 268 005b 02       		.uleb128 0x2
+ 269 005c 18       		.uleb128 0x18
+ 270 005d 00       		.byte	0
+ 271 005e 00       		.byte	0
+ 272 005f 07       		.uleb128 0x7
+ 273 0060 01       		.uleb128 0x1
+ 274 0061 01       		.byte	0x1
+ 275 0062 49       		.uleb128 0x49
+ 276 0063 13       		.uleb128 0x13
+ 277 0064 01       		.uleb128 0x1
+ 278 0065 13       		.uleb128 0x13
+ 279 0066 00       		.byte	0
+ 280 0067 00       		.byte	0
+ 281 0068 08       		.uleb128 0x8
+ 282 0069 21       		.uleb128 0x21
+ 283 006a 00       		.byte	0
+ 284 006b 49       		.uleb128 0x49
+ 285 006c 13       		.uleb128 0x13
+ 286 006d 2F       		.uleb128 0x2f
+ 287 006e 0B       		.uleb128 0xb
+ 288 006f 00       		.byte	0
+ 289 0070 00       		.byte	0
+ 290 0071 00       		.byte	0
+ 291              		.section	.debug_aranges,"",%progbits
+ 292 0000 1C000000 		.4byte	0x1c
+ 293 0004 0200     		.2byte	0x2
+ 294 0006 00000000 		.4byte	.Ldebug_info0
+ 295 000a 04       		.byte	0x4
+ 296 000b 00       		.byte	0
+ 297 000c 0000     		.2byte	0
+ 298 000e 0000     		.2byte	0
+ 299 0010 00000000 		.4byte	.LFB33
+ 300 0014 08000000 		.4byte	.LFE33-.LFB33
+ 301 0018 00000000 		.4byte	0
+ 302 001c 00000000 		.4byte	0
+ 303              		.section	.debug_ranges,"",%progbits
+ 304              	.Ldebug_ranges0:
+ 305 0000 00000000 		.4byte	.LFB33
+ 306 0004 08000000 		.4byte	.LFE33
+ 307 0008 00000000 		.4byte	0
+ 308 000c 00000000 		.4byte	0
+ 309              		.section	.debug_line,"",%progbits
+ 310              	.Ldebug_line0:
+ 311 0000 68000000 		.section	.debug_str,"MS",%progbits,1
+ 311      02005200 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 7
+
+
+ 311      00000201 
+ 311      FB0E0D00 
+ 311      01010101 
+ 312              	.LASF6:
+ 313 0000 6C6F6E67 		.ascii	"long long int\000"
+ 313      206C6F6E 
+ 313      6720696E 
+ 313      7400
+ 314              	.LASF3:
+ 315 000e 73686F72 		.ascii	"short unsigned int\000"
+ 315      7420756E 
+ 315      7369676E 
+ 315      65642069 
+ 315      6E7400
+ 316              	.LASF8:
+ 317 0021 756E7369 		.ascii	"unsigned int\000"
+ 317      676E6564 
+ 317      20696E74 
+ 317      00
+ 318              	.LASF20:
+ 319 002e 2E5C5053 		.ascii	".\\PSoC_Master_Class.c\000"
+ 319      6F435F4D 
+ 319      61737465 
+ 319      725F436C 
+ 319      6173732E 
+ 320              	.LASF5:
+ 321 0044 6C6F6E67 		.ascii	"long unsigned int\000"
+ 321      20756E73 
+ 321      69676E65 
+ 321      6420696E 
+ 321      7400
+ 322              	.LASF17:
+ 323 0056 74656D70 		.ascii	"tempSoilHum\000"
+ 323      536F696C 
+ 323      48756D00 
+ 324              	.LASF7:
+ 325 0062 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 325      206C6F6E 
+ 325      6720756E 
+ 325      7369676E 
+ 325      65642069 
+ 326              	.LASF16:
+ 327 0079 74656D70 		.ascii	"tempHum\000"
+ 327      48756D00 
+ 328              	.LASF18:
+ 329 0081 74656D70 		.ascii	"tempLight\000"
+ 329      4C696768 
+ 329      7400
+ 330              	.LASF22:
+ 331 008b 696E6974 		.ascii	"initPSoC_Master\000"
+ 331      50536F43 
+ 331      5F4D6173 
+ 331      74657200 
+ 332              	.LASF1:
+ 333 009b 756E7369 		.ascii	"unsigned char\000"
+ 333      676E6564 
+ 333      20636861 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 8
+
+
+ 333      7200
+ 334              	.LASF13:
+ 335 00a9 63686172 		.ascii	"char\000"
+ 335      00
+ 336              	.LASF4:
+ 337 00ae 6C6F6E67 		.ascii	"long int\000"
+ 337      20696E74 
+ 337      00
+ 338              	.LASF12:
+ 339 00b7 646F7562 		.ascii	"double\000"
+ 339      6C6500
+ 340              	.LASF21:
+ 341 00be 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 341      73657273 
+ 341      5C506869 
+ 341      6C69705C 
+ 341      4F6E6544 
+ 342 00eb 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 342      4D617374 
+ 342      65725C50 
+ 342      536F435F 
+ 342      4D617374 
+ 343              	.LASF15:
+ 344 0108 74656D70 		.ascii	"tempTemp\000"
+ 344      54656D70 
+ 344      00
+ 345              	.LASF0:
+ 346 0111 7369676E 		.ascii	"signed char\000"
+ 346      65642063 
+ 346      68617200 
+ 347              	.LASF11:
+ 348 011d 666C6F61 		.ascii	"float\000"
+ 348      7400
+ 349              	.LASF9:
+ 350 0123 696E7431 		.ascii	"int16\000"
+ 350      3600
+ 351              	.LASF2:
+ 352 0129 73686F72 		.ascii	"short int\000"
+ 352      7420696E 
+ 352      7400
+ 353              	.LASF19:
+ 354 0133 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 354      4320342E 
+ 354      382E3420 
+ 354      32303134 
+ 354      30353236 
+ 355 0166 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 355      20726576 
+ 355      6973696F 
+ 355      6E203231 
+ 355      31333538 
+ 356 0199 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 356      66756E63 
+ 356      74696F6E 
+ 356      2D736563 
+ 356      74696F6E 
+ 357              	.LASF14:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccKBerRp.s 			page 9
+
+
+ 358 01af 73697A65 		.ascii	"sizetype\000"
+ 358      74797065 
+ 358      00
+ 359              	.LASF10:
+ 360 01b8 696E7433 		.ascii	"int32\000"
+ 360      3200
+ 361              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

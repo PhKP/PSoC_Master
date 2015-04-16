@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -17,27 +17,32 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.comm	tempArray,400,4
-  18              		.comm	tempArrayPtr,4,4
-  19              		.comm	humArray,400,4
-  20              		.comm	humArrayPtr,4,4
-  21              		.comm	soilHumArray,1200,4
-  22              		.comm	soilHumPtr,24,4
-  23              		.comm	lightArray,400,4
-  24              		.comm	lightArrayPtr,4,4
-  25              		.comm	temp,1,1
-  26              		.comm	hum,1,1
-  27              		.comm	soilHum,6,4
-  28              		.comm	light,1,1
-  29              		.section	.text.initDSP,"ax",%progbits
-  30              		.align	2
-  31              		.global	initDSP
-  32              		.code	16
-  33              		.thumb_func
-  34              		.type	initDSP, %function
-  35              	initDSP:
-  36              	.LFB33:
-  37              		.file 1 ".\\DSP_Class.c"
+  17              		.section	.rodata
+  18              		.type	returnVal, %object
+  19              		.size	returnVal, 1
+  20              	returnVal:
+  21 0000 01       		.byte	1
+  22              		.comm	tempArray,400,4
+  23              		.comm	tempArrayPtr,4,4
+  24              		.comm	humArray,400,4
+  25              		.comm	humArrayPtr,4,4
+  26              		.comm	soilHumArray,1200,4
+  27              		.comm	soilHumPtr,24,4
+  28              		.comm	lightArray,400,4
+  29              		.comm	lightArrayPtr,4,4
+  30              		.comm	temp,1,1
+  31              		.comm	hum,1,1
+  32              		.comm	soilHum,6,4
+  33              		.comm	light,1,1
+  34              		.section	.text.initDSP,"ax",%progbits
+  35              		.align	2
+  36              		.global	initDSP
+  37              		.code	16
+  38              		.thumb_func
+  39              		.type	initDSP, %function
+  40              	initDSP:
+  41              	.LFB33:
+  42              		.file 1 ".\\DSP_Class.c"
    1:.\DSP_Class.c **** /* ========================================
    2:.\DSP_Class.c ****  * 
    3:.\DSP_Class.c ****  * AutoGreen - PSoC_Master
@@ -50,1430 +55,1900 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 1
   10:.\DSP_Class.c **** */
   11:.\DSP_Class.c **** 
   12:.\DSP_Class.c **** // Include files
-  13:.\DSP_Class.c **** #include "DSP_Class.h"
-  14:.\DSP_Class.c **** 
-  15:.\DSP_Class.c **** // Private data members
-  16:.\DSP_Class.c **** int32 tempArray[ARRAYSIZE];
-  17:.\DSP_Class.c **** int32* tempArrayPtr;
-  18:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
-  19:.\DSP_Class.c **** int32* humArrayPtr;
-  20:.\DSP_Class.c **** int16 soilHumArray[6][ARRAYSIZE];
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 2
+  13:.\DSP_Class.c **** #include <stdio.h>
+  14:.\DSP_Class.c **** #include "DSP_Class.h"
+  15:.\DSP_Class.c **** 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 2
 
 
-  21:.\DSP_Class.c **** int16* soilHumPtr[6];
-  22:.\DSP_Class.c **** int32 lightArray[ARRAYSIZE];
-  23:.\DSP_Class.c **** int32* lightArrayPtr;
-  24:.\DSP_Class.c **** uint8 temp, hum, soilHum[6], light;
-  25:.\DSP_Class.c **** 
-  26:.\DSP_Class.c **** // Private prototypes
-  27:.\DSP_Class.c **** void avgTemp(void);
-  28:.\DSP_Class.c **** void avgHum(void);
-  29:.\DSP_Class.c **** void avgSoilHum(uint8 index);
-  30:.\DSP_Class.c **** void avgLight(void);
-  31:.\DSP_Class.c **** 
-  32:.\DSP_Class.c **** void initDSP(void){
-  38              		.loc 1 32 0
-  39              		.cfi_startproc
-  40 0000 80B5     		push	{r7, lr}
-  41              		.cfi_def_cfa_offset 8
-  42              		.cfi_offset 7, -8
-  43              		.cfi_offset 14, -4
-  44 0002 00AF     		add	r7, sp, #0
-  45              		.cfi_def_cfa_register 7
-  33:.\DSP_Class.c **** 
-  34:.\DSP_Class.c **** }
-  46              		.loc 1 34 0
-  47 0004 BD46     		mov	sp, r7
-  48              		@ sp needed
-  49 0006 80BD     		pop	{r7, pc}
-  50              		.cfi_endproc
-  51              	.LFE33:
-  52              		.size	initDSP, .-initDSP
-  53              		.section	.text.getTemp_DSP,"ax",%progbits
-  54              		.align	2
-  55              		.global	getTemp_DSP
-  56              		.code	16
-  57              		.thumb_func
-  58              		.type	getTemp_DSP, %function
-  59              	getTemp_DSP:
-  60              	.LFB34:
-  35:.\DSP_Class.c **** 
-  36:.\DSP_Class.c **** uint8 getTemp_DSP(void){
-  61              		.loc 1 36 0
-  62              		.cfi_startproc
-  63 0000 80B5     		push	{r7, lr}
-  64              		.cfi_def_cfa_offset 8
-  65              		.cfi_offset 7, -8
-  66              		.cfi_offset 14, -4
-  67 0002 00AF     		add	r7, sp, #0
-  68              		.cfi_def_cfa_register 7
-  37:.\DSP_Class.c **** return 0;
-  69              		.loc 1 37 0
-  70 0004 0023     		mov	r3, #0
-  38:.\DSP_Class.c **** }
-  71              		.loc 1 38 0
-  72 0006 181C     		mov	r0, r3
-  73 0008 BD46     		mov	sp, r7
-  74              		@ sp needed
-  75 000a 80BD     		pop	{r7, pc}
-  76              		.cfi_endproc
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 3
+  16:.\DSP_Class.c **** //Debug definitions!
+  17:.\DSP_Class.c **** #define BUF_SIZE 50
+  18:.\DSP_Class.c **** static const uint8 returnVal = 1;
+  19:.\DSP_Class.c **** 
+  20:.\DSP_Class.c **** // Private data members
+  21:.\DSP_Class.c **** int32 tempArray[ARRAYSIZE];
+  22:.\DSP_Class.c **** int32* tempArrayPtr;
+  23:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
+  24:.\DSP_Class.c **** int32* humArrayPtr;
+  25:.\DSP_Class.c **** int16 soilHumArray[6][ARRAYSIZE];
+  26:.\DSP_Class.c **** int16* soilHumPtr[6];
+  27:.\DSP_Class.c **** int32 lightArray[ARRAYSIZE];
+  28:.\DSP_Class.c **** int32* lightArrayPtr;
+  29:.\DSP_Class.c **** uint8 temp, hum, soilHum[6], light;
+  30:.\DSP_Class.c **** 
+  31:.\DSP_Class.c **** // Private prototypes
+  32:.\DSP_Class.c **** void avgTemp(void);
+  33:.\DSP_Class.c **** void avgHum(void);
+  34:.\DSP_Class.c **** void avgSoilHum(uint8 index);
+  35:.\DSP_Class.c **** void avgLight(void);
+  36:.\DSP_Class.c **** 
+  37:.\DSP_Class.c **** void initDSP(void){
+  43              		.loc 1 37 0
+  44              		.cfi_startproc
+  45 0000 80B5     		push	{r7, lr}
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 00AF     		add	r7, sp, #0
+  50              		.cfi_def_cfa_register 7
+  38:.\DSP_Class.c **** 
+  39:.\DSP_Class.c **** }
+  51              		.loc 1 39 0
+  52 0004 BD46     		mov	sp, r7
+  53              		@ sp needed
+  54 0006 80BD     		pop	{r7, pc}
+  55              		.cfi_endproc
+  56              	.LFE33:
+  57              		.size	initDSP, .-initDSP
+  58              		.section	.rodata
+  59 0001 000000   		.align	2
+  60              	.LC0:
+  61 0004 67657454 		.ascii	"getTemp_DSP() called, returns %d\012\015\000"
+  61      656D705F 
+  61      44535028 
+  61      29206361 
+  61      6C6C6564 
+  62              		.section	.text.getTemp_DSP,"ax",%progbits
+  63              		.align	2
+  64              		.global	getTemp_DSP
+  65              		.code	16
+  66              		.thumb_func
+  67              		.type	getTemp_DSP, %function
+  68              	getTemp_DSP:
+  69              	.LFB34:
+  40:.\DSP_Class.c **** 
+  41:.\DSP_Class.c **** uint8 getTemp_DSP(void){
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 3
 
 
-  77              	.LFE34:
-  78              		.size	getTemp_DSP, .-getTemp_DSP
-  79              		.section	.text.getHum_DSP,"ax",%progbits
-  80              		.align	2
-  81              		.global	getHum_DSP
-  82              		.code	16
-  83              		.thumb_func
-  84              		.type	getHum_DSP, %function
-  85              	getHum_DSP:
-  86              	.LFB35:
-  39:.\DSP_Class.c **** 
-  40:.\DSP_Class.c **** uint8 getHum_DSP(void){
-  87              		.loc 1 40 0
-  88              		.cfi_startproc
-  89 0000 80B5     		push	{r7, lr}
-  90              		.cfi_def_cfa_offset 8
-  91              		.cfi_offset 7, -8
-  92              		.cfi_offset 14, -4
-  93 0002 00AF     		add	r7, sp, #0
-  94              		.cfi_def_cfa_register 7
-  41:.\DSP_Class.c **** return 0;
-  95              		.loc 1 41 0
-  96 0004 0023     		mov	r3, #0
-  42:.\DSP_Class.c **** }
-  97              		.loc 1 42 0
-  98 0006 181C     		mov	r0, r3
-  99 0008 BD46     		mov	sp, r7
- 100              		@ sp needed
- 101 000a 80BD     		pop	{r7, pc}
- 102              		.cfi_endproc
- 103              	.LFE35:
- 104              		.size	getHum_DSP, .-getHum_DSP
- 105              		.section	.text.getSoilHum_DSP,"ax",%progbits
- 106              		.align	2
- 107              		.global	getSoilHum_DSP
- 108              		.code	16
- 109              		.thumb_func
- 110              		.type	getSoilHum_DSP, %function
- 111              	getSoilHum_DSP:
- 112              	.LFB36:
-  43:.\DSP_Class.c **** 
-  44:.\DSP_Class.c **** uint8 getSoilHum_DSP(uint8 index){
- 113              		.loc 1 44 0
- 114              		.cfi_startproc
- 115 0000 80B5     		push	{r7, lr}
- 116              		.cfi_def_cfa_offset 8
- 117              		.cfi_offset 7, -8
- 118              		.cfi_offset 14, -4
- 119 0002 84B0     		sub	sp, sp, #16
- 120              		.cfi_def_cfa_offset 24
- 121 0004 00AF     		add	r7, sp, #0
- 122              		.cfi_def_cfa_register 7
- 123 0006 021C     		mov	r2, r0
- 124 0008 FB1D     		add	r3, r7, #7
- 125 000a 1A70     		strb	r2, [r3]
-  45:.\DSP_Class.c ****     index = 0;
- 126              		.loc 1 45 0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 4
+  70              		.loc 1 41 0
+  71              		.cfi_startproc
+  72 0000 80B5     		push	{r7, lr}
+  73              		.cfi_def_cfa_offset 8
+  74              		.cfi_offset 7, -8
+  75              		.cfi_offset 14, -4
+  76 0002 8EB0     		sub	sp, sp, #56
+  77              		.cfi_def_cfa_offset 64
+  78 0004 00AF     		add	r7, sp, #0
+  79              		.cfi_def_cfa_register 7
+  42:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  43:.\DSP_Class.c ****     sprintf(buf, "getTemp_DSP() called, returns %d\n\r", returnVal);
+  80              		.loc 1 43 0
+  81 0006 0123     		mov	r3, #1
+  82 0008 391D     		add	r1, r7, #4
+  83 000a 074A     		ldr	r2, .L4
+  84 000c 081C     		mov	r0, r1
+  85 000e 111C     		mov	r1, r2
+  86 0010 1A1C     		mov	r2, r3
+  87 0012 FFF7FEFF 		bl	sprintf
+  44:.\DSP_Class.c ****     UART_UartPutString(buf);
+  88              		.loc 1 44 0
+  89 0016 3B1D     		add	r3, r7, #4
+  90 0018 181C     		mov	r0, r3
+  91 001a FFF7FEFF 		bl	UART_UartPutString
+  45:.\DSP_Class.c ****     return returnVal;
+  92              		.loc 1 45 0
+  93 001e 0123     		mov	r3, #1
+  46:.\DSP_Class.c **** }
+  94              		.loc 1 46 0
+  95 0020 181C     		mov	r0, r3
+  96 0022 BD46     		mov	sp, r7
+  97 0024 0EB0     		add	sp, sp, #56
+  98              		@ sp needed
+  99 0026 80BD     		pop	{r7, pc}
+ 100              	.L5:
+ 101              		.align	2
+ 102              	.L4:
+ 103 0028 04000000 		.word	.LC0
+ 104              		.cfi_endproc
+ 105              	.LFE34:
+ 106              		.size	getTemp_DSP, .-getTemp_DSP
+ 107              		.section	.rodata
+ 108 0027 00       		.align	2
+ 109              	.LC2:
+ 110 0028 67657448 		.ascii	"getHum_DSP() called, returns %d\012\015\000"
+ 110      756D5F44 
+ 110      53502829 
+ 110      2063616C 
+ 110      6C65642C 
+ 111              		.section	.text.getHum_DSP,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	getHum_DSP
+ 114              		.code	16
+ 115              		.thumb_func
+ 116              		.type	getHum_DSP, %function
+ 117              	getHum_DSP:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 4
 
 
- 127 000c 3B1C     		mov	r3, r7
- 128 000e 0F33     		add	r3, r3, #15
- 129 0010 0022     		mov	r2, #0
- 130 0012 1A70     		strb	r2, [r3]
-  46:.\DSP_Class.c ****     return 0;
- 131              		.loc 1 46 0
- 132 0014 0023     		mov	r3, #0
-  47:.\DSP_Class.c **** }
- 133              		.loc 1 47 0
- 134 0016 181C     		mov	r0, r3
- 135 0018 BD46     		mov	sp, r7
- 136 001a 04B0     		add	sp, sp, #16
- 137              		@ sp needed
- 138 001c 80BD     		pop	{r7, pc}
- 139              		.cfi_endproc
- 140              	.LFE36:
- 141              		.size	getSoilHum_DSP, .-getSoilHum_DSP
- 142 001e C046     		.section	.text.getLight_DSP,"ax",%progbits
- 143              		.align	2
- 144              		.global	getLight_DSP
- 145              		.code	16
- 146              		.thumb_func
- 147              		.type	getLight_DSP, %function
- 148              	getLight_DSP:
- 149              	.LFB37:
-  48:.\DSP_Class.c **** 
-  49:.\DSP_Class.c **** uint8 getLight_DSP(void){
- 150              		.loc 1 49 0
- 151              		.cfi_startproc
- 152 0000 80B5     		push	{r7, lr}
- 153              		.cfi_def_cfa_offset 8
- 154              		.cfi_offset 7, -8
- 155              		.cfi_offset 14, -4
- 156 0002 00AF     		add	r7, sp, #0
- 157              		.cfi_def_cfa_register 7
-  50:.\DSP_Class.c **** return 0;
- 158              		.loc 1 50 0
- 159 0004 0023     		mov	r3, #0
-  51:.\DSP_Class.c **** }
- 160              		.loc 1 51 0
- 161 0006 181C     		mov	r0, r3
- 162 0008 BD46     		mov	sp, r7
- 163              		@ sp needed
- 164 000a 80BD     		pop	{r7, pc}
- 165              		.cfi_endproc
- 166              	.LFE37:
- 167              		.size	getLight_DSP, .-getLight_DSP
- 168              		.section	.text.avgTemp,"ax",%progbits
- 169              		.align	2
- 170              		.global	avgTemp
- 171              		.code	16
- 172              		.thumb_func
- 173              		.type	avgTemp, %function
- 174              	avgTemp:
- 175              	.LFB38:
-  52:.\DSP_Class.c **** 
-  53:.\DSP_Class.c **** void avgTemp(void){
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 5
+ 118              	.LFB35:
+  47:.\DSP_Class.c **** 
+  48:.\DSP_Class.c **** uint8 getHum_DSP(void){
+ 119              		.loc 1 48 0
+ 120              		.cfi_startproc
+ 121 0000 80B5     		push	{r7, lr}
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 7, -8
+ 124              		.cfi_offset 14, -4
+ 125 0002 8EB0     		sub	sp, sp, #56
+ 126              		.cfi_def_cfa_offset 64
+ 127 0004 00AF     		add	r7, sp, #0
+ 128              		.cfi_def_cfa_register 7
+  49:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  50:.\DSP_Class.c ****     sprintf(buf, "getHum_DSP() called, returns %d\n\r", returnVal);
+ 129              		.loc 1 50 0
+ 130 0006 0123     		mov	r3, #1
+ 131 0008 391D     		add	r1, r7, #4
+ 132 000a 074A     		ldr	r2, .L8
+ 133 000c 081C     		mov	r0, r1
+ 134 000e 111C     		mov	r1, r2
+ 135 0010 1A1C     		mov	r2, r3
+ 136 0012 FFF7FEFF 		bl	sprintf
+  51:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 137              		.loc 1 51 0
+ 138 0016 3B1D     		add	r3, r7, #4
+ 139 0018 181C     		mov	r0, r3
+ 140 001a FFF7FEFF 		bl	UART_UartPutString
+  52:.\DSP_Class.c ****     return returnVal;
+ 141              		.loc 1 52 0
+ 142 001e 0123     		mov	r3, #1
+  53:.\DSP_Class.c **** }
+ 143              		.loc 1 53 0
+ 144 0020 181C     		mov	r0, r3
+ 145 0022 BD46     		mov	sp, r7
+ 146 0024 0EB0     		add	sp, sp, #56
+ 147              		@ sp needed
+ 148 0026 80BD     		pop	{r7, pc}
+ 149              	.L9:
+ 150              		.align	2
+ 151              	.L8:
+ 152 0028 28000000 		.word	.LC2
+ 153              		.cfi_endproc
+ 154              	.LFE35:
+ 155              		.size	getHum_DSP, .-getHum_DSP
+ 156              		.section	.rodata
+ 157 004a 0000     		.align	2
+ 158              	.LC4:
+ 159 004c 67657453 		.ascii	"getSoilHum_DSP() called, index = %d, returns %d\012"
+ 159      6F696C48 
+ 159      756D5F44 
+ 159      53502829 
+ 159      2063616C 
+ 160 007c 0D00     		.ascii	"\015\000"
+ 161              		.section	.text.getSoilHum_DSP,"ax",%progbits
+ 162              		.align	2
+ 163              		.global	getSoilHum_DSP
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 5
 
 
- 176              		.loc 1 53 0
- 177              		.cfi_startproc
- 178 0000 80B5     		push	{r7, lr}
- 179              		.cfi_def_cfa_offset 8
- 180              		.cfi_offset 7, -8
- 181              		.cfi_offset 14, -4
- 182 0002 00AF     		add	r7, sp, #0
- 183              		.cfi_def_cfa_register 7
+ 164              		.code	16
+ 165              		.thumb_func
+ 166              		.type	getSoilHum_DSP, %function
+ 167              	getSoilHum_DSP:
+ 168              	.LFB36:
   54:.\DSP_Class.c **** 
-  55:.\DSP_Class.c **** }
- 184              		.loc 1 55 0
- 185 0004 BD46     		mov	sp, r7
- 186              		@ sp needed
- 187 0006 80BD     		pop	{r7, pc}
- 188              		.cfi_endproc
- 189              	.LFE38:
- 190              		.size	avgTemp, .-avgTemp
- 191              		.section	.text.avgHum,"ax",%progbits
- 192              		.align	2
- 193              		.global	avgHum
- 194              		.code	16
- 195              		.thumb_func
- 196              		.type	avgHum, %function
- 197              	avgHum:
- 198              	.LFB39:
-  56:.\DSP_Class.c **** 
-  57:.\DSP_Class.c **** void avgHum(void){
- 199              		.loc 1 57 0
- 200              		.cfi_startproc
- 201 0000 80B5     		push	{r7, lr}
- 202              		.cfi_def_cfa_offset 8
- 203              		.cfi_offset 7, -8
- 204              		.cfi_offset 14, -4
- 205 0002 00AF     		add	r7, sp, #0
- 206              		.cfi_def_cfa_register 7
-  58:.\DSP_Class.c **** 
-  59:.\DSP_Class.c **** }
- 207              		.loc 1 59 0
- 208 0004 BD46     		mov	sp, r7
- 209              		@ sp needed
- 210 0006 80BD     		pop	{r7, pc}
- 211              		.cfi_endproc
- 212              	.LFE39:
- 213              		.size	avgHum, .-avgHum
- 214              		.section	.text.avgSoilHum,"ax",%progbits
+  55:.\DSP_Class.c **** uint8 getSoilHum_DSP(uint8 index){
+ 169              		.loc 1 55 0
+ 170              		.cfi_startproc
+ 171 0000 80B5     		push	{r7, lr}
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 7, -8
+ 174              		.cfi_offset 14, -4
+ 175 0002 90B0     		sub	sp, sp, #64
+ 176              		.cfi_def_cfa_offset 72
+ 177 0004 00AF     		add	r7, sp, #0
+ 178              		.cfi_def_cfa_register 7
+ 179 0006 021C     		mov	r2, r0
+ 180 0008 FB1D     		add	r3, r7, #7
+ 181 000a 1A70     		strb	r2, [r3]
+  56:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  57:.\DSP_Class.c ****     sprintf(buf, "getSoilHum_DSP() called, index = %d, returns %d\n\r", index, returnVal);
+ 182              		.loc 1 57 0
+ 183 000c FB1D     		add	r3, r7, #7
+ 184 000e 1A78     		ldrb	r2, [r3]
+ 185 0010 0123     		mov	r3, #1
+ 186 0012 381C     		mov	r0, r7
+ 187 0014 0C30     		add	r0, r0, #12
+ 188 0016 0649     		ldr	r1, .L12
+ 189 0018 FFF7FEFF 		bl	sprintf
+  58:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 190              		.loc 1 58 0
+ 191 001c 3B1C     		mov	r3, r7
+ 192 001e 0C33     		add	r3, r3, #12
+ 193 0020 181C     		mov	r0, r3
+ 194 0022 FFF7FEFF 		bl	UART_UartPutString
+  59:.\DSP_Class.c ****     return returnVal;
+ 195              		.loc 1 59 0
+ 196 0026 0123     		mov	r3, #1
+  60:.\DSP_Class.c **** }
+ 197              		.loc 1 60 0
+ 198 0028 181C     		mov	r0, r3
+ 199 002a BD46     		mov	sp, r7
+ 200 002c 10B0     		add	sp, sp, #64
+ 201              		@ sp needed
+ 202 002e 80BD     		pop	{r7, pc}
+ 203              	.L13:
+ 204              		.align	2
+ 205              	.L12:
+ 206 0030 4C000000 		.word	.LC4
+ 207              		.cfi_endproc
+ 208              	.LFE36:
+ 209              		.size	getSoilHum_DSP, .-getSoilHum_DSP
+ 210              		.section	.rodata
+ 211 007e 0000     		.align	2
+ 212              	.LC6:
+ 213 0080 6765744C 		.ascii	"getLight_DSP() called, returns %d\012\015\000"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 6
+
+
+ 213      69676874 
+ 213      5F445350 
+ 213      28292063 
+ 213      616C6C65 
+ 214              		.section	.text.getLight_DSP,"ax",%progbits
  215              		.align	2
- 216              		.global	avgSoilHum
+ 216              		.global	getLight_DSP
  217              		.code	16
  218              		.thumb_func
- 219              		.type	avgSoilHum, %function
- 220              	avgSoilHum:
- 221              	.LFB40:
-  60:.\DSP_Class.c **** 
-  61:.\DSP_Class.c **** void avgSoilHum(uint8 index){
- 222              		.loc 1 61 0
+ 219              		.type	getLight_DSP, %function
+ 220              	getLight_DSP:
+ 221              	.LFB37:
+  61:.\DSP_Class.c **** 
+  62:.\DSP_Class.c **** uint8 getLight_DSP(void){
+ 222              		.loc 1 62 0
  223              		.cfi_startproc
  224 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 6
-
-
  225              		.cfi_def_cfa_offset 8
  226              		.cfi_offset 7, -8
  227              		.cfi_offset 14, -4
- 228 0002 84B0     		sub	sp, sp, #16
- 229              		.cfi_def_cfa_offset 24
+ 228 0002 8EB0     		sub	sp, sp, #56
+ 229              		.cfi_def_cfa_offset 64
  230 0004 00AF     		add	r7, sp, #0
  231              		.cfi_def_cfa_register 7
- 232 0006 021C     		mov	r2, r0
- 233 0008 FB1D     		add	r3, r7, #7
- 234 000a 1A70     		strb	r2, [r3]
-  62:.\DSP_Class.c ****     index = 0;
- 235              		.loc 1 62 0
- 236 000c 3B1C     		mov	r3, r7
- 237 000e 0F33     		add	r3, r3, #15
- 238 0010 0022     		mov	r2, #0
- 239 0012 1A70     		strb	r2, [r3]
-  63:.\DSP_Class.c **** }
- 240              		.loc 1 63 0
- 241 0014 BD46     		mov	sp, r7
- 242 0016 04B0     		add	sp, sp, #16
- 243              		@ sp needed
- 244 0018 80BD     		pop	{r7, pc}
- 245              		.cfi_endproc
- 246              	.LFE40:
- 247              		.size	avgSoilHum, .-avgSoilHum
- 248 001a C046     		.section	.text.avgLight,"ax",%progbits
- 249              		.align	2
- 250              		.global	avgLight
- 251              		.code	16
- 252              		.thumb_func
- 253              		.type	avgLight, %function
- 254              	avgLight:
- 255              	.LFB41:
-  64:.\DSP_Class.c **** 
-  65:.\DSP_Class.c **** void avgLight(void){
- 256              		.loc 1 65 0
- 257              		.cfi_startproc
- 258 0000 80B5     		push	{r7, lr}
- 259              		.cfi_def_cfa_offset 8
- 260              		.cfi_offset 7, -8
- 261              		.cfi_offset 14, -4
- 262 0002 00AF     		add	r7, sp, #0
- 263              		.cfi_def_cfa_register 7
-  66:.\DSP_Class.c **** 
+  63:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  64:.\DSP_Class.c ****     sprintf(buf, "getLight_DSP() called, returns %d\n\r", returnVal);
+ 232              		.loc 1 64 0
+ 233 0006 0123     		mov	r3, #1
+ 234 0008 391D     		add	r1, r7, #4
+ 235 000a 074A     		ldr	r2, .L16
+ 236 000c 081C     		mov	r0, r1
+ 237 000e 111C     		mov	r1, r2
+ 238 0010 1A1C     		mov	r2, r3
+ 239 0012 FFF7FEFF 		bl	sprintf
+  65:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 240              		.loc 1 65 0
+ 241 0016 3B1D     		add	r3, r7, #4
+ 242 0018 181C     		mov	r0, r3
+ 243 001a FFF7FEFF 		bl	UART_UartPutString
+  66:.\DSP_Class.c ****     return returnVal;
+ 244              		.loc 1 66 0
+ 245 001e 0123     		mov	r3, #1
   67:.\DSP_Class.c **** }
- 264              		.loc 1 67 0
- 265 0004 BD46     		mov	sp, r7
- 266              		@ sp needed
- 267 0006 80BD     		pop	{r7, pc}
- 268              		.cfi_endproc
- 269              	.LFE41:
- 270              		.size	avgLight, .-avgLight
- 271              		.section	.text.inputTemp,"ax",%progbits
- 272              		.align	2
- 273              		.global	inputTemp
- 274              		.code	16
- 275              		.thumb_func
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 7
+ 246              		.loc 1 67 0
+ 247 0020 181C     		mov	r0, r3
+ 248 0022 BD46     		mov	sp, r7
+ 249 0024 0EB0     		add	sp, sp, #56
+ 250              		@ sp needed
+ 251 0026 80BD     		pop	{r7, pc}
+ 252              	.L17:
+ 253              		.align	2
+ 254              	.L16:
+ 255 0028 80000000 		.word	.LC6
+ 256              		.cfi_endproc
+ 257              	.LFE37:
+ 258              		.size	getLight_DSP, .-getLight_DSP
+ 259              		.section	.rodata
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 7
 
 
- 276              		.type	inputTemp, %function
- 277              	inputTemp:
- 278              	.LFB42:
+ 260              		.align	2
+ 261              	.LC8:
+ 262 00a4 61766754 		.ascii	"avgTemp called\012\015\000"
+ 262      656D7020 
+ 262      63616C6C 
+ 262      65640A0D 
+ 262      00
+ 263              		.section	.text.avgTemp,"ax",%progbits
+ 264              		.align	2
+ 265              		.global	avgTemp
+ 266              		.code	16
+ 267              		.thumb_func
+ 268              		.type	avgTemp, %function
+ 269              	avgTemp:
+ 270              	.LFB38:
   68:.\DSP_Class.c **** 
-  69:.\DSP_Class.c **** void inputTemp(int32* temp){
- 279              		.loc 1 69 0
- 280              		.cfi_startproc
- 281 0000 80B5     		push	{r7, lr}
- 282              		.cfi_def_cfa_offset 8
- 283              		.cfi_offset 7, -8
- 284              		.cfi_offset 14, -4
- 285 0002 82B0     		sub	sp, sp, #8
- 286              		.cfi_def_cfa_offset 16
- 287 0004 00AF     		add	r7, sp, #0
- 288              		.cfi_def_cfa_register 7
- 289 0006 7860     		str	r0, [r7, #4]
-  70:.\DSP_Class.c ****     *temp = 0;
- 290              		.loc 1 70 0
- 291 0008 7B68     		ldr	r3, [r7, #4]
- 292 000a 0022     		mov	r2, #0
- 293 000c 1A60     		str	r2, [r3]
+  69:.\DSP_Class.c **** void avgTemp(void){
+ 271              		.loc 1 69 0
+ 272              		.cfi_startproc
+ 273 0000 80B5     		push	{r7, lr}
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 7, -8
+ 276              		.cfi_offset 14, -4
+ 277 0002 00AF     		add	r7, sp, #0
+ 278              		.cfi_def_cfa_register 7
+  70:.\DSP_Class.c ****     UART_UartPutString("avgTemp called\n\r");
+ 279              		.loc 1 70 0
+ 280 0004 024B     		ldr	r3, .L19
+ 281 0006 181C     		mov	r0, r3
+ 282 0008 FFF7FEFF 		bl	UART_UartPutString
   71:.\DSP_Class.c **** }
- 294              		.loc 1 71 0
- 295 000e BD46     		mov	sp, r7
- 296 0010 02B0     		add	sp, sp, #8
- 297              		@ sp needed
- 298 0012 80BD     		pop	{r7, pc}
- 299              		.cfi_endproc
- 300              	.LFE42:
- 301              		.size	inputTemp, .-inputTemp
- 302              		.section	.text.inputHum,"ax",%progbits
- 303              		.align	2
- 304              		.global	inputHum
- 305              		.code	16
- 306              		.thumb_func
- 307              		.type	inputHum, %function
- 308              	inputHum:
- 309              	.LFB43:
+ 283              		.loc 1 71 0
+ 284 000c BD46     		mov	sp, r7
+ 285              		@ sp needed
+ 286 000e 80BD     		pop	{r7, pc}
+ 287              	.L20:
+ 288              		.align	2
+ 289              	.L19:
+ 290 0010 A4000000 		.word	.LC8
+ 291              		.cfi_endproc
+ 292              	.LFE38:
+ 293              		.size	avgTemp, .-avgTemp
+ 294              		.section	.rodata
+ 295 00b5 000000   		.align	2
+ 296              	.LC10:
+ 297 00b8 61766748 		.ascii	"avgHum called\012\015\000"
+ 297      756D2063 
+ 297      616C6C65 
+ 297      640A0D00 
+ 298              		.section	.text.avgHum,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	avgHum
+ 301              		.code	16
+ 302              		.thumb_func
+ 303              		.type	avgHum, %function
+ 304              	avgHum:
+ 305              	.LFB39:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 8
+
+
   72:.\DSP_Class.c **** 
-  73:.\DSP_Class.c **** void inputHum(int32* hum){
- 310              		.loc 1 73 0
- 311              		.cfi_startproc
- 312 0000 80B5     		push	{r7, lr}
- 313              		.cfi_def_cfa_offset 8
- 314              		.cfi_offset 7, -8
- 315              		.cfi_offset 14, -4
- 316 0002 82B0     		sub	sp, sp, #8
- 317              		.cfi_def_cfa_offset 16
- 318 0004 00AF     		add	r7, sp, #0
- 319              		.cfi_def_cfa_register 7
- 320 0006 7860     		str	r0, [r7, #4]
-  74:.\DSP_Class.c ****     *hum = 0;
- 321              		.loc 1 74 0
- 322 0008 7B68     		ldr	r3, [r7, #4]
- 323 000a 0022     		mov	r2, #0
- 324 000c 1A60     		str	r2, [r3]
+  73:.\DSP_Class.c **** void avgHum(void){
+ 306              		.loc 1 73 0
+ 307              		.cfi_startproc
+ 308 0000 80B5     		push	{r7, lr}
+ 309              		.cfi_def_cfa_offset 8
+ 310              		.cfi_offset 7, -8
+ 311              		.cfi_offset 14, -4
+ 312 0002 00AF     		add	r7, sp, #0
+ 313              		.cfi_def_cfa_register 7
+  74:.\DSP_Class.c ****     UART_UartPutString("avgHum called\n\r");
+ 314              		.loc 1 74 0
+ 315 0004 024B     		ldr	r3, .L22
+ 316 0006 181C     		mov	r0, r3
+ 317 0008 FFF7FEFF 		bl	UART_UartPutString
   75:.\DSP_Class.c **** }
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 8
-
-
- 325              		.loc 1 75 0
- 326 000e BD46     		mov	sp, r7
- 327 0010 02B0     		add	sp, sp, #8
- 328              		@ sp needed
- 329 0012 80BD     		pop	{r7, pc}
- 330              		.cfi_endproc
- 331              	.LFE43:
- 332              		.size	inputHum, .-inputHum
- 333              		.section	.text.inputSoilHum,"ax",%progbits
+ 318              		.loc 1 75 0
+ 319 000c BD46     		mov	sp, r7
+ 320              		@ sp needed
+ 321 000e 80BD     		pop	{r7, pc}
+ 322              	.L23:
+ 323              		.align	2
+ 324              	.L22:
+ 325 0010 B8000000 		.word	.LC10
+ 326              		.cfi_endproc
+ 327              	.LFE39:
+ 328              		.size	avgHum, .-avgHum
+ 329              		.section	.rodata
+ 330              		.align	2
+ 331              	.LC12:
+ 332 00c8 61766753 		.ascii	"avgSoilHum() called, index =  %d\012\015\000"
+ 332      6F696C48 
+ 332      756D2829 
+ 332      2063616C 
+ 332      6C65642C 
+ 333              		.section	.text.avgSoilHum,"ax",%progbits
  334              		.align	2
- 335              		.global	inputSoilHum
+ 335              		.global	avgSoilHum
  336              		.code	16
  337              		.thumb_func
- 338              		.type	inputSoilHum, %function
- 339              	inputSoilHum:
- 340              	.LFB44:
+ 338              		.type	avgSoilHum, %function
+ 339              	avgSoilHum:
+ 340              	.LFB40:
   76:.\DSP_Class.c **** 
-  77:.\DSP_Class.c **** void inputSoilHum(uint8 index, int16* soilHum){
+  77:.\DSP_Class.c **** void avgSoilHum(uint8 index){
  341              		.loc 1 77 0
  342              		.cfi_startproc
  343 0000 80B5     		push	{r7, lr}
  344              		.cfi_def_cfa_offset 8
  345              		.cfi_offset 7, -8
  346              		.cfi_offset 14, -4
- 347 0002 84B0     		sub	sp, sp, #16
- 348              		.cfi_def_cfa_offset 24
+ 347 0002 90B0     		sub	sp, sp, #64
+ 348              		.cfi_def_cfa_offset 72
  349 0004 00AF     		add	r7, sp, #0
  350              		.cfi_def_cfa_register 7
  351 0006 021C     		mov	r2, r0
- 352 0008 3960     		str	r1, [r7]
- 353 000a FB1D     		add	r3, r7, #7
- 354 000c 1A70     		strb	r2, [r3]
-  78:.\DSP_Class.c ****     index = 0;
- 355              		.loc 1 78 0
- 356 000e 3B1C     		mov	r3, r7
- 357 0010 0F33     		add	r3, r3, #15
- 358 0012 0022     		mov	r2, #0
- 359 0014 1A70     		strb	r2, [r3]
-  79:.\DSP_Class.c ****     *soilHum = 0;
- 360              		.loc 1 79 0
- 361 0016 3B68     		ldr	r3, [r7]
- 362 0018 0022     		mov	r2, #0
- 363 001a 1A80     		strh	r2, [r3]
-  80:.\DSP_Class.c **** }
+ 352 0008 FB1D     		add	r3, r7, #7
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 9
+
+
+ 353 000a 1A70     		strb	r2, [r3]
+  78:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  79:.\DSP_Class.c ****     sprintf(buf, "avgSoilHum() called, index =  %d\n\r", index);
+ 354              		.loc 1 79 0
+ 355 000c FB1D     		add	r3, r7, #7
+ 356 000e 1B78     		ldrb	r3, [r3]
+ 357 0010 391C     		mov	r1, r7
+ 358 0012 0C31     		add	r1, r1, #12
+ 359 0014 064A     		ldr	r2, .L25
+ 360 0016 081C     		mov	r0, r1
+ 361 0018 111C     		mov	r1, r2
+ 362 001a 1A1C     		mov	r2, r3
+ 363 001c FFF7FEFF 		bl	sprintf
+  80:.\DSP_Class.c ****     UART_UartPutString(buf);
  364              		.loc 1 80 0
- 365 001c BD46     		mov	sp, r7
- 366 001e 04B0     		add	sp, sp, #16
- 367              		@ sp needed
- 368 0020 80BD     		pop	{r7, pc}
- 369              		.cfi_endproc
- 370              	.LFE44:
- 371              		.size	inputSoilHum, .-inputSoilHum
- 372 0022 C046     		.section	.text.inputLight,"ax",%progbits
- 373              		.align	2
- 374              		.global	inputLight
- 375              		.code	16
- 376              		.thumb_func
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 9
+ 365 0020 3B1C     		mov	r3, r7
+ 366 0022 0C33     		add	r3, r3, #12
+ 367 0024 181C     		mov	r0, r3
+ 368 0026 FFF7FEFF 		bl	UART_UartPutString
+  81:.\DSP_Class.c **** }
+ 369              		.loc 1 81 0
+ 370 002a BD46     		mov	sp, r7
+ 371 002c 10B0     		add	sp, sp, #64
+ 372              		@ sp needed
+ 373 002e 80BD     		pop	{r7, pc}
+ 374              	.L26:
+ 375              		.align	2
+ 376              	.L25:
+ 377 0030 C8000000 		.word	.LC12
+ 378              		.cfi_endproc
+ 379              	.LFE40:
+ 380              		.size	avgSoilHum, .-avgSoilHum
+ 381              		.section	.rodata
+ 382 00eb 00       		.align	2
+ 383              	.LC14:
+ 384 00ec 6176674C 		.ascii	"avgLight called\012\015\000"
+ 384      69676874 
+ 384      2063616C 
+ 384      6C65640A 
+ 384      0D00
+ 385              		.section	.text.avgLight,"ax",%progbits
+ 386              		.align	2
+ 387              		.global	avgLight
+ 388              		.code	16
+ 389              		.thumb_func
+ 390              		.type	avgLight, %function
+ 391              	avgLight:
+ 392              	.LFB41:
+  82:.\DSP_Class.c **** 
+  83:.\DSP_Class.c **** void avgLight(void){
+ 393              		.loc 1 83 0
+ 394              		.cfi_startproc
+ 395 0000 80B5     		push	{r7, lr}
+ 396              		.cfi_def_cfa_offset 8
+ 397              		.cfi_offset 7, -8
+ 398              		.cfi_offset 14, -4
+ 399 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 10
 
 
- 377              		.type	inputLight, %function
- 378              	inputLight:
- 379              	.LFB45:
-  81:.\DSP_Class.c **** 
-  82:.\DSP_Class.c **** void inputLight(int32* light){
- 380              		.loc 1 82 0
- 381              		.cfi_startproc
- 382 0000 80B5     		push	{r7, lr}
- 383              		.cfi_def_cfa_offset 8
- 384              		.cfi_offset 7, -8
- 385              		.cfi_offset 14, -4
- 386 0002 82B0     		sub	sp, sp, #8
- 387              		.cfi_def_cfa_offset 16
- 388 0004 00AF     		add	r7, sp, #0
- 389              		.cfi_def_cfa_register 7
- 390 0006 7860     		str	r0, [r7, #4]
-  83:.\DSP_Class.c ****     *light = 0;
- 391              		.loc 1 83 0
- 392 0008 7B68     		ldr	r3, [r7, #4]
- 393 000a 0022     		mov	r2, #0
- 394 000c 1A60     		str	r2, [r3]
-  84:.\DSP_Class.c **** }
- 395              		.loc 1 84 0
- 396 000e BD46     		mov	sp, r7
- 397 0010 02B0     		add	sp, sp, #8
- 398              		@ sp needed
- 399 0012 80BD     		pop	{r7, pc}
- 400              		.cfi_endproc
- 401              	.LFE45:
- 402              		.size	inputLight, .-inputLight
- 403              		.text
- 404              	.Letext0:
- 405              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 406              		.section	.debug_info,"",%progbits
- 407              	.Ldebug_info0:
- 408 0000 30030000 		.4byte	0x330
- 409 0004 0400     		.2byte	0x4
- 410 0006 00000000 		.4byte	.Ldebug_abbrev0
- 411 000a 04       		.byte	0x4
- 412 000b 01       		.uleb128 0x1
- 413 000c 77000000 		.4byte	.LASF40
- 414 0010 01       		.byte	0x1
- 415 0011 3D020000 		.4byte	.LASF41
- 416 0015 A4010000 		.4byte	.LASF42
- 417 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 418 001d 00000000 		.4byte	0
- 419 0021 00000000 		.4byte	.Ldebug_line0
- 420 0025 02       		.uleb128 0x2
- 421 0026 01       		.byte	0x1
- 422 0027 06       		.byte	0x6
- 423 0028 6C020000 		.4byte	.LASF0
- 424 002c 02       		.uleb128 0x2
- 425 002d 01       		.byte	0x1
- 426 002e 08       		.byte	0x8
- 427 002f F3000000 		.4byte	.LASF1
- 428 0033 02       		.uleb128 0x2
- 429 0034 02       		.byte	0x2
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 10
+ 400              		.cfi_def_cfa_register 7
+  84:.\DSP_Class.c ****     UART_UartPutString("avgLight called\n\r");
+ 401              		.loc 1 84 0
+ 402 0004 024B     		ldr	r3, .L28
+ 403 0006 181C     		mov	r0, r3
+ 404 0008 FFF7FEFF 		bl	UART_UartPutString
+  85:.\DSP_Class.c **** }
+ 405              		.loc 1 85 0
+ 406 000c BD46     		mov	sp, r7
+ 407              		@ sp needed
+ 408 000e 80BD     		pop	{r7, pc}
+ 409              	.L29:
+ 410              		.align	2
+ 411              	.L28:
+ 412 0010 EC000000 		.word	.LC14
+ 413              		.cfi_endproc
+ 414              	.LFE41:
+ 415              		.size	avgLight, .-avgLight
+ 416              		.section	.rodata
+ 417 00fe 0000     		.align	2
+ 418              	.LC16:
+ 419 0100 696E7075 		.ascii	"inputTemp() called, returns %d via temp\012\015\000"
+ 419      7454656D 
+ 419      70282920 
+ 419      63616C6C 
+ 419      65642C20 
+ 420              		.section	.text.inputTemp,"ax",%progbits
+ 421              		.align	2
+ 422              		.global	inputTemp
+ 423              		.code	16
+ 424              		.thumb_func
+ 425              		.type	inputTemp, %function
+ 426              	inputTemp:
+ 427              	.LFB42:
+  86:.\DSP_Class.c **** 
+  87:.\DSP_Class.c **** void inputTemp(int32* temp){
+ 428              		.loc 1 87 0
+ 429              		.cfi_startproc
+ 430 0000 80B5     		push	{r7, lr}
+ 431              		.cfi_def_cfa_offset 8
+ 432              		.cfi_offset 7, -8
+ 433              		.cfi_offset 14, -4
+ 434 0002 90B0     		sub	sp, sp, #64
+ 435              		.cfi_def_cfa_offset 72
+ 436 0004 00AF     		add	r7, sp, #0
+ 437              		.cfi_def_cfa_register 7
+ 438 0006 7860     		str	r0, [r7, #4]
+  88:.\DSP_Class.c ****     *temp = returnVal;
+ 439              		.loc 1 88 0
+ 440 0008 0123     		mov	r3, #1
+ 441 000a 1A1C     		mov	r2, r3
+ 442 000c 7B68     		ldr	r3, [r7, #4]
+ 443 000e 1A60     		str	r2, [r3]
+  89:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  90:.\DSP_Class.c ****     sprintf(buf, "inputTemp() called, returns %d via temp\n\r", (uint8)*temp);
+ 444              		.loc 1 90 0
+ 445 0010 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 11
 
 
- 430 0035 05       		.byte	0x5
- 431 0036 4B020000 		.4byte	.LASF2
- 432 003a 02       		.uleb128 0x2
- 433 003b 02       		.byte	0x2
- 434 003c 07       		.byte	0x7
- 435 003d 3B000000 		.4byte	.LASF3
- 436 0041 02       		.uleb128 0x2
- 437 0042 04       		.byte	0x4
- 438 0043 05       		.byte	0x5
- 439 0044 5B020000 		.4byte	.LASF4
- 440 0048 02       		.uleb128 0x2
- 441 0049 04       		.byte	0x4
- 442 004a 07       		.byte	0x7
- 443 004b 0B010000 		.4byte	.LASF5
- 444 004f 02       		.uleb128 0x2
- 445 0050 08       		.byte	0x8
- 446 0051 05       		.byte	0x5
- 447 0052 19020000 		.4byte	.LASF6
- 448 0056 02       		.uleb128 0x2
- 449 0057 08       		.byte	0x8
- 450 0058 07       		.byte	0x7
- 451 0059 8D010000 		.4byte	.LASF7
- 452 005d 03       		.uleb128 0x3
- 453 005e 04       		.byte	0x4
- 454 005f 05       		.byte	0x5
- 455 0060 696E7400 		.ascii	"int\000"
- 456 0064 02       		.uleb128 0x2
- 457 0065 04       		.byte	0x4
- 458 0066 07       		.byte	0x7
- 459 0067 7B010000 		.4byte	.LASF8
- 460 006b 04       		.uleb128 0x4
- 461 006c 55020000 		.4byte	.LASF9
- 462 0070 02       		.byte	0x2
- 463 0071 A1       		.byte	0xa1
- 464 0072 2C000000 		.4byte	0x2c
- 465 0076 04       		.uleb128 0x4
- 466 0077 F0010000 		.4byte	.LASF10
- 467 007b 02       		.byte	0x2
- 468 007c A5       		.byte	0xa5
- 469 007d 33000000 		.4byte	0x33
- 470 0081 04       		.uleb128 0x4
- 471 0082 29010000 		.4byte	.LASF11
- 472 0086 02       		.byte	0x2
- 473 0087 A6       		.byte	0xa6
- 474 0088 41000000 		.4byte	0x41
- 475 008c 02       		.uleb128 0x2
- 476 008d 04       		.byte	0x4
- 477 008e 04       		.byte	0x4
- 478 008f 71000000 		.4byte	.LASF12
- 479 0093 02       		.uleb128 0x2
- 480 0094 08       		.byte	0x8
- 481 0095 04       		.byte	0x4
- 482 0096 4F010000 		.4byte	.LASF13
- 483 009a 02       		.uleb128 0x2
- 484 009b 01       		.byte	0x1
- 485 009c 08       		.byte	0x8
- 486 009d 27020000 		.4byte	.LASF14
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 11
+ 446 0012 1B68     		ldr	r3, [r3]
+ 447 0014 DBB2     		uxtb	r3, r3
+ 448 0016 391C     		mov	r1, r7
+ 449 0018 0C31     		add	r1, r1, #12
+ 450 001a 074A     		ldr	r2, .L31
+ 451 001c 081C     		mov	r0, r1
+ 452 001e 111C     		mov	r1, r2
+ 453 0020 1A1C     		mov	r2, r3
+ 454 0022 FFF7FEFF 		bl	sprintf
+  91:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 455              		.loc 1 91 0
+ 456 0026 3B1C     		mov	r3, r7
+ 457 0028 0C33     		add	r3, r3, #12
+ 458 002a 181C     		mov	r0, r3
+ 459 002c FFF7FEFF 		bl	UART_UartPutString
+  92:.\DSP_Class.c **** }
+ 460              		.loc 1 92 0
+ 461 0030 BD46     		mov	sp, r7
+ 462 0032 10B0     		add	sp, sp, #64
+ 463              		@ sp needed
+ 464 0034 80BD     		pop	{r7, pc}
+ 465              	.L32:
+ 466 0036 C046     		.align	2
+ 467              	.L31:
+ 468 0038 00010000 		.word	.LC16
+ 469              		.cfi_endproc
+ 470              	.LFE42:
+ 471              		.size	inputTemp, .-inputTemp
+ 472              		.section	.rodata
+ 473 012a 0000     		.align	2
+ 474              	.LC18:
+ 475 012c 696E7075 		.ascii	"inputHum() called, returns %d via hum\012\015\000"
+ 475      7448756D 
+ 475      28292063 
+ 475      616C6C65 
+ 475      642C2072 
+ 476              		.section	.text.inputHum,"ax",%progbits
+ 477              		.align	2
+ 478              		.global	inputHum
+ 479              		.code	16
+ 480              		.thumb_func
+ 481              		.type	inputHum, %function
+ 482              	inputHum:
+ 483              	.LFB43:
+  93:.\DSP_Class.c **** 
+  94:.\DSP_Class.c **** void inputHum(int32* hum){
+ 484              		.loc 1 94 0
+ 485              		.cfi_startproc
+ 486 0000 80B5     		push	{r7, lr}
+ 487              		.cfi_def_cfa_offset 8
+ 488              		.cfi_offset 7, -8
+ 489              		.cfi_offset 14, -4
+ 490 0002 90B0     		sub	sp, sp, #64
+ 491              		.cfi_def_cfa_offset 72
+ 492 0004 00AF     		add	r7, sp, #0
+ 493              		.cfi_def_cfa_register 7
+ 494 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 12
 
 
- 487 00a1 02       		.uleb128 0x2
- 488 00a2 04       		.byte	0x4
- 489 00a3 07       		.byte	0x7
- 490 00a4 10020000 		.4byte	.LASF15
- 491 00a8 05       		.uleb128 0x5
- 492 00a9 47010000 		.4byte	.LASF19
- 493 00ad 01       		.byte	0x1
- 494 00ae 20       		.byte	0x20
- 495 00af 00000000 		.4byte	.LFB33
- 496 00b3 08000000 		.4byte	.LFE33-.LFB33
- 497 00b7 01       		.uleb128 0x1
- 498 00b8 9C       		.byte	0x9c
- 499 00b9 06       		.uleb128 0x6
- 500 00ba 1D010000 		.4byte	.LASF16
- 501 00be 01       		.byte	0x1
- 502 00bf 24       		.byte	0x24
- 503 00c0 6B000000 		.4byte	0x6b
- 504 00c4 00000000 		.4byte	.LFB34
- 505 00c8 0C000000 		.4byte	.LFE34-.LFB34
- 506 00cc 01       		.uleb128 0x1
- 507 00cd 9C       		.byte	0x9c
- 508 00ce 06       		.uleb128 0x6
- 509 00cf 67010000 		.4byte	.LASF17
- 510 00d3 01       		.byte	0x1
- 511 00d4 28       		.byte	0x28
- 512 00d5 6B000000 		.4byte	0x6b
- 513 00d9 00000000 		.4byte	.LFB35
- 514 00dd 0C000000 		.4byte	.LFE35-.LFB35
- 515 00e1 01       		.uleb128 0x1
- 516 00e2 9C       		.byte	0x9c
- 517 00e3 07       		.uleb128 0x7
- 518 00e4 2F010000 		.4byte	.LASF43
- 519 00e8 01       		.byte	0x1
- 520 00e9 2C       		.byte	0x2c
- 521 00ea 6B000000 		.4byte	0x6b
- 522 00ee 00000000 		.4byte	.LFB36
- 523 00f2 1E000000 		.4byte	.LFE36-.LFB36
- 524 00f6 01       		.uleb128 0x1
- 525 00f7 9C       		.byte	0x9c
- 526 00f8 0B010000 		.4byte	0x10b
- 527 00fc 08       		.uleb128 0x8
- 528 00fd 37020000 		.4byte	.LASF22
- 529 0101 01       		.byte	0x1
- 530 0102 2C       		.byte	0x2c
- 531 0103 6B000000 		.4byte	0x6b
- 532 0107 02       		.uleb128 0x2
- 533 0108 91       		.byte	0x91
- 534 0109 6F       		.sleb128 -17
- 535 010a 00       		.byte	0
- 536 010b 06       		.uleb128 0x6
- 537 010c 03020000 		.4byte	.LASF18
- 538 0110 01       		.byte	0x1
- 539 0111 31       		.byte	0x31
- 540 0112 6B000000 		.4byte	0x6b
- 541 0116 00000000 		.4byte	.LFB37
- 542 011a 0C000000 		.4byte	.LFE37-.LFB37
- 543 011e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 12
+  95:.\DSP_Class.c ****     *hum = returnVal;
+ 495              		.loc 1 95 0
+ 496 0008 0123     		mov	r3, #1
+ 497 000a 1A1C     		mov	r2, r3
+ 498 000c 7B68     		ldr	r3, [r7, #4]
+ 499 000e 1A60     		str	r2, [r3]
+  96:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  97:.\DSP_Class.c ****     sprintf(buf, "inputHum() called, returns %d via hum\n\r", (uint8)*hum);
+ 500              		.loc 1 97 0
+ 501 0010 7B68     		ldr	r3, [r7, #4]
+ 502 0012 1B68     		ldr	r3, [r3]
+ 503 0014 DBB2     		uxtb	r3, r3
+ 504 0016 391C     		mov	r1, r7
+ 505 0018 0C31     		add	r1, r1, #12
+ 506 001a 074A     		ldr	r2, .L34
+ 507 001c 081C     		mov	r0, r1
+ 508 001e 111C     		mov	r1, r2
+ 509 0020 1A1C     		mov	r2, r3
+ 510 0022 FFF7FEFF 		bl	sprintf
+  98:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 511              		.loc 1 98 0
+ 512 0026 3B1C     		mov	r3, r7
+ 513 0028 0C33     		add	r3, r3, #12
+ 514 002a 181C     		mov	r0, r3
+ 515 002c FFF7FEFF 		bl	UART_UartPutString
+  99:.\DSP_Class.c **** }
+ 516              		.loc 1 99 0
+ 517 0030 BD46     		mov	sp, r7
+ 518 0032 10B0     		add	sp, sp, #64
+ 519              		@ sp needed
+ 520 0034 80BD     		pop	{r7, pc}
+ 521              	.L35:
+ 522 0036 C046     		.align	2
+ 523              	.L34:
+ 524 0038 2C010000 		.word	.LC18
+ 525              		.cfi_endproc
+ 526              	.LFE43:
+ 527              		.size	inputHum, .-inputHum
+ 528              		.section	.rodata
+ 529              		.align	2
+ 530              	.LC20:
+ 531 0154 696E7075 		.ascii	"inputSoilHum() called, index %d, returns %d via soi"
+ 531      74536F69 
+ 531      6C48756D 
+ 531      28292063 
+ 531      616C6C65 
+ 532 0187 6C48756D 		.ascii	"lHum\012\015\000"
+ 532      0A0D00
+ 533              		.section	.text.inputSoilHum,"ax",%progbits
+ 534              		.align	2
+ 535              		.global	inputSoilHum
+ 536              		.code	16
+ 537              		.thumb_func
+ 538              		.type	inputSoilHum, %function
+ 539              	inputSoilHum:
+ 540              	.LFB44:
+ 100:.\DSP_Class.c **** 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 13
 
 
- 544 011f 9C       		.byte	0x9c
- 545 0120 05       		.uleb128 0x5
- 546 0121 64020000 		.4byte	.LASF20
- 547 0125 01       		.byte	0x1
- 548 0126 35       		.byte	0x35
- 549 0127 00000000 		.4byte	.LFB38
- 550 012b 08000000 		.4byte	.LFE38-.LFB38
- 551 012f 01       		.uleb128 0x1
- 552 0130 9C       		.byte	0x9c
- 553 0131 05       		.uleb128 0x5
- 554 0132 34000000 		.4byte	.LASF21
- 555 0136 01       		.byte	0x1
- 556 0137 39       		.byte	0x39
- 557 0138 00000000 		.4byte	.LFB39
- 558 013c 08000000 		.4byte	.LFE39-.LFB39
- 559 0140 01       		.uleb128 0x1
- 560 0141 9C       		.byte	0x9c
- 561 0142 09       		.uleb128 0x9
- 562 0143 2C020000 		.4byte	.LASF24
- 563 0147 01       		.byte	0x1
- 564 0148 3D       		.byte	0x3d
- 565 0149 00000000 		.4byte	.LFB40
- 566 014d 1A000000 		.4byte	.LFE40-.LFB40
- 567 0151 01       		.uleb128 0x1
- 568 0152 9C       		.byte	0x9c
- 569 0153 66010000 		.4byte	0x166
- 570 0157 08       		.uleb128 0x8
- 571 0158 37020000 		.4byte	.LASF22
- 572 015c 01       		.byte	0x1
- 573 015d 3D       		.byte	0x3d
- 574 015e 6B000000 		.4byte	0x6b
- 575 0162 02       		.uleb128 0x2
- 576 0163 91       		.byte	0x91
- 577 0164 6F       		.sleb128 -17
- 578 0165 00       		.byte	0
- 579 0166 05       		.uleb128 0x5
- 580 0167 3E010000 		.4byte	.LASF23
- 581 016b 01       		.byte	0x1
- 582 016c 41       		.byte	0x41
- 583 016d 00000000 		.4byte	.LFB41
- 584 0171 08000000 		.4byte	.LFE41-.LFB41
- 585 0175 01       		.uleb128 0x1
- 586 0176 9C       		.byte	0x9c
- 587 0177 09       		.uleb128 0x9
- 588 0178 1E000000 		.4byte	.LASF25
- 589 017c 01       		.byte	0x1
- 590 017d 45       		.byte	0x45
- 591 017e 00000000 		.4byte	.LFB42
- 592 0182 14000000 		.4byte	.LFE42-.LFB42
- 593 0186 01       		.uleb128 0x1
- 594 0187 9C       		.byte	0x9c
- 595 0188 9B010000 		.4byte	0x19b
- 596 018c 08       		.uleb128 0x8
- 597 018d 88010000 		.4byte	.LASF26
- 598 0191 01       		.byte	0x1
- 599 0192 45       		.byte	0x45
- 600 0193 9B010000 		.4byte	0x19b
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 13
+ 101:.\DSP_Class.c **** void inputSoilHum(uint8 index, int16* soilHum){
+ 541              		.loc 1 101 0
+ 542              		.cfi_startproc
+ 543 0000 80B5     		push	{r7, lr}
+ 544              		.cfi_def_cfa_offset 8
+ 545              		.cfi_offset 7, -8
+ 546              		.cfi_offset 14, -4
+ 547 0002 90B0     		sub	sp, sp, #64
+ 548              		.cfi_def_cfa_offset 72
+ 549 0004 00AF     		add	r7, sp, #0
+ 550              		.cfi_def_cfa_register 7
+ 551 0006 021C     		mov	r2, r0
+ 552 0008 3960     		str	r1, [r7]
+ 553 000a FB1D     		add	r3, r7, #7
+ 554 000c 1A70     		strb	r2, [r3]
+ 102:.\DSP_Class.c ****     *soilHum = returnVal;
+ 555              		.loc 1 102 0
+ 556 000e 0123     		mov	r3, #1
+ 557 0010 1A1C     		mov	r2, r3
+ 558 0012 3B68     		ldr	r3, [r7]
+ 559 0014 1A80     		strh	r2, [r3]
+ 103:.\DSP_Class.c ****     char buf[BUF_SIZE];
+ 104:.\DSP_Class.c ****     sprintf(buf, "inputSoilHum() called, index %d, returns %d via soilHum\n\r", index, (uint8)*soil
+ 560              		.loc 1 104 0
+ 561 0016 FB1D     		add	r3, r7, #7
+ 562 0018 1A78     		ldrb	r2, [r3]
+ 563 001a 3B68     		ldr	r3, [r7]
+ 564 001c 1B88     		ldrh	r3, [r3]
+ 565 001e DBB2     		uxtb	r3, r3
+ 566 0020 381C     		mov	r0, r7
+ 567 0022 0C30     		add	r0, r0, #12
+ 568 0024 0549     		ldr	r1, .L37
+ 569 0026 FFF7FEFF 		bl	sprintf
+ 105:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 570              		.loc 1 105 0
+ 571 002a 3B1C     		mov	r3, r7
+ 572 002c 0C33     		add	r3, r3, #12
+ 573 002e 181C     		mov	r0, r3
+ 574 0030 FFF7FEFF 		bl	UART_UartPutString
+ 106:.\DSP_Class.c **** }
+ 575              		.loc 1 106 0
+ 576 0034 BD46     		mov	sp, r7
+ 577 0036 10B0     		add	sp, sp, #64
+ 578              		@ sp needed
+ 579 0038 80BD     		pop	{r7, pc}
+ 580              	.L38:
+ 581 003a C046     		.align	2
+ 582              	.L37:
+ 583 003c 54010000 		.word	.LC20
+ 584              		.cfi_endproc
+ 585              	.LFE44:
+ 586              		.size	inputSoilHum, .-inputSoilHum
+ 587              		.section	.rodata
+ 588 018e 0000     		.align	2
+ 589              	.LC22:
+ 590 0190 696E7075 		.ascii	"inputHum() called, returns %d via light\012\015\000"
+ 590      7448756D 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 14
 
 
- 601 0197 02       		.uleb128 0x2
- 602 0198 91       		.byte	0x91
- 603 0199 74       		.sleb128 -12
- 604 019a 00       		.byte	0
- 605 019b 0A       		.uleb128 0xa
- 606 019c 04       		.byte	0x4
- 607 019d 81000000 		.4byte	0x81
- 608 01a1 09       		.uleb128 0x9
- 609 01a2 5E010000 		.4byte	.LASF27
- 610 01a6 01       		.byte	0x1
- 611 01a7 49       		.byte	0x49
- 612 01a8 00000000 		.4byte	.LFB43
- 613 01ac 14000000 		.4byte	.LFE43-.LFB43
- 614 01b0 01       		.uleb128 0x1
- 615 01b1 9C       		.byte	0x9c
- 616 01b2 C5010000 		.4byte	0x1c5
- 617 01b6 0B       		.uleb128 0xb
- 618 01b7 68756D00 		.ascii	"hum\000"
- 619 01bb 01       		.byte	0x1
- 620 01bc 49       		.byte	0x49
- 621 01bd 9B010000 		.4byte	0x19b
- 622 01c1 02       		.uleb128 0x2
- 623 01c2 91       		.byte	0x91
- 624 01c3 74       		.sleb128 -12
- 625 01c4 00       		.byte	0
- 626 01c5 09       		.uleb128 0x9
- 627 01c6 59000000 		.4byte	.LASF28
- 628 01ca 01       		.byte	0x1
- 629 01cb 4D       		.byte	0x4d
- 630 01cc 00000000 		.4byte	.LFB44
- 631 01d0 22000000 		.4byte	.LFE44-.LFB44
- 632 01d4 01       		.uleb128 0x1
- 633 01d5 9C       		.byte	0x9c
- 634 01d6 F7010000 		.4byte	0x1f7
- 635 01da 08       		.uleb128 0x8
- 636 01db 37020000 		.4byte	.LASF22
- 637 01df 01       		.byte	0x1
- 638 01e0 4D       		.byte	0x4d
- 639 01e1 6B000000 		.4byte	0x6b
- 640 01e5 02       		.uleb128 0x2
- 641 01e6 91       		.byte	0x91
- 642 01e7 6F       		.sleb128 -17
- 643 01e8 08       		.uleb128 0x8
- 644 01e9 56010000 		.4byte	.LASF29
- 645 01ed 01       		.byte	0x1
- 646 01ee 4D       		.byte	0x4d
- 647 01ef F7010000 		.4byte	0x1f7
- 648 01f3 02       		.uleb128 0x2
- 649 01f4 91       		.byte	0x91
- 650 01f5 68       		.sleb128 -24
- 651 01f6 00       		.byte	0
- 652 01f7 0A       		.uleb128 0xa
- 653 01f8 04       		.byte	0x4
- 654 01f9 76000000 		.4byte	0x76
- 655 01fd 09       		.uleb128 0x9
- 656 01fe 66000000 		.4byte	.LASF30
- 657 0202 01       		.byte	0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 14
+ 590      28292063 
+ 590      616C6C65 
+ 590      642C2072 
+ 591 01ba 0000     		.section	.text.inputLight,"ax",%progbits
+ 592              		.align	2
+ 593              		.global	inputLight
+ 594              		.code	16
+ 595              		.thumb_func
+ 596              		.type	inputLight, %function
+ 597              	inputLight:
+ 598              	.LFB45:
+ 107:.\DSP_Class.c **** 
+ 108:.\DSP_Class.c **** void inputLight(int32* light){
+ 599              		.loc 1 108 0
+ 600              		.cfi_startproc
+ 601 0000 80B5     		push	{r7, lr}
+ 602              		.cfi_def_cfa_offset 8
+ 603              		.cfi_offset 7, -8
+ 604              		.cfi_offset 14, -4
+ 605 0002 90B0     		sub	sp, sp, #64
+ 606              		.cfi_def_cfa_offset 72
+ 607 0004 00AF     		add	r7, sp, #0
+ 608              		.cfi_def_cfa_register 7
+ 609 0006 7860     		str	r0, [r7, #4]
+ 109:.\DSP_Class.c ****     *light = returnVal;
+ 610              		.loc 1 109 0
+ 611 0008 0123     		mov	r3, #1
+ 612 000a 1A1C     		mov	r2, r3
+ 613 000c 7B68     		ldr	r3, [r7, #4]
+ 614 000e 1A60     		str	r2, [r3]
+ 110:.\DSP_Class.c ****     char buf[BUF_SIZE];
+ 111:.\DSP_Class.c ****     sprintf(buf, "inputHum() called, returns %d via light\n\r", (uint8)*light);
+ 615              		.loc 1 111 0
+ 616 0010 7B68     		ldr	r3, [r7, #4]
+ 617 0012 1B68     		ldr	r3, [r3]
+ 618 0014 DBB2     		uxtb	r3, r3
+ 619 0016 391C     		mov	r1, r7
+ 620 0018 0C31     		add	r1, r1, #12
+ 621 001a 074A     		ldr	r2, .L40
+ 622 001c 081C     		mov	r0, r1
+ 623 001e 111C     		mov	r1, r2
+ 624 0020 1A1C     		mov	r2, r3
+ 625 0022 FFF7FEFF 		bl	sprintf
+ 112:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 626              		.loc 1 112 0
+ 627 0026 3B1C     		mov	r3, r7
+ 628 0028 0C33     		add	r3, r3, #12
+ 629 002a 181C     		mov	r0, r3
+ 630 002c FFF7FEFF 		bl	UART_UartPutString
+ 113:.\DSP_Class.c **** }
+ 631              		.loc 1 113 0
+ 632 0030 BD46     		mov	sp, r7
+ 633 0032 10B0     		add	sp, sp, #64
+ 634              		@ sp needed
+ 635 0034 80BD     		pop	{r7, pc}
+ 636              	.L41:
+ 637 0036 C046     		.align	2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 15
 
 
- 658 0203 52       		.byte	0x52
- 659 0204 00000000 		.4byte	.LFB45
- 660 0208 14000000 		.4byte	.LFE45-.LFB45
- 661 020c 01       		.uleb128 0x1
- 662 020d 9C       		.byte	0x9c
- 663 020e 21020000 		.4byte	0x221
- 664 0212 08       		.uleb128 0x8
- 665 0213 00000000 		.4byte	.LASF31
- 666 0217 01       		.byte	0x1
- 667 0218 52       		.byte	0x52
- 668 0219 9B010000 		.4byte	0x19b
- 669 021d 02       		.uleb128 0x2
- 670 021e 91       		.byte	0x91
- 671 021f 74       		.sleb128 -12
- 672 0220 00       		.byte	0
- 673 0221 0C       		.uleb128 0xc
- 674 0222 81000000 		.4byte	0x81
- 675 0226 31020000 		.4byte	0x231
- 676 022a 0D       		.uleb128 0xd
- 677 022b A1000000 		.4byte	0xa1
- 678 022f 63       		.byte	0x63
- 679 0230 00       		.byte	0
- 680 0231 0E       		.uleb128 0xe
- 681 0232 01010000 		.4byte	.LASF32
- 682 0236 01       		.byte	0x1
- 683 0237 10       		.byte	0x10
- 684 0238 21020000 		.4byte	0x221
- 685 023c 05       		.uleb128 0x5
- 686 023d 03       		.byte	0x3
- 687 023e 00000000 		.4byte	tempArray
- 688 0242 0E       		.uleb128 0xe
- 689 0243 F6010000 		.4byte	.LASF33
- 690 0247 01       		.byte	0x1
- 691 0248 11       		.byte	0x11
- 692 0249 9B010000 		.4byte	0x19b
- 693 024d 05       		.uleb128 0x5
- 694 024e 03       		.byte	0x3
- 695 024f 00000000 		.4byte	tempArrayPtr
- 696 0253 0E       		.uleb128 0xe
- 697 0254 72010000 		.4byte	.LASF34
- 698 0258 01       		.byte	0x1
- 699 0259 12       		.byte	0x12
- 700 025a 21020000 		.4byte	0x221
- 701 025e 05       		.uleb128 0x5
- 702 025f 03       		.byte	0x3
- 703 0260 00000000 		.4byte	humArray
- 704 0264 0E       		.uleb128 0xe
- 705 0265 28000000 		.4byte	.LASF35
- 706 0269 01       		.byte	0x1
- 707 026a 13       		.byte	0x13
- 708 026b 9B010000 		.4byte	0x19b
- 709 026f 05       		.uleb128 0x5
- 710 0270 03       		.byte	0x3
- 711 0271 00000000 		.4byte	humArrayPtr
- 712 0275 0C       		.uleb128 0xc
- 713 0276 76000000 		.4byte	0x76
- 714 027a 8B020000 		.4byte	0x28b
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 15
+ 638              	.L40:
+ 639 0038 90010000 		.word	.LC22
+ 640              		.cfi_endproc
+ 641              	.LFE45:
+ 642              		.size	inputLight, .-inputLight
+ 643              		.text
+ 644              	.Letext0:
+ 645              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 646              		.section	.debug_info,"",%progbits
+ 647              	.Ldebug_info0:
+ 648 0000 EA030000 		.4byte	0x3ea
+ 649 0004 0400     		.2byte	0x4
+ 650 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 651 000a 04       		.byte	0x4
+ 652 000b 01       		.uleb128 0x1
+ 653 000c 6C000000 		.4byte	.LASF42
+ 654 0010 01       		.byte	0x1
+ 655 0011 33020000 		.4byte	.LASF43
+ 656 0015 95010000 		.4byte	.LASF44
+ 657 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 658 001d 00000000 		.4byte	0
+ 659 0021 00000000 		.4byte	.Ldebug_line0
+ 660 0025 02       		.uleb128 0x2
+ 661 0026 04       		.byte	0x4
+ 662 0027 07       		.byte	0x7
+ 663 0028 6C010000 		.4byte	.LASF0
+ 664 002c 03       		.uleb128 0x3
+ 665 002d 04       		.byte	0x4
+ 666 002e 05       		.byte	0x5
+ 667 002f 696E7400 		.ascii	"int\000"
+ 668 0033 02       		.uleb128 0x2
+ 669 0034 01       		.byte	0x1
+ 670 0035 06       		.byte	0x6
+ 671 0036 6C020000 		.4byte	.LASF1
+ 672 003a 02       		.uleb128 0x2
+ 673 003b 01       		.byte	0x1
+ 674 003c 08       		.byte	0x8
+ 675 003d E8000000 		.4byte	.LASF2
+ 676 0041 02       		.uleb128 0x2
+ 677 0042 02       		.byte	0x2
+ 678 0043 05       		.byte	0x5
+ 679 0044 41020000 		.4byte	.LASF3
+ 680 0048 02       		.uleb128 0x2
+ 681 0049 02       		.byte	0x2
+ 682 004a 07       		.byte	0x7
+ 683 004b 30000000 		.4byte	.LASF4
+ 684 004f 02       		.uleb128 0x2
+ 685 0050 04       		.byte	0x4
+ 686 0051 05       		.byte	0x5
+ 687 0052 5B020000 		.4byte	.LASF5
+ 688 0056 02       		.uleb128 0x2
+ 689 0057 04       		.byte	0x4
+ 690 0058 07       		.byte	0x7
+ 691 0059 FC000000 		.4byte	.LASF6
+ 692 005d 02       		.uleb128 0x2
+ 693 005e 08       		.byte	0x8
+ 694 005f 05       		.byte	0x5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 16
 
 
- 715 027e 0D       		.uleb128 0xd
- 716 027f A1000000 		.4byte	0xa1
- 717 0283 05       		.byte	0x5
- 718 0284 0D       		.uleb128 0xd
- 719 0285 A1000000 		.4byte	0xa1
- 720 0289 63       		.byte	0x63
- 721 028a 00       		.byte	0
- 722 028b 0E       		.uleb128 0xe
- 723 028c 06000000 		.4byte	.LASF36
- 724 0290 01       		.byte	0x1
- 725 0291 14       		.byte	0x14
- 726 0292 75020000 		.4byte	0x275
- 727 0296 05       		.uleb128 0x5
- 728 0297 03       		.byte	0x3
- 729 0298 00000000 		.4byte	soilHumArray
- 730 029c 0C       		.uleb128 0xc
- 731 029d F7010000 		.4byte	0x1f7
- 732 02a1 AC020000 		.4byte	0x2ac
- 733 02a5 0D       		.uleb128 0xd
- 734 02a6 A1000000 		.4byte	0xa1
- 735 02aa 05       		.byte	0x5
- 736 02ab 00       		.byte	0
- 737 02ac 0E       		.uleb128 0xe
- 738 02ad 13000000 		.4byte	.LASF37
- 739 02b1 01       		.byte	0x1
- 740 02b2 15       		.byte	0x15
- 741 02b3 9C020000 		.4byte	0x29c
- 742 02b7 05       		.uleb128 0x5
- 743 02b8 03       		.byte	0x3
- 744 02b9 00000000 		.4byte	soilHumPtr
- 745 02bd 0E       		.uleb128 0xe
- 746 02be 4E000000 		.4byte	.LASF38
- 747 02c2 01       		.byte	0x1
- 748 02c3 16       		.byte	0x16
- 749 02c4 21020000 		.4byte	0x221
- 750 02c8 05       		.uleb128 0x5
- 751 02c9 03       		.byte	0x3
- 752 02ca 00000000 		.4byte	lightArray
- 753 02ce 0E       		.uleb128 0xe
- 754 02cf 78020000 		.4byte	.LASF39
- 755 02d3 01       		.byte	0x1
- 756 02d4 17       		.byte	0x17
- 757 02d5 9B010000 		.4byte	0x19b
- 758 02d9 05       		.uleb128 0x5
- 759 02da 03       		.byte	0x3
- 760 02db 00000000 		.4byte	lightArrayPtr
- 761 02df 0E       		.uleb128 0xe
- 762 02e0 88010000 		.4byte	.LASF26
- 763 02e4 01       		.byte	0x1
- 764 02e5 18       		.byte	0x18
- 765 02e6 6B000000 		.4byte	0x6b
- 766 02ea 05       		.uleb128 0x5
- 767 02eb 03       		.byte	0x3
- 768 02ec 00000000 		.4byte	temp
- 769 02f0 0F       		.uleb128 0xf
- 770 02f1 68756D00 		.ascii	"hum\000"
- 771 02f5 01       		.byte	0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 16
+ 695 0060 0F020000 		.4byte	.LASF7
+ 696 0064 02       		.uleb128 0x2
+ 697 0065 08       		.byte	0x8
+ 698 0066 07       		.byte	0x7
+ 699 0067 7E010000 		.4byte	.LASF8
+ 700 006b 02       		.uleb128 0x2
+ 701 006c 04       		.byte	0x4
+ 702 006d 07       		.byte	0x7
+ 703 006e 06020000 		.4byte	.LASF9
+ 704 0072 02       		.uleb128 0x2
+ 705 0073 01       		.byte	0x1
+ 706 0074 08       		.byte	0x8
+ 707 0075 1D020000 		.4byte	.LASF10
+ 708 0079 04       		.uleb128 0x4
+ 709 007a 55020000 		.4byte	.LASF11
+ 710 007e 02       		.byte	0x2
+ 711 007f A1       		.byte	0xa1
+ 712 0080 3A000000 		.4byte	0x3a
+ 713 0084 04       		.uleb128 0x4
+ 714 0085 F6000000 		.4byte	.LASF12
+ 715 0089 02       		.byte	0x2
+ 716 008a A5       		.byte	0xa5
+ 717 008b 41000000 		.4byte	0x41
+ 718 008f 04       		.uleb128 0x4
+ 719 0090 1A010000 		.4byte	.LASF13
+ 720 0094 02       		.byte	0x2
+ 721 0095 A6       		.byte	0xa6
+ 722 0096 4F000000 		.4byte	0x4f
+ 723 009a 02       		.uleb128 0x2
+ 724 009b 04       		.byte	0x4
+ 725 009c 04       		.byte	0x4
+ 726 009d 66000000 		.4byte	.LASF14
+ 727 00a1 02       		.uleb128 0x2
+ 728 00a2 08       		.byte	0x8
+ 729 00a3 04       		.byte	0x4
+ 730 00a4 40010000 		.4byte	.LASF15
+ 731 00a8 05       		.uleb128 0x5
+ 732 00a9 38010000 		.4byte	.LASF20
+ 733 00ad 01       		.byte	0x1
+ 734 00ae 25       		.byte	0x25
+ 735 00af 00000000 		.4byte	.LFB33
+ 736 00b3 08000000 		.4byte	.LFE33-.LFB33
+ 737 00b7 01       		.uleb128 0x1
+ 738 00b8 9C       		.byte	0x9c
+ 739 00b9 06       		.uleb128 0x6
+ 740 00ba 0E010000 		.4byte	.LASF16
+ 741 00be 01       		.byte	0x1
+ 742 00bf 29       		.byte	0x29
+ 743 00c0 79000000 		.4byte	0x79
+ 744 00c4 00000000 		.4byte	.LFB34
+ 745 00c8 2C000000 		.4byte	.LFE34-.LFB34
+ 746 00cc 01       		.uleb128 0x1
+ 747 00cd 9C       		.byte	0x9c
+ 748 00ce E1000000 		.4byte	0xe1
+ 749 00d2 07       		.uleb128 0x7
+ 750 00d3 62756600 		.ascii	"buf\000"
+ 751 00d7 01       		.byte	0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 17
 
 
- 772 02f6 18       		.byte	0x18
- 773 02f7 6B000000 		.4byte	0x6b
- 774 02fb 05       		.uleb128 0x5
- 775 02fc 03       		.byte	0x3
- 776 02fd 00000000 		.4byte	hum
- 777 0301 0C       		.uleb128 0xc
- 778 0302 6B000000 		.4byte	0x6b
- 779 0306 11030000 		.4byte	0x311
- 780 030a 0D       		.uleb128 0xd
- 781 030b A1000000 		.4byte	0xa1
- 782 030f 05       		.byte	0x5
- 783 0310 00       		.byte	0
- 784 0311 0E       		.uleb128 0xe
- 785 0312 56010000 		.4byte	.LASF29
- 786 0316 01       		.byte	0x1
- 787 0317 18       		.byte	0x18
- 788 0318 01030000 		.4byte	0x301
- 789 031c 05       		.uleb128 0x5
- 790 031d 03       		.byte	0x3
- 791 031e 00000000 		.4byte	soilHum
- 792 0322 0E       		.uleb128 0xe
- 793 0323 00000000 		.4byte	.LASF31
- 794 0327 01       		.byte	0x1
- 795 0328 18       		.byte	0x18
- 796 0329 6B000000 		.4byte	0x6b
- 797 032d 05       		.uleb128 0x5
- 798 032e 03       		.byte	0x3
- 799 032f 00000000 		.4byte	light
- 800 0333 00       		.byte	0
- 801              		.section	.debug_abbrev,"",%progbits
- 802              	.Ldebug_abbrev0:
- 803 0000 01       		.uleb128 0x1
- 804 0001 11       		.uleb128 0x11
- 805 0002 01       		.byte	0x1
- 806 0003 25       		.uleb128 0x25
- 807 0004 0E       		.uleb128 0xe
- 808 0005 13       		.uleb128 0x13
- 809 0006 0B       		.uleb128 0xb
- 810 0007 03       		.uleb128 0x3
- 811 0008 0E       		.uleb128 0xe
- 812 0009 1B       		.uleb128 0x1b
- 813 000a 0E       		.uleb128 0xe
- 814 000b 55       		.uleb128 0x55
- 815 000c 17       		.uleb128 0x17
- 816 000d 11       		.uleb128 0x11
- 817 000e 01       		.uleb128 0x1
- 818 000f 10       		.uleb128 0x10
- 819 0010 17       		.uleb128 0x17
- 820 0011 00       		.byte	0
- 821 0012 00       		.byte	0
- 822 0013 02       		.uleb128 0x2
- 823 0014 24       		.uleb128 0x24
- 824 0015 00       		.byte	0
- 825 0016 0B       		.uleb128 0xb
- 826 0017 0B       		.uleb128 0xb
- 827 0018 3E       		.uleb128 0x3e
- 828 0019 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 17
+ 752 00d8 2A       		.byte	0x2a
+ 753 00d9 E1000000 		.4byte	0xe1
+ 754 00dd 02       		.uleb128 0x2
+ 755 00de 91       		.byte	0x91
+ 756 00df 44       		.sleb128 -60
+ 757 00e0 00       		.byte	0
+ 758 00e1 08       		.uleb128 0x8
+ 759 00e2 72000000 		.4byte	0x72
+ 760 00e6 F1000000 		.4byte	0xf1
+ 761 00ea 09       		.uleb128 0x9
+ 762 00eb 6B000000 		.4byte	0x6b
+ 763 00ef 31       		.byte	0x31
+ 764 00f0 00       		.byte	0
+ 765 00f1 06       		.uleb128 0x6
+ 766 00f2 58010000 		.4byte	.LASF17
+ 767 00f6 01       		.byte	0x1
+ 768 00f7 30       		.byte	0x30
+ 769 00f8 79000000 		.4byte	0x79
+ 770 00fc 00000000 		.4byte	.LFB35
+ 771 0100 2C000000 		.4byte	.LFE35-.LFB35
+ 772 0104 01       		.uleb128 0x1
+ 773 0105 9C       		.byte	0x9c
+ 774 0106 19010000 		.4byte	0x119
+ 775 010a 07       		.uleb128 0x7
+ 776 010b 62756600 		.ascii	"buf\000"
+ 777 010f 01       		.byte	0x1
+ 778 0110 31       		.byte	0x31
+ 779 0111 E1000000 		.4byte	0xe1
+ 780 0115 02       		.uleb128 0x2
+ 781 0116 91       		.byte	0x91
+ 782 0117 44       		.sleb128 -60
+ 783 0118 00       		.byte	0
+ 784 0119 06       		.uleb128 0x6
+ 785 011a 20010000 		.4byte	.LASF18
+ 786 011e 01       		.byte	0x1
+ 787 011f 37       		.byte	0x37
+ 788 0120 79000000 		.4byte	0x79
+ 789 0124 00000000 		.4byte	.LFB36
+ 790 0128 34000000 		.4byte	.LFE36-.LFB36
+ 791 012c 01       		.uleb128 0x1
+ 792 012d 9C       		.byte	0x9c
+ 793 012e 50010000 		.4byte	0x150
+ 794 0132 0A       		.uleb128 0xa
+ 795 0133 2D020000 		.4byte	.LASF23
+ 796 0137 01       		.byte	0x1
+ 797 0138 37       		.byte	0x37
+ 798 0139 79000000 		.4byte	0x79
+ 799 013d 03       		.uleb128 0x3
+ 800 013e 91       		.byte	0x91
+ 801 013f BF7F     		.sleb128 -65
+ 802 0141 07       		.uleb128 0x7
+ 803 0142 62756600 		.ascii	"buf\000"
+ 804 0146 01       		.byte	0x1
+ 805 0147 38       		.byte	0x38
+ 806 0148 E1000000 		.4byte	0xe1
+ 807 014c 02       		.uleb128 0x2
+ 808 014d 91       		.byte	0x91
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 18
 
 
- 829 001a 03       		.uleb128 0x3
- 830 001b 0E       		.uleb128 0xe
- 831 001c 00       		.byte	0
- 832 001d 00       		.byte	0
- 833 001e 03       		.uleb128 0x3
- 834 001f 24       		.uleb128 0x24
- 835 0020 00       		.byte	0
- 836 0021 0B       		.uleb128 0xb
- 837 0022 0B       		.uleb128 0xb
- 838 0023 3E       		.uleb128 0x3e
- 839 0024 0B       		.uleb128 0xb
- 840 0025 03       		.uleb128 0x3
- 841 0026 08       		.uleb128 0x8
- 842 0027 00       		.byte	0
- 843 0028 00       		.byte	0
- 844 0029 04       		.uleb128 0x4
- 845 002a 16       		.uleb128 0x16
- 846 002b 00       		.byte	0
- 847 002c 03       		.uleb128 0x3
- 848 002d 0E       		.uleb128 0xe
- 849 002e 3A       		.uleb128 0x3a
- 850 002f 0B       		.uleb128 0xb
- 851 0030 3B       		.uleb128 0x3b
- 852 0031 0B       		.uleb128 0xb
- 853 0032 49       		.uleb128 0x49
- 854 0033 13       		.uleb128 0x13
- 855 0034 00       		.byte	0
- 856 0035 00       		.byte	0
- 857 0036 05       		.uleb128 0x5
- 858 0037 2E       		.uleb128 0x2e
- 859 0038 00       		.byte	0
- 860 0039 3F       		.uleb128 0x3f
- 861 003a 19       		.uleb128 0x19
- 862 003b 03       		.uleb128 0x3
- 863 003c 0E       		.uleb128 0xe
- 864 003d 3A       		.uleb128 0x3a
- 865 003e 0B       		.uleb128 0xb
- 866 003f 3B       		.uleb128 0x3b
- 867 0040 0B       		.uleb128 0xb
- 868 0041 27       		.uleb128 0x27
- 869 0042 19       		.uleb128 0x19
- 870 0043 11       		.uleb128 0x11
- 871 0044 01       		.uleb128 0x1
- 872 0045 12       		.uleb128 0x12
- 873 0046 06       		.uleb128 0x6
- 874 0047 40       		.uleb128 0x40
- 875 0048 18       		.uleb128 0x18
- 876 0049 9742     		.uleb128 0x2117
- 877 004b 19       		.uleb128 0x19
- 878 004c 00       		.byte	0
- 879 004d 00       		.byte	0
- 880 004e 06       		.uleb128 0x6
- 881 004f 2E       		.uleb128 0x2e
- 882 0050 00       		.byte	0
- 883 0051 3F       		.uleb128 0x3f
- 884 0052 19       		.uleb128 0x19
- 885 0053 03       		.uleb128 0x3
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 18
+ 809 014e 44       		.sleb128 -60
+ 810 014f 00       		.byte	0
+ 811 0150 06       		.uleb128 0x6
+ 812 0151 F9010000 		.4byte	.LASF19
+ 813 0155 01       		.byte	0x1
+ 814 0156 3E       		.byte	0x3e
+ 815 0157 79000000 		.4byte	0x79
+ 816 015b 00000000 		.4byte	.LFB37
+ 817 015f 2C000000 		.4byte	.LFE37-.LFB37
+ 818 0163 01       		.uleb128 0x1
+ 819 0164 9C       		.byte	0x9c
+ 820 0165 78010000 		.4byte	0x178
+ 821 0169 07       		.uleb128 0x7
+ 822 016a 62756600 		.ascii	"buf\000"
+ 823 016e 01       		.byte	0x1
+ 824 016f 3F       		.byte	0x3f
+ 825 0170 E1000000 		.4byte	0xe1
+ 826 0174 02       		.uleb128 0x2
+ 827 0175 91       		.byte	0x91
+ 828 0176 44       		.sleb128 -60
+ 829 0177 00       		.byte	0
+ 830 0178 0B       		.uleb128 0xb
+ 831 0179 64020000 		.4byte	.LASF21
+ 832 017d 01       		.byte	0x1
+ 833 017e 45       		.byte	0x45
+ 834 017f 00000000 		.4byte	.LFB38
+ 835 0183 14000000 		.4byte	.LFE38-.LFB38
+ 836 0187 01       		.uleb128 0x1
+ 837 0188 9C       		.byte	0x9c
+ 838 0189 0B       		.uleb128 0xb
+ 839 018a 13000000 		.4byte	.LASF22
+ 840 018e 01       		.byte	0x1
+ 841 018f 49       		.byte	0x49
+ 842 0190 00000000 		.4byte	.LFB39
+ 843 0194 14000000 		.4byte	.LFE39-.LFB39
+ 844 0198 01       		.uleb128 0x1
+ 845 0199 9C       		.byte	0x9c
+ 846 019a 0C       		.uleb128 0xc
+ 847 019b 22020000 		.4byte	.LASF25
+ 848 019f 01       		.byte	0x1
+ 849 01a0 4D       		.byte	0x4d
+ 850 01a1 00000000 		.4byte	.LFB40
+ 851 01a5 34000000 		.4byte	.LFE40-.LFB40
+ 852 01a9 01       		.uleb128 0x1
+ 853 01aa 9C       		.byte	0x9c
+ 854 01ab CD010000 		.4byte	0x1cd
+ 855 01af 0A       		.uleb128 0xa
+ 856 01b0 2D020000 		.4byte	.LASF23
+ 857 01b4 01       		.byte	0x1
+ 858 01b5 4D       		.byte	0x4d
+ 859 01b6 79000000 		.4byte	0x79
+ 860 01ba 03       		.uleb128 0x3
+ 861 01bb 91       		.byte	0x91
+ 862 01bc BF7F     		.sleb128 -65
+ 863 01be 07       		.uleb128 0x7
+ 864 01bf 62756600 		.ascii	"buf\000"
+ 865 01c3 01       		.byte	0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 19
 
 
- 886 0054 0E       		.uleb128 0xe
- 887 0055 3A       		.uleb128 0x3a
- 888 0056 0B       		.uleb128 0xb
- 889 0057 3B       		.uleb128 0x3b
- 890 0058 0B       		.uleb128 0xb
- 891 0059 27       		.uleb128 0x27
- 892 005a 19       		.uleb128 0x19
- 893 005b 49       		.uleb128 0x49
- 894 005c 13       		.uleb128 0x13
- 895 005d 11       		.uleb128 0x11
- 896 005e 01       		.uleb128 0x1
- 897 005f 12       		.uleb128 0x12
- 898 0060 06       		.uleb128 0x6
- 899 0061 40       		.uleb128 0x40
- 900 0062 18       		.uleb128 0x18
- 901 0063 9742     		.uleb128 0x2117
- 902 0065 19       		.uleb128 0x19
- 903 0066 00       		.byte	0
- 904 0067 00       		.byte	0
- 905 0068 07       		.uleb128 0x7
- 906 0069 2E       		.uleb128 0x2e
- 907 006a 01       		.byte	0x1
- 908 006b 3F       		.uleb128 0x3f
- 909 006c 19       		.uleb128 0x19
- 910 006d 03       		.uleb128 0x3
- 911 006e 0E       		.uleb128 0xe
- 912 006f 3A       		.uleb128 0x3a
- 913 0070 0B       		.uleb128 0xb
- 914 0071 3B       		.uleb128 0x3b
- 915 0072 0B       		.uleb128 0xb
- 916 0073 27       		.uleb128 0x27
- 917 0074 19       		.uleb128 0x19
- 918 0075 49       		.uleb128 0x49
- 919 0076 13       		.uleb128 0x13
- 920 0077 11       		.uleb128 0x11
- 921 0078 01       		.uleb128 0x1
- 922 0079 12       		.uleb128 0x12
- 923 007a 06       		.uleb128 0x6
- 924 007b 40       		.uleb128 0x40
- 925 007c 18       		.uleb128 0x18
- 926 007d 9742     		.uleb128 0x2117
- 927 007f 19       		.uleb128 0x19
- 928 0080 01       		.uleb128 0x1
- 929 0081 13       		.uleb128 0x13
- 930 0082 00       		.byte	0
- 931 0083 00       		.byte	0
- 932 0084 08       		.uleb128 0x8
- 933 0085 05       		.uleb128 0x5
- 934 0086 00       		.byte	0
- 935 0087 03       		.uleb128 0x3
- 936 0088 0E       		.uleb128 0xe
- 937 0089 3A       		.uleb128 0x3a
- 938 008a 0B       		.uleb128 0xb
- 939 008b 3B       		.uleb128 0x3b
- 940 008c 0B       		.uleb128 0xb
- 941 008d 49       		.uleb128 0x49
- 942 008e 13       		.uleb128 0x13
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 19
+ 866 01c4 4E       		.byte	0x4e
+ 867 01c5 E1000000 		.4byte	0xe1
+ 868 01c9 02       		.uleb128 0x2
+ 869 01ca 91       		.byte	0x91
+ 870 01cb 44       		.sleb128 -60
+ 871 01cc 00       		.byte	0
+ 872 01cd 0B       		.uleb128 0xb
+ 873 01ce 2F010000 		.4byte	.LASF24
+ 874 01d2 01       		.byte	0x1
+ 875 01d3 53       		.byte	0x53
+ 876 01d4 00000000 		.4byte	.LFB41
+ 877 01d8 14000000 		.4byte	.LFE41-.LFB41
+ 878 01dc 01       		.uleb128 0x1
+ 879 01dd 9C       		.byte	0x9c
+ 880 01de 0C       		.uleb128 0xc
+ 881 01df 1A000000 		.4byte	.LASF26
+ 882 01e3 01       		.byte	0x1
+ 883 01e4 57       		.byte	0x57
+ 884 01e5 00000000 		.4byte	.LFB42
+ 885 01e9 3C000000 		.4byte	.LFE42-.LFB42
+ 886 01ed 01       		.uleb128 0x1
+ 887 01ee 9C       		.byte	0x9c
+ 888 01ef 11020000 		.4byte	0x211
+ 889 01f3 0A       		.uleb128 0xa
+ 890 01f4 79010000 		.4byte	.LASF27
+ 891 01f8 01       		.byte	0x1
+ 892 01f9 57       		.byte	0x57
+ 893 01fa 11020000 		.4byte	0x211
+ 894 01fe 03       		.uleb128 0x3
+ 895 01ff 91       		.byte	0x91
+ 896 0200 BC7F     		.sleb128 -68
+ 897 0202 07       		.uleb128 0x7
+ 898 0203 62756600 		.ascii	"buf\000"
+ 899 0207 01       		.byte	0x1
+ 900 0208 59       		.byte	0x59
+ 901 0209 E1000000 		.4byte	0xe1
+ 902 020d 02       		.uleb128 0x2
+ 903 020e 91       		.byte	0x91
+ 904 020f 44       		.sleb128 -60
+ 905 0210 00       		.byte	0
+ 906 0211 0D       		.uleb128 0xd
+ 907 0212 04       		.byte	0x4
+ 908 0213 8F000000 		.4byte	0x8f
+ 909 0217 0C       		.uleb128 0xc
+ 910 0218 4F010000 		.4byte	.LASF28
+ 911 021c 01       		.byte	0x1
+ 912 021d 5E       		.byte	0x5e
+ 913 021e 00000000 		.4byte	.LFB43
+ 914 0222 3C000000 		.4byte	.LFE43-.LFB43
+ 915 0226 01       		.uleb128 0x1
+ 916 0227 9C       		.byte	0x9c
+ 917 0228 4A020000 		.4byte	0x24a
+ 918 022c 0E       		.uleb128 0xe
+ 919 022d 68756D00 		.ascii	"hum\000"
+ 920 0231 01       		.byte	0x1
+ 921 0232 5E       		.byte	0x5e
+ 922 0233 11020000 		.4byte	0x211
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 20
 
 
- 943 008f 02       		.uleb128 0x2
- 944 0090 18       		.uleb128 0x18
- 945 0091 00       		.byte	0
- 946 0092 00       		.byte	0
- 947 0093 09       		.uleb128 0x9
- 948 0094 2E       		.uleb128 0x2e
- 949 0095 01       		.byte	0x1
- 950 0096 3F       		.uleb128 0x3f
- 951 0097 19       		.uleb128 0x19
- 952 0098 03       		.uleb128 0x3
- 953 0099 0E       		.uleb128 0xe
- 954 009a 3A       		.uleb128 0x3a
- 955 009b 0B       		.uleb128 0xb
- 956 009c 3B       		.uleb128 0x3b
- 957 009d 0B       		.uleb128 0xb
- 958 009e 27       		.uleb128 0x27
- 959 009f 19       		.uleb128 0x19
- 960 00a0 11       		.uleb128 0x11
- 961 00a1 01       		.uleb128 0x1
- 962 00a2 12       		.uleb128 0x12
- 963 00a3 06       		.uleb128 0x6
- 964 00a4 40       		.uleb128 0x40
- 965 00a5 18       		.uleb128 0x18
- 966 00a6 9742     		.uleb128 0x2117
- 967 00a8 19       		.uleb128 0x19
- 968 00a9 01       		.uleb128 0x1
- 969 00aa 13       		.uleb128 0x13
- 970 00ab 00       		.byte	0
- 971 00ac 00       		.byte	0
- 972 00ad 0A       		.uleb128 0xa
- 973 00ae 0F       		.uleb128 0xf
- 974 00af 00       		.byte	0
- 975 00b0 0B       		.uleb128 0xb
- 976 00b1 0B       		.uleb128 0xb
- 977 00b2 49       		.uleb128 0x49
- 978 00b3 13       		.uleb128 0x13
- 979 00b4 00       		.byte	0
- 980 00b5 00       		.byte	0
- 981 00b6 0B       		.uleb128 0xb
- 982 00b7 05       		.uleb128 0x5
- 983 00b8 00       		.byte	0
- 984 00b9 03       		.uleb128 0x3
- 985 00ba 08       		.uleb128 0x8
- 986 00bb 3A       		.uleb128 0x3a
- 987 00bc 0B       		.uleb128 0xb
- 988 00bd 3B       		.uleb128 0x3b
- 989 00be 0B       		.uleb128 0xb
- 990 00bf 49       		.uleb128 0x49
- 991 00c0 13       		.uleb128 0x13
- 992 00c1 02       		.uleb128 0x2
- 993 00c2 18       		.uleb128 0x18
- 994 00c3 00       		.byte	0
- 995 00c4 00       		.byte	0
- 996 00c5 0C       		.uleb128 0xc
- 997 00c6 01       		.uleb128 0x1
- 998 00c7 01       		.byte	0x1
- 999 00c8 49       		.uleb128 0x49
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 20
+ 923 0237 03       		.uleb128 0x3
+ 924 0238 91       		.byte	0x91
+ 925 0239 BC7F     		.sleb128 -68
+ 926 023b 07       		.uleb128 0x7
+ 927 023c 62756600 		.ascii	"buf\000"
+ 928 0240 01       		.byte	0x1
+ 929 0241 60       		.byte	0x60
+ 930 0242 E1000000 		.4byte	0xe1
+ 931 0246 02       		.uleb128 0x2
+ 932 0247 91       		.byte	0x91
+ 933 0248 44       		.sleb128 -60
+ 934 0249 00       		.byte	0
+ 935 024a 0C       		.uleb128 0xc
+ 936 024b 4E000000 		.4byte	.LASF29
+ 937 024f 01       		.byte	0x1
+ 938 0250 65       		.byte	0x65
+ 939 0251 00000000 		.4byte	.LFB44
+ 940 0255 40000000 		.4byte	.LFE44-.LFB44
+ 941 0259 01       		.uleb128 0x1
+ 942 025a 9C       		.byte	0x9c
+ 943 025b 8C020000 		.4byte	0x28c
+ 944 025f 0A       		.uleb128 0xa
+ 945 0260 2D020000 		.4byte	.LASF23
+ 946 0264 01       		.byte	0x1
+ 947 0265 65       		.byte	0x65
+ 948 0266 79000000 		.4byte	0x79
+ 949 026a 03       		.uleb128 0x3
+ 950 026b 91       		.byte	0x91
+ 951 026c BF7F     		.sleb128 -65
+ 952 026e 0A       		.uleb128 0xa
+ 953 026f 47010000 		.4byte	.LASF30
+ 954 0273 01       		.byte	0x1
+ 955 0274 65       		.byte	0x65
+ 956 0275 8C020000 		.4byte	0x28c
+ 957 0279 03       		.uleb128 0x3
+ 958 027a 91       		.byte	0x91
+ 959 027b B87F     		.sleb128 -72
+ 960 027d 07       		.uleb128 0x7
+ 961 027e 62756600 		.ascii	"buf\000"
+ 962 0282 01       		.byte	0x1
+ 963 0283 67       		.byte	0x67
+ 964 0284 E1000000 		.4byte	0xe1
+ 965 0288 02       		.uleb128 0x2
+ 966 0289 91       		.byte	0x91
+ 967 028a 44       		.sleb128 -60
+ 968 028b 00       		.byte	0
+ 969 028c 0D       		.uleb128 0xd
+ 970 028d 04       		.byte	0x4
+ 971 028e 84000000 		.4byte	0x84
+ 972 0292 0C       		.uleb128 0xc
+ 973 0293 5B000000 		.4byte	.LASF31
+ 974 0297 01       		.byte	0x1
+ 975 0298 6C       		.byte	0x6c
+ 976 0299 00000000 		.4byte	.LFB45
+ 977 029d 3C000000 		.4byte	.LFE45-.LFB45
+ 978 02a1 01       		.uleb128 0x1
+ 979 02a2 9C       		.byte	0x9c
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 21
 
 
- 1000 00c9 13       		.uleb128 0x13
- 1001 00ca 01       		.uleb128 0x1
- 1002 00cb 13       		.uleb128 0x13
- 1003 00cc 00       		.byte	0
- 1004 00cd 00       		.byte	0
- 1005 00ce 0D       		.uleb128 0xd
- 1006 00cf 21       		.uleb128 0x21
- 1007 00d0 00       		.byte	0
- 1008 00d1 49       		.uleb128 0x49
- 1009 00d2 13       		.uleb128 0x13
- 1010 00d3 2F       		.uleb128 0x2f
- 1011 00d4 0B       		.uleb128 0xb
- 1012 00d5 00       		.byte	0
- 1013 00d6 00       		.byte	0
- 1014 00d7 0E       		.uleb128 0xe
- 1015 00d8 34       		.uleb128 0x34
- 1016 00d9 00       		.byte	0
- 1017 00da 03       		.uleb128 0x3
- 1018 00db 0E       		.uleb128 0xe
- 1019 00dc 3A       		.uleb128 0x3a
- 1020 00dd 0B       		.uleb128 0xb
- 1021 00de 3B       		.uleb128 0x3b
- 1022 00df 0B       		.uleb128 0xb
- 1023 00e0 49       		.uleb128 0x49
- 1024 00e1 13       		.uleb128 0x13
- 1025 00e2 3F       		.uleb128 0x3f
- 1026 00e3 19       		.uleb128 0x19
- 1027 00e4 02       		.uleb128 0x2
- 1028 00e5 18       		.uleb128 0x18
- 1029 00e6 00       		.byte	0
- 1030 00e7 00       		.byte	0
- 1031 00e8 0F       		.uleb128 0xf
- 1032 00e9 34       		.uleb128 0x34
- 1033 00ea 00       		.byte	0
- 1034 00eb 03       		.uleb128 0x3
- 1035 00ec 08       		.uleb128 0x8
- 1036 00ed 3A       		.uleb128 0x3a
- 1037 00ee 0B       		.uleb128 0xb
- 1038 00ef 3B       		.uleb128 0x3b
- 1039 00f0 0B       		.uleb128 0xb
- 1040 00f1 49       		.uleb128 0x49
- 1041 00f2 13       		.uleb128 0x13
- 1042 00f3 3F       		.uleb128 0x3f
- 1043 00f4 19       		.uleb128 0x19
- 1044 00f5 02       		.uleb128 0x2
- 1045 00f6 18       		.uleb128 0x18
- 1046 00f7 00       		.byte	0
- 1047 00f8 00       		.byte	0
- 1048 00f9 00       		.byte	0
- 1049              		.section	.debug_aranges,"",%progbits
- 1050 0000 7C000000 		.4byte	0x7c
- 1051 0004 0200     		.2byte	0x2
- 1052 0006 00000000 		.4byte	.Ldebug_info0
- 1053 000a 04       		.byte	0x4
- 1054 000b 00       		.byte	0
- 1055 000c 0000     		.2byte	0
- 1056 000e 0000     		.2byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 21
+ 980 02a3 C5020000 		.4byte	0x2c5
+ 981 02a7 0A       		.uleb128 0xa
+ 982 02a8 00000000 		.4byte	.LASF32
+ 983 02ac 01       		.byte	0x1
+ 984 02ad 6C       		.byte	0x6c
+ 985 02ae 11020000 		.4byte	0x211
+ 986 02b2 03       		.uleb128 0x3
+ 987 02b3 91       		.byte	0x91
+ 988 02b4 BC7F     		.sleb128 -68
+ 989 02b6 07       		.uleb128 0x7
+ 990 02b7 62756600 		.ascii	"buf\000"
+ 991 02bb 01       		.byte	0x1
+ 992 02bc 6E       		.byte	0x6e
+ 993 02bd E1000000 		.4byte	0xe1
+ 994 02c1 02       		.uleb128 0x2
+ 995 02c2 91       		.byte	0x91
+ 996 02c3 44       		.sleb128 -60
+ 997 02c4 00       		.byte	0
+ 998 02c5 0F       		.uleb128 0xf
+ 999 02c6 78020000 		.4byte	.LASF33
+ 1000 02ca 01       		.byte	0x1
+ 1001 02cb 12       		.byte	0x12
+ 1002 02cc D6020000 		.4byte	0x2d6
+ 1003 02d0 05       		.uleb128 0x5
+ 1004 02d1 03       		.byte	0x3
+ 1005 02d2 00000000 		.4byte	returnVal
+ 1006 02d6 10       		.uleb128 0x10
+ 1007 02d7 79000000 		.4byte	0x79
+ 1008 02db 08       		.uleb128 0x8
+ 1009 02dc 8F000000 		.4byte	0x8f
+ 1010 02e0 EB020000 		.4byte	0x2eb
+ 1011 02e4 09       		.uleb128 0x9
+ 1012 02e5 6B000000 		.4byte	0x6b
+ 1013 02e9 63       		.byte	0x63
+ 1014 02ea 00       		.byte	0
+ 1015 02eb 11       		.uleb128 0x11
+ 1016 02ec 4B020000 		.4byte	.LASF34
+ 1017 02f0 01       		.byte	0x1
+ 1018 02f1 15       		.byte	0x15
+ 1019 02f2 DB020000 		.4byte	0x2db
+ 1020 02f6 05       		.uleb128 0x5
+ 1021 02f7 03       		.byte	0x3
+ 1022 02f8 00000000 		.4byte	tempArray
+ 1023 02fc 11       		.uleb128 0x11
+ 1024 02fd EC010000 		.4byte	.LASF35
+ 1025 0301 01       		.byte	0x1
+ 1026 0302 16       		.byte	0x16
+ 1027 0303 11020000 		.4byte	0x211
+ 1028 0307 05       		.uleb128 0x5
+ 1029 0308 03       		.byte	0x3
+ 1030 0309 00000000 		.4byte	tempArrayPtr
+ 1031 030d 11       		.uleb128 0x11
+ 1032 030e 63010000 		.4byte	.LASF36
+ 1033 0312 01       		.byte	0x1
+ 1034 0313 17       		.byte	0x17
+ 1035 0314 DB020000 		.4byte	0x2db
+ 1036 0318 05       		.uleb128 0x5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 22
 
 
- 1057 0010 00000000 		.4byte	.LFB33
- 1058 0014 08000000 		.4byte	.LFE33-.LFB33
- 1059 0018 00000000 		.4byte	.LFB34
- 1060 001c 0C000000 		.4byte	.LFE34-.LFB34
- 1061 0020 00000000 		.4byte	.LFB35
- 1062 0024 0C000000 		.4byte	.LFE35-.LFB35
- 1063 0028 00000000 		.4byte	.LFB36
- 1064 002c 1E000000 		.4byte	.LFE36-.LFB36
- 1065 0030 00000000 		.4byte	.LFB37
- 1066 0034 0C000000 		.4byte	.LFE37-.LFB37
- 1067 0038 00000000 		.4byte	.LFB38
- 1068 003c 08000000 		.4byte	.LFE38-.LFB38
- 1069 0040 00000000 		.4byte	.LFB39
- 1070 0044 08000000 		.4byte	.LFE39-.LFB39
- 1071 0048 00000000 		.4byte	.LFB40
- 1072 004c 1A000000 		.4byte	.LFE40-.LFB40
- 1073 0050 00000000 		.4byte	.LFB41
- 1074 0054 08000000 		.4byte	.LFE41-.LFB41
- 1075 0058 00000000 		.4byte	.LFB42
- 1076 005c 14000000 		.4byte	.LFE42-.LFB42
- 1077 0060 00000000 		.4byte	.LFB43
- 1078 0064 14000000 		.4byte	.LFE43-.LFB43
- 1079 0068 00000000 		.4byte	.LFB44
- 1080 006c 22000000 		.4byte	.LFE44-.LFB44
- 1081 0070 00000000 		.4byte	.LFB45
- 1082 0074 14000000 		.4byte	.LFE45-.LFB45
- 1083 0078 00000000 		.4byte	0
- 1084 007c 00000000 		.4byte	0
- 1085              		.section	.debug_ranges,"",%progbits
- 1086              	.Ldebug_ranges0:
- 1087 0000 00000000 		.4byte	.LFB33
- 1088 0004 08000000 		.4byte	.LFE33
- 1089 0008 00000000 		.4byte	.LFB34
- 1090 000c 0C000000 		.4byte	.LFE34
- 1091 0010 00000000 		.4byte	.LFB35
- 1092 0014 0C000000 		.4byte	.LFE35
- 1093 0018 00000000 		.4byte	.LFB36
- 1094 001c 1E000000 		.4byte	.LFE36
- 1095 0020 00000000 		.4byte	.LFB37
- 1096 0024 0C000000 		.4byte	.LFE37
- 1097 0028 00000000 		.4byte	.LFB38
- 1098 002c 08000000 		.4byte	.LFE38
- 1099 0030 00000000 		.4byte	.LFB39
- 1100 0034 08000000 		.4byte	.LFE39
- 1101 0038 00000000 		.4byte	.LFB40
- 1102 003c 1A000000 		.4byte	.LFE40
- 1103 0040 00000000 		.4byte	.LFB41
- 1104 0044 08000000 		.4byte	.LFE41
- 1105 0048 00000000 		.4byte	.LFB42
- 1106 004c 14000000 		.4byte	.LFE42
- 1107 0050 00000000 		.4byte	.LFB43
- 1108 0054 14000000 		.4byte	.LFE43
- 1109 0058 00000000 		.4byte	.LFB44
- 1110 005c 22000000 		.4byte	.LFE44
- 1111 0060 00000000 		.4byte	.LFB45
- 1112 0064 14000000 		.4byte	.LFE45
- 1113 0068 00000000 		.4byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 22
+ 1037 0319 03       		.byte	0x3
+ 1038 031a 00000000 		.4byte	humArray
+ 1039 031e 11       		.uleb128 0x11
+ 1040 031f 24000000 		.4byte	.LASF37
+ 1041 0323 01       		.byte	0x1
+ 1042 0324 18       		.byte	0x18
+ 1043 0325 11020000 		.4byte	0x211
+ 1044 0329 05       		.uleb128 0x5
+ 1045 032a 03       		.byte	0x3
+ 1046 032b 00000000 		.4byte	humArrayPtr
+ 1047 032f 08       		.uleb128 0x8
+ 1048 0330 84000000 		.4byte	0x84
+ 1049 0334 45030000 		.4byte	0x345
+ 1050 0338 09       		.uleb128 0x9
+ 1051 0339 6B000000 		.4byte	0x6b
+ 1052 033d 05       		.byte	0x5
+ 1053 033e 09       		.uleb128 0x9
+ 1054 033f 6B000000 		.4byte	0x6b
+ 1055 0343 63       		.byte	0x63
+ 1056 0344 00       		.byte	0
+ 1057 0345 11       		.uleb128 0x11
+ 1058 0346 06000000 		.4byte	.LASF38
+ 1059 034a 01       		.byte	0x1
+ 1060 034b 19       		.byte	0x19
+ 1061 034c 2F030000 		.4byte	0x32f
+ 1062 0350 05       		.uleb128 0x5
+ 1063 0351 03       		.byte	0x3
+ 1064 0352 00000000 		.4byte	soilHumArray
+ 1065 0356 08       		.uleb128 0x8
+ 1066 0357 8C020000 		.4byte	0x28c
+ 1067 035b 66030000 		.4byte	0x366
+ 1068 035f 09       		.uleb128 0x9
+ 1069 0360 6B000000 		.4byte	0x6b
+ 1070 0364 05       		.byte	0x5
+ 1071 0365 00       		.byte	0
+ 1072 0366 11       		.uleb128 0x11
+ 1073 0367 E1010000 		.4byte	.LASF39
+ 1074 036b 01       		.byte	0x1
+ 1075 036c 1A       		.byte	0x1a
+ 1076 036d 56030000 		.4byte	0x356
+ 1077 0371 05       		.uleb128 0x5
+ 1078 0372 03       		.byte	0x3
+ 1079 0373 00000000 		.4byte	soilHumPtr
+ 1080 0377 11       		.uleb128 0x11
+ 1081 0378 43000000 		.4byte	.LASF40
+ 1082 037c 01       		.byte	0x1
+ 1083 037d 1B       		.byte	0x1b
+ 1084 037e DB020000 		.4byte	0x2db
+ 1085 0382 05       		.uleb128 0x5
+ 1086 0383 03       		.byte	0x3
+ 1087 0384 00000000 		.4byte	lightArray
+ 1088 0388 11       		.uleb128 0x11
+ 1089 0389 82020000 		.4byte	.LASF41
+ 1090 038d 01       		.byte	0x1
+ 1091 038e 1C       		.byte	0x1c
+ 1092 038f 11020000 		.4byte	0x211
+ 1093 0393 05       		.uleb128 0x5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 23
 
 
- 1114 006c 00000000 		.4byte	0
- 1115              		.section	.debug_line,"",%progbits
- 1116              	.Ldebug_line0:
- 1117 0000 30010000 		.section	.debug_str,"MS",%progbits,1
- 1117      02004A00 
- 1117      00000201 
- 1117      FB0E0D00 
- 1117      01010101 
- 1118              	.LASF31:
- 1119 0000 6C696768 		.ascii	"light\000"
- 1119      7400
- 1120              	.LASF36:
- 1121 0006 736F696C 		.ascii	"soilHumArray\000"
- 1121      48756D41 
- 1121      72726179 
- 1121      00
- 1122              	.LASF37:
- 1123 0013 736F696C 		.ascii	"soilHumPtr\000"
- 1123      48756D50 
- 1123      747200
- 1124              	.LASF25:
- 1125 001e 696E7075 		.ascii	"inputTemp\000"
- 1125      7454656D 
- 1125      7000
- 1126              	.LASF35:
- 1127 0028 68756D41 		.ascii	"humArrayPtr\000"
- 1127      72726179 
- 1127      50747200 
- 1128              	.LASF21:
- 1129 0034 61766748 		.ascii	"avgHum\000"
- 1129      756D00
- 1130              	.LASF3:
- 1131 003b 73686F72 		.ascii	"short unsigned int\000"
- 1131      7420756E 
- 1131      7369676E 
- 1131      65642069 
- 1131      6E7400
- 1132              	.LASF38:
- 1133 004e 6C696768 		.ascii	"lightArray\000"
- 1133      74417272 
- 1133      617900
- 1134              	.LASF28:
- 1135 0059 696E7075 		.ascii	"inputSoilHum\000"
- 1135      74536F69 
- 1135      6C48756D 
- 1135      00
- 1136              	.LASF30:
- 1137 0066 696E7075 		.ascii	"inputLight\000"
- 1137      744C6967 
- 1137      687400
- 1138              	.LASF12:
- 1139 0071 666C6F61 		.ascii	"float\000"
- 1139      7400
- 1140              	.LASF40:
- 1141 0077 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1141      4320342E 
- 1141      382E3420 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 23
+ 1094 0394 03       		.byte	0x3
+ 1095 0395 00000000 		.4byte	lightArrayPtr
+ 1096 0399 11       		.uleb128 0x11
+ 1097 039a 79010000 		.4byte	.LASF27
+ 1098 039e 01       		.byte	0x1
+ 1099 039f 1D       		.byte	0x1d
+ 1100 03a0 79000000 		.4byte	0x79
+ 1101 03a4 05       		.uleb128 0x5
+ 1102 03a5 03       		.byte	0x3
+ 1103 03a6 00000000 		.4byte	temp
+ 1104 03aa 12       		.uleb128 0x12
+ 1105 03ab 68756D00 		.ascii	"hum\000"
+ 1106 03af 01       		.byte	0x1
+ 1107 03b0 1D       		.byte	0x1d
+ 1108 03b1 79000000 		.4byte	0x79
+ 1109 03b5 05       		.uleb128 0x5
+ 1110 03b6 03       		.byte	0x3
+ 1111 03b7 00000000 		.4byte	hum
+ 1112 03bb 08       		.uleb128 0x8
+ 1113 03bc 79000000 		.4byte	0x79
+ 1114 03c0 CB030000 		.4byte	0x3cb
+ 1115 03c4 09       		.uleb128 0x9
+ 1116 03c5 6B000000 		.4byte	0x6b
+ 1117 03c9 05       		.byte	0x5
+ 1118 03ca 00       		.byte	0
+ 1119 03cb 11       		.uleb128 0x11
+ 1120 03cc 47010000 		.4byte	.LASF30
+ 1121 03d0 01       		.byte	0x1
+ 1122 03d1 1D       		.byte	0x1d
+ 1123 03d2 BB030000 		.4byte	0x3bb
+ 1124 03d6 05       		.uleb128 0x5
+ 1125 03d7 03       		.byte	0x3
+ 1126 03d8 00000000 		.4byte	soilHum
+ 1127 03dc 11       		.uleb128 0x11
+ 1128 03dd 00000000 		.4byte	.LASF32
+ 1129 03e1 01       		.byte	0x1
+ 1130 03e2 1D       		.byte	0x1d
+ 1131 03e3 79000000 		.4byte	0x79
+ 1132 03e7 05       		.uleb128 0x5
+ 1133 03e8 03       		.byte	0x3
+ 1134 03e9 00000000 		.4byte	light
+ 1135 03ed 00       		.byte	0
+ 1136              		.section	.debug_abbrev,"",%progbits
+ 1137              	.Ldebug_abbrev0:
+ 1138 0000 01       		.uleb128 0x1
+ 1139 0001 11       		.uleb128 0x11
+ 1140 0002 01       		.byte	0x1
+ 1141 0003 25       		.uleb128 0x25
+ 1142 0004 0E       		.uleb128 0xe
+ 1143 0005 13       		.uleb128 0x13
+ 1144 0006 0B       		.uleb128 0xb
+ 1145 0007 03       		.uleb128 0x3
+ 1146 0008 0E       		.uleb128 0xe
+ 1147 0009 1B       		.uleb128 0x1b
+ 1148 000a 0E       		.uleb128 0xe
+ 1149 000b 55       		.uleb128 0x55
+ 1150 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 24
 
 
- 1141      32303134 
- 1141      30353236 
- 1142 00aa 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1142      20726576 
- 1142      6973696F 
- 1142      6E203231 
- 1142      31333538 
- 1143 00dd 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1143      66756E63 
- 1143      74696F6E 
- 1143      2D736563 
- 1143      74696F6E 
- 1144              	.LASF1:
- 1145 00f3 756E7369 		.ascii	"unsigned char\000"
- 1145      676E6564 
- 1145      20636861 
- 1145      7200
- 1146              	.LASF32:
- 1147 0101 74656D70 		.ascii	"tempArray\000"
- 1147      41727261 
- 1147      7900
- 1148              	.LASF5:
- 1149 010b 6C6F6E67 		.ascii	"long unsigned int\000"
- 1149      20756E73 
- 1149      69676E65 
- 1149      6420696E 
- 1149      7400
- 1150              	.LASF16:
- 1151 011d 67657454 		.ascii	"getTemp_DSP\000"
- 1151      656D705F 
- 1151      44535000 
- 1152              	.LASF11:
- 1153 0129 696E7433 		.ascii	"int32\000"
- 1153      3200
- 1154              	.LASF43:
- 1155 012f 67657453 		.ascii	"getSoilHum_DSP\000"
- 1155      6F696C48 
- 1155      756D5F44 
- 1155      535000
- 1156              	.LASF23:
- 1157 013e 6176674C 		.ascii	"avgLight\000"
- 1157      69676874 
- 1157      00
- 1158              	.LASF19:
- 1159 0147 696E6974 		.ascii	"initDSP\000"
- 1159      44535000 
- 1160              	.LASF13:
- 1161 014f 646F7562 		.ascii	"double\000"
- 1161      6C6500
- 1162              	.LASF29:
- 1163 0156 736F696C 		.ascii	"soilHum\000"
- 1163      48756D00 
- 1164              	.LASF27:
- 1165 015e 696E7075 		.ascii	"inputHum\000"
- 1165      7448756D 
- 1165      00
- 1166              	.LASF17:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 24
+ 1151 000d 11       		.uleb128 0x11
+ 1152 000e 01       		.uleb128 0x1
+ 1153 000f 10       		.uleb128 0x10
+ 1154 0010 17       		.uleb128 0x17
+ 1155 0011 00       		.byte	0
+ 1156 0012 00       		.byte	0
+ 1157 0013 02       		.uleb128 0x2
+ 1158 0014 24       		.uleb128 0x24
+ 1159 0015 00       		.byte	0
+ 1160 0016 0B       		.uleb128 0xb
+ 1161 0017 0B       		.uleb128 0xb
+ 1162 0018 3E       		.uleb128 0x3e
+ 1163 0019 0B       		.uleb128 0xb
+ 1164 001a 03       		.uleb128 0x3
+ 1165 001b 0E       		.uleb128 0xe
+ 1166 001c 00       		.byte	0
+ 1167 001d 00       		.byte	0
+ 1168 001e 03       		.uleb128 0x3
+ 1169 001f 24       		.uleb128 0x24
+ 1170 0020 00       		.byte	0
+ 1171 0021 0B       		.uleb128 0xb
+ 1172 0022 0B       		.uleb128 0xb
+ 1173 0023 3E       		.uleb128 0x3e
+ 1174 0024 0B       		.uleb128 0xb
+ 1175 0025 03       		.uleb128 0x3
+ 1176 0026 08       		.uleb128 0x8
+ 1177 0027 00       		.byte	0
+ 1178 0028 00       		.byte	0
+ 1179 0029 04       		.uleb128 0x4
+ 1180 002a 16       		.uleb128 0x16
+ 1181 002b 00       		.byte	0
+ 1182 002c 03       		.uleb128 0x3
+ 1183 002d 0E       		.uleb128 0xe
+ 1184 002e 3A       		.uleb128 0x3a
+ 1185 002f 0B       		.uleb128 0xb
+ 1186 0030 3B       		.uleb128 0x3b
+ 1187 0031 0B       		.uleb128 0xb
+ 1188 0032 49       		.uleb128 0x49
+ 1189 0033 13       		.uleb128 0x13
+ 1190 0034 00       		.byte	0
+ 1191 0035 00       		.byte	0
+ 1192 0036 05       		.uleb128 0x5
+ 1193 0037 2E       		.uleb128 0x2e
+ 1194 0038 00       		.byte	0
+ 1195 0039 3F       		.uleb128 0x3f
+ 1196 003a 19       		.uleb128 0x19
+ 1197 003b 03       		.uleb128 0x3
+ 1198 003c 0E       		.uleb128 0xe
+ 1199 003d 3A       		.uleb128 0x3a
+ 1200 003e 0B       		.uleb128 0xb
+ 1201 003f 3B       		.uleb128 0x3b
+ 1202 0040 0B       		.uleb128 0xb
+ 1203 0041 27       		.uleb128 0x27
+ 1204 0042 19       		.uleb128 0x19
+ 1205 0043 11       		.uleb128 0x11
+ 1206 0044 01       		.uleb128 0x1
+ 1207 0045 12       		.uleb128 0x12
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 25
 
 
- 1167 0167 67657448 		.ascii	"getHum_DSP\000"
- 1167      756D5F44 
- 1167      535000
- 1168              	.LASF34:
- 1169 0172 68756D41 		.ascii	"humArray\000"
- 1169      72726179 
- 1169      00
- 1170              	.LASF8:
- 1171 017b 756E7369 		.ascii	"unsigned int\000"
- 1171      676E6564 
- 1171      20696E74 
- 1171      00
- 1172              	.LASF26:
- 1173 0188 74656D70 		.ascii	"temp\000"
- 1173      00
- 1174              	.LASF7:
- 1175 018d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1175      206C6F6E 
- 1175      6720756E 
- 1175      7369676E 
- 1175      65642069 
- 1176              	.LASF42:
- 1177 01a4 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
- 1177      73657273 
- 1177      5C536E75 
- 1177      666B696E 
- 1177      5C446F63 
- 1178 01d2 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
- 1178      5F4D6173 
- 1178      7465725C 
- 1178      50536F43 
- 1178      5F4D6173 
- 1179              	.LASF10:
- 1180 01f0 696E7431 		.ascii	"int16\000"
- 1180      3600
- 1181              	.LASF33:
- 1182 01f6 74656D70 		.ascii	"tempArrayPtr\000"
- 1182      41727261 
- 1182      79507472 
- 1182      00
- 1183              	.LASF18:
- 1184 0203 6765744C 		.ascii	"getLight_DSP\000"
- 1184      69676874 
- 1184      5F445350 
- 1184      00
- 1185              	.LASF15:
- 1186 0210 73697A65 		.ascii	"sizetype\000"
- 1186      74797065 
- 1186      00
- 1187              	.LASF6:
- 1188 0219 6C6F6E67 		.ascii	"long long int\000"
- 1188      206C6F6E 
- 1188      6720696E 
- 1188      7400
- 1189              	.LASF14:
- 1190 0227 63686172 		.ascii	"char\000"
- 1190      00
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cccHJ5Mb.s 			page 25
+ 1208 0046 06       		.uleb128 0x6
+ 1209 0047 40       		.uleb128 0x40
+ 1210 0048 18       		.uleb128 0x18
+ 1211 0049 9742     		.uleb128 0x2117
+ 1212 004b 19       		.uleb128 0x19
+ 1213 004c 00       		.byte	0
+ 1214 004d 00       		.byte	0
+ 1215 004e 06       		.uleb128 0x6
+ 1216 004f 2E       		.uleb128 0x2e
+ 1217 0050 01       		.byte	0x1
+ 1218 0051 3F       		.uleb128 0x3f
+ 1219 0052 19       		.uleb128 0x19
+ 1220 0053 03       		.uleb128 0x3
+ 1221 0054 0E       		.uleb128 0xe
+ 1222 0055 3A       		.uleb128 0x3a
+ 1223 0056 0B       		.uleb128 0xb
+ 1224 0057 3B       		.uleb128 0x3b
+ 1225 0058 0B       		.uleb128 0xb
+ 1226 0059 27       		.uleb128 0x27
+ 1227 005a 19       		.uleb128 0x19
+ 1228 005b 49       		.uleb128 0x49
+ 1229 005c 13       		.uleb128 0x13
+ 1230 005d 11       		.uleb128 0x11
+ 1231 005e 01       		.uleb128 0x1
+ 1232 005f 12       		.uleb128 0x12
+ 1233 0060 06       		.uleb128 0x6
+ 1234 0061 40       		.uleb128 0x40
+ 1235 0062 18       		.uleb128 0x18
+ 1236 0063 9642     		.uleb128 0x2116
+ 1237 0065 19       		.uleb128 0x19
+ 1238 0066 01       		.uleb128 0x1
+ 1239 0067 13       		.uleb128 0x13
+ 1240 0068 00       		.byte	0
+ 1241 0069 00       		.byte	0
+ 1242 006a 07       		.uleb128 0x7
+ 1243 006b 34       		.uleb128 0x34
+ 1244 006c 00       		.byte	0
+ 1245 006d 03       		.uleb128 0x3
+ 1246 006e 08       		.uleb128 0x8
+ 1247 006f 3A       		.uleb128 0x3a
+ 1248 0070 0B       		.uleb128 0xb
+ 1249 0071 3B       		.uleb128 0x3b
+ 1250 0072 0B       		.uleb128 0xb
+ 1251 0073 49       		.uleb128 0x49
+ 1252 0074 13       		.uleb128 0x13
+ 1253 0075 02       		.uleb128 0x2
+ 1254 0076 18       		.uleb128 0x18
+ 1255 0077 00       		.byte	0
+ 1256 0078 00       		.byte	0
+ 1257 0079 08       		.uleb128 0x8
+ 1258 007a 01       		.uleb128 0x1
+ 1259 007b 01       		.byte	0x1
+ 1260 007c 49       		.uleb128 0x49
+ 1261 007d 13       		.uleb128 0x13
+ 1262 007e 01       		.uleb128 0x1
+ 1263 007f 13       		.uleb128 0x13
+ 1264 0080 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 26
 
 
- 1191              	.LASF24:
- 1192 022c 61766753 		.ascii	"avgSoilHum\000"
- 1192      6F696C48 
- 1192      756D00
- 1193              	.LASF22:
- 1194 0237 696E6465 		.ascii	"index\000"
- 1194      7800
- 1195              	.LASF41:
- 1196 023d 2E5C4453 		.ascii	".\\DSP_Class.c\000"
- 1196      505F436C 
- 1196      6173732E 
- 1196      6300
- 1197              	.LASF2:
- 1198 024b 73686F72 		.ascii	"short int\000"
- 1198      7420696E 
- 1198      7400
- 1199              	.LASF9:
- 1200 0255 75696E74 		.ascii	"uint8\000"
- 1200      3800
- 1201              	.LASF4:
- 1202 025b 6C6F6E67 		.ascii	"long int\000"
- 1202      20696E74 
- 1202      00
- 1203              	.LASF20:
- 1204 0264 61766754 		.ascii	"avgTemp\000"
- 1204      656D7000 
- 1205              	.LASF0:
- 1206 026c 7369676E 		.ascii	"signed char\000"
- 1206      65642063 
- 1206      68617200 
- 1207              	.LASF39:
- 1208 0278 6C696768 		.ascii	"lightArrayPtr\000"
- 1208      74417272 
- 1208      61795074 
- 1208      7200
- 1209              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1265 0081 00       		.byte	0
+ 1266 0082 09       		.uleb128 0x9
+ 1267 0083 21       		.uleb128 0x21
+ 1268 0084 00       		.byte	0
+ 1269 0085 49       		.uleb128 0x49
+ 1270 0086 13       		.uleb128 0x13
+ 1271 0087 2F       		.uleb128 0x2f
+ 1272 0088 0B       		.uleb128 0xb
+ 1273 0089 00       		.byte	0
+ 1274 008a 00       		.byte	0
+ 1275 008b 0A       		.uleb128 0xa
+ 1276 008c 05       		.uleb128 0x5
+ 1277 008d 00       		.byte	0
+ 1278 008e 03       		.uleb128 0x3
+ 1279 008f 0E       		.uleb128 0xe
+ 1280 0090 3A       		.uleb128 0x3a
+ 1281 0091 0B       		.uleb128 0xb
+ 1282 0092 3B       		.uleb128 0x3b
+ 1283 0093 0B       		.uleb128 0xb
+ 1284 0094 49       		.uleb128 0x49
+ 1285 0095 13       		.uleb128 0x13
+ 1286 0096 02       		.uleb128 0x2
+ 1287 0097 18       		.uleb128 0x18
+ 1288 0098 00       		.byte	0
+ 1289 0099 00       		.byte	0
+ 1290 009a 0B       		.uleb128 0xb
+ 1291 009b 2E       		.uleb128 0x2e
+ 1292 009c 00       		.byte	0
+ 1293 009d 3F       		.uleb128 0x3f
+ 1294 009e 19       		.uleb128 0x19
+ 1295 009f 03       		.uleb128 0x3
+ 1296 00a0 0E       		.uleb128 0xe
+ 1297 00a1 3A       		.uleb128 0x3a
+ 1298 00a2 0B       		.uleb128 0xb
+ 1299 00a3 3B       		.uleb128 0x3b
+ 1300 00a4 0B       		.uleb128 0xb
+ 1301 00a5 27       		.uleb128 0x27
+ 1302 00a6 19       		.uleb128 0x19
+ 1303 00a7 11       		.uleb128 0x11
+ 1304 00a8 01       		.uleb128 0x1
+ 1305 00a9 12       		.uleb128 0x12
+ 1306 00aa 06       		.uleb128 0x6
+ 1307 00ab 40       		.uleb128 0x40
+ 1308 00ac 18       		.uleb128 0x18
+ 1309 00ad 9642     		.uleb128 0x2116
+ 1310 00af 19       		.uleb128 0x19
+ 1311 00b0 00       		.byte	0
+ 1312 00b1 00       		.byte	0
+ 1313 00b2 0C       		.uleb128 0xc
+ 1314 00b3 2E       		.uleb128 0x2e
+ 1315 00b4 01       		.byte	0x1
+ 1316 00b5 3F       		.uleb128 0x3f
+ 1317 00b6 19       		.uleb128 0x19
+ 1318 00b7 03       		.uleb128 0x3
+ 1319 00b8 0E       		.uleb128 0xe
+ 1320 00b9 3A       		.uleb128 0x3a
+ 1321 00ba 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 27
+
+
+ 1322 00bb 3B       		.uleb128 0x3b
+ 1323 00bc 0B       		.uleb128 0xb
+ 1324 00bd 27       		.uleb128 0x27
+ 1325 00be 19       		.uleb128 0x19
+ 1326 00bf 11       		.uleb128 0x11
+ 1327 00c0 01       		.uleb128 0x1
+ 1328 00c1 12       		.uleb128 0x12
+ 1329 00c2 06       		.uleb128 0x6
+ 1330 00c3 40       		.uleb128 0x40
+ 1331 00c4 18       		.uleb128 0x18
+ 1332 00c5 9642     		.uleb128 0x2116
+ 1333 00c7 19       		.uleb128 0x19
+ 1334 00c8 01       		.uleb128 0x1
+ 1335 00c9 13       		.uleb128 0x13
+ 1336 00ca 00       		.byte	0
+ 1337 00cb 00       		.byte	0
+ 1338 00cc 0D       		.uleb128 0xd
+ 1339 00cd 0F       		.uleb128 0xf
+ 1340 00ce 00       		.byte	0
+ 1341 00cf 0B       		.uleb128 0xb
+ 1342 00d0 0B       		.uleb128 0xb
+ 1343 00d1 49       		.uleb128 0x49
+ 1344 00d2 13       		.uleb128 0x13
+ 1345 00d3 00       		.byte	0
+ 1346 00d4 00       		.byte	0
+ 1347 00d5 0E       		.uleb128 0xe
+ 1348 00d6 05       		.uleb128 0x5
+ 1349 00d7 00       		.byte	0
+ 1350 00d8 03       		.uleb128 0x3
+ 1351 00d9 08       		.uleb128 0x8
+ 1352 00da 3A       		.uleb128 0x3a
+ 1353 00db 0B       		.uleb128 0xb
+ 1354 00dc 3B       		.uleb128 0x3b
+ 1355 00dd 0B       		.uleb128 0xb
+ 1356 00de 49       		.uleb128 0x49
+ 1357 00df 13       		.uleb128 0x13
+ 1358 00e0 02       		.uleb128 0x2
+ 1359 00e1 18       		.uleb128 0x18
+ 1360 00e2 00       		.byte	0
+ 1361 00e3 00       		.byte	0
+ 1362 00e4 0F       		.uleb128 0xf
+ 1363 00e5 34       		.uleb128 0x34
+ 1364 00e6 00       		.byte	0
+ 1365 00e7 03       		.uleb128 0x3
+ 1366 00e8 0E       		.uleb128 0xe
+ 1367 00e9 3A       		.uleb128 0x3a
+ 1368 00ea 0B       		.uleb128 0xb
+ 1369 00eb 3B       		.uleb128 0x3b
+ 1370 00ec 0B       		.uleb128 0xb
+ 1371 00ed 49       		.uleb128 0x49
+ 1372 00ee 13       		.uleb128 0x13
+ 1373 00ef 02       		.uleb128 0x2
+ 1374 00f0 18       		.uleb128 0x18
+ 1375 00f1 00       		.byte	0
+ 1376 00f2 00       		.byte	0
+ 1377 00f3 10       		.uleb128 0x10
+ 1378 00f4 26       		.uleb128 0x26
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 28
+
+
+ 1379 00f5 00       		.byte	0
+ 1380 00f6 49       		.uleb128 0x49
+ 1381 00f7 13       		.uleb128 0x13
+ 1382 00f8 00       		.byte	0
+ 1383 00f9 00       		.byte	0
+ 1384 00fa 11       		.uleb128 0x11
+ 1385 00fb 34       		.uleb128 0x34
+ 1386 00fc 00       		.byte	0
+ 1387 00fd 03       		.uleb128 0x3
+ 1388 00fe 0E       		.uleb128 0xe
+ 1389 00ff 3A       		.uleb128 0x3a
+ 1390 0100 0B       		.uleb128 0xb
+ 1391 0101 3B       		.uleb128 0x3b
+ 1392 0102 0B       		.uleb128 0xb
+ 1393 0103 49       		.uleb128 0x49
+ 1394 0104 13       		.uleb128 0x13
+ 1395 0105 3F       		.uleb128 0x3f
+ 1396 0106 19       		.uleb128 0x19
+ 1397 0107 02       		.uleb128 0x2
+ 1398 0108 18       		.uleb128 0x18
+ 1399 0109 00       		.byte	0
+ 1400 010a 00       		.byte	0
+ 1401 010b 12       		.uleb128 0x12
+ 1402 010c 34       		.uleb128 0x34
+ 1403 010d 00       		.byte	0
+ 1404 010e 03       		.uleb128 0x3
+ 1405 010f 08       		.uleb128 0x8
+ 1406 0110 3A       		.uleb128 0x3a
+ 1407 0111 0B       		.uleb128 0xb
+ 1408 0112 3B       		.uleb128 0x3b
+ 1409 0113 0B       		.uleb128 0xb
+ 1410 0114 49       		.uleb128 0x49
+ 1411 0115 13       		.uleb128 0x13
+ 1412 0116 3F       		.uleb128 0x3f
+ 1413 0117 19       		.uleb128 0x19
+ 1414 0118 02       		.uleb128 0x2
+ 1415 0119 18       		.uleb128 0x18
+ 1416 011a 00       		.byte	0
+ 1417 011b 00       		.byte	0
+ 1418 011c 00       		.byte	0
+ 1419              		.section	.debug_aranges,"",%progbits
+ 1420 0000 7C000000 		.4byte	0x7c
+ 1421 0004 0200     		.2byte	0x2
+ 1422 0006 00000000 		.4byte	.Ldebug_info0
+ 1423 000a 04       		.byte	0x4
+ 1424 000b 00       		.byte	0
+ 1425 000c 0000     		.2byte	0
+ 1426 000e 0000     		.2byte	0
+ 1427 0010 00000000 		.4byte	.LFB33
+ 1428 0014 08000000 		.4byte	.LFE33-.LFB33
+ 1429 0018 00000000 		.4byte	.LFB34
+ 1430 001c 2C000000 		.4byte	.LFE34-.LFB34
+ 1431 0020 00000000 		.4byte	.LFB35
+ 1432 0024 2C000000 		.4byte	.LFE35-.LFB35
+ 1433 0028 00000000 		.4byte	.LFB36
+ 1434 002c 34000000 		.4byte	.LFE36-.LFB36
+ 1435 0030 00000000 		.4byte	.LFB37
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 29
+
+
+ 1436 0034 2C000000 		.4byte	.LFE37-.LFB37
+ 1437 0038 00000000 		.4byte	.LFB38
+ 1438 003c 14000000 		.4byte	.LFE38-.LFB38
+ 1439 0040 00000000 		.4byte	.LFB39
+ 1440 0044 14000000 		.4byte	.LFE39-.LFB39
+ 1441 0048 00000000 		.4byte	.LFB40
+ 1442 004c 34000000 		.4byte	.LFE40-.LFB40
+ 1443 0050 00000000 		.4byte	.LFB41
+ 1444 0054 14000000 		.4byte	.LFE41-.LFB41
+ 1445 0058 00000000 		.4byte	.LFB42
+ 1446 005c 3C000000 		.4byte	.LFE42-.LFB42
+ 1447 0060 00000000 		.4byte	.LFB43
+ 1448 0064 3C000000 		.4byte	.LFE43-.LFB43
+ 1449 0068 00000000 		.4byte	.LFB44
+ 1450 006c 40000000 		.4byte	.LFE44-.LFB44
+ 1451 0070 00000000 		.4byte	.LFB45
+ 1452 0074 3C000000 		.4byte	.LFE45-.LFB45
+ 1453 0078 00000000 		.4byte	0
+ 1454 007c 00000000 		.4byte	0
+ 1455              		.section	.debug_ranges,"",%progbits
+ 1456              	.Ldebug_ranges0:
+ 1457 0000 00000000 		.4byte	.LFB33
+ 1458 0004 08000000 		.4byte	.LFE33
+ 1459 0008 00000000 		.4byte	.LFB34
+ 1460 000c 2C000000 		.4byte	.LFE34
+ 1461 0010 00000000 		.4byte	.LFB35
+ 1462 0014 2C000000 		.4byte	.LFE35
+ 1463 0018 00000000 		.4byte	.LFB36
+ 1464 001c 34000000 		.4byte	.LFE36
+ 1465 0020 00000000 		.4byte	.LFB37
+ 1466 0024 2C000000 		.4byte	.LFE37
+ 1467 0028 00000000 		.4byte	.LFB38
+ 1468 002c 14000000 		.4byte	.LFE38
+ 1469 0030 00000000 		.4byte	.LFB39
+ 1470 0034 14000000 		.4byte	.LFE39
+ 1471 0038 00000000 		.4byte	.LFB40
+ 1472 003c 34000000 		.4byte	.LFE40
+ 1473 0040 00000000 		.4byte	.LFB41
+ 1474 0044 14000000 		.4byte	.LFE41
+ 1475 0048 00000000 		.4byte	.LFB42
+ 1476 004c 3C000000 		.4byte	.LFE42
+ 1477 0050 00000000 		.4byte	.LFB43
+ 1478 0054 3C000000 		.4byte	.LFE43
+ 1479 0058 00000000 		.4byte	.LFB44
+ 1480 005c 40000000 		.4byte	.LFE44
+ 1481 0060 00000000 		.4byte	.LFB45
+ 1482 0064 3C000000 		.4byte	.LFE45
+ 1483 0068 00000000 		.4byte	0
+ 1484 006c 00000000 		.4byte	0
+ 1485              		.section	.debug_line,"",%progbits
+ 1486              	.Ldebug_line0:
+ 1487 0000 45010000 		.section	.debug_str,"MS",%progbits,1
+ 1487      02004A00 
+ 1487      00000201 
+ 1487      FB0E0D00 
+ 1487      01010101 
+ 1488              	.LASF32:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 30
+
+
+ 1489 0000 6C696768 		.ascii	"light\000"
+ 1489      7400
+ 1490              	.LASF38:
+ 1491 0006 736F696C 		.ascii	"soilHumArray\000"
+ 1491      48756D41 
+ 1491      72726179 
+ 1491      00
+ 1492              	.LASF22:
+ 1493 0013 61766748 		.ascii	"avgHum\000"
+ 1493      756D00
+ 1494              	.LASF26:
+ 1495 001a 696E7075 		.ascii	"inputTemp\000"
+ 1495      7454656D 
+ 1495      7000
+ 1496              	.LASF37:
+ 1497 0024 68756D41 		.ascii	"humArrayPtr\000"
+ 1497      72726179 
+ 1497      50747200 
+ 1498              	.LASF4:
+ 1499 0030 73686F72 		.ascii	"short unsigned int\000"
+ 1499      7420756E 
+ 1499      7369676E 
+ 1499      65642069 
+ 1499      6E7400
+ 1500              	.LASF40:
+ 1501 0043 6C696768 		.ascii	"lightArray\000"
+ 1501      74417272 
+ 1501      617900
+ 1502              	.LASF29:
+ 1503 004e 696E7075 		.ascii	"inputSoilHum\000"
+ 1503      74536F69 
+ 1503      6C48756D 
+ 1503      00
+ 1504              	.LASF31:
+ 1505 005b 696E7075 		.ascii	"inputLight\000"
+ 1505      744C6967 
+ 1505      687400
+ 1506              	.LASF14:
+ 1507 0066 666C6F61 		.ascii	"float\000"
+ 1507      7400
+ 1508              	.LASF42:
+ 1509 006c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1509      4320342E 
+ 1509      382E3420 
+ 1509      32303134 
+ 1509      30353236 
+ 1510 009f 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1510      20726576 
+ 1510      6973696F 
+ 1510      6E203231 
+ 1510      31333538 
+ 1511 00d2 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1511      66756E63 
+ 1511      74696F6E 
+ 1511      2D736563 
+ 1511      74696F6E 
+ 1512              	.LASF2:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 31
+
+
+ 1513 00e8 756E7369 		.ascii	"unsigned char\000"
+ 1513      676E6564 
+ 1513      20636861 
+ 1513      7200
+ 1514              	.LASF12:
+ 1515 00f6 696E7431 		.ascii	"int16\000"
+ 1515      3600
+ 1516              	.LASF6:
+ 1517 00fc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1517      20756E73 
+ 1517      69676E65 
+ 1517      6420696E 
+ 1517      7400
+ 1518              	.LASF16:
+ 1519 010e 67657454 		.ascii	"getTemp_DSP\000"
+ 1519      656D705F 
+ 1519      44535000 
+ 1520              	.LASF13:
+ 1521 011a 696E7433 		.ascii	"int32\000"
+ 1521      3200
+ 1522              	.LASF18:
+ 1523 0120 67657453 		.ascii	"getSoilHum_DSP\000"
+ 1523      6F696C48 
+ 1523      756D5F44 
+ 1523      535000
+ 1524              	.LASF24:
+ 1525 012f 6176674C 		.ascii	"avgLight\000"
+ 1525      69676874 
+ 1525      00
+ 1526              	.LASF20:
+ 1527 0138 696E6974 		.ascii	"initDSP\000"
+ 1527      44535000 
+ 1528              	.LASF15:
+ 1529 0140 646F7562 		.ascii	"double\000"
+ 1529      6C6500
+ 1530              	.LASF30:
+ 1531 0147 736F696C 		.ascii	"soilHum\000"
+ 1531      48756D00 
+ 1532              	.LASF28:
+ 1533 014f 696E7075 		.ascii	"inputHum\000"
+ 1533      7448756D 
+ 1533      00
+ 1534              	.LASF17:
+ 1535 0158 67657448 		.ascii	"getHum_DSP\000"
+ 1535      756D5F44 
+ 1535      535000
+ 1536              	.LASF36:
+ 1537 0163 68756D41 		.ascii	"humArray\000"
+ 1537      72726179 
+ 1537      00
+ 1538              	.LASF0:
+ 1539 016c 756E7369 		.ascii	"unsigned int\000"
+ 1539      676E6564 
+ 1539      20696E74 
+ 1539      00
+ 1540              	.LASF27:
+ 1541 0179 74656D70 		.ascii	"temp\000"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 32
+
+
+ 1541      00
+ 1542              	.LASF8:
+ 1543 017e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1543      206C6F6E 
+ 1543      6720756E 
+ 1543      7369676E 
+ 1543      65642069 
+ 1544              	.LASF44:
+ 1545 0195 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 1545      73657273 
+ 1545      5C536E75 
+ 1545      666B696E 
+ 1545      5C446F63 
+ 1546 01c3 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 1546      5F4D6173 
+ 1546      7465725C 
+ 1546      50536F43 
+ 1546      5F4D6173 
+ 1547              	.LASF39:
+ 1548 01e1 736F696C 		.ascii	"soilHumPtr\000"
+ 1548      48756D50 
+ 1548      747200
+ 1549              	.LASF35:
+ 1550 01ec 74656D70 		.ascii	"tempArrayPtr\000"
+ 1550      41727261 
+ 1550      79507472 
+ 1550      00
+ 1551              	.LASF19:
+ 1552 01f9 6765744C 		.ascii	"getLight_DSP\000"
+ 1552      69676874 
+ 1552      5F445350 
+ 1552      00
+ 1553              	.LASF9:
+ 1554 0206 73697A65 		.ascii	"sizetype\000"
+ 1554      74797065 
+ 1554      00
+ 1555              	.LASF7:
+ 1556 020f 6C6F6E67 		.ascii	"long long int\000"
+ 1556      206C6F6E 
+ 1556      6720696E 
+ 1556      7400
+ 1557              	.LASF10:
+ 1558 021d 63686172 		.ascii	"char\000"
+ 1558      00
+ 1559              	.LASF25:
+ 1560 0222 61766753 		.ascii	"avgSoilHum\000"
+ 1560      6F696C48 
+ 1560      756D00
+ 1561              	.LASF23:
+ 1562 022d 696E6465 		.ascii	"index\000"
+ 1562      7800
+ 1563              	.LASF43:
+ 1564 0233 2E5C4453 		.ascii	".\\DSP_Class.c\000"
+ 1564      505F436C 
+ 1564      6173732E 
+ 1564      6300
+ 1565              	.LASF3:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccRgetXc.s 			page 33
+
+
+ 1566 0241 73686F72 		.ascii	"short int\000"
+ 1566      7420696E 
+ 1566      7400
+ 1567              	.LASF34:
+ 1568 024b 74656D70 		.ascii	"tempArray\000"
+ 1568      41727261 
+ 1568      7900
+ 1569              	.LASF11:
+ 1570 0255 75696E74 		.ascii	"uint8\000"
+ 1570      3800
+ 1571              	.LASF5:
+ 1572 025b 6C6F6E67 		.ascii	"long int\000"
+ 1572      20696E74 
+ 1572      00
+ 1573              	.LASF21:
+ 1574 0264 61766754 		.ascii	"avgTemp\000"
+ 1574      656D7000 
+ 1575              	.LASF1:
+ 1576 026c 7369676E 		.ascii	"signed char\000"
+ 1576      65642063 
+ 1576      68617200 
+ 1577              	.LASF33:
+ 1578 0278 72657475 		.ascii	"returnVal\000"
+ 1578      726E5661 
+ 1578      6C00
+ 1579              	.LASF41:
+ 1580 0282 6C696768 		.ascii	"lightArrayPtr\000"
+ 1580      74417272 
+ 1580      61795074 
+ 1580      7200
+ 1581              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

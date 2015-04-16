@@ -18,15 +18,13 @@ void initUART(void){
 }
 
 int8 respondTemp(uint8 temp){
-    if(1 <= temp && temp <= 200 )
-    {
+    if(1 <= temp && temp <= 200 ){
         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
         UART_UartPutChar('T');
         UART_UartPutChar(temp);
         return 0;
     }
-    else
-    {
+    else{
         // If temp isn't between 1 and 200(both inclusive) "XT" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('T');
@@ -35,15 +33,13 @@ int8 respondTemp(uint8 temp){
 }
 
 int8 respondHum(uint8 hum){
-    if(1 <= hum && hum <= 100 )
-    {
+    if(1 <= hum && hum <= 100 ){
         // If hum is between 1 and 100(both inclusive) "A" and hum is sent to DevKit8000
         UART_UartPutChar('A');
         UART_UartPutChar(hum);
         return 0;
     }
-    else
-    {
+    else{
         // If temp isn't between 1 and 100(both inclusive) "XA" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('A');
@@ -52,15 +48,13 @@ int8 respondHum(uint8 hum){
 }
 
 int8 respondLight(uint8 light){
-    if(1 <= light && light <= 100 )
-    {
+    if(1 <= light && light <= 100 ){
         // If light is between 1 and 100(both inclusive) "L" and light is sent to DevKit8000
         UART_UartPutChar('L');
         UART_UartPutChar(light);
         return 0;
     }
-    else
-    {
+    else{
 
         // If light isn't between 1 and 100(both inclusive) "XL" is sent to DevKit8000
         UART_UartPutChar('X');
@@ -70,16 +64,14 @@ int8 respondLight(uint8 light){
 }
 
 int8 respondSoilHum(uint8 index, uint8 soilHum){
-    if(1 <= soilHum && soilHum <= 10)
-    {
+    if(1 <= soilHum && soilHum <= 10){
         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent to DevKit8000
         UART_UartPutChar('S');
         UART_UartPutChar(index);
         UART_UartPutChar(soilHum);
         return 0;
     }
-    else
-    {
+    else{
         // If soilHum isn't between 1 and 10(both inclusive) "XS" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('S');
@@ -88,14 +80,12 @@ int8 respondSoilHum(uint8 index, uint8 soilHum){
 }
 
 int8 respondHeat(int8 heatStatus, uint8 onOff){
-    if(heatStatus == 0)
-    {
+    if(heatStatus == 0){
         // If heatStatus is 0 then onOff('H' or 'K') is sent to DevKit8000
         UART_UartPutChar(onOff);
         return 0;
     }
-    else
-    {
+    else{
         // If heatStatus isn't 0 then 'X' and onOff('H' or 'K') is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar(onOff);
@@ -104,14 +94,12 @@ int8 respondHeat(int8 heatStatus, uint8 onOff){
 }
 
 int8 respondWin(int8 winStatus){
-    if(winStatus == 0)
-    {
+    if(winStatus == 0){
         // If winStatus is 0 then 'W' is sent to DevKit8000
         UART_UartPutChar('W');
         return 0;
     }
-    else
-    {
+    else{
         // If heatStatus isn't 0 then "XW" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('W');
@@ -120,14 +108,12 @@ int8 respondWin(int8 winStatus){
 }
 
 int8 respondVent(int8 ventStatus){
-    if(ventStatus == 0)
-    {
+    if(ventStatus == 0){
         // If ventStatus is 0 then 'V' is sent to DevKit8000
         UART_UartPutChar('V');
         return 0;
     }
-    else
-    {
+    else{
         // If ventStatus isn't 0 then "XV" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('V');
@@ -136,14 +122,12 @@ int8 respondVent(int8 ventStatus){
 }
 
 int8 respondIrri(int8 irriStatus){
-    if(irriStatus == 0)
-    {
+    if(irriStatus == 0){
         // If irriStatus is 0 then 'F' is sent to DevKit8000
         UART_UartPutChar('F');
         return 0;
     }
-    else
-    {
+    else{
         // If irriStatus isn't 0 then "XF" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('F');

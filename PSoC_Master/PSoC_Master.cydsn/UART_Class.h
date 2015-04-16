@@ -13,7 +13,7 @@
 
 // Include files
 #include <project.h>
-    
+
 // Data members
 uint8 receivedCommand;
 

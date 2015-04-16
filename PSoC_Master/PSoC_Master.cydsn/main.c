@@ -26,11 +26,16 @@ int main(){
     initUART();
 
     CyGlobalIntEnable;      // Global interrupt enable
-
-    for(;;)
-    {
-
-    }
+    
+    //Clears screen and prints opening msg
+    UART_UartPutChar(27);       // ESC command
+    UART_UartPutString("[2J");    // clear screen command
+    UART_UartPutChar(27);
+    UART_UartPutString("[H");     // cursor to home command
+    UART_UartPutString("System initialized..\n\r");
+    
+    while(1);
+    
     return 0;
 }
 

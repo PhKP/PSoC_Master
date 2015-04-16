@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -17,27 +17,30 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.comm	tempArray,400,4
-  18              		.comm	tempArrayPtr,4,4
-  19              		.comm	humArray,400,4
-  20              		.comm	humArrayPtr,4,4
-  21              		.comm	soilHumArray,1200,4
-  22              		.comm	soilHumPtr,24,4
-  23              		.comm	lightArray,400,4
-  24              		.comm	lightArrayPtr,4,4
-  25              		.comm	temp,1,1
-  26              		.comm	hum,1,1
-  27              		.comm	soilHum,6,4
-  28              		.comm	light,1,1
-  29              		.section	.text.initDSP,"ax",%progbits
-  30              		.align	2
-  31              		.global	initDSP
-  32              		.code	16
-  33              		.thumb_func
-  34              		.type	initDSP, %function
-  35              	initDSP:
-  36              	.LFB33:
-  37              		.file 1 ".\\DSP_Class.c"
+  17              		.bss
+  18              	returnVal:
+  19 0000 00       		.space	1
+  20              		.comm	tempArray,400,4
+  21              		.comm	tempArrayPtr,4,4
+  22              		.comm	humArray,400,4
+  23              		.comm	humArrayPtr,4,4
+  24              		.comm	soilHumArray,1200,4
+  25              		.comm	soilHumPtr,24,4
+  26              		.comm	lightArray,400,4
+  27              		.comm	lightArrayPtr,4,4
+  28              		.comm	temp,1,1
+  29              		.comm	hum,1,1
+  30              		.comm	soilHum,6,4
+  31              		.comm	light,1,1
+  32              		.section	.text.initDSP,"ax",%progbits
+  33              		.align	2
+  34              		.global	initDSP
+  35              		.code	16
+  36              		.thumb_func
+  37              		.type	initDSP, %function
+  38              	initDSP:
+  39              	.LFB33:
+  40              		.file 1 ".\\DSP_Class.c"
    1:.\DSP_Class.c **** /* ========================================
    2:.\DSP_Class.c ****  * 
    3:.\DSP_Class.c ****  * AutoGreen - PSoC_Master
@@ -50,1430 +53,1915 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 1
   10:.\DSP_Class.c **** */
   11:.\DSP_Class.c **** 
   12:.\DSP_Class.c **** // Include files
-  13:.\DSP_Class.c **** #include "DSP_Class.h"
-  14:.\DSP_Class.c **** 
-  15:.\DSP_Class.c **** // Private data members
-  16:.\DSP_Class.c **** int32 tempArray[ARRAYSIZE];
-  17:.\DSP_Class.c **** int32* tempArrayPtr;
-  18:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
-  19:.\DSP_Class.c **** int32* humArrayPtr;
-  20:.\DSP_Class.c **** int16 soilHumArray[6][ARRAYSIZE];
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 2
+  13:.\DSP_Class.c **** #include <stdio.h>
+  14:.\DSP_Class.c **** #include "DSP_Class.h"
+  15:.\DSP_Class.c **** 
+  16:.\DSP_Class.c **** //Debug definitions!
+  17:.\DSP_Class.c **** #define BUF_SIZE 50
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 2
 
 
-  21:.\DSP_Class.c **** int16* soilHumPtr[6];
-  22:.\DSP_Class.c **** int32 lightArray[ARRAYSIZE];
-  23:.\DSP_Class.c **** int32* lightArrayPtr;
-  24:.\DSP_Class.c **** uint8 temp, hum, soilHum[6], light;
-  25:.\DSP_Class.c **** 
-  26:.\DSP_Class.c **** // Private prototypes
-  27:.\DSP_Class.c **** void avgTemp(void);
-  28:.\DSP_Class.c **** void avgHum(void);
-  29:.\DSP_Class.c **** void avgSoilHum(uint8 index);
-  30:.\DSP_Class.c **** void avgLight(void);
-  31:.\DSP_Class.c **** 
-  32:.\DSP_Class.c **** void initDSP(void){
-  38              		.loc 1 32 0
-  39              		.cfi_startproc
-  40 0000 80B5     		push	{r7, lr}
-  41              		.cfi_def_cfa_offset 8
-  42              		.cfi_offset 7, -8
-  43              		.cfi_offset 14, -4
-  44 0002 00AF     		add	r7, sp, #0
-  45              		.cfi_def_cfa_register 7
-  33:.\DSP_Class.c **** 
-  34:.\DSP_Class.c **** }
-  46              		.loc 1 34 0
-  47 0004 BD46     		mov	sp, r7
-  48              		@ sp needed
-  49 0006 80BD     		pop	{r7, pc}
-  50              		.cfi_endproc
-  51              	.LFE33:
-  52              		.size	initDSP, .-initDSP
-  53              		.section	.text.getTemp_DSP,"ax",%progbits
-  54              		.align	2
-  55              		.global	getTemp_DSP
-  56              		.code	16
-  57              		.thumb_func
-  58              		.type	getTemp_DSP, %function
-  59              	getTemp_DSP:
-  60              	.LFB34:
-  35:.\DSP_Class.c **** 
-  36:.\DSP_Class.c **** uint8 getTemp_DSP(void){
-  61              		.loc 1 36 0
-  62              		.cfi_startproc
-  63 0000 80B5     		push	{r7, lr}
-  64              		.cfi_def_cfa_offset 8
-  65              		.cfi_offset 7, -8
-  66              		.cfi_offset 14, -4
-  67 0002 00AF     		add	r7, sp, #0
-  68              		.cfi_def_cfa_register 7
-  37:.\DSP_Class.c **** return 0;
-  69              		.loc 1 37 0
-  70 0004 0023     		mov	r3, #0
-  38:.\DSP_Class.c **** }
-  71              		.loc 1 38 0
-  72 0006 181C     		mov	r0, r3
-  73 0008 BD46     		mov	sp, r7
-  74              		@ sp needed
-  75 000a 80BD     		pop	{r7, pc}
-  76              		.cfi_endproc
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 3
+  18:.\DSP_Class.c **** static uint8 returnVal = 0;
+  19:.\DSP_Class.c **** 
+  20:.\DSP_Class.c **** // Private data members
+  21:.\DSP_Class.c **** int32 tempArray[ARRAYSIZE];
+  22:.\DSP_Class.c **** int32* tempArrayPtr;
+  23:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
+  24:.\DSP_Class.c **** int32* humArrayPtr;
+  25:.\DSP_Class.c **** int16 soilHumArray[6][ARRAYSIZE];
+  26:.\DSP_Class.c **** int16* soilHumPtr[6];
+  27:.\DSP_Class.c **** int32 lightArray[ARRAYSIZE];
+  28:.\DSP_Class.c **** int32* lightArrayPtr;
+  29:.\DSP_Class.c **** uint8 temp, hum, soilHum[6], light;
+  30:.\DSP_Class.c **** 
+  31:.\DSP_Class.c **** // Private prototypes
+  32:.\DSP_Class.c **** void avgTemp(void);
+  33:.\DSP_Class.c **** void avgHum(void);
+  34:.\DSP_Class.c **** void avgSoilHum(uint8 index);
+  35:.\DSP_Class.c **** void avgLight(void);
+  36:.\DSP_Class.c **** 
+  37:.\DSP_Class.c **** void initDSP(void){
+  41              		.loc 1 37 0
+  42              		.cfi_startproc
+  43 0000 80B5     		push	{r7, lr}
+  44              		.cfi_def_cfa_offset 8
+  45              		.cfi_offset 7, -8
+  46              		.cfi_offset 14, -4
+  47 0002 00AF     		add	r7, sp, #0
+  48              		.cfi_def_cfa_register 7
+  38:.\DSP_Class.c **** 
+  39:.\DSP_Class.c **** }
+  49              		.loc 1 39 0
+  50 0004 BD46     		mov	sp, r7
+  51              		@ sp needed
+  52 0006 80BD     		pop	{r7, pc}
+  53              		.cfi_endproc
+  54              	.LFE33:
+  55              		.size	initDSP, .-initDSP
+  56              		.section	.rodata
+  57              		.align	2
+  58              	.LC1:
+  59 0000 67657454 		.ascii	"getTemp_DSP() called, returns %d\012\015\000"
+  59      656D705F 
+  59      44535028 
+  59      29206361 
+  59      6C6C6564 
+  60              		.section	.text.getTemp_DSP,"ax",%progbits
+  61              		.align	2
+  62              		.global	getTemp_DSP
+  63              		.code	16
+  64              		.thumb_func
+  65              		.type	getTemp_DSP, %function
+  66              	getTemp_DSP:
+  67              	.LFB34:
+  40:.\DSP_Class.c **** 
+  41:.\DSP_Class.c **** uint8 getTemp_DSP(void){
+  68              		.loc 1 41 0
+  69              		.cfi_startproc
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 3
 
 
-  77              	.LFE34:
-  78              		.size	getTemp_DSP, .-getTemp_DSP
-  79              		.section	.text.getHum_DSP,"ax",%progbits
-  80              		.align	2
-  81              		.global	getHum_DSP
-  82              		.code	16
-  83              		.thumb_func
-  84              		.type	getHum_DSP, %function
-  85              	getHum_DSP:
-  86              	.LFB35:
-  39:.\DSP_Class.c **** 
-  40:.\DSP_Class.c **** uint8 getHum_DSP(void){
-  87              		.loc 1 40 0
-  88              		.cfi_startproc
-  89 0000 80B5     		push	{r7, lr}
-  90              		.cfi_def_cfa_offset 8
-  91              		.cfi_offset 7, -8
-  92              		.cfi_offset 14, -4
-  93 0002 00AF     		add	r7, sp, #0
-  94              		.cfi_def_cfa_register 7
-  41:.\DSP_Class.c **** return 0;
-  95              		.loc 1 41 0
-  96 0004 0023     		mov	r3, #0
-  42:.\DSP_Class.c **** }
-  97              		.loc 1 42 0
-  98 0006 181C     		mov	r0, r3
-  99 0008 BD46     		mov	sp, r7
- 100              		@ sp needed
- 101 000a 80BD     		pop	{r7, pc}
- 102              		.cfi_endproc
- 103              	.LFE35:
- 104              		.size	getHum_DSP, .-getHum_DSP
- 105              		.section	.text.getSoilHum_DSP,"ax",%progbits
- 106              		.align	2
- 107              		.global	getSoilHum_DSP
- 108              		.code	16
- 109              		.thumb_func
- 110              		.type	getSoilHum_DSP, %function
- 111              	getSoilHum_DSP:
- 112              	.LFB36:
-  43:.\DSP_Class.c **** 
-  44:.\DSP_Class.c **** uint8 getSoilHum_DSP(uint8 index){
- 113              		.loc 1 44 0
- 114              		.cfi_startproc
- 115 0000 80B5     		push	{r7, lr}
- 116              		.cfi_def_cfa_offset 8
- 117              		.cfi_offset 7, -8
- 118              		.cfi_offset 14, -4
- 119 0002 84B0     		sub	sp, sp, #16
- 120              		.cfi_def_cfa_offset 24
- 121 0004 00AF     		add	r7, sp, #0
- 122              		.cfi_def_cfa_register 7
- 123 0006 021C     		mov	r2, r0
- 124 0008 FB1D     		add	r3, r7, #7
- 125 000a 1A70     		strb	r2, [r3]
-  45:.\DSP_Class.c ****     index = 0;
- 126              		.loc 1 45 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 4
+  70 0000 80B5     		push	{r7, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 7, -8
+  73              		.cfi_offset 14, -4
+  74 0002 8EB0     		sub	sp, sp, #56
+  75              		.cfi_def_cfa_offset 64
+  76 0004 00AF     		add	r7, sp, #0
+  77              		.cfi_def_cfa_register 7
+  42:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  43:.\DSP_Class.c ****     sprintf(buf, "getTemp_DSP() called, returns %d\n\r", returnVal);
+  78              		.loc 1 43 0
+  79 0006 0B4B     		ldr	r3, .L4
+  80 0008 1B78     		ldrb	r3, [r3]
+  81 000a 391D     		add	r1, r7, #4
+  82 000c 0A4A     		ldr	r2, .L4+4
+  83 000e 081C     		mov	r0, r1
+  84 0010 111C     		mov	r1, r2
+  85 0012 1A1C     		mov	r2, r3
+  86 0014 FFF7FEFF 		bl	sprintf
+  44:.\DSP_Class.c ****     UART_UartPutString(buf);
+  87              		.loc 1 44 0
+  88 0018 3B1D     		add	r3, r7, #4
+  89 001a 181C     		mov	r0, r3
+  90 001c FFF7FEFF 		bl	UART_UartPutString
+  45:.\DSP_Class.c ****     return returnVal++;
+  91              		.loc 1 45 0
+  92 0020 044B     		ldr	r3, .L4
+  93 0022 1B78     		ldrb	r3, [r3]
+  94 0024 5A1C     		add	r2, r3, #1
+  95 0026 D1B2     		uxtb	r1, r2
+  96 0028 024A     		ldr	r2, .L4
+  97 002a 1170     		strb	r1, [r2]
+  46:.\DSP_Class.c **** }
+  98              		.loc 1 46 0
+  99 002c 181C     		mov	r0, r3
+ 100 002e BD46     		mov	sp, r7
+ 101 0030 0EB0     		add	sp, sp, #56
+ 102              		@ sp needed
+ 103 0032 80BD     		pop	{r7, pc}
+ 104              	.L5:
+ 105              		.align	2
+ 106              	.L4:
+ 107 0034 00000000 		.word	returnVal
+ 108 0038 00000000 		.word	.LC1
+ 109              		.cfi_endproc
+ 110              	.LFE34:
+ 111              		.size	getTemp_DSP, .-getTemp_DSP
+ 112              		.section	.rodata
+ 113 0023 00       		.align	2
+ 114              	.LC4:
+ 115 0024 67657448 		.ascii	"getHum_DSP() called, returns %d\012\015\000"
+ 115      756D5F44 
+ 115      53502829 
+ 115      2063616C 
+ 115      6C65642C 
+ 116              		.section	.text.getHum_DSP,"ax",%progbits
+ 117              		.align	2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 4
 
 
- 127 000c 3B1C     		mov	r3, r7
- 128 000e 0F33     		add	r3, r3, #15
- 129 0010 0022     		mov	r2, #0
- 130 0012 1A70     		strb	r2, [r3]
-  46:.\DSP_Class.c ****     return 0;
- 131              		.loc 1 46 0
- 132 0014 0023     		mov	r3, #0
-  47:.\DSP_Class.c **** }
- 133              		.loc 1 47 0
- 134 0016 181C     		mov	r0, r3
- 135 0018 BD46     		mov	sp, r7
- 136 001a 04B0     		add	sp, sp, #16
- 137              		@ sp needed
- 138 001c 80BD     		pop	{r7, pc}
- 139              		.cfi_endproc
- 140              	.LFE36:
- 141              		.size	getSoilHum_DSP, .-getSoilHum_DSP
- 142 001e C046     		.section	.text.getLight_DSP,"ax",%progbits
- 143              		.align	2
- 144              		.global	getLight_DSP
- 145              		.code	16
- 146              		.thumb_func
- 147              		.type	getLight_DSP, %function
- 148              	getLight_DSP:
- 149              	.LFB37:
-  48:.\DSP_Class.c **** 
-  49:.\DSP_Class.c **** uint8 getLight_DSP(void){
- 150              		.loc 1 49 0
- 151              		.cfi_startproc
- 152 0000 80B5     		push	{r7, lr}
- 153              		.cfi_def_cfa_offset 8
- 154              		.cfi_offset 7, -8
- 155              		.cfi_offset 14, -4
- 156 0002 00AF     		add	r7, sp, #0
- 157              		.cfi_def_cfa_register 7
-  50:.\DSP_Class.c **** return 0;
- 158              		.loc 1 50 0
- 159 0004 0023     		mov	r3, #0
-  51:.\DSP_Class.c **** }
- 160              		.loc 1 51 0
- 161 0006 181C     		mov	r0, r3
- 162 0008 BD46     		mov	sp, r7
- 163              		@ sp needed
- 164 000a 80BD     		pop	{r7, pc}
- 165              		.cfi_endproc
- 166              	.LFE37:
- 167              		.size	getLight_DSP, .-getLight_DSP
- 168              		.section	.text.avgTemp,"ax",%progbits
- 169              		.align	2
- 170              		.global	avgTemp
- 171              		.code	16
- 172              		.thumb_func
- 173              		.type	avgTemp, %function
- 174              	avgTemp:
- 175              	.LFB38:
-  52:.\DSP_Class.c **** 
-  53:.\DSP_Class.c **** void avgTemp(void){
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 5
+ 118              		.global	getHum_DSP
+ 119              		.code	16
+ 120              		.thumb_func
+ 121              		.type	getHum_DSP, %function
+ 122              	getHum_DSP:
+ 123              	.LFB35:
+  47:.\DSP_Class.c **** 
+  48:.\DSP_Class.c **** uint8 getHum_DSP(void){
+ 124              		.loc 1 48 0
+ 125              		.cfi_startproc
+ 126 0000 80B5     		push	{r7, lr}
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 7, -8
+ 129              		.cfi_offset 14, -4
+ 130 0002 8EB0     		sub	sp, sp, #56
+ 131              		.cfi_def_cfa_offset 64
+ 132 0004 00AF     		add	r7, sp, #0
+ 133              		.cfi_def_cfa_register 7
+  49:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  50:.\DSP_Class.c ****     sprintf(buf, "getHum_DSP() called, returns %d\n\r", returnVal);
+ 134              		.loc 1 50 0
+ 135 0006 094B     		ldr	r3, .L8
+ 136 0008 1B78     		ldrb	r3, [r3]
+ 137 000a 391D     		add	r1, r7, #4
+ 138 000c 084A     		ldr	r2, .L8+4
+ 139 000e 081C     		mov	r0, r1
+ 140 0010 111C     		mov	r1, r2
+ 141 0012 1A1C     		mov	r2, r3
+ 142 0014 FFF7FEFF 		bl	sprintf
+  51:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 143              		.loc 1 51 0
+ 144 0018 3B1D     		add	r3, r7, #4
+ 145 001a 181C     		mov	r0, r3
+ 146 001c FFF7FEFF 		bl	UART_UartPutString
+  52:.\DSP_Class.c ****     return returnVal;
+ 147              		.loc 1 52 0
+ 148 0020 024B     		ldr	r3, .L8
+ 149 0022 1B78     		ldrb	r3, [r3]
+  53:.\DSP_Class.c **** }
+ 150              		.loc 1 53 0
+ 151 0024 181C     		mov	r0, r3
+ 152 0026 BD46     		mov	sp, r7
+ 153 0028 0EB0     		add	sp, sp, #56
+ 154              		@ sp needed
+ 155 002a 80BD     		pop	{r7, pc}
+ 156              	.L9:
+ 157              		.align	2
+ 158              	.L8:
+ 159 002c 00000000 		.word	returnVal
+ 160 0030 24000000 		.word	.LC4
+ 161              		.cfi_endproc
+ 162              	.LFE35:
+ 163              		.size	getHum_DSP, .-getHum_DSP
+ 164              		.section	.rodata
+ 165 0046 0000     		.align	2
+ 166              	.LC7:
+ 167 0048 67657453 		.ascii	"getSoilHum_DSP() called, index = %d, returns %d\012"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 5
 
 
- 176              		.loc 1 53 0
- 177              		.cfi_startproc
- 178 0000 80B5     		push	{r7, lr}
- 179              		.cfi_def_cfa_offset 8
- 180              		.cfi_offset 7, -8
- 181              		.cfi_offset 14, -4
- 182 0002 00AF     		add	r7, sp, #0
- 183              		.cfi_def_cfa_register 7
+ 167      6F696C48 
+ 167      756D5F44 
+ 167      53502829 
+ 167      2063616C 
+ 168 0078 0D00     		.ascii	"\015\000"
+ 169              		.section	.text.getSoilHum_DSP,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	getSoilHum_DSP
+ 172              		.code	16
+ 173              		.thumb_func
+ 174              		.type	getSoilHum_DSP, %function
+ 175              	getSoilHum_DSP:
+ 176              	.LFB36:
   54:.\DSP_Class.c **** 
-  55:.\DSP_Class.c **** }
- 184              		.loc 1 55 0
- 185 0004 BD46     		mov	sp, r7
- 186              		@ sp needed
- 187 0006 80BD     		pop	{r7, pc}
- 188              		.cfi_endproc
- 189              	.LFE38:
- 190              		.size	avgTemp, .-avgTemp
- 191              		.section	.text.avgHum,"ax",%progbits
- 192              		.align	2
- 193              		.global	avgHum
- 194              		.code	16
- 195              		.thumb_func
- 196              		.type	avgHum, %function
- 197              	avgHum:
- 198              	.LFB39:
-  56:.\DSP_Class.c **** 
-  57:.\DSP_Class.c **** void avgHum(void){
- 199              		.loc 1 57 0
- 200              		.cfi_startproc
- 201 0000 80B5     		push	{r7, lr}
- 202              		.cfi_def_cfa_offset 8
- 203              		.cfi_offset 7, -8
- 204              		.cfi_offset 14, -4
- 205 0002 00AF     		add	r7, sp, #0
- 206              		.cfi_def_cfa_register 7
-  58:.\DSP_Class.c **** 
-  59:.\DSP_Class.c **** }
- 207              		.loc 1 59 0
- 208 0004 BD46     		mov	sp, r7
- 209              		@ sp needed
- 210 0006 80BD     		pop	{r7, pc}
- 211              		.cfi_endproc
- 212              	.LFE39:
- 213              		.size	avgHum, .-avgHum
- 214              		.section	.text.avgSoilHum,"ax",%progbits
- 215              		.align	2
- 216              		.global	avgSoilHum
- 217              		.code	16
- 218              		.thumb_func
- 219              		.type	avgSoilHum, %function
- 220              	avgSoilHum:
- 221              	.LFB40:
-  60:.\DSP_Class.c **** 
-  61:.\DSP_Class.c **** void avgSoilHum(uint8 index){
- 222              		.loc 1 61 0
- 223              		.cfi_startproc
- 224 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 6
+  55:.\DSP_Class.c **** uint8 getSoilHum_DSP(uint8 index){
+ 177              		.loc 1 55 0
+ 178              		.cfi_startproc
+ 179 0000 80B5     		push	{r7, lr}
+ 180              		.cfi_def_cfa_offset 8
+ 181              		.cfi_offset 7, -8
+ 182              		.cfi_offset 14, -4
+ 183 0002 90B0     		sub	sp, sp, #64
+ 184              		.cfi_def_cfa_offset 72
+ 185 0004 00AF     		add	r7, sp, #0
+ 186              		.cfi_def_cfa_register 7
+ 187 0006 021C     		mov	r2, r0
+ 188 0008 FB1D     		add	r3, r7, #7
+ 189 000a 1A70     		strb	r2, [r3]
+  56:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  57:.\DSP_Class.c ****     sprintf(buf, "getSoilHum_DSP() called, index = %d, returns %d\n\r", index, returnVal);
+ 190              		.loc 1 57 0
+ 191 000c FB1D     		add	r3, r7, #7
+ 192 000e 1A78     		ldrb	r2, [r3]
+ 193 0010 084B     		ldr	r3, .L12
+ 194 0012 1B78     		ldrb	r3, [r3]
+ 195 0014 381C     		mov	r0, r7
+ 196 0016 0C30     		add	r0, r0, #12
+ 197 0018 0749     		ldr	r1, .L12+4
+ 198 001a FFF7FEFF 		bl	sprintf
+  58:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 199              		.loc 1 58 0
+ 200 001e 3B1C     		mov	r3, r7
+ 201 0020 0C33     		add	r3, r3, #12
+ 202 0022 181C     		mov	r0, r3
+ 203 0024 FFF7FEFF 		bl	UART_UartPutString
+  59:.\DSP_Class.c ****     return returnVal;
+ 204              		.loc 1 59 0
+ 205 0028 024B     		ldr	r3, .L12
+ 206 002a 1B78     		ldrb	r3, [r3]
+  60:.\DSP_Class.c **** }
+ 207              		.loc 1 60 0
+ 208 002c 181C     		mov	r0, r3
+ 209 002e BD46     		mov	sp, r7
+ 210 0030 10B0     		add	sp, sp, #64
+ 211              		@ sp needed
+ 212 0032 80BD     		pop	{r7, pc}
+ 213              	.L13:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 6
 
 
- 225              		.cfi_def_cfa_offset 8
- 226              		.cfi_offset 7, -8
- 227              		.cfi_offset 14, -4
- 228 0002 84B0     		sub	sp, sp, #16
- 229              		.cfi_def_cfa_offset 24
- 230 0004 00AF     		add	r7, sp, #0
- 231              		.cfi_def_cfa_register 7
- 232 0006 021C     		mov	r2, r0
- 233 0008 FB1D     		add	r3, r7, #7
- 234 000a 1A70     		strb	r2, [r3]
-  62:.\DSP_Class.c ****     index = 0;
- 235              		.loc 1 62 0
- 236 000c 3B1C     		mov	r3, r7
- 237 000e 0F33     		add	r3, r3, #15
- 238 0010 0022     		mov	r2, #0
- 239 0012 1A70     		strb	r2, [r3]
-  63:.\DSP_Class.c **** }
- 240              		.loc 1 63 0
- 241 0014 BD46     		mov	sp, r7
- 242 0016 04B0     		add	sp, sp, #16
- 243              		@ sp needed
- 244 0018 80BD     		pop	{r7, pc}
- 245              		.cfi_endproc
- 246              	.LFE40:
- 247              		.size	avgSoilHum, .-avgSoilHum
- 248 001a C046     		.section	.text.avgLight,"ax",%progbits
- 249              		.align	2
- 250              		.global	avgLight
- 251              		.code	16
- 252              		.thumb_func
- 253              		.type	avgLight, %function
- 254              	avgLight:
- 255              	.LFB41:
-  64:.\DSP_Class.c **** 
-  65:.\DSP_Class.c **** void avgLight(void){
- 256              		.loc 1 65 0
- 257              		.cfi_startproc
- 258 0000 80B5     		push	{r7, lr}
- 259              		.cfi_def_cfa_offset 8
- 260              		.cfi_offset 7, -8
- 261              		.cfi_offset 14, -4
- 262 0002 00AF     		add	r7, sp, #0
- 263              		.cfi_def_cfa_register 7
-  66:.\DSP_Class.c **** 
+ 214              		.align	2
+ 215              	.L12:
+ 216 0034 00000000 		.word	returnVal
+ 217 0038 48000000 		.word	.LC7
+ 218              		.cfi_endproc
+ 219              	.LFE36:
+ 220              		.size	getSoilHum_DSP, .-getSoilHum_DSP
+ 221              		.section	.rodata
+ 222 007a 0000     		.align	2
+ 223              	.LC10:
+ 224 007c 6765744C 		.ascii	"getLight_DSP() called, returns %d\012\015\000"
+ 224      69676874 
+ 224      5F445350 
+ 224      28292063 
+ 224      616C6C65 
+ 225              		.section	.text.getLight_DSP,"ax",%progbits
+ 226              		.align	2
+ 227              		.global	getLight_DSP
+ 228              		.code	16
+ 229              		.thumb_func
+ 230              		.type	getLight_DSP, %function
+ 231              	getLight_DSP:
+ 232              	.LFB37:
+  61:.\DSP_Class.c **** 
+  62:.\DSP_Class.c **** uint8 getLight_DSP(void){
+ 233              		.loc 1 62 0
+ 234              		.cfi_startproc
+ 235 0000 80B5     		push	{r7, lr}
+ 236              		.cfi_def_cfa_offset 8
+ 237              		.cfi_offset 7, -8
+ 238              		.cfi_offset 14, -4
+ 239 0002 8EB0     		sub	sp, sp, #56
+ 240              		.cfi_def_cfa_offset 64
+ 241 0004 00AF     		add	r7, sp, #0
+ 242              		.cfi_def_cfa_register 7
+  63:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  64:.\DSP_Class.c ****     sprintf(buf, "getLight_DSP() called, returns %d\n\r", returnVal);
+ 243              		.loc 1 64 0
+ 244 0006 094B     		ldr	r3, .L16
+ 245 0008 1B78     		ldrb	r3, [r3]
+ 246 000a 391D     		add	r1, r7, #4
+ 247 000c 084A     		ldr	r2, .L16+4
+ 248 000e 081C     		mov	r0, r1
+ 249 0010 111C     		mov	r1, r2
+ 250 0012 1A1C     		mov	r2, r3
+ 251 0014 FFF7FEFF 		bl	sprintf
+  65:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 252              		.loc 1 65 0
+ 253 0018 3B1D     		add	r3, r7, #4
+ 254 001a 181C     		mov	r0, r3
+ 255 001c FFF7FEFF 		bl	UART_UartPutString
+  66:.\DSP_Class.c ****     return returnVal;
+ 256              		.loc 1 66 0
+ 257 0020 024B     		ldr	r3, .L16
+ 258 0022 1B78     		ldrb	r3, [r3]
   67:.\DSP_Class.c **** }
- 264              		.loc 1 67 0
- 265 0004 BD46     		mov	sp, r7
- 266              		@ sp needed
- 267 0006 80BD     		pop	{r7, pc}
- 268              		.cfi_endproc
- 269              	.LFE41:
- 270              		.size	avgLight, .-avgLight
- 271              		.section	.text.inputTemp,"ax",%progbits
- 272              		.align	2
- 273              		.global	inputTemp
- 274              		.code	16
- 275              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 7
+ 259              		.loc 1 67 0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 7
 
 
- 276              		.type	inputTemp, %function
- 277              	inputTemp:
- 278              	.LFB42:
+ 260 0024 181C     		mov	r0, r3
+ 261 0026 BD46     		mov	sp, r7
+ 262 0028 0EB0     		add	sp, sp, #56
+ 263              		@ sp needed
+ 264 002a 80BD     		pop	{r7, pc}
+ 265              	.L17:
+ 266              		.align	2
+ 267              	.L16:
+ 268 002c 00000000 		.word	returnVal
+ 269 0030 7C000000 		.word	.LC10
+ 270              		.cfi_endproc
+ 271              	.LFE37:
+ 272              		.size	getLight_DSP, .-getLight_DSP
+ 273              		.section	.rodata
+ 274              		.align	2
+ 275              	.LC12:
+ 276 00a0 61766754 		.ascii	"avgTemp called\012\015\000"
+ 276      656D7020 
+ 276      63616C6C 
+ 276      65640A0D 
+ 276      00
+ 277              		.section	.text.avgTemp,"ax",%progbits
+ 278              		.align	2
+ 279              		.global	avgTemp
+ 280              		.code	16
+ 281              		.thumb_func
+ 282              		.type	avgTemp, %function
+ 283              	avgTemp:
+ 284              	.LFB38:
   68:.\DSP_Class.c **** 
-  69:.\DSP_Class.c **** void inputTemp(int32* temp){
- 279              		.loc 1 69 0
- 280              		.cfi_startproc
- 281 0000 80B5     		push	{r7, lr}
- 282              		.cfi_def_cfa_offset 8
- 283              		.cfi_offset 7, -8
- 284              		.cfi_offset 14, -4
- 285 0002 82B0     		sub	sp, sp, #8
- 286              		.cfi_def_cfa_offset 16
- 287 0004 00AF     		add	r7, sp, #0
- 288              		.cfi_def_cfa_register 7
- 289 0006 7860     		str	r0, [r7, #4]
-  70:.\DSP_Class.c ****     *temp = 0;
- 290              		.loc 1 70 0
- 291 0008 7B68     		ldr	r3, [r7, #4]
- 292 000a 0022     		mov	r2, #0
- 293 000c 1A60     		str	r2, [r3]
+  69:.\DSP_Class.c **** void avgTemp(void){
+ 285              		.loc 1 69 0
+ 286              		.cfi_startproc
+ 287 0000 80B5     		push	{r7, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 7, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 00AF     		add	r7, sp, #0
+ 292              		.cfi_def_cfa_register 7
+  70:.\DSP_Class.c ****     UART_UartPutString("avgTemp called\n\r");
+ 293              		.loc 1 70 0
+ 294 0004 024B     		ldr	r3, .L19
+ 295 0006 181C     		mov	r0, r3
+ 296 0008 FFF7FEFF 		bl	UART_UartPutString
   71:.\DSP_Class.c **** }
- 294              		.loc 1 71 0
- 295 000e BD46     		mov	sp, r7
- 296 0010 02B0     		add	sp, sp, #8
- 297              		@ sp needed
- 298 0012 80BD     		pop	{r7, pc}
- 299              		.cfi_endproc
- 300              	.LFE42:
- 301              		.size	inputTemp, .-inputTemp
- 302              		.section	.text.inputHum,"ax",%progbits
- 303              		.align	2
- 304              		.global	inputHum
- 305              		.code	16
- 306              		.thumb_func
- 307              		.type	inputHum, %function
- 308              	inputHum:
- 309              	.LFB43:
+ 297              		.loc 1 71 0
+ 298 000c BD46     		mov	sp, r7
+ 299              		@ sp needed
+ 300 000e 80BD     		pop	{r7, pc}
+ 301              	.L20:
+ 302              		.align	2
+ 303              	.L19:
+ 304 0010 A0000000 		.word	.LC12
+ 305              		.cfi_endproc
+ 306              	.LFE38:
+ 307              		.size	avgTemp, .-avgTemp
+ 308              		.section	.rodata
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 8
+
+
+ 309 00b1 000000   		.align	2
+ 310              	.LC14:
+ 311 00b4 61766748 		.ascii	"avgHum called\012\015\000"
+ 311      756D2063 
+ 311      616C6C65 
+ 311      640A0D00 
+ 312              		.section	.text.avgHum,"ax",%progbits
+ 313              		.align	2
+ 314              		.global	avgHum
+ 315              		.code	16
+ 316              		.thumb_func
+ 317              		.type	avgHum, %function
+ 318              	avgHum:
+ 319              	.LFB39:
   72:.\DSP_Class.c **** 
-  73:.\DSP_Class.c **** void inputHum(int32* hum){
- 310              		.loc 1 73 0
- 311              		.cfi_startproc
- 312 0000 80B5     		push	{r7, lr}
- 313              		.cfi_def_cfa_offset 8
- 314              		.cfi_offset 7, -8
- 315              		.cfi_offset 14, -4
- 316 0002 82B0     		sub	sp, sp, #8
- 317              		.cfi_def_cfa_offset 16
- 318 0004 00AF     		add	r7, sp, #0
- 319              		.cfi_def_cfa_register 7
- 320 0006 7860     		str	r0, [r7, #4]
-  74:.\DSP_Class.c ****     *hum = 0;
- 321              		.loc 1 74 0
- 322 0008 7B68     		ldr	r3, [r7, #4]
- 323 000a 0022     		mov	r2, #0
- 324 000c 1A60     		str	r2, [r3]
+  73:.\DSP_Class.c **** void avgHum(void){
+ 320              		.loc 1 73 0
+ 321              		.cfi_startproc
+ 322 0000 80B5     		push	{r7, lr}
+ 323              		.cfi_def_cfa_offset 8
+ 324              		.cfi_offset 7, -8
+ 325              		.cfi_offset 14, -4
+ 326 0002 00AF     		add	r7, sp, #0
+ 327              		.cfi_def_cfa_register 7
+  74:.\DSP_Class.c ****     UART_UartPutString("avgHum called\n\r");
+ 328              		.loc 1 74 0
+ 329 0004 024B     		ldr	r3, .L22
+ 330 0006 181C     		mov	r0, r3
+ 331 0008 FFF7FEFF 		bl	UART_UartPutString
   75:.\DSP_Class.c **** }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 8
+ 332              		.loc 1 75 0
+ 333 000c BD46     		mov	sp, r7
+ 334              		@ sp needed
+ 335 000e 80BD     		pop	{r7, pc}
+ 336              	.L23:
+ 337              		.align	2
+ 338              	.L22:
+ 339 0010 B4000000 		.word	.LC14
+ 340              		.cfi_endproc
+ 341              	.LFE39:
+ 342              		.size	avgHum, .-avgHum
+ 343              		.section	.rodata
+ 344              		.align	2
+ 345              	.LC16:
+ 346 00c4 61766753 		.ascii	"avgSoilHum() called, index =  %d\012\015\000"
+ 346      6F696C48 
+ 346      756D2829 
+ 346      2063616C 
+ 346      6C65642C 
+ 347              		.section	.text.avgSoilHum,"ax",%progbits
+ 348              		.align	2
+ 349              		.global	avgSoilHum
+ 350              		.code	16
+ 351              		.thumb_func
+ 352              		.type	avgSoilHum, %function
+ 353              	avgSoilHum:
+ 354              	.LFB40:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 9
 
 
- 325              		.loc 1 75 0
- 326 000e BD46     		mov	sp, r7
- 327 0010 02B0     		add	sp, sp, #8
- 328              		@ sp needed
- 329 0012 80BD     		pop	{r7, pc}
- 330              		.cfi_endproc
- 331              	.LFE43:
- 332              		.size	inputHum, .-inputHum
- 333              		.section	.text.inputSoilHum,"ax",%progbits
- 334              		.align	2
- 335              		.global	inputSoilHum
- 336              		.code	16
- 337              		.thumb_func
- 338              		.type	inputSoilHum, %function
- 339              	inputSoilHum:
- 340              	.LFB44:
   76:.\DSP_Class.c **** 
-  77:.\DSP_Class.c **** void inputSoilHum(uint8 index, int16* soilHum){
- 341              		.loc 1 77 0
- 342              		.cfi_startproc
- 343 0000 80B5     		push	{r7, lr}
- 344              		.cfi_def_cfa_offset 8
- 345              		.cfi_offset 7, -8
- 346              		.cfi_offset 14, -4
- 347 0002 84B0     		sub	sp, sp, #16
- 348              		.cfi_def_cfa_offset 24
- 349 0004 00AF     		add	r7, sp, #0
- 350              		.cfi_def_cfa_register 7
- 351 0006 021C     		mov	r2, r0
- 352 0008 3960     		str	r1, [r7]
- 353 000a FB1D     		add	r3, r7, #7
- 354 000c 1A70     		strb	r2, [r3]
-  78:.\DSP_Class.c ****     index = 0;
- 355              		.loc 1 78 0
- 356 000e 3B1C     		mov	r3, r7
- 357 0010 0F33     		add	r3, r3, #15
- 358 0012 0022     		mov	r2, #0
- 359 0014 1A70     		strb	r2, [r3]
-  79:.\DSP_Class.c ****     *soilHum = 0;
- 360              		.loc 1 79 0
- 361 0016 3B68     		ldr	r3, [r7]
- 362 0018 0022     		mov	r2, #0
- 363 001a 1A80     		strh	r2, [r3]
-  80:.\DSP_Class.c **** }
- 364              		.loc 1 80 0
- 365 001c BD46     		mov	sp, r7
- 366 001e 04B0     		add	sp, sp, #16
- 367              		@ sp needed
- 368 0020 80BD     		pop	{r7, pc}
- 369              		.cfi_endproc
- 370              	.LFE44:
- 371              		.size	inputSoilHum, .-inputSoilHum
- 372 0022 C046     		.section	.text.inputLight,"ax",%progbits
- 373              		.align	2
- 374              		.global	inputLight
- 375              		.code	16
- 376              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 9
+  77:.\DSP_Class.c **** void avgSoilHum(uint8 index){
+ 355              		.loc 1 77 0
+ 356              		.cfi_startproc
+ 357 0000 80B5     		push	{r7, lr}
+ 358              		.cfi_def_cfa_offset 8
+ 359              		.cfi_offset 7, -8
+ 360              		.cfi_offset 14, -4
+ 361 0002 90B0     		sub	sp, sp, #64
+ 362              		.cfi_def_cfa_offset 72
+ 363 0004 00AF     		add	r7, sp, #0
+ 364              		.cfi_def_cfa_register 7
+ 365 0006 021C     		mov	r2, r0
+ 366 0008 FB1D     		add	r3, r7, #7
+ 367 000a 1A70     		strb	r2, [r3]
+  78:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  79:.\DSP_Class.c ****     sprintf(buf, "avgSoilHum() called, index =  %d\n\r", index);
+ 368              		.loc 1 79 0
+ 369 000c FB1D     		add	r3, r7, #7
+ 370 000e 1B78     		ldrb	r3, [r3]
+ 371 0010 391C     		mov	r1, r7
+ 372 0012 0C31     		add	r1, r1, #12
+ 373 0014 064A     		ldr	r2, .L25
+ 374 0016 081C     		mov	r0, r1
+ 375 0018 111C     		mov	r1, r2
+ 376 001a 1A1C     		mov	r2, r3
+ 377 001c FFF7FEFF 		bl	sprintf
+  80:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 378              		.loc 1 80 0
+ 379 0020 3B1C     		mov	r3, r7
+ 380 0022 0C33     		add	r3, r3, #12
+ 381 0024 181C     		mov	r0, r3
+ 382 0026 FFF7FEFF 		bl	UART_UartPutString
+  81:.\DSP_Class.c **** }
+ 383              		.loc 1 81 0
+ 384 002a BD46     		mov	sp, r7
+ 385 002c 10B0     		add	sp, sp, #64
+ 386              		@ sp needed
+ 387 002e 80BD     		pop	{r7, pc}
+ 388              	.L26:
+ 389              		.align	2
+ 390              	.L25:
+ 391 0030 C4000000 		.word	.LC16
+ 392              		.cfi_endproc
+ 393              	.LFE40:
+ 394              		.size	avgSoilHum, .-avgSoilHum
+ 395              		.section	.rodata
+ 396 00e7 00       		.align	2
+ 397              	.LC18:
+ 398 00e8 6176674C 		.ascii	"avgLight called\012\015\000"
+ 398      69676874 
+ 398      2063616C 
+ 398      6C65640A 
+ 398      0D00
+ 399              		.section	.text.avgLight,"ax",%progbits
+ 400              		.align	2
+ 401              		.global	avgLight
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 10
 
 
- 377              		.type	inputLight, %function
- 378              	inputLight:
- 379              	.LFB45:
-  81:.\DSP_Class.c **** 
-  82:.\DSP_Class.c **** void inputLight(int32* light){
- 380              		.loc 1 82 0
- 381              		.cfi_startproc
- 382 0000 80B5     		push	{r7, lr}
- 383              		.cfi_def_cfa_offset 8
- 384              		.cfi_offset 7, -8
- 385              		.cfi_offset 14, -4
- 386 0002 82B0     		sub	sp, sp, #8
- 387              		.cfi_def_cfa_offset 16
- 388 0004 00AF     		add	r7, sp, #0
- 389              		.cfi_def_cfa_register 7
- 390 0006 7860     		str	r0, [r7, #4]
-  83:.\DSP_Class.c ****     *light = 0;
- 391              		.loc 1 83 0
- 392 0008 7B68     		ldr	r3, [r7, #4]
- 393 000a 0022     		mov	r2, #0
- 394 000c 1A60     		str	r2, [r3]
-  84:.\DSP_Class.c **** }
- 395              		.loc 1 84 0
- 396 000e BD46     		mov	sp, r7
- 397 0010 02B0     		add	sp, sp, #8
- 398              		@ sp needed
- 399 0012 80BD     		pop	{r7, pc}
- 400              		.cfi_endproc
- 401              	.LFE45:
- 402              		.size	inputLight, .-inputLight
- 403              		.text
- 404              	.Letext0:
- 405              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 406              		.section	.debug_info,"",%progbits
- 407              	.Ldebug_info0:
- 408 0000 30030000 		.4byte	0x330
- 409 0004 0400     		.2byte	0x4
- 410 0006 00000000 		.4byte	.Ldebug_abbrev0
- 411 000a 04       		.byte	0x4
- 412 000b 01       		.uleb128 0x1
- 413 000c 6C000000 		.4byte	.LASF40
- 414 0010 01       		.byte	0x1
- 415 0011 31020000 		.4byte	.LASF41
- 416 0015 F6000000 		.4byte	.LASF42
- 417 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 418 001d 00000000 		.4byte	0
- 419 0021 00000000 		.4byte	.Ldebug_line0
- 420 0025 02       		.uleb128 0x2
- 421 0026 01       		.byte	0x1
- 422 0027 06       		.byte	0x6
- 423 0028 6A020000 		.4byte	.LASF0
- 424 002c 02       		.uleb128 0x2
- 425 002d 01       		.byte	0x1
- 426 002e 08       		.byte	0x8
- 427 002f E8000000 		.4byte	.LASF1
- 428 0033 02       		.uleb128 0x2
- 429 0034 02       		.byte	0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 10
+ 402              		.code	16
+ 403              		.thumb_func
+ 404              		.type	avgLight, %function
+ 405              	avgLight:
+ 406              	.LFB41:
+  82:.\DSP_Class.c **** 
+  83:.\DSP_Class.c **** void avgLight(void){
+ 407              		.loc 1 83 0
+ 408              		.cfi_startproc
+ 409 0000 80B5     		push	{r7, lr}
+ 410              		.cfi_def_cfa_offset 8
+ 411              		.cfi_offset 7, -8
+ 412              		.cfi_offset 14, -4
+ 413 0002 00AF     		add	r7, sp, #0
+ 414              		.cfi_def_cfa_register 7
+  84:.\DSP_Class.c ****     UART_UartPutString("avgLight called\n\r");
+ 415              		.loc 1 84 0
+ 416 0004 024B     		ldr	r3, .L28
+ 417 0006 181C     		mov	r0, r3
+ 418 0008 FFF7FEFF 		bl	UART_UartPutString
+  85:.\DSP_Class.c **** }
+ 419              		.loc 1 85 0
+ 420 000c BD46     		mov	sp, r7
+ 421              		@ sp needed
+ 422 000e 80BD     		pop	{r7, pc}
+ 423              	.L29:
+ 424              		.align	2
+ 425              	.L28:
+ 426 0010 E8000000 		.word	.LC18
+ 427              		.cfi_endproc
+ 428              	.LFE41:
+ 429              		.size	avgLight, .-avgLight
+ 430              		.section	.rodata
+ 431 00fa 0000     		.align	2
+ 432              	.LC21:
+ 433 00fc 696E7075 		.ascii	"inputTemp() called, returns %d via temp\012\015\000"
+ 433      7454656D 
+ 433      70282920 
+ 433      63616C6C 
+ 433      65642C20 
+ 434              		.section	.text.inputTemp,"ax",%progbits
+ 435              		.align	2
+ 436              		.global	inputTemp
+ 437              		.code	16
+ 438              		.thumb_func
+ 439              		.type	inputTemp, %function
+ 440              	inputTemp:
+ 441              	.LFB42:
+  86:.\DSP_Class.c **** 
+  87:.\DSP_Class.c **** void inputTemp(int32* temp){
+ 442              		.loc 1 87 0
+ 443              		.cfi_startproc
+ 444 0000 80B5     		push	{r7, lr}
+ 445              		.cfi_def_cfa_offset 8
+ 446              		.cfi_offset 7, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 90B0     		sub	sp, sp, #64
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 11
 
 
- 430 0035 05       		.byte	0x5
- 431 0036 3F020000 		.4byte	.LASF2
- 432 003a 02       		.uleb128 0x2
- 433 003b 02       		.byte	0x2
- 434 003c 07       		.byte	0x7
- 435 003d 3B000000 		.4byte	.LASF3
- 436 0041 02       		.uleb128 0x2
- 437 0042 04       		.byte	0x4
- 438 0043 05       		.byte	0x5
- 439 0044 59020000 		.4byte	.LASF4
- 440 0048 02       		.uleb128 0x2
- 441 0049 04       		.byte	0x4
- 442 004a 07       		.byte	0x7
- 443 004b 40010000 		.4byte	.LASF5
- 444 004f 02       		.uleb128 0x2
- 445 0050 08       		.byte	0x8
- 446 0051 05       		.byte	0x5
- 447 0052 0D020000 		.4byte	.LASF6
- 448 0056 02       		.uleb128 0x2
- 449 0057 08       		.byte	0x8
- 450 0058 07       		.byte	0x7
- 451 0059 C2010000 		.4byte	.LASF7
- 452 005d 03       		.uleb128 0x3
- 453 005e 04       		.byte	0x4
- 454 005f 05       		.byte	0x5
- 455 0060 696E7400 		.ascii	"int\000"
- 456 0064 02       		.uleb128 0x2
- 457 0065 04       		.byte	0x4
- 458 0066 07       		.byte	0x7
- 459 0067 B0010000 		.4byte	.LASF8
- 460 006b 04       		.uleb128 0x4
- 461 006c 53020000 		.4byte	.LASF9
- 462 0070 02       		.byte	0x2
- 463 0071 A1       		.byte	0xa1
- 464 0072 2C000000 		.4byte	0x2c
- 465 0076 04       		.uleb128 0x4
- 466 0077 E4010000 		.4byte	.LASF10
- 467 007b 02       		.byte	0x2
- 468 007c A5       		.byte	0xa5
- 469 007d 33000000 		.4byte	0x33
- 470 0081 04       		.uleb128 0x4
- 471 0082 5E010000 		.4byte	.LASF11
- 472 0086 02       		.byte	0x2
- 473 0087 A6       		.byte	0xa6
- 474 0088 41000000 		.4byte	0x41
- 475 008c 02       		.uleb128 0x2
- 476 008d 04       		.byte	0x4
- 477 008e 04       		.byte	0x4
- 478 008f 66000000 		.4byte	.LASF12
- 479 0093 02       		.uleb128 0x2
- 480 0094 08       		.byte	0x8
- 481 0095 04       		.byte	0x4
- 482 0096 84010000 		.4byte	.LASF13
- 483 009a 02       		.uleb128 0x2
- 484 009b 01       		.byte	0x1
- 485 009c 08       		.byte	0x8
- 486 009d 1B020000 		.4byte	.LASF14
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 11
+ 449              		.cfi_def_cfa_offset 72
+ 450 0004 00AF     		add	r7, sp, #0
+ 451              		.cfi_def_cfa_register 7
+ 452 0006 7860     		str	r0, [r7, #4]
+  88:.\DSP_Class.c ****     *temp = returnVal;
+ 453              		.loc 1 88 0
+ 454 0008 0B4B     		ldr	r3, .L31
+ 455 000a 1B78     		ldrb	r3, [r3]
+ 456 000c 1A1C     		mov	r2, r3
+ 457 000e 7B68     		ldr	r3, [r7, #4]
+ 458 0010 1A60     		str	r2, [r3]
+  89:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  90:.\DSP_Class.c ****     sprintf(buf, "inputTemp() called, returns %d via temp\n\r", (uint8)*temp);
+ 459              		.loc 1 90 0
+ 460 0012 7B68     		ldr	r3, [r7, #4]
+ 461 0014 1B68     		ldr	r3, [r3]
+ 462 0016 DBB2     		uxtb	r3, r3
+ 463 0018 391C     		mov	r1, r7
+ 464 001a 0C31     		add	r1, r1, #12
+ 465 001c 074A     		ldr	r2, .L31+4
+ 466 001e 081C     		mov	r0, r1
+ 467 0020 111C     		mov	r1, r2
+ 468 0022 1A1C     		mov	r2, r3
+ 469 0024 FFF7FEFF 		bl	sprintf
+  91:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 470              		.loc 1 91 0
+ 471 0028 3B1C     		mov	r3, r7
+ 472 002a 0C33     		add	r3, r3, #12
+ 473 002c 181C     		mov	r0, r3
+ 474 002e FFF7FEFF 		bl	UART_UartPutString
+  92:.\DSP_Class.c **** }
+ 475              		.loc 1 92 0
+ 476 0032 BD46     		mov	sp, r7
+ 477 0034 10B0     		add	sp, sp, #64
+ 478              		@ sp needed
+ 479 0036 80BD     		pop	{r7, pc}
+ 480              	.L32:
+ 481              		.align	2
+ 482              	.L31:
+ 483 0038 00000000 		.word	returnVal
+ 484 003c FC000000 		.word	.LC21
+ 485              		.cfi_endproc
+ 486              	.LFE42:
+ 487              		.size	inputTemp, .-inputTemp
+ 488              		.section	.rodata
+ 489 0126 0000     		.align	2
+ 490              	.LC24:
+ 491 0128 696E7075 		.ascii	"inputHum() called, returns %d via hum\012\015\000"
+ 491      7448756D 
+ 491      28292063 
+ 491      616C6C65 
+ 491      642C2072 
+ 492              		.section	.text.inputHum,"ax",%progbits
+ 493              		.align	2
+ 494              		.global	inputHum
+ 495              		.code	16
+ 496              		.thumb_func
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 12
 
 
- 487 00a1 02       		.uleb128 0x2
- 488 00a2 04       		.byte	0x4
- 489 00a3 07       		.byte	0x7
- 490 00a4 04020000 		.4byte	.LASF15
- 491 00a8 05       		.uleb128 0x5
- 492 00a9 7C010000 		.4byte	.LASF19
- 493 00ad 01       		.byte	0x1
- 494 00ae 20       		.byte	0x20
- 495 00af 00000000 		.4byte	.LFB33
- 496 00b3 08000000 		.4byte	.LFE33-.LFB33
- 497 00b7 01       		.uleb128 0x1
- 498 00b8 9C       		.byte	0x9c
- 499 00b9 06       		.uleb128 0x6
- 500 00ba 52010000 		.4byte	.LASF16
- 501 00be 01       		.byte	0x1
- 502 00bf 24       		.byte	0x24
- 503 00c0 6B000000 		.4byte	0x6b
- 504 00c4 00000000 		.4byte	.LFB34
- 505 00c8 0C000000 		.4byte	.LFE34-.LFB34
- 506 00cc 01       		.uleb128 0x1
- 507 00cd 9C       		.byte	0x9c
- 508 00ce 06       		.uleb128 0x6
- 509 00cf 9C010000 		.4byte	.LASF17
- 510 00d3 01       		.byte	0x1
- 511 00d4 28       		.byte	0x28
- 512 00d5 6B000000 		.4byte	0x6b
- 513 00d9 00000000 		.4byte	.LFB35
- 514 00dd 0C000000 		.4byte	.LFE35-.LFB35
- 515 00e1 01       		.uleb128 0x1
- 516 00e2 9C       		.byte	0x9c
- 517 00e3 07       		.uleb128 0x7
- 518 00e4 64010000 		.4byte	.LASF43
- 519 00e8 01       		.byte	0x1
- 520 00e9 2C       		.byte	0x2c
- 521 00ea 6B000000 		.4byte	0x6b
- 522 00ee 00000000 		.4byte	.LFB36
- 523 00f2 1E000000 		.4byte	.LFE36-.LFB36
- 524 00f6 01       		.uleb128 0x1
- 525 00f7 9C       		.byte	0x9c
- 526 00f8 0B010000 		.4byte	0x10b
- 527 00fc 08       		.uleb128 0x8
- 528 00fd 2B020000 		.4byte	.LASF22
- 529 0101 01       		.byte	0x1
- 530 0102 2C       		.byte	0x2c
- 531 0103 6B000000 		.4byte	0x6b
- 532 0107 02       		.uleb128 0x2
- 533 0108 91       		.byte	0x91
- 534 0109 6F       		.sleb128 -17
- 535 010a 00       		.byte	0
- 536 010b 06       		.uleb128 0x6
- 537 010c F7010000 		.4byte	.LASF18
- 538 0110 01       		.byte	0x1
- 539 0111 31       		.byte	0x31
- 540 0112 6B000000 		.4byte	0x6b
- 541 0116 00000000 		.4byte	.LFB37
- 542 011a 0C000000 		.4byte	.LFE37-.LFB37
- 543 011e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 12
+ 497              		.type	inputHum, %function
+ 498              	inputHum:
+ 499              	.LFB43:
+  93:.\DSP_Class.c **** 
+  94:.\DSP_Class.c **** void inputHum(int32* hum){
+ 500              		.loc 1 94 0
+ 501              		.cfi_startproc
+ 502 0000 80B5     		push	{r7, lr}
+ 503              		.cfi_def_cfa_offset 8
+ 504              		.cfi_offset 7, -8
+ 505              		.cfi_offset 14, -4
+ 506 0002 90B0     		sub	sp, sp, #64
+ 507              		.cfi_def_cfa_offset 72
+ 508 0004 00AF     		add	r7, sp, #0
+ 509              		.cfi_def_cfa_register 7
+ 510 0006 7860     		str	r0, [r7, #4]
+  95:.\DSP_Class.c ****     *hum = returnVal;
+ 511              		.loc 1 95 0
+ 512 0008 0B4B     		ldr	r3, .L34
+ 513 000a 1B78     		ldrb	r3, [r3]
+ 514 000c 1A1C     		mov	r2, r3
+ 515 000e 7B68     		ldr	r3, [r7, #4]
+ 516 0010 1A60     		str	r2, [r3]
+  96:.\DSP_Class.c ****     char buf[BUF_SIZE];
+  97:.\DSP_Class.c ****     sprintf(buf, "inputHum() called, returns %d via hum\n\r", (uint8)*hum);
+ 517              		.loc 1 97 0
+ 518 0012 7B68     		ldr	r3, [r7, #4]
+ 519 0014 1B68     		ldr	r3, [r3]
+ 520 0016 DBB2     		uxtb	r3, r3
+ 521 0018 391C     		mov	r1, r7
+ 522 001a 0C31     		add	r1, r1, #12
+ 523 001c 074A     		ldr	r2, .L34+4
+ 524 001e 081C     		mov	r0, r1
+ 525 0020 111C     		mov	r1, r2
+ 526 0022 1A1C     		mov	r2, r3
+ 527 0024 FFF7FEFF 		bl	sprintf
+  98:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 528              		.loc 1 98 0
+ 529 0028 3B1C     		mov	r3, r7
+ 530 002a 0C33     		add	r3, r3, #12
+ 531 002c 181C     		mov	r0, r3
+ 532 002e FFF7FEFF 		bl	UART_UartPutString
+  99:.\DSP_Class.c **** }
+ 533              		.loc 1 99 0
+ 534 0032 BD46     		mov	sp, r7
+ 535 0034 10B0     		add	sp, sp, #64
+ 536              		@ sp needed
+ 537 0036 80BD     		pop	{r7, pc}
+ 538              	.L35:
+ 539              		.align	2
+ 540              	.L34:
+ 541 0038 00000000 		.word	returnVal
+ 542 003c 28010000 		.word	.LC24
+ 543              		.cfi_endproc
+ 544              	.LFE43:
+ 545              		.size	inputHum, .-inputHum
+ 546              		.section	.rodata
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 13
 
 
- 544 011f 9C       		.byte	0x9c
- 545 0120 05       		.uleb128 0x5
- 546 0121 62020000 		.4byte	.LASF20
- 547 0125 01       		.byte	0x1
- 548 0126 35       		.byte	0x35
- 549 0127 00000000 		.4byte	.LFB38
- 550 012b 08000000 		.4byte	.LFE38-.LFB38
- 551 012f 01       		.uleb128 0x1
- 552 0130 9C       		.byte	0x9c
- 553 0131 05       		.uleb128 0x5
- 554 0132 34000000 		.4byte	.LASF21
- 555 0136 01       		.byte	0x1
- 556 0137 39       		.byte	0x39
- 557 0138 00000000 		.4byte	.LFB39
- 558 013c 08000000 		.4byte	.LFE39-.LFB39
- 559 0140 01       		.uleb128 0x1
- 560 0141 9C       		.byte	0x9c
- 561 0142 09       		.uleb128 0x9
- 562 0143 20020000 		.4byte	.LASF24
- 563 0147 01       		.byte	0x1
- 564 0148 3D       		.byte	0x3d
- 565 0149 00000000 		.4byte	.LFB40
- 566 014d 1A000000 		.4byte	.LFE40-.LFB40
- 567 0151 01       		.uleb128 0x1
- 568 0152 9C       		.byte	0x9c
- 569 0153 66010000 		.4byte	0x166
- 570 0157 08       		.uleb128 0x8
- 571 0158 2B020000 		.4byte	.LASF22
- 572 015c 01       		.byte	0x1
- 573 015d 3D       		.byte	0x3d
- 574 015e 6B000000 		.4byte	0x6b
- 575 0162 02       		.uleb128 0x2
- 576 0163 91       		.byte	0x91
- 577 0164 6F       		.sleb128 -17
- 578 0165 00       		.byte	0
- 579 0166 05       		.uleb128 0x5
- 580 0167 73010000 		.4byte	.LASF23
- 581 016b 01       		.byte	0x1
- 582 016c 41       		.byte	0x41
- 583 016d 00000000 		.4byte	.LFB41
- 584 0171 08000000 		.4byte	.LFE41-.LFB41
- 585 0175 01       		.uleb128 0x1
- 586 0176 9C       		.byte	0x9c
- 587 0177 09       		.uleb128 0x9
- 588 0178 1E000000 		.4byte	.LASF25
- 589 017c 01       		.byte	0x1
- 590 017d 45       		.byte	0x45
- 591 017e 00000000 		.4byte	.LFB42
- 592 0182 14000000 		.4byte	.LFE42-.LFB42
- 593 0186 01       		.uleb128 0x1
- 594 0187 9C       		.byte	0x9c
- 595 0188 9B010000 		.4byte	0x19b
- 596 018c 08       		.uleb128 0x8
- 597 018d BD010000 		.4byte	.LASF26
- 598 0191 01       		.byte	0x1
- 599 0192 45       		.byte	0x45
- 600 0193 9B010000 		.4byte	0x19b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 13
+ 547              		.align	2
+ 548              	.LC27:
+ 549 0150 696E7075 		.ascii	"inputSoilHum() called, index %d, returns %d via soi"
+ 549      74536F69 
+ 549      6C48756D 
+ 549      28292063 
+ 549      616C6C65 
+ 550 0183 6C48756D 		.ascii	"lHum\012\015\000"
+ 550      0A0D00
+ 551              		.section	.text.inputSoilHum,"ax",%progbits
+ 552              		.align	2
+ 553              		.global	inputSoilHum
+ 554              		.code	16
+ 555              		.thumb_func
+ 556              		.type	inputSoilHum, %function
+ 557              	inputSoilHum:
+ 558              	.LFB44:
+ 100:.\DSP_Class.c **** 
+ 101:.\DSP_Class.c **** void inputSoilHum(uint8 index, int16* soilHum){
+ 559              		.loc 1 101 0
+ 560              		.cfi_startproc
+ 561 0000 80B5     		push	{r7, lr}
+ 562              		.cfi_def_cfa_offset 8
+ 563              		.cfi_offset 7, -8
+ 564              		.cfi_offset 14, -4
+ 565 0002 90B0     		sub	sp, sp, #64
+ 566              		.cfi_def_cfa_offset 72
+ 567 0004 00AF     		add	r7, sp, #0
+ 568              		.cfi_def_cfa_register 7
+ 569 0006 021C     		mov	r2, r0
+ 570 0008 3960     		str	r1, [r7]
+ 571 000a FB1D     		add	r3, r7, #7
+ 572 000c 1A70     		strb	r2, [r3]
+ 102:.\DSP_Class.c ****     *soilHum = returnVal;
+ 573              		.loc 1 102 0
+ 574 000e 0B4B     		ldr	r3, .L37
+ 575 0010 1B78     		ldrb	r3, [r3]
+ 576 0012 1A1C     		mov	r2, r3
+ 577 0014 3B68     		ldr	r3, [r7]
+ 578 0016 1A80     		strh	r2, [r3]
+ 103:.\DSP_Class.c ****     char buf[BUF_SIZE];
+ 104:.\DSP_Class.c ****     sprintf(buf, "inputSoilHum() called, index %d, returns %d via soilHum\n\r", index, (uint8)*soil
+ 579              		.loc 1 104 0
+ 580 0018 FB1D     		add	r3, r7, #7
+ 581 001a 1A78     		ldrb	r2, [r3]
+ 582 001c 3B68     		ldr	r3, [r7]
+ 583 001e 1B88     		ldrh	r3, [r3]
+ 584 0020 DBB2     		uxtb	r3, r3
+ 585 0022 381C     		mov	r0, r7
+ 586 0024 0C30     		add	r0, r0, #12
+ 587 0026 0649     		ldr	r1, .L37+4
+ 588 0028 FFF7FEFF 		bl	sprintf
+ 105:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 589              		.loc 1 105 0
+ 590 002c 3B1C     		mov	r3, r7
+ 591 002e 0C33     		add	r3, r3, #12
+ 592 0030 181C     		mov	r0, r3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 14
 
 
- 601 0197 02       		.uleb128 0x2
- 602 0198 91       		.byte	0x91
- 603 0199 74       		.sleb128 -12
- 604 019a 00       		.byte	0
- 605 019b 0A       		.uleb128 0xa
- 606 019c 04       		.byte	0x4
- 607 019d 81000000 		.4byte	0x81
- 608 01a1 09       		.uleb128 0x9
- 609 01a2 93010000 		.4byte	.LASF27
- 610 01a6 01       		.byte	0x1
- 611 01a7 49       		.byte	0x49
- 612 01a8 00000000 		.4byte	.LFB43
- 613 01ac 14000000 		.4byte	.LFE43-.LFB43
- 614 01b0 01       		.uleb128 0x1
- 615 01b1 9C       		.byte	0x9c
- 616 01b2 C5010000 		.4byte	0x1c5
- 617 01b6 0B       		.uleb128 0xb
- 618 01b7 68756D00 		.ascii	"hum\000"
- 619 01bb 01       		.byte	0x1
- 620 01bc 49       		.byte	0x49
- 621 01bd 9B010000 		.4byte	0x19b
- 622 01c1 02       		.uleb128 0x2
- 623 01c2 91       		.byte	0x91
- 624 01c3 74       		.sleb128 -12
- 625 01c4 00       		.byte	0
- 626 01c5 09       		.uleb128 0x9
- 627 01c6 59000000 		.4byte	.LASF28
- 628 01ca 01       		.byte	0x1
- 629 01cb 4D       		.byte	0x4d
- 630 01cc 00000000 		.4byte	.LFB44
- 631 01d0 22000000 		.4byte	.LFE44-.LFB44
- 632 01d4 01       		.uleb128 0x1
- 633 01d5 9C       		.byte	0x9c
- 634 01d6 F7010000 		.4byte	0x1f7
- 635 01da 08       		.uleb128 0x8
- 636 01db 2B020000 		.4byte	.LASF22
- 637 01df 01       		.byte	0x1
- 638 01e0 4D       		.byte	0x4d
- 639 01e1 6B000000 		.4byte	0x6b
- 640 01e5 02       		.uleb128 0x2
- 641 01e6 91       		.byte	0x91
- 642 01e7 6F       		.sleb128 -17
- 643 01e8 08       		.uleb128 0x8
- 644 01e9 8B010000 		.4byte	.LASF29
- 645 01ed 01       		.byte	0x1
- 646 01ee 4D       		.byte	0x4d
- 647 01ef F7010000 		.4byte	0x1f7
- 648 01f3 02       		.uleb128 0x2
- 649 01f4 91       		.byte	0x91
- 650 01f5 68       		.sleb128 -24
- 651 01f6 00       		.byte	0
- 652 01f7 0A       		.uleb128 0xa
- 653 01f8 04       		.byte	0x4
- 654 01f9 76000000 		.4byte	0x76
- 655 01fd 09       		.uleb128 0x9
- 656 01fe D9010000 		.4byte	.LASF30
- 657 0202 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 14
+ 593 0032 FFF7FEFF 		bl	UART_UartPutString
+ 106:.\DSP_Class.c **** }
+ 594              		.loc 1 106 0
+ 595 0036 BD46     		mov	sp, r7
+ 596 0038 10B0     		add	sp, sp, #64
+ 597              		@ sp needed
+ 598 003a 80BD     		pop	{r7, pc}
+ 599              	.L38:
+ 600              		.align	2
+ 601              	.L37:
+ 602 003c 00000000 		.word	returnVal
+ 603 0040 50010000 		.word	.LC27
+ 604              		.cfi_endproc
+ 605              	.LFE44:
+ 606              		.size	inputSoilHum, .-inputSoilHum
+ 607              		.section	.rodata
+ 608 018a 0000     		.align	2
+ 609              	.LC30:
+ 610 018c 696E7075 		.ascii	"inputHum() called, returns %d via light\012\015\000"
+ 610      7448756D 
+ 610      28292063 
+ 610      616C6C65 
+ 610      642C2072 
+ 611 01b6 0000     		.section	.text.inputLight,"ax",%progbits
+ 612              		.align	2
+ 613              		.global	inputLight
+ 614              		.code	16
+ 615              		.thumb_func
+ 616              		.type	inputLight, %function
+ 617              	inputLight:
+ 618              	.LFB45:
+ 107:.\DSP_Class.c **** 
+ 108:.\DSP_Class.c **** void inputLight(int32* light){
+ 619              		.loc 1 108 0
+ 620              		.cfi_startproc
+ 621 0000 80B5     		push	{r7, lr}
+ 622              		.cfi_def_cfa_offset 8
+ 623              		.cfi_offset 7, -8
+ 624              		.cfi_offset 14, -4
+ 625 0002 90B0     		sub	sp, sp, #64
+ 626              		.cfi_def_cfa_offset 72
+ 627 0004 00AF     		add	r7, sp, #0
+ 628              		.cfi_def_cfa_register 7
+ 629 0006 7860     		str	r0, [r7, #4]
+ 109:.\DSP_Class.c ****     *light = returnVal;
+ 630              		.loc 1 109 0
+ 631 0008 0B4B     		ldr	r3, .L40
+ 632 000a 1B78     		ldrb	r3, [r3]
+ 633 000c 1A1C     		mov	r2, r3
+ 634 000e 7B68     		ldr	r3, [r7, #4]
+ 635 0010 1A60     		str	r2, [r3]
+ 110:.\DSP_Class.c ****     char buf[BUF_SIZE];
+ 111:.\DSP_Class.c ****     sprintf(buf, "inputHum() called, returns %d via light\n\r", (uint8)*light);
+ 636              		.loc 1 111 0
+ 637 0012 7B68     		ldr	r3, [r7, #4]
+ 638 0014 1B68     		ldr	r3, [r3]
+ 639 0016 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 15
 
 
- 658 0203 52       		.byte	0x52
- 659 0204 00000000 		.4byte	.LFB45
- 660 0208 14000000 		.4byte	.LFE45-.LFB45
- 661 020c 01       		.uleb128 0x1
- 662 020d 9C       		.byte	0x9c
- 663 020e 21020000 		.4byte	0x221
- 664 0212 08       		.uleb128 0x8
- 665 0213 00000000 		.4byte	.LASF31
- 666 0217 01       		.byte	0x1
- 667 0218 52       		.byte	0x52
- 668 0219 9B010000 		.4byte	0x19b
- 669 021d 02       		.uleb128 0x2
- 670 021e 91       		.byte	0x91
- 671 021f 74       		.sleb128 -12
- 672 0220 00       		.byte	0
- 673 0221 0C       		.uleb128 0xc
- 674 0222 81000000 		.4byte	0x81
- 675 0226 31020000 		.4byte	0x231
- 676 022a 0D       		.uleb128 0xd
- 677 022b A1000000 		.4byte	0xa1
- 678 022f 63       		.byte	0x63
- 679 0230 00       		.byte	0
- 680 0231 0E       		.uleb128 0xe
- 681 0232 49020000 		.4byte	.LASF32
- 682 0236 01       		.byte	0x1
- 683 0237 10       		.byte	0x10
- 684 0238 21020000 		.4byte	0x221
- 685 023c 05       		.uleb128 0x5
- 686 023d 03       		.byte	0x3
- 687 023e 00000000 		.4byte	tempArray
- 688 0242 0E       		.uleb128 0xe
- 689 0243 EA010000 		.4byte	.LASF33
- 690 0247 01       		.byte	0x1
- 691 0248 11       		.byte	0x11
- 692 0249 9B010000 		.4byte	0x19b
- 693 024d 05       		.uleb128 0x5
- 694 024e 03       		.byte	0x3
- 695 024f 00000000 		.4byte	tempArrayPtr
- 696 0253 0E       		.uleb128 0xe
- 697 0254 A7010000 		.4byte	.LASF34
- 698 0258 01       		.byte	0x1
- 699 0259 12       		.byte	0x12
- 700 025a 21020000 		.4byte	0x221
- 701 025e 05       		.uleb128 0x5
- 702 025f 03       		.byte	0x3
- 703 0260 00000000 		.4byte	humArray
- 704 0264 0E       		.uleb128 0xe
- 705 0265 28000000 		.4byte	.LASF35
- 706 0269 01       		.byte	0x1
- 707 026a 13       		.byte	0x13
- 708 026b 9B010000 		.4byte	0x19b
- 709 026f 05       		.uleb128 0x5
- 710 0270 03       		.byte	0x3
- 711 0271 00000000 		.4byte	humArrayPtr
- 712 0275 0C       		.uleb128 0xc
- 713 0276 76000000 		.4byte	0x76
- 714 027a 8B020000 		.4byte	0x28b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 15
+ 640 0018 391C     		mov	r1, r7
+ 641 001a 0C31     		add	r1, r1, #12
+ 642 001c 074A     		ldr	r2, .L40+4
+ 643 001e 081C     		mov	r0, r1
+ 644 0020 111C     		mov	r1, r2
+ 645 0022 1A1C     		mov	r2, r3
+ 646 0024 FFF7FEFF 		bl	sprintf
+ 112:.\DSP_Class.c ****     UART_UartPutString(buf);
+ 647              		.loc 1 112 0
+ 648 0028 3B1C     		mov	r3, r7
+ 649 002a 0C33     		add	r3, r3, #12
+ 650 002c 181C     		mov	r0, r3
+ 651 002e FFF7FEFF 		bl	UART_UartPutString
+ 113:.\DSP_Class.c **** }
+ 652              		.loc 1 113 0
+ 653 0032 BD46     		mov	sp, r7
+ 654 0034 10B0     		add	sp, sp, #64
+ 655              		@ sp needed
+ 656 0036 80BD     		pop	{r7, pc}
+ 657              	.L41:
+ 658              		.align	2
+ 659              	.L40:
+ 660 0038 00000000 		.word	returnVal
+ 661 003c 8C010000 		.word	.LC30
+ 662              		.cfi_endproc
+ 663              	.LFE45:
+ 664              		.size	inputLight, .-inputLight
+ 665              		.text
+ 666              	.Letext0:
+ 667              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 668              		.section	.debug_info,"",%progbits
+ 669              	.Ldebug_info0:
+ 670 0000 E5030000 		.4byte	0x3e5
+ 671 0004 0400     		.2byte	0x4
+ 672 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 673 000a 04       		.byte	0x4
+ 674 000b 01       		.uleb128 0x1
+ 675 000c 6C000000 		.4byte	.LASF42
+ 676 0010 01       		.byte	0x1
+ 677 0011 33020000 		.4byte	.LASF43
+ 678 0015 95010000 		.4byte	.LASF44
+ 679 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 680 001d 00000000 		.4byte	0
+ 681 0021 00000000 		.4byte	.Ldebug_line0
+ 682 0025 02       		.uleb128 0x2
+ 683 0026 04       		.byte	0x4
+ 684 0027 07       		.byte	0x7
+ 685 0028 6C010000 		.4byte	.LASF0
+ 686 002c 03       		.uleb128 0x3
+ 687 002d 04       		.byte	0x4
+ 688 002e 05       		.byte	0x5
+ 689 002f 696E7400 		.ascii	"int\000"
+ 690 0033 02       		.uleb128 0x2
+ 691 0034 01       		.byte	0x1
+ 692 0035 06       		.byte	0x6
+ 693 0036 6C020000 		.4byte	.LASF1
+ 694 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 16
 
 
- 715 027e 0D       		.uleb128 0xd
- 716 027f A1000000 		.4byte	0xa1
- 717 0283 05       		.byte	0x5
- 718 0284 0D       		.uleb128 0xd
- 719 0285 A1000000 		.4byte	0xa1
- 720 0289 63       		.byte	0x63
- 721 028a 00       		.byte	0
- 722 028b 0E       		.uleb128 0xe
- 723 028c 06000000 		.4byte	.LASF36
- 724 0290 01       		.byte	0x1
- 725 0291 14       		.byte	0x14
- 726 0292 75020000 		.4byte	0x275
- 727 0296 05       		.uleb128 0x5
- 728 0297 03       		.byte	0x3
- 729 0298 00000000 		.4byte	soilHumArray
- 730 029c 0C       		.uleb128 0xc
- 731 029d F7010000 		.4byte	0x1f7
- 732 02a1 AC020000 		.4byte	0x2ac
- 733 02a5 0D       		.uleb128 0xd
- 734 02a6 A1000000 		.4byte	0xa1
- 735 02aa 05       		.byte	0x5
- 736 02ab 00       		.byte	0
- 737 02ac 0E       		.uleb128 0xe
- 738 02ad 13000000 		.4byte	.LASF37
- 739 02b1 01       		.byte	0x1
- 740 02b2 15       		.byte	0x15
- 741 02b3 9C020000 		.4byte	0x29c
- 742 02b7 05       		.uleb128 0x5
- 743 02b8 03       		.byte	0x3
- 744 02b9 00000000 		.4byte	soilHumPtr
- 745 02bd 0E       		.uleb128 0xe
- 746 02be 4E000000 		.4byte	.LASF38
- 747 02c2 01       		.byte	0x1
- 748 02c3 16       		.byte	0x16
- 749 02c4 21020000 		.4byte	0x221
- 750 02c8 05       		.uleb128 0x5
- 751 02c9 03       		.byte	0x3
- 752 02ca 00000000 		.4byte	lightArray
- 753 02ce 0E       		.uleb128 0xe
- 754 02cf 76020000 		.4byte	.LASF39
- 755 02d3 01       		.byte	0x1
- 756 02d4 17       		.byte	0x17
- 757 02d5 9B010000 		.4byte	0x19b
- 758 02d9 05       		.uleb128 0x5
- 759 02da 03       		.byte	0x3
- 760 02db 00000000 		.4byte	lightArrayPtr
- 761 02df 0E       		.uleb128 0xe
- 762 02e0 BD010000 		.4byte	.LASF26
- 763 02e4 01       		.byte	0x1
- 764 02e5 18       		.byte	0x18
- 765 02e6 6B000000 		.4byte	0x6b
- 766 02ea 05       		.uleb128 0x5
- 767 02eb 03       		.byte	0x3
- 768 02ec 00000000 		.4byte	temp
- 769 02f0 0F       		.uleb128 0xf
- 770 02f1 68756D00 		.ascii	"hum\000"
- 771 02f5 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 16
+ 695 003b 01       		.byte	0x1
+ 696 003c 08       		.byte	0x8
+ 697 003d E8000000 		.4byte	.LASF2
+ 698 0041 02       		.uleb128 0x2
+ 699 0042 02       		.byte	0x2
+ 700 0043 05       		.byte	0x5
+ 701 0044 41020000 		.4byte	.LASF3
+ 702 0048 02       		.uleb128 0x2
+ 703 0049 02       		.byte	0x2
+ 704 004a 07       		.byte	0x7
+ 705 004b 30000000 		.4byte	.LASF4
+ 706 004f 02       		.uleb128 0x2
+ 707 0050 04       		.byte	0x4
+ 708 0051 05       		.byte	0x5
+ 709 0052 5B020000 		.4byte	.LASF5
+ 710 0056 02       		.uleb128 0x2
+ 711 0057 04       		.byte	0x4
+ 712 0058 07       		.byte	0x7
+ 713 0059 FC000000 		.4byte	.LASF6
+ 714 005d 02       		.uleb128 0x2
+ 715 005e 08       		.byte	0x8
+ 716 005f 05       		.byte	0x5
+ 717 0060 0F020000 		.4byte	.LASF7
+ 718 0064 02       		.uleb128 0x2
+ 719 0065 08       		.byte	0x8
+ 720 0066 07       		.byte	0x7
+ 721 0067 7E010000 		.4byte	.LASF8
+ 722 006b 02       		.uleb128 0x2
+ 723 006c 04       		.byte	0x4
+ 724 006d 07       		.byte	0x7
+ 725 006e 06020000 		.4byte	.LASF9
+ 726 0072 02       		.uleb128 0x2
+ 727 0073 01       		.byte	0x1
+ 728 0074 08       		.byte	0x8
+ 729 0075 1D020000 		.4byte	.LASF10
+ 730 0079 04       		.uleb128 0x4
+ 731 007a 55020000 		.4byte	.LASF11
+ 732 007e 02       		.byte	0x2
+ 733 007f A1       		.byte	0xa1
+ 734 0080 3A000000 		.4byte	0x3a
+ 735 0084 04       		.uleb128 0x4
+ 736 0085 F6000000 		.4byte	.LASF12
+ 737 0089 02       		.byte	0x2
+ 738 008a A5       		.byte	0xa5
+ 739 008b 41000000 		.4byte	0x41
+ 740 008f 04       		.uleb128 0x4
+ 741 0090 1A010000 		.4byte	.LASF13
+ 742 0094 02       		.byte	0x2
+ 743 0095 A6       		.byte	0xa6
+ 744 0096 4F000000 		.4byte	0x4f
+ 745 009a 02       		.uleb128 0x2
+ 746 009b 04       		.byte	0x4
+ 747 009c 04       		.byte	0x4
+ 748 009d 66000000 		.4byte	.LASF14
+ 749 00a1 02       		.uleb128 0x2
+ 750 00a2 08       		.byte	0x8
+ 751 00a3 04       		.byte	0x4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 17
 
 
- 772 02f6 18       		.byte	0x18
- 773 02f7 6B000000 		.4byte	0x6b
- 774 02fb 05       		.uleb128 0x5
- 775 02fc 03       		.byte	0x3
- 776 02fd 00000000 		.4byte	hum
- 777 0301 0C       		.uleb128 0xc
- 778 0302 6B000000 		.4byte	0x6b
- 779 0306 11030000 		.4byte	0x311
- 780 030a 0D       		.uleb128 0xd
- 781 030b A1000000 		.4byte	0xa1
- 782 030f 05       		.byte	0x5
- 783 0310 00       		.byte	0
- 784 0311 0E       		.uleb128 0xe
- 785 0312 8B010000 		.4byte	.LASF29
- 786 0316 01       		.byte	0x1
- 787 0317 18       		.byte	0x18
- 788 0318 01030000 		.4byte	0x301
- 789 031c 05       		.uleb128 0x5
- 790 031d 03       		.byte	0x3
- 791 031e 00000000 		.4byte	soilHum
- 792 0322 0E       		.uleb128 0xe
- 793 0323 00000000 		.4byte	.LASF31
- 794 0327 01       		.byte	0x1
- 795 0328 18       		.byte	0x18
- 796 0329 6B000000 		.4byte	0x6b
- 797 032d 05       		.uleb128 0x5
- 798 032e 03       		.byte	0x3
- 799 032f 00000000 		.4byte	light
- 800 0333 00       		.byte	0
- 801              		.section	.debug_abbrev,"",%progbits
- 802              	.Ldebug_abbrev0:
- 803 0000 01       		.uleb128 0x1
- 804 0001 11       		.uleb128 0x11
- 805 0002 01       		.byte	0x1
- 806 0003 25       		.uleb128 0x25
- 807 0004 0E       		.uleb128 0xe
- 808 0005 13       		.uleb128 0x13
- 809 0006 0B       		.uleb128 0xb
- 810 0007 03       		.uleb128 0x3
- 811 0008 0E       		.uleb128 0xe
- 812 0009 1B       		.uleb128 0x1b
- 813 000a 0E       		.uleb128 0xe
- 814 000b 55       		.uleb128 0x55
- 815 000c 17       		.uleb128 0x17
- 816 000d 11       		.uleb128 0x11
- 817 000e 01       		.uleb128 0x1
- 818 000f 10       		.uleb128 0x10
- 819 0010 17       		.uleb128 0x17
- 820 0011 00       		.byte	0
- 821 0012 00       		.byte	0
- 822 0013 02       		.uleb128 0x2
- 823 0014 24       		.uleb128 0x24
- 824 0015 00       		.byte	0
- 825 0016 0B       		.uleb128 0xb
- 826 0017 0B       		.uleb128 0xb
- 827 0018 3E       		.uleb128 0x3e
- 828 0019 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 17
+ 752 00a4 40010000 		.4byte	.LASF15
+ 753 00a8 05       		.uleb128 0x5
+ 754 00a9 38010000 		.4byte	.LASF20
+ 755 00ad 01       		.byte	0x1
+ 756 00ae 25       		.byte	0x25
+ 757 00af 00000000 		.4byte	.LFB33
+ 758 00b3 08000000 		.4byte	.LFE33-.LFB33
+ 759 00b7 01       		.uleb128 0x1
+ 760 00b8 9C       		.byte	0x9c
+ 761 00b9 06       		.uleb128 0x6
+ 762 00ba 0E010000 		.4byte	.LASF16
+ 763 00be 01       		.byte	0x1
+ 764 00bf 29       		.byte	0x29
+ 765 00c0 79000000 		.4byte	0x79
+ 766 00c4 00000000 		.4byte	.LFB34
+ 767 00c8 3C000000 		.4byte	.LFE34-.LFB34
+ 768 00cc 01       		.uleb128 0x1
+ 769 00cd 9C       		.byte	0x9c
+ 770 00ce E1000000 		.4byte	0xe1
+ 771 00d2 07       		.uleb128 0x7
+ 772 00d3 62756600 		.ascii	"buf\000"
+ 773 00d7 01       		.byte	0x1
+ 774 00d8 2A       		.byte	0x2a
+ 775 00d9 E1000000 		.4byte	0xe1
+ 776 00dd 02       		.uleb128 0x2
+ 777 00de 91       		.byte	0x91
+ 778 00df 44       		.sleb128 -60
+ 779 00e0 00       		.byte	0
+ 780 00e1 08       		.uleb128 0x8
+ 781 00e2 72000000 		.4byte	0x72
+ 782 00e6 F1000000 		.4byte	0xf1
+ 783 00ea 09       		.uleb128 0x9
+ 784 00eb 6B000000 		.4byte	0x6b
+ 785 00ef 31       		.byte	0x31
+ 786 00f0 00       		.byte	0
+ 787 00f1 06       		.uleb128 0x6
+ 788 00f2 58010000 		.4byte	.LASF17
+ 789 00f6 01       		.byte	0x1
+ 790 00f7 30       		.byte	0x30
+ 791 00f8 79000000 		.4byte	0x79
+ 792 00fc 00000000 		.4byte	.LFB35
+ 793 0100 34000000 		.4byte	.LFE35-.LFB35
+ 794 0104 01       		.uleb128 0x1
+ 795 0105 9C       		.byte	0x9c
+ 796 0106 19010000 		.4byte	0x119
+ 797 010a 07       		.uleb128 0x7
+ 798 010b 62756600 		.ascii	"buf\000"
+ 799 010f 01       		.byte	0x1
+ 800 0110 31       		.byte	0x31
+ 801 0111 E1000000 		.4byte	0xe1
+ 802 0115 02       		.uleb128 0x2
+ 803 0116 91       		.byte	0x91
+ 804 0117 44       		.sleb128 -60
+ 805 0118 00       		.byte	0
+ 806 0119 06       		.uleb128 0x6
+ 807 011a 20010000 		.4byte	.LASF18
+ 808 011e 01       		.byte	0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 18
 
 
- 829 001a 03       		.uleb128 0x3
- 830 001b 0E       		.uleb128 0xe
- 831 001c 00       		.byte	0
- 832 001d 00       		.byte	0
- 833 001e 03       		.uleb128 0x3
- 834 001f 24       		.uleb128 0x24
- 835 0020 00       		.byte	0
- 836 0021 0B       		.uleb128 0xb
- 837 0022 0B       		.uleb128 0xb
- 838 0023 3E       		.uleb128 0x3e
- 839 0024 0B       		.uleb128 0xb
- 840 0025 03       		.uleb128 0x3
- 841 0026 08       		.uleb128 0x8
- 842 0027 00       		.byte	0
- 843 0028 00       		.byte	0
- 844 0029 04       		.uleb128 0x4
- 845 002a 16       		.uleb128 0x16
- 846 002b 00       		.byte	0
- 847 002c 03       		.uleb128 0x3
- 848 002d 0E       		.uleb128 0xe
- 849 002e 3A       		.uleb128 0x3a
- 850 002f 0B       		.uleb128 0xb
- 851 0030 3B       		.uleb128 0x3b
- 852 0031 0B       		.uleb128 0xb
- 853 0032 49       		.uleb128 0x49
- 854 0033 13       		.uleb128 0x13
- 855 0034 00       		.byte	0
- 856 0035 00       		.byte	0
- 857 0036 05       		.uleb128 0x5
- 858 0037 2E       		.uleb128 0x2e
- 859 0038 00       		.byte	0
- 860 0039 3F       		.uleb128 0x3f
- 861 003a 19       		.uleb128 0x19
- 862 003b 03       		.uleb128 0x3
- 863 003c 0E       		.uleb128 0xe
- 864 003d 3A       		.uleb128 0x3a
- 865 003e 0B       		.uleb128 0xb
- 866 003f 3B       		.uleb128 0x3b
- 867 0040 0B       		.uleb128 0xb
- 868 0041 27       		.uleb128 0x27
- 869 0042 19       		.uleb128 0x19
- 870 0043 11       		.uleb128 0x11
- 871 0044 01       		.uleb128 0x1
- 872 0045 12       		.uleb128 0x12
- 873 0046 06       		.uleb128 0x6
- 874 0047 40       		.uleb128 0x40
- 875 0048 18       		.uleb128 0x18
- 876 0049 9742     		.uleb128 0x2117
- 877 004b 19       		.uleb128 0x19
- 878 004c 00       		.byte	0
- 879 004d 00       		.byte	0
- 880 004e 06       		.uleb128 0x6
- 881 004f 2E       		.uleb128 0x2e
- 882 0050 00       		.byte	0
- 883 0051 3F       		.uleb128 0x3f
- 884 0052 19       		.uleb128 0x19
- 885 0053 03       		.uleb128 0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 18
+ 809 011f 37       		.byte	0x37
+ 810 0120 79000000 		.4byte	0x79
+ 811 0124 00000000 		.4byte	.LFB36
+ 812 0128 3C000000 		.4byte	.LFE36-.LFB36
+ 813 012c 01       		.uleb128 0x1
+ 814 012d 9C       		.byte	0x9c
+ 815 012e 50010000 		.4byte	0x150
+ 816 0132 0A       		.uleb128 0xa
+ 817 0133 2D020000 		.4byte	.LASF23
+ 818 0137 01       		.byte	0x1
+ 819 0138 37       		.byte	0x37
+ 820 0139 79000000 		.4byte	0x79
+ 821 013d 03       		.uleb128 0x3
+ 822 013e 91       		.byte	0x91
+ 823 013f BF7F     		.sleb128 -65
+ 824 0141 07       		.uleb128 0x7
+ 825 0142 62756600 		.ascii	"buf\000"
+ 826 0146 01       		.byte	0x1
+ 827 0147 38       		.byte	0x38
+ 828 0148 E1000000 		.4byte	0xe1
+ 829 014c 02       		.uleb128 0x2
+ 830 014d 91       		.byte	0x91
+ 831 014e 44       		.sleb128 -60
+ 832 014f 00       		.byte	0
+ 833 0150 06       		.uleb128 0x6
+ 834 0151 F9010000 		.4byte	.LASF19
+ 835 0155 01       		.byte	0x1
+ 836 0156 3E       		.byte	0x3e
+ 837 0157 79000000 		.4byte	0x79
+ 838 015b 00000000 		.4byte	.LFB37
+ 839 015f 34000000 		.4byte	.LFE37-.LFB37
+ 840 0163 01       		.uleb128 0x1
+ 841 0164 9C       		.byte	0x9c
+ 842 0165 78010000 		.4byte	0x178
+ 843 0169 07       		.uleb128 0x7
+ 844 016a 62756600 		.ascii	"buf\000"
+ 845 016e 01       		.byte	0x1
+ 846 016f 3F       		.byte	0x3f
+ 847 0170 E1000000 		.4byte	0xe1
+ 848 0174 02       		.uleb128 0x2
+ 849 0175 91       		.byte	0x91
+ 850 0176 44       		.sleb128 -60
+ 851 0177 00       		.byte	0
+ 852 0178 0B       		.uleb128 0xb
+ 853 0179 64020000 		.4byte	.LASF21
+ 854 017d 01       		.byte	0x1
+ 855 017e 45       		.byte	0x45
+ 856 017f 00000000 		.4byte	.LFB38
+ 857 0183 14000000 		.4byte	.LFE38-.LFB38
+ 858 0187 01       		.uleb128 0x1
+ 859 0188 9C       		.byte	0x9c
+ 860 0189 0B       		.uleb128 0xb
+ 861 018a 13000000 		.4byte	.LASF22
+ 862 018e 01       		.byte	0x1
+ 863 018f 49       		.byte	0x49
+ 864 0190 00000000 		.4byte	.LFB39
+ 865 0194 14000000 		.4byte	.LFE39-.LFB39
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 19
 
 
- 886 0054 0E       		.uleb128 0xe
- 887 0055 3A       		.uleb128 0x3a
- 888 0056 0B       		.uleb128 0xb
- 889 0057 3B       		.uleb128 0x3b
- 890 0058 0B       		.uleb128 0xb
- 891 0059 27       		.uleb128 0x27
- 892 005a 19       		.uleb128 0x19
- 893 005b 49       		.uleb128 0x49
- 894 005c 13       		.uleb128 0x13
- 895 005d 11       		.uleb128 0x11
- 896 005e 01       		.uleb128 0x1
- 897 005f 12       		.uleb128 0x12
- 898 0060 06       		.uleb128 0x6
- 899 0061 40       		.uleb128 0x40
- 900 0062 18       		.uleb128 0x18
- 901 0063 9742     		.uleb128 0x2117
- 902 0065 19       		.uleb128 0x19
- 903 0066 00       		.byte	0
- 904 0067 00       		.byte	0
- 905 0068 07       		.uleb128 0x7
- 906 0069 2E       		.uleb128 0x2e
- 907 006a 01       		.byte	0x1
- 908 006b 3F       		.uleb128 0x3f
- 909 006c 19       		.uleb128 0x19
- 910 006d 03       		.uleb128 0x3
- 911 006e 0E       		.uleb128 0xe
- 912 006f 3A       		.uleb128 0x3a
- 913 0070 0B       		.uleb128 0xb
- 914 0071 3B       		.uleb128 0x3b
- 915 0072 0B       		.uleb128 0xb
- 916 0073 27       		.uleb128 0x27
- 917 0074 19       		.uleb128 0x19
- 918 0075 49       		.uleb128 0x49
- 919 0076 13       		.uleb128 0x13
- 920 0077 11       		.uleb128 0x11
- 921 0078 01       		.uleb128 0x1
- 922 0079 12       		.uleb128 0x12
- 923 007a 06       		.uleb128 0x6
- 924 007b 40       		.uleb128 0x40
- 925 007c 18       		.uleb128 0x18
- 926 007d 9742     		.uleb128 0x2117
- 927 007f 19       		.uleb128 0x19
- 928 0080 01       		.uleb128 0x1
- 929 0081 13       		.uleb128 0x13
- 930 0082 00       		.byte	0
- 931 0083 00       		.byte	0
- 932 0084 08       		.uleb128 0x8
- 933 0085 05       		.uleb128 0x5
- 934 0086 00       		.byte	0
- 935 0087 03       		.uleb128 0x3
- 936 0088 0E       		.uleb128 0xe
- 937 0089 3A       		.uleb128 0x3a
- 938 008a 0B       		.uleb128 0xb
- 939 008b 3B       		.uleb128 0x3b
- 940 008c 0B       		.uleb128 0xb
- 941 008d 49       		.uleb128 0x49
- 942 008e 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 19
+ 866 0198 01       		.uleb128 0x1
+ 867 0199 9C       		.byte	0x9c
+ 868 019a 0C       		.uleb128 0xc
+ 869 019b 22020000 		.4byte	.LASF25
+ 870 019f 01       		.byte	0x1
+ 871 01a0 4D       		.byte	0x4d
+ 872 01a1 00000000 		.4byte	.LFB40
+ 873 01a5 34000000 		.4byte	.LFE40-.LFB40
+ 874 01a9 01       		.uleb128 0x1
+ 875 01aa 9C       		.byte	0x9c
+ 876 01ab CD010000 		.4byte	0x1cd
+ 877 01af 0A       		.uleb128 0xa
+ 878 01b0 2D020000 		.4byte	.LASF23
+ 879 01b4 01       		.byte	0x1
+ 880 01b5 4D       		.byte	0x4d
+ 881 01b6 79000000 		.4byte	0x79
+ 882 01ba 03       		.uleb128 0x3
+ 883 01bb 91       		.byte	0x91
+ 884 01bc BF7F     		.sleb128 -65
+ 885 01be 07       		.uleb128 0x7
+ 886 01bf 62756600 		.ascii	"buf\000"
+ 887 01c3 01       		.byte	0x1
+ 888 01c4 4E       		.byte	0x4e
+ 889 01c5 E1000000 		.4byte	0xe1
+ 890 01c9 02       		.uleb128 0x2
+ 891 01ca 91       		.byte	0x91
+ 892 01cb 44       		.sleb128 -60
+ 893 01cc 00       		.byte	0
+ 894 01cd 0B       		.uleb128 0xb
+ 895 01ce 2F010000 		.4byte	.LASF24
+ 896 01d2 01       		.byte	0x1
+ 897 01d3 53       		.byte	0x53
+ 898 01d4 00000000 		.4byte	.LFB41
+ 899 01d8 14000000 		.4byte	.LFE41-.LFB41
+ 900 01dc 01       		.uleb128 0x1
+ 901 01dd 9C       		.byte	0x9c
+ 902 01de 0C       		.uleb128 0xc
+ 903 01df 1A000000 		.4byte	.LASF26
+ 904 01e3 01       		.byte	0x1
+ 905 01e4 57       		.byte	0x57
+ 906 01e5 00000000 		.4byte	.LFB42
+ 907 01e9 40000000 		.4byte	.LFE42-.LFB42
+ 908 01ed 01       		.uleb128 0x1
+ 909 01ee 9C       		.byte	0x9c
+ 910 01ef 11020000 		.4byte	0x211
+ 911 01f3 0A       		.uleb128 0xa
+ 912 01f4 79010000 		.4byte	.LASF27
+ 913 01f8 01       		.byte	0x1
+ 914 01f9 57       		.byte	0x57
+ 915 01fa 11020000 		.4byte	0x211
+ 916 01fe 03       		.uleb128 0x3
+ 917 01ff 91       		.byte	0x91
+ 918 0200 BC7F     		.sleb128 -68
+ 919 0202 07       		.uleb128 0x7
+ 920 0203 62756600 		.ascii	"buf\000"
+ 921 0207 01       		.byte	0x1
+ 922 0208 59       		.byte	0x59
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 20
 
 
- 943 008f 02       		.uleb128 0x2
- 944 0090 18       		.uleb128 0x18
- 945 0091 00       		.byte	0
- 946 0092 00       		.byte	0
- 947 0093 09       		.uleb128 0x9
- 948 0094 2E       		.uleb128 0x2e
- 949 0095 01       		.byte	0x1
- 950 0096 3F       		.uleb128 0x3f
- 951 0097 19       		.uleb128 0x19
- 952 0098 03       		.uleb128 0x3
- 953 0099 0E       		.uleb128 0xe
- 954 009a 3A       		.uleb128 0x3a
- 955 009b 0B       		.uleb128 0xb
- 956 009c 3B       		.uleb128 0x3b
- 957 009d 0B       		.uleb128 0xb
- 958 009e 27       		.uleb128 0x27
- 959 009f 19       		.uleb128 0x19
- 960 00a0 11       		.uleb128 0x11
- 961 00a1 01       		.uleb128 0x1
- 962 00a2 12       		.uleb128 0x12
- 963 00a3 06       		.uleb128 0x6
- 964 00a4 40       		.uleb128 0x40
- 965 00a5 18       		.uleb128 0x18
- 966 00a6 9742     		.uleb128 0x2117
- 967 00a8 19       		.uleb128 0x19
- 968 00a9 01       		.uleb128 0x1
- 969 00aa 13       		.uleb128 0x13
- 970 00ab 00       		.byte	0
- 971 00ac 00       		.byte	0
- 972 00ad 0A       		.uleb128 0xa
- 973 00ae 0F       		.uleb128 0xf
- 974 00af 00       		.byte	0
- 975 00b0 0B       		.uleb128 0xb
- 976 00b1 0B       		.uleb128 0xb
- 977 00b2 49       		.uleb128 0x49
- 978 00b3 13       		.uleb128 0x13
- 979 00b4 00       		.byte	0
- 980 00b5 00       		.byte	0
- 981 00b6 0B       		.uleb128 0xb
- 982 00b7 05       		.uleb128 0x5
- 983 00b8 00       		.byte	0
- 984 00b9 03       		.uleb128 0x3
- 985 00ba 08       		.uleb128 0x8
- 986 00bb 3A       		.uleb128 0x3a
- 987 00bc 0B       		.uleb128 0xb
- 988 00bd 3B       		.uleb128 0x3b
- 989 00be 0B       		.uleb128 0xb
- 990 00bf 49       		.uleb128 0x49
- 991 00c0 13       		.uleb128 0x13
- 992 00c1 02       		.uleb128 0x2
- 993 00c2 18       		.uleb128 0x18
- 994 00c3 00       		.byte	0
- 995 00c4 00       		.byte	0
- 996 00c5 0C       		.uleb128 0xc
- 997 00c6 01       		.uleb128 0x1
- 998 00c7 01       		.byte	0x1
- 999 00c8 49       		.uleb128 0x49
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 20
+ 923 0209 E1000000 		.4byte	0xe1
+ 924 020d 02       		.uleb128 0x2
+ 925 020e 91       		.byte	0x91
+ 926 020f 44       		.sleb128 -60
+ 927 0210 00       		.byte	0
+ 928 0211 0D       		.uleb128 0xd
+ 929 0212 04       		.byte	0x4
+ 930 0213 8F000000 		.4byte	0x8f
+ 931 0217 0C       		.uleb128 0xc
+ 932 0218 4F010000 		.4byte	.LASF28
+ 933 021c 01       		.byte	0x1
+ 934 021d 5E       		.byte	0x5e
+ 935 021e 00000000 		.4byte	.LFB43
+ 936 0222 40000000 		.4byte	.LFE43-.LFB43
+ 937 0226 01       		.uleb128 0x1
+ 938 0227 9C       		.byte	0x9c
+ 939 0228 4A020000 		.4byte	0x24a
+ 940 022c 0E       		.uleb128 0xe
+ 941 022d 68756D00 		.ascii	"hum\000"
+ 942 0231 01       		.byte	0x1
+ 943 0232 5E       		.byte	0x5e
+ 944 0233 11020000 		.4byte	0x211
+ 945 0237 03       		.uleb128 0x3
+ 946 0238 91       		.byte	0x91
+ 947 0239 BC7F     		.sleb128 -68
+ 948 023b 07       		.uleb128 0x7
+ 949 023c 62756600 		.ascii	"buf\000"
+ 950 0240 01       		.byte	0x1
+ 951 0241 60       		.byte	0x60
+ 952 0242 E1000000 		.4byte	0xe1
+ 953 0246 02       		.uleb128 0x2
+ 954 0247 91       		.byte	0x91
+ 955 0248 44       		.sleb128 -60
+ 956 0249 00       		.byte	0
+ 957 024a 0C       		.uleb128 0xc
+ 958 024b 4E000000 		.4byte	.LASF29
+ 959 024f 01       		.byte	0x1
+ 960 0250 65       		.byte	0x65
+ 961 0251 00000000 		.4byte	.LFB44
+ 962 0255 44000000 		.4byte	.LFE44-.LFB44
+ 963 0259 01       		.uleb128 0x1
+ 964 025a 9C       		.byte	0x9c
+ 965 025b 8C020000 		.4byte	0x28c
+ 966 025f 0A       		.uleb128 0xa
+ 967 0260 2D020000 		.4byte	.LASF23
+ 968 0264 01       		.byte	0x1
+ 969 0265 65       		.byte	0x65
+ 970 0266 79000000 		.4byte	0x79
+ 971 026a 03       		.uleb128 0x3
+ 972 026b 91       		.byte	0x91
+ 973 026c BF7F     		.sleb128 -65
+ 974 026e 0A       		.uleb128 0xa
+ 975 026f 47010000 		.4byte	.LASF30
+ 976 0273 01       		.byte	0x1
+ 977 0274 65       		.byte	0x65
+ 978 0275 8C020000 		.4byte	0x28c
+ 979 0279 03       		.uleb128 0x3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 21
 
 
- 1000 00c9 13       		.uleb128 0x13
- 1001 00ca 01       		.uleb128 0x1
- 1002 00cb 13       		.uleb128 0x13
- 1003 00cc 00       		.byte	0
- 1004 00cd 00       		.byte	0
- 1005 00ce 0D       		.uleb128 0xd
- 1006 00cf 21       		.uleb128 0x21
- 1007 00d0 00       		.byte	0
- 1008 00d1 49       		.uleb128 0x49
- 1009 00d2 13       		.uleb128 0x13
- 1010 00d3 2F       		.uleb128 0x2f
- 1011 00d4 0B       		.uleb128 0xb
- 1012 00d5 00       		.byte	0
- 1013 00d6 00       		.byte	0
- 1014 00d7 0E       		.uleb128 0xe
- 1015 00d8 34       		.uleb128 0x34
- 1016 00d9 00       		.byte	0
- 1017 00da 03       		.uleb128 0x3
- 1018 00db 0E       		.uleb128 0xe
- 1019 00dc 3A       		.uleb128 0x3a
- 1020 00dd 0B       		.uleb128 0xb
- 1021 00de 3B       		.uleb128 0x3b
- 1022 00df 0B       		.uleb128 0xb
- 1023 00e0 49       		.uleb128 0x49
- 1024 00e1 13       		.uleb128 0x13
- 1025 00e2 3F       		.uleb128 0x3f
- 1026 00e3 19       		.uleb128 0x19
- 1027 00e4 02       		.uleb128 0x2
- 1028 00e5 18       		.uleb128 0x18
- 1029 00e6 00       		.byte	0
- 1030 00e7 00       		.byte	0
- 1031 00e8 0F       		.uleb128 0xf
- 1032 00e9 34       		.uleb128 0x34
- 1033 00ea 00       		.byte	0
- 1034 00eb 03       		.uleb128 0x3
- 1035 00ec 08       		.uleb128 0x8
- 1036 00ed 3A       		.uleb128 0x3a
- 1037 00ee 0B       		.uleb128 0xb
- 1038 00ef 3B       		.uleb128 0x3b
- 1039 00f0 0B       		.uleb128 0xb
- 1040 00f1 49       		.uleb128 0x49
- 1041 00f2 13       		.uleb128 0x13
- 1042 00f3 3F       		.uleb128 0x3f
- 1043 00f4 19       		.uleb128 0x19
- 1044 00f5 02       		.uleb128 0x2
- 1045 00f6 18       		.uleb128 0x18
- 1046 00f7 00       		.byte	0
- 1047 00f8 00       		.byte	0
- 1048 00f9 00       		.byte	0
- 1049              		.section	.debug_aranges,"",%progbits
- 1050 0000 7C000000 		.4byte	0x7c
- 1051 0004 0200     		.2byte	0x2
- 1052 0006 00000000 		.4byte	.Ldebug_info0
- 1053 000a 04       		.byte	0x4
- 1054 000b 00       		.byte	0
- 1055 000c 0000     		.2byte	0
- 1056 000e 0000     		.2byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 21
+ 980 027a 91       		.byte	0x91
+ 981 027b B87F     		.sleb128 -72
+ 982 027d 07       		.uleb128 0x7
+ 983 027e 62756600 		.ascii	"buf\000"
+ 984 0282 01       		.byte	0x1
+ 985 0283 67       		.byte	0x67
+ 986 0284 E1000000 		.4byte	0xe1
+ 987 0288 02       		.uleb128 0x2
+ 988 0289 91       		.byte	0x91
+ 989 028a 44       		.sleb128 -60
+ 990 028b 00       		.byte	0
+ 991 028c 0D       		.uleb128 0xd
+ 992 028d 04       		.byte	0x4
+ 993 028e 84000000 		.4byte	0x84
+ 994 0292 0C       		.uleb128 0xc
+ 995 0293 5B000000 		.4byte	.LASF31
+ 996 0297 01       		.byte	0x1
+ 997 0298 6C       		.byte	0x6c
+ 998 0299 00000000 		.4byte	.LFB45
+ 999 029d 40000000 		.4byte	.LFE45-.LFB45
+ 1000 02a1 01       		.uleb128 0x1
+ 1001 02a2 9C       		.byte	0x9c
+ 1002 02a3 C5020000 		.4byte	0x2c5
+ 1003 02a7 0A       		.uleb128 0xa
+ 1004 02a8 00000000 		.4byte	.LASF32
+ 1005 02ac 01       		.byte	0x1
+ 1006 02ad 6C       		.byte	0x6c
+ 1007 02ae 11020000 		.4byte	0x211
+ 1008 02b2 03       		.uleb128 0x3
+ 1009 02b3 91       		.byte	0x91
+ 1010 02b4 BC7F     		.sleb128 -68
+ 1011 02b6 07       		.uleb128 0x7
+ 1012 02b7 62756600 		.ascii	"buf\000"
+ 1013 02bb 01       		.byte	0x1
+ 1014 02bc 6E       		.byte	0x6e
+ 1015 02bd E1000000 		.4byte	0xe1
+ 1016 02c1 02       		.uleb128 0x2
+ 1017 02c2 91       		.byte	0x91
+ 1018 02c3 44       		.sleb128 -60
+ 1019 02c4 00       		.byte	0
+ 1020 02c5 0F       		.uleb128 0xf
+ 1021 02c6 78020000 		.4byte	.LASF33
+ 1022 02ca 01       		.byte	0x1
+ 1023 02cb 12       		.byte	0x12
+ 1024 02cc 79000000 		.4byte	0x79
+ 1025 02d0 05       		.uleb128 0x5
+ 1026 02d1 03       		.byte	0x3
+ 1027 02d2 00000000 		.4byte	returnVal
+ 1028 02d6 08       		.uleb128 0x8
+ 1029 02d7 8F000000 		.4byte	0x8f
+ 1030 02db E6020000 		.4byte	0x2e6
+ 1031 02df 09       		.uleb128 0x9
+ 1032 02e0 6B000000 		.4byte	0x6b
+ 1033 02e4 63       		.byte	0x63
+ 1034 02e5 00       		.byte	0
+ 1035 02e6 10       		.uleb128 0x10
+ 1036 02e7 4B020000 		.4byte	.LASF34
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 22
 
 
- 1057 0010 00000000 		.4byte	.LFB33
- 1058 0014 08000000 		.4byte	.LFE33-.LFB33
- 1059 0018 00000000 		.4byte	.LFB34
- 1060 001c 0C000000 		.4byte	.LFE34-.LFB34
- 1061 0020 00000000 		.4byte	.LFB35
- 1062 0024 0C000000 		.4byte	.LFE35-.LFB35
- 1063 0028 00000000 		.4byte	.LFB36
- 1064 002c 1E000000 		.4byte	.LFE36-.LFB36
- 1065 0030 00000000 		.4byte	.LFB37
- 1066 0034 0C000000 		.4byte	.LFE37-.LFB37
- 1067 0038 00000000 		.4byte	.LFB38
- 1068 003c 08000000 		.4byte	.LFE38-.LFB38
- 1069 0040 00000000 		.4byte	.LFB39
- 1070 0044 08000000 		.4byte	.LFE39-.LFB39
- 1071 0048 00000000 		.4byte	.LFB40
- 1072 004c 1A000000 		.4byte	.LFE40-.LFB40
- 1073 0050 00000000 		.4byte	.LFB41
- 1074 0054 08000000 		.4byte	.LFE41-.LFB41
- 1075 0058 00000000 		.4byte	.LFB42
- 1076 005c 14000000 		.4byte	.LFE42-.LFB42
- 1077 0060 00000000 		.4byte	.LFB43
- 1078 0064 14000000 		.4byte	.LFE43-.LFB43
- 1079 0068 00000000 		.4byte	.LFB44
- 1080 006c 22000000 		.4byte	.LFE44-.LFB44
- 1081 0070 00000000 		.4byte	.LFB45
- 1082 0074 14000000 		.4byte	.LFE45-.LFB45
- 1083 0078 00000000 		.4byte	0
- 1084 007c 00000000 		.4byte	0
- 1085              		.section	.debug_ranges,"",%progbits
- 1086              	.Ldebug_ranges0:
- 1087 0000 00000000 		.4byte	.LFB33
- 1088 0004 08000000 		.4byte	.LFE33
- 1089 0008 00000000 		.4byte	.LFB34
- 1090 000c 0C000000 		.4byte	.LFE34
- 1091 0010 00000000 		.4byte	.LFB35
- 1092 0014 0C000000 		.4byte	.LFE35
- 1093 0018 00000000 		.4byte	.LFB36
- 1094 001c 1E000000 		.4byte	.LFE36
- 1095 0020 00000000 		.4byte	.LFB37
- 1096 0024 0C000000 		.4byte	.LFE37
- 1097 0028 00000000 		.4byte	.LFB38
- 1098 002c 08000000 		.4byte	.LFE38
- 1099 0030 00000000 		.4byte	.LFB39
- 1100 0034 08000000 		.4byte	.LFE39
- 1101 0038 00000000 		.4byte	.LFB40
- 1102 003c 1A000000 		.4byte	.LFE40
- 1103 0040 00000000 		.4byte	.LFB41
- 1104 0044 08000000 		.4byte	.LFE41
- 1105 0048 00000000 		.4byte	.LFB42
- 1106 004c 14000000 		.4byte	.LFE42
- 1107 0050 00000000 		.4byte	.LFB43
- 1108 0054 14000000 		.4byte	.LFE43
- 1109 0058 00000000 		.4byte	.LFB44
- 1110 005c 22000000 		.4byte	.LFE44
- 1111 0060 00000000 		.4byte	.LFB45
- 1112 0064 14000000 		.4byte	.LFE45
- 1113 0068 00000000 		.4byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 22
+ 1037 02eb 01       		.byte	0x1
+ 1038 02ec 15       		.byte	0x15
+ 1039 02ed D6020000 		.4byte	0x2d6
+ 1040 02f1 05       		.uleb128 0x5
+ 1041 02f2 03       		.byte	0x3
+ 1042 02f3 00000000 		.4byte	tempArray
+ 1043 02f7 10       		.uleb128 0x10
+ 1044 02f8 EC010000 		.4byte	.LASF35
+ 1045 02fc 01       		.byte	0x1
+ 1046 02fd 16       		.byte	0x16
+ 1047 02fe 11020000 		.4byte	0x211
+ 1048 0302 05       		.uleb128 0x5
+ 1049 0303 03       		.byte	0x3
+ 1050 0304 00000000 		.4byte	tempArrayPtr
+ 1051 0308 10       		.uleb128 0x10
+ 1052 0309 63010000 		.4byte	.LASF36
+ 1053 030d 01       		.byte	0x1
+ 1054 030e 17       		.byte	0x17
+ 1055 030f D6020000 		.4byte	0x2d6
+ 1056 0313 05       		.uleb128 0x5
+ 1057 0314 03       		.byte	0x3
+ 1058 0315 00000000 		.4byte	humArray
+ 1059 0319 10       		.uleb128 0x10
+ 1060 031a 24000000 		.4byte	.LASF37
+ 1061 031e 01       		.byte	0x1
+ 1062 031f 18       		.byte	0x18
+ 1063 0320 11020000 		.4byte	0x211
+ 1064 0324 05       		.uleb128 0x5
+ 1065 0325 03       		.byte	0x3
+ 1066 0326 00000000 		.4byte	humArrayPtr
+ 1067 032a 08       		.uleb128 0x8
+ 1068 032b 84000000 		.4byte	0x84
+ 1069 032f 40030000 		.4byte	0x340
+ 1070 0333 09       		.uleb128 0x9
+ 1071 0334 6B000000 		.4byte	0x6b
+ 1072 0338 05       		.byte	0x5
+ 1073 0339 09       		.uleb128 0x9
+ 1074 033a 6B000000 		.4byte	0x6b
+ 1075 033e 63       		.byte	0x63
+ 1076 033f 00       		.byte	0
+ 1077 0340 10       		.uleb128 0x10
+ 1078 0341 06000000 		.4byte	.LASF38
+ 1079 0345 01       		.byte	0x1
+ 1080 0346 19       		.byte	0x19
+ 1081 0347 2A030000 		.4byte	0x32a
+ 1082 034b 05       		.uleb128 0x5
+ 1083 034c 03       		.byte	0x3
+ 1084 034d 00000000 		.4byte	soilHumArray
+ 1085 0351 08       		.uleb128 0x8
+ 1086 0352 8C020000 		.4byte	0x28c
+ 1087 0356 61030000 		.4byte	0x361
+ 1088 035a 09       		.uleb128 0x9
+ 1089 035b 6B000000 		.4byte	0x6b
+ 1090 035f 05       		.byte	0x5
+ 1091 0360 00       		.byte	0
+ 1092 0361 10       		.uleb128 0x10
+ 1093 0362 E1010000 		.4byte	.LASF39
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 23
 
 
- 1114 006c 00000000 		.4byte	0
- 1115              		.section	.debug_line,"",%progbits
- 1116              	.Ldebug_line0:
- 1117 0000 30010000 		.section	.debug_str,"MS",%progbits,1
- 1117      02004A00 
- 1117      00000201 
- 1117      FB0E0D00 
- 1117      01010101 
- 1118              	.LASF31:
- 1119 0000 6C696768 		.ascii	"light\000"
- 1119      7400
- 1120              	.LASF36:
- 1121 0006 736F696C 		.ascii	"soilHumArray\000"
- 1121      48756D41 
- 1121      72726179 
- 1121      00
- 1122              	.LASF37:
- 1123 0013 736F696C 		.ascii	"soilHumPtr\000"
- 1123      48756D50 
- 1123      747200
- 1124              	.LASF25:
- 1125 001e 696E7075 		.ascii	"inputTemp\000"
- 1125      7454656D 
- 1125      7000
- 1126              	.LASF35:
- 1127 0028 68756D41 		.ascii	"humArrayPtr\000"
- 1127      72726179 
- 1127      50747200 
- 1128              	.LASF21:
- 1129 0034 61766748 		.ascii	"avgHum\000"
- 1129      756D00
- 1130              	.LASF3:
- 1131 003b 73686F72 		.ascii	"short unsigned int\000"
- 1131      7420756E 
- 1131      7369676E 
- 1131      65642069 
- 1131      6E7400
- 1132              	.LASF38:
- 1133 004e 6C696768 		.ascii	"lightArray\000"
- 1133      74417272 
- 1133      617900
- 1134              	.LASF28:
- 1135 0059 696E7075 		.ascii	"inputSoilHum\000"
- 1135      74536F69 
- 1135      6C48756D 
- 1135      00
- 1136              	.LASF12:
- 1137 0066 666C6F61 		.ascii	"float\000"
- 1137      7400
- 1138              	.LASF40:
- 1139 006c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1139      4320342E 
- 1139      382E3420 
- 1139      32303134 
- 1139      30353236 
- 1140 009f 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1140      20726576 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 23
+ 1094 0366 01       		.byte	0x1
+ 1095 0367 1A       		.byte	0x1a
+ 1096 0368 51030000 		.4byte	0x351
+ 1097 036c 05       		.uleb128 0x5
+ 1098 036d 03       		.byte	0x3
+ 1099 036e 00000000 		.4byte	soilHumPtr
+ 1100 0372 10       		.uleb128 0x10
+ 1101 0373 43000000 		.4byte	.LASF40
+ 1102 0377 01       		.byte	0x1
+ 1103 0378 1B       		.byte	0x1b
+ 1104 0379 D6020000 		.4byte	0x2d6
+ 1105 037d 05       		.uleb128 0x5
+ 1106 037e 03       		.byte	0x3
+ 1107 037f 00000000 		.4byte	lightArray
+ 1108 0383 10       		.uleb128 0x10
+ 1109 0384 82020000 		.4byte	.LASF41
+ 1110 0388 01       		.byte	0x1
+ 1111 0389 1C       		.byte	0x1c
+ 1112 038a 11020000 		.4byte	0x211
+ 1113 038e 05       		.uleb128 0x5
+ 1114 038f 03       		.byte	0x3
+ 1115 0390 00000000 		.4byte	lightArrayPtr
+ 1116 0394 10       		.uleb128 0x10
+ 1117 0395 79010000 		.4byte	.LASF27
+ 1118 0399 01       		.byte	0x1
+ 1119 039a 1D       		.byte	0x1d
+ 1120 039b 79000000 		.4byte	0x79
+ 1121 039f 05       		.uleb128 0x5
+ 1122 03a0 03       		.byte	0x3
+ 1123 03a1 00000000 		.4byte	temp
+ 1124 03a5 11       		.uleb128 0x11
+ 1125 03a6 68756D00 		.ascii	"hum\000"
+ 1126 03aa 01       		.byte	0x1
+ 1127 03ab 1D       		.byte	0x1d
+ 1128 03ac 79000000 		.4byte	0x79
+ 1129 03b0 05       		.uleb128 0x5
+ 1130 03b1 03       		.byte	0x3
+ 1131 03b2 00000000 		.4byte	hum
+ 1132 03b6 08       		.uleb128 0x8
+ 1133 03b7 79000000 		.4byte	0x79
+ 1134 03bb C6030000 		.4byte	0x3c6
+ 1135 03bf 09       		.uleb128 0x9
+ 1136 03c0 6B000000 		.4byte	0x6b
+ 1137 03c4 05       		.byte	0x5
+ 1138 03c5 00       		.byte	0
+ 1139 03c6 10       		.uleb128 0x10
+ 1140 03c7 47010000 		.4byte	.LASF30
+ 1141 03cb 01       		.byte	0x1
+ 1142 03cc 1D       		.byte	0x1d
+ 1143 03cd B6030000 		.4byte	0x3b6
+ 1144 03d1 05       		.uleb128 0x5
+ 1145 03d2 03       		.byte	0x3
+ 1146 03d3 00000000 		.4byte	soilHum
+ 1147 03d7 10       		.uleb128 0x10
+ 1148 03d8 00000000 		.4byte	.LASF32
+ 1149 03dc 01       		.byte	0x1
+ 1150 03dd 1D       		.byte	0x1d
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 24
 
 
- 1140      6973696F 
- 1140      6E203231 
- 1140      31333538 
- 1141 00d2 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1141      66756E63 
- 1141      74696F6E 
- 1141      2D736563 
- 1141      74696F6E 
- 1142              	.LASF1:
- 1143 00e8 756E7369 		.ascii	"unsigned char\000"
- 1143      676E6564 
- 1143      20636861 
- 1143      7200
- 1144              	.LASF42:
- 1145 00f6 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 1145      73657273 
- 1145      5C506869 
- 1145      6C69705C 
- 1145      4F6E6544 
- 1146 0123 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 1146      4D617374 
- 1146      65725C50 
- 1146      536F435F 
- 1146      4D617374 
- 1147              	.LASF5:
- 1148 0140 6C6F6E67 		.ascii	"long unsigned int\000"
- 1148      20756E73 
- 1148      69676E65 
- 1148      6420696E 
- 1148      7400
- 1149              	.LASF16:
- 1150 0152 67657454 		.ascii	"getTemp_DSP\000"
- 1150      656D705F 
- 1150      44535000 
- 1151              	.LASF11:
- 1152 015e 696E7433 		.ascii	"int32\000"
- 1152      3200
- 1153              	.LASF43:
- 1154 0164 67657453 		.ascii	"getSoilHum_DSP\000"
- 1154      6F696C48 
- 1154      756D5F44 
- 1154      535000
- 1155              	.LASF23:
- 1156 0173 6176674C 		.ascii	"avgLight\000"
- 1156      69676874 
- 1156      00
- 1157              	.LASF19:
- 1158 017c 696E6974 		.ascii	"initDSP\000"
- 1158      44535000 
- 1159              	.LASF13:
- 1160 0184 646F7562 		.ascii	"double\000"
- 1160      6C6500
- 1161              	.LASF29:
- 1162 018b 736F696C 		.ascii	"soilHum\000"
- 1162      48756D00 
- 1163              	.LASF27:
- 1164 0193 696E7075 		.ascii	"inputHum\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 24
+ 1151 03de 79000000 		.4byte	0x79
+ 1152 03e2 05       		.uleb128 0x5
+ 1153 03e3 03       		.byte	0x3
+ 1154 03e4 00000000 		.4byte	light
+ 1155 03e8 00       		.byte	0
+ 1156              		.section	.debug_abbrev,"",%progbits
+ 1157              	.Ldebug_abbrev0:
+ 1158 0000 01       		.uleb128 0x1
+ 1159 0001 11       		.uleb128 0x11
+ 1160 0002 01       		.byte	0x1
+ 1161 0003 25       		.uleb128 0x25
+ 1162 0004 0E       		.uleb128 0xe
+ 1163 0005 13       		.uleb128 0x13
+ 1164 0006 0B       		.uleb128 0xb
+ 1165 0007 03       		.uleb128 0x3
+ 1166 0008 0E       		.uleb128 0xe
+ 1167 0009 1B       		.uleb128 0x1b
+ 1168 000a 0E       		.uleb128 0xe
+ 1169 000b 55       		.uleb128 0x55
+ 1170 000c 17       		.uleb128 0x17
+ 1171 000d 11       		.uleb128 0x11
+ 1172 000e 01       		.uleb128 0x1
+ 1173 000f 10       		.uleb128 0x10
+ 1174 0010 17       		.uleb128 0x17
+ 1175 0011 00       		.byte	0
+ 1176 0012 00       		.byte	0
+ 1177 0013 02       		.uleb128 0x2
+ 1178 0014 24       		.uleb128 0x24
+ 1179 0015 00       		.byte	0
+ 1180 0016 0B       		.uleb128 0xb
+ 1181 0017 0B       		.uleb128 0xb
+ 1182 0018 3E       		.uleb128 0x3e
+ 1183 0019 0B       		.uleb128 0xb
+ 1184 001a 03       		.uleb128 0x3
+ 1185 001b 0E       		.uleb128 0xe
+ 1186 001c 00       		.byte	0
+ 1187 001d 00       		.byte	0
+ 1188 001e 03       		.uleb128 0x3
+ 1189 001f 24       		.uleb128 0x24
+ 1190 0020 00       		.byte	0
+ 1191 0021 0B       		.uleb128 0xb
+ 1192 0022 0B       		.uleb128 0xb
+ 1193 0023 3E       		.uleb128 0x3e
+ 1194 0024 0B       		.uleb128 0xb
+ 1195 0025 03       		.uleb128 0x3
+ 1196 0026 08       		.uleb128 0x8
+ 1197 0027 00       		.byte	0
+ 1198 0028 00       		.byte	0
+ 1199 0029 04       		.uleb128 0x4
+ 1200 002a 16       		.uleb128 0x16
+ 1201 002b 00       		.byte	0
+ 1202 002c 03       		.uleb128 0x3
+ 1203 002d 0E       		.uleb128 0xe
+ 1204 002e 3A       		.uleb128 0x3a
+ 1205 002f 0B       		.uleb128 0xb
+ 1206 0030 3B       		.uleb128 0x3b
+ 1207 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 25
 
 
- 1164      7448756D 
- 1164      00
- 1165              	.LASF17:
- 1166 019c 67657448 		.ascii	"getHum_DSP\000"
- 1166      756D5F44 
- 1166      535000
- 1167              	.LASF34:
- 1168 01a7 68756D41 		.ascii	"humArray\000"
- 1168      72726179 
- 1168      00
- 1169              	.LASF8:
- 1170 01b0 756E7369 		.ascii	"unsigned int\000"
- 1170      676E6564 
- 1170      20696E74 
- 1170      00
- 1171              	.LASF26:
- 1172 01bd 74656D70 		.ascii	"temp\000"
- 1172      00
- 1173              	.LASF7:
- 1174 01c2 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1174      206C6F6E 
- 1174      6720756E 
- 1174      7369676E 
- 1174      65642069 
- 1175              	.LASF30:
- 1176 01d9 696E7075 		.ascii	"inputLight\000"
- 1176      744C6967 
- 1176      687400
- 1177              	.LASF10:
- 1178 01e4 696E7431 		.ascii	"int16\000"
- 1178      3600
- 1179              	.LASF33:
- 1180 01ea 74656D70 		.ascii	"tempArrayPtr\000"
- 1180      41727261 
- 1180      79507472 
- 1180      00
- 1181              	.LASF18:
- 1182 01f7 6765744C 		.ascii	"getLight_DSP\000"
- 1182      69676874 
- 1182      5F445350 
- 1182      00
- 1183              	.LASF15:
- 1184 0204 73697A65 		.ascii	"sizetype\000"
- 1184      74797065 
- 1184      00
- 1185              	.LASF6:
- 1186 020d 6C6F6E67 		.ascii	"long long int\000"
- 1186      206C6F6E 
- 1186      6720696E 
- 1186      7400
- 1187              	.LASF14:
- 1188 021b 63686172 		.ascii	"char\000"
- 1188      00
- 1189              	.LASF24:
- 1190 0220 61766753 		.ascii	"avgSoilHum\000"
- 1190      6F696C48 
- 1190      756D00
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5MYZEX.s 			page 25
+ 1208 0032 49       		.uleb128 0x49
+ 1209 0033 13       		.uleb128 0x13
+ 1210 0034 00       		.byte	0
+ 1211 0035 00       		.byte	0
+ 1212 0036 05       		.uleb128 0x5
+ 1213 0037 2E       		.uleb128 0x2e
+ 1214 0038 00       		.byte	0
+ 1215 0039 3F       		.uleb128 0x3f
+ 1216 003a 19       		.uleb128 0x19
+ 1217 003b 03       		.uleb128 0x3
+ 1218 003c 0E       		.uleb128 0xe
+ 1219 003d 3A       		.uleb128 0x3a
+ 1220 003e 0B       		.uleb128 0xb
+ 1221 003f 3B       		.uleb128 0x3b
+ 1222 0040 0B       		.uleb128 0xb
+ 1223 0041 27       		.uleb128 0x27
+ 1224 0042 19       		.uleb128 0x19
+ 1225 0043 11       		.uleb128 0x11
+ 1226 0044 01       		.uleb128 0x1
+ 1227 0045 12       		.uleb128 0x12
+ 1228 0046 06       		.uleb128 0x6
+ 1229 0047 40       		.uleb128 0x40
+ 1230 0048 18       		.uleb128 0x18
+ 1231 0049 9742     		.uleb128 0x2117
+ 1232 004b 19       		.uleb128 0x19
+ 1233 004c 00       		.byte	0
+ 1234 004d 00       		.byte	0
+ 1235 004e 06       		.uleb128 0x6
+ 1236 004f 2E       		.uleb128 0x2e
+ 1237 0050 01       		.byte	0x1
+ 1238 0051 3F       		.uleb128 0x3f
+ 1239 0052 19       		.uleb128 0x19
+ 1240 0053 03       		.uleb128 0x3
+ 1241 0054 0E       		.uleb128 0xe
+ 1242 0055 3A       		.uleb128 0x3a
+ 1243 0056 0B       		.uleb128 0xb
+ 1244 0057 3B       		.uleb128 0x3b
+ 1245 0058 0B       		.uleb128 0xb
+ 1246 0059 27       		.uleb128 0x27
+ 1247 005a 19       		.uleb128 0x19
+ 1248 005b 49       		.uleb128 0x49
+ 1249 005c 13       		.uleb128 0x13
+ 1250 005d 11       		.uleb128 0x11
+ 1251 005e 01       		.uleb128 0x1
+ 1252 005f 12       		.uleb128 0x12
+ 1253 0060 06       		.uleb128 0x6
+ 1254 0061 40       		.uleb128 0x40
+ 1255 0062 18       		.uleb128 0x18
+ 1256 0063 9642     		.uleb128 0x2116
+ 1257 0065 19       		.uleb128 0x19
+ 1258 0066 01       		.uleb128 0x1
+ 1259 0067 13       		.uleb128 0x13
+ 1260 0068 00       		.byte	0
+ 1261 0069 00       		.byte	0
+ 1262 006a 07       		.uleb128 0x7
+ 1263 006b 34       		.uleb128 0x34
+ 1264 006c 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 26
 
 
- 1191              	.LASF22:
- 1192 022b 696E6465 		.ascii	"index\000"
- 1192      7800
- 1193              	.LASF41:
- 1194 0231 2E5C4453 		.ascii	".\\DSP_Class.c\000"
- 1194      505F436C 
- 1194      6173732E 
- 1194      6300
- 1195              	.LASF2:
- 1196 023f 73686F72 		.ascii	"short int\000"
- 1196      7420696E 
- 1196      7400
- 1197              	.LASF32:
- 1198 0249 74656D70 		.ascii	"tempArray\000"
- 1198      41727261 
- 1198      7900
- 1199              	.LASF9:
- 1200 0253 75696E74 		.ascii	"uint8\000"
- 1200      3800
- 1201              	.LASF4:
- 1202 0259 6C6F6E67 		.ascii	"long int\000"
- 1202      20696E74 
- 1202      00
- 1203              	.LASF20:
- 1204 0262 61766754 		.ascii	"avgTemp\000"
- 1204      656D7000 
- 1205              	.LASF0:
- 1206 026a 7369676E 		.ascii	"signed char\000"
- 1206      65642063 
- 1206      68617200 
- 1207              	.LASF39:
- 1208 0276 6C696768 		.ascii	"lightArrayPtr\000"
- 1208      74417272 
- 1208      61795074 
- 1208      7200
- 1209              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1265 006d 03       		.uleb128 0x3
+ 1266 006e 08       		.uleb128 0x8
+ 1267 006f 3A       		.uleb128 0x3a
+ 1268 0070 0B       		.uleb128 0xb
+ 1269 0071 3B       		.uleb128 0x3b
+ 1270 0072 0B       		.uleb128 0xb
+ 1271 0073 49       		.uleb128 0x49
+ 1272 0074 13       		.uleb128 0x13
+ 1273 0075 02       		.uleb128 0x2
+ 1274 0076 18       		.uleb128 0x18
+ 1275 0077 00       		.byte	0
+ 1276 0078 00       		.byte	0
+ 1277 0079 08       		.uleb128 0x8
+ 1278 007a 01       		.uleb128 0x1
+ 1279 007b 01       		.byte	0x1
+ 1280 007c 49       		.uleb128 0x49
+ 1281 007d 13       		.uleb128 0x13
+ 1282 007e 01       		.uleb128 0x1
+ 1283 007f 13       		.uleb128 0x13
+ 1284 0080 00       		.byte	0
+ 1285 0081 00       		.byte	0
+ 1286 0082 09       		.uleb128 0x9
+ 1287 0083 21       		.uleb128 0x21
+ 1288 0084 00       		.byte	0
+ 1289 0085 49       		.uleb128 0x49
+ 1290 0086 13       		.uleb128 0x13
+ 1291 0087 2F       		.uleb128 0x2f
+ 1292 0088 0B       		.uleb128 0xb
+ 1293 0089 00       		.byte	0
+ 1294 008a 00       		.byte	0
+ 1295 008b 0A       		.uleb128 0xa
+ 1296 008c 05       		.uleb128 0x5
+ 1297 008d 00       		.byte	0
+ 1298 008e 03       		.uleb128 0x3
+ 1299 008f 0E       		.uleb128 0xe
+ 1300 0090 3A       		.uleb128 0x3a
+ 1301 0091 0B       		.uleb128 0xb
+ 1302 0092 3B       		.uleb128 0x3b
+ 1303 0093 0B       		.uleb128 0xb
+ 1304 0094 49       		.uleb128 0x49
+ 1305 0095 13       		.uleb128 0x13
+ 1306 0096 02       		.uleb128 0x2
+ 1307 0097 18       		.uleb128 0x18
+ 1308 0098 00       		.byte	0
+ 1309 0099 00       		.byte	0
+ 1310 009a 0B       		.uleb128 0xb
+ 1311 009b 2E       		.uleb128 0x2e
+ 1312 009c 00       		.byte	0
+ 1313 009d 3F       		.uleb128 0x3f
+ 1314 009e 19       		.uleb128 0x19
+ 1315 009f 03       		.uleb128 0x3
+ 1316 00a0 0E       		.uleb128 0xe
+ 1317 00a1 3A       		.uleb128 0x3a
+ 1318 00a2 0B       		.uleb128 0xb
+ 1319 00a3 3B       		.uleb128 0x3b
+ 1320 00a4 0B       		.uleb128 0xb
+ 1321 00a5 27       		.uleb128 0x27
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 27
+
+
+ 1322 00a6 19       		.uleb128 0x19
+ 1323 00a7 11       		.uleb128 0x11
+ 1324 00a8 01       		.uleb128 0x1
+ 1325 00a9 12       		.uleb128 0x12
+ 1326 00aa 06       		.uleb128 0x6
+ 1327 00ab 40       		.uleb128 0x40
+ 1328 00ac 18       		.uleb128 0x18
+ 1329 00ad 9642     		.uleb128 0x2116
+ 1330 00af 19       		.uleb128 0x19
+ 1331 00b0 00       		.byte	0
+ 1332 00b1 00       		.byte	0
+ 1333 00b2 0C       		.uleb128 0xc
+ 1334 00b3 2E       		.uleb128 0x2e
+ 1335 00b4 01       		.byte	0x1
+ 1336 00b5 3F       		.uleb128 0x3f
+ 1337 00b6 19       		.uleb128 0x19
+ 1338 00b7 03       		.uleb128 0x3
+ 1339 00b8 0E       		.uleb128 0xe
+ 1340 00b9 3A       		.uleb128 0x3a
+ 1341 00ba 0B       		.uleb128 0xb
+ 1342 00bb 3B       		.uleb128 0x3b
+ 1343 00bc 0B       		.uleb128 0xb
+ 1344 00bd 27       		.uleb128 0x27
+ 1345 00be 19       		.uleb128 0x19
+ 1346 00bf 11       		.uleb128 0x11
+ 1347 00c0 01       		.uleb128 0x1
+ 1348 00c1 12       		.uleb128 0x12
+ 1349 00c2 06       		.uleb128 0x6
+ 1350 00c3 40       		.uleb128 0x40
+ 1351 00c4 18       		.uleb128 0x18
+ 1352 00c5 9642     		.uleb128 0x2116
+ 1353 00c7 19       		.uleb128 0x19
+ 1354 00c8 01       		.uleb128 0x1
+ 1355 00c9 13       		.uleb128 0x13
+ 1356 00ca 00       		.byte	0
+ 1357 00cb 00       		.byte	0
+ 1358 00cc 0D       		.uleb128 0xd
+ 1359 00cd 0F       		.uleb128 0xf
+ 1360 00ce 00       		.byte	0
+ 1361 00cf 0B       		.uleb128 0xb
+ 1362 00d0 0B       		.uleb128 0xb
+ 1363 00d1 49       		.uleb128 0x49
+ 1364 00d2 13       		.uleb128 0x13
+ 1365 00d3 00       		.byte	0
+ 1366 00d4 00       		.byte	0
+ 1367 00d5 0E       		.uleb128 0xe
+ 1368 00d6 05       		.uleb128 0x5
+ 1369 00d7 00       		.byte	0
+ 1370 00d8 03       		.uleb128 0x3
+ 1371 00d9 08       		.uleb128 0x8
+ 1372 00da 3A       		.uleb128 0x3a
+ 1373 00db 0B       		.uleb128 0xb
+ 1374 00dc 3B       		.uleb128 0x3b
+ 1375 00dd 0B       		.uleb128 0xb
+ 1376 00de 49       		.uleb128 0x49
+ 1377 00df 13       		.uleb128 0x13
+ 1378 00e0 02       		.uleb128 0x2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 28
+
+
+ 1379 00e1 18       		.uleb128 0x18
+ 1380 00e2 00       		.byte	0
+ 1381 00e3 00       		.byte	0
+ 1382 00e4 0F       		.uleb128 0xf
+ 1383 00e5 34       		.uleb128 0x34
+ 1384 00e6 00       		.byte	0
+ 1385 00e7 03       		.uleb128 0x3
+ 1386 00e8 0E       		.uleb128 0xe
+ 1387 00e9 3A       		.uleb128 0x3a
+ 1388 00ea 0B       		.uleb128 0xb
+ 1389 00eb 3B       		.uleb128 0x3b
+ 1390 00ec 0B       		.uleb128 0xb
+ 1391 00ed 49       		.uleb128 0x49
+ 1392 00ee 13       		.uleb128 0x13
+ 1393 00ef 02       		.uleb128 0x2
+ 1394 00f0 18       		.uleb128 0x18
+ 1395 00f1 00       		.byte	0
+ 1396 00f2 00       		.byte	0
+ 1397 00f3 10       		.uleb128 0x10
+ 1398 00f4 34       		.uleb128 0x34
+ 1399 00f5 00       		.byte	0
+ 1400 00f6 03       		.uleb128 0x3
+ 1401 00f7 0E       		.uleb128 0xe
+ 1402 00f8 3A       		.uleb128 0x3a
+ 1403 00f9 0B       		.uleb128 0xb
+ 1404 00fa 3B       		.uleb128 0x3b
+ 1405 00fb 0B       		.uleb128 0xb
+ 1406 00fc 49       		.uleb128 0x49
+ 1407 00fd 13       		.uleb128 0x13
+ 1408 00fe 3F       		.uleb128 0x3f
+ 1409 00ff 19       		.uleb128 0x19
+ 1410 0100 02       		.uleb128 0x2
+ 1411 0101 18       		.uleb128 0x18
+ 1412 0102 00       		.byte	0
+ 1413 0103 00       		.byte	0
+ 1414 0104 11       		.uleb128 0x11
+ 1415 0105 34       		.uleb128 0x34
+ 1416 0106 00       		.byte	0
+ 1417 0107 03       		.uleb128 0x3
+ 1418 0108 08       		.uleb128 0x8
+ 1419 0109 3A       		.uleb128 0x3a
+ 1420 010a 0B       		.uleb128 0xb
+ 1421 010b 3B       		.uleb128 0x3b
+ 1422 010c 0B       		.uleb128 0xb
+ 1423 010d 49       		.uleb128 0x49
+ 1424 010e 13       		.uleb128 0x13
+ 1425 010f 3F       		.uleb128 0x3f
+ 1426 0110 19       		.uleb128 0x19
+ 1427 0111 02       		.uleb128 0x2
+ 1428 0112 18       		.uleb128 0x18
+ 1429 0113 00       		.byte	0
+ 1430 0114 00       		.byte	0
+ 1431 0115 00       		.byte	0
+ 1432              		.section	.debug_aranges,"",%progbits
+ 1433 0000 7C000000 		.4byte	0x7c
+ 1434 0004 0200     		.2byte	0x2
+ 1435 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 29
+
+
+ 1436 000a 04       		.byte	0x4
+ 1437 000b 00       		.byte	0
+ 1438 000c 0000     		.2byte	0
+ 1439 000e 0000     		.2byte	0
+ 1440 0010 00000000 		.4byte	.LFB33
+ 1441 0014 08000000 		.4byte	.LFE33-.LFB33
+ 1442 0018 00000000 		.4byte	.LFB34
+ 1443 001c 3C000000 		.4byte	.LFE34-.LFB34
+ 1444 0020 00000000 		.4byte	.LFB35
+ 1445 0024 34000000 		.4byte	.LFE35-.LFB35
+ 1446 0028 00000000 		.4byte	.LFB36
+ 1447 002c 3C000000 		.4byte	.LFE36-.LFB36
+ 1448 0030 00000000 		.4byte	.LFB37
+ 1449 0034 34000000 		.4byte	.LFE37-.LFB37
+ 1450 0038 00000000 		.4byte	.LFB38
+ 1451 003c 14000000 		.4byte	.LFE38-.LFB38
+ 1452 0040 00000000 		.4byte	.LFB39
+ 1453 0044 14000000 		.4byte	.LFE39-.LFB39
+ 1454 0048 00000000 		.4byte	.LFB40
+ 1455 004c 34000000 		.4byte	.LFE40-.LFB40
+ 1456 0050 00000000 		.4byte	.LFB41
+ 1457 0054 14000000 		.4byte	.LFE41-.LFB41
+ 1458 0058 00000000 		.4byte	.LFB42
+ 1459 005c 40000000 		.4byte	.LFE42-.LFB42
+ 1460 0060 00000000 		.4byte	.LFB43
+ 1461 0064 40000000 		.4byte	.LFE43-.LFB43
+ 1462 0068 00000000 		.4byte	.LFB44
+ 1463 006c 44000000 		.4byte	.LFE44-.LFB44
+ 1464 0070 00000000 		.4byte	.LFB45
+ 1465 0074 40000000 		.4byte	.LFE45-.LFB45
+ 1466 0078 00000000 		.4byte	0
+ 1467 007c 00000000 		.4byte	0
+ 1468              		.section	.debug_ranges,"",%progbits
+ 1469              	.Ldebug_ranges0:
+ 1470 0000 00000000 		.4byte	.LFB33
+ 1471 0004 08000000 		.4byte	.LFE33
+ 1472 0008 00000000 		.4byte	.LFB34
+ 1473 000c 3C000000 		.4byte	.LFE34
+ 1474 0010 00000000 		.4byte	.LFB35
+ 1475 0014 34000000 		.4byte	.LFE35
+ 1476 0018 00000000 		.4byte	.LFB36
+ 1477 001c 3C000000 		.4byte	.LFE36
+ 1478 0020 00000000 		.4byte	.LFB37
+ 1479 0024 34000000 		.4byte	.LFE37
+ 1480 0028 00000000 		.4byte	.LFB38
+ 1481 002c 14000000 		.4byte	.LFE38
+ 1482 0030 00000000 		.4byte	.LFB39
+ 1483 0034 14000000 		.4byte	.LFE39
+ 1484 0038 00000000 		.4byte	.LFB40
+ 1485 003c 34000000 		.4byte	.LFE40
+ 1486 0040 00000000 		.4byte	.LFB41
+ 1487 0044 14000000 		.4byte	.LFE41
+ 1488 0048 00000000 		.4byte	.LFB42
+ 1489 004c 40000000 		.4byte	.LFE42
+ 1490 0050 00000000 		.4byte	.LFB43
+ 1491 0054 40000000 		.4byte	.LFE43
+ 1492 0058 00000000 		.4byte	.LFB44
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 30
+
+
+ 1493 005c 44000000 		.4byte	.LFE44
+ 1494 0060 00000000 		.4byte	.LFB45
+ 1495 0064 40000000 		.4byte	.LFE45
+ 1496 0068 00000000 		.4byte	0
+ 1497 006c 00000000 		.4byte	0
+ 1498              		.section	.debug_line,"",%progbits
+ 1499              	.Ldebug_line0:
+ 1500 0000 45010000 		.section	.debug_str,"MS",%progbits,1
+ 1500      02004A00 
+ 1500      00000201 
+ 1500      FB0E0D00 
+ 1500      01010101 
+ 1501              	.LASF32:
+ 1502 0000 6C696768 		.ascii	"light\000"
+ 1502      7400
+ 1503              	.LASF38:
+ 1504 0006 736F696C 		.ascii	"soilHumArray\000"
+ 1504      48756D41 
+ 1504      72726179 
+ 1504      00
+ 1505              	.LASF22:
+ 1506 0013 61766748 		.ascii	"avgHum\000"
+ 1506      756D00
+ 1507              	.LASF26:
+ 1508 001a 696E7075 		.ascii	"inputTemp\000"
+ 1508      7454656D 
+ 1508      7000
+ 1509              	.LASF37:
+ 1510 0024 68756D41 		.ascii	"humArrayPtr\000"
+ 1510      72726179 
+ 1510      50747200 
+ 1511              	.LASF4:
+ 1512 0030 73686F72 		.ascii	"short unsigned int\000"
+ 1512      7420756E 
+ 1512      7369676E 
+ 1512      65642069 
+ 1512      6E7400
+ 1513              	.LASF40:
+ 1514 0043 6C696768 		.ascii	"lightArray\000"
+ 1514      74417272 
+ 1514      617900
+ 1515              	.LASF29:
+ 1516 004e 696E7075 		.ascii	"inputSoilHum\000"
+ 1516      74536F69 
+ 1516      6C48756D 
+ 1516      00
+ 1517              	.LASF31:
+ 1518 005b 696E7075 		.ascii	"inputLight\000"
+ 1518      744C6967 
+ 1518      687400
+ 1519              	.LASF14:
+ 1520 0066 666C6F61 		.ascii	"float\000"
+ 1520      7400
+ 1521              	.LASF42:
+ 1522 006c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1522      4320342E 
+ 1522      382E3420 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 31
+
+
+ 1522      32303134 
+ 1522      30353236 
+ 1523 009f 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1523      20726576 
+ 1523      6973696F 
+ 1523      6E203231 
+ 1523      31333538 
+ 1524 00d2 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1524      66756E63 
+ 1524      74696F6E 
+ 1524      2D736563 
+ 1524      74696F6E 
+ 1525              	.LASF2:
+ 1526 00e8 756E7369 		.ascii	"unsigned char\000"
+ 1526      676E6564 
+ 1526      20636861 
+ 1526      7200
+ 1527              	.LASF12:
+ 1528 00f6 696E7431 		.ascii	"int16\000"
+ 1528      3600
+ 1529              	.LASF6:
+ 1530 00fc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1530      20756E73 
+ 1530      69676E65 
+ 1530      6420696E 
+ 1530      7400
+ 1531              	.LASF16:
+ 1532 010e 67657454 		.ascii	"getTemp_DSP\000"
+ 1532      656D705F 
+ 1532      44535000 
+ 1533              	.LASF13:
+ 1534 011a 696E7433 		.ascii	"int32\000"
+ 1534      3200
+ 1535              	.LASF18:
+ 1536 0120 67657453 		.ascii	"getSoilHum_DSP\000"
+ 1536      6F696C48 
+ 1536      756D5F44 
+ 1536      535000
+ 1537              	.LASF24:
+ 1538 012f 6176674C 		.ascii	"avgLight\000"
+ 1538      69676874 
+ 1538      00
+ 1539              	.LASF20:
+ 1540 0138 696E6974 		.ascii	"initDSP\000"
+ 1540      44535000 
+ 1541              	.LASF15:
+ 1542 0140 646F7562 		.ascii	"double\000"
+ 1542      6C6500
+ 1543              	.LASF30:
+ 1544 0147 736F696C 		.ascii	"soilHum\000"
+ 1544      48756D00 
+ 1545              	.LASF28:
+ 1546 014f 696E7075 		.ascii	"inputHum\000"
+ 1546      7448756D 
+ 1546      00
+ 1547              	.LASF17:
+ 1548 0158 67657448 		.ascii	"getHum_DSP\000"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 32
+
+
+ 1548      756D5F44 
+ 1548      535000
+ 1549              	.LASF36:
+ 1550 0163 68756D41 		.ascii	"humArray\000"
+ 1550      72726179 
+ 1550      00
+ 1551              	.LASF0:
+ 1552 016c 756E7369 		.ascii	"unsigned int\000"
+ 1552      676E6564 
+ 1552      20696E74 
+ 1552      00
+ 1553              	.LASF27:
+ 1554 0179 74656D70 		.ascii	"temp\000"
+ 1554      00
+ 1555              	.LASF8:
+ 1556 017e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1556      206C6F6E 
+ 1556      6720756E 
+ 1556      7369676E 
+ 1556      65642069 
+ 1557              	.LASF44:
+ 1558 0195 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 1558      73657273 
+ 1558      5C536E75 
+ 1558      666B696E 
+ 1558      5C446F63 
+ 1559 01c3 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 1559      5F4D6173 
+ 1559      7465725C 
+ 1559      50536F43 
+ 1559      5F4D6173 
+ 1560              	.LASF39:
+ 1561 01e1 736F696C 		.ascii	"soilHumPtr\000"
+ 1561      48756D50 
+ 1561      747200
+ 1562              	.LASF35:
+ 1563 01ec 74656D70 		.ascii	"tempArrayPtr\000"
+ 1563      41727261 
+ 1563      79507472 
+ 1563      00
+ 1564              	.LASF19:
+ 1565 01f9 6765744C 		.ascii	"getLight_DSP\000"
+ 1565      69676874 
+ 1565      5F445350 
+ 1565      00
+ 1566              	.LASF9:
+ 1567 0206 73697A65 		.ascii	"sizetype\000"
+ 1567      74797065 
+ 1567      00
+ 1568              	.LASF7:
+ 1569 020f 6C6F6E67 		.ascii	"long long int\000"
+ 1569      206C6F6E 
+ 1569      6720696E 
+ 1569      7400
+ 1570              	.LASF10:
+ 1571 021d 63686172 		.ascii	"char\000"
+ 1571      00
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccubOBBt.s 			page 33
+
+
+ 1572              	.LASF25:
+ 1573 0222 61766753 		.ascii	"avgSoilHum\000"
+ 1573      6F696C48 
+ 1573      756D00
+ 1574              	.LASF23:
+ 1575 022d 696E6465 		.ascii	"index\000"
+ 1575      7800
+ 1576              	.LASF43:
+ 1577 0233 2E5C4453 		.ascii	".\\DSP_Class.c\000"
+ 1577      505F436C 
+ 1577      6173732E 
+ 1577      6300
+ 1578              	.LASF3:
+ 1579 0241 73686F72 		.ascii	"short int\000"
+ 1579      7420696E 
+ 1579      7400
+ 1580              	.LASF34:
+ 1581 024b 74656D70 		.ascii	"tempArray\000"
+ 1581      41727261 
+ 1581      7900
+ 1582              	.LASF11:
+ 1583 0255 75696E74 		.ascii	"uint8\000"
+ 1583      3800
+ 1584              	.LASF5:
+ 1585 025b 6C6F6E67 		.ascii	"long int\000"
+ 1585      20696E74 
+ 1585      00
+ 1586              	.LASF21:
+ 1587 0264 61766754 		.ascii	"avgTemp\000"
+ 1587      656D7000 
+ 1588              	.LASF1:
+ 1589 026c 7369676E 		.ascii	"signed char\000"
+ 1589      65642063 
+ 1589      68617200 
+ 1590              	.LASF33:
+ 1591 0278 72657475 		.ascii	"returnVal\000"
+ 1591      726E5661 
+ 1591      6C00
+ 1592              	.LASF41:
+ 1593 0282 6C696768 		.ascii	"lightArrayPtr\000"
+ 1593      74417272 
+ 1593      61795074 
+ 1593      7200
+ 1594              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

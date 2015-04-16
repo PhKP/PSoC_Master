@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
   24:.\Generated_Source\PSoC4/Timer.c **** /*******************************************************************************
   25:.\Generated_Source\PSoC4/Timer.c **** * Function Name: Timer_Init
   26:.\Generated_Source\PSoC4/Timer.c **** ********************************************************************************
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 2
 
 
   27:.\Generated_Source\PSoC4/Timer.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
   48              		.loc 1 64 0
   49 0010 0120     		mov	r0, #1
   50 0012 FFF7FEFF 		bl	Timer_SetInterruptMode
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 3
 
 
   65:.\Generated_Source\PSoC4/Timer.c ****         
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  111:.\Generated_Source\PSoC4/Timer.c ****         #if (Timer__PWM == Timer_PWM_MODE)
  112:.\Generated_Source\PSoC4/Timer.c ****             Timer_CONTROL_REG |= Timer_CTRL_PWM_PRESCALER;
  113:.\Generated_Source\PSoC4/Timer.c ****         #endif  /* (Timer__PWM == Timer_PWM_MODE) */
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 4
 
 
  114:.\Generated_Source\PSoC4/Timer.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
   66 002c 00010540 		.word	1074069760
   67 0030 00060102 		.word	33621504
   68 0034 24010540 		.word	1074069796
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 5
 
 
   69 0038 1BB70000 		.word	46875
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  101 0016 0121     		mov	r1, #1
  102 0018 0A43     		orr	r2, r1
  103 001a 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 6
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 6
 
 
  183:.\Generated_Source\PSoC4/Timer.c ****     CyExitCriticalSection(enableInterrupts);
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  208:.\Generated_Source\PSoC4/Timer.c **** *  just enabled.
  209:.\Generated_Source\PSoC4/Timer.c **** *
  210:.\Generated_Source\PSoC4/Timer.c **** * Parameters:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 7
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 7
 
 
  211:.\Generated_Source\PSoC4/Timer.c **** *  None
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  164              	.LFE2:
  165              		.size	Timer_Start, .-Timer_Start
  166              		.section	.text.Timer_Stop,"ax",%progbits
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 8
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 8
 
 
  167              		.align	2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  258:.\Generated_Source\PSoC4/Timer.c ****     CyExitCriticalSection(enableInterrupts);
  197              		.loc 1 258 0
  198 001c FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 9
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 9
 
 
  199 001e 1B78     		ldrb	r3, [r3]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  223              		.cfi_startproc
  224 0000 90B5     		push	{r4, r7, lr}
  225              		.cfi_def_cfa_offset 12
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 10
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 10
 
 
  226              		.cfi_offset 4, -12
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  271              	.LFE4:
  272              		.size	Timer_SetMode, .-Timer_SetMode
  273              		.section	.text.Timer_SetQDMode,"ax",%progbits
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 11
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 11
 
 
  274              		.align	2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  299              		.loc 1 326 0
  300 0014 0A4B     		ldr	r3, .L18
  301 0016 0A4A     		ldr	r2, .L18
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 12
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 12
 
 
  302 0018 1168     		ldr	r1, [r2]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  343:.\Generated_Source\PSoC4/Timer.c **** *   Values:
  344:.\Generated_Source\PSoC4/Timer.c **** *         - Timer_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
  345:.\Generated_Source\PSoC4/Timer.c **** *         - Timer_PRESCALE_DIVBY2    - Divide by 2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 13
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 13
 
 
  346:.\Generated_Source\PSoC4/Timer.c **** *         - Timer_PRESCALE_DIVBY4    - Divide by 4
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  373 002c 3B1C     		mov	r3, r7
  374 002e 0F33     		add	r3, r3, #15
  375 0030 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 14
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 14
 
 
  376 0032 181C     		mov	r0, r3
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  406 0002 85B0     		sub	sp, sp, #20
  407              		.cfi_def_cfa_offset 32
  408 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 15
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 15
 
 
  409              		.cfi_def_cfa_register 7
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  453              		.section	.text.Timer_SetPWMMode,"ax",%progbits
  454              		.align	2
  455              		.global	Timer_SetPWMMode
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 16
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 16
 
 
  456              		.code	16
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  466              		.cfi_offset 14, -4
  467 0002 82B0     		sub	sp, sp, #8
  468              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 17
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 17
 
 
  469 0004 00AF     		add	r7, sp, #0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  470:.\Generated_Source\PSoC4/Timer.c **** *  syncKillEnable
  471:.\Generated_Source\PSoC4/Timer.c **** *   Values:
  472:.\Generated_Source\PSoC4/Timer.c **** *     - 0 - Asynchronous
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 18
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 18
 
 
  473:.\Generated_Source\PSoC4/Timer.c **** *     - 1 - Synchronous
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  535 0034 0F33     		add	r3, r3, #15
  536 0036 1B78     		ldrb	r3, [r3]
  537 0038 181C     		mov	r0, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 19
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 19
 
 
  538 003a FFF7FEFF 		bl	CyExitCriticalSection
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  567              		.cfi_def_cfa_offset 32
  568 0004 00AF     		add	r7, sp, #0
  569              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 20
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 20
 
 
  570 0006 7860     		str	r0, [r7, #4]
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  614              		.global	Timer_SetPWMDeadTime
  615              		.code	16
  616              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 21
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 21
 
 
  617              		.type	Timer_SetPWMDeadTime, %function
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  643 001c 0A40     		and	r2, r1
  644 001e 1A60     		str	r2, [r3]
  553:.\Generated_Source\PSoC4/Timer.c ****     Timer_CONTROL_REG |= ((uint32)((deadTime & Timer_8BIT_MASK) <<
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 22
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 22
 
 
  645              		.loc 1 553 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  571:.\Generated_Source\PSoC4/Timer.c **** *   Values:
  572:.\Generated_Source\PSoC4/Timer.c **** *         - Timer_INVERT_LINE   - Inverts the line output
  573:.\Generated_Source\PSoC4/Timer.c **** *         - Timer_INVERT_LINE_N - Inverts the line_n output
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 23
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 23
 
 
  574:.\Generated_Source\PSoC4/Timer.c **** *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  720              		.loc 1 589 0
  721 0038 BD46     		mov	sp, r7
  722 003a 05B0     		add	sp, sp, #20
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 24
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 24
 
 
  723              		@ sp needed
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  755 000c 1204     		lsl	r2, r2, #16
  756 000e 120C     		lsr	r2, r2, #16
  757 0010 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 25
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 25
 
 
  612:.\Generated_Source\PSoC4/Timer.c **** }
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  791              		.loc 1 632 0
  792 000c 181C     		mov	r0, r3
  793 000e BD46     		mov	sp, r7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 26
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 26
 
 
  794              		@ sp needed
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  821              		.cfi_def_cfa_register 7
  822 0006 7860     		str	r0, [r7, #4]
  660:.\Generated_Source\PSoC4/Timer.c ****     uint8 enableInterrupts;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 27
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 27
 
 
  661:.\Generated_Source\PSoC4/Timer.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  869              	.LFB16:
  669:.\Generated_Source\PSoC4/Timer.c **** 
  670:.\Generated_Source\PSoC4/Timer.c **** 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 28
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 28
 
 
  671:.\Generated_Source\PSoC4/Timer.c **** /*******************************************************************************
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  904              		.type	Timer_ReadPeriod, %function
  905              	Timer_ReadPeriod:
  906              	.LFB17:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 29
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 29
 
 
  691:.\Generated_Source\PSoC4/Timer.c **** 
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  712:.\Generated_Source\PSoC4/Timer.c **** 
  713:.\Generated_Source\PSoC4/Timer.c **** /*******************************************************************************
  714:.\Generated_Source\PSoC4/Timer.c **** * Function Name: Timer_SetCompareSwap
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 30
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 30
 
 
  715:.\Generated_Source\PSoC4/Timer.c **** ********************************************************************************
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  968 0024 1168     		ldr	r1, [r2]
  969 0026 7868     		ldr	r0, [r7, #4]
  970 0028 0122     		mov	r2, #1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 31
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 31
 
 
  971 002a 0240     		and	r2, r0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1004              		.cfi_offset 7, -8
  1005              		.cfi_offset 14, -4
  1006 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 32
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 32
 
 
  1007              		.cfi_def_cfa_offset 16
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1041              		.cfi_offset 7, -8
  1042              		.cfi_offset 14, -4
  1043 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 33
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 33
 
 
  1044              		.cfi_def_cfa_register 7
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1072 0000 90B5     		push	{r4, r7, lr}
  1073              		.cfi_def_cfa_offset 12
  1074              		.cfi_offset 4, -12
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 34
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 34
 
 
  1075              		.cfi_offset 7, -8
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1119 0044 00010540 		.word	1074069760
  1120              		.cfi_endproc
  1121              	.LFE21:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 35
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 35
 
 
  1122              		.size	Timer_SetPeriodSwap, .-Timer_SetPeriodSwap
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  852:.\Generated_Source\PSoC4/Timer.c ****         else
  853:.\Generated_Source\PSoC4/Timer.c ****         {
  854:.\Generated_Source\PSoC4/Timer.c ****         }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 36
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 36
 
 
  855:.\Generated_Source\PSoC4/Timer.c ****         
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1171              		.cfi_def_cfa_offset 8
  1172              		.cfi_offset 7, -8
  1173              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 37
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 37
 
 
  1174 0002 00AF     		add	r7, sp, #0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  907:.\Generated_Source\PSoC4/Timer.c **** 
  908:.\Generated_Source\PSoC4/Timer.c **** 
  909:.\Generated_Source\PSoC4/Timer.c **** /*******************************************************************************
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 38
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 38
 
 
  910:.\Generated_Source\PSoC4/Timer.c **** * Function Name: Timer_WriteCompareBuf
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  947:.\Generated_Source\PSoC4/Timer.c **** }
  1218              		.loc 1 947 0
  1219 0012 BD46     		mov	sp, r7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 39
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 39
 
 
  1220 0014 02B0     		add	sp, sp, #8
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  976:.\Generated_Source\PSoC4/Timer.c ****         
  977:.\Generated_Source\PSoC4/Timer.c ****         if (((uint32)Timer__COUNT_DOWN == currentMode) && (0u != regVal))
  978:.\Generated_Source\PSoC4/Timer.c ****         {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 40
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 40
 
 
  979:.\Generated_Source\PSoC4/Timer.c ****             regVal--;
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1008:.\Generated_Source\PSoC4/Timer.c **** *  Capture value
 1009:.\Generated_Source\PSoC4/Timer.c **** *
 1010:.\Generated_Source\PSoC4/Timer.c **** *******************************************************************************/
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 41
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 41
 
 
 1011:.\Generated_Source\PSoC4/Timer.c **** uint32 Timer_ReadCapture(void)
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1032:.\Generated_Source\PSoC4/Timer.c **** uint32 Timer_ReadCaptureBuf(void)
 1033:.\Generated_Source\PSoC4/Timer.c **** {
  1304              		.loc 1 1033 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 42
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 42
 
 
  1305              		.cfi_startproc
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1056:.\Generated_Source\PSoC4/Timer.c **** *  None
 1057:.\Generated_Source\PSoC4/Timer.c **** *
 1058:.\Generated_Source\PSoC4/Timer.c **** *******************************************************************************/
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 43
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 43
 
 
 1059:.\Generated_Source\PSoC4/Timer.c **** void Timer_SetCaptureMode(uint32 triggerMode)
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1380              	.L95:
  1381 003e C046     		.align	2
  1382              	.L94:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 44
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 44
 
 
  1383 0040 24010540 		.word	1074069796
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1410 000c FFF7FEFF 		bl	CyEnterCriticalSection
  1411 0010 031C     		mov	r3, r0
  1412 0012 2370     		strb	r3, [r4]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 45
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 45
 
 
 1097:.\Generated_Source\PSoC4/Timer.c **** 
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1110:.\Generated_Source\PSoC4/Timer.c **** *  Sets the start trigger mode. For Quadrature Decoder mode this is the
 1111:.\Generated_Source\PSoC4/Timer.c **** *  phiB input.
 1112:.\Generated_Source\PSoC4/Timer.c **** *
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 46
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 46
 
 
 1113:.\Generated_Source\PSoC4/Timer.c **** * Parameters:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1134:.\Generated_Source\PSoC4/Timer.c ****     CyExitCriticalSection(enableInterrupts);
  1487              		.loc 1 1134 0
  1488 002e 3B1C     		mov	r3, r7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 47
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 47
 
 
  1489 0030 0F33     		add	r3, r3, #15
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1519              		.cfi_offset 7, -8
  1520              		.cfi_offset 14, -4
  1521 0002 85B0     		sub	sp, sp, #20
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 48
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 48
 
 
  1522              		.cfi_def_cfa_offset 32
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1567              		.global	Timer_SetCountMode
  1568              		.code	16
  1569              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 49
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 49
 
 
  1570              		.type	Timer_SetCountMode, %function
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1595 001a 0C21     		mov	r1, #12
  1596 001c 8A43     		bic	r2, r1
  1597 001e 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 50
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 50
 
 
 1197:.\Generated_Source\PSoC4/Timer.c ****     Timer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Timer_COUNT_SHIFT));
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1217:.\Generated_Source\PSoC4/Timer.c **** *        define.
 1218:.\Generated_Source\PSoC4/Timer.c **** *  command: Enumerated command values. Capture command only applicable for
 1219:.\Generated_Source\PSoC4/Timer.c **** *           Timer/Counter with Capture and PWM modes.
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 51
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 51
 
 
 1220:.\Generated_Source\PSoC4/Timer.c **** *   Values:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1666 0030 BD46     		mov	sp, r7
  1667 0032 05B0     		add	sp, sp, #20
  1668              		@ sp needed
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 52
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 52
 
 
  1669 0034 90BD     		pop	{r4, r7, pc}
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1700 000e 0123     		mov	r3, #1
  1701 0010 0B40     		and	r3, r1
 1261:.\Generated_Source\PSoC4/Timer.c ****     return ((Timer_STATUS_REG >> Timer_RUNNING_STATUS_SHIFT) |
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 53
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 53
 
 
  1702              		.loc 1 1261 0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1733              		.cfi_def_cfa_register 7
  1734 0006 7860     		str	r0, [r7, #4]
 1286:.\Generated_Source\PSoC4/Timer.c ****     Timer_INTERRUPT_MASK_REG =  interruptMask;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 54
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 54
 
 
  1735              		.loc 1 1286 0
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
 1309:.\Generated_Source\PSoC4/Timer.c ****     return (Timer_INTERRUPT_MASKED_REG);
  1767              		.loc 1 1309 0
  1768 0004 024B     		ldr	r3, .L120
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 55
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 55
 
 
  1769 0006 1B68     		ldr	r3, [r3]
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1800 0006 1B68     		ldr	r3, [r3]
 1333:.\Generated_Source\PSoC4/Timer.c **** }
  1801              		.loc 1 1333 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 56
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 56
 
 
  1802 0008 181C     		mov	r0, r3
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1834 000a 7A68     		ldr	r2, [r7, #4]
  1835 000c 1A60     		str	r2, [r3]
 1356:.\Generated_Source\PSoC4/Timer.c **** }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 57
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 57
 
 
  1836              		.loc 1 1356 0
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1868 0008 024B     		ldr	r3, .L130
  1869 000a 7A68     		ldr	r2, [r7, #4]
  1870 000c 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 58
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 58
 
 
 1379:.\Generated_Source\PSoC4/Timer.c **** }
@@ -3444,48 +3444,48 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1890 0006 00000000 		.4byte	.Ldebug_abbrev0
  1891 000a 04       		.byte	0x4
  1892 000b 01       		.uleb128 0x1
- 1893 000c 83030000 		.4byte	.LASF76
+ 1893 000c 39030000 		.4byte	.LASF76
  1894 0010 01       		.byte	0x1
- 1895 0011 05020000 		.4byte	.LASF77
- 1896 0015 5B000000 		.4byte	.LASF78
+ 1895 0011 BB010000 		.4byte	.LASF77
+ 1896 0015 44040000 		.4byte	.LASF78
  1897 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1898 001d 00000000 		.4byte	0
  1899 0021 00000000 		.4byte	.Ldebug_line0
  1900 0025 02       		.uleb128 0x2
  1901 0026 01       		.byte	0x1
  1902 0027 06       		.byte	0x6
- 1903 0028 1E010000 		.4byte	.LASF0
+ 1903 0028 D4000000 		.4byte	.LASF0
  1904 002c 02       		.uleb128 0x2
  1905 002d 01       		.byte	0x1
  1906 002e 08       		.byte	0x8
- 1907 002f 39040000 		.4byte	.LASF1
+ 1907 002f EF030000 		.4byte	.LASF1
  1908 0033 02       		.uleb128 0x2
  1909 0034 02       		.byte	0x2
  1910 0035 05       		.byte	0x5
- 1911 0036 58040000 		.4byte	.LASF2
+ 1911 0036 0E040000 		.4byte	.LASF2
  1912 003a 02       		.uleb128 0x2
  1913 003b 02       		.byte	0x2
  1914 003c 07       		.byte	0x7
- 1915 003d 6F020000 		.4byte	.LASF3
+ 1915 003d 25020000 		.4byte	.LASF3
  1916 0041 02       		.uleb128 0x2
  1917 0042 04       		.byte	0x4
  1918 0043 05       		.byte	0x5
- 1919 0044 55010000 		.4byte	.LASF4
+ 1919 0044 0B010000 		.4byte	.LASF4
  1920 0048 02       		.uleb128 0x2
  1921 0049 04       		.byte	0x4
  1922 004a 07       		.byte	0x7
- 1923 004b 47020000 		.4byte	.LASF5
+ 1923 004b FD010000 		.4byte	.LASF5
  1924 004f 02       		.uleb128 0x2
  1925 0050 08       		.byte	0x8
  1926 0051 05       		.byte	0x5
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 59
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 59
 
 
- 1927 0052 10010000 		.4byte	.LASF6
+ 1927 0052 C6000000 		.4byte	.LASF6
  1928 0056 02       		.uleb128 0x2
  1929 0057 08       		.byte	0x8
  1930 0058 07       		.byte	0x7
- 1931 0059 C8000000 		.4byte	.LASF7
+ 1931 0059 7E000000 		.4byte	.LASF7
  1932 005d 03       		.uleb128 0x3
  1933 005e 04       		.byte	0x4
  1934 005f 05       		.byte	0x5
@@ -3493,31 +3493,31 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1936 0064 02       		.uleb128 0x2
  1937 0065 04       		.byte	0x4
  1938 0066 07       		.byte	0x7
- 1939 0067 26020000 		.4byte	.LASF8
+ 1939 0067 DC010000 		.4byte	.LASF8
  1940 006b 04       		.uleb128 0x4
- 1941 006c 85010000 		.4byte	.LASF9
+ 1941 006c 3B010000 		.4byte	.LASF9
  1942 0070 02       		.byte	0x2
  1943 0071 A1       		.byte	0xa1
  1944 0072 2C000000 		.4byte	0x2c
  1945 0076 04       		.uleb128 0x4
- 1946 0077 A9010000 		.4byte	.LASF10
+ 1946 0077 5F010000 		.4byte	.LASF10
  1947 007b 02       		.byte	0x2
  1948 007c A3       		.byte	0xa3
  1949 007d 48000000 		.4byte	0x48
  1950 0081 02       		.uleb128 0x2
  1951 0082 04       		.byte	0x4
  1952 0083 04       		.byte	0x4
- 1953 0084 61030000 		.4byte	.LASF11
+ 1953 0084 17030000 		.4byte	.LASF11
  1954 0088 02       		.uleb128 0x2
  1955 0089 08       		.byte	0x8
  1956 008a 04       		.byte	0x4
- 1957 008b 8B010000 		.4byte	.LASF12
+ 1957 008b 41010000 		.4byte	.LASF12
  1958 008f 02       		.uleb128 0x2
  1959 0090 01       		.byte	0x1
  1960 0091 08       		.byte	0x8
- 1961 0092 A3040000 		.4byte	.LASF13
+ 1961 0092 A5040000 		.4byte	.LASF13
  1962 0096 05       		.uleb128 0x5
- 1963 0097 DF020000 		.4byte	.LASF14
+ 1963 0097 95020000 		.4byte	.LASF14
  1964 009b 02       		.byte	0x2
  1965 009c 4D01     		.2byte	0x14d
  1966 009e A2000000 		.4byte	0xa2
@@ -3526,9 +3526,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1969 00a7 02       		.uleb128 0x2
  1970 00a8 04       		.byte	0x4
  1971 00a9 07       		.byte	0x7
- 1972 00aa FA020000 		.4byte	.LASF15
+ 1972 00aa B0020000 		.4byte	.LASF15
  1973 00ae 07       		.uleb128 0x7
- 1974 00af 83040000 		.4byte	.LASF16
+ 1974 00af 39040000 		.4byte	.LASF16
  1975 00b3 01       		.byte	0x1
  1976 00b4 26       		.byte	0x26
  1977 00b5 00000000 		.4byte	.LFB0
@@ -3536,9 +3536,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1979 00bd 01       		.uleb128 0x1
  1980 00be 9C       		.byte	0x9c
  1981 00bf 08       		.uleb128 0x8
- 1982 00c0 62020000 		.4byte	.LASF18
+ 1982 00c0 18020000 		.4byte	.LASF18
  1983 00c4 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 60
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 60
 
 
  1984 00c5 B1       		.byte	0xb1
@@ -3548,7 +3548,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1988 00cf 9C       		.byte	0x9c
  1989 00d0 E3000000 		.4byte	0xe3
  1990 00d4 09       		.uleb128 0x9
- 1991 00d5 E9040000 		.4byte	.LASF20
+ 1991 00d5 EB040000 		.4byte	.LASF20
  1992 00d9 01       		.byte	0x1
  1993 00da B3       		.byte	0xb3
  1994 00db 6B000000 		.4byte	0x6b
@@ -3557,7 +3557,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  1997 00e1 6F       		.sleb128 -17
  1998 00e2 00       		.byte	0
  1999 00e3 07       		.uleb128 0x7
- 2000 00e4 33020000 		.4byte	.LASF17
+ 2000 00e4 E9010000 		.4byte	.LASF17
  2001 00e8 01       		.byte	0x1
  2002 00e9 E0       		.byte	0xe0
  2003 00ea 00000000 		.4byte	.LFB2
@@ -3565,7 +3565,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2005 00f2 01       		.uleb128 0x1
  2006 00f3 9C       		.byte	0x9c
  2007 00f4 08       		.uleb128 0x8
- 2008 00f5 A7020000 		.4byte	.LASF19
+ 2008 00f5 5D020000 		.4byte	.LASF19
  2009 00f9 01       		.byte	0x1
  2010 00fa FA       		.byte	0xfa
  2011 00fb 00000000 		.4byte	.LFB3
@@ -3574,7 +3574,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2014 0104 9C       		.byte	0x9c
  2015 0105 18010000 		.4byte	0x118
  2016 0109 09       		.uleb128 0x9
- 2017 010a E9040000 		.4byte	.LASF20
+ 2017 010a EB040000 		.4byte	.LASF20
  2018 010e 01       		.byte	0x1
  2019 010f FC       		.byte	0xfc
  2020 0110 6B000000 		.4byte	0x6b
@@ -3583,7 +3583,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2023 0116 6F       		.sleb128 -17
  2024 0117 00       		.byte	0
  2025 0118 0A       		.uleb128 0xa
- 2026 0119 AC000000 		.4byte	.LASF21
+ 2026 0119 62000000 		.4byte	.LASF21
  2027 011d 01       		.byte	0x1
  2028 011e 1F01     		.2byte	0x11f
  2029 0120 00000000 		.4byte	.LFB4
@@ -3592,18 +3592,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2032 0129 9C       		.byte	0x9c
  2033 012a 4D010000 		.4byte	0x14d
  2034 012e 0B       		.uleb128 0xb
- 2035 012f A8040000 		.4byte	.LASF23
+ 2035 012f AA040000 		.4byte	.LASF23
  2036 0133 01       		.byte	0x1
  2037 0134 1F01     		.2byte	0x11f
  2038 0136 76000000 		.4byte	0x76
  2039 013a 02       		.uleb128 0x2
  2040 013b 91       		.byte	0x91
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 61
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 61
 
 
  2041 013c 64       		.sleb128 -28
  2042 013d 0C       		.uleb128 0xc
- 2043 013e E9040000 		.4byte	.LASF20
+ 2043 013e EB040000 		.4byte	.LASF20
  2044 0142 01       		.byte	0x1
  2045 0143 2101     		.2byte	0x121
  2046 0145 6B000000 		.4byte	0x6b
@@ -3612,7 +3612,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2049 014b 6F       		.sleb128 -17
  2050 014c 00       		.byte	0
  2051 014d 0A       		.uleb128 0xa
- 2052 014e 2A010000 		.4byte	.LASF22
+ 2052 014e E0000000 		.4byte	.LASF22
  2053 0152 01       		.byte	0x1
  2054 0153 4001     		.2byte	0x140
  2055 0155 00000000 		.4byte	.LFB5
@@ -3621,7 +3621,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2058 015e 9C       		.byte	0x9c
  2059 015f 82010000 		.4byte	0x182
  2060 0163 0B       		.uleb128 0xb
- 2061 0164 09010000 		.4byte	.LASF24
+ 2061 0164 BF000000 		.4byte	.LASF24
  2062 0168 01       		.byte	0x1
  2063 0169 4001     		.2byte	0x140
  2064 016b 76000000 		.4byte	0x76
@@ -3629,7 +3629,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2066 0170 91       		.byte	0x91
  2067 0171 64       		.sleb128 -28
  2068 0172 0C       		.uleb128 0xc
- 2069 0173 E9040000 		.4byte	.LASF20
+ 2069 0173 EB040000 		.4byte	.LASF20
  2070 0177 01       		.byte	0x1
  2071 0178 4201     		.2byte	0x142
  2072 017a 6B000000 		.4byte	0x6b
@@ -3638,7 +3638,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2075 0180 6F       		.sleb128 -17
  2076 0181 00       		.byte	0
  2077 0182 0A       		.uleb128 0xa
- 2078 0183 70040000 		.4byte	.LASF25
+ 2078 0183 26040000 		.4byte	.LASF25
  2079 0187 01       		.byte	0x1
  2080 0188 6501     		.2byte	0x165
  2081 018a 00000000 		.4byte	.LFB6
@@ -3647,7 +3647,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2084 0193 9C       		.byte	0x9c
  2085 0194 B7010000 		.4byte	0x1b7
  2086 0198 0B       		.uleb128 0xb
- 2087 0199 67030000 		.4byte	.LASF26
+ 2087 0199 1D030000 		.4byte	.LASF26
  2088 019d 01       		.byte	0x1
  2089 019e 6501     		.2byte	0x165
  2090 01a0 76000000 		.4byte	0x76
@@ -3655,10 +3655,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2092 01a5 91       		.byte	0x91
  2093 01a6 64       		.sleb128 -28
  2094 01a7 0C       		.uleb128 0xc
- 2095 01a8 E9040000 		.4byte	.LASF20
+ 2095 01a8 EB040000 		.4byte	.LASF20
  2096 01ac 01       		.byte	0x1
  2097 01ad 6701     		.2byte	0x167
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 62
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 62
 
 
  2098 01af 6B000000 		.4byte	0x6b
@@ -3667,7 +3667,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2101 01b5 6F       		.sleb128 -17
  2102 01b6 00       		.byte	0
  2103 01b7 0A       		.uleb128 0xa
- 2104 01b8 0F050000 		.4byte	.LASF27
+ 2104 01b8 11050000 		.4byte	.LASF27
  2105 01bc 01       		.byte	0x1
  2106 01bd 8501     		.2byte	0x185
  2107 01bf 00000000 		.4byte	.LFB7
@@ -3676,7 +3676,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2110 01c8 9C       		.byte	0x9c
  2111 01c9 EC010000 		.4byte	0x1ec
  2112 01cd 0B       		.uleb128 0xb
- 2113 01ce B2020000 		.4byte	.LASF28
+ 2113 01ce 68020000 		.4byte	.LASF28
  2114 01d2 01       		.byte	0x1
  2115 01d3 8501     		.2byte	0x185
  2116 01d5 76000000 		.4byte	0x76
@@ -3684,7 +3684,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2118 01da 91       		.byte	0x91
  2119 01db 64       		.sleb128 -28
  2120 01dc 0C       		.uleb128 0xc
- 2121 01dd E9040000 		.4byte	.LASF20
+ 2121 01dd EB040000 		.4byte	.LASF20
  2122 01e1 01       		.byte	0x1
  2123 01e2 8701     		.2byte	0x187
  2124 01e4 6B000000 		.4byte	0x6b
@@ -3693,7 +3693,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2127 01ea 6F       		.sleb128 -17
  2128 01eb 00       		.byte	0
  2129 01ec 0D       		.uleb128 0xd
- 2130 01ed 4A050000 		.4byte	.LASF29
+ 2130 01ed 4C050000 		.4byte	.LASF29
  2131 01f1 01       		.byte	0x1
  2132 01f2 BB01     		.2byte	0x1bb
  2133 01f4 00000000 		.4byte	.LFB8
@@ -3702,7 +3702,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2136 01fd 9C       		.byte	0x9c
  2137 01fe 12020000 		.4byte	0x212
  2138 0202 0B       		.uleb128 0xb
- 2139 0203 59020000 		.4byte	.LASF30
+ 2139 0203 0F020000 		.4byte	.LASF30
  2140 0207 01       		.byte	0x1
  2141 0208 BB01     		.2byte	0x1bb
  2142 020a 76000000 		.4byte	0x76
@@ -3711,19 +3711,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2145 0210 74       		.sleb128 -12
  2146 0211 00       		.byte	0
  2147 0212 0A       		.uleb128 0xa
- 2148 0213 F4000000 		.4byte	.LASF31
+ 2148 0213 AA000000 		.4byte	.LASF31
  2149 0217 01       		.byte	0x1
  2150 0218 DF01     		.2byte	0x1df
  2151 021a 00000000 		.4byte	.LFB9
  2152 021e 48000000 		.4byte	.LFE9-.LFB9
  2153 0222 01       		.uleb128 0x1
  2154 0223 9C       		.byte	0x9c
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 63
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 63
 
 
  2155 0224 47020000 		.4byte	0x247
  2156 0228 0B       		.uleb128 0xb
- 2157 0229 18030000 		.4byte	.LASF32
+ 2157 0229 CE020000 		.4byte	.LASF32
  2158 022d 01       		.byte	0x1
  2159 022e DF01     		.2byte	0x1df
  2160 0230 76000000 		.4byte	0x76
@@ -3731,7 +3731,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2162 0235 91       		.byte	0x91
  2163 0236 64       		.sleb128 -28
  2164 0237 0C       		.uleb128 0xc
- 2165 0238 E9040000 		.4byte	.LASF20
+ 2165 0238 EB040000 		.4byte	.LASF20
  2166 023c 01       		.byte	0x1
  2167 023d E101     		.2byte	0x1e1
  2168 023f 6B000000 		.4byte	0x6b
@@ -3749,7 +3749,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2180 0258 9C       		.byte	0x9c
  2181 0259 7C020000 		.4byte	0x27c
  2182 025d 0B       		.uleb128 0xb
- 2183 025e 47040000 		.4byte	.LASF34
+ 2183 025e FD030000 		.4byte	.LASF34
  2184 0262 01       		.byte	0x1
  2185 0263 0102     		.2byte	0x201
  2186 0265 76000000 		.4byte	0x76
@@ -3757,7 +3757,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2188 026a 91       		.byte	0x91
  2189 026b 64       		.sleb128 -28
  2190 026c 0C       		.uleb128 0xc
- 2191 026d E9040000 		.4byte	.LASF20
+ 2191 026d EB040000 		.4byte	.LASF20
  2192 0271 01       		.byte	0x1
  2193 0272 0302     		.2byte	0x203
  2194 0274 6B000000 		.4byte	0x6b
@@ -3766,7 +3766,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2197 027a 6F       		.sleb128 -17
  2198 027b 00       		.byte	0
  2199 027c 0A       		.uleb128 0xa
- 2200 027d DF000000 		.4byte	.LASF35
+ 2200 027d 95000000 		.4byte	.LASF35
  2201 0281 01       		.byte	0x1
  2202 0282 2202     		.2byte	0x222
  2203 0284 00000000 		.4byte	.LFB11
@@ -3775,10 +3775,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2206 028d 9C       		.byte	0x9c
  2207 028e B1020000 		.4byte	0x2b1
  2208 0292 0B       		.uleb128 0xb
- 2209 0293 E6010000 		.4byte	.LASF36
+ 2209 0293 9C010000 		.4byte	.LASF36
  2210 0297 01       		.byte	0x1
  2211 0298 2202     		.2byte	0x222
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 64
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 64
 
 
  2212 029a 76000000 		.4byte	0x76
@@ -3786,7 +3786,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2214 029f 91       		.byte	0x91
  2215 02a0 64       		.sleb128 -28
  2216 02a1 0C       		.uleb128 0xc
- 2217 02a2 E9040000 		.4byte	.LASF20
+ 2217 02a2 EB040000 		.4byte	.LASF20
  2218 02a6 01       		.byte	0x1
  2219 02a7 2402     		.2byte	0x224
  2220 02a9 6B000000 		.4byte	0x6b
@@ -3795,7 +3795,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2223 02af 6F       		.sleb128 -17
  2224 02b0 00       		.byte	0
  2225 02b1 0A       		.uleb128 0xa
- 2226 02b2 27030000 		.4byte	.LASF37
+ 2226 02b2 DD020000 		.4byte	.LASF37
  2227 02b6 01       		.byte	0x1
  2228 02b7 4302     		.2byte	0x243
  2229 02b9 00000000 		.4byte	.LFB12
@@ -3804,7 +3804,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2232 02c2 9C       		.byte	0x9c
  2233 02c3 E6020000 		.4byte	0x2e6
  2234 02c7 0B       		.uleb128 0xb
- 2235 02c8 CF010000 		.4byte	.LASF38
+ 2235 02c8 85010000 		.4byte	.LASF38
  2236 02cc 01       		.byte	0x1
  2237 02cd 4302     		.2byte	0x243
  2238 02cf 76000000 		.4byte	0x76
@@ -3812,7 +3812,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2240 02d4 91       		.byte	0x91
  2241 02d5 64       		.sleb128 -28
  2242 02d6 0C       		.uleb128 0xc
- 2243 02d7 E9040000 		.4byte	.LASF20
+ 2243 02d7 EB040000 		.4byte	.LASF20
  2244 02db 01       		.byte	0x1
  2245 02dc 4502     		.2byte	0x245
  2246 02de 6B000000 		.4byte	0x6b
@@ -3821,7 +3821,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2249 02e4 6F       		.sleb128 -17
  2250 02e5 00       		.byte	0
  2251 02e6 0D       		.uleb128 0xd
- 2252 02e7 82020000 		.4byte	.LASF39
+ 2252 02e7 38020000 		.4byte	.LASF39
  2253 02eb 01       		.byte	0x1
  2254 02ec 6102     		.2byte	0x261
  2255 02ee 00000000 		.4byte	.LFB13
@@ -3838,11 +3838,11 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2266 0309 91       		.byte	0x91
  2267 030a 74       		.sleb128 -12
  2268 030b 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 65
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 65
 
 
  2269 030c 0E       		.uleb128 0xe
- 2270 030d 95020000 		.4byte	.LASF45
+ 2270 030d 4B020000 		.4byte	.LASF45
  2271 0311 01       		.byte	0x1
  2272 0312 7502     		.2byte	0x275
  2273 0314 76000000 		.4byte	0x76
@@ -3851,7 +3851,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2276 0320 01       		.uleb128 0x1
  2277 0321 9C       		.byte	0x9c
  2278 0322 0A       		.uleb128 0xa
- 2279 0323 8E040000 		.4byte	.LASF41
+ 2279 0323 90040000 		.4byte	.LASF41
  2280 0327 01       		.byte	0x1
  2281 0328 9202     		.2byte	0x292
  2282 032a 00000000 		.4byte	.LFB15
@@ -3860,7 +3860,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2285 0333 9C       		.byte	0x9c
  2286 0334 57030000 		.4byte	0x357
  2287 0338 0B       		.uleb128 0xb
- 2288 0339 C1040000 		.4byte	.LASF42
+ 2288 0339 C3040000 		.4byte	.LASF42
  2289 033d 01       		.byte	0x1
  2290 033e 9202     		.2byte	0x292
  2291 0340 76000000 		.4byte	0x76
@@ -3868,7 +3868,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2293 0345 91       		.byte	0x91
  2294 0346 64       		.sleb128 -28
  2295 0347 0C       		.uleb128 0xc
- 2296 0348 E9040000 		.4byte	.LASF20
+ 2296 0348 EB040000 		.4byte	.LASF20
  2297 034c 01       		.byte	0x1
  2298 034d 9402     		.2byte	0x294
  2299 034f 6B000000 		.4byte	0x6b
@@ -3886,7 +3886,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2311 0368 9C       		.byte	0x9c
  2312 0369 7D030000 		.4byte	0x37d
  2313 036d 0B       		.uleb128 0xb
- 2314 036e A5000000 		.4byte	.LASF44
+ 2314 036e 5B000000 		.4byte	.LASF44
  2315 0372 01       		.byte	0x1
  2316 0373 AF02     		.2byte	0x2af
  2317 0375 76000000 		.4byte	0x76
@@ -3895,10 +3895,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2320 037b 74       		.sleb128 -12
  2321 037c 00       		.byte	0
  2322 037d 0E       		.uleb128 0xe
- 2323 037e CD040000 		.4byte	.LASF46
+ 2323 037e CF040000 		.4byte	.LASF46
  2324 0382 01       		.byte	0x1
  2325 0383 C302     		.2byte	0x2c3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 66
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 66
 
 
  2326 0385 76000000 		.4byte	0x76
@@ -3907,7 +3907,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2329 0391 01       		.uleb128 0x1
  2330 0392 9C       		.byte	0x9c
  2331 0393 0A       		.uleb128 0xa
- 2332 0394 E5020000 		.4byte	.LASF47
+ 2332 0394 9B020000 		.4byte	.LASF47
  2333 0398 01       		.byte	0x1
  2334 0399 DD02     		.2byte	0x2dd
  2335 039b 00000000 		.4byte	.LFB18
@@ -3916,7 +3916,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2338 03a4 9C       		.byte	0x9c
  2339 03a5 C8030000 		.4byte	0x3c8
  2340 03a9 0B       		.uleb128 0xb
- 2341 03aa 35050000 		.4byte	.LASF48
+ 2341 03aa 37050000 		.4byte	.LASF48
  2342 03ae 01       		.byte	0x1
  2343 03af DD02     		.2byte	0x2dd
  2344 03b1 76000000 		.4byte	0x76
@@ -3924,7 +3924,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2346 03b6 91       		.byte	0x91
  2347 03b7 64       		.sleb128 -28
  2348 03b8 0C       		.uleb128 0xc
- 2349 03b9 E9040000 		.4byte	.LASF20
+ 2349 03b9 EB040000 		.4byte	.LASF20
  2350 03bd 01       		.byte	0x1
  2351 03be DF02     		.2byte	0x2df
  2352 03c0 6B000000 		.4byte	0x6b
@@ -3933,7 +3933,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2355 03c6 6F       		.sleb128 -17
  2356 03c7 00       		.byte	0
  2357 03c8 0D       		.uleb128 0xd
- 2358 03c9 03030000 		.4byte	.LASF49
+ 2358 03c9 B9020000 		.4byte	.LASF49
  2359 03cd 01       		.byte	0x1
  2360 03ce F802     		.2byte	0x2f8
  2361 03d0 00000000 		.4byte	.LFB19
@@ -3942,7 +3942,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2364 03d9 9C       		.byte	0x9c
  2365 03da EE030000 		.4byte	0x3ee
  2366 03de 0B       		.uleb128 0xb
- 2367 03df 40050000 		.4byte	.LASF50
+ 2367 03df 42050000 		.4byte	.LASF50
  2368 03e3 01       		.byte	0x1
  2369 03e4 F802     		.2byte	0x2f8
  2370 03e6 76000000 		.4byte	0x76
@@ -3951,19 +3951,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2373 03ec 74       		.sleb128 -12
  2374 03ed 00       		.byte	0
  2375 03ee 0E       		.uleb128 0xe
- 2376 03ef 3A030000 		.4byte	.LASF51
+ 2376 03ef F0020000 		.4byte	.LASF51
  2377 03f3 01       		.byte	0x1
  2378 03f4 0C03     		.2byte	0x30c
  2379 03f6 76000000 		.4byte	0x76
  2380 03fa 00000000 		.4byte	.LFB20
  2381 03fe 18000000 		.4byte	.LFE20-.LFB20
  2382 0402 01       		.uleb128 0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 67
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 67
 
 
  2383 0403 9C       		.byte	0x9c
  2384 0404 0A       		.uleb128 0xa
- 2385 0405 FF030000 		.4byte	.LASF52
+ 2385 0405 B5030000 		.4byte	.LASF52
  2386 0409 01       		.byte	0x1
  2387 040a 2603     		.2byte	0x326
  2388 040c 00000000 		.4byte	.LFB21
@@ -3972,7 +3972,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2391 0415 9C       		.byte	0x9c
  2392 0416 39040000 		.4byte	0x439
  2393 041a 0B       		.uleb128 0xb
- 2394 041b 35050000 		.4byte	.LASF48
+ 2394 041b 37050000 		.4byte	.LASF48
  2395 041f 01       		.byte	0x1
  2396 0420 2603     		.2byte	0x326
  2397 0422 76000000 		.4byte	0x76
@@ -3980,7 +3980,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2399 0427 91       		.byte	0x91
  2400 0428 64       		.sleb128 -28
  2401 0429 0C       		.uleb128 0xc
- 2402 042a E9040000 		.4byte	.LASF20
+ 2402 042a EB040000 		.4byte	.LASF20
  2403 042e 01       		.byte	0x1
  2404 042f 2803     		.2byte	0x328
  2405 0431 6B000000 		.4byte	0x6b
@@ -3989,7 +3989,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2408 0437 6F       		.sleb128 -17
  2409 0438 00       		.byte	0
  2410 0439 0D       		.uleb128 0xd
- 2411 043a B0010000 		.4byte	.LASF53
+ 2411 043a 66010000 		.4byte	.LASF53
  2412 043e 01       		.byte	0x1
  2413 043f 4303     		.2byte	0x343
  2414 0441 00000000 		.4byte	.LFB22
@@ -3998,7 +3998,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2417 044a 9C       		.byte	0x9c
  2418 044b 5F040000 		.4byte	0x45f
  2419 044f 0B       		.uleb128 0xb
- 2420 0450 4D010000 		.4byte	.LASF54
+ 2420 0450 03010000 		.4byte	.LASF54
  2421 0454 01       		.byte	0x1
  2422 0455 4303     		.2byte	0x343
  2423 0457 76000000 		.4byte	0x76
@@ -4007,7 +4007,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2426 045d 74       		.sleb128 -12
  2427 045e 00       		.byte	0
  2428 045f 0E       		.uleb128 0xe
- 2429 0460 D4010000 		.4byte	.LASF55
+ 2429 0460 8A010000 		.4byte	.LASF55
  2430 0464 01       		.byte	0x1
  2431 0465 6E03     		.2byte	0x36e
  2432 0467 76000000 		.4byte	0x76
@@ -4016,9 +4016,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2435 0473 01       		.uleb128 0x1
  2436 0474 9C       		.byte	0x9c
  2437 0475 0D       		.uleb128 0xd
- 2438 0476 EF010000 		.4byte	.LASF56
+ 2438 0476 A5010000 		.4byte	.LASF56
  2439 047a 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 68
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 68
 
 
  2440 047b 9C03     		.2byte	0x39c
@@ -4028,7 +4028,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2444 0486 9C       		.byte	0x9c
  2445 0487 9B040000 		.4byte	0x49b
  2446 048b 0B       		.uleb128 0xb
- 2447 048c DE040000 		.4byte	.LASF57
+ 2447 048c E0040000 		.4byte	.LASF57
  2448 0490 01       		.byte	0x1
  2449 0491 9C03     		.2byte	0x39c
  2450 0493 76000000 		.4byte	0x76
@@ -4037,7 +4037,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2453 0499 74       		.sleb128 -12
  2454 049a 00       		.byte	0
  2455 049b 0E       		.uleb128 0xe
- 2456 049c 5B050000 		.4byte	.LASF58
+ 2456 049c 5D050000 		.4byte	.LASF58
  2457 04a0 01       		.byte	0x1
  2458 04a1 C503     		.2byte	0x3c5
  2459 04a3 76000000 		.4byte	0x76
@@ -4046,7 +4046,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2462 04af 01       		.uleb128 0x1
  2463 04b0 9C       		.byte	0x9c
  2464 04b1 0E       		.uleb128 0xe
- 2465 04b2 5E010000 		.4byte	.LASF59
+ 2465 04b2 14010000 		.4byte	.LASF59
  2466 04b6 01       		.byte	0x1
  2467 04b7 F303     		.2byte	0x3f3
  2468 04b9 76000000 		.4byte	0x76
@@ -4055,7 +4055,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2471 04c5 01       		.uleb128 0x1
  2472 04c6 9C       		.byte	0x9c
  2473 04c7 0E       		.uleb128 0xe
- 2474 04c8 13040000 		.4byte	.LASF60
+ 2474 04c8 C9030000 		.4byte	.LASF60
  2475 04cc 01       		.byte	0x1
  2476 04cd 0804     		.2byte	0x408
  2477 04cf 76000000 		.4byte	0x76
@@ -4064,7 +4064,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2480 04db 01       		.uleb128 0x1
  2481 04dc 9C       		.byte	0x9c
  2482 04dd 0A       		.uleb128 0xa
- 2483 04de FA040000 		.4byte	.LASF61
+ 2483 04de FC040000 		.4byte	.LASF61
  2484 04e2 01       		.byte	0x1
  2485 04e3 2304     		.2byte	0x423
  2486 04e5 00000000 		.4byte	.LFB28
@@ -4073,18 +4073,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2489 04ee 9C       		.byte	0x9c
  2490 04ef 12050000 		.4byte	0x512
  2491 04f3 0B       		.uleb128 0xb
- 2492 04f4 C3010000 		.4byte	.LASF62
+ 2492 04f4 79010000 		.4byte	.LASF62
  2493 04f8 01       		.byte	0x1
  2494 04f9 2304     		.2byte	0x423
  2495 04fb 76000000 		.4byte	0x76
  2496 04ff 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 69
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 69
 
 
  2497 0500 91       		.byte	0x91
  2498 0501 64       		.sleb128 -28
  2499 0502 0C       		.uleb128 0xc
- 2500 0503 E9040000 		.4byte	.LASF20
+ 2500 0503 EB040000 		.4byte	.LASF20
  2501 0507 01       		.byte	0x1
  2502 0508 2504     		.2byte	0x425
  2503 050a 6B000000 		.4byte	0x6b
@@ -4093,7 +4093,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2506 0510 6F       		.sleb128 -17
  2507 0511 00       		.byte	0
  2508 0512 0A       		.uleb128 0xa
- 2509 0513 AD040000 		.4byte	.LASF63
+ 2509 0513 AF040000 		.4byte	.LASF63
  2510 0517 01       		.byte	0x1
  2511 0518 4404     		.2byte	0x444
  2512 051a 00000000 		.4byte	.LFB29
@@ -4102,7 +4102,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2515 0523 9C       		.byte	0x9c
  2516 0524 47050000 		.4byte	0x547
  2517 0528 0B       		.uleb128 0xb
- 2518 0529 C3010000 		.4byte	.LASF62
+ 2518 0529 79010000 		.4byte	.LASF62
  2519 052d 01       		.byte	0x1
  2520 052e 4404     		.2byte	0x444
  2521 0530 76000000 		.4byte	0x76
@@ -4110,7 +4110,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2523 0535 91       		.byte	0x91
  2524 0536 64       		.sleb128 -28
  2525 0537 0C       		.uleb128 0xc
- 2526 0538 E9040000 		.4byte	.LASF20
+ 2526 0538 EB040000 		.4byte	.LASF20
  2527 053c 01       		.byte	0x1
  2528 053d 4604     		.2byte	0x446
  2529 053f 6B000000 		.4byte	0x6b
@@ -4119,7 +4119,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2532 0545 6F       		.sleb128 -17
  2533 0546 00       		.byte	0
  2534 0547 0A       		.uleb128 0xa
- 2535 0548 4E030000 		.4byte	.LASF64
+ 2535 0548 04030000 		.4byte	.LASF64
  2536 054c 01       		.byte	0x1
  2537 054d 6504     		.2byte	0x465
  2538 054f 00000000 		.4byte	.LFB30
@@ -4128,7 +4128,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2541 0558 9C       		.byte	0x9c
  2542 0559 7C050000 		.4byte	0x57c
  2543 055d 0B       		.uleb128 0xb
- 2544 055e C3010000 		.4byte	.LASF62
+ 2544 055e 79010000 		.4byte	.LASF62
  2545 0562 01       		.byte	0x1
  2546 0563 6504     		.2byte	0x465
  2547 0565 76000000 		.4byte	0x76
@@ -4136,9 +4136,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2549 056a 91       		.byte	0x91
  2550 056b 64       		.sleb128 -28
  2551 056c 0C       		.uleb128 0xc
- 2552 056d E9040000 		.4byte	.LASF20
+ 2552 056d EB040000 		.4byte	.LASF20
  2553 0571 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 70
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 70
 
 
  2554 0572 6704     		.2byte	0x467
@@ -4148,7 +4148,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2558 057a 6F       		.sleb128 -17
  2559 057b 00       		.byte	0
  2560 057c 0A       		.uleb128 0xa
- 2561 057d 71030000 		.4byte	.LASF65
+ 2561 057d 27030000 		.4byte	.LASF65
  2562 0581 01       		.byte	0x1
  2563 0582 8504     		.2byte	0x485
  2564 0584 00000000 		.4byte	.LFB31
@@ -4157,7 +4157,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2567 058d 9C       		.byte	0x9c
  2568 058e B1050000 		.4byte	0x5b1
  2569 0592 0B       		.uleb128 0xb
- 2570 0593 C3010000 		.4byte	.LASF62
+ 2570 0593 79010000 		.4byte	.LASF62
  2571 0597 01       		.byte	0x1
  2572 0598 8504     		.2byte	0x485
  2573 059a 76000000 		.4byte	0x76
@@ -4165,7 +4165,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2575 059f 91       		.byte	0x91
  2576 05a0 64       		.sleb128 -28
  2577 05a1 0C       		.uleb128 0xc
- 2578 05a2 E9040000 		.4byte	.LASF20
+ 2578 05a2 EB040000 		.4byte	.LASF20
  2579 05a6 01       		.byte	0x1
  2580 05a7 8704     		.2byte	0x487
  2581 05a9 6B000000 		.4byte	0x6b
@@ -4174,7 +4174,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2584 05af 6F       		.sleb128 -17
  2585 05b0 00       		.byte	0
  2586 05b1 0A       		.uleb128 0xa
- 2587 05b2 3A010000 		.4byte	.LASF66
+ 2587 05b2 F0000000 		.4byte	.LASF66
  2588 05b6 01       		.byte	0x1
  2589 05b7 A604     		.2byte	0x4a6
  2590 05b9 00000000 		.4byte	.LFB32
@@ -4183,7 +4183,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2593 05c2 9C       		.byte	0x9c
  2594 05c3 E6050000 		.4byte	0x5e6
  2595 05c7 0B       		.uleb128 0xb
- 2596 05c8 C3010000 		.4byte	.LASF62
+ 2596 05c8 79010000 		.4byte	.LASF62
  2597 05cc 01       		.byte	0x1
  2598 05cd A604     		.2byte	0x4a6
  2599 05cf 76000000 		.4byte	0x76
@@ -4191,19 +4191,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2601 05d4 91       		.byte	0x91
  2602 05d5 64       		.sleb128 -28
  2603 05d6 0C       		.uleb128 0xc
- 2604 05d7 E9040000 		.4byte	.LASF20
+ 2604 05d7 EB040000 		.4byte	.LASF20
  2605 05db 01       		.byte	0x1
  2606 05dc A804     		.2byte	0x4a8
  2607 05de 6B000000 		.4byte	0x6b
  2608 05e2 02       		.uleb128 0x2
  2609 05e3 91       		.byte	0x91
  2610 05e4 6F       		.sleb128 -17
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 71
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 71
 
 
  2611 05e5 00       		.byte	0
  2612 05e6 0A       		.uleb128 0xa
- 2613 05e7 70010000 		.4byte	.LASF67
+ 2613 05e7 26010000 		.4byte	.LASF67
  2614 05eb 01       		.byte	0x1
  2615 05ec CE04     		.2byte	0x4ce
  2616 05ee 00000000 		.4byte	.LFB33
@@ -4212,7 +4212,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2619 05f7 9C       		.byte	0x9c
  2620 05f8 2A060000 		.4byte	0x62a
  2621 05fc 0B       		.uleb128 0xb
- 2622 05fd CF010000 		.4byte	.LASF38
+ 2622 05fd 85010000 		.4byte	.LASF38
  2623 0601 01       		.byte	0x1
  2624 0602 CE04     		.2byte	0x4ce
  2625 0604 76000000 		.4byte	0x76
@@ -4220,7 +4220,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2627 0609 91       		.byte	0x91
  2628 060a 64       		.sleb128 -28
  2629 060b 0B       		.uleb128 0xb
- 2630 060c 3F020000 		.4byte	.LASF68
+ 2630 060c F5010000 		.4byte	.LASF68
  2631 0610 01       		.byte	0x1
  2632 0611 CE04     		.2byte	0x4ce
  2633 0613 76000000 		.4byte	0x76
@@ -4228,7 +4228,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2635 0618 91       		.byte	0x91
  2636 0619 60       		.sleb128 -32
  2637 061a 0C       		.uleb128 0xc
- 2638 061b E9040000 		.4byte	.LASF20
+ 2638 061b EB040000 		.4byte	.LASF20
  2639 061f 01       		.byte	0x1
  2640 0620 D004     		.2byte	0x4d0
  2641 0622 6B000000 		.4byte	0x6b
@@ -4237,7 +4237,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2644 0628 6F       		.sleb128 -17
  2645 0629 00       		.byte	0
  2646 062a 0E       		.uleb128 0xe
- 2647 062b 28040000 		.4byte	.LASF69
+ 2647 062b DE030000 		.4byte	.LASF69
  2648 062f 01       		.byte	0x1
  2649 0630 EB04     		.2byte	0x4eb
  2650 0632 76000000 		.4byte	0x76
@@ -4246,7 +4246,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2653 063e 01       		.uleb128 0x1
  2654 063f 9C       		.byte	0x9c
  2655 0640 0D       		.uleb128 0xd
- 2656 0641 92010000 		.4byte	.LASF70
+ 2656 0641 48010000 		.4byte	.LASF70
  2657 0645 01       		.byte	0x1
  2658 0646 0405     		.2byte	0x504
  2659 0648 00000000 		.4byte	.LFB35
@@ -4255,10 +4255,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2662 0651 9C       		.byte	0x9c
  2663 0652 66060000 		.4byte	0x666
  2664 0656 0B       		.uleb128 0xb
- 2665 0657 62040000 		.4byte	.LASF71
+ 2665 0657 18040000 		.4byte	.LASF71
  2666 065b 01       		.byte	0x1
  2667 065c 0405     		.2byte	0x504
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 72
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 72
 
 
  2668 065e 76000000 		.4byte	0x76
@@ -4267,7 +4267,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2671 0664 74       		.sleb128 -12
  2672 0665 00       		.byte	0
  2673 0666 0E       		.uleb128 0xe
- 2674 0667 C0020000 		.4byte	.LASF72
+ 2674 0667 76020000 		.4byte	.LASF72
  2675 066b 01       		.byte	0x1
  2676 066c 1B05     		.2byte	0x51b
  2677 066e 76000000 		.4byte	0x76
@@ -4285,7 +4285,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2689 0690 01       		.uleb128 0x1
  2690 0691 9C       		.byte	0x9c
  2691 0692 0D       		.uleb128 0xd
- 2692 0693 20050000 		.4byte	.LASF74
+ 2692 0693 22050000 		.4byte	.LASF74
  2693 0697 01       		.byte	0x1
  2694 0698 4905     		.2byte	0x549
  2695 069a 00000000 		.4byte	.LFB38
@@ -4294,7 +4294,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2698 06a3 9C       		.byte	0x9c
  2699 06a4 B8060000 		.4byte	0x6b8
  2700 06a8 0B       		.uleb128 0xb
- 2701 06a9 62040000 		.4byte	.LASF71
+ 2701 06a9 18040000 		.4byte	.LASF71
  2702 06ad 01       		.byte	0x1
  2703 06ae 4905     		.2byte	0x549
  2704 06b0 76000000 		.4byte	0x76
@@ -4312,19 +4312,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2716 06c9 9C       		.byte	0x9c
  2717 06ca DE060000 		.4byte	0x6de
  2718 06ce 0B       		.uleb128 0xb
- 2719 06cf 62040000 		.4byte	.LASF71
+ 2719 06cf 18040000 		.4byte	.LASF71
  2720 06d3 01       		.byte	0x1
  2721 06d4 6005     		.2byte	0x560
  2722 06d6 76000000 		.4byte	0x76
  2723 06da 02       		.uleb128 0x2
  2724 06db 91       		.byte	0x91
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 73
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 73
 
 
  2725 06dc 74       		.sleb128 -12
  2726 06dd 00       		.byte	0
  2727 06de 0F       		.uleb128 0xf
- 2728 06df BA000000 		.4byte	.LASF79
+ 2728 06df 70000000 		.4byte	.LASF79
  2729 06e3 01       		.byte	0x1
  2730 06e4 15       		.byte	0x15
  2731 06e5 6B000000 		.4byte	0x6b
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2779 0029 04       		.uleb128 0x4
  2780 002a 16       		.uleb128 0x16
  2781 002b 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 74
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 74
 
 
  2782 002c 03       		.uleb128 0x3
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2836 0063 2E       		.uleb128 0x2e
  2837 0064 01       		.byte	0x1
  2838 0065 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 75
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 75
 
 
  2839 0066 19       		.uleb128 0x19
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2893 009d 18       		.uleb128 0x18
  2894 009e 9642     		.uleb128 0x2116
  2895 00a0 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 76
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 76
 
 
  2896 00a1 01       		.uleb128 0x1
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  2950 00d8 19       		.uleb128 0x19
  2951 00d9 01       		.uleb128 0x1
  2952 00da 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 77
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 77
 
 
  2953 00db 00       		.byte	0
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  3007 0014 3C000000 		.4byte	.LFE0-.LFB0
  3008 0018 00000000 		.4byte	.LFB1
  3009 001c 38000000 		.4byte	.LFE1-.LFB1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 78
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 78
 
 
  3010 0020 00000000 		.4byte	.LFB2
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  3064 00f8 00000000 		.4byte	.LFB29
  3065 00fc 44000000 		.4byte	.LFE29-.LFB29
  3066 0100 00000000 		.4byte	.LFB30
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 79
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 79
 
 
  3067 0104 48000000 		.4byte	.LFE30-.LFB30
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  3121 007c 48000000 		.4byte	.LFE15
  3122 0080 00000000 		.4byte	.LFB16
  3123 0084 1C000000 		.4byte	.LFE16
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 80
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 80
 
 
  3124 0088 00000000 		.4byte	.LFB17
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  3174      01010101 
  3175              	.LASF33:
  3176 0000 54696D65 		.ascii	"Timer_SetPWMStopOnKill\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 81
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 81
 
 
  3176      725F5365 
@@ -4826,412 +4826,412 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 1
  3184      74496E74 
  3184      65727275 
  3184      707400
- 3185              	.LASF78:
- 3186 005b 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 3186      73657273 
- 3186      5C506869 
- 3186      6C69705C 
- 3186      4F6E6544 
- 3187 0088 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 3187      4D617374 
- 3187      65725C50 
- 3187      536F435F 
- 3187      4D617374 
- 3188              	.LASF44:
- 3189 00a5 70657269 		.ascii	"period\000"
- 3189      6F6400
- 3190              	.LASF21:
- 3191 00ac 54696D65 		.ascii	"Timer_SetMode\000"
- 3191      725F5365 
- 3191      744D6F64 
- 3191      6500
- 3192              	.LASF79:
- 3193 00ba 54696D65 		.ascii	"Timer_initVar\000"
- 3193      725F696E 
- 3193      69745661 
- 3193      7200
- 3194              	.LASF7:
- 3195 00c8 6C6F6E67 		.ascii	"long long unsigned int\000"
- 3195      206C6F6E 
- 3195      6720756E 
- 3195      7369676E 
- 3195      65642069 
- 3196              	.LASF35:
- 3197 00df 54696D65 		.ascii	"Timer_SetPWMDeadTime\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 82
+ 3185              	.LASF44:
+ 3186 005b 70657269 		.ascii	"period\000"
+ 3186      6F6400
+ 3187              	.LASF21:
+ 3188 0062 54696D65 		.ascii	"Timer_SetMode\000"
+ 3188      725F5365 
+ 3188      744D6F64 
+ 3188      6500
+ 3189              	.LASF79:
+ 3190 0070 54696D65 		.ascii	"Timer_initVar\000"
+ 3190      725F696E 
+ 3190      69745661 
+ 3190      7200
+ 3191              	.LASF7:
+ 3192 007e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3192      206C6F6E 
+ 3192      6720756E 
+ 3192      7369676E 
+ 3192      65642069 
+ 3193              	.LASF35:
+ 3194 0095 54696D65 		.ascii	"Timer_SetPWMDeadTime\000"
+ 3194      725F5365 
+ 3194      7450574D 
+ 3194      44656164 
+ 3194      54696D65 
+ 3195              	.LASF31:
+ 3196 00aa 54696D65 		.ascii	"Timer_SetPWMSyncKill\000"
+ 3196      725F5365 
+ 3196      7450574D 
+ 3196      53796E63 
+ 3196      4B696C6C 
+ 3197              	.LASF24:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 82
 
 
- 3197      725F5365 
- 3197      7450574D 
- 3197      44656164 
- 3197      54696D65 
- 3198              	.LASF31:
- 3199 00f4 54696D65 		.ascii	"Timer_SetPWMSyncKill\000"
- 3199      725F5365 
- 3199      7450574D 
- 3199      53796E63 
- 3199      4B696C6C 
- 3200              	.LASF24:
- 3201 0109 71644D6F 		.ascii	"qdMode\000"
- 3201      646500
- 3202              	.LASF6:
- 3203 0110 6C6F6E67 		.ascii	"long long int\000"
- 3203      206C6F6E 
- 3203      6720696E 
- 3203      7400
- 3204              	.LASF0:
- 3205 011e 7369676E 		.ascii	"signed char\000"
- 3205      65642063 
- 3205      68617200 
- 3206              	.LASF22:
- 3207 012a 54696D65 		.ascii	"Timer_SetQDMode\000"
- 3207      725F5365 
- 3207      7451444D 
- 3207      6F646500 
- 3208              	.LASF66:
- 3209 013a 54696D65 		.ascii	"Timer_SetCountMode\000"
- 3209      725F5365 
- 3209      74436F75 
- 3209      6E744D6F 
- 3209      646500
- 3210              	.LASF54:
- 3211 014d 636F6D70 		.ascii	"compare\000"
- 3211      61726500 
- 3212              	.LASF4:
- 3213 0155 6C6F6E67 		.ascii	"long int\000"
- 3213      20696E74 
- 3213      00
- 3214              	.LASF59:
- 3215 015e 54696D65 		.ascii	"Timer_ReadCapture\000"
- 3215      725F5265 
- 3215      61644361 
- 3215      70747572 
- 3215      6500
- 3216              	.LASF67:
- 3217 0170 54696D65 		.ascii	"Timer_TriggerCommand\000"
- 3217      725F5472 
- 3217      69676765 
- 3217      72436F6D 
- 3217      6D616E64 
- 3218              	.LASF9:
- 3219 0185 75696E74 		.ascii	"uint8\000"
- 3219      3800
- 3220              	.LASF12:
- 3221 018b 646F7562 		.ascii	"double\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 83
+ 3198 00bf 71644D6F 		.ascii	"qdMode\000"
+ 3198      646500
+ 3199              	.LASF6:
+ 3200 00c6 6C6F6E67 		.ascii	"long long int\000"
+ 3200      206C6F6E 
+ 3200      6720696E 
+ 3200      7400
+ 3201              	.LASF0:
+ 3202 00d4 7369676E 		.ascii	"signed char\000"
+ 3202      65642063 
+ 3202      68617200 
+ 3203              	.LASF22:
+ 3204 00e0 54696D65 		.ascii	"Timer_SetQDMode\000"
+ 3204      725F5365 
+ 3204      7451444D 
+ 3204      6F646500 
+ 3205              	.LASF66:
+ 3206 00f0 54696D65 		.ascii	"Timer_SetCountMode\000"
+ 3206      725F5365 
+ 3206      74436F75 
+ 3206      6E744D6F 
+ 3206      646500
+ 3207              	.LASF54:
+ 3208 0103 636F6D70 		.ascii	"compare\000"
+ 3208      61726500 
+ 3209              	.LASF4:
+ 3210 010b 6C6F6E67 		.ascii	"long int\000"
+ 3210      20696E74 
+ 3210      00
+ 3211              	.LASF59:
+ 3212 0114 54696D65 		.ascii	"Timer_ReadCapture\000"
+ 3212      725F5265 
+ 3212      61644361 
+ 3212      70747572 
+ 3212      6500
+ 3213              	.LASF67:
+ 3214 0126 54696D65 		.ascii	"Timer_TriggerCommand\000"
+ 3214      725F5472 
+ 3214      69676765 
+ 3214      72436F6D 
+ 3214      6D616E64 
+ 3215              	.LASF9:
+ 3216 013b 75696E74 		.ascii	"uint8\000"
+ 3216      3800
+ 3217              	.LASF12:
+ 3218 0141 646F7562 		.ascii	"double\000"
+ 3218      6C6500
+ 3219              	.LASF70:
+ 3220 0148 54696D65 		.ascii	"Timer_SetInterruptMode\000"
+ 3220      725F5365 
+ 3220      74496E74 
+ 3220      65727275 
+ 3220      70744D6F 
+ 3221              	.LASF10:
+ 3222 015f 75696E74 		.ascii	"uint32\000"
+ 3222      333200
+ 3223              	.LASF53:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 83
 
 
- 3221      6C6500
- 3222              	.LASF70:
- 3223 0192 54696D65 		.ascii	"Timer_SetInterruptMode\000"
- 3223      725F5365 
- 3223      74496E74 
- 3223      65727275 
- 3223      70744D6F 
- 3224              	.LASF10:
- 3225 01a9 75696E74 		.ascii	"uint32\000"
- 3225      333200
- 3226              	.LASF53:
- 3227 01b0 54696D65 		.ascii	"Timer_WriteCompare\000"
- 3227      725F5772 
- 3227      69746543 
- 3227      6F6D7061 
- 3227      726500
- 3228              	.LASF62:
- 3229 01c3 74726967 		.ascii	"triggerMode\000"
- 3229      6765724D 
- 3229      6F646500 
- 3230              	.LASF38:
- 3231 01cf 6D61736B 		.ascii	"mask\000"
- 3231      00
- 3232              	.LASF55:
- 3233 01d4 54696D65 		.ascii	"Timer_ReadCompare\000"
- 3233      725F5265 
- 3233      6164436F 
- 3233      6D706172 
- 3233      6500
- 3234              	.LASF36:
- 3235 01e6 64656164 		.ascii	"deadTime\000"
- 3235      54696D65 
- 3235      00
- 3236              	.LASF56:
- 3237 01ef 54696D65 		.ascii	"Timer_WriteCompareBuf\000"
- 3237      725F5772 
- 3237      69746543 
- 3237      6F6D7061 
- 3237      72654275 
- 3238              	.LASF77:
- 3239 0205 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Timer.c\000"
- 3239      6E657261 
- 3239      7465645F 
- 3239      536F7572 
- 3239      63655C50 
- 3240              	.LASF8:
- 3241 0226 756E7369 		.ascii	"unsigned int\000"
- 3241      676E6564 
- 3241      20696E74 
- 3241      00
- 3242              	.LASF17:
- 3243 0233 54696D65 		.ascii	"Timer_Start\000"
- 3243      725F5374 
- 3243      61727400 
- 3244              	.LASF68:
- 3245 023f 636F6D6D 		.ascii	"command\000"
- 3245      616E6400 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 84
+ 3224 0166 54696D65 		.ascii	"Timer_WriteCompare\000"
+ 3224      725F5772 
+ 3224      69746543 
+ 3224      6F6D7061 
+ 3224      726500
+ 3225              	.LASF62:
+ 3226 0179 74726967 		.ascii	"triggerMode\000"
+ 3226      6765724D 
+ 3226      6F646500 
+ 3227              	.LASF38:
+ 3228 0185 6D61736B 		.ascii	"mask\000"
+ 3228      00
+ 3229              	.LASF55:
+ 3230 018a 54696D65 		.ascii	"Timer_ReadCompare\000"
+ 3230      725F5265 
+ 3230      6164436F 
+ 3230      6D706172 
+ 3230      6500
+ 3231              	.LASF36:
+ 3232 019c 64656164 		.ascii	"deadTime\000"
+ 3232      54696D65 
+ 3232      00
+ 3233              	.LASF56:
+ 3234 01a5 54696D65 		.ascii	"Timer_WriteCompareBuf\000"
+ 3234      725F5772 
+ 3234      69746543 
+ 3234      6F6D7061 
+ 3234      72654275 
+ 3235              	.LASF77:
+ 3236 01bb 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Timer.c\000"
+ 3236      6E657261 
+ 3236      7465645F 
+ 3236      536F7572 
+ 3236      63655C50 
+ 3237              	.LASF8:
+ 3238 01dc 756E7369 		.ascii	"unsigned int\000"
+ 3238      676E6564 
+ 3238      20696E74 
+ 3238      00
+ 3239              	.LASF17:
+ 3240 01e9 54696D65 		.ascii	"Timer_Start\000"
+ 3240      725F5374 
+ 3240      61727400 
+ 3241              	.LASF68:
+ 3242 01f5 636F6D6D 		.ascii	"command\000"
+ 3242      616E6400 
+ 3243              	.LASF5:
+ 3244 01fd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3244      20756E73 
+ 3244      69676E65 
+ 3244      6420696E 
+ 3244      7400
+ 3245              	.LASF30:
+ 3246 020f 6D6F6465 		.ascii	"modeMask\000"
+ 3246      4D61736B 
+ 3246      00
+ 3247              	.LASF18:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 84
 
 
- 3246              	.LASF5:
- 3247 0247 6C6F6E67 		.ascii	"long unsigned int\000"
- 3247      20756E73 
- 3247      69676E65 
- 3247      6420696E 
- 3247      7400
- 3248              	.LASF30:
- 3249 0259 6D6F6465 		.ascii	"modeMask\000"
- 3249      4D61736B 
- 3249      00
- 3250              	.LASF18:
- 3251 0262 54696D65 		.ascii	"Timer_Enable\000"
- 3251      725F456E 
- 3251      61626C65 
- 3251      00
- 3252              	.LASF3:
- 3253 026f 73686F72 		.ascii	"short unsigned int\000"
- 3253      7420756E 
- 3253      7369676E 
- 3253      65642069 
- 3253      6E7400
- 3254              	.LASF39:
- 3255 0282 54696D65 		.ascii	"Timer_WriteCounter\000"
- 3255      725F5772 
- 3255      69746543 
- 3255      6F756E74 
- 3255      657200
- 3256              	.LASF45:
- 3257 0295 54696D65 		.ascii	"Timer_ReadCounter\000"
- 3257      725F5265 
- 3257      6164436F 
- 3257      756E7465 
- 3257      7200
- 3258              	.LASF19:
- 3259 02a7 54696D65 		.ascii	"Timer_Stop\000"
- 3259      725F5374 
- 3259      6F7000
- 3260              	.LASF28:
- 3261 02b2 6F6E6553 		.ascii	"oneShotEnable\000"
- 3261      686F7445 
- 3261      6E61626C 
- 3261      6500
- 3262              	.LASF72:
- 3263 02c0 54696D65 		.ascii	"Timer_GetInterruptSourceMasked\000"
- 3263      725F4765 
- 3263      74496E74 
- 3263      65727275 
- 3263      7074536F 
- 3264              	.LASF14:
- 3265 02df 72656733 		.ascii	"reg32\000"
- 3265      3200
- 3266              	.LASF47:
- 3267 02e5 54696D65 		.ascii	"Timer_SetCompareSwap\000"
- 3267      725F5365 
- 3267      74436F6D 
- 3267      70617265 
- 3267      53776170 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 85
+ 3248 0218 54696D65 		.ascii	"Timer_Enable\000"
+ 3248      725F456E 
+ 3248      61626C65 
+ 3248      00
+ 3249              	.LASF3:
+ 3250 0225 73686F72 		.ascii	"short unsigned int\000"
+ 3250      7420756E 
+ 3250      7369676E 
+ 3250      65642069 
+ 3250      6E7400
+ 3251              	.LASF39:
+ 3252 0238 54696D65 		.ascii	"Timer_WriteCounter\000"
+ 3252      725F5772 
+ 3252      69746543 
+ 3252      6F756E74 
+ 3252      657200
+ 3253              	.LASF45:
+ 3254 024b 54696D65 		.ascii	"Timer_ReadCounter\000"
+ 3254      725F5265 
+ 3254      6164436F 
+ 3254      756E7465 
+ 3254      7200
+ 3255              	.LASF19:
+ 3256 025d 54696D65 		.ascii	"Timer_Stop\000"
+ 3256      725F5374 
+ 3256      6F7000
+ 3257              	.LASF28:
+ 3258 0268 6F6E6553 		.ascii	"oneShotEnable\000"
+ 3258      686F7445 
+ 3258      6E61626C 
+ 3258      6500
+ 3259              	.LASF72:
+ 3260 0276 54696D65 		.ascii	"Timer_GetInterruptSourceMasked\000"
+ 3260      725F4765 
+ 3260      74496E74 
+ 3260      65727275 
+ 3260      7074536F 
+ 3261              	.LASF14:
+ 3262 0295 72656733 		.ascii	"reg32\000"
+ 3262      3200
+ 3263              	.LASF47:
+ 3264 029b 54696D65 		.ascii	"Timer_SetCompareSwap\000"
+ 3264      725F5365 
+ 3264      74436F6D 
+ 3264      70617265 
+ 3264      53776170 
+ 3265              	.LASF15:
+ 3266 02b0 73697A65 		.ascii	"sizetype\000"
+ 3266      74797065 
+ 3266      00
+ 3267              	.LASF49:
+ 3268 02b9 54696D65 		.ascii	"Timer_WritePeriodBuf\000"
+ 3268      725F5772 
+ 3268      69746550 
+ 3268      6572696F 
+ 3268      64427566 
+ 3269              	.LASF32:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 85
 
 
- 3268              	.LASF15:
- 3269 02fa 73697A65 		.ascii	"sizetype\000"
- 3269      74797065 
- 3269      00
- 3270              	.LASF49:
- 3271 0303 54696D65 		.ascii	"Timer_WritePeriodBuf\000"
- 3271      725F5772 
- 3271      69746550 
- 3271      6572696F 
- 3271      64427566 
- 3272              	.LASF32:
- 3273 0318 73796E63 		.ascii	"syncKillEnable\000"
- 3273      4B696C6C 
- 3273      456E6162 
- 3273      6C6500
- 3274              	.LASF37:
- 3275 0327 54696D65 		.ascii	"Timer_SetPWMInvert\000"
- 3275      725F5365 
- 3275      7450574D 
- 3275      496E7665 
- 3275      727400
- 3276              	.LASF51:
- 3277 033a 54696D65 		.ascii	"Timer_ReadPeriodBuf\000"
- 3277      725F5265 
- 3277      61645065 
- 3277      72696F64 
- 3277      42756600 
- 3278              	.LASF64:
- 3279 034e 54696D65 		.ascii	"Timer_SetStartMode\000"
- 3279      725F5365 
- 3279      74537461 
- 3279      72744D6F 
- 3279      646500
- 3280              	.LASF11:
- 3281 0361 666C6F61 		.ascii	"float\000"
- 3281      7400
- 3282              	.LASF26:
- 3283 0367 70726573 		.ascii	"prescaler\000"
- 3283      63616C65 
- 3283      7200
- 3284              	.LASF65:
- 3285 0371 54696D65 		.ascii	"Timer_SetStopMode\000"
- 3285      725F5365 
- 3285      7453746F 
- 3285      704D6F64 
- 3285      6500
- 3286              	.LASF76:
- 3287 0383 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 3287      4320342E 
- 3287      382E3420 
- 3287      32303134 
- 3287      30353236 
- 3288 03b6 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 3288      20726576 
- 3288      6973696F 
- 3288      6E203231 
- 3288      31333538 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 86
+ 3270 02ce 73796E63 		.ascii	"syncKillEnable\000"
+ 3270      4B696C6C 
+ 3270      456E6162 
+ 3270      6C6500
+ 3271              	.LASF37:
+ 3272 02dd 54696D65 		.ascii	"Timer_SetPWMInvert\000"
+ 3272      725F5365 
+ 3272      7450574D 
+ 3272      496E7665 
+ 3272      727400
+ 3273              	.LASF51:
+ 3274 02f0 54696D65 		.ascii	"Timer_ReadPeriodBuf\000"
+ 3274      725F5265 
+ 3274      61645065 
+ 3274      72696F64 
+ 3274      42756600 
+ 3275              	.LASF64:
+ 3276 0304 54696D65 		.ascii	"Timer_SetStartMode\000"
+ 3276      725F5365 
+ 3276      74537461 
+ 3276      72744D6F 
+ 3276      646500
+ 3277              	.LASF11:
+ 3278 0317 666C6F61 		.ascii	"float\000"
+ 3278      7400
+ 3279              	.LASF26:
+ 3280 031d 70726573 		.ascii	"prescaler\000"
+ 3280      63616C65 
+ 3280      7200
+ 3281              	.LASF65:
+ 3282 0327 54696D65 		.ascii	"Timer_SetStopMode\000"
+ 3282      725F5365 
+ 3282      7453746F 
+ 3282      704D6F64 
+ 3282      6500
+ 3283              	.LASF76:
+ 3284 0339 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 3284      4320342E 
+ 3284      382E3420 
+ 3284      32303134 
+ 3284      30353236 
+ 3285 036c 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 3285      20726576 
+ 3285      6973696F 
+ 3285      6E203231 
+ 3285      31333538 
+ 3286 039f 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 3286      66756E63 
+ 3286      74696F6E 
+ 3286      2D736563 
+ 3286      74696F6E 
+ 3287              	.LASF52:
+ 3288 03b5 54696D65 		.ascii	"Timer_SetPeriodSwap\000"
+ 3288      725F5365 
+ 3288      74506572 
+ 3288      696F6453 
+ 3288      77617000 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 86
 
 
- 3289 03e9 30202D66 		.ascii	"0 -ffunction-sections\000"
- 3289      66756E63 
- 3289      74696F6E 
- 3289      2D736563 
- 3289      74696F6E 
- 3290              	.LASF52:
- 3291 03ff 54696D65 		.ascii	"Timer_SetPeriodSwap\000"
- 3291      725F5365 
- 3291      74506572 
- 3291      696F6453 
- 3291      77617000 
- 3292              	.LASF60:
- 3293 0413 54696D65 		.ascii	"Timer_ReadCaptureBuf\000"
- 3293      725F5265 
- 3293      61644361 
- 3293      70747572 
- 3293      65427566 
- 3294              	.LASF69:
- 3295 0428 54696D65 		.ascii	"Timer_ReadStatus\000"
- 3295      725F5265 
- 3295      61645374 
- 3295      61747573 
- 3295      00
- 3296              	.LASF1:
- 3297 0439 756E7369 		.ascii	"unsigned char\000"
- 3297      676E6564 
- 3297      20636861 
- 3297      7200
- 3298              	.LASF34:
- 3299 0447 73746F70 		.ascii	"stopOnKillEnable\000"
- 3299      4F6E4B69 
- 3299      6C6C456E 
- 3299      61626C65 
- 3299      00
- 3300              	.LASF2:
- 3301 0458 73686F72 		.ascii	"short int\000"
- 3301      7420696E 
- 3301      7400
- 3302              	.LASF71:
- 3303 0462 696E7465 		.ascii	"interruptMask\000"
- 3303      72727570 
- 3303      744D6173 
- 3303      6B00
- 3304              	.LASF25:
- 3305 0470 54696D65 		.ascii	"Timer_SetPrescaler\000"
- 3305      725F5365 
- 3305      74507265 
- 3305      7363616C 
- 3305      657200
- 3306              	.LASF16:
- 3307 0483 54696D65 		.ascii	"Timer_Init\000"
- 3307      725F496E 
- 3307      697400
+ 3289              	.LASF60:
+ 3290 03c9 54696D65 		.ascii	"Timer_ReadCaptureBuf\000"
+ 3290      725F5265 
+ 3290      61644361 
+ 3290      70747572 
+ 3290      65427566 
+ 3291              	.LASF69:
+ 3292 03de 54696D65 		.ascii	"Timer_ReadStatus\000"
+ 3292      725F5265 
+ 3292      61645374 
+ 3292      61747573 
+ 3292      00
+ 3293              	.LASF1:
+ 3294 03ef 756E7369 		.ascii	"unsigned char\000"
+ 3294      676E6564 
+ 3294      20636861 
+ 3294      7200
+ 3295              	.LASF34:
+ 3296 03fd 73746F70 		.ascii	"stopOnKillEnable\000"
+ 3296      4F6E4B69 
+ 3296      6C6C456E 
+ 3296      61626C65 
+ 3296      00
+ 3297              	.LASF2:
+ 3298 040e 73686F72 		.ascii	"short int\000"
+ 3298      7420696E 
+ 3298      7400
+ 3299              	.LASF71:
+ 3300 0418 696E7465 		.ascii	"interruptMask\000"
+ 3300      72727570 
+ 3300      744D6173 
+ 3300      6B00
+ 3301              	.LASF25:
+ 3302 0426 54696D65 		.ascii	"Timer_SetPrescaler\000"
+ 3302      725F5365 
+ 3302      74507265 
+ 3302      7363616C 
+ 3302      657200
+ 3303              	.LASF16:
+ 3304 0439 54696D65 		.ascii	"Timer_Init\000"
+ 3304      725F496E 
+ 3304      697400
+ 3305              	.LASF78:
+ 3306 0444 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 3306      73657273 
+ 3306      5C536E75 
+ 3306      666B696E 
+ 3306      5C446F63 
+ 3307 0472 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 3307      5F4D6173 
+ 3307      7465725C 
+ 3307      50536F43 
+ 3307      5F4D6173 
  3308              	.LASF41:
- 3309 048e 54696D65 		.ascii	"Timer_SetCounterMode\000"
+ 3309 0490 54696D65 		.ascii	"Timer_SetCounterMode\000"
  3309      725F5365 
  3309      74436F75 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 87
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 87
 
 
  3309      6E746572 
  3309      4D6F6465 
  3310              	.LASF13:
- 3311 04a3 63686172 		.ascii	"char\000"
+ 3311 04a5 63686172 		.ascii	"char\000"
  3311      00
  3312              	.LASF23:
- 3313 04a8 6D6F6465 		.ascii	"mode\000"
+ 3313 04aa 6D6F6465 		.ascii	"mode\000"
  3313      00
  3314              	.LASF63:
- 3315 04ad 54696D65 		.ascii	"Timer_SetReloadMode\000"
+ 3315 04af 54696D65 		.ascii	"Timer_SetReloadMode\000"
  3315      725F5365 
  3315      7452656C 
  3315      6F61644D 
  3315      6F646500 
  3316              	.LASF42:
- 3317 04c1 636F756E 		.ascii	"counterMode\000"
+ 3317 04c3 636F756E 		.ascii	"counterMode\000"
  3317      7465724D 
  3317      6F646500 
  3318              	.LASF46:
- 3319 04cd 54696D65 		.ascii	"Timer_ReadPeriod\000"
+ 3319 04cf 54696D65 		.ascii	"Timer_ReadPeriod\000"
  3319      725F5265 
  3319      61645065 
  3319      72696F64 
  3319      00
  3320              	.LASF57:
- 3321 04de 636F6D70 		.ascii	"compareBuf\000"
+ 3321 04e0 636F6D70 		.ascii	"compareBuf\000"
  3321      61726542 
  3321      756600
  3322              	.LASF20:
- 3323 04e9 656E6162 		.ascii	"enableInterrupts\000"
+ 3323 04eb 656E6162 		.ascii	"enableInterrupts\000"
  3323      6C65496E 
  3323      74657272 
  3323      75707473 
  3323      00
  3324              	.LASF61:
- 3325 04fa 54696D65 		.ascii	"Timer_SetCaptureMode\000"
+ 3325 04fc 54696D65 		.ascii	"Timer_SetCaptureMode\000"
  3325      725F5365 
  3325      74436170 
  3325      74757265 
  3325      4D6F6465 
  3326              	.LASF27:
- 3327 050f 54696D65 		.ascii	"Timer_SetOneShot\000"
+ 3327 0511 54696D65 		.ascii	"Timer_SetOneShot\000"
  3327      725F5365 
  3327      744F6E65 
  3327      53686F74 
  3327      00
  3328              	.LASF74:
- 3329 0520 54696D65 		.ascii	"Timer_ClearInterrupt\000"
+ 3329 0522 54696D65 		.ascii	"Timer_ClearInterrupt\000"
  3329      725F436C 
  3329      65617249 
  3329      6E746572 
  3329      72757074 
  3330              	.LASF48:
- 3331 0535 73776170 		.ascii	"swapEnable\000"
+ 3331 0537 73776170 		.ascii	"swapEnable\000"
  3331      456E6162 
  3331      6C6500
  3332              	.LASF50:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccNZrJWh.s 			page 88
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccQfbIxX.s 			page 88
 
 
- 3333 0540 70657269 		.ascii	"periodBuf\000"
+ 3333 0542 70657269 		.ascii	"periodBuf\000"
  3333      6F644275 
  3333      6600
  3334              	.LASF29:
- 3335 054a 54696D65 		.ascii	"Timer_SetPWMMode\000"
+ 3335 054c 54696D65 		.ascii	"Timer_SetPWMMode\000"
  3335      725F5365 
  3335      7450574D 
  3335      4D6F6465 
  3335      00
  3336              	.LASF58:
- 3337 055b 54696D65 		.ascii	"Timer_ReadCompareBuf\000"
+ 3337 055d 54696D65 		.ascii	"Timer_ReadCompareBuf\000"
  3337      725F5265 
  3337      6164436F 
  3337      6D706172 

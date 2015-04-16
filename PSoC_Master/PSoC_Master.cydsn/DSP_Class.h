@@ -9,16 +9,16 @@
  * ========================================
 */
 #ifndef DSP_Class_H
-#define DSP_Class_H 0
+#define DSP_Class_H
     
     // Include files
     #include <project.h>
     
     // Definitions
-    #define ARRAYSIZE 100
+
     
     // Public data members
-
+    
     
     // Public prototypes
     void initDSP(void);

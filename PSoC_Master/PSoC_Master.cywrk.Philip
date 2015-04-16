@@ -266,17 +266,14 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
+<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.h" />
+<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.c" />
 <name v=".\PSoC_Master.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\PSoC_Master.cydsn\main.c" />
 <name v=".\PSoC_Master.cydsn\DSP_Class.h" />
 <name v=".\PSoC_Master.cydsn\I2C_Class.h" />
-<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.h" />
 <name v=".\PSoC_Master.cydsn\UART_Class.h" />
 <name v=".\PSoC_Master.cydsn\DSP_Class.c" />
-<name v=".\PSoC_Master.cydsn\I2C_Class.c" />
-<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.c" />
-<name v=".\PSoC_Master.cydsn\UART_Class.c" />
-<name v=".\PSoC_Master.cydsn\PSoC_Master.cydwr" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

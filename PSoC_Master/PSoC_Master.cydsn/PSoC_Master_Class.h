@@ -17,8 +17,10 @@
     // Public data members
     
     
+    
     // Public prototypes
     void initPSoC_Master(void);
+    
 
 
 

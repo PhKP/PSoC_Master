@@ -12,16 +12,22 @@
 // Include files
 #include "DSP_Class.h"
 
+// Definitions
+#define ARRAYSIZE 100
+#define NMR_OF_VALID_DATAPOINTS_NEEDED 10
+#define NUMBER_OF_SOILHUM_SENSORS 6
+#define EMPTY -1
+
 // Private data members
 int32 tempArray[ARRAYSIZE];
 int32* tempArrayPtr;
 int32 humArray[ARRAYSIZE];
 int32* humArrayPtr;
-int16 soilHumArray[6][ARRAYSIZE];
-int16* soilHumPtr[6];
+int16 soilHumArray[NUMBER_OF_SOILHUM_SENSORS][ARRAYSIZE];
+int16* soilHumPtr[NUMBER_OF_SOILHUM_SENSORS];
 int32 lightArray[ARRAYSIZE];
 int32* lightArrayPtr;
-uint8 temp, hum, soilHum[6], light;
+uint8 temp, hum, soilHum[NUMBER_OF_SOILHUM_SENSORS], light;     // Used for storing the newest, value to 
 
 // Private prototypes
 void avgTemp(void);
@@ -29,59 +35,228 @@ void avgHum(void);
 void avgSoilHum(uint8 index);
 void avgLight(void);
 
+// Init: All datamebers are initialized with -1, meaning they are empty
 void initDSP(void){
-
+    {
+        uint8 i;
+        for(i = 0 ; i<ARRAYSIZE ; i++){
+            tempArray[i] = EMPTY;
+            humArray[i] = EMPTY;
+            {
+                uint8 j;
+                for(j = 0 ; j<NUMBER_OF_SOILHUM_SENSORS ; j++){
+                    soilHumArray[i][j] = EMPTY;
+                }
+            }
+            lightArray[i] = EMPTY;
+            
+        }
+    }
+    tempArrayPtr = & tempArray[0];
+    humArrayPtr = & humArray[0];
+    {
+        uint8 k;
+        for(k = 0 ; k<NUMBER_OF_SOILHUM_SENSORS ; k++){
+            soilHumPtr[k] = & soilHumArray[k][0];
+            soilHum[k] = EMPTY; 
+            }
+    }
+    lightArrayPtr = & lightArray[0];
+    temp = EMPTY;
+    hum = EMPTY;
+    light = EMPTY;
 }
 
 uint8 getTemp_DSP(void){
-return 0;
+    return temp;
 }
 
 uint8 getHum_DSP(void){
-return 0;
+    return hum;
 }
 
 uint8 getSoilHum_DSP(uint8 index){
-    index = 0;
-    return 0;
+    return soilHum[index];
 }
 
 uint8 getLight_DSP(void){
-return 0;
+    return light;
 }
 
 void avgTemp(void){
-
+    uint8 skip = 0;
+    int64 avgTempVar = 0;
+    {
+        uint8 i;
+        for(i = 0 ; i<ARRAYSIZE ; i++){
+            if(tempArray[i]>=0){
+                avgTempVar += tempArray[i];
+            }
+            else{
+                skip++;
+            }
+        }
+    }
+    // Makes sure that enough datapoits are pressent
+    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
+        avgTempVar/=(ARRAYSIZE-skip);                               // Calculate the average value
+        float tempInDegreesC = (avgTempVar/((2^14)-2))*165-40;      // Conversion formula from datasheet
+        
+        // tempInDegreesC is limited to -20 and +80 degrees C
+        if ( -19.5 > tempInDegreesC){
+            tempInDegreesC = -19.5;
+        }
+        else if(tempInDegreesC > 80){
+            tempInDegreesC = 80;
+        }
+        temp = (tempInDegreesC+20)*2;       // Conversion to UART protocol
+    }
+    else{
+        temp = 0;
+    }
 }
 
 void avgHum(void){
-
+    uint8 skip = 0;
+    int64 avgHumVar = 0;
+    {
+        uint8 i;
+        for(i = 0 ; i<ARRAYSIZE ; i++){
+            if(humArray[i]>=0){
+                avgHumVar += humArray[i];
+            }
+            else{
+                skip++;
+            }
+        }
+    }
+    // Makes sure that enough datapoits are pressent
+    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
+        avgHumVar/=(ARRAYSIZE-skip);                                // Calculate the average value
+        uint8 humInRH = (avgHumVar/((2^14)-2))*100;                 // Conversion formula from datasheet
+        
+        // humInRH is limited to 1 and 100 RH
+        if(humInRH <= 0){
+            humInRH = 1;
+        }
+        else if(humInRH > 100){
+            humInRH = 100;
+        }
+        hum = humInRH;
+    }
+    else{
+    hum = 0;
+    }
 }
 
 void avgSoilHum(uint8 index){
-    index = 0;
+    uint8 skip = 0;
+    int64 avgSoilHumVar = 0;
+    {
+        uint8 i;
+        for(i = 0 ; i<ARRAYSIZE ; i++){
+            if(soilHumArray[index][i]>=0){
+                avgSoilHumVar += soilHumArray[index][i];
+            }
+            else{
+                skip++;
+            }
+        }
+    }
+    // Makes sure that enough datapoits are pressent
+    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
+        uint8 soilHumInRH = avgSoilHumVar/(ARRAYSIZE-skip);         // Calculate the average value (assuming input from sensor is in RH)
+        
+        // soilHumInRH is limited to 1 and 100 RH
+        if(soilHumInRH <= 0){
+            soilHumInRH = 1;
+        }
+        else if(soilHumInRH > 100){
+            soilHumInRH = 100;
+        }
+        soilHum[index] = soilHumInRH;
+    }
+    else{
+    soilHum[index] = 0;
+    }
 }
 
 void avgLight(void){
-
-}
+    uint8 skip = 0;
+    int64 avgLightVar = 0;
+    {
+        uint8 i;
+        for(i = 0 ; i<ARRAYSIZE ; i++){
+            if(lightArray[i]>=0){
+                avgLightVar += lightArray[i];
+            }
+            else{
+                skip++;
+            }
+        }
+    }
+    // Makes sure that enough datapoits are pressent
+    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
+        avgLightVar/=(ARRAYSIZE-skip);                              // Calculate the average value
+        
+        // Conversion to lux formula from datasheet
+        // Range = 128000, R_EXT = 100kOhm, n = 7 and DATA max 128
+        int32 lightInLux = ((128000*(100/100))/(2^7))*(uint8)avgLightVar;
+        
+        uint8 lightInuartVarSteps = lightInLux/1000;     // Conversion to UART ready value, 1 = 1000 lux
+        
+        // lightInLux is limited to 1 and 100 RH
+        if(lightInuartVarSteps <= 0){
+            lightInuartVarSteps = 1;
+        }
+        else if(lightInuartVarSteps > 100){
+            lightInuartVarSteps = 100;
+        }
+        light = lightInuartVarSteps;
+    }
+    else{
+    light = 0;
+    }
+  }
 
 void inputTemp(int32* temp){
-    *temp = 0;
+    *tempArrayPtr = *temp;      // The input value is written to the array
+    tempArrayPtr++;             // The pointer is moved to the next place in array
+    if(tempArrayPtr > &tempArray[ARRAYSIZE-1]){
+        tempArrayPtr = &tempArray[0];   // If the pointer is pointing past the end of the array it's reset
+    }
+    
+    avgTemp();      // The average value is calculated and onverted into temp(globel) 
 }
 
 void inputHum(int32* hum){
-    *hum = 0;
+    *humArrayPtr = *hum;        // The input value is written to the array
+    humArrayPtr++;              // The pointer is moved to the next place in array
+    if(humArrayPtr > &humArray[ARRAYSIZE-1]){
+        humArrayPtr = &humArray[0];     // If the pointer is pointing past the end of the array it's reset
+    }
+    
+    avgHum();      // The average value is calculated and onverted into hum(globel)
 }
 
 void inputSoilHum(uint8 index, int16* soilHum){
-    index = 0;
-    *soilHum = 0;
+    *soilHumPtr[index] = *soilHum;          // The input value is written to the array
+    soilHumPtr[index]++;                    // The pointer is moved to the next place in array
+    if(soilHumPtr[index] > &soilHumArray[index][ARRAYSIZE-1]){
+        soilHumPtr[index] = &soilHumArray[index][0];            // If the pointer is pointing past the end of the array it's reset
+    }
+    
+    avgSoilHum(index);          // The average value is calculated and onverted into soilHum(globel)
 }
 
 void inputLight(int32* light){
-    *light = 0;
+    *lightArrayPtr = *light;        // The input value is written to the array
+    lightArrayPtr++;                // The pointer is moved to the next place in array
+    if(lightArrayPtr > &lightArray[ARRAYSIZE-1]){
+        lightArrayPtr = &lightArray[0];     // If the pointer is pointing past the end of the array it's reset
+    }
+    
+    avgLight();      // The average value is calculated and onverted into hum(globel)
 }
-
 
 /* [] END OF FILE */

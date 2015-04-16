@@ -15,7 +15,7 @@
 
 //Debug definitions!
 #define BUF_SIZE 50
-static const uint8 returnVal = 1;
+static uint8 returnVal = 0;
 
 // Private data members
 int32 tempArray[ARRAYSIZE];
@@ -42,7 +42,7 @@ uint8 getTemp_DSP(void){
     char buf[BUF_SIZE];
     sprintf(buf, "getTemp_DSP() called, returns %d\n\r", returnVal);
     UART_UartPutString(buf);
-    return returnVal;
+    return returnVal++;
 }
 
 uint8 getHum_DSP(void){

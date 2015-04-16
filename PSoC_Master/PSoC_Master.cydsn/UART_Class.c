@@ -18,7 +18,7 @@ void initUART(void){
 }
 
 int8 respondTemp(uint8 temp){
-    if(1 <= temp && temp <= 200 ){
+    if(temp){
         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
         UART_UartPutChar('T');
         UART_UartPutChar(temp);
@@ -33,7 +33,7 @@ int8 respondTemp(uint8 temp){
 }
 
 int8 respondHum(uint8 hum){
-    if(1 <= hum && hum <= 100 ){
+    if(hum){
         // If hum is between 1 and 100(both inclusive) "A" and hum is sent to DevKit8000
         UART_UartPutChar('A');
         UART_UartPutChar(hum);
@@ -48,14 +48,13 @@ int8 respondHum(uint8 hum){
 }
 
 int8 respondLight(uint8 light){
-    if(1 <= light && light <= 100 ){
+    if(light){
         // If light is between 1 and 100(both inclusive) "L" and light is sent to DevKit8000
         UART_UartPutChar('L');
         UART_UartPutChar(light);
         return 0;
     }
     else{
-
         // If light isn't between 1 and 100(both inclusive) "XL" is sent to DevKit8000
         UART_UartPutChar('X');
         UART_UartPutChar('L');
@@ -64,7 +63,7 @@ int8 respondLight(uint8 light){
 }
 
 int8 respondSoilHum(uint8 index, uint8 soilHum){
-    if(1 <= soilHum && soilHum <= 10){
+    if(soilHum){
         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent to DevKit8000
         UART_UartPutChar('S');
         UART_UartPutChar(index);

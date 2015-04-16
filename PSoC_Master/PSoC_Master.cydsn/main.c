@@ -16,6 +16,15 @@
 #include "PSoC_Master_Class.h"
 #include "UART_Class.h"
 
+//uncomment to test one of these functions on boot
+//#define test_respondTemp
+//#define test_respondHum
+//#define test_respondLight
+//#define test_respondSoilHum //Not done yet
+//#define test_respondHeat
+//#define test_respondWin
+//#define test_respondVent
+//#define test_respondIrri
 
 int main(){
     // Init
@@ -32,6 +41,47 @@ int main(){
     UART_UartPutChar(27);
     UART_UartPutString("[H");     // cursor to home command
     UART_UartPutString("System initialized..\n\r");
+    
+    #ifdef test_respondTemp
+        {uint16 i;
+        for (i = 0; i < 256; i++){
+            char buf[10];
+            sprintf(buf, "\n\r%d: ", i);
+            UART_UartPutString(buf);
+            respondTemp(i);
+        }}
+        CyDelay(100);
+    #endif
+    #ifdef test_respondHum
+        {uint16 i;
+        for (i = 0; i < 256; i++){
+            char buf[10];
+            sprintf(buf, "\n\r%d: ", i);
+            UART_UartPutString(buf);
+            respondHum(i);
+        }}
+        CyDelay(100);
+    #endif
+    #ifdef test_respondLight
+        {uint16 i;
+        for (i = 0; i < 256; i++){
+            char buf[10];
+            sprintf(buf, "\n\r%d: ", i);
+            UART_UartPutString(buf);
+            respondTemp(i);
+        }}
+        CyDelay(100);
+    #endif
+    #ifdef test_respondSoilHum //TODO: Make this testing routine
+        {uint16 i;
+        for (i = 0; i < 256; i++){
+            char buf[10];
+            sprintf(buf, "\n\r%d: ", i);
+            UART_UartPutString(buf);
+            respondSoilHum(5, i);
+        }}
+        CyDelay(100);
+    #endif
     
     while(1);
     

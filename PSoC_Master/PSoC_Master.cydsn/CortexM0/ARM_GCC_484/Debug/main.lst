@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
   15:.\main.c      **** #include "I2C_Class.h"
   16:.\main.c      **** #include "PSoC_Master_Class.h"
   17:.\main.c      **** #include "UART_Class.h"
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 2
 
 
   18:.\main.c      **** 
@@ -72,59 +72,58 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
   42              		.cfi_offset 14, -4
   43 0002 00AF     		add	r7, sp, #0
   44              		.cfi_def_cfa_register 7
-  21:.\main.c      ****     
-  22:.\main.c      ****     // Init
-  23:.\main.c      ****     initDSP();
-  45              		.loc 1 23 0
+  21:.\main.c      ****     // Init
+  22:.\main.c      ****     initDSP();
+  45              		.loc 1 22 0
   46 0004 FFF7FEFF 		bl	initDSP
-  24:.\main.c      ****     initI2C();
-  47              		.loc 1 24 0
+  23:.\main.c      ****     initI2C();
+  47              		.loc 1 23 0
   48 0008 FFF7FEFF 		bl	initI2C
-  25:.\main.c      ****     initPSoC_Master();
-  49              		.loc 1 25 0
+  24:.\main.c      ****     initPSoC_Master();
+  49              		.loc 1 24 0
   50 000c FFF7FEFF 		bl	initPSoC_Master
-  26:.\main.c      ****     initUART();
-  51              		.loc 1 26 0
+  25:.\main.c      ****     initUART();
+  51              		.loc 1 25 0
   52 0010 FFF7FEFF 		bl	initUART
-  27:.\main.c      **** 
-  28:.\main.c      ****     CyGlobalIntEnable;      // Global interrupt enable
-  53              		.loc 1 28 0
-  54              	@ 28 ".\main.c" 1
+  26:.\main.c      **** 
+  27:.\main.c      ****     CyGlobalIntEnable;      // Global interrupt enable
+  53              		.loc 1 27 0
+  54              	@ 27 ".\main.c" 1
   55 0014 62B6     		CPSIE   i
   56              	@ 0 "" 2
-  29:.\main.c      ****     
-  30:.\main.c      ****     //Clears screen and prints opening msg
-  31:.\main.c      ****     UART_UartPutChar(27);       // ESC command
-  57              		.loc 1 31 0
+  28:.\main.c      ****     
+  29:.\main.c      ****     //Clears screen and prints opening msg
+  30:.\main.c      ****     UART_UartPutChar(27);       // ESC command
+  57              		.loc 1 30 0
   58              		.code	16
   59 0016 1B20     		mov	r0, #27
   60 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  32:.\main.c      ****     UART_UartPutString("[2J");    // clear screen command
-  61              		.loc 1 32 0
+  31:.\main.c      ****     UART_UartPutString("[2J");    // clear screen command
+  61              		.loc 1 31 0
   62 001c 074B     		ldr	r3, .L3
   63 001e 181C     		mov	r0, r3
   64 0020 FFF7FEFF 		bl	UART_UartPutString
-  33:.\main.c      ****     UART_UartPutChar(27);
-  65              		.loc 1 33 0
+  32:.\main.c      ****     UART_UartPutChar(27);
+  65              		.loc 1 32 0
   66 0024 1B20     		mov	r0, #27
   67 0026 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  34:.\main.c      ****     UART_UartPutString("[H");     // cursor to home command
-  68              		.loc 1 34 0
+  33:.\main.c      ****     UART_UartPutString("[H");     // cursor to home command
+  68              		.loc 1 33 0
   69 002a 054B     		ldr	r3, .L3+4
   70 002c 181C     		mov	r0, r3
   71 002e FFF7FEFF 		bl	UART_UartPutString
-  35:.\main.c      ****     UART_UartPutString("System initialized..\n\r");
-  72              		.loc 1 35 0
+  34:.\main.c      ****     UART_UartPutString("System initialized..\n\r");
+  72              		.loc 1 34 0
   73 0032 044B     		ldr	r3, .L3+8
   74 0034 181C     		mov	r0, r3
   75 0036 FFF7FEFF 		bl	UART_UartPutString
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 3
-
-
   76              	.L2:
-  36:.\main.c      ****     
-  37:.\main.c      ****     while(1);
-  77              		.loc 1 37 0 discriminator 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 3
+
+
+  35:.\main.c      ****     
+  36:.\main.c      ****     while(1);
+  77              		.loc 1 36 0 discriminator 1
   78 003a FEE7     		b	.L2
   79              	.L4:
   80              		.align	2
@@ -178,10 +177,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  128 004a 07       		.byte	0x7
  129 004b 2D000000 		.4byte	.LASF5
  130 004f 02       		.uleb128 0x2
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 4
-
-
  131 0050 08       		.byte	0x8
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 4
+
+
  132 0051 05       		.byte	0x5
  133 0052 00000000 		.4byte	.LASF6
  134 0056 02       		.uleb128 0x2
@@ -238,10 +237,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  185 00b9 6B000000 		.4byte	0x6b
  186 00bd 05       		.uleb128 0x5
  187 00be 03       		.byte	0x3
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 5
-
-
  188 00bf 00000000 		.4byte	receivedCommand
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 5
+
+
  189 00c3 00       		.byte	0
  190              		.section	.debug_abbrev,"",%progbits
  191              	.Ldebug_abbrev0:
@@ -298,10 +297,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  242 0032 49       		.uleb128 0x49
  243 0033 13       		.uleb128 0x13
  244 0034 00       		.byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 6
-
-
  245 0035 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 6
+
+
  246 0036 05       		.uleb128 0x5
  247 0037 2E       		.uleb128 0x2e
  248 0038 00       		.byte	0
@@ -358,10 +357,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  299              		.section	.debug_ranges,"",%progbits
  300              	.Ldebug_ranges0:
  301 0000 00000000 		.4byte	.LFB33
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 7
-
-
  302 0004 48000000 		.4byte	.LFE33
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 7
+
+
  303 0008 00000000 		.4byte	0
  304 000c 00000000 		.4byte	0
  305              		.section	.debug_line,"",%progbits
@@ -418,10 +417,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  325      74696F6E 
  325      2D736563 
  325      74696F6E 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 8
-
-
  326              	.LASF19:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccCHrp2x.s 			page 8
+
+
  327 00d2 72656365 		.ascii	"receivedCommand\000"
  327      69766564 
  327      436F6D6D 
@@ -478,6 +477,3 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 1
  350      74797065 
  350      00
  351              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccrMctTz.s 			page 9
-
-

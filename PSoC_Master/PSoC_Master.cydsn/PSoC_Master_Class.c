@@ -94,11 +94,21 @@ CY_ISR(UART_ISR){
         }
     }
     else if(theState == ADJW){
-        respondWin(adjustWindow(buff-CONVERT_TO_ASCII));
+        if(buff-CONVERT_TO_ASCII == 1){
+            respondWin(adjustWindow(0xFF));
+        }
+        else{
+            respondWin(adjustWindow(0x00));
+        }
         theState = IDLE;
     }
     else if(theState == ADJV){
-        respondVent(adjustVentilation(buff-CONVERT_TO_ASCII));
+        if(buff-CONVERT_TO_ASCII == 1){
+            respondVent(adjustVentilation(0xFF));
+        }
+        else{
+            respondVent(adjustVentilation(0x00));
+        }
         theState = IDLE;
     }
     else if(theState == ADJI){
@@ -106,7 +116,12 @@ CY_ISR(UART_ISR){
             irrigationIndex = buff;
         }
         else{
-            respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, buff-CONVERT_TO_ASCII-1));
+            if (buff-CONVERT_TO_ASCII == 1){
+                respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0xFF));
+            }
+            else{
+                respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0x00));
+            }
             irrigationIndex = 0;
             theState = IDLE;
         }

@@ -22,12 +22,14 @@ uint8 irrigationStatus;
 // Private prototypes
 
 void initI2C(void){
-
+    
 }
 
 int8 adjustWindow(uint8 pos){
-    pos = 0;
-    return 0;
+    char buf[BUF_SIZE];
+    sprintf(buf, "adjustWindow() called, adj window to %d, ret: %d\n\r", pos, returnVal);
+    UART_UartPutString(buf);
+    return returnVal;
 }
 
 int8 adjustHeat(uint8 heat){
@@ -74,16 +76,19 @@ int8 getTempAndHum(int32* temp, int32* hum){
 }
 
 int8 getLight(int32* light){
-    *light = 0;
-    return 0;
+    char buf[BUF_SIZE];
+    sprintf(buf, "getLight() called, ret: %d\n\r", returnVal);
+    UART_UartPutString(buf);
+    *light = returnVal;
+    return returnVal;
 }
 
 int8 getSoilHum(uint8 index, int16* soilHum){
-    index = 0;
-    *soilHum = 0;
-    return 0;
+    char buf[BUF_SIZE];
+    sprintf(buf, "getSoilHum() called, index %d to %d, ret: %d\n\r", index, returnVal, returnVal);
+    UART_UartPutString(buf);
+    *soilHum = returnVal;
+    return returnVal;
 }
-
-
 
 /* [] END OF FILE */

@@ -18,7 +18,6 @@
 
 
 int main(){
-    
     // Init
     initDSP();
     initI2C();

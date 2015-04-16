@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
   30:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
   31:.\Generated_Source\PSoC4/UART_SPI_UART.c **** #if(UART_INTERNAL_TX_SW_BUFFER_CONST)
   32:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     volatile uint32 UART_txBufferHead;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     volatile uint32 UART_txBufferTail;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
   74:.\Generated_Source\PSoC4/UART_SPI_UART.c ****         #if(UART_INTERNAL_RX_SW_BUFFER_CONST)
   75:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             uint32 locTail;
   76:.\Generated_Source\PSoC4/UART_SPI_UART.c ****         #endif /* (UART_INTERNAL_RX_SW_BUFFER_CONST) */
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 3
 
 
   77:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
   63              		.type	UART_SpiUartGetRxBufferSize, %function
   64              	UART_SpiUartGetRxBufferSize:
   65              	.LFB1:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 4
 
 
  107:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
   77 0006 054B     		ldr	r3, .L7
   78 0008 1A68     		ldr	r2, [r3]
   79 000a 0F23     		mov	r3, #15
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 5
 
 
   80 000c 1340     		and	r3, r2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  111 0002 00AF     		add	r7, sp, #0
  112              		.cfi_def_cfa_register 7
  173:.\Generated_Source\PSoC4/UART_SPI_UART.c ****         #if(UART_INTERNAL_RX_SW_BUFFER_CONST)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 6
 
 
  174:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             uint32 intSourceMask;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  143              		.thumb_func
  144              		.type	UART_SpiUartWriteTxData, %function
  145              	UART_SpiUartWriteTxData:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 7
 
 
  146              	.LFB3:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  240:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             {
  241:.\Generated_Source\PSoC4/UART_SPI_UART.c ****                 /* Wait for space in TX software buffer */
  242:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 8
 
 
  243:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  176 0020 80BD     		pop	{r7, pc}
  177              	.L15:
  178 0022 C046     		.align	2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 9
 
 
  179              	.L14:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  208 000e 09E0     		b	.L17
  209              	.L18:
  304:.\Generated_Source\PSoC4/UART_SPI_UART.c ****         {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 10
 
 
  305:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             UART_SpiUartWriteTxData((uint32) wrBuf[i]);
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  324:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     *  None
  325:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     *
  326:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     * Return:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 11
 
 
  327:.\Generated_Source\PSoC4/UART_SPI_UART.c ****     *  Number of data elements ready to transmit.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  265              		@ sp needed
  266 0018 80BD     		pop	{r7, pc}
  267              	.L22:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 12
 
 
  268 001a C046     		.align	2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  391:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             intSourceMask &= (uint32) ~UART_INTR_TX_NOT_FULL;
  392:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
  393:.\Generated_Source\PSoC4/UART_SPI_UART.c ****             UART_SpiUartEnableIntTx(intSourceMask);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 13
 
 
  394:.\Generated_Source\PSoC4/UART_SPI_UART.c ****         }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  414:.\Generated_Source\PSoC4/UART_SPI_UART.c **** *
  415:.\Generated_Source\PSoC4/UART_SPI_UART.c **** * Return:
  416:.\Generated_Source\PSoC4/UART_SPI_UART.c **** *  Returns the RX interrupt sources enabled before the function call.
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 14
 
 
  417:.\Generated_Source\PSoC4/UART_SPI_UART.c **** *
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  430:.\Generated_Source\PSoC4/UART_SPI_UART.c **** 
  431:.\Generated_Source\PSoC4/UART_SPI_UART.c **** /*******************************************************************************
  432:.\Generated_Source\PSoC4/UART_SPI_UART.c **** * Function Name: UART_SpiUartDisableIntTx
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 15
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 15
 
 
  433:.\Generated_Source\PSoC4/UART_SPI_UART.c **** ********************************************************************************
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  397              		.size	UART_SpiUartDisableIntTx, .-UART_SpiUartDisableIntTx
  398              		.text
  399              	.Letext0:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 16
 
 
  400              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
@@ -912,7 +912,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  408 000c 3E020000 		.4byte	.LASF32
  409 0010 01       		.byte	0x1
  410 0011 AE010000 		.4byte	.LASF33
- 411 0015 70000000 		.4byte	.LASF34
+ 411 0015 06000000 		.4byte	.LASF34
  412 0019 00000000 		.4byte	.Ldebug_ranges0+0
  413 001d 00000000 		.4byte	0
  414 0021 00000000 		.4byte	.Ldebug_line0
@@ -931,7 +931,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  427 003a 02       		.uleb128 0x2
  428 003b 02       		.byte	0x2
  429 003c 07       		.byte	0x7
- 430 003d 13000000 		.4byte	.LASF3
+ 430 003d 5D000000 		.4byte	.LASF3
  431 0041 02       		.uleb128 0x2
  432 0042 04       		.byte	0x4
  433 0043 05       		.byte	0x5
@@ -955,10 +955,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  451 0064 02       		.uleb128 0x2
  452 0065 04       		.byte	0x4
  453 0066 07       		.byte	0x7
- 454 0067 26000000 		.4byte	.LASF8
+ 454 0067 70000000 		.4byte	.LASF8
  455 006b 04       		.uleb128 0x4
  456 006c CC000000 		.4byte	.LASF9
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 17
 
 
  457 0070 02       		.byte	0x2
@@ -972,7 +972,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  465 0081 02       		.uleb128 0x2
  466 0082 04       		.byte	0x4
  467 0083 04       		.byte	0x4
- 468 0084 4C000000 		.4byte	.LASF11
+ 468 0084 96000000 		.4byte	.LASF11
  469 0088 02       		.uleb128 0x2
  470 0089 08       		.byte	0x8
  471 008a 04       		.byte	0x4
@@ -1018,14 +1018,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  511 00dd 76000000 		.4byte	0x76
  512 00e1 00000000 		.4byte	.LFB1
  513 00e5 20000000 		.4byte	.LFE1-.LFB1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 18
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 18
 
 
  514 00e9 01       		.uleb128 0x1
  515 00ea 9C       		.byte	0x9c
  516 00eb FE000000 		.4byte	0xfe
  517 00ef 08       		.uleb128 0x8
- 518 00f0 6B000000 		.4byte	.LASF19
+ 518 00f0 B5000000 		.4byte	.LASF19
  519 00f4 01       		.byte	0x1
  520 00f5 81       		.byte	0x81
  521 00f6 76000000 		.4byte	0x76
@@ -1051,7 +1051,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  541 011f 9C       		.byte	0x9c
  542 0120 33010000 		.4byte	0x133
  543 0124 0B       		.uleb128 0xb
- 544 0125 0C000000 		.4byte	.LASF22
+ 544 0125 56000000 		.4byte	.LASF22
  545 0129 01       		.byte	0x1
  546 012a DD       		.byte	0xdd
  547 012b 76000000 		.4byte	0x76
@@ -1077,8 +1077,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  567 0156 91       		.byte	0x91
  568 0157 6C       		.sleb128 -20
  569 0158 0D       		.uleb128 0xd
- 570 0159 06000000 		.4byte	.LASF24
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 19
+ 570 0159 50000000 		.4byte	.LASF24
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 19
 
 
  571 015d 01       		.byte	0x1
@@ -1112,7 +1112,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  599 0195 9C       		.byte	0x9c
  600 0196 AA010000 		.4byte	0x1aa
  601 019a 12       		.uleb128 0x12
- 602 019b 6B000000 		.4byte	.LASF19
+ 602 019b B5000000 		.4byte	.LASF19
  603 019f 01       		.byte	0x1
  604 01a0 4C01     		.2byte	0x14c
  605 01a2 76000000 		.4byte	0x76
@@ -1129,7 +1129,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  616 01ba 01       		.uleb128 0x1
  617 01bb 9C       		.byte	0x9c
  618 01bc 11       		.uleb128 0x11
- 619 01bd 33000000 		.4byte	.LASF28
+ 619 01bd 7D000000 		.4byte	.LASF28
  620 01c1 01       		.byte	0x1
  621 01c2 A301     		.2byte	0x1a3
  622 01c4 76000000 		.4byte	0x76
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  625 01d0 01       		.uleb128 0x1
  626 01d1 9C       		.byte	0x9c
  627 01d2 E6010000 		.4byte	0x1e6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 20
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 20
 
 
  628 01d6 12       		.uleb128 0x12
@@ -1151,7 +1151,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  635 01e4 74       		.sleb128 -12
  636 01e5 00       		.byte	0
  637 01e6 14       		.uleb128 0x14
- 638 01e7 52000000 		.4byte	.LASF30
+ 638 01e7 9C000000 		.4byte	.LASF30
  639 01eb 01       		.byte	0x1
  640 01ec BD01     		.2byte	0x1bd
  641 01ee 76000000 		.4byte	0x76
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  682 0018 3E       		.uleb128 0x3e
  683 0019 0B       		.uleb128 0xb
  684 001a 03       		.uleb128 0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 21
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 21
 
 
  685 001b 0E       		.uleb128 0xe
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  739 0051 3A       		.uleb128 0x3a
  740 0052 0B       		.uleb128 0xb
  741 0053 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 22
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 22
 
 
  742 0054 0B       		.uleb128 0xb
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  796 008c 00       		.byte	0
  797 008d 0A       		.uleb128 0xa
  798 008e 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 23
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 23
 
 
  799 008f 01       		.byte	0x1
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  853 00c6 06       		.uleb128 0x6
  854 00c7 40       		.uleb128 0x40
  855 00c8 18       		.uleb128 0x18
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 24
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 24
 
 
  856 00c9 9642     		.uleb128 0x2116
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  910 0100 01       		.byte	0x1
  911 0101 3F       		.uleb128 0x3f
  912 0102 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 25
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 25
 
 
  913 0103 03       		.uleb128 0x3
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  967 013a 40       		.uleb128 0x40
  968 013b 18       		.uleb128 0x18
  969 013c 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 26
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 26
 
 
  970 013e 19       		.uleb128 0x19
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  1024 0054 20000000 		.4byte	.LFE8-.LFB8
  1025 0058 00000000 		.4byte	0
  1026 005c 00000000 		.4byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 27
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 27
 
 
  1027              		.section	.debug_ranges,"",%progbits
@@ -1593,55 +1593,55 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  1052              	.LASF14:
  1053 0000 72656733 		.ascii	"reg32\000"
  1053      3200
- 1054              	.LASF24:
- 1055 0006 636F756E 		.ascii	"count\000"
- 1055      7400
- 1056              	.LASF22:
- 1057 000c 74784461 		.ascii	"txData\000"
- 1057      746100
- 1058              	.LASF3:
- 1059 0013 73686F72 		.ascii	"short unsigned int\000"
- 1059      7420756E 
- 1059      7369676E 
- 1059      65642069 
- 1059      6E7400
- 1060              	.LASF8:
- 1061 0026 756E7369 		.ascii	"unsigned int\000"
- 1061      676E6564 
- 1061      20696E74 
- 1061      00
- 1062              	.LASF28:
- 1063 0033 55415254 		.ascii	"UART_SpiUartDisableIntRx\000"
- 1063      5F537069 
- 1063      55617274 
- 1063      44697361 
- 1063      626C6549 
- 1064              	.LASF11:
- 1065 004c 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 28
+ 1054              	.LASF34:
+ 1055 0006 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 1055      73657273 
+ 1055      5C4C6173 
+ 1055      73655C44 
+ 1055      6F63756D 
+ 1056 0033 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 1056      4D617374 
+ 1056      65725C50 
+ 1056      536F435F 
+ 1056      4D617374 
+ 1057              	.LASF24:
+ 1058 0050 636F756E 		.ascii	"count\000"
+ 1058      7400
+ 1059              	.LASF22:
+ 1060 0056 74784461 		.ascii	"txData\000"
+ 1060      746100
+ 1061              	.LASF3:
+ 1062 005d 73686F72 		.ascii	"short unsigned int\000"
+ 1062      7420756E 
+ 1062      7369676E 
+ 1062      65642069 
+ 1062      6E7400
+ 1063              	.LASF8:
+ 1064 0070 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 28
 
 
- 1065      7400
- 1066              	.LASF30:
- 1067 0052 55415254 		.ascii	"UART_SpiUartDisableIntTx\000"
- 1067      5F537069 
- 1067      55617274 
- 1067      44697361 
- 1067      626C6549 
- 1068              	.LASF19:
- 1069 006b 73697A65 		.ascii	"size\000"
- 1069      00
- 1070              	.LASF34:
- 1071 0070 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 1071      73657273 
- 1071      5C506869 
- 1071      6C69705C 
- 1071      4F6E6544 
- 1072 009d 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 1072      4D617374 
- 1072      65725C50 
- 1072      536F435F 
- 1072      4D617374 
+ 1064      676E6564 
+ 1064      20696E74 
+ 1064      00
+ 1065              	.LASF28:
+ 1066 007d 55415254 		.ascii	"UART_SpiUartDisableIntRx\000"
+ 1066      5F537069 
+ 1066      55617274 
+ 1066      44697361 
+ 1066      626C6549 
+ 1067              	.LASF11:
+ 1068 0096 666C6F61 		.ascii	"float\000"
+ 1068      7400
+ 1069              	.LASF30:
+ 1070 009c 55415254 		.ascii	"UART_SpiUartDisableIntTx\000"
+ 1070      5F537069 
+ 1070      55617274 
+ 1070      44697361 
+ 1070      626C6549 
+ 1071              	.LASF19:
+ 1072 00b5 73697A65 		.ascii	"size\000"
+ 1072      00
  1073              	.LASF5:
  1074 00ba 6C6F6E67 		.ascii	"long unsigned int\000"
  1074      20756E73 
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  1090 0115 55415254 		.ascii	"UART_SpiUartPutArray\000"
  1090      5F537069 
  1090      55617274 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 29
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 29
 
 
  1090      50757441 
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 1
  1111              	.LASF4:
  1112 01ee 6C6F6E67 		.ascii	"long int\000"
  1112      20696E74 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8bpxNV.s 			page 30
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccxthxbZ.s 			page 30
 
 
  1112      00

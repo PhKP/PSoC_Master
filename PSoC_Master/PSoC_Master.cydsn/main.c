@@ -26,10 +26,11 @@ int main(){
     initUART();
 
     CyGlobalIntEnable;      // Global interrupt enable
-
+    UART_UartPutString("The UART is functional.\n\r");
+    uint16 blabla;
     for(;;)
     {
-
+  
     }
     return 0;
 }

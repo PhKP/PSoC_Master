@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
   30:.\Generated_Source\PSoC4/I2C_scl.c **** ********************************************************************************
   31:.\Generated_Source\PSoC4/I2C_scl.c **** *
   32:.\Generated_Source\PSoC4/I2C_scl.c **** * Summary:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/I2C_scl.c **** *  Assign a new value to the digital port's data output register.  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
   66 003c 1A60     		str	r2, [r3]
   47:.\Generated_Source\PSoC4/I2C_scl.c **** }
   67              		.loc 1 47 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 3
 
 
   68 003e BD46     		mov	sp, r7
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
   95 0004 00AF     		add	r7, sp, #0
   96              		.cfi_def_cfa_register 7
   97 0006 021C     		mov	r2, r0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 4
 
 
   98 0008 FB1D     		add	r3, r7, #7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
   95:.\Generated_Source\PSoC4/I2C_scl.c **** *  
   96:.\Generated_Source\PSoC4/I2C_scl.c **** *******************************************************************************/
   97:.\Generated_Source\PSoC4/I2C_scl.c **** uint8 I2C_scl_Read(void) 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 5
 
 
   98:.\Generated_Source\PSoC4/I2C_scl.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  117:.\Generated_Source\PSoC4/I2C_scl.c **** uint8 I2C_scl_ReadDataReg(void) 
  118:.\Generated_Source\PSoC4/I2C_scl.c **** {
  167              		.loc 1 118 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 6
 
 
  168              		.cfi_startproc
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  139:.\Generated_Source\PSoC4/I2C_scl.c ****     *  
  140:.\Generated_Source\PSoC4/I2C_scl.c ****     *******************************************************************************/
  141:.\Generated_Source\PSoC4/I2C_scl.c ****     uint8 I2C_scl_ClearInterrupt(void) 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 7
 
 
  142:.\Generated_Source\PSoC4/I2C_scl.c ****     {
@@ -418,10 +418,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  251 000c E2000000 		.4byte	.LASF24
  252 0010 01       		.byte	0x1
  253 0011 BF010000 		.4byte	.LASF25
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 8
 
 
- 254 0015 4A000000 		.4byte	.LASF26
+ 254 0015 06000000 		.4byte	.LASF26
  255 0019 00000000 		.4byte	.Ldebug_ranges0+0
  256 001d 00000000 		.4byte	0
  257 0021 00000000 		.4byte	.Ldebug_line0
@@ -432,7 +432,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  262 002c 02       		.uleb128 0x2
  263 002d 01       		.byte	0x1
  264 002e 08       		.byte	0x8
- 265 002f 36000000 		.4byte	.LASF1
+ 265 002f 80000000 		.4byte	.LASF1
  266 0033 02       		.uleb128 0x2
  267 0034 02       		.byte	0x2
  268 0035 05       		.byte	0x5
@@ -456,7 +456,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  286 0056 02       		.uleb128 0x2
  287 0057 08       		.byte	0x8
  288 0058 07       		.byte	0x7
- 289 0059 1F000000 		.4byte	.LASF7
+ 289 0059 69000000 		.4byte	.LASF7
  290 005d 03       		.uleb128 0x3
  291 005e 04       		.byte	0x4
  292 005f 05       		.byte	0x5
@@ -478,10 +478,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  308 0081 02       		.uleb128 0x2
  309 0082 04       		.byte	0x4
  310 0083 04       		.byte	0x4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 9
 
 
- 311 0084 19000000 		.4byte	.LASF11
+ 311 0084 63000000 		.4byte	.LASF11
  312 0088 02       		.uleb128 0x2
  313 0089 08       		.byte	0x8
  314 008a 04       		.byte	0x4
@@ -507,7 +507,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  334 00b7 9C       		.byte	0x9c
  335 00b8 D9000000 		.4byte	0xd9
  336 00bc 08       		.uleb128 0x8
- 337 00bd 06000000 		.4byte	.LASF17
+ 337 00bd 50000000 		.4byte	.LASF17
  338 00c1 01       		.byte	0x1
  339 00c2 2A       		.byte	0x2a
  340 00c3 6B000000 		.4byte	0x6b
@@ -515,7 +515,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  342 00c8 91       		.byte	0x91
  343 00c9 6F       		.sleb128 -17
  344 00ca 09       		.uleb128 0x9
- 345 00cb 44000000 		.4byte	.LASF22
+ 345 00cb 8E000000 		.4byte	.LASF22
  346 00cf 01       		.byte	0x1
  347 00d0 2C       		.byte	0x2c
  348 00d1 6B000000 		.4byte	0x6b
@@ -538,14 +538,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  365 00f4 49       		.byte	0x49
  366 00f5 6B000000 		.4byte	0x6b
  367 00f9 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 10
 
 
  368 00fa 91       		.byte	0x91
  369 00fb 77       		.sleb128 -9
  370 00fc 00       		.byte	0
  371 00fd 0A       		.uleb128 0xa
- 372 00fe 0C000000 		.4byte	.LASF19
+ 372 00fe 56000000 		.4byte	.LASF19
  373 0102 01       		.byte	0x1
  374 0103 61       		.byte	0x61
  375 0104 6B000000 		.4byte	0x6b
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  422 000c 17       		.uleb128 0x17
  423 000d 11       		.uleb128 0x11
  424 000e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 11
 
 
  425 000f 10       		.uleb128 0x10
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  479 0045 00       		.byte	0
  480 0046 49       		.uleb128 0x49
  481 0047 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 12
 
 
  482 0048 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  536 007f 18       		.uleb128 0x18
  537 0080 00       		.byte	0
  538 0081 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 13
 
 
  539 0082 0A       		.uleb128 0xa
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  593 0006 00000000 		.4byte	.Ldebug_info0
  594 000a 04       		.byte	0x4
  595 000b 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 14
 
 
  596 000c 0000     		.2byte	0
@@ -819,45 +819,45 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  627              	.LASF14:
  628 0000 72656733 		.ascii	"reg32\000"
  628      3200
- 629              	.LASF17:
- 630 0006 76616C75 		.ascii	"value\000"
- 630      6500
- 631              	.LASF19:
- 632 000c 4932435F 		.ascii	"I2C_scl_Read\000"
- 632      73636C5F 
- 632      52656164 
- 632      00
- 633              	.LASF11:
- 634 0019 666C6F61 		.ascii	"float\000"
- 634      7400
- 635              	.LASF7:
- 636 001f 6C6F6E67 		.ascii	"long long unsigned int\000"
- 636      206C6F6E 
- 636      6720756E 
- 636      7369676E 
- 636      65642069 
- 637              	.LASF1:
- 638 0036 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 15
+ 629              	.LASF26:
+ 630 0006 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 630      73657273 
+ 630      5C4C6173 
+ 630      73655C44 
+ 630      6F63756D 
+ 631 0033 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 631      4D617374 
+ 631      65725C50 
+ 631      536F435F 
+ 631      4D617374 
+ 632              	.LASF17:
+ 633 0050 76616C75 		.ascii	"value\000"
+ 633      6500
+ 634              	.LASF19:
+ 635 0056 4932435F 		.ascii	"I2C_scl_Read\000"
+ 635      73636C5F 
+ 635      52656164 
+ 635      00
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 15
 
 
- 638      676E6564 
- 638      20636861 
- 638      7200
- 639              	.LASF22:
- 640 0044 64725661 		.ascii	"drVal\000"
- 640      6C00
- 641              	.LASF26:
- 642 004a 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 642      73657273 
- 642      5C506869 
- 642      6C69705C 
- 642      4F6E6544 
- 643 0077 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 643      4D617374 
- 643      65725C50 
- 643      536F435F 
- 643      4D617374 
+ 636              	.LASF11:
+ 637 0063 666C6F61 		.ascii	"float\000"
+ 637      7400
+ 638              	.LASF7:
+ 639 0069 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 639      206C6F6E 
+ 639      6720756E 
+ 639      7369676E 
+ 639      65642069 
+ 640              	.LASF1:
+ 641 0080 756E7369 		.ascii	"unsigned char\000"
+ 641      676E6564 
+ 641      20636861 
+ 641      7200
+ 642              	.LASF22:
+ 643 008e 64725661 		.ascii	"drVal\000"
+ 643      6C00
  644              	.LASF5:
  645 0094 6C6F6E67 		.ascii	"long unsigned int\000"
  645      20756E73 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  658      6E203231 
  658      31333538 
  659 0148 30202D66 		.ascii	"0 -ffunction-sections\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 16
 
 
  659      66756E63 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 1
  683 01f7 4932435F 		.ascii	"I2C_scl_ReadDataReg\000"
  683      73636C5F 
  683      52656164 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccpuwiIz.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccPsxSX1.s 			page 17
 
 
  683      44617461 

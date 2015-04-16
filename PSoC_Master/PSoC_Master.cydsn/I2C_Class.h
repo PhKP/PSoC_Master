@@ -27,6 +27,7 @@
     int8 getTempAndHum(int32* temp, int32* hum);
     int8 getLight(int32* light);
     int8 getSoilHum(uint8 index, int16* soilHum);
+    int8 testTest(uint16);
 
 #endif /* I2C_Class_H */
 /* [] END OF FILE */

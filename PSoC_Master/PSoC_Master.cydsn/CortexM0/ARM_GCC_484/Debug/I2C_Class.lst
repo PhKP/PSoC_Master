@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -44,32 +44,36 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 1
   15:.\I2C_Class.c **** // Definitions
   16:.\I2C_Class.c **** #define TEMP_AND_HUM_SENSOR_ADDRESS 0x27
   17:.\I2C_Class.c **** #define ACTUATOR_ADRESS 0x42
-  18:.\I2C_Class.c **** 
-  19:.\I2C_Class.c **** // Private data members
-  20:.\I2C_Class.c **** uint8 irrigationStatus;
-  21:.\I2C_Class.c **** 
-  22:.\I2C_Class.c **** // Private prototypes
-  23:.\I2C_Class.c **** 
-  24:.\I2C_Class.c **** void initI2C(void){
-  27              		.loc 1 24 0
+  18:.\I2C_Class.c **** #define LIGHT_SENSOR_COMMAND_ADDRESS 0x00
+  19:.\I2C_Class.c **** #define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
+  20:.\I2C_Class.c **** #define LIGHT_SENSOR_ADDRESS_LSB 0x04  
+  21:.\I2C_Class.c **** #define LIGHT_SENSOR_ADDRESS_MSB 0x05
+  22:.\I2C_Class.c **** 
+  23:.\I2C_Class.c **** // Private data members
+  24:.\I2C_Class.c **** uint8 irrigationStatus;
+  25:.\I2C_Class.c **** 
+  26:.\I2C_Class.c **** // Private prototypes
+  27:.\I2C_Class.c **** 
+  28:.\I2C_Class.c **** void initI2C(void){
+  27              		.loc 1 28 0
   28              		.cfi_startproc
   29 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 2
+
+
   30              		.cfi_def_cfa_offset 8
   31              		.cfi_offset 7, -8
   32              		.cfi_offset 14, -4
   33 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 2
-
-
   34              		.cfi_def_cfa_register 7
-  25:.\I2C_Class.c ****     I2C_Start();                    // Starts I2C component
-  35              		.loc 1 25 0
+  29:.\I2C_Class.c ****     I2C_Start();                    // Starts I2C component
+  35              		.loc 1 29 0
   36 0004 FFF7FEFF 		bl	I2C_Start
-  26:.\I2C_Class.c ****     I2C_I2CMasterClearStatus();     // Clear status flags
-  37              		.loc 1 26 0
+  30:.\I2C_Class.c ****     I2C_I2CMasterClearStatus();     // Clear status flags
+  37              		.loc 1 30 0
   38 0008 FFF7FEFF 		bl	I2C_I2CMasterClearStatus
-  27:.\I2C_Class.c **** }
-  39              		.loc 1 27 0
+  31:.\I2C_Class.c **** }
+  39              		.loc 1 31 0
   40 000c BD46     		mov	sp, r7
   41              		@ sp needed
   42 000e 80BD     		pop	{r7, pc}
@@ -84,1701 +88,2106 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 1
   51              		.type	adjustWindow, %function
   52              	adjustWindow:
   53              	.LFB34:
-  28:.\I2C_Class.c **** 
-  29:.\I2C_Class.c **** int8 adjustWindow(uint8 pos){
-  54              		.loc 1 29 0
+  32:.\I2C_Class.c **** 
+  33:.\I2C_Class.c **** int8 adjustWindow(uint8 pos){
+  54              		.loc 1 33 0
   55              		.cfi_startproc
   56 0000 80B5     		push	{r7, lr}
   57              		.cfi_def_cfa_offset 8
   58              		.cfi_offset 7, -8
   59              		.cfi_offset 14, -4
-  60 0002 84B0     		sub	sp, sp, #16
-  61              		.cfi_def_cfa_offset 24
+  60 0002 86B0     		sub	sp, sp, #24
+  61              		.cfi_def_cfa_offset 32
   62 0004 00AF     		add	r7, sp, #0
   63              		.cfi_def_cfa_register 7
   64 0006 021C     		mov	r2, r0
   65 0008 FB1D     		add	r3, r7, #7
   66 000a 1A70     		strb	r2, [r3]
-  30:.\I2C_Class.c ****     uint8 openWindow = 0b00001111;
-  67              		.loc 1 30 0
+  34:.\I2C_Class.c ****     uint8 openWindow = 0xF;
+  67              		.loc 1 34 0
   68 000c 3B1C     		mov	r3, r7
   69 000e 0F33     		add	r3, r3, #15
   70 0010 0F22     		mov	r2, #15
   71 0012 1A70     		strb	r2, [r3]
-  31:.\I2C_Class.c ****     uint8 closeWindow = 0b00000000;
-  72              		.loc 1 31 0
+  35:.\I2C_Class.c ****     uint8 closeWindow = 0x0;
+  72              		.loc 1 35 0
   73 0014 3B1C     		mov	r3, r7
   74 0016 0E33     		add	r3, r3, #14
   75 0018 0022     		mov	r2, #0
   76 001a 1A70     		strb	r2, [r3]
-  32:.\I2C_Class.c ****     
-  33:.\I2C_Class.c ****     if(pos == 0b1111){
-  77              		.loc 1 33 0
-  78 001c FB1D     		add	r3, r7, #7
-  79 001e 1B78     		ldrb	r3, [r3]
-  80 0020 0F2B     		cmp	r3, #15
-  81 0022 1DD1     		bne	.L3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 3
+  36:.\I2C_Class.c ****     uint8 result = 0;
+  77              		.loc 1 36 0
+  78 001c 3B1C     		mov	r3, r7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 3
 
 
-  34:.\I2C_Class.c ****         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes
-  35:.\I2C_Class.c ****         if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&openWindow,1,I2C_I2C_MOD
-  82              		.loc 1 35 0
-  83 0024 3B1C     		mov	r3, r7
-  84 0026 0F33     		add	r3, r3, #15
-  85 0028 4220     		mov	r0, #66
-  86 002a 191C     		mov	r1, r3
-  87 002c 0122     		mov	r2, #1
-  88 002e 0023     		mov	r3, #0
-  89 0030 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
-  90 0034 031C     		mov	r3, r0
-  91 0036 002B     		cmp	r3, #0
-  92 0038 01D0     		beq	.L4
-  36:.\I2C_Class.c ****             return -1;
-  93              		.loc 1 36 0
-  94 003a FF23     		mov	r3, #255
-  95 003c 11E0     		b	.L6
-  96              	.L4:
-  37:.\I2C_Class.c ****         }
-  38:.\I2C_Class.c ****         else if(pos == 0b0){
-  97              		.loc 1 38 0
-  98 003e FB1D     		add	r3, r7, #7
-  99 0040 1B78     		ldrb	r3, [r3]
- 100 0042 002B     		cmp	r3, #0
- 101 0044 0CD1     		bne	.L3
-  39:.\I2C_Class.c ****             // Close window
-  40:.\I2C_Class.c ****             if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&closeWindow,1,I2C_I2
- 102              		.loc 1 40 0
- 103 0046 3B1C     		mov	r3, r7
- 104 0048 0E33     		add	r3, r3, #14
- 105 004a 4220     		mov	r0, #66
- 106 004c 191C     		mov	r1, r3
- 107 004e 0122     		mov	r2, #1
- 108 0050 0023     		mov	r3, #0
- 109 0052 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 110 0056 031C     		mov	r3, r0
- 111 0058 002B     		cmp	r3, #0
- 112 005a 01D0     		beq	.L3
-  41:.\I2C_Class.c ****                 return -1;
- 113              		.loc 1 41 0
- 114 005c FF23     		mov	r3, #255
- 115 005e 00E0     		b	.L6
- 116              	.L3:
-  42:.\I2C_Class.c ****             }
-  43:.\I2C_Class.c ****         }
-  44:.\I2C_Class.c ****     }
-  45:.\I2C_Class.c ****     return 0;	
- 117              		.loc 1 45 0
- 118 0060 0023     		mov	r3, #0
- 119              	.L6:
- 120 0062 5BB2     		sxtb	r3, r3
-  46:.\I2C_Class.c **** }
- 121              		.loc 1 46 0
- 122 0064 181C     		mov	r0, r3
- 123 0066 BD46     		mov	sp, r7
- 124 0068 04B0     		add	sp, sp, #16
- 125              		@ sp needed
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 4
+  79 001e 1733     		add	r3, r3, #23
+  80 0020 0022     		mov	r2, #0
+  81 0022 1A70     		strb	r2, [r3]
+  37:.\I2C_Class.c ****     uint8 *tempWindow;
+  38:.\I2C_Class.c ****     *tempWindow = 0;
+  82              		.loc 1 38 0
+  83 0024 3B69     		ldr	r3, [r7, #16]
+  84 0026 0022     		mov	r2, #0
+  85 0028 1A70     		strb	r2, [r3]
+  39:.\I2C_Class.c ****         
+  40:.\I2C_Class.c ****     if(pos == 0xF){
+  86              		.loc 1 40 0
+  87 002a FB1D     		add	r3, r7, #7
+  88 002c 1B78     		ldrb	r3, [r3]
+  89 002e 0F2B     		cmp	r3, #15
+  90 0030 0CD1     		bne	.L3
+  41:.\I2C_Class.c ****         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes
+  42:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&openWindow,1,I2C_I2C_MODE_COMPLETE_XFER);
+  91              		.loc 1 42 0
+  92 0032 3B1C     		mov	r3, r7
+  93 0034 0F33     		add	r3, r3, #15
+  94 0036 4220     		mov	r0, #66
+  95 0038 191C     		mov	r1, r3
+  96 003a 0122     		mov	r2, #1
+  97 003c 0023     		mov	r3, #0
+  98 003e FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+  99 0042 021C     		mov	r2, r0
+ 100 0044 3B1C     		mov	r3, r7
+ 101 0046 1733     		add	r3, r3, #23
+ 102 0048 1A70     		strb	r2, [r3]
+ 103 004a 0FE0     		b	.L4
+ 104              	.L3:
+  43:.\I2C_Class.c ****     }
+  44:.\I2C_Class.c ****     else if(pos == 0x0){
+ 105              		.loc 1 44 0
+ 106 004c FB1D     		add	r3, r7, #7
+ 107 004e 1B78     		ldrb	r3, [r3]
+ 108 0050 002B     		cmp	r3, #0
+ 109 0052 0BD1     		bne	.L4
+  45:.\I2C_Class.c ****         // Close window
+  46:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&closeWindow,1,I2C_I2C_MODE_COMPLETE_XFER); 
+ 110              		.loc 1 46 0
+ 111 0054 3B1C     		mov	r3, r7
+ 112 0056 0E33     		add	r3, r3, #14
+ 113 0058 4220     		mov	r0, #66
+ 114 005a 191C     		mov	r1, r3
+ 115 005c 0122     		mov	r2, #1
+ 116 005e 0023     		mov	r3, #0
+ 117 0060 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 118 0064 021C     		mov	r2, r0
+ 119 0066 3B1C     		mov	r3, r7
+ 120 0068 1733     		add	r3, r3, #23
+ 121 006a 1A70     		strb	r2, [r3]
+ 122              	.L4:
+  47:.\I2C_Class.c ****     }
+  48:.\I2C_Class.c ****     
+  49:.\I2C_Class.c ****     getActuatorStatus(tempWindow, NULL, NULL, NULL);
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 4
 
 
- 126 006a 80BD     		pop	{r7, pc}
- 127              		.cfi_endproc
- 128              	.LFE34:
- 129              		.size	adjustWindow, .-adjustWindow
- 130              		.section	.text.adjustHeat,"ax",%progbits
- 131              		.align	2
- 132              		.global	adjustHeat
- 133              		.code	16
- 134              		.thumb_func
- 135              		.type	adjustHeat, %function
- 136              	adjustHeat:
- 137              	.LFB35:
-  47:.\I2C_Class.c **** 
-  48:.\I2C_Class.c **** /*int8 testTest(uint16 dataget){
-  49:.\I2C_Class.c **** uint8 dataHow[2];
-  50:.\I2C_Class.c **** I2C_I2CMasterReadBuf(0x48, dataHow, 2, I2C_I2C_MODE_COMPLETE_XFER);
-  51:.\I2C_Class.c **** //    if (I2C_I2C_MSTR_NO_ERROR != {
-  52:.\I2C_Class.c **** //      return -1;
-  53:.\I2C_Class.c **** //    }
-  54:.\I2C_Class.c **** else {
-  55:.\I2C_Class.c ****     dataget = ((dataHow[0]<<7) | dataHow[1]);
-  56:.\I2C_Class.c ****     UART_UartPutChar(dataHow[0]);
-  57:.\I2C_Class.c ****     UART_UartPutChar(dataHow[1]);
-  58:.\I2C_Class.c ****     return dataget;
-  59:.\I2C_Class.c **** //}
-  60:.\I2C_Class.c **** 
-  61:.\I2C_Class.c **** }*/
-  62:.\I2C_Class.c **** 
-  63:.\I2C_Class.c **** int8 adjustHeat(uint8 heat){
- 138              		.loc 1 63 0
- 139              		.cfi_startproc
- 140 0000 80B5     		push	{r7, lr}
- 141              		.cfi_def_cfa_offset 8
- 142              		.cfi_offset 7, -8
- 143              		.cfi_offset 14, -4
- 144 0002 84B0     		sub	sp, sp, #16
- 145              		.cfi_def_cfa_offset 24
- 146 0004 00AF     		add	r7, sp, #0
- 147              		.cfi_def_cfa_register 7
- 148 0006 021C     		mov	r2, r0
- 149 0008 FB1D     		add	r3, r7, #7
- 150 000a 1A70     		strb	r2, [r3]
-  64:.\I2C_Class.c ****     uint8 turnHeatOn = 0b01000111;
- 151              		.loc 1 64 0
- 152 000c 3B1C     		mov	r3, r7
- 153 000e 0F33     		add	r3, r3, #15
- 154 0010 4722     		mov	r2, #71
- 155 0012 1A70     		strb	r2, [r3]
-  65:.\I2C_Class.c ****     uint8 turnHeatOff = 0b01000000;
- 156              		.loc 1 65 0
- 157 0014 3B1C     		mov	r3, r7
- 158 0016 0E33     		add	r3, r3, #14
- 159 0018 4022     		mov	r2, #64
- 160 001a 1A70     		strb	r2, [r3]
-  66:.\I2C_Class.c ****     
-  67:.\I2C_Class.c ****     if(heat == 0b111){
- 161              		.loc 1 67 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 5
+ 123              		.loc 1 49 0
+ 124 006c 3B69     		ldr	r3, [r7, #16]
+ 125 006e 181C     		mov	r0, r3
+ 126 0070 0021     		mov	r1, #0
+ 127 0072 0022     		mov	r2, #0
+ 128 0074 0023     		mov	r3, #0
+ 129 0076 FFF7FEFF 		bl	getActuatorStatus
+  50:.\I2C_Class.c ****     
+  51:.\I2C_Class.c ****     if (*tempWindow == pos){ 
+ 130              		.loc 1 51 0
+ 131 007a 3B69     		ldr	r3, [r7, #16]
+ 132 007c 1B78     		ldrb	r3, [r3]
+ 133 007e FA1D     		add	r2, r7, #7
+ 134 0080 1278     		ldrb	r2, [r2]
+ 135 0082 9A42     		cmp	r2, r3
+ 136 0084 01D1     		bne	.L5
+  52:.\I2C_Class.c ****         return 0;	
+ 137              		.loc 1 52 0
+ 138 0086 0023     		mov	r3, #0
+ 139 0088 00E0     		b	.L7
+ 140              	.L5:
+  53:.\I2C_Class.c ****     }
+  54:.\I2C_Class.c ****     else {
+  55:.\I2C_Class.c ****         return -1;
+ 141              		.loc 1 55 0
+ 142 008a FF23     		mov	r3, #255
+ 143              	.L7:
+ 144 008c 5BB2     		sxtb	r3, r3
+  56:.\I2C_Class.c ****     }
+  57:.\I2C_Class.c **** }
+ 145              		.loc 1 57 0
+ 146 008e 181C     		mov	r0, r3
+ 147 0090 BD46     		mov	sp, r7
+ 148 0092 06B0     		add	sp, sp, #24
+ 149              		@ sp needed
+ 150 0094 80BD     		pop	{r7, pc}
+ 151              		.cfi_endproc
+ 152              	.LFE34:
+ 153              		.size	adjustWindow, .-adjustWindow
+ 154 0096 C046     		.section	.text.adjustHeat,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	adjustHeat
+ 157              		.code	16
+ 158              		.thumb_func
+ 159              		.type	adjustHeat, %function
+ 160              	adjustHeat:
+ 161              	.LFB35:
+  58:.\I2C_Class.c **** 
+  59:.\I2C_Class.c **** int8 adjustHeat(uint8 heat){
+ 162              		.loc 1 59 0
+ 163              		.cfi_startproc
+ 164 0000 80B5     		push	{r7, lr}
+ 165              		.cfi_def_cfa_offset 8
+ 166              		.cfi_offset 7, -8
+ 167              		.cfi_offset 14, -4
+ 168 0002 86B0     		sub	sp, sp, #24
+ 169              		.cfi_def_cfa_offset 32
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 5
 
 
- 162 001c FB1D     		add	r3, r7, #7
- 163 001e 1B78     		ldrb	r3, [r3]
- 164 0020 072B     		cmp	r3, #7
- 165 0022 1DD1     		bne	.L8
-  68:.\I2C_Class.c ****         // Turn on heat
-  69:.\I2C_Class.c ****         if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOn,1,I2C_I2C_MOD
- 166              		.loc 1 69 0
- 167 0024 3B1C     		mov	r3, r7
- 168 0026 0F33     		add	r3, r3, #15
- 169 0028 4220     		mov	r0, #66
- 170 002a 191C     		mov	r1, r3
- 171 002c 0122     		mov	r2, #1
- 172 002e 0023     		mov	r3, #0
- 173 0030 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 174 0034 031C     		mov	r3, r0
- 175 0036 002B     		cmp	r3, #0
- 176 0038 01D0     		beq	.L9
-  70:.\I2C_Class.c ****             return -1;
- 177              		.loc 1 70 0
- 178 003a FF23     		mov	r3, #255
- 179 003c 11E0     		b	.L11
- 180              	.L9:
-  71:.\I2C_Class.c ****         }
-  72:.\I2C_Class.c ****         else if(heat == 0b0){
- 181              		.loc 1 72 0
- 182 003e FB1D     		add	r3, r7, #7
- 183 0040 1B78     		ldrb	r3, [r3]
- 184 0042 002B     		cmp	r3, #0
- 185 0044 0CD1     		bne	.L8
-  73:.\I2C_Class.c ****         // Turn off heat
-  74:.\I2C_Class.c ****             if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOff,1,I2C_I2
- 186              		.loc 1 74 0
- 187 0046 3B1C     		mov	r3, r7
- 188 0048 0E33     		add	r3, r3, #14
- 189 004a 4220     		mov	r0, #66
- 190 004c 191C     		mov	r1, r3
- 191 004e 0122     		mov	r2, #1
- 192 0050 0023     		mov	r3, #0
- 193 0052 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 194 0056 031C     		mov	r3, r0
- 195 0058 002B     		cmp	r3, #0
- 196 005a 01D0     		beq	.L8
-  75:.\I2C_Class.c ****                 return -1;
- 197              		.loc 1 75 0
- 198 005c FF23     		mov	r3, #255
- 199 005e 00E0     		b	.L11
- 200              	.L8:
-  76:.\I2C_Class.c **** 	        }
-  77:.\I2C_Class.c ****         }
-  78:.\I2C_Class.c ****     }
-  79:.\I2C_Class.c ****     return 0;
- 201              		.loc 1 79 0
- 202 0060 0023     		mov	r3, #0
- 203              	.L11:
- 204 0062 5BB2     		sxtb	r3, r3
-  80:.\I2C_Class.c **** }
- 205              		.loc 1 80 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 6
+ 170 0004 00AF     		add	r7, sp, #0
+ 171              		.cfi_def_cfa_register 7
+ 172 0006 021C     		mov	r2, r0
+ 173 0008 FB1D     		add	r3, r7, #7
+ 174 000a 1A70     		strb	r2, [r3]
+  60:.\I2C_Class.c ****     uint8 turnHeatOn = 0b01000111;
+ 175              		.loc 1 60 0
+ 176 000c 3B1C     		mov	r3, r7
+ 177 000e 0F33     		add	r3, r3, #15
+ 178 0010 4722     		mov	r2, #71
+ 179 0012 1A70     		strb	r2, [r3]
+  61:.\I2C_Class.c ****     uint8 turnHeatOff = 0b01000000;
+ 180              		.loc 1 61 0
+ 181 0014 3B1C     		mov	r3, r7
+ 182 0016 0E33     		add	r3, r3, #14
+ 183 0018 4022     		mov	r2, #64
+ 184 001a 1A70     		strb	r2, [r3]
+  62:.\I2C_Class.c ****     uint8 result = 0;
+ 185              		.loc 1 62 0
+ 186 001c 3B1C     		mov	r3, r7
+ 187 001e 1733     		add	r3, r3, #23
+ 188 0020 0022     		mov	r2, #0
+ 189 0022 1A70     		strb	r2, [r3]
+  63:.\I2C_Class.c ****     uint8 *tempHeat;
+  64:.\I2C_Class.c ****     *tempHeat = 0;
+ 190              		.loc 1 64 0
+ 191 0024 3B69     		ldr	r3, [r7, #16]
+ 192 0026 0022     		mov	r2, #0
+ 193 0028 1A70     		strb	r2, [r3]
+  65:.\I2C_Class.c ****     
+  66:.\I2C_Class.c ****     if(heat == 0b111){
+ 194              		.loc 1 66 0
+ 195 002a FB1D     		add	r3, r7, #7
+ 196 002c 1B78     		ldrb	r3, [r3]
+ 197 002e 072B     		cmp	r3, #7
+ 198 0030 0CD1     		bne	.L9
+  67:.\I2C_Class.c ****         // Turn on heat
+  68:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOn,1,I2C_I2C_MODE_COMPLETE_XFER);
+ 199              		.loc 1 68 0
+ 200 0032 3B1C     		mov	r3, r7
+ 201 0034 0F33     		add	r3, r3, #15
+ 202 0036 4220     		mov	r0, #66
+ 203 0038 191C     		mov	r1, r3
+ 204 003a 0122     		mov	r2, #1
+ 205 003c 0023     		mov	r3, #0
+ 206 003e FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 207 0042 021C     		mov	r2, r0
+ 208 0044 3B1C     		mov	r3, r7
+ 209 0046 1733     		add	r3, r3, #23
+ 210 0048 1A70     		strb	r2, [r3]
+ 211 004a 0FE0     		b	.L10
+ 212              	.L9:
+  69:.\I2C_Class.c ****     }
+  70:.\I2C_Class.c ****     else if(heat == 0b0){
+ 213              		.loc 1 70 0
+ 214 004c FB1D     		add	r3, r7, #7
+ 215 004e 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 6
 
 
- 206 0064 181C     		mov	r0, r3
- 207 0066 BD46     		mov	sp, r7
- 208 0068 04B0     		add	sp, sp, #16
- 209              		@ sp needed
- 210 006a 80BD     		pop	{r7, pc}
- 211              		.cfi_endproc
- 212              	.LFE35:
- 213              		.size	adjustHeat, .-adjustHeat
- 214              		.section	.text.adjustVentilation,"ax",%progbits
- 215              		.align	2
- 216              		.global	adjustVentilation
- 217              		.code	16
- 218              		.thumb_func
- 219              		.type	adjustVentilation, %function
- 220              	adjustVentilation:
- 221              	.LFB36:
-  81:.\I2C_Class.c **** 
-  82:.\I2C_Class.c **** int8 adjustVentilation(uint8 speed){
- 222              		.loc 1 82 0
- 223              		.cfi_startproc
- 224 0000 80B5     		push	{r7, lr}
- 225              		.cfi_def_cfa_offset 8
- 226              		.cfi_offset 7, -8
- 227              		.cfi_offset 14, -4
- 228 0002 84B0     		sub	sp, sp, #16
- 229              		.cfi_def_cfa_offset 24
- 230 0004 00AF     		add	r7, sp, #0
- 231              		.cfi_def_cfa_register 7
- 232 0006 021C     		mov	r2, r0
- 233 0008 FB1D     		add	r3, r7, #7
- 234 000a 1A70     		strb	r2, [r3]
-  83:.\I2C_Class.c ****     uint8 turnOnVent = 0b10000111;
- 235              		.loc 1 83 0
- 236 000c 3B1C     		mov	r3, r7
- 237 000e 0F33     		add	r3, r3, #15
- 238 0010 8722     		mov	r2, #135
- 239 0012 1A70     		strb	r2, [r3]
-  84:.\I2C_Class.c ****     uint8 turnOffVent = 0b10000000;
- 240              		.loc 1 84 0
- 241 0014 3B1C     		mov	r3, r7
- 242 0016 0E33     		add	r3, r3, #14
- 243 0018 8022     		mov	r2, #128
- 244 001a 1A70     		strb	r2, [r3]
-  85:.\I2C_Class.c ****     
-  86:.\I2C_Class.c ****     if(speed == 0b111){
- 245              		.loc 1 86 0
- 246 001c FB1D     		add	r3, r7, #7
- 247 001e 1B78     		ldrb	r3, [r3]
- 248 0020 072B     		cmp	r3, #7
- 249 0022 18D1     		bne	.L13
-  87:.\I2C_Class.c ****         // Turn vent on
-  88:.\I2C_Class.c ****         if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOnVent,1,I2C_I2C_MOD
- 250              		.loc 1 88 0
- 251 0024 3B1C     		mov	r3, r7
- 252 0026 0F33     		add	r3, r3, #15
- 253 0028 4220     		mov	r0, #66
- 254 002a 191C     		mov	r1, r3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 7
+ 216 0050 002B     		cmp	r3, #0
+ 217 0052 0BD1     		bne	.L10
+  71:.\I2C_Class.c ****         // Turn off heat
+  72:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOff,1,I2C_I2C_MODE_COMPLETE_XFER);
+ 218              		.loc 1 72 0
+ 219 0054 3B1C     		mov	r3, r7
+ 220 0056 0E33     		add	r3, r3, #14
+ 221 0058 4220     		mov	r0, #66
+ 222 005a 191C     		mov	r1, r3
+ 223 005c 0122     		mov	r2, #1
+ 224 005e 0023     		mov	r3, #0
+ 225 0060 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 226 0064 021C     		mov	r2, r0
+ 227 0066 3B1C     		mov	r3, r7
+ 228 0068 1733     		add	r3, r3, #23
+ 229 006a 1A70     		strb	r2, [r3]
+ 230              	.L10:
+  73:.\I2C_Class.c ****     }
+  74:.\I2C_Class.c ****     
+  75:.\I2C_Class.c ****     getActuatorStatus(NULL, tempHeat, NULL, NULL);
+ 231              		.loc 1 75 0
+ 232 006c 3B69     		ldr	r3, [r7, #16]
+ 233 006e 0020     		mov	r0, #0
+ 234 0070 191C     		mov	r1, r3
+ 235 0072 0022     		mov	r2, #0
+ 236 0074 0023     		mov	r3, #0
+ 237 0076 FFF7FEFF 		bl	getActuatorStatus
+  76:.\I2C_Class.c ****     
+  77:.\I2C_Class.c ****     if (*tempHeat == heat){
+ 238              		.loc 1 77 0
+ 239 007a 3B69     		ldr	r3, [r7, #16]
+ 240 007c 1B78     		ldrb	r3, [r3]
+ 241 007e FA1D     		add	r2, r7, #7
+ 242 0080 1278     		ldrb	r2, [r2]
+ 243 0082 9A42     		cmp	r2, r3
+ 244 0084 01D1     		bne	.L11
+  78:.\I2C_Class.c ****         return 0;
+ 245              		.loc 1 78 0
+ 246 0086 0023     		mov	r3, #0
+ 247 0088 00E0     		b	.L13
+ 248              	.L11:
+  79:.\I2C_Class.c ****     }
+  80:.\I2C_Class.c ****     else {
+  81:.\I2C_Class.c ****         return -1;   
+ 249              		.loc 1 81 0
+ 250 008a FF23     		mov	r3, #255
+ 251              	.L13:
+ 252 008c 5BB2     		sxtb	r3, r3
+  82:.\I2C_Class.c ****     }
+  83:.\I2C_Class.c **** }
+ 253              		.loc 1 83 0
+ 254 008e 181C     		mov	r0, r3
+ 255 0090 BD46     		mov	sp, r7
+ 256 0092 06B0     		add	sp, sp, #24
+ 257              		@ sp needed
+ 258 0094 80BD     		pop	{r7, pc}
+ 259              		.cfi_endproc
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 7
 
 
- 255 002c 0122     		mov	r2, #1
- 256 002e 0023     		mov	r3, #0
- 257 0030 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 258 0034 031C     		mov	r3, r0
- 259 0036 002B     		cmp	r3, #0
- 260 0038 01D0     		beq	.L14
-  89:.\I2C_Class.c ****             return -1;
- 261              		.loc 1 89 0
- 262 003a FF23     		mov	r3, #255
- 263 003c 0CE0     		b	.L16
- 264              	.L14:
-  90:.\I2C_Class.c **** 		}
-  91:.\I2C_Class.c ****         else if(speed == 0b0){
- 265              		.loc 1 91 0
- 266 003e FB1D     		add	r3, r7, #7
- 267 0040 1B78     		ldrb	r3, [r3]
- 268 0042 002B     		cmp	r3, #0
- 269 0044 07D1     		bne	.L13
-  92:.\I2C_Class.c ****             // Turn vent off
-  93:.\I2C_Class.c ****             if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOffVent,1,I2C_I2
- 270              		.loc 1 93 0
- 271 0046 3B1C     		mov	r3, r7
- 272 0048 0E33     		add	r3, r3, #14
- 273 004a 4220     		mov	r0, #66
- 274 004c 191C     		mov	r1, r3
- 275 004e 0122     		mov	r2, #1
- 276 0050 0023     		mov	r3, #0
- 277 0052 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 278              	.L13:
-  94:.\I2C_Class.c ****         	// Wait til done with transfer
-  95:.\I2C_Class.c **** 		    }
-  96:.\I2C_Class.c ****         }
-  97:.\I2C_Class.c ****     }
-  98:.\I2C_Class.c ****     return 0;
- 279              		.loc 1 98 0
- 280 0056 0023     		mov	r3, #0
- 281              	.L16:
- 282 0058 5BB2     		sxtb	r3, r3
-  99:.\I2C_Class.c **** }
- 283              		.loc 1 99 0
- 284 005a 181C     		mov	r0, r3
- 285 005c BD46     		mov	sp, r7
- 286 005e 04B0     		add	sp, sp, #16
- 287              		@ sp needed
- 288 0060 80BD     		pop	{r7, pc}
- 289              		.cfi_endproc
- 290              	.LFE36:
- 291              		.size	adjustVentilation, .-adjustVentilation
- 292 0062 C046     		.section	.text.adjustIrrigation,"ax",%progbits
- 293              		.align	2
- 294              		.global	adjustIrrigation
- 295              		.code	16
- 296              		.thumb_func
- 297              		.type	adjustIrrigation, %function
- 298              	adjustIrrigation:
- 299              	.LFB37:
- 100:.\I2C_Class.c **** 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 8
+ 260              	.LFE35:
+ 261              		.size	adjustHeat, .-adjustHeat
+ 262 0096 C046     		.section	.text.adjustVentilation,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	adjustVentilation
+ 265              		.code	16
+ 266              		.thumb_func
+ 267              		.type	adjustVentilation, %function
+ 268              	adjustVentilation:
+ 269              	.LFB36:
+  84:.\I2C_Class.c **** 
+  85:.\I2C_Class.c **** int8 adjustVentilation(uint8 speed){
+ 270              		.loc 1 85 0
+ 271              		.cfi_startproc
+ 272 0000 80B5     		push	{r7, lr}
+ 273              		.cfi_def_cfa_offset 8
+ 274              		.cfi_offset 7, -8
+ 275              		.cfi_offset 14, -4
+ 276 0002 86B0     		sub	sp, sp, #24
+ 277              		.cfi_def_cfa_offset 32
+ 278 0004 00AF     		add	r7, sp, #0
+ 279              		.cfi_def_cfa_register 7
+ 280 0006 021C     		mov	r2, r0
+ 281 0008 FB1D     		add	r3, r7, #7
+ 282 000a 1A70     		strb	r2, [r3]
+  86:.\I2C_Class.c ****     uint8 turnOnVent = 0b10000111;
+ 283              		.loc 1 86 0
+ 284 000c 3B1C     		mov	r3, r7
+ 285 000e 0F33     		add	r3, r3, #15
+ 286 0010 8722     		mov	r2, #135
+ 287 0012 1A70     		strb	r2, [r3]
+  87:.\I2C_Class.c ****     uint8 turnOffVent = 0b10000000;
+ 288              		.loc 1 87 0
+ 289 0014 3B1C     		mov	r3, r7
+ 290 0016 0E33     		add	r3, r3, #14
+ 291 0018 8022     		mov	r2, #128
+ 292 001a 1A70     		strb	r2, [r3]
+  88:.\I2C_Class.c ****     uint8 result = 0;
+ 293              		.loc 1 88 0
+ 294 001c 3B1C     		mov	r3, r7
+ 295 001e 1733     		add	r3, r3, #23
+ 296 0020 0022     		mov	r2, #0
+ 297 0022 1A70     		strb	r2, [r3]
+  89:.\I2C_Class.c ****     uint8 *vent;
+  90:.\I2C_Class.c ****     *vent = 0;
+ 298              		.loc 1 90 0
+ 299 0024 3B69     		ldr	r3, [r7, #16]
+ 300 0026 0022     		mov	r2, #0
+ 301 0028 1A70     		strb	r2, [r3]
+  91:.\I2C_Class.c ****     
+  92:.\I2C_Class.c ****     if(speed == 0b111){
+ 302              		.loc 1 92 0
+ 303 002a FB1D     		add	r3, r7, #7
+ 304 002c 1B78     		ldrb	r3, [r3]
+ 305 002e 072B     		cmp	r3, #7
+ 306 0030 0CD1     		bne	.L15
+  93:.\I2C_Class.c ****         // Turn vent on
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 8
 
 
- 101:.\I2C_Class.c **** int8 adjustIrrigation(uint8 index, uint8 onOff){
- 300              		.loc 1 101 0
- 301              		.cfi_startproc
- 302 0000 80B5     		push	{r7, lr}
- 303              		.cfi_def_cfa_offset 8
- 304              		.cfi_offset 7, -8
- 305              		.cfi_offset 14, -4
- 306 0002 84B0     		sub	sp, sp, #16
- 307              		.cfi_def_cfa_offset 24
- 308 0004 00AF     		add	r7, sp, #0
- 309              		.cfi_def_cfa_register 7
- 310 0006 0A1C     		mov	r2, r1
- 311 0008 FB1D     		add	r3, r7, #7
- 312 000a 011C     		add	r1, r0, #0
- 313 000c 1970     		strb	r1, [r3]
- 314 000e BB1D     		add	r3, r7, #6
- 315 0010 1A70     		strb	r2, [r3]
- 102:.\I2C_Class.c ****     uint8 irriTransfer;
- 103:.\I2C_Class.c ****         /* In order for this code to function properly, the static int "irrigation" 
- 104:.\I2C_Class.c ****         has to get updated each time this function is called. */
- 105:.\I2C_Class.c ****     if (onOff == 1){    // Irrigation turn on
- 316              		.loc 1 105 0
- 317 0012 BB1D     		add	r3, r7, #6
- 318 0014 1B78     		ldrb	r3, [r3]
- 319 0016 012B     		cmp	r3, #1
- 320 0018 19D1     		bne	.L18
- 106:.\I2C_Class.c ****         irriTransfer = (irrigationStatus |= (1 << index));
- 321              		.loc 1 106 0
- 322 001a FB1D     		add	r3, r7, #7
- 323 001c 1B78     		ldrb	r3, [r3]
- 324 001e 0122     		mov	r2, #1
- 325 0020 111C     		mov	r1, r2
- 326 0022 9940     		lsl	r1, r1, r3
- 327 0024 0B1C     		mov	r3, r1
- 328 0026 DAB2     		uxtb	r2, r3
- 329 0028 234B     		ldr	r3, .L24
- 330 002a 1B78     		ldrb	r3, [r3]
- 331 002c DBB2     		uxtb	r3, r3
- 332 002e 1343     		orr	r3, r2
- 333 0030 DBB2     		uxtb	r3, r3
- 334 0032 DAB2     		uxtb	r2, r3
- 335 0034 204B     		ldr	r3, .L24
- 336 0036 1A70     		strb	r2, [r3]
- 337 0038 1F4B     		ldr	r3, .L24
- 338 003a 1A78     		ldrb	r2, [r3]
- 339 003c 3B1C     		mov	r3, r7
- 340 003e 0F33     		add	r3, r3, #15
- 341 0040 1A70     		strb	r2, [r3]
- 107:.\I2C_Class.c ****         irrigationStatus = irriTransfer;
- 342              		.loc 1 107 0
- 343 0042 3B1C     		mov	r3, r7
- 344 0044 0F33     		add	r3, r3, #15
- 345 0046 1A78     		ldrb	r2, [r3]
- 346 0048 1B4B     		ldr	r3, .L24
- 347 004a 1A70     		strb	r2, [r3]
- 348 004c 21E0     		b	.L19
- 349              	.L18:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 9
+  94:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOnVent,1,I2C_I2C_MODE_COMPLETE_XFER);
+ 307              		.loc 1 94 0
+ 308 0032 3B1C     		mov	r3, r7
+ 309 0034 0F33     		add	r3, r3, #15
+ 310 0036 4220     		mov	r0, #66
+ 311 0038 191C     		mov	r1, r3
+ 312 003a 0122     		mov	r2, #1
+ 313 003c 0023     		mov	r3, #0
+ 314 003e FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 315 0042 021C     		mov	r2, r0
+ 316 0044 3B1C     		mov	r3, r7
+ 317 0046 1733     		add	r3, r3, #23
+ 318 0048 1A70     		strb	r2, [r3]
+ 319 004a 0FE0     		b	.L16
+ 320              	.L15:
+  95:.\I2C_Class.c ****     }
+  96:.\I2C_Class.c ****     else if(speed == 0b0){
+ 321              		.loc 1 96 0
+ 322 004c FB1D     		add	r3, r7, #7
+ 323 004e 1B78     		ldrb	r3, [r3]
+ 324 0050 002B     		cmp	r3, #0
+ 325 0052 0BD1     		bne	.L16
+  97:.\I2C_Class.c ****         // Turn vent off
+  98:.\I2C_Class.c ****         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOffVent,1,I2C_I2C_MODE_COMPLETE_XFER);
+ 326              		.loc 1 98 0
+ 327 0054 3B1C     		mov	r3, r7
+ 328 0056 0E33     		add	r3, r3, #14
+ 329 0058 4220     		mov	r0, #66
+ 330 005a 191C     		mov	r1, r3
+ 331 005c 0122     		mov	r2, #1
+ 332 005e 0023     		mov	r3, #0
+ 333 0060 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 334 0064 021C     		mov	r2, r0
+ 335 0066 3B1C     		mov	r3, r7
+ 336 0068 1733     		add	r3, r3, #23
+ 337 006a 1A70     		strb	r2, [r3]
+ 338              	.L16:
+  99:.\I2C_Class.c ****     }
+ 100:.\I2C_Class.c ****     
+ 101:.\I2C_Class.c ****     getActuatorStatus(NULL, NULL, vent, NULL);
+ 339              		.loc 1 101 0
+ 340 006c 3B69     		ldr	r3, [r7, #16]
+ 341 006e 0020     		mov	r0, #0
+ 342 0070 0021     		mov	r1, #0
+ 343 0072 1A1C     		mov	r2, r3
+ 344 0074 0023     		mov	r3, #0
+ 345 0076 FFF7FEFF 		bl	getActuatorStatus
+ 102:.\I2C_Class.c ****     
+ 103:.\I2C_Class.c ****     if (*vent == speed){
+ 346              		.loc 1 103 0
+ 347 007a 3B69     		ldr	r3, [r7, #16]
+ 348 007c 1B78     		ldrb	r3, [r3]
+ 349 007e FA1D     		add	r2, r7, #7
+ 350 0080 1278     		ldrb	r2, [r2]
+ 351 0082 9A42     		cmp	r2, r3
+ 352 0084 01D1     		bne	.L17
+ 104:.\I2C_Class.c ****             return 0;
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 9
 
 
+ 353              		.loc 1 104 0
+ 354 0086 0023     		mov	r3, #0
+ 355 0088 00E0     		b	.L19
+ 356              	.L17:
+ 105:.\I2C_Class.c ****         }
+ 106:.\I2C_Class.c ****     else {
+ 107:.\I2C_Class.c ****         return -1;       
+ 357              		.loc 1 107 0
+ 358 008a FF23     		mov	r3, #255
+ 359              	.L19:
+ 360 008c 5BB2     		sxtb	r3, r3
  108:.\I2C_Class.c ****     }
- 109:.\I2C_Class.c ****     else if (onOff == 0){   // Irrigation turn off
- 350              		.loc 1 109 0
- 351 004e BB1D     		add	r3, r7, #6
- 352 0050 1B78     		ldrb	r3, [r3]
- 353 0052 002B     		cmp	r3, #0
- 354 0054 1BD1     		bne	.L20
- 110:.\I2C_Class.c ****         irriTransfer = (irrigationStatus &= ~(1 << index));
- 355              		.loc 1 110 0
- 356 0056 FB1D     		add	r3, r7, #7
- 357 0058 1B78     		ldrb	r3, [r3]
- 358 005a 0122     		mov	r2, #1
- 359 005c 111C     		mov	r1, r2
- 360 005e 9940     		lsl	r1, r1, r3
- 361 0060 0B1C     		mov	r3, r1
- 362 0062 DBB2     		uxtb	r3, r3
- 363 0064 DB43     		mvn	r3, r3
- 364 0066 DBB2     		uxtb	r3, r3
- 365 0068 134A     		ldr	r2, .L24
- 366 006a 1278     		ldrb	r2, [r2]
- 367 006c D2B2     		uxtb	r2, r2
- 368 006e 1340     		and	r3, r2
- 369 0070 DBB2     		uxtb	r3, r3
- 370 0072 DAB2     		uxtb	r2, r3
- 371 0074 104B     		ldr	r3, .L24
- 372 0076 1A70     		strb	r2, [r3]
- 373 0078 0F4B     		ldr	r3, .L24
- 374 007a 1A78     		ldrb	r2, [r3]
- 375 007c 3B1C     		mov	r3, r7
- 376 007e 0F33     		add	r3, r3, #15
- 377 0080 1A70     		strb	r2, [r3]
- 111:.\I2C_Class.c ****         irrigationStatus = irriTransfer;
+ 109:.\I2C_Class.c **** }
+ 361              		.loc 1 109 0
+ 362 008e 181C     		mov	r0, r3
+ 363 0090 BD46     		mov	sp, r7
+ 364 0092 06B0     		add	sp, sp, #24
+ 365              		@ sp needed
+ 366 0094 80BD     		pop	{r7, pc}
+ 367              		.cfi_endproc
+ 368              	.LFE36:
+ 369              		.size	adjustVentilation, .-adjustVentilation
+ 370 0096 C046     		.section	.text.adjustIrrigation,"ax",%progbits
+ 371              		.align	2
+ 372              		.global	adjustIrrigation
+ 373              		.code	16
+ 374              		.thumb_func
+ 375              		.type	adjustIrrigation, %function
+ 376              	adjustIrrigation:
+ 377              	.LFB37:
+ 110:.\I2C_Class.c **** 
+ 111:.\I2C_Class.c **** int8 adjustIrrigation(uint8 index, uint8 onOff){
  378              		.loc 1 111 0
- 379 0082 3B1C     		mov	r3, r7
- 380 0084 0F33     		add	r3, r3, #15
- 381 0086 1A78     		ldrb	r2, [r3]
- 382 0088 0B4B     		ldr	r3, .L24
- 383 008a 1A70     		strb	r2, [r3]
- 384 008c 01E0     		b	.L19
- 385              	.L20:
- 112:.\I2C_Class.c ****     }
- 113:.\I2C_Class.c ****     else{
- 114:.\I2C_Class.c ****     // Bad argument.
- 115:.\I2C_Class.c ****     return -1;
- 386              		.loc 1 115 0
- 387 008e FF23     		mov	r3, #255
- 388 0090 0DE0     		b	.L23
- 389              	.L19:
- 116:.\I2C_Class.c ****     }
- 117:.\I2C_Class.c ****     
- 118:.\I2C_Class.c ****     if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, &irriTransfer ,1,I2C_I2C_MOD
- 390              		.loc 1 118 0
- 391 0092 3B1C     		mov	r3, r7
- 392 0094 0F33     		add	r3, r3, #15
- 393 0096 4220     		mov	r0, #66
- 394 0098 191C     		mov	r1, r3
- 395 009a 0122     		mov	r2, #1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 10
+ 379              		.cfi_startproc
+ 380 0000 80B5     		push	{r7, lr}
+ 381              		.cfi_def_cfa_offset 8
+ 382              		.cfi_offset 7, -8
+ 383              		.cfi_offset 14, -4
+ 384 0002 84B0     		sub	sp, sp, #16
+ 385              		.cfi_def_cfa_offset 24
+ 386 0004 00AF     		add	r7, sp, #0
+ 387              		.cfi_def_cfa_register 7
+ 388 0006 0A1C     		mov	r2, r1
+ 389 0008 FB1D     		add	r3, r7, #7
+ 390 000a 011C     		add	r1, r0, #0
+ 391 000c 1970     		strb	r1, [r3]
+ 392 000e BB1D     		add	r3, r7, #6
+ 393 0010 1A70     		strb	r2, [r3]
+ 112:.\I2C_Class.c ****     uint8 irriTransfer;
+ 113:.\I2C_Class.c ****     uint8 *irrigation;
+ 114:.\I2C_Class.c ****     *irrigation = 0;
+ 394              		.loc 1 114 0
+ 395 0012 FB68     		ldr	r3, [r7, #12]
+ 396 0014 0022     		mov	r2, #0
+ 397 0016 1A70     		strb	r2, [r3]
+ 115:.\I2C_Class.c ****     uint8 result = 0;
+ 398              		.loc 1 115 0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 10
 
 
- 396 009c 0023     		mov	r3, #0
- 397 009e FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
- 398 00a2 031C     		mov	r3, r0
- 399 00a4 002B     		cmp	r3, #0
- 400 00a6 01D0     		beq	.L22
- 119:.\I2C_Class.c ****         return -1;
- 401              		.loc 1 119 0
- 402 00a8 FF23     		mov	r3, #255
- 403 00aa 00E0     		b	.L23
- 404              	.L22:
- 120:.\I2C_Class.c ****     }
- 121:.\I2C_Class.c ****     return 0;
- 405              		.loc 1 121 0
- 406 00ac 0023     		mov	r3, #0
- 407              	.L23:
- 408 00ae 5BB2     		sxtb	r3, r3
- 122:.\I2C_Class.c **** }
- 409              		.loc 1 122 0
- 410 00b0 181C     		mov	r0, r3
- 411 00b2 BD46     		mov	sp, r7
- 412 00b4 04B0     		add	sp, sp, #16
- 413              		@ sp needed
- 414 00b6 80BD     		pop	{r7, pc}
- 415              	.L25:
- 416              		.align	2
- 417              	.L24:
- 418 00b8 00000000 		.word	irrigationStatus
- 419              		.cfi_endproc
- 420              	.LFE37:
- 421              		.size	adjustIrrigation, .-adjustIrrigation
- 422              		.section	.text.getActuatorStatus,"ax",%progbits
- 423              		.align	2
- 424              		.global	getActuatorStatus
- 425              		.code	16
- 426              		.thumb_func
- 427              		.type	getActuatorStatus, %function
- 428              	getActuatorStatus:
- 429              	.LFB38:
- 123:.\I2C_Class.c **** 
- 124:.\I2C_Class.c **** int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
- 430              		.loc 1 124 0
- 431              		.cfi_startproc
- 432 0000 80B5     		push	{r7, lr}
- 433              		.cfi_def_cfa_offset 8
- 434              		.cfi_offset 7, -8
- 435              		.cfi_offset 14, -4
- 436 0002 86B0     		sub	sp, sp, #24
- 437              		.cfi_def_cfa_offset 32
- 438 0004 00AF     		add	r7, sp, #0
- 439              		.cfi_def_cfa_register 7
- 440 0006 F860     		str	r0, [r7, #12]
- 441 0008 B960     		str	r1, [r7, #8]
- 442 000a 7A60     		str	r2, [r7, #4]
- 443 000c 3B60     		str	r3, [r7]
- 125:.\I2C_Class.c ****      uint8 dataget[2];
- 126:.\I2C_Class.c ****     
- 127:.\I2C_Class.c ****     if(I2C_I2C_MSTR_NO_ERROR != I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMP
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 11
+ 399 0018 3B1C     		mov	r3, r7
+ 400 001a 0B33     		add	r3, r3, #11
+ 401 001c 0022     		mov	r2, #0
+ 402 001e 1A70     		strb	r2, [r3]
+ 116:.\I2C_Class.c **** 
+ 117:.\I2C_Class.c ****         /* In order for this code to function properly, the static int "irrigation" 
+ 118:.\I2C_Class.c ****         has to get updated each time this function is called. */
+ 119:.\I2C_Class.c ****     if (onOff == 1){    // Irrigation turn on
+ 403              		.loc 1 119 0
+ 404 0020 BB1D     		add	r3, r7, #6
+ 405 0022 1B78     		ldrb	r3, [r3]
+ 406 0024 012B     		cmp	r3, #1
+ 407 0026 19D1     		bne	.L21
+ 120:.\I2C_Class.c ****         irriTransfer = (irrigationStatus |= (1 << index));
+ 408              		.loc 1 120 0
+ 409 0028 FB1D     		add	r3, r7, #7
+ 410 002a 1B78     		ldrb	r3, [r3]
+ 411 002c 0122     		mov	r2, #1
+ 412 002e 111C     		mov	r1, r2
+ 413 0030 9940     		lsl	r1, r1, r3
+ 414 0032 0B1C     		mov	r3, r1
+ 415 0034 DAB2     		uxtb	r2, r3
+ 416 0036 2A4B     		ldr	r3, .L27
+ 417 0038 1B78     		ldrb	r3, [r3]
+ 418 003a DBB2     		uxtb	r3, r3
+ 419 003c 1343     		orr	r3, r2
+ 420 003e DBB2     		uxtb	r3, r3
+ 421 0040 DAB2     		uxtb	r2, r3
+ 422 0042 274B     		ldr	r3, .L27
+ 423 0044 1A70     		strb	r2, [r3]
+ 424 0046 264B     		ldr	r3, .L27
+ 425 0048 1A78     		ldrb	r2, [r3]
+ 426 004a 3B1C     		mov	r3, r7
+ 427 004c 0A33     		add	r3, r3, #10
+ 428 004e 1A70     		strb	r2, [r3]
+ 121:.\I2C_Class.c ****         irrigationStatus = irriTransfer;
+ 429              		.loc 1 121 0
+ 430 0050 3B1C     		mov	r3, r7
+ 431 0052 0A33     		add	r3, r3, #10
+ 432 0054 1A78     		ldrb	r2, [r3]
+ 433 0056 224B     		ldr	r3, .L27
+ 434 0058 1A70     		strb	r2, [r3]
+ 435 005a 21E0     		b	.L22
+ 436              	.L21:
+ 122:.\I2C_Class.c ****     }
+ 123:.\I2C_Class.c ****     else if (onOff == 0){   // Irrigation turn off
+ 437              		.loc 1 123 0
+ 438 005c BB1D     		add	r3, r7, #6
+ 439 005e 1B78     		ldrb	r3, [r3]
+ 440 0060 002B     		cmp	r3, #0
+ 441 0062 1BD1     		bne	.L23
+ 124:.\I2C_Class.c ****         irriTransfer = (irrigationStatus &= ~(1 << index));
+ 442              		.loc 1 124 0
+ 443 0064 FB1D     		add	r3, r7, #7
+ 444 0066 1B78     		ldrb	r3, [r3]
+ 445 0068 0122     		mov	r2, #1
+ 446 006a 111C     		mov	r1, r2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 11
 
 
- 444              		.loc 1 127 0
- 445 000e 3B1C     		mov	r3, r7
- 446 0010 1433     		add	r3, r3, #20
- 447 0012 4220     		mov	r0, #66
- 448 0014 191C     		mov	r1, r3
- 449 0016 0222     		mov	r2, #2
- 450 0018 0023     		mov	r3, #0
- 451 001a FFF7FEFF 		bl	I2C_I2CMasterReadBuf
- 452 001e 031C     		mov	r3, r0
- 453 0020 002B     		cmp	r3, #0
- 454 0022 01D0     		beq	.L27
- 128:.\I2C_Class.c ****         return -1;
- 455              		.loc 1 128 0
- 456 0024 FF23     		mov	r3, #255
- 457 0026 32E0     		b	.L31
- 458              	.L27:
- 129:.\I2C_Class.c ****     }
- 130:.\I2C_Class.c ****     else {
- 131:.\I2C_Class.c ****                                                         // Expecting to receive MSB first 
- 132:.\I2C_Class.c **** 		*window = (dataget[0] >> 3);                    // Shifting out the 3 least significant bits.
- 459              		.loc 1 132 0
- 460 0028 3B1C     		mov	r3, r7
- 461 002a 1433     		add	r3, r3, #20
- 462 002c 1B78     		ldrb	r3, [r3]
- 463 002e DB08     		lsr	r3, r3, #3
- 464 0030 DAB2     		uxtb	r2, r3
- 465 0032 FB68     		ldr	r3, [r7, #12]
- 466 0034 1A70     		strb	r2, [r3]
- 133:.\I2C_Class.c ****         *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shif
- 467              		.loc 1 133 0
- 468 0036 3B1C     		mov	r3, r7
- 469 0038 1433     		add	r3, r3, #20
- 470 003a 1B78     		ldrb	r3, [r3]
- 471 003c 1A1C     		mov	r2, r3
- 472 003e 0E23     		mov	r3, #14
- 473 0040 1340     		and	r3, r2
- 474 0042 5B10     		asr	r3, r3, #1
- 475 0044 DAB2     		uxtb	r2, r3
- 476 0046 BB68     		ldr	r3, [r7, #8]
- 477 0048 1A70     		strb	r2, [r3]
- 134:.\I2C_Class.c ****         if ((dataget[0] & 0b00000001) == 0b00000001){   // Maybe we can find a smarter way to do th
- 478              		.loc 1 134 0
- 479 004a 3B1C     		mov	r3, r7
- 480 004c 1433     		add	r3, r3, #20
- 481 004e 1B78     		ldrb	r3, [r3]
- 482 0050 1A1C     		mov	r2, r3
- 483 0052 0123     		mov	r3, #1
- 484 0054 1340     		and	r3, r2
- 485 0056 0AD0     		beq	.L29
- 135:.\I2C_Class.c ****                                                         // The if statements checks if bit 1 of dat
- 136:.\I2C_Class.c ****             *vent = (dataget[1] >> 5) | 0b00000100;     // Shifting 5 right so only 2 bits are left
- 486              		.loc 1 136 0
- 487 0058 3B1C     		mov	r3, r7
- 488 005a 1433     		add	r3, r3, #20
- 489 005c 5B78     		ldrb	r3, [r3, #1]
- 490 005e 5B09     		lsr	r3, r3, #5
- 491 0060 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 12
+ 447 006c 9940     		lsl	r1, r1, r3
+ 448 006e 0B1C     		mov	r3, r1
+ 449 0070 DBB2     		uxtb	r3, r3
+ 450 0072 DB43     		mvn	r3, r3
+ 451 0074 DBB2     		uxtb	r3, r3
+ 452 0076 1A4A     		ldr	r2, .L27
+ 453 0078 1278     		ldrb	r2, [r2]
+ 454 007a D2B2     		uxtb	r2, r2
+ 455 007c 1340     		and	r3, r2
+ 456 007e DBB2     		uxtb	r3, r3
+ 457 0080 DAB2     		uxtb	r2, r3
+ 458 0082 174B     		ldr	r3, .L27
+ 459 0084 1A70     		strb	r2, [r3]
+ 460 0086 164B     		ldr	r3, .L27
+ 461 0088 1A78     		ldrb	r2, [r3]
+ 462 008a 3B1C     		mov	r3, r7
+ 463 008c 0A33     		add	r3, r3, #10
+ 464 008e 1A70     		strb	r2, [r3]
+ 125:.\I2C_Class.c ****         irrigationStatus = irriTransfer;
+ 465              		.loc 1 125 0
+ 466 0090 3B1C     		mov	r3, r7
+ 467 0092 0A33     		add	r3, r3, #10
+ 468 0094 1A78     		ldrb	r2, [r3]
+ 469 0096 124B     		ldr	r3, .L27
+ 470 0098 1A70     		strb	r2, [r3]
+ 471 009a 01E0     		b	.L22
+ 472              	.L23:
+ 126:.\I2C_Class.c ****     }
+ 127:.\I2C_Class.c ****     else{
+ 128:.\I2C_Class.c ****     // Bad argument.
+ 129:.\I2C_Class.c ****     return -1;
+ 473              		.loc 1 129 0
+ 474 009c FF23     		mov	r3, #255
+ 475 009e 1AE0     		b	.L26
+ 476              	.L22:
+ 130:.\I2C_Class.c ****     }
+ 131:.\I2C_Class.c ****     
+ 132:.\I2C_Class.c ****     result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, &irriTransfer ,1,I2C_I2C_MODE_COMPLETE_XFER);
+ 477              		.loc 1 132 0
+ 478 00a0 3B1C     		mov	r3, r7
+ 479 00a2 0A33     		add	r3, r3, #10
+ 480 00a4 4220     		mov	r0, #66
+ 481 00a6 191C     		mov	r1, r3
+ 482 00a8 0122     		mov	r2, #1
+ 483 00aa 0023     		mov	r3, #0
+ 484 00ac FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
+ 485 00b0 021C     		mov	r2, r0
+ 486 00b2 3B1C     		mov	r3, r7
+ 487 00b4 0B33     		add	r3, r3, #11
+ 488 00b6 1A70     		strb	r2, [r3]
+ 133:.\I2C_Class.c ****  
+ 134:.\I2C_Class.c ****     getActuatorStatus(NULL, NULL, NULL, irrigation);
+ 489              		.loc 1 134 0
+ 490 00b8 FB68     		ldr	r3, [r7, #12]
+ 491 00ba 0020     		mov	r0, #0
+ 492 00bc 0021     		mov	r1, #0
+ 493 00be 0022     		mov	r2, #0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 12
 
 
- 492 0062 0422     		mov	r2, #4
- 493 0064 1343     		orr	r3, r2
- 494 0066 DAB2     		uxtb	r2, r3
- 495 0068 7B68     		ldr	r3, [r7, #4]
- 496 006a 1A70     		strb	r2, [r3]
- 497 006c 06E0     		b	.L30
- 498              	.L29:
- 137:.\I2C_Class.c ****         }
- 138:.\I2C_Class.c ****         else {
- 139:.\I2C_Class.c ****         *vent = (dataget[1] >> 5) | 0b00000000;         // shifting 5 right since only the to most 
- 499              		.loc 1 139 0
- 500 006e 3B1C     		mov	r3, r7
- 501 0070 1433     		add	r3, r3, #20
- 502 0072 5B78     		ldrb	r3, [r3, #1]
- 503 0074 5B09     		lsr	r3, r3, #5
- 504 0076 DAB2     		uxtb	r2, r3
- 505 0078 7B68     		ldr	r3, [r7, #4]
- 506 007a 1A70     		strb	r2, [r3]
- 507              	.L30:
- 140:.\I2C_Class.c ****         }
- 141:.\I2C_Class.c ****         *irrigation = (dataget[1] & 0b00111111);        // Ignoring two most significant bits.
- 508              		.loc 1 141 0
- 509 007c 3B1C     		mov	r3, r7
- 510 007e 1433     		add	r3, r3, #20
- 511 0080 5A78     		ldrb	r2, [r3, #1]
- 512 0082 3F23     		mov	r3, #63
- 513 0084 1340     		and	r3, r2
- 514 0086 DAB2     		uxtb	r2, r3
- 515 0088 3B68     		ldr	r3, [r7]
- 516 008a 1A70     		strb	r2, [r3]
- 142:.\I2C_Class.c ****         return 0;   // No error   
- 517              		.loc 1 142 0
- 518 008c 0023     		mov	r3, #0
- 519              	.L31:
- 520 008e 5BB2     		sxtb	r3, r3
- 143:.\I2C_Class.c **** 	}
- 144:.\I2C_Class.c ****     return 0;
- 145:.\I2C_Class.c **** }
- 521              		.loc 1 145 0
- 522 0090 181C     		mov	r0, r3
- 523 0092 BD46     		mov	sp, r7
- 524 0094 06B0     		add	sp, sp, #24
- 525              		@ sp needed
- 526 0096 80BD     		pop	{r7, pc}
- 527              		.cfi_endproc
- 528              	.LFE38:
- 529              		.size	getActuatorStatus, .-getActuatorStatus
- 530              		.section	.text.getTempAndHum,"ax",%progbits
- 531              		.align	2
- 532              		.global	getTempAndHum
- 533              		.code	16
- 534              		.thumb_func
- 535              		.type	getTempAndHum, %function
- 536              	getTempAndHum:
- 537              	.LFB39:
- 146:.\I2C_Class.c **** 
- 147:.\I2C_Class.c **** int8 getTempAndHum(int32* temp, int32* hum){
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 13
+ 494 00c0 FFF7FEFF 		bl	getActuatorStatus
+ 135:.\I2C_Class.c ****     
+ 136:.\I2C_Class.c ****     if(*irrigation == irrigationStatus){
+ 495              		.loc 1 136 0
+ 496 00c4 FB68     		ldr	r3, [r7, #12]
+ 497 00c6 1A78     		ldrb	r2, [r3]
+ 498 00c8 054B     		ldr	r3, .L27
+ 499 00ca 1B78     		ldrb	r3, [r3]
+ 500 00cc 9A42     		cmp	r2, r3
+ 501 00ce 01D1     		bne	.L25
+ 137:.\I2C_Class.c ****         return 0;
+ 502              		.loc 1 137 0
+ 503 00d0 0023     		mov	r3, #0
+ 504 00d2 00E0     		b	.L26
+ 505              	.L25:
+ 138:.\I2C_Class.c ****     }
+ 139:.\I2C_Class.c ****     else {
+ 140:.\I2C_Class.c ****         return -1;
+ 506              		.loc 1 140 0
+ 507 00d4 FF23     		mov	r3, #255
+ 508              	.L26:
+ 509 00d6 5BB2     		sxtb	r3, r3
+ 141:.\I2C_Class.c ****     }
+ 142:.\I2C_Class.c **** }
+ 510              		.loc 1 142 0
+ 511 00d8 181C     		mov	r0, r3
+ 512 00da BD46     		mov	sp, r7
+ 513 00dc 04B0     		add	sp, sp, #16
+ 514              		@ sp needed
+ 515 00de 80BD     		pop	{r7, pc}
+ 516              	.L28:
+ 517              		.align	2
+ 518              	.L27:
+ 519 00e0 00000000 		.word	irrigationStatus
+ 520              		.cfi_endproc
+ 521              	.LFE37:
+ 522              		.size	adjustIrrigation, .-adjustIrrigation
+ 523              		.section	.text.getActuatorStatus,"ax",%progbits
+ 524              		.align	2
+ 525              		.global	getActuatorStatus
+ 526              		.code	16
+ 527              		.thumb_func
+ 528              		.type	getActuatorStatus, %function
+ 529              	getActuatorStatus:
+ 530              	.LFB38:
+ 143:.\I2C_Class.c **** 
+ 144:.\I2C_Class.c **** int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
+ 531              		.loc 1 144 0
+ 532              		.cfi_startproc
+ 533 0000 80B5     		push	{r7, lr}
+ 534              		.cfi_def_cfa_offset 8
+ 535              		.cfi_offset 7, -8
+ 536              		.cfi_offset 14, -4
+ 537 0002 86B0     		sub	sp, sp, #24
+ 538              		.cfi_def_cfa_offset 32
+ 539 0004 00AF     		add	r7, sp, #0
+ 540              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 13
 
 
- 538              		.loc 1 147 0
- 539              		.cfi_startproc
- 540 0000 80B5     		push	{r7, lr}
- 541              		.cfi_def_cfa_offset 8
- 542              		.cfi_offset 7, -8
- 543              		.cfi_offset 14, -4
- 544 0002 82B0     		sub	sp, sp, #8
- 545              		.cfi_def_cfa_offset 16
- 546 0004 00AF     		add	r7, sp, #0
- 547              		.cfi_def_cfa_register 7
- 548 0006 7860     		str	r0, [r7, #4]
- 549 0008 3960     		str	r1, [r7]
- 148:.\I2C_Class.c ****     *temp = 0;
+ 541 0006 F860     		str	r0, [r7, #12]
+ 542 0008 B960     		str	r1, [r7, #8]
+ 543 000a 7A60     		str	r2, [r7, #4]
+ 544 000c 3B60     		str	r3, [r7]
+ 145:.\I2C_Class.c ****     uint8 dataget[2];
+ 146:.\I2C_Class.c ****     uint8 result = 0;
+ 545              		.loc 1 146 0
+ 546 000e 3B1C     		mov	r3, r7
+ 547 0010 1733     		add	r3, r3, #23
+ 548 0012 0022     		mov	r2, #0
+ 549 0014 1A70     		strb	r2, [r3]
+ 147:.\I2C_Class.c ****     
+ 148:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
  550              		.loc 1 148 0
- 551 000a 7B68     		ldr	r3, [r7, #4]
- 552 000c 0022     		mov	r2, #0
- 553 000e 1A60     		str	r2, [r3]
- 149:.\I2C_Class.c ****     *hum = 0;
- 554              		.loc 1 149 0
- 555 0010 3B68     		ldr	r3, [r7]
- 556 0012 0022     		mov	r2, #0
- 557 0014 1A60     		str	r2, [r3]
- 150:.\I2C_Class.c ****     return 0;
- 558              		.loc 1 150 0
- 559 0016 0023     		mov	r3, #0
- 560 0018 5BB2     		sxtb	r3, r3
- 151:.\I2C_Class.c **** }
- 561              		.loc 1 151 0
- 562 001a 181C     		mov	r0, r3
- 563 001c BD46     		mov	sp, r7
- 564 001e 02B0     		add	sp, sp, #8
- 565              		@ sp needed
- 566 0020 80BD     		pop	{r7, pc}
- 567              		.cfi_endproc
- 568              	.LFE39:
- 569              		.size	getTempAndHum, .-getTempAndHum
- 570 0022 C046     		.section	.text.getLight,"ax",%progbits
- 571              		.align	2
- 572              		.global	getLight
- 573              		.code	16
- 574              		.thumb_func
- 575              		.type	getLight, %function
- 576              	getLight:
- 577              	.LFB40:
- 152:.\I2C_Class.c **** 
- 153:.\I2C_Class.c **** int8 getLight(int32* light){
- 578              		.loc 1 153 0
- 579              		.cfi_startproc
- 580 0000 80B5     		push	{r7, lr}
- 581              		.cfi_def_cfa_offset 8
- 582              		.cfi_offset 7, -8
- 583              		.cfi_offset 14, -4
- 584 0002 82B0     		sub	sp, sp, #8
- 585              		.cfi_def_cfa_offset 16
- 586 0004 00AF     		add	r7, sp, #0
- 587              		.cfi_def_cfa_register 7
- 588 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 14
+ 551 0016 3B1C     		mov	r3, r7
+ 552 0018 1433     		add	r3, r3, #20
+ 553 001a 4220     		mov	r0, #66
+ 554 001c 191C     		mov	r1, r3
+ 555 001e 0222     		mov	r2, #2
+ 556 0020 0023     		mov	r3, #0
+ 557 0022 FFF7FEFF 		bl	I2C_I2CMasterReadBuf
+ 558 0026 021C     		mov	r2, r0
+ 559 0028 3B1C     		mov	r3, r7
+ 560 002a 1733     		add	r3, r3, #23
+ 561 002c 1A70     		strb	r2, [r3]
+ 149:.\I2C_Class.c ****     
+ 150:.\I2C_Class.c ****     if (window)
+ 562              		.loc 1 150 0
+ 563 002e FB68     		ldr	r3, [r7, #12]
+ 564 0030 002B     		cmp	r3, #0
+ 565 0032 06D0     		beq	.L30
+ 151:.\I2C_Class.c ****     {                                   // Expecting to receive MSB first 
+ 152:.\I2C_Class.c ****        *window = (dataget[0] >> 3);      // Shifting out the 3 least significant bits.
+ 566              		.loc 1 152 0
+ 567 0034 3B1C     		mov	r3, r7
+ 568 0036 1433     		add	r3, r3, #20
+ 569 0038 1B78     		ldrb	r3, [r3]
+ 570 003a DB08     		lsr	r3, r3, #3
+ 571 003c DAB2     		uxtb	r2, r3
+ 572 003e FB68     		ldr	r3, [r7, #12]
+ 573 0040 1A70     		strb	r2, [r3]
+ 574              	.L30:
+ 153:.\I2C_Class.c ****     }
+ 154:.\I2C_Class.c ****     if (heat){              
+ 575              		.loc 1 154 0
+ 576 0042 BB68     		ldr	r3, [r7, #8]
+ 577 0044 002B     		cmp	r3, #0
+ 578 0046 09D0     		beq	.L31
+ 155:.\I2C_Class.c ****     *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shifting
+ 579              		.loc 1 155 0
+ 580 0048 3B1C     		mov	r3, r7
+ 581 004a 1433     		add	r3, r3, #20
+ 582 004c 1B78     		ldrb	r3, [r3]
+ 583 004e 1A1C     		mov	r2, r3
+ 584 0050 0E23     		mov	r3, #14
+ 585 0052 1340     		and	r3, r2
+ 586 0054 5B10     		asr	r3, r3, #1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 14
 
 
- 154:.\I2C_Class.c ****     *light = 0;
- 589              		.loc 1 154 0
- 590 0008 7B68     		ldr	r3, [r7, #4]
- 591 000a 0022     		mov	r2, #0
- 592 000c 1A60     		str	r2, [r3]
- 155:.\I2C_Class.c ****     return 0;
- 593              		.loc 1 155 0
- 594 000e 0023     		mov	r3, #0
- 595 0010 5BB2     		sxtb	r3, r3
- 156:.\I2C_Class.c **** }
- 596              		.loc 1 156 0
- 597 0012 181C     		mov	r0, r3
- 598 0014 BD46     		mov	sp, r7
- 599 0016 02B0     		add	sp, sp, #8
- 600              		@ sp needed
- 601 0018 80BD     		pop	{r7, pc}
- 602              		.cfi_endproc
- 603              	.LFE40:
- 604              		.size	getLight, .-getLight
- 605 001a C046     		.section	.text.getSoilHum,"ax",%progbits
- 606              		.align	2
- 607              		.global	getSoilHum
- 608              		.code	16
- 609              		.thumb_func
- 610              		.type	getSoilHum, %function
- 611              	getSoilHum:
- 612              	.LFB41:
- 157:.\I2C_Class.c **** 
- 158:.\I2C_Class.c **** int8 getSoilHum(uint8 index, int16* soilHum){
- 613              		.loc 1 158 0
- 614              		.cfi_startproc
- 615 0000 80B5     		push	{r7, lr}
- 616              		.cfi_def_cfa_offset 8
- 617              		.cfi_offset 7, -8
- 618              		.cfi_offset 14, -4
- 619 0002 84B0     		sub	sp, sp, #16
- 620              		.cfi_def_cfa_offset 24
- 621 0004 00AF     		add	r7, sp, #0
- 622              		.cfi_def_cfa_register 7
- 623 0006 021C     		mov	r2, r0
- 624 0008 3960     		str	r1, [r7]
- 625 000a FB1D     		add	r3, r7, #7
- 626 000c 1A70     		strb	r2, [r3]
- 159:.\I2C_Class.c ****     index = 0;
- 627              		.loc 1 159 0
- 628 000e 3B1C     		mov	r3, r7
- 629 0010 0F33     		add	r3, r3, #15
- 630 0012 0022     		mov	r2, #0
- 631 0014 1A70     		strb	r2, [r3]
- 160:.\I2C_Class.c ****     *soilHum = 0;
- 632              		.loc 1 160 0
- 633 0016 3B68     		ldr	r3, [r7]
- 634 0018 0022     		mov	r2, #0
- 635 001a 1A80     		strh	r2, [r3]
- 161:.\I2C_Class.c ****     return 0;
- 636              		.loc 1 161 0
- 637 001c 0023     		mov	r3, #0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 15
+ 587 0056 DAB2     		uxtb	r2, r3
+ 588 0058 BB68     		ldr	r3, [r7, #8]
+ 589 005a 1A70     		strb	r2, [r3]
+ 590              	.L31:
+ 156:.\I2C_Class.c ****     }
+ 157:.\I2C_Class.c ****     if (vent){
+ 591              		.loc 1 157 0
+ 592 005c 7B68     		ldr	r3, [r7, #4]
+ 593 005e 002B     		cmp	r3, #0
+ 594 0060 18D0     		beq	.L32
+ 158:.\I2C_Class.c ****         if ((dataget[0] & 0b00000001) == 0b00000001){   // Maybe we can find a smarter way to do th
+ 595              		.loc 1 158 0
+ 596 0062 3B1C     		mov	r3, r7
+ 597 0064 1433     		add	r3, r3, #20
+ 598 0066 1B78     		ldrb	r3, [r3]
+ 599 0068 1A1C     		mov	r2, r3
+ 600 006a 0123     		mov	r3, #1
+ 601 006c 1340     		and	r3, r2
+ 602 006e 0AD0     		beq	.L33
+ 159:.\I2C_Class.c ****             *vent = (dataget[1] >> 5) | 0b00000100;                                           // Th
+ 603              		.loc 1 159 0
+ 604 0070 3B1C     		mov	r3, r7
+ 605 0072 1433     		add	r3, r3, #20
+ 606 0074 5B78     		ldrb	r3, [r3, #1]
+ 607 0076 5B09     		lsr	r3, r3, #5
+ 608 0078 DBB2     		uxtb	r3, r3
+ 609 007a 0422     		mov	r2, #4
+ 610 007c 1343     		orr	r3, r2
+ 611 007e DAB2     		uxtb	r2, r3
+ 612 0080 7B68     		ldr	r3, [r7, #4]
+ 613 0082 1A70     		strb	r2, [r3]
+ 614 0084 06E0     		b	.L32
+ 615              	.L33:
+ 160:.\I2C_Class.c ****         }                                                    // Shifting 5 right so only 2 bits are
+ 161:.\I2C_Class.c ****         else {
+ 162:.\I2C_Class.c ****             *vent = (dataget[1] >> 5) | 0b00000000;         // shifting 5 right since only the to m
+ 616              		.loc 1 162 0
+ 617 0086 3B1C     		mov	r3, r7
+ 618 0088 1433     		add	r3, r3, #20
+ 619 008a 5B78     		ldrb	r3, [r3, #1]
+ 620 008c 5B09     		lsr	r3, r3, #5
+ 621 008e DAB2     		uxtb	r2, r3
+ 622 0090 7B68     		ldr	r3, [r7, #4]
+ 623 0092 1A70     		strb	r2, [r3]
+ 624              	.L32:
+ 163:.\I2C_Class.c ****         }
+ 164:.\I2C_Class.c ****     }
+ 165:.\I2C_Class.c ****     if (irrigation){
+ 625              		.loc 1 165 0
+ 626 0094 3B68     		ldr	r3, [r7]
+ 627 0096 002B     		cmp	r3, #0
+ 628 0098 07D0     		beq	.L34
+ 166:.\I2C_Class.c ****         *irrigation = (dataget[1] & 0b00111111);        // Ignoring two most significant bits.
+ 629              		.loc 1 166 0
+ 630 009a 3B1C     		mov	r3, r7
+ 631 009c 1433     		add	r3, r3, #20
+ 632 009e 5A78     		ldrb	r2, [r3, #1]
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 15
 
 
- 638 001e 5BB2     		sxtb	r3, r3
- 162:.\I2C_Class.c **** }
- 639              		.loc 1 162 0
- 640 0020 181C     		mov	r0, r3
- 641 0022 BD46     		mov	sp, r7
- 642 0024 04B0     		add	sp, sp, #16
- 643              		@ sp needed
- 644 0026 80BD     		pop	{r7, pc}
- 645              		.cfi_endproc
- 646              	.LFE41:
- 647              		.size	getSoilHum, .-getSoilHum
- 648              		.text
- 649              	.Letext0:
- 650              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 651              		.section	.debug_info,"",%progbits
- 652              	.Ldebug_info0:
- 653 0000 F8020000 		.4byte	0x2f8
- 654 0004 0400     		.2byte	0x4
- 655 0006 00000000 		.4byte	.Ldebug_abbrev0
- 656 000a 04       		.byte	0x4
- 657 000b 01       		.uleb128 0x1
- 658 000c A3000000 		.4byte	.LASF43
- 659 0010 01       		.byte	0x1
- 660 0011 76000000 		.4byte	.LASF44
- 661 0015 1F000000 		.4byte	.LASF45
- 662 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 663 001d 00000000 		.4byte	0
- 664 0021 00000000 		.4byte	.Ldebug_line0
- 665 0025 02       		.uleb128 0x2
- 666 0026 01       		.byte	0x1
- 667 0027 06       		.byte	0x6
- 668 0028 1F010000 		.4byte	.LASF0
- 669 002c 02       		.uleb128 0x2
- 670 002d 01       		.byte	0x1
- 671 002e 08       		.byte	0x8
- 672 002f 2B010000 		.4byte	.LASF1
- 673 0033 02       		.uleb128 0x2
- 674 0034 02       		.byte	0x2
- 675 0035 05       		.byte	0x5
- 676 0036 50020000 		.4byte	.LASF2
- 677 003a 02       		.uleb128 0x2
- 678 003b 02       		.byte	0x2
- 679 003c 07       		.byte	0x7
- 680 003d 84000000 		.4byte	.LASF3
- 681 0041 02       		.uleb128 0x2
- 682 0042 04       		.byte	0x4
- 683 0043 05       		.byte	0x5
- 684 0044 6D020000 		.4byte	.LASF4
- 685 0048 02       		.uleb128 0x2
- 686 0049 04       		.byte	0x4
- 687 004a 07       		.byte	0x7
- 688 004b 68010000 		.4byte	.LASF5
- 689 004f 02       		.uleb128 0x2
- 690 0050 08       		.byte	0x8
- 691 0051 05       		.byte	0x5
- 692 0052 37020000 		.4byte	.LASF6
- 693 0056 02       		.uleb128 0x2
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 16
+ 633 00a0 3F23     		mov	r3, #63
+ 634 00a2 1340     		and	r3, r2
+ 635 00a4 DAB2     		uxtb	r2, r3
+ 636 00a6 3B68     		ldr	r3, [r7]
+ 637 00a8 1A70     		strb	r2, [r3]
+ 638              	.L34:
+ 167:.\I2C_Class.c ****     }   
+ 168:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 639              		.loc 1 168 0
+ 640 00aa 3B1C     		mov	r3, r7
+ 641 00ac 1733     		add	r3, r3, #23
+ 642 00ae 1B78     		ldrb	r3, [r3]
+ 643 00b0 002B     		cmp	r3, #0
+ 644 00b2 01D1     		bne	.L35
+ 169:.\I2C_Class.c ****         return 0;
+ 645              		.loc 1 169 0
+ 646 00b4 0023     		mov	r3, #0
+ 647 00b6 00E0     		b	.L37
+ 648              	.L35:
+ 170:.\I2C_Class.c ****     }
+ 171:.\I2C_Class.c ****     else {
+ 172:.\I2C_Class.c ****         return -1;   
+ 649              		.loc 1 172 0
+ 650 00b8 FF23     		mov	r3, #255
+ 651              	.L37:
+ 652 00ba 5BB2     		sxtb	r3, r3
+ 173:.\I2C_Class.c ****     }
+ 174:.\I2C_Class.c **** }
+ 653              		.loc 1 174 0
+ 654 00bc 181C     		mov	r0, r3
+ 655 00be BD46     		mov	sp, r7
+ 656 00c0 06B0     		add	sp, sp, #24
+ 657              		@ sp needed
+ 658 00c2 80BD     		pop	{r7, pc}
+ 659              		.cfi_endproc
+ 660              	.LFE38:
+ 661              		.size	getActuatorStatus, .-getActuatorStatus
+ 662              		.section	.text.getTempAndHum,"ax",%progbits
+ 663              		.align	2
+ 664              		.global	getTempAndHum
+ 665              		.code	16
+ 666              		.thumb_func
+ 667              		.type	getTempAndHum, %function
+ 668              	getTempAndHum:
+ 669              	.LFB39:
+ 175:.\I2C_Class.c **** 
+ 176:.\I2C_Class.c **** int8 getTempAndHum(int32* temp, int32* hum){
+ 670              		.loc 1 176 0
+ 671              		.cfi_startproc
+ 672 0000 80B5     		push	{r7, lr}
+ 673              		.cfi_def_cfa_offset 8
+ 674              		.cfi_offset 7, -8
+ 675              		.cfi_offset 14, -4
+ 676 0002 84B0     		sub	sp, sp, #16
+ 677              		.cfi_def_cfa_offset 24
+ 678 0004 00AF     		add	r7, sp, #0
+ 679              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 16
 
 
- 694 0057 08       		.byte	0x8
- 695 0058 07       		.byte	0x7
- 696 0059 E3010000 		.4byte	.LASF7
- 697 005d 03       		.uleb128 0x3
- 698 005e 04       		.byte	0x4
- 699 005f 05       		.byte	0x5
- 700 0060 696E7400 		.ascii	"int\000"
- 701 0064 02       		.uleb128 0x2
- 702 0065 04       		.byte	0x4
- 703 0066 07       		.byte	0x7
- 704 0067 D1010000 		.4byte	.LASF8
- 705 006b 04       		.uleb128 0x4
- 706 006c 97000000 		.4byte	.LASF9
- 707 0070 02       		.byte	0x2
- 708 0071 A1       		.byte	0xa1
- 709 0072 2C000000 		.4byte	0x2c
- 710 0076 04       		.uleb128 0x4
- 711 0077 CC010000 		.4byte	.LASF10
- 712 007b 02       		.byte	0x2
- 713 007c A4       		.byte	0xa4
- 714 007d 25000000 		.4byte	0x25
- 715 0081 04       		.uleb128 0x4
- 716 0082 62010000 		.4byte	.LASF11
- 717 0086 02       		.byte	0x2
- 718 0087 A5       		.byte	0xa5
- 719 0088 33000000 		.4byte	0x33
- 720 008c 04       		.uleb128 0x4
- 721 008d 8C010000 		.4byte	.LASF12
- 722 0091 02       		.byte	0x2
- 723 0092 A6       		.byte	0xa6
- 724 0093 41000000 		.4byte	0x41
- 725 0097 02       		.uleb128 0x2
- 726 0098 04       		.byte	0x4
- 727 0099 04       		.byte	0x4
- 728 009a 9D000000 		.4byte	.LASF13
- 729 009e 02       		.uleb128 0x2
- 730 009f 08       		.byte	0x8
- 731 00a0 04       		.byte	0x4
- 732 00a1 A8010000 		.4byte	.LASF14
- 733 00a5 02       		.uleb128 0x2
- 734 00a6 01       		.byte	0x1
- 735 00a7 08       		.byte	0x8
- 736 00a8 45020000 		.4byte	.LASF15
- 737 00ac 02       		.uleb128 0x2
- 738 00ad 04       		.byte	0x4
- 739 00ae 07       		.byte	0x7
- 740 00af 23020000 		.4byte	.LASF16
- 741 00b3 05       		.uleb128 0x5
- 742 00b4 04       		.byte	0x4
- 743 00b5 6B000000 		.4byte	0x6b
- 744 00b9 06       		.uleb128 0x6
- 745 00ba 15020000 		.4byte	.LASF46
- 746 00be 01       		.byte	0x1
- 747 00bf 18       		.byte	0x18
- 748 00c0 00000000 		.4byte	.LFB33
- 749 00c4 10000000 		.4byte	.LFE33-.LFB33
- 750 00c8 01       		.uleb128 0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 17
+ 680 0006 7860     		str	r0, [r7, #4]
+ 681 0008 3960     		str	r1, [r7]
+ 177:.\I2C_Class.c ****     uint8 dataget[4];
+ 178:.\I2C_Class.c ****     uint8 result = 0;
+ 682              		.loc 1 178 0
+ 683 000a 3B1C     		mov	r3, r7
+ 684 000c 0F33     		add	r3, r3, #15
+ 685 000e 0022     		mov	r2, #0
+ 686 0010 1A70     		strb	r2, [r3]
+ 179:.\I2C_Class.c ****     
+ 180:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, 4, I2C_I2C_MODE_COMPLETE_XF
+ 687              		.loc 1 180 0
+ 688 0012 3B1C     		mov	r3, r7
+ 689 0014 0833     		add	r3, r3, #8
+ 690 0016 2720     		mov	r0, #39
+ 691 0018 191C     		mov	r1, r3
+ 692 001a 0422     		mov	r2, #4
+ 693 001c 0023     		mov	r3, #0
+ 694 001e FFF7FEFF 		bl	I2C_I2CMasterReadBuf
+ 695 0022 021C     		mov	r2, r0
+ 696 0024 3B1C     		mov	r3, r7
+ 697 0026 0F33     		add	r3, r3, #15
+ 698 0028 1A70     		strb	r2, [r3]
+ 181:.\I2C_Class.c ****         // Expecting to receive MSB first.
+ 182:.\I2C_Class.c ****     *temp = ((dataget[0] << 7) | dataget[1]);   
+ 699              		.loc 1 182 0
+ 700 002a 3B1C     		mov	r3, r7
+ 701 002c 0833     		add	r3, r3, #8
+ 702 002e 1B78     		ldrb	r3, [r3]
+ 703 0030 DA01     		lsl	r2, r3, #7
+ 704 0032 3B1C     		mov	r3, r7
+ 705 0034 0833     		add	r3, r3, #8
+ 706 0036 5B78     		ldrb	r3, [r3, #1]
+ 707 0038 1A43     		orr	r2, r3
+ 708 003a 7B68     		ldr	r3, [r7, #4]
+ 709 003c 1A60     		str	r2, [r3]
+ 183:.\I2C_Class.c ****     *hum = ((dataget[2] << 7) | dataget[3]);
+ 710              		.loc 1 183 0
+ 711 003e 3B1C     		mov	r3, r7
+ 712 0040 0833     		add	r3, r3, #8
+ 713 0042 9B78     		ldrb	r3, [r3, #2]
+ 714 0044 DA01     		lsl	r2, r3, #7
+ 715 0046 3B1C     		mov	r3, r7
+ 716 0048 0833     		add	r3, r3, #8
+ 717 004a DB78     		ldrb	r3, [r3, #3]
+ 718 004c 1A43     		orr	r2, r3
+ 719 004e 3B68     		ldr	r3, [r7]
+ 720 0050 1A60     		str	r2, [r3]
+ 184:.\I2C_Class.c ****     
+ 185:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 721              		.loc 1 185 0
+ 722 0052 3B1C     		mov	r3, r7
+ 723 0054 0F33     		add	r3, r3, #15
+ 724 0056 1B78     		ldrb	r3, [r3]
+ 725 0058 002B     		cmp	r3, #0
+ 726 005a 01D1     		bne	.L39
+ 186:.\I2C_Class.c ****         return 0;   // No error 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 17
 
 
- 751 00c9 9C       		.byte	0x9c
- 752 00ca 07       		.uleb128 0x7
- 753 00cb 12000000 		.4byte	.LASF19
- 754 00cf 01       		.byte	0x1
- 755 00d0 1D       		.byte	0x1d
- 756 00d1 76000000 		.4byte	0x76
- 757 00d5 00000000 		.4byte	.LFB34
- 758 00d9 6C000000 		.4byte	.LFE34-.LFB34
- 759 00dd 01       		.uleb128 0x1
- 760 00de 9C       		.byte	0x9c
- 761 00df 0E010000 		.4byte	0x10e
- 762 00e3 08       		.uleb128 0x8
- 763 00e4 706F7300 		.ascii	"pos\000"
- 764 00e8 01       		.byte	0x1
- 765 00e9 1D       		.byte	0x1d
- 766 00ea 6B000000 		.4byte	0x6b
- 767 00ee 02       		.uleb128 0x2
- 768 00ef 91       		.byte	0x91
- 769 00f0 6F       		.sleb128 -17
- 770 00f1 09       		.uleb128 0x9
- 771 00f2 0A020000 		.4byte	.LASF17
- 772 00f6 01       		.byte	0x1
- 773 00f7 1E       		.byte	0x1e
- 774 00f8 6B000000 		.4byte	0x6b
- 775 00fc 02       		.uleb128 0x2
- 776 00fd 91       		.byte	0x91
- 777 00fe 77       		.sleb128 -9
- 778 00ff 09       		.uleb128 0x9
- 779 0100 C0010000 		.4byte	.LASF18
- 780 0104 01       		.byte	0x1
- 781 0105 1F       		.byte	0x1f
- 782 0106 6B000000 		.4byte	0x6b
- 783 010a 02       		.uleb128 0x2
- 784 010b 91       		.byte	0x91
- 785 010c 76       		.sleb128 -10
- 786 010d 00       		.byte	0
- 787 010e 07       		.uleb128 0x7
- 788 010f 2C020000 		.4byte	.LASF20
- 789 0113 01       		.byte	0x1
- 790 0114 3F       		.byte	0x3f
- 791 0115 76000000 		.4byte	0x76
- 792 0119 00000000 		.4byte	.LFB35
- 793 011d 6C000000 		.4byte	.LFE35-.LFB35
- 794 0121 01       		.uleb128 0x1
- 795 0122 9C       		.byte	0x9c
- 796 0123 52010000 		.4byte	0x152
- 797 0127 0A       		.uleb128 0xa
- 798 0128 05020000 		.4byte	.LASF21
- 799 012c 01       		.byte	0x1
- 800 012d 3F       		.byte	0x3f
- 801 012e 6B000000 		.4byte	0x6b
- 802 0132 02       		.uleb128 0x2
- 803 0133 91       		.byte	0x91
- 804 0134 6F       		.sleb128 -17
- 805 0135 09       		.uleb128 0x9
- 806 0136 FA010000 		.4byte	.LASF22
- 807 013a 01       		.byte	0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 18
+ 727              		.loc 1 186 0
+ 728 005c 0023     		mov	r3, #0
+ 729 005e 00E0     		b	.L41
+ 730              	.L39:
+ 187:.\I2C_Class.c ****     }
+ 188:.\I2C_Class.c ****     else {
+ 189:.\I2C_Class.c ****         return -1;
+ 731              		.loc 1 189 0
+ 732 0060 FF23     		mov	r3, #255
+ 733              	.L41:
+ 734 0062 5BB2     		sxtb	r3, r3
+ 190:.\I2C_Class.c ****     }
+ 191:.\I2C_Class.c **** }
+ 735              		.loc 1 191 0
+ 736 0064 181C     		mov	r0, r3
+ 737 0066 BD46     		mov	sp, r7
+ 738 0068 04B0     		add	sp, sp, #16
+ 739              		@ sp needed
+ 740 006a 80BD     		pop	{r7, pc}
+ 741              		.cfi_endproc
+ 742              	.LFE39:
+ 743              		.size	getTempAndHum, .-getTempAndHum
+ 744              		.section	.text.getLight,"ax",%progbits
+ 745              		.align	2
+ 746              		.global	getLight
+ 747              		.code	16
+ 748              		.thumb_func
+ 749              		.type	getLight, %function
+ 750              	getLight:
+ 751              	.LFB40:
+ 192:.\I2C_Class.c **** 
+ 193:.\I2C_Class.c **** int8 getLight(int32* light){
+ 752              		.loc 1 193 0
+ 753              		.cfi_startproc
+ 754 0000 80B5     		push	{r7, lr}
+ 755              		.cfi_def_cfa_offset 8
+ 756              		.cfi_offset 7, -8
+ 757              		.cfi_offset 14, -4
+ 758 0002 84B0     		sub	sp, sp, #16
+ 759              		.cfi_def_cfa_offset 24
+ 760 0004 00AF     		add	r7, sp, #0
+ 761              		.cfi_def_cfa_register 7
+ 762 0006 7860     		str	r0, [r7, #4]
+ 194:.\I2C_Class.c ****     uint8 dataget[2];
+ 195:.\I2C_Class.c ****     uint8 result = 0;
+ 763              		.loc 1 195 0
+ 764 0008 3B1C     		mov	r3, r7
+ 765 000a 0F33     		add	r3, r3, #15
+ 766 000c 0022     		mov	r2, #0
+ 767 000e 1A70     		strb	r2, [r3]
+ 196:.\I2C_Class.c ****     
+ 197:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_ADDRESS_MSB, (uint8*) dataget, 2, I2C_I2C_MODE_COMPL
+ 768              		.loc 1 197 0
+ 769 0010 3B1C     		mov	r3, r7
+ 770 0012 0C33     		add	r3, r3, #12
+ 771 0014 0520     		mov	r0, #5
+ 772 0016 191C     		mov	r1, r3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 18
 
 
- 808 013b 40       		.byte	0x40
- 809 013c 6B000000 		.4byte	0x6b
- 810 0140 02       		.uleb128 0x2
- 811 0141 91       		.byte	0x91
- 812 0142 77       		.sleb128 -9
- 813 0143 09       		.uleb128 0x9
- 814 0144 3E010000 		.4byte	.LASF23
- 815 0148 01       		.byte	0x1
- 816 0149 41       		.byte	0x41
- 817 014a 6B000000 		.4byte	0x6b
- 818 014e 02       		.uleb128 0x2
- 819 014f 91       		.byte	0x91
- 820 0150 76       		.sleb128 -10
- 821 0151 00       		.byte	0
- 822 0152 07       		.uleb128 0x7
- 823 0153 50010000 		.4byte	.LASF24
- 824 0157 01       		.byte	0x1
- 825 0158 52       		.byte	0x52
- 826 0159 76000000 		.4byte	0x76
- 827 015d 00000000 		.4byte	.LFB36
- 828 0161 62000000 		.4byte	.LFE36-.LFB36
- 829 0165 01       		.uleb128 0x1
- 830 0166 9C       		.byte	0x9c
- 831 0167 96010000 		.4byte	0x196
- 832 016b 0A       		.uleb128 0xa
- 833 016c 1D020000 		.4byte	.LASF25
- 834 0170 01       		.byte	0x1
- 835 0171 52       		.byte	0x52
- 836 0172 6B000000 		.4byte	0x6b
- 837 0176 02       		.uleb128 0x2
- 838 0177 91       		.byte	0x91
- 839 0178 6F       		.sleb128 -17
- 840 0179 09       		.uleb128 0x9
- 841 017a 76020000 		.4byte	.LASF26
- 842 017e 01       		.byte	0x1
- 843 017f 53       		.byte	0x53
- 844 0180 6B000000 		.4byte	0x6b
- 845 0184 02       		.uleb128 0x2
- 846 0185 91       		.byte	0x91
- 847 0186 77       		.sleb128 -9
- 848 0187 09       		.uleb128 0x9
- 849 0188 00000000 		.4byte	.LASF27
- 850 018c 01       		.byte	0x1
- 851 018d 54       		.byte	0x54
- 852 018e 6B000000 		.4byte	0x6b
- 853 0192 02       		.uleb128 0x2
- 854 0193 91       		.byte	0x91
- 855 0194 76       		.sleb128 -10
- 856 0195 00       		.byte	0
- 857 0196 07       		.uleb128 0x7
- 858 0197 93020000 		.4byte	.LASF28
- 859 019b 01       		.byte	0x1
- 860 019c 65       		.byte	0x65
- 861 019d 76000000 		.4byte	0x76
- 862 01a1 00000000 		.4byte	.LFB37
- 863 01a5 BC000000 		.4byte	.LFE37-.LFB37
- 864 01a9 01       		.uleb128 0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 19
+ 773 0018 0222     		mov	r2, #2
+ 774 001a 0023     		mov	r3, #0
+ 775 001c FFF7FEFF 		bl	I2C_I2CMasterReadBuf
+ 776 0020 021C     		mov	r2, r0
+ 777 0022 3B1C     		mov	r3, r7
+ 778 0024 0F33     		add	r3, r3, #15
+ 779 0026 1A70     		strb	r2, [r3]
+ 198:.\I2C_Class.c ****         // Expecting to receive MSB first.
+ 199:.\I2C_Class.c ****         *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
+ 780              		.loc 1 199 0
+ 781 0028 3B1C     		mov	r3, r7
+ 782 002a 0C33     		add	r3, r3, #12
+ 783 002c 1B78     		ldrb	r3, [r3]
+ 784 002e DA01     		lsl	r2, r3, #7
+ 785 0030 7B68     		ldr	r3, [r7, #4]
+ 786 0032 1A60     		str	r2, [r3]
+ 200:.\I2C_Class.c ****         *light = *light | dataget[1];   
+ 787              		.loc 1 200 0
+ 788 0034 7B68     		ldr	r3, [r7, #4]
+ 789 0036 1A68     		ldr	r2, [r3]
+ 790 0038 3B1C     		mov	r3, r7
+ 791 003a 0C33     		add	r3, r3, #12
+ 792 003c 5B78     		ldrb	r3, [r3, #1]
+ 793 003e 1A43     		orr	r2, r3
+ 794 0040 7B68     		ldr	r3, [r7, #4]
+ 795 0042 1A60     		str	r2, [r3]
+ 201:.\I2C_Class.c ****         
+ 202:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 796              		.loc 1 202 0
+ 797 0044 3B1C     		mov	r3, r7
+ 798 0046 0F33     		add	r3, r3, #15
+ 799 0048 1B78     		ldrb	r3, [r3]
+ 800 004a 002B     		cmp	r3, #0
+ 801 004c 01D1     		bne	.L43
+ 203:.\I2C_Class.c ****         return 0;   // No error 
+ 802              		.loc 1 203 0
+ 803 004e 0023     		mov	r3, #0
+ 804 0050 00E0     		b	.L45
+ 805              	.L43:
+ 204:.\I2C_Class.c **** 	}
+ 205:.\I2C_Class.c ****     else {
+ 206:.\I2C_Class.c ****         return -1;
+ 806              		.loc 1 206 0
+ 807 0052 FF23     		mov	r3, #255
+ 808              	.L45:
+ 809 0054 5BB2     		sxtb	r3, r3
+ 207:.\I2C_Class.c ****     }
+ 208:.\I2C_Class.c **** }
+ 810              		.loc 1 208 0
+ 811 0056 181C     		mov	r0, r3
+ 812 0058 BD46     		mov	sp, r7
+ 813 005a 04B0     		add	sp, sp, #16
+ 814              		@ sp needed
+ 815 005c 80BD     		pop	{r7, pc}
+ 816              		.cfi_endproc
+ 817              	.LFE40:
+ 818              		.size	getLight, .-getLight
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 19
 
 
- 865 01aa 9C       		.byte	0x9c
- 866 01ab DA010000 		.4byte	0x1da
- 867 01af 0A       		.uleb128 0xa
- 868 01b0 4A020000 		.4byte	.LASF29
- 869 01b4 01       		.byte	0x1
- 870 01b5 65       		.byte	0x65
- 871 01b6 6B000000 		.4byte	0x6b
- 872 01ba 02       		.uleb128 0x2
- 873 01bb 91       		.byte	0x91
- 874 01bc 6F       		.sleb128 -17
- 875 01bd 0A       		.uleb128 0xa
- 876 01be 4A010000 		.4byte	.LASF30
- 877 01c2 01       		.byte	0x1
- 878 01c3 65       		.byte	0x65
- 879 01c4 6B000000 		.4byte	0x6b
- 880 01c8 02       		.uleb128 0x2
- 881 01c9 91       		.byte	0x91
- 882 01ca 6E       		.sleb128 -18
- 883 01cb 09       		.uleb128 0x9
- 884 01cc 69000000 		.4byte	.LASF31
- 885 01d0 01       		.byte	0x1
- 886 01d1 66       		.byte	0x66
- 887 01d2 6B000000 		.4byte	0x6b
- 888 01d6 02       		.uleb128 0x2
- 889 01d7 91       		.byte	0x91
- 890 01d8 77       		.sleb128 -9
- 891 01d9 00       		.byte	0
- 892 01da 07       		.uleb128 0x7
- 893 01db 7A010000 		.4byte	.LASF32
- 894 01df 01       		.byte	0x1
- 895 01e0 7C       		.byte	0x7c
- 896 01e1 76000000 		.4byte	0x76
- 897 01e5 00000000 		.4byte	.LFB38
- 898 01e9 98000000 		.4byte	.LFE38-.LFB38
- 899 01ed 01       		.uleb128 0x1
- 900 01ee 9C       		.byte	0x9c
- 901 01ef 3A020000 		.4byte	0x23a
- 902 01f3 0A       		.uleb128 0xa
- 903 01f4 81020000 		.4byte	.LASF33
- 904 01f8 01       		.byte	0x1
- 905 01f9 7C       		.byte	0x7c
- 906 01fa B3000000 		.4byte	0xb3
- 907 01fe 02       		.uleb128 0x2
- 908 01ff 91       		.byte	0x91
- 909 0200 6C       		.sleb128 -20
- 910 0201 0A       		.uleb128 0xa
- 911 0202 05020000 		.4byte	.LASF21
- 912 0206 01       		.byte	0x1
- 913 0207 7C       		.byte	0x7c
- 914 0208 B3000000 		.4byte	0xb3
- 915 020c 02       		.uleb128 0x2
- 916 020d 91       		.byte	0x91
- 917 020e 68       		.sleb128 -24
- 918 020f 0A       		.uleb128 0xa
- 919 0210 39010000 		.4byte	.LASF34
- 920 0214 01       		.byte	0x1
- 921 0215 7C       		.byte	0x7c
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 20
+ 819 005e C046     		.section	.text.getSoilHum,"ax",%progbits
+ 820              		.align	2
+ 821              		.global	getSoilHum
+ 822              		.code	16
+ 823              		.thumb_func
+ 824              		.type	getSoilHum, %function
+ 825              	getSoilHum:
+ 826              	.LFB41:
+ 209:.\I2C_Class.c **** 
+ 210:.\I2C_Class.c **** int8 getSoilHum(uint8 index, int16* soilHum){   // TODO: THIS HAS NOT BEEN IMPLEMENTED.
+ 827              		.loc 1 210 0
+ 828              		.cfi_startproc
+ 829 0000 80B5     		push	{r7, lr}
+ 830              		.cfi_def_cfa_offset 8
+ 831              		.cfi_offset 7, -8
+ 832              		.cfi_offset 14, -4
+ 833 0002 84B0     		sub	sp, sp, #16
+ 834              		.cfi_def_cfa_offset 24
+ 835 0004 00AF     		add	r7, sp, #0
+ 836              		.cfi_def_cfa_register 7
+ 837 0006 021C     		mov	r2, r0
+ 838 0008 3960     		str	r1, [r7]
+ 839 000a FB1D     		add	r3, r7, #7
+ 840 000c 1A70     		strb	r2, [r3]
+ 211:.\I2C_Class.c ****     index = 0;
+ 841              		.loc 1 211 0
+ 842 000e 3B1C     		mov	r3, r7
+ 843 0010 0F33     		add	r3, r3, #15
+ 844 0012 0022     		mov	r2, #0
+ 845 0014 1A70     		strb	r2, [r3]
+ 212:.\I2C_Class.c ****     *soilHum = 0;
+ 846              		.loc 1 212 0
+ 847 0016 3B68     		ldr	r3, [r7]
+ 848 0018 0022     		mov	r2, #0
+ 849 001a 1A80     		strh	r2, [r3]
+ 213:.\I2C_Class.c ****     return 0;
+ 850              		.loc 1 213 0
+ 851 001c 0023     		mov	r3, #0
+ 852 001e 5BB2     		sxtb	r3, r3
+ 214:.\I2C_Class.c **** }
+ 853              		.loc 1 214 0
+ 854 0020 181C     		mov	r0, r3
+ 855 0022 BD46     		mov	sp, r7
+ 856 0024 04B0     		add	sp, sp, #16
+ 857              		@ sp needed
+ 858 0026 80BD     		pop	{r7, pc}
+ 859              		.cfi_endproc
+ 860              	.LFE41:
+ 861              		.size	getSoilHum, .-getSoilHum
+ 862              		.text
+ 863              	.Letext0:
+ 864              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 865              		.section	.debug_info,"",%progbits
+ 866              	.Ldebug_info0:
+ 867 0000 BE030000 		.4byte	0x3be
+ 868 0004 0400     		.2byte	0x4
+ 869 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 20
 
 
- 922 0216 B3000000 		.4byte	0xb3
- 923 021a 02       		.uleb128 0x2
- 924 021b 91       		.byte	0x91
- 925 021c 64       		.sleb128 -28
- 926 021d 0A       		.uleb128 0xa
- 927 021e 5A020000 		.4byte	.LASF35
- 928 0222 01       		.byte	0x1
- 929 0223 7C       		.byte	0x7c
- 930 0224 B3000000 		.4byte	0xb3
- 931 0228 02       		.uleb128 0x2
- 932 0229 91       		.byte	0x91
- 933 022a 60       		.sleb128 -32
- 934 022b 09       		.uleb128 0x9
- 935 022c A0010000 		.4byte	.LASF36
- 936 0230 01       		.byte	0x1
- 937 0231 7D       		.byte	0x7d
- 938 0232 3A020000 		.4byte	0x23a
- 939 0236 02       		.uleb128 0x2
- 940 0237 91       		.byte	0x91
- 941 0238 74       		.sleb128 -12
- 942 0239 00       		.byte	0
- 943 023a 0B       		.uleb128 0xb
- 944 023b 6B000000 		.4byte	0x6b
- 945 023f 4A020000 		.4byte	0x24a
- 946 0243 0C       		.uleb128 0xc
- 947 0244 AC000000 		.4byte	0xac
- 948 0248 01       		.byte	0x1
- 949 0249 00       		.byte	0
- 950 024a 0D       		.uleb128 0xd
- 951 024b 92010000 		.4byte	.LASF37
- 952 024f 01       		.byte	0x1
- 953 0250 93       		.byte	0x93
- 954 0251 76000000 		.4byte	0x76
- 955 0255 00000000 		.4byte	.LFB39
- 956 0259 22000000 		.4byte	.LFE39-.LFB39
- 957 025d 01       		.uleb128 0x1
- 958 025e 9C       		.byte	0x9c
- 959 025f 80020000 		.4byte	0x280
- 960 0263 0A       		.uleb128 0xa
- 961 0264 DE010000 		.4byte	.LASF38
- 962 0268 01       		.byte	0x1
- 963 0269 93       		.byte	0x93
- 964 026a 80020000 		.4byte	0x280
- 965 026e 02       		.uleb128 0x2
- 966 026f 91       		.byte	0x91
- 967 0270 74       		.sleb128 -12
- 968 0271 08       		.uleb128 0x8
- 969 0272 68756D00 		.ascii	"hum\000"
- 970 0276 01       		.byte	0x1
- 971 0277 93       		.byte	0x93
- 972 0278 80020000 		.4byte	0x280
- 973 027c 02       		.uleb128 0x2
- 974 027d 91       		.byte	0x91
- 975 027e 70       		.sleb128 -16
- 976 027f 00       		.byte	0
- 977 0280 05       		.uleb128 0x5
- 978 0281 04       		.byte	0x4
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 21
+ 870 000a 04       		.byte	0x4
+ 871 000b 01       		.uleb128 0x1
+ 872 000c A3000000 		.4byte	.LASF46
+ 873 0010 01       		.byte	0x1
+ 874 0011 76000000 		.4byte	.LASF47
+ 875 0015 1F000000 		.4byte	.LASF48
+ 876 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 877 001d 00000000 		.4byte	0
+ 878 0021 00000000 		.4byte	.Ldebug_line0
+ 879 0025 02       		.uleb128 0x2
+ 880 0026 01       		.byte	0x1
+ 881 0027 06       		.byte	0x6
+ 882 0028 8D010000 		.4byte	.LASF0
+ 883 002c 02       		.uleb128 0x2
+ 884 002d 01       		.byte	0x1
+ 885 002e 08       		.byte	0x8
+ 886 002f 1F010000 		.4byte	.LASF1
+ 887 0033 02       		.uleb128 0x2
+ 888 0034 02       		.byte	0x2
+ 889 0035 05       		.byte	0x5
+ 890 0036 6B020000 		.4byte	.LASF2
+ 891 003a 02       		.uleb128 0x2
+ 892 003b 02       		.byte	0x2
+ 893 003c 07       		.byte	0x7
+ 894 003d 84000000 		.4byte	.LASF3
+ 895 0041 02       		.uleb128 0x2
+ 896 0042 04       		.byte	0x4
+ 897 0043 05       		.byte	0x5
+ 898 0044 88020000 		.4byte	.LASF4
+ 899 0048 02       		.uleb128 0x2
+ 900 0049 04       		.byte	0x4
+ 901 004a 07       		.byte	0x7
+ 902 004b 55010000 		.4byte	.LASF5
+ 903 004f 02       		.uleb128 0x2
+ 904 0050 08       		.byte	0x8
+ 905 0051 05       		.byte	0x5
+ 906 0052 47020000 		.4byte	.LASF6
+ 907 0056 02       		.uleb128 0x2
+ 908 0057 08       		.byte	0x8
+ 909 0058 07       		.byte	0x7
+ 910 0059 EE010000 		.4byte	.LASF7
+ 911 005d 03       		.uleb128 0x3
+ 912 005e 04       		.byte	0x4
+ 913 005f 05       		.byte	0x5
+ 914 0060 696E7400 		.ascii	"int\000"
+ 915 0064 02       		.uleb128 0x2
+ 916 0065 04       		.byte	0x4
+ 917 0066 07       		.byte	0x7
+ 918 0067 CA010000 		.4byte	.LASF8
+ 919 006b 04       		.uleb128 0x4
+ 920 006c 97000000 		.4byte	.LASF9
+ 921 0070 02       		.byte	0x2
+ 922 0071 A1       		.byte	0xa1
+ 923 0072 2C000000 		.4byte	0x2c
+ 924 0076 04       		.uleb128 0x4
+ 925 0077 C5010000 		.4byte	.LASF10
+ 926 007b 02       		.byte	0x2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 21
 
 
- 979 0282 8C000000 		.4byte	0x8c
- 980 0286 0D       		.uleb128 0xd
- 981 0287 A4020000 		.4byte	.LASF39
- 982 028b 01       		.byte	0x1
- 983 028c 99       		.byte	0x99
- 984 028d 76000000 		.4byte	0x76
- 985 0291 00000000 		.4byte	.LFB40
- 986 0295 1A000000 		.4byte	.LFE40-.LFB40
- 987 0299 01       		.uleb128 0x1
- 988 029a 9C       		.byte	0x9c
- 989 029b AE020000 		.4byte	0x2ae
- 990 029f 0A       		.uleb128 0xa
- 991 02a0 0C000000 		.4byte	.LASF40
- 992 02a4 01       		.byte	0x1
- 993 02a5 99       		.byte	0x99
- 994 02a6 80020000 		.4byte	0x280
- 995 02aa 02       		.uleb128 0x2
- 996 02ab 91       		.byte	0x91
- 997 02ac 74       		.sleb128 -12
- 998 02ad 00       		.byte	0
- 999 02ae 0D       		.uleb128 0xd
- 1000 02af 88020000 		.4byte	.LASF41
- 1001 02b3 01       		.byte	0x1
- 1002 02b4 9E       		.byte	0x9e
- 1003 02b5 76000000 		.4byte	0x76
- 1004 02b9 00000000 		.4byte	.LFB41
- 1005 02bd 28000000 		.4byte	.LFE41-.LFB41
- 1006 02c1 01       		.uleb128 0x1
- 1007 02c2 9C       		.byte	0x9c
- 1008 02c3 E4020000 		.4byte	0x2e4
- 1009 02c7 0A       		.uleb128 0xa
- 1010 02c8 4A020000 		.4byte	.LASF29
- 1011 02cc 01       		.byte	0x1
- 1012 02cd 9E       		.byte	0x9e
- 1013 02ce 6B000000 		.4byte	0x6b
- 1014 02d2 02       		.uleb128 0x2
- 1015 02d3 91       		.byte	0x91
- 1016 02d4 6F       		.sleb128 -17
- 1017 02d5 0A       		.uleb128 0xa
- 1018 02d6 65020000 		.4byte	.LASF42
- 1019 02da 01       		.byte	0x1
- 1020 02db 9E       		.byte	0x9e
- 1021 02dc E4020000 		.4byte	0x2e4
- 1022 02e0 02       		.uleb128 0x2
- 1023 02e1 91       		.byte	0x91
- 1024 02e2 68       		.sleb128 -24
- 1025 02e3 00       		.byte	0
- 1026 02e4 05       		.uleb128 0x5
- 1027 02e5 04       		.byte	0x4
- 1028 02e6 81000000 		.4byte	0x81
- 1029 02ea 0E       		.uleb128 0xe
- 1030 02eb AF010000 		.4byte	.LASF47
- 1031 02ef 01       		.byte	0x1
- 1032 02f0 14       		.byte	0x14
- 1033 02f1 6B000000 		.4byte	0x6b
- 1034 02f5 05       		.uleb128 0x5
- 1035 02f6 03       		.byte	0x3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 22
+ 927 007c A4       		.byte	0xa4
+ 928 007d 25000000 		.4byte	0x25
+ 929 0081 04       		.uleb128 0x4
+ 930 0082 4F010000 		.4byte	.LASF11
+ 931 0086 02       		.byte	0x2
+ 932 0087 A5       		.byte	0xa5
+ 933 0088 33000000 		.4byte	0x33
+ 934 008c 04       		.uleb128 0x4
+ 935 008d 79010000 		.4byte	.LASF12
+ 936 0091 02       		.byte	0x2
+ 937 0092 A6       		.byte	0xa6
+ 938 0093 41000000 		.4byte	0x41
+ 939 0097 02       		.uleb128 0x2
+ 940 0098 04       		.byte	0x4
+ 941 0099 04       		.byte	0x4
+ 942 009a 9D000000 		.4byte	.LASF13
+ 943 009e 02       		.uleb128 0x2
+ 944 009f 08       		.byte	0x8
+ 945 00a0 04       		.byte	0x4
+ 946 00a1 A1010000 		.4byte	.LASF14
+ 947 00a5 02       		.uleb128 0x2
+ 948 00a6 01       		.byte	0x1
+ 949 00a7 08       		.byte	0x8
+ 950 00a8 55020000 		.4byte	.LASF15
+ 951 00ac 02       		.uleb128 0x2
+ 952 00ad 04       		.byte	0x4
+ 953 00ae 07       		.byte	0x7
+ 954 00af 33020000 		.4byte	.LASF16
+ 955 00b3 05       		.uleb128 0x5
+ 956 00b4 04       		.byte	0x4
+ 957 00b5 6B000000 		.4byte	0x6b
+ 958 00b9 06       		.uleb128 0x6
+ 959 00ba 25020000 		.4byte	.LASF49
+ 960 00be 01       		.byte	0x1
+ 961 00bf 1C       		.byte	0x1c
+ 962 00c0 00000000 		.4byte	.LFB33
+ 963 00c4 10000000 		.4byte	.LFE33-.LFB33
+ 964 00c8 01       		.uleb128 0x1
+ 965 00c9 9C       		.byte	0x9c
+ 966 00ca 07       		.uleb128 0x7
+ 967 00cb 12000000 		.4byte	.LASF21
+ 968 00cf 01       		.byte	0x1
+ 969 00d0 21       		.byte	0x21
+ 970 00d1 76000000 		.4byte	0x76
+ 971 00d5 00000000 		.4byte	.LFB34
+ 972 00d9 96000000 		.4byte	.LFE34-.LFB34
+ 973 00dd 01       		.uleb128 0x1
+ 974 00de 9C       		.byte	0x9c
+ 975 00df 2A010000 		.4byte	0x12a
+ 976 00e3 08       		.uleb128 0x8
+ 977 00e4 706F7300 		.ascii	"pos\000"
+ 978 00e8 01       		.byte	0x1
+ 979 00e9 21       		.byte	0x21
+ 980 00ea 6B000000 		.4byte	0x6b
+ 981 00ee 02       		.uleb128 0x2
+ 982 00ef 91       		.byte	0x91
+ 983 00f0 67       		.sleb128 -25
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 22
 
 
- 1036 02f7 00000000 		.4byte	irrigationStatus
- 1037 02fb 00       		.byte	0
- 1038              		.section	.debug_abbrev,"",%progbits
- 1039              	.Ldebug_abbrev0:
- 1040 0000 01       		.uleb128 0x1
- 1041 0001 11       		.uleb128 0x11
- 1042 0002 01       		.byte	0x1
- 1043 0003 25       		.uleb128 0x25
- 1044 0004 0E       		.uleb128 0xe
- 1045 0005 13       		.uleb128 0x13
- 1046 0006 0B       		.uleb128 0xb
- 1047 0007 03       		.uleb128 0x3
- 1048 0008 0E       		.uleb128 0xe
- 1049 0009 1B       		.uleb128 0x1b
- 1050 000a 0E       		.uleb128 0xe
- 1051 000b 55       		.uleb128 0x55
- 1052 000c 17       		.uleb128 0x17
- 1053 000d 11       		.uleb128 0x11
- 1054 000e 01       		.uleb128 0x1
- 1055 000f 10       		.uleb128 0x10
- 1056 0010 17       		.uleb128 0x17
- 1057 0011 00       		.byte	0
- 1058 0012 00       		.byte	0
- 1059 0013 02       		.uleb128 0x2
- 1060 0014 24       		.uleb128 0x24
- 1061 0015 00       		.byte	0
- 1062 0016 0B       		.uleb128 0xb
- 1063 0017 0B       		.uleb128 0xb
- 1064 0018 3E       		.uleb128 0x3e
- 1065 0019 0B       		.uleb128 0xb
- 1066 001a 03       		.uleb128 0x3
- 1067 001b 0E       		.uleb128 0xe
- 1068 001c 00       		.byte	0
- 1069 001d 00       		.byte	0
- 1070 001e 03       		.uleb128 0x3
- 1071 001f 24       		.uleb128 0x24
- 1072 0020 00       		.byte	0
- 1073 0021 0B       		.uleb128 0xb
- 1074 0022 0B       		.uleb128 0xb
- 1075 0023 3E       		.uleb128 0x3e
- 1076 0024 0B       		.uleb128 0xb
- 1077 0025 03       		.uleb128 0x3
- 1078 0026 08       		.uleb128 0x8
- 1079 0027 00       		.byte	0
- 1080 0028 00       		.byte	0
- 1081 0029 04       		.uleb128 0x4
- 1082 002a 16       		.uleb128 0x16
- 1083 002b 00       		.byte	0
- 1084 002c 03       		.uleb128 0x3
- 1085 002d 0E       		.uleb128 0xe
- 1086 002e 3A       		.uleb128 0x3a
- 1087 002f 0B       		.uleb128 0xb
- 1088 0030 3B       		.uleb128 0x3b
- 1089 0031 0B       		.uleb128 0xb
- 1090 0032 49       		.uleb128 0x49
- 1091 0033 13       		.uleb128 0x13
- 1092 0034 00       		.byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 23
+ 984 00f1 09       		.uleb128 0x9
+ 985 00f2 1A020000 		.4byte	.LASF17
+ 986 00f6 01       		.byte	0x1
+ 987 00f7 22       		.byte	0x22
+ 988 00f8 6B000000 		.4byte	0x6b
+ 989 00fc 02       		.uleb128 0x2
+ 990 00fd 91       		.byte	0x91
+ 991 00fe 6F       		.sleb128 -17
+ 992 00ff 09       		.uleb128 0x9
+ 993 0100 B9010000 		.4byte	.LASF18
+ 994 0104 01       		.byte	0x1
+ 995 0105 23       		.byte	0x23
+ 996 0106 6B000000 		.4byte	0x6b
+ 997 010a 02       		.uleb128 0x2
+ 998 010b 91       		.byte	0x91
+ 999 010c 6E       		.sleb128 -18
+ 1000 010d 09       		.uleb128 0x9
+ 1001 010e 05020000 		.4byte	.LASF19
+ 1002 0112 01       		.byte	0x1
+ 1003 0113 24       		.byte	0x24
+ 1004 0114 6B000000 		.4byte	0x6b
+ 1005 0118 02       		.uleb128 0x2
+ 1006 0119 91       		.byte	0x91
+ 1007 011a 77       		.sleb128 -9
+ 1008 011b 09       		.uleb128 0x9
+ 1009 011c 44010000 		.4byte	.LASF20
+ 1010 0120 01       		.byte	0x1
+ 1011 0121 25       		.byte	0x25
+ 1012 0122 B3000000 		.4byte	0xb3
+ 1013 0126 02       		.uleb128 0x2
+ 1014 0127 91       		.byte	0x91
+ 1015 0128 70       		.sleb128 -16
+ 1016 0129 00       		.byte	0
+ 1017 012a 07       		.uleb128 0x7
+ 1018 012b 3C020000 		.4byte	.LASF22
+ 1019 012f 01       		.byte	0x1
+ 1020 0130 3B       		.byte	0x3b
+ 1021 0131 76000000 		.4byte	0x76
+ 1022 0135 00000000 		.4byte	.LFB35
+ 1023 0139 96000000 		.4byte	.LFE35-.LFB35
+ 1024 013d 01       		.uleb128 0x1
+ 1025 013e 9C       		.byte	0x9c
+ 1026 013f 8A010000 		.4byte	0x18a
+ 1027 0143 0A       		.uleb128 0xa
+ 1028 0144 0C020000 		.4byte	.LASF23
+ 1029 0148 01       		.byte	0x1
+ 1030 0149 3B       		.byte	0x3b
+ 1031 014a 6B000000 		.4byte	0x6b
+ 1032 014e 02       		.uleb128 0x2
+ 1033 014f 91       		.byte	0x91
+ 1034 0150 67       		.sleb128 -25
+ 1035 0151 09       		.uleb128 0x9
+ 1036 0152 60020000 		.4byte	.LASF24
+ 1037 0156 01       		.byte	0x1
+ 1038 0157 3C       		.byte	0x3c
+ 1039 0158 6B000000 		.4byte	0x6b
+ 1040 015c 02       		.uleb128 0x2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 23
 
 
- 1093 0035 00       		.byte	0
- 1094 0036 05       		.uleb128 0x5
- 1095 0037 0F       		.uleb128 0xf
- 1096 0038 00       		.byte	0
- 1097 0039 0B       		.uleb128 0xb
- 1098 003a 0B       		.uleb128 0xb
- 1099 003b 49       		.uleb128 0x49
- 1100 003c 13       		.uleb128 0x13
- 1101 003d 00       		.byte	0
- 1102 003e 00       		.byte	0
- 1103 003f 06       		.uleb128 0x6
- 1104 0040 2E       		.uleb128 0x2e
- 1105 0041 00       		.byte	0
- 1106 0042 3F       		.uleb128 0x3f
- 1107 0043 19       		.uleb128 0x19
- 1108 0044 03       		.uleb128 0x3
- 1109 0045 0E       		.uleb128 0xe
- 1110 0046 3A       		.uleb128 0x3a
- 1111 0047 0B       		.uleb128 0xb
- 1112 0048 3B       		.uleb128 0x3b
- 1113 0049 0B       		.uleb128 0xb
- 1114 004a 27       		.uleb128 0x27
- 1115 004b 19       		.uleb128 0x19
- 1116 004c 11       		.uleb128 0x11
- 1117 004d 01       		.uleb128 0x1
- 1118 004e 12       		.uleb128 0x12
- 1119 004f 06       		.uleb128 0x6
- 1120 0050 40       		.uleb128 0x40
- 1121 0051 18       		.uleb128 0x18
- 1122 0052 9642     		.uleb128 0x2116
- 1123 0054 19       		.uleb128 0x19
- 1124 0055 00       		.byte	0
- 1125 0056 00       		.byte	0
- 1126 0057 07       		.uleb128 0x7
- 1127 0058 2E       		.uleb128 0x2e
- 1128 0059 01       		.byte	0x1
- 1129 005a 3F       		.uleb128 0x3f
- 1130 005b 19       		.uleb128 0x19
- 1131 005c 03       		.uleb128 0x3
- 1132 005d 0E       		.uleb128 0xe
- 1133 005e 3A       		.uleb128 0x3a
- 1134 005f 0B       		.uleb128 0xb
- 1135 0060 3B       		.uleb128 0x3b
- 1136 0061 0B       		.uleb128 0xb
- 1137 0062 27       		.uleb128 0x27
- 1138 0063 19       		.uleb128 0x19
- 1139 0064 49       		.uleb128 0x49
- 1140 0065 13       		.uleb128 0x13
- 1141 0066 11       		.uleb128 0x11
- 1142 0067 01       		.uleb128 0x1
- 1143 0068 12       		.uleb128 0x12
- 1144 0069 06       		.uleb128 0x6
- 1145 006a 40       		.uleb128 0x40
- 1146 006b 18       		.uleb128 0x18
- 1147 006c 9642     		.uleb128 0x2116
- 1148 006e 19       		.uleb128 0x19
- 1149 006f 01       		.uleb128 0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 24
+ 1041 015d 91       		.byte	0x91
+ 1042 015e 6F       		.sleb128 -17
+ 1043 015f 09       		.uleb128 0x9
+ 1044 0160 32010000 		.4byte	.LASF25
+ 1045 0164 01       		.byte	0x1
+ 1046 0165 3D       		.byte	0x3d
+ 1047 0166 6B000000 		.4byte	0x6b
+ 1048 016a 02       		.uleb128 0x2
+ 1049 016b 91       		.byte	0x91
+ 1050 016c 6E       		.sleb128 -18
+ 1051 016d 09       		.uleb128 0x9
+ 1052 016e 05020000 		.4byte	.LASF19
+ 1053 0172 01       		.byte	0x1
+ 1054 0173 3E       		.byte	0x3e
+ 1055 0174 6B000000 		.4byte	0x6b
+ 1056 0178 02       		.uleb128 0x2
+ 1057 0179 91       		.byte	0x91
+ 1058 017a 77       		.sleb128 -9
+ 1059 017b 09       		.uleb128 0x9
+ 1060 017c 11020000 		.4byte	.LASF26
+ 1061 0180 01       		.byte	0x1
+ 1062 0181 3F       		.byte	0x3f
+ 1063 0182 B3000000 		.4byte	0xb3
+ 1064 0186 02       		.uleb128 0x2
+ 1065 0187 91       		.byte	0x91
+ 1066 0188 70       		.sleb128 -16
+ 1067 0189 00       		.byte	0
+ 1068 018a 07       		.uleb128 0x7
+ 1069 018b DC010000 		.4byte	.LASF27
+ 1070 018f 01       		.byte	0x1
+ 1071 0190 55       		.byte	0x55
+ 1072 0191 76000000 		.4byte	0x76
+ 1073 0195 00000000 		.4byte	.LFB36
+ 1074 0199 96000000 		.4byte	.LFE36-.LFB36
+ 1075 019d 01       		.uleb128 0x1
+ 1076 019e 9C       		.byte	0x9c
+ 1077 019f EA010000 		.4byte	0x1ea
+ 1078 01a3 0A       		.uleb128 0xa
+ 1079 01a4 2D020000 		.4byte	.LASF28
+ 1080 01a8 01       		.byte	0x1
+ 1081 01a9 55       		.byte	0x55
+ 1082 01aa 6B000000 		.4byte	0x6b
+ 1083 01ae 02       		.uleb128 0x2
+ 1084 01af 91       		.byte	0x91
+ 1085 01b0 67       		.sleb128 -25
+ 1086 01b1 09       		.uleb128 0x9
+ 1087 01b2 91020000 		.4byte	.LASF29
+ 1088 01b6 01       		.byte	0x1
+ 1089 01b7 56       		.byte	0x56
+ 1090 01b8 6B000000 		.4byte	0x6b
+ 1091 01bc 02       		.uleb128 0x2
+ 1092 01bd 91       		.byte	0x91
+ 1093 01be 6F       		.sleb128 -17
+ 1094 01bf 09       		.uleb128 0x9
+ 1095 01c0 00000000 		.4byte	.LASF30
+ 1096 01c4 01       		.byte	0x1
+ 1097 01c5 57       		.byte	0x57
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 24
 
 
- 1150 0070 13       		.uleb128 0x13
- 1151 0071 00       		.byte	0
- 1152 0072 00       		.byte	0
- 1153 0073 08       		.uleb128 0x8
- 1154 0074 05       		.uleb128 0x5
- 1155 0075 00       		.byte	0
- 1156 0076 03       		.uleb128 0x3
- 1157 0077 08       		.uleb128 0x8
- 1158 0078 3A       		.uleb128 0x3a
- 1159 0079 0B       		.uleb128 0xb
- 1160 007a 3B       		.uleb128 0x3b
- 1161 007b 0B       		.uleb128 0xb
- 1162 007c 49       		.uleb128 0x49
- 1163 007d 13       		.uleb128 0x13
- 1164 007e 02       		.uleb128 0x2
- 1165 007f 18       		.uleb128 0x18
- 1166 0080 00       		.byte	0
- 1167 0081 00       		.byte	0
- 1168 0082 09       		.uleb128 0x9
- 1169 0083 34       		.uleb128 0x34
- 1170 0084 00       		.byte	0
- 1171 0085 03       		.uleb128 0x3
- 1172 0086 0E       		.uleb128 0xe
- 1173 0087 3A       		.uleb128 0x3a
- 1174 0088 0B       		.uleb128 0xb
- 1175 0089 3B       		.uleb128 0x3b
- 1176 008a 0B       		.uleb128 0xb
- 1177 008b 49       		.uleb128 0x49
- 1178 008c 13       		.uleb128 0x13
- 1179 008d 02       		.uleb128 0x2
- 1180 008e 18       		.uleb128 0x18
- 1181 008f 00       		.byte	0
- 1182 0090 00       		.byte	0
- 1183 0091 0A       		.uleb128 0xa
- 1184 0092 05       		.uleb128 0x5
- 1185 0093 00       		.byte	0
- 1186 0094 03       		.uleb128 0x3
- 1187 0095 0E       		.uleb128 0xe
- 1188 0096 3A       		.uleb128 0x3a
- 1189 0097 0B       		.uleb128 0xb
- 1190 0098 3B       		.uleb128 0x3b
- 1191 0099 0B       		.uleb128 0xb
- 1192 009a 49       		.uleb128 0x49
- 1193 009b 13       		.uleb128 0x13
- 1194 009c 02       		.uleb128 0x2
- 1195 009d 18       		.uleb128 0x18
- 1196 009e 00       		.byte	0
- 1197 009f 00       		.byte	0
- 1198 00a0 0B       		.uleb128 0xb
- 1199 00a1 01       		.uleb128 0x1
- 1200 00a2 01       		.byte	0x1
- 1201 00a3 49       		.uleb128 0x49
- 1202 00a4 13       		.uleb128 0x13
- 1203 00a5 01       		.uleb128 0x1
- 1204 00a6 13       		.uleb128 0x13
- 1205 00a7 00       		.byte	0
- 1206 00a8 00       		.byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 25
+ 1098 01c6 6B000000 		.4byte	0x6b
+ 1099 01ca 02       		.uleb128 0x2
+ 1100 01cb 91       		.byte	0x91
+ 1101 01cc 6E       		.sleb128 -18
+ 1102 01cd 09       		.uleb128 0x9
+ 1103 01ce 05020000 		.4byte	.LASF19
+ 1104 01d2 01       		.byte	0x1
+ 1105 01d3 58       		.byte	0x58
+ 1106 01d4 6B000000 		.4byte	0x6b
+ 1107 01d8 02       		.uleb128 0x2
+ 1108 01d9 91       		.byte	0x91
+ 1109 01da 77       		.sleb128 -9
+ 1110 01db 09       		.uleb128 0x9
+ 1111 01dc 2D010000 		.4byte	.LASF31
+ 1112 01e0 01       		.byte	0x1
+ 1113 01e1 59       		.byte	0x59
+ 1114 01e2 B3000000 		.4byte	0xb3
+ 1115 01e6 02       		.uleb128 0x2
+ 1116 01e7 91       		.byte	0x91
+ 1117 01e8 70       		.sleb128 -16
+ 1118 01e9 00       		.byte	0
+ 1119 01ea 07       		.uleb128 0x7
+ 1120 01eb AE020000 		.4byte	.LASF32
+ 1121 01ef 01       		.byte	0x1
+ 1122 01f0 6F       		.byte	0x6f
+ 1123 01f1 76000000 		.4byte	0x76
+ 1124 01f5 00000000 		.4byte	.LFB37
+ 1125 01f9 E4000000 		.4byte	.LFE37-.LFB37
+ 1126 01fd 01       		.uleb128 0x1
+ 1127 01fe 9C       		.byte	0x9c
+ 1128 01ff 4A020000 		.4byte	0x24a
+ 1129 0203 0A       		.uleb128 0xa
+ 1130 0204 5A020000 		.4byte	.LASF33
+ 1131 0208 01       		.byte	0x1
+ 1132 0209 6F       		.byte	0x6f
+ 1133 020a 6B000000 		.4byte	0x6b
+ 1134 020e 02       		.uleb128 0x2
+ 1135 020f 91       		.byte	0x91
+ 1136 0210 6F       		.sleb128 -17
+ 1137 0211 0A       		.uleb128 0xa
+ 1138 0212 3E010000 		.4byte	.LASF34
+ 1139 0216 01       		.byte	0x1
+ 1140 0217 6F       		.byte	0x6f
+ 1141 0218 6B000000 		.4byte	0x6b
+ 1142 021c 02       		.uleb128 0x2
+ 1143 021d 91       		.byte	0x91
+ 1144 021e 6E       		.sleb128 -18
+ 1145 021f 09       		.uleb128 0x9
+ 1146 0220 69000000 		.4byte	.LASF35
+ 1147 0224 01       		.byte	0x1
+ 1148 0225 70       		.byte	0x70
+ 1149 0226 6B000000 		.4byte	0x6b
+ 1150 022a 02       		.uleb128 0x2
+ 1151 022b 91       		.byte	0x91
+ 1152 022c 72       		.sleb128 -14
+ 1153 022d 09       		.uleb128 0x9
+ 1154 022e 75020000 		.4byte	.LASF36
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 25
 
 
- 1207 00a9 0C       		.uleb128 0xc
- 1208 00aa 21       		.uleb128 0x21
- 1209 00ab 00       		.byte	0
- 1210 00ac 49       		.uleb128 0x49
- 1211 00ad 13       		.uleb128 0x13
- 1212 00ae 2F       		.uleb128 0x2f
- 1213 00af 0B       		.uleb128 0xb
- 1214 00b0 00       		.byte	0
- 1215 00b1 00       		.byte	0
- 1216 00b2 0D       		.uleb128 0xd
- 1217 00b3 2E       		.uleb128 0x2e
- 1218 00b4 01       		.byte	0x1
- 1219 00b5 3F       		.uleb128 0x3f
- 1220 00b6 19       		.uleb128 0x19
- 1221 00b7 03       		.uleb128 0x3
- 1222 00b8 0E       		.uleb128 0xe
- 1223 00b9 3A       		.uleb128 0x3a
- 1224 00ba 0B       		.uleb128 0xb
- 1225 00bb 3B       		.uleb128 0x3b
- 1226 00bc 0B       		.uleb128 0xb
- 1227 00bd 27       		.uleb128 0x27
- 1228 00be 19       		.uleb128 0x19
- 1229 00bf 49       		.uleb128 0x49
- 1230 00c0 13       		.uleb128 0x13
- 1231 00c1 11       		.uleb128 0x11
- 1232 00c2 01       		.uleb128 0x1
- 1233 00c3 12       		.uleb128 0x12
- 1234 00c4 06       		.uleb128 0x6
- 1235 00c5 40       		.uleb128 0x40
- 1236 00c6 18       		.uleb128 0x18
- 1237 00c7 9742     		.uleb128 0x2117
- 1238 00c9 19       		.uleb128 0x19
- 1239 00ca 01       		.uleb128 0x1
- 1240 00cb 13       		.uleb128 0x13
- 1241 00cc 00       		.byte	0
- 1242 00cd 00       		.byte	0
- 1243 00ce 0E       		.uleb128 0xe
- 1244 00cf 34       		.uleb128 0x34
- 1245 00d0 00       		.byte	0
- 1246 00d1 03       		.uleb128 0x3
- 1247 00d2 0E       		.uleb128 0xe
- 1248 00d3 3A       		.uleb128 0x3a
- 1249 00d4 0B       		.uleb128 0xb
- 1250 00d5 3B       		.uleb128 0x3b
- 1251 00d6 0B       		.uleb128 0xb
- 1252 00d7 49       		.uleb128 0x49
- 1253 00d8 13       		.uleb128 0x13
- 1254 00d9 3F       		.uleb128 0x3f
- 1255 00da 19       		.uleb128 0x19
- 1256 00db 02       		.uleb128 0x2
- 1257 00dc 18       		.uleb128 0x18
- 1258 00dd 00       		.byte	0
- 1259 00de 00       		.byte	0
- 1260 00df 00       		.byte	0
- 1261              		.section	.debug_aranges,"",%progbits
- 1262 0000 5C000000 		.4byte	0x5c
- 1263 0004 0200     		.2byte	0x2
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 26
+ 1155 0232 01       		.byte	0x1
+ 1156 0233 71       		.byte	0x71
+ 1157 0234 B3000000 		.4byte	0xb3
+ 1158 0238 02       		.uleb128 0x2
+ 1159 0239 91       		.byte	0x91
+ 1160 023a 74       		.sleb128 -12
+ 1161 023b 09       		.uleb128 0x9
+ 1162 023c 05020000 		.4byte	.LASF19
+ 1163 0240 01       		.byte	0x1
+ 1164 0241 73       		.byte	0x73
+ 1165 0242 6B000000 		.4byte	0x6b
+ 1166 0246 02       		.uleb128 0x2
+ 1167 0247 91       		.byte	0x91
+ 1168 0248 73       		.sleb128 -13
+ 1169 0249 00       		.byte	0
+ 1170 024a 07       		.uleb128 0x7
+ 1171 024b 67010000 		.4byte	.LASF37
+ 1172 024f 01       		.byte	0x1
+ 1173 0250 90       		.byte	0x90
+ 1174 0251 76000000 		.4byte	0x76
+ 1175 0255 00000000 		.4byte	.LFB38
+ 1176 0259 C4000000 		.4byte	.LFE38-.LFB38
+ 1177 025d 01       		.uleb128 0x1
+ 1178 025e 9C       		.byte	0x9c
+ 1179 025f B8020000 		.4byte	0x2b8
+ 1180 0263 0A       		.uleb128 0xa
+ 1181 0264 9C020000 		.4byte	.LASF38
+ 1182 0268 01       		.byte	0x1
+ 1183 0269 90       		.byte	0x90
+ 1184 026a B3000000 		.4byte	0xb3
+ 1185 026e 02       		.uleb128 0x2
+ 1186 026f 91       		.byte	0x91
+ 1187 0270 6C       		.sleb128 -20
+ 1188 0271 0A       		.uleb128 0xa
+ 1189 0272 0C020000 		.4byte	.LASF23
+ 1190 0276 01       		.byte	0x1
+ 1191 0277 90       		.byte	0x90
+ 1192 0278 B3000000 		.4byte	0xb3
+ 1193 027c 02       		.uleb128 0x2
+ 1194 027d 91       		.byte	0x91
+ 1195 027e 68       		.sleb128 -24
+ 1196 027f 0A       		.uleb128 0xa
+ 1197 0280 2D010000 		.4byte	.LASF31
+ 1198 0284 01       		.byte	0x1
+ 1199 0285 90       		.byte	0x90
+ 1200 0286 B3000000 		.4byte	0xb3
+ 1201 028a 02       		.uleb128 0x2
+ 1202 028b 91       		.byte	0x91
+ 1203 028c 64       		.sleb128 -28
+ 1204 028d 0A       		.uleb128 0xa
+ 1205 028e 75020000 		.4byte	.LASF36
+ 1206 0292 01       		.byte	0x1
+ 1207 0293 90       		.byte	0x90
+ 1208 0294 B3000000 		.4byte	0xb3
+ 1209 0298 02       		.uleb128 0x2
+ 1210 0299 91       		.byte	0x91
+ 1211 029a 60       		.sleb128 -32
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 26
 
 
- 1264 0006 00000000 		.4byte	.Ldebug_info0
- 1265 000a 04       		.byte	0x4
- 1266 000b 00       		.byte	0
- 1267 000c 0000     		.2byte	0
- 1268 000e 0000     		.2byte	0
- 1269 0010 00000000 		.4byte	.LFB33
- 1270 0014 10000000 		.4byte	.LFE33-.LFB33
- 1271 0018 00000000 		.4byte	.LFB34
- 1272 001c 6C000000 		.4byte	.LFE34-.LFB34
- 1273 0020 00000000 		.4byte	.LFB35
- 1274 0024 6C000000 		.4byte	.LFE35-.LFB35
- 1275 0028 00000000 		.4byte	.LFB36
- 1276 002c 62000000 		.4byte	.LFE36-.LFB36
- 1277 0030 00000000 		.4byte	.LFB37
- 1278 0034 BC000000 		.4byte	.LFE37-.LFB37
- 1279 0038 00000000 		.4byte	.LFB38
- 1280 003c 98000000 		.4byte	.LFE38-.LFB38
- 1281 0040 00000000 		.4byte	.LFB39
- 1282 0044 22000000 		.4byte	.LFE39-.LFB39
- 1283 0048 00000000 		.4byte	.LFB40
- 1284 004c 1A000000 		.4byte	.LFE40-.LFB40
- 1285 0050 00000000 		.4byte	.LFB41
- 1286 0054 28000000 		.4byte	.LFE41-.LFB41
- 1287 0058 00000000 		.4byte	0
- 1288 005c 00000000 		.4byte	0
- 1289              		.section	.debug_ranges,"",%progbits
- 1290              	.Ldebug_ranges0:
- 1291 0000 00000000 		.4byte	.LFB33
- 1292 0004 10000000 		.4byte	.LFE33
- 1293 0008 00000000 		.4byte	.LFB34
- 1294 000c 6C000000 		.4byte	.LFE34
- 1295 0010 00000000 		.4byte	.LFB35
- 1296 0014 6C000000 		.4byte	.LFE35
- 1297 0018 00000000 		.4byte	.LFB36
- 1298 001c 62000000 		.4byte	.LFE36
- 1299 0020 00000000 		.4byte	.LFB37
- 1300 0024 BC000000 		.4byte	.LFE37
- 1301 0028 00000000 		.4byte	.LFB38
- 1302 002c 98000000 		.4byte	.LFE38
- 1303 0030 00000000 		.4byte	.LFB39
- 1304 0034 22000000 		.4byte	.LFE39
- 1305 0038 00000000 		.4byte	.LFB40
- 1306 003c 1A000000 		.4byte	.LFE40
- 1307 0040 00000000 		.4byte	.LFB41
- 1308 0044 28000000 		.4byte	.LFE41
- 1309 0048 00000000 		.4byte	0
- 1310 004c 00000000 		.4byte	0
- 1311              		.section	.debug_line,"",%progbits
- 1312              	.Ldebug_line0:
- 1313 0000 1F010000 		.section	.debug_str,"MS",%progbits,1
- 1313      02004A00 
- 1313      00000201 
- 1313      FB0E0D00 
- 1313      01010101 
- 1314              	.LASF27:
- 1315 0000 7475726E 		.ascii	"turnOffVent\000"
- 1315      4F666656 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 27
+ 1212 029b 09       		.uleb128 0x9
+ 1213 029c 99010000 		.4byte	.LASF39
+ 1214 02a0 01       		.byte	0x1
+ 1215 02a1 91       		.byte	0x91
+ 1216 02a2 B8020000 		.4byte	0x2b8
+ 1217 02a6 02       		.uleb128 0x2
+ 1218 02a7 91       		.byte	0x91
+ 1219 02a8 74       		.sleb128 -12
+ 1220 02a9 09       		.uleb128 0x9
+ 1221 02aa 05020000 		.4byte	.LASF19
+ 1222 02ae 01       		.byte	0x1
+ 1223 02af 92       		.byte	0x92
+ 1224 02b0 6B000000 		.4byte	0x6b
+ 1225 02b4 02       		.uleb128 0x2
+ 1226 02b5 91       		.byte	0x91
+ 1227 02b6 77       		.sleb128 -9
+ 1228 02b7 00       		.byte	0
+ 1229 02b8 0B       		.uleb128 0xb
+ 1230 02b9 6B000000 		.4byte	0x6b
+ 1231 02bd C8020000 		.4byte	0x2c8
+ 1232 02c1 0C       		.uleb128 0xc
+ 1233 02c2 AC000000 		.4byte	0xac
+ 1234 02c6 01       		.byte	0x1
+ 1235 02c7 00       		.byte	0
+ 1236 02c8 07       		.uleb128 0x7
+ 1237 02c9 7F010000 		.4byte	.LASF40
+ 1238 02cd 01       		.byte	0x1
+ 1239 02ce B0       		.byte	0xb0
+ 1240 02cf 76000000 		.4byte	0x76
+ 1241 02d3 00000000 		.4byte	.LFB39
+ 1242 02d7 6C000000 		.4byte	.LFE39-.LFB39
+ 1243 02db 01       		.uleb128 0x1
+ 1244 02dc 9C       		.byte	0x9c
+ 1245 02dd 1A030000 		.4byte	0x31a
+ 1246 02e1 0A       		.uleb128 0xa
+ 1247 02e2 D7010000 		.4byte	.LASF41
+ 1248 02e6 01       		.byte	0x1
+ 1249 02e7 B0       		.byte	0xb0
+ 1250 02e8 1A030000 		.4byte	0x31a
+ 1251 02ec 02       		.uleb128 0x2
+ 1252 02ed 91       		.byte	0x91
+ 1253 02ee 6C       		.sleb128 -20
+ 1254 02ef 08       		.uleb128 0x8
+ 1255 02f0 68756D00 		.ascii	"hum\000"
+ 1256 02f4 01       		.byte	0x1
+ 1257 02f5 B0       		.byte	0xb0
+ 1258 02f6 1A030000 		.4byte	0x31a
+ 1259 02fa 02       		.uleb128 0x2
+ 1260 02fb 91       		.byte	0x91
+ 1261 02fc 68       		.sleb128 -24
+ 1262 02fd 09       		.uleb128 0x9
+ 1263 02fe 99010000 		.4byte	.LASF39
+ 1264 0302 01       		.byte	0x1
+ 1265 0303 B1       		.byte	0xb1
+ 1266 0304 20030000 		.4byte	0x320
+ 1267 0308 02       		.uleb128 0x2
+ 1268 0309 91       		.byte	0x91
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 27
 
 
- 1315      656E7400 
- 1316              	.LASF40:
- 1317 000c 6C696768 		.ascii	"light\000"
- 1317      7400
- 1318              	.LASF19:
- 1319 0012 61646A75 		.ascii	"adjustWindow\000"
- 1319      73745769 
- 1319      6E646F77 
- 1319      00
- 1320              	.LASF45:
- 1321 001f 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
- 1321      73657273 
- 1321      5C4C6173 
- 1321      73655C44 
- 1321      6F63756D 
- 1322 004c 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 1322      4D617374 
- 1322      65725C50 
- 1322      536F435F 
- 1322      4D617374 
- 1323              	.LASF31:
- 1324 0069 69727269 		.ascii	"irriTransfer\000"
- 1324      5472616E 
- 1324      73666572 
- 1324      00
- 1325              	.LASF44:
- 1326 0076 2E5C4932 		.ascii	".\\I2C_Class.c\000"
- 1326      435F436C 
- 1326      6173732E 
- 1326      6300
- 1327              	.LASF3:
- 1328 0084 73686F72 		.ascii	"short unsigned int\000"
- 1328      7420756E 
- 1328      7369676E 
- 1328      65642069 
- 1328      6E7400
- 1329              	.LASF9:
- 1330 0097 75696E74 		.ascii	"uint8\000"
- 1330      3800
- 1331              	.LASF13:
- 1332 009d 666C6F61 		.ascii	"float\000"
- 1332      7400
- 1333              	.LASF43:
- 1334 00a3 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1334      4320342E 
- 1334      382E3420 
- 1334      32303134 
- 1334      30353236 
- 1335 00d6 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1335      20726576 
- 1335      6973696F 
- 1335      6E203231 
- 1335      31333538 
- 1336 0109 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1336      66756E63 
- 1336      74696F6E 
- 1336      2D736563 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 28
+ 1269 030a 70       		.sleb128 -16
+ 1270 030b 09       		.uleb128 0x9
+ 1271 030c 05020000 		.4byte	.LASF19
+ 1272 0310 01       		.byte	0x1
+ 1273 0311 B2       		.byte	0xb2
+ 1274 0312 6B000000 		.4byte	0x6b
+ 1275 0316 02       		.uleb128 0x2
+ 1276 0317 91       		.byte	0x91
+ 1277 0318 77       		.sleb128 -9
+ 1278 0319 00       		.byte	0
+ 1279 031a 05       		.uleb128 0x5
+ 1280 031b 04       		.byte	0x4
+ 1281 031c 8C000000 		.4byte	0x8c
+ 1282 0320 0B       		.uleb128 0xb
+ 1283 0321 6B000000 		.4byte	0x6b
+ 1284 0325 30030000 		.4byte	0x330
+ 1285 0329 0C       		.uleb128 0xc
+ 1286 032a AC000000 		.4byte	0xac
+ 1287 032e 03       		.byte	0x3
+ 1288 032f 00       		.byte	0
+ 1289 0330 07       		.uleb128 0x7
+ 1290 0331 BF020000 		.4byte	.LASF42
+ 1291 0335 01       		.byte	0x1
+ 1292 0336 C1       		.byte	0xc1
+ 1293 0337 76000000 		.4byte	0x76
+ 1294 033b 00000000 		.4byte	.LFB40
+ 1295 033f 5E000000 		.4byte	.LFE40-.LFB40
+ 1296 0343 01       		.uleb128 0x1
+ 1297 0344 9C       		.byte	0x9c
+ 1298 0345 74030000 		.4byte	0x374
+ 1299 0349 0A       		.uleb128 0xa
+ 1300 034a 0C000000 		.4byte	.LASF43
+ 1301 034e 01       		.byte	0x1
+ 1302 034f C1       		.byte	0xc1
+ 1303 0350 1A030000 		.4byte	0x31a
+ 1304 0354 02       		.uleb128 0x2
+ 1305 0355 91       		.byte	0x91
+ 1306 0356 6C       		.sleb128 -20
+ 1307 0357 09       		.uleb128 0x9
+ 1308 0358 99010000 		.4byte	.LASF39
+ 1309 035c 01       		.byte	0x1
+ 1310 035d C2       		.byte	0xc2
+ 1311 035e B8020000 		.4byte	0x2b8
+ 1312 0362 02       		.uleb128 0x2
+ 1313 0363 91       		.byte	0x91
+ 1314 0364 74       		.sleb128 -12
+ 1315 0365 09       		.uleb128 0x9
+ 1316 0366 05020000 		.4byte	.LASF19
+ 1317 036a 01       		.byte	0x1
+ 1318 036b C3       		.byte	0xc3
+ 1319 036c 6B000000 		.4byte	0x6b
+ 1320 0370 02       		.uleb128 0x2
+ 1321 0371 91       		.byte	0x91
+ 1322 0372 77       		.sleb128 -9
+ 1323 0373 00       		.byte	0
+ 1324 0374 0D       		.uleb128 0xd
+ 1325 0375 A3020000 		.4byte	.LASF44
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 28
 
 
- 1336      74696F6E 
- 1337              	.LASF0:
- 1338 011f 7369676E 		.ascii	"signed char\000"
- 1338      65642063 
- 1338      68617200 
- 1339              	.LASF1:
- 1340 012b 756E7369 		.ascii	"unsigned char\000"
- 1340      676E6564 
- 1340      20636861 
- 1340      7200
- 1341              	.LASF34:
- 1342 0139 76656E74 		.ascii	"vent\000"
- 1342      00
- 1343              	.LASF23:
- 1344 013e 7475726E 		.ascii	"turnHeatOff\000"
- 1344      48656174 
- 1344      4F666600 
- 1345              	.LASF30:
- 1346 014a 6F6E4F66 		.ascii	"onOff\000"
- 1346      6600
- 1347              	.LASF24:
- 1348 0150 61646A75 		.ascii	"adjustVentilation\000"
- 1348      73745665 
- 1348      6E74696C 
- 1348      6174696F 
- 1348      6E00
- 1349              	.LASF11:
- 1350 0162 696E7431 		.ascii	"int16\000"
- 1350      3600
- 1351              	.LASF5:
- 1352 0168 6C6F6E67 		.ascii	"long unsigned int\000"
- 1352      20756E73 
- 1352      69676E65 
- 1352      6420696E 
- 1352      7400
- 1353              	.LASF32:
- 1354 017a 67657441 		.ascii	"getActuatorStatus\000"
- 1354      63747561 
- 1354      746F7253 
- 1354      74617475 
- 1354      7300
- 1355              	.LASF12:
- 1356 018c 696E7433 		.ascii	"int32\000"
- 1356      3200
- 1357              	.LASF37:
- 1358 0192 67657454 		.ascii	"getTempAndHum\000"
- 1358      656D7041 
- 1358      6E644875 
- 1358      6D00
- 1359              	.LASF36:
- 1360 01a0 64617461 		.ascii	"dataget\000"
- 1360      67657400 
- 1361              	.LASF14:
- 1362 01a8 646F7562 		.ascii	"double\000"
- 1362      6C6500
- 1363              	.LASF47:
- 1364 01af 69727269 		.ascii	"irrigationStatus\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 29
+ 1326 0379 01       		.byte	0x1
+ 1327 037a D2       		.byte	0xd2
+ 1328 037b 76000000 		.4byte	0x76
+ 1329 037f 00000000 		.4byte	.LFB41
+ 1330 0383 28000000 		.4byte	.LFE41-.LFB41
+ 1331 0387 01       		.uleb128 0x1
+ 1332 0388 9C       		.byte	0x9c
+ 1333 0389 AA030000 		.4byte	0x3aa
+ 1334 038d 0A       		.uleb128 0xa
+ 1335 038e 5A020000 		.4byte	.LASF33
+ 1336 0392 01       		.byte	0x1
+ 1337 0393 D2       		.byte	0xd2
+ 1338 0394 6B000000 		.4byte	0x6b
+ 1339 0398 02       		.uleb128 0x2
+ 1340 0399 91       		.byte	0x91
+ 1341 039a 6F       		.sleb128 -17
+ 1342 039b 0A       		.uleb128 0xa
+ 1343 039c 80020000 		.4byte	.LASF45
+ 1344 03a0 01       		.byte	0x1
+ 1345 03a1 D2       		.byte	0xd2
+ 1346 03a2 AA030000 		.4byte	0x3aa
+ 1347 03a6 02       		.uleb128 0x2
+ 1348 03a7 91       		.byte	0x91
+ 1349 03a8 68       		.sleb128 -24
+ 1350 03a9 00       		.byte	0
+ 1351 03aa 05       		.uleb128 0x5
+ 1352 03ab 04       		.byte	0x4
+ 1353 03ac 81000000 		.4byte	0x81
+ 1354 03b0 0E       		.uleb128 0xe
+ 1355 03b1 A8010000 		.4byte	.LASF50
+ 1356 03b5 01       		.byte	0x1
+ 1357 03b6 18       		.byte	0x18
+ 1358 03b7 6B000000 		.4byte	0x6b
+ 1359 03bb 05       		.uleb128 0x5
+ 1360 03bc 03       		.byte	0x3
+ 1361 03bd 00000000 		.4byte	irrigationStatus
+ 1362 03c1 00       		.byte	0
+ 1363              		.section	.debug_abbrev,"",%progbits
+ 1364              	.Ldebug_abbrev0:
+ 1365 0000 01       		.uleb128 0x1
+ 1366 0001 11       		.uleb128 0x11
+ 1367 0002 01       		.byte	0x1
+ 1368 0003 25       		.uleb128 0x25
+ 1369 0004 0E       		.uleb128 0xe
+ 1370 0005 13       		.uleb128 0x13
+ 1371 0006 0B       		.uleb128 0xb
+ 1372 0007 03       		.uleb128 0x3
+ 1373 0008 0E       		.uleb128 0xe
+ 1374 0009 1B       		.uleb128 0x1b
+ 1375 000a 0E       		.uleb128 0xe
+ 1376 000b 55       		.uleb128 0x55
+ 1377 000c 17       		.uleb128 0x17
+ 1378 000d 11       		.uleb128 0x11
+ 1379 000e 01       		.uleb128 0x1
+ 1380 000f 10       		.uleb128 0x10
+ 1381 0010 17       		.uleb128 0x17
+ 1382 0011 00       		.byte	0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 29
 
 
- 1364      67617469 
- 1364      6F6E5374 
- 1364      61747573 
- 1364      00
- 1365              	.LASF18:
- 1366 01c0 636C6F73 		.ascii	"closeWindow\000"
- 1366      6557696E 
- 1366      646F7700 
- 1367              	.LASF10:
- 1368 01cc 696E7438 		.ascii	"int8\000"
- 1368      00
- 1369              	.LASF8:
- 1370 01d1 756E7369 		.ascii	"unsigned int\000"
- 1370      676E6564 
- 1370      20696E74 
- 1370      00
- 1371              	.LASF38:
- 1372 01de 74656D70 		.ascii	"temp\000"
- 1372      00
- 1373              	.LASF7:
- 1374 01e3 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1374      206C6F6E 
- 1374      6720756E 
- 1374      7369676E 
- 1374      65642069 
- 1375              	.LASF22:
- 1376 01fa 7475726E 		.ascii	"turnHeatOn\000"
- 1376      48656174 
- 1376      4F6E00
- 1377              	.LASF21:
- 1378 0205 68656174 		.ascii	"heat\000"
- 1378      00
- 1379              	.LASF17:
- 1380 020a 6F70656E 		.ascii	"openWindow\000"
- 1380      57696E64 
- 1380      6F7700
- 1381              	.LASF46:
- 1382 0215 696E6974 		.ascii	"initI2C\000"
- 1382      49324300 
- 1383              	.LASF25:
- 1384 021d 73706565 		.ascii	"speed\000"
- 1384      6400
- 1385              	.LASF16:
- 1386 0223 73697A65 		.ascii	"sizetype\000"
- 1386      74797065 
- 1386      00
- 1387              	.LASF20:
- 1388 022c 61646A75 		.ascii	"adjustHeat\000"
- 1388      73744865 
- 1388      617400
- 1389              	.LASF6:
- 1390 0237 6C6F6E67 		.ascii	"long long int\000"
- 1390      206C6F6E 
- 1390      6720696E 
- 1390      7400
- 1391              	.LASF15:
- 1392 0245 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccJhYag6.s 			page 30
+ 1383 0012 00       		.byte	0
+ 1384 0013 02       		.uleb128 0x2
+ 1385 0014 24       		.uleb128 0x24
+ 1386 0015 00       		.byte	0
+ 1387 0016 0B       		.uleb128 0xb
+ 1388 0017 0B       		.uleb128 0xb
+ 1389 0018 3E       		.uleb128 0x3e
+ 1390 0019 0B       		.uleb128 0xb
+ 1391 001a 03       		.uleb128 0x3
+ 1392 001b 0E       		.uleb128 0xe
+ 1393 001c 00       		.byte	0
+ 1394 001d 00       		.byte	0
+ 1395 001e 03       		.uleb128 0x3
+ 1396 001f 24       		.uleb128 0x24
+ 1397 0020 00       		.byte	0
+ 1398 0021 0B       		.uleb128 0xb
+ 1399 0022 0B       		.uleb128 0xb
+ 1400 0023 3E       		.uleb128 0x3e
+ 1401 0024 0B       		.uleb128 0xb
+ 1402 0025 03       		.uleb128 0x3
+ 1403 0026 08       		.uleb128 0x8
+ 1404 0027 00       		.byte	0
+ 1405 0028 00       		.byte	0
+ 1406 0029 04       		.uleb128 0x4
+ 1407 002a 16       		.uleb128 0x16
+ 1408 002b 00       		.byte	0
+ 1409 002c 03       		.uleb128 0x3
+ 1410 002d 0E       		.uleb128 0xe
+ 1411 002e 3A       		.uleb128 0x3a
+ 1412 002f 0B       		.uleb128 0xb
+ 1413 0030 3B       		.uleb128 0x3b
+ 1414 0031 0B       		.uleb128 0xb
+ 1415 0032 49       		.uleb128 0x49
+ 1416 0033 13       		.uleb128 0x13
+ 1417 0034 00       		.byte	0
+ 1418 0035 00       		.byte	0
+ 1419 0036 05       		.uleb128 0x5
+ 1420 0037 0F       		.uleb128 0xf
+ 1421 0038 00       		.byte	0
+ 1422 0039 0B       		.uleb128 0xb
+ 1423 003a 0B       		.uleb128 0xb
+ 1424 003b 49       		.uleb128 0x49
+ 1425 003c 13       		.uleb128 0x13
+ 1426 003d 00       		.byte	0
+ 1427 003e 00       		.byte	0
+ 1428 003f 06       		.uleb128 0x6
+ 1429 0040 2E       		.uleb128 0x2e
+ 1430 0041 00       		.byte	0
+ 1431 0042 3F       		.uleb128 0x3f
+ 1432 0043 19       		.uleb128 0x19
+ 1433 0044 03       		.uleb128 0x3
+ 1434 0045 0E       		.uleb128 0xe
+ 1435 0046 3A       		.uleb128 0x3a
+ 1436 0047 0B       		.uleb128 0xb
+ 1437 0048 3B       		.uleb128 0x3b
+ 1438 0049 0B       		.uleb128 0xb
+ 1439 004a 27       		.uleb128 0x27
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 30
 
 
- 1392      00
- 1393              	.LASF29:
- 1394 024a 696E6465 		.ascii	"index\000"
- 1394      7800
- 1395              	.LASF2:
- 1396 0250 73686F72 		.ascii	"short int\000"
- 1396      7420696E 
- 1396      7400
- 1397              	.LASF35:
- 1398 025a 69727269 		.ascii	"irrigation\000"
- 1398      67617469 
- 1398      6F6E00
- 1399              	.LASF42:
- 1400 0265 736F696C 		.ascii	"soilHum\000"
- 1400      48756D00 
- 1401              	.LASF4:
- 1402 026d 6C6F6E67 		.ascii	"long int\000"
- 1402      20696E74 
- 1402      00
- 1403              	.LASF26:
- 1404 0276 7475726E 		.ascii	"turnOnVent\000"
- 1404      4F6E5665 
- 1404      6E7400
- 1405              	.LASF33:
- 1406 0281 77696E64 		.ascii	"window\000"
- 1406      6F7700
- 1407              	.LASF41:
- 1408 0288 67657453 		.ascii	"getSoilHum\000"
- 1408      6F696C48 
- 1408      756D00
- 1409              	.LASF28:
- 1410 0293 61646A75 		.ascii	"adjustIrrigation\000"
- 1410      73744972 
- 1410      72696761 
- 1410      74696F6E 
- 1410      00
- 1411              	.LASF39:
- 1412 02a4 6765744C 		.ascii	"getLight\000"
- 1412      69676874 
- 1412      00
- 1413              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1440 004b 19       		.uleb128 0x19
+ 1441 004c 11       		.uleb128 0x11
+ 1442 004d 01       		.uleb128 0x1
+ 1443 004e 12       		.uleb128 0x12
+ 1444 004f 06       		.uleb128 0x6
+ 1445 0050 40       		.uleb128 0x40
+ 1446 0051 18       		.uleb128 0x18
+ 1447 0052 9642     		.uleb128 0x2116
+ 1448 0054 19       		.uleb128 0x19
+ 1449 0055 00       		.byte	0
+ 1450 0056 00       		.byte	0
+ 1451 0057 07       		.uleb128 0x7
+ 1452 0058 2E       		.uleb128 0x2e
+ 1453 0059 01       		.byte	0x1
+ 1454 005a 3F       		.uleb128 0x3f
+ 1455 005b 19       		.uleb128 0x19
+ 1456 005c 03       		.uleb128 0x3
+ 1457 005d 0E       		.uleb128 0xe
+ 1458 005e 3A       		.uleb128 0x3a
+ 1459 005f 0B       		.uleb128 0xb
+ 1460 0060 3B       		.uleb128 0x3b
+ 1461 0061 0B       		.uleb128 0xb
+ 1462 0062 27       		.uleb128 0x27
+ 1463 0063 19       		.uleb128 0x19
+ 1464 0064 49       		.uleb128 0x49
+ 1465 0065 13       		.uleb128 0x13
+ 1466 0066 11       		.uleb128 0x11
+ 1467 0067 01       		.uleb128 0x1
+ 1468 0068 12       		.uleb128 0x12
+ 1469 0069 06       		.uleb128 0x6
+ 1470 006a 40       		.uleb128 0x40
+ 1471 006b 18       		.uleb128 0x18
+ 1472 006c 9642     		.uleb128 0x2116
+ 1473 006e 19       		.uleb128 0x19
+ 1474 006f 01       		.uleb128 0x1
+ 1475 0070 13       		.uleb128 0x13
+ 1476 0071 00       		.byte	0
+ 1477 0072 00       		.byte	0
+ 1478 0073 08       		.uleb128 0x8
+ 1479 0074 05       		.uleb128 0x5
+ 1480 0075 00       		.byte	0
+ 1481 0076 03       		.uleb128 0x3
+ 1482 0077 08       		.uleb128 0x8
+ 1483 0078 3A       		.uleb128 0x3a
+ 1484 0079 0B       		.uleb128 0xb
+ 1485 007a 3B       		.uleb128 0x3b
+ 1486 007b 0B       		.uleb128 0xb
+ 1487 007c 49       		.uleb128 0x49
+ 1488 007d 13       		.uleb128 0x13
+ 1489 007e 02       		.uleb128 0x2
+ 1490 007f 18       		.uleb128 0x18
+ 1491 0080 00       		.byte	0
+ 1492 0081 00       		.byte	0
+ 1493 0082 09       		.uleb128 0x9
+ 1494 0083 34       		.uleb128 0x34
+ 1495 0084 00       		.byte	0
+ 1496 0085 03       		.uleb128 0x3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 31
+
+
+ 1497 0086 0E       		.uleb128 0xe
+ 1498 0087 3A       		.uleb128 0x3a
+ 1499 0088 0B       		.uleb128 0xb
+ 1500 0089 3B       		.uleb128 0x3b
+ 1501 008a 0B       		.uleb128 0xb
+ 1502 008b 49       		.uleb128 0x49
+ 1503 008c 13       		.uleb128 0x13
+ 1504 008d 02       		.uleb128 0x2
+ 1505 008e 18       		.uleb128 0x18
+ 1506 008f 00       		.byte	0
+ 1507 0090 00       		.byte	0
+ 1508 0091 0A       		.uleb128 0xa
+ 1509 0092 05       		.uleb128 0x5
+ 1510 0093 00       		.byte	0
+ 1511 0094 03       		.uleb128 0x3
+ 1512 0095 0E       		.uleb128 0xe
+ 1513 0096 3A       		.uleb128 0x3a
+ 1514 0097 0B       		.uleb128 0xb
+ 1515 0098 3B       		.uleb128 0x3b
+ 1516 0099 0B       		.uleb128 0xb
+ 1517 009a 49       		.uleb128 0x49
+ 1518 009b 13       		.uleb128 0x13
+ 1519 009c 02       		.uleb128 0x2
+ 1520 009d 18       		.uleb128 0x18
+ 1521 009e 00       		.byte	0
+ 1522 009f 00       		.byte	0
+ 1523 00a0 0B       		.uleb128 0xb
+ 1524 00a1 01       		.uleb128 0x1
+ 1525 00a2 01       		.byte	0x1
+ 1526 00a3 49       		.uleb128 0x49
+ 1527 00a4 13       		.uleb128 0x13
+ 1528 00a5 01       		.uleb128 0x1
+ 1529 00a6 13       		.uleb128 0x13
+ 1530 00a7 00       		.byte	0
+ 1531 00a8 00       		.byte	0
+ 1532 00a9 0C       		.uleb128 0xc
+ 1533 00aa 21       		.uleb128 0x21
+ 1534 00ab 00       		.byte	0
+ 1535 00ac 49       		.uleb128 0x49
+ 1536 00ad 13       		.uleb128 0x13
+ 1537 00ae 2F       		.uleb128 0x2f
+ 1538 00af 0B       		.uleb128 0xb
+ 1539 00b0 00       		.byte	0
+ 1540 00b1 00       		.byte	0
+ 1541 00b2 0D       		.uleb128 0xd
+ 1542 00b3 2E       		.uleb128 0x2e
+ 1543 00b4 01       		.byte	0x1
+ 1544 00b5 3F       		.uleb128 0x3f
+ 1545 00b6 19       		.uleb128 0x19
+ 1546 00b7 03       		.uleb128 0x3
+ 1547 00b8 0E       		.uleb128 0xe
+ 1548 00b9 3A       		.uleb128 0x3a
+ 1549 00ba 0B       		.uleb128 0xb
+ 1550 00bb 3B       		.uleb128 0x3b
+ 1551 00bc 0B       		.uleb128 0xb
+ 1552 00bd 27       		.uleb128 0x27
+ 1553 00be 19       		.uleb128 0x19
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 32
+
+
+ 1554 00bf 49       		.uleb128 0x49
+ 1555 00c0 13       		.uleb128 0x13
+ 1556 00c1 11       		.uleb128 0x11
+ 1557 00c2 01       		.uleb128 0x1
+ 1558 00c3 12       		.uleb128 0x12
+ 1559 00c4 06       		.uleb128 0x6
+ 1560 00c5 40       		.uleb128 0x40
+ 1561 00c6 18       		.uleb128 0x18
+ 1562 00c7 9742     		.uleb128 0x2117
+ 1563 00c9 19       		.uleb128 0x19
+ 1564 00ca 01       		.uleb128 0x1
+ 1565 00cb 13       		.uleb128 0x13
+ 1566 00cc 00       		.byte	0
+ 1567 00cd 00       		.byte	0
+ 1568 00ce 0E       		.uleb128 0xe
+ 1569 00cf 34       		.uleb128 0x34
+ 1570 00d0 00       		.byte	0
+ 1571 00d1 03       		.uleb128 0x3
+ 1572 00d2 0E       		.uleb128 0xe
+ 1573 00d3 3A       		.uleb128 0x3a
+ 1574 00d4 0B       		.uleb128 0xb
+ 1575 00d5 3B       		.uleb128 0x3b
+ 1576 00d6 0B       		.uleb128 0xb
+ 1577 00d7 49       		.uleb128 0x49
+ 1578 00d8 13       		.uleb128 0x13
+ 1579 00d9 3F       		.uleb128 0x3f
+ 1580 00da 19       		.uleb128 0x19
+ 1581 00db 02       		.uleb128 0x2
+ 1582 00dc 18       		.uleb128 0x18
+ 1583 00dd 00       		.byte	0
+ 1584 00de 00       		.byte	0
+ 1585 00df 00       		.byte	0
+ 1586              		.section	.debug_aranges,"",%progbits
+ 1587 0000 5C000000 		.4byte	0x5c
+ 1588 0004 0200     		.2byte	0x2
+ 1589 0006 00000000 		.4byte	.Ldebug_info0
+ 1590 000a 04       		.byte	0x4
+ 1591 000b 00       		.byte	0
+ 1592 000c 0000     		.2byte	0
+ 1593 000e 0000     		.2byte	0
+ 1594 0010 00000000 		.4byte	.LFB33
+ 1595 0014 10000000 		.4byte	.LFE33-.LFB33
+ 1596 0018 00000000 		.4byte	.LFB34
+ 1597 001c 96000000 		.4byte	.LFE34-.LFB34
+ 1598 0020 00000000 		.4byte	.LFB35
+ 1599 0024 96000000 		.4byte	.LFE35-.LFB35
+ 1600 0028 00000000 		.4byte	.LFB36
+ 1601 002c 96000000 		.4byte	.LFE36-.LFB36
+ 1602 0030 00000000 		.4byte	.LFB37
+ 1603 0034 E4000000 		.4byte	.LFE37-.LFB37
+ 1604 0038 00000000 		.4byte	.LFB38
+ 1605 003c C4000000 		.4byte	.LFE38-.LFB38
+ 1606 0040 00000000 		.4byte	.LFB39
+ 1607 0044 6C000000 		.4byte	.LFE39-.LFB39
+ 1608 0048 00000000 		.4byte	.LFB40
+ 1609 004c 5E000000 		.4byte	.LFE40-.LFB40
+ 1610 0050 00000000 		.4byte	.LFB41
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 33
+
+
+ 1611 0054 28000000 		.4byte	.LFE41-.LFB41
+ 1612 0058 00000000 		.4byte	0
+ 1613 005c 00000000 		.4byte	0
+ 1614              		.section	.debug_ranges,"",%progbits
+ 1615              	.Ldebug_ranges0:
+ 1616 0000 00000000 		.4byte	.LFB33
+ 1617 0004 10000000 		.4byte	.LFE33
+ 1618 0008 00000000 		.4byte	.LFB34
+ 1619 000c 96000000 		.4byte	.LFE34
+ 1620 0010 00000000 		.4byte	.LFB35
+ 1621 0014 96000000 		.4byte	.LFE35
+ 1622 0018 00000000 		.4byte	.LFB36
+ 1623 001c 96000000 		.4byte	.LFE36
+ 1624 0020 00000000 		.4byte	.LFB37
+ 1625 0024 E4000000 		.4byte	.LFE37
+ 1626 0028 00000000 		.4byte	.LFB38
+ 1627 002c C4000000 		.4byte	.LFE38
+ 1628 0030 00000000 		.4byte	.LFB39
+ 1629 0034 6C000000 		.4byte	.LFE39
+ 1630 0038 00000000 		.4byte	.LFB40
+ 1631 003c 5E000000 		.4byte	.LFE40
+ 1632 0040 00000000 		.4byte	.LFB41
+ 1633 0044 28000000 		.4byte	.LFE41
+ 1634 0048 00000000 		.4byte	0
+ 1635 004c 00000000 		.4byte	0
+ 1636              		.section	.debug_line,"",%progbits
+ 1637              	.Ldebug_line0:
+ 1638 0000 3C010000 		.section	.debug_str,"MS",%progbits,1
+ 1638      02004A00 
+ 1638      00000201 
+ 1638      FB0E0D00 
+ 1638      01010101 
+ 1639              	.LASF30:
+ 1640 0000 7475726E 		.ascii	"turnOffVent\000"
+ 1640      4F666656 
+ 1640      656E7400 
+ 1641              	.LASF43:
+ 1642 000c 6C696768 		.ascii	"light\000"
+ 1642      7400
+ 1643              	.LASF21:
+ 1644 0012 61646A75 		.ascii	"adjustWindow\000"
+ 1644      73745769 
+ 1644      6E646F77 
+ 1644      00
+ 1645              	.LASF48:
+ 1646 001f 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 1646      73657273 
+ 1646      5C4C6173 
+ 1646      73655C44 
+ 1646      6F63756D 
+ 1647 004c 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 1647      4D617374 
+ 1647      65725C50 
+ 1647      536F435F 
+ 1647      4D617374 
+ 1648              	.LASF35:
+ 1649 0069 69727269 		.ascii	"irriTransfer\000"
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 34
+
+
+ 1649      5472616E 
+ 1649      73666572 
+ 1649      00
+ 1650              	.LASF47:
+ 1651 0076 2E5C4932 		.ascii	".\\I2C_Class.c\000"
+ 1651      435F436C 
+ 1651      6173732E 
+ 1651      6300
+ 1652              	.LASF3:
+ 1653 0084 73686F72 		.ascii	"short unsigned int\000"
+ 1653      7420756E 
+ 1653      7369676E 
+ 1653      65642069 
+ 1653      6E7400
+ 1654              	.LASF9:
+ 1655 0097 75696E74 		.ascii	"uint8\000"
+ 1655      3800
+ 1656              	.LASF13:
+ 1657 009d 666C6F61 		.ascii	"float\000"
+ 1657      7400
+ 1658              	.LASF46:
+ 1659 00a3 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1659      4320342E 
+ 1659      382E3420 
+ 1659      32303134 
+ 1659      30353236 
+ 1660 00d6 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1660      20726576 
+ 1660      6973696F 
+ 1660      6E203231 
+ 1660      31333538 
+ 1661 0109 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1661      66756E63 
+ 1661      74696F6E 
+ 1661      2D736563 
+ 1661      74696F6E 
+ 1662              	.LASF1:
+ 1663 011f 756E7369 		.ascii	"unsigned char\000"
+ 1663      676E6564 
+ 1663      20636861 
+ 1663      7200
+ 1664              	.LASF31:
+ 1665 012d 76656E74 		.ascii	"vent\000"
+ 1665      00
+ 1666              	.LASF25:
+ 1667 0132 7475726E 		.ascii	"turnHeatOff\000"
+ 1667      48656174 
+ 1667      4F666600 
+ 1668              	.LASF34:
+ 1669 013e 6F6E4F66 		.ascii	"onOff\000"
+ 1669      6600
+ 1670              	.LASF20:
+ 1671 0144 74656D70 		.ascii	"tempWindow\000"
+ 1671      57696E64 
+ 1671      6F7700
+ 1672              	.LASF11:
+ 1673 014f 696E7431 		.ascii	"int16\000"
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 35
+
+
+ 1673      3600
+ 1674              	.LASF5:
+ 1675 0155 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1675      20756E73 
+ 1675      69676E65 
+ 1675      6420696E 
+ 1675      7400
+ 1676              	.LASF37:
+ 1677 0167 67657441 		.ascii	"getActuatorStatus\000"
+ 1677      63747561 
+ 1677      746F7253 
+ 1677      74617475 
+ 1677      7300
+ 1678              	.LASF12:
+ 1679 0179 696E7433 		.ascii	"int32\000"
+ 1679      3200
+ 1680              	.LASF40:
+ 1681 017f 67657454 		.ascii	"getTempAndHum\000"
+ 1681      656D7041 
+ 1681      6E644875 
+ 1681      6D00
+ 1682              	.LASF0:
+ 1683 018d 7369676E 		.ascii	"signed char\000"
+ 1683      65642063 
+ 1683      68617200 
+ 1684              	.LASF39:
+ 1685 0199 64617461 		.ascii	"dataget\000"
+ 1685      67657400 
+ 1686              	.LASF14:
+ 1687 01a1 646F7562 		.ascii	"double\000"
+ 1687      6C6500
+ 1688              	.LASF50:
+ 1689 01a8 69727269 		.ascii	"irrigationStatus\000"
+ 1689      67617469 
+ 1689      6F6E5374 
+ 1689      61747573 
+ 1689      00
+ 1690              	.LASF18:
+ 1691 01b9 636C6F73 		.ascii	"closeWindow\000"
+ 1691      6557696E 
+ 1691      646F7700 
+ 1692              	.LASF10:
+ 1693 01c5 696E7438 		.ascii	"int8\000"
+ 1693      00
+ 1694              	.LASF8:
+ 1695 01ca 756E7369 		.ascii	"unsigned int\000"
+ 1695      676E6564 
+ 1695      20696E74 
+ 1695      00
+ 1696              	.LASF41:
+ 1697 01d7 74656D70 		.ascii	"temp\000"
+ 1697      00
+ 1698              	.LASF27:
+ 1699 01dc 61646A75 		.ascii	"adjustVentilation\000"
+ 1699      73745665 
+ 1699      6E74696C 
+ 1699      6174696F 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 36
+
+
+ 1699      6E00
+ 1700              	.LASF7:
+ 1701 01ee 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1701      206C6F6E 
+ 1701      6720756E 
+ 1701      7369676E 
+ 1701      65642069 
+ 1702              	.LASF19:
+ 1703 0205 72657375 		.ascii	"result\000"
+ 1703      6C7400
+ 1704              	.LASF23:
+ 1705 020c 68656174 		.ascii	"heat\000"
+ 1705      00
+ 1706              	.LASF26:
+ 1707 0211 74656D70 		.ascii	"tempHeat\000"
+ 1707      48656174 
+ 1707      00
+ 1708              	.LASF17:
+ 1709 021a 6F70656E 		.ascii	"openWindow\000"
+ 1709      57696E64 
+ 1709      6F7700
+ 1710              	.LASF49:
+ 1711 0225 696E6974 		.ascii	"initI2C\000"
+ 1711      49324300 
+ 1712              	.LASF28:
+ 1713 022d 73706565 		.ascii	"speed\000"
+ 1713      6400
+ 1714              	.LASF16:
+ 1715 0233 73697A65 		.ascii	"sizetype\000"
+ 1715      74797065 
+ 1715      00
+ 1716              	.LASF22:
+ 1717 023c 61646A75 		.ascii	"adjustHeat\000"
+ 1717      73744865 
+ 1717      617400
+ 1718              	.LASF6:
+ 1719 0247 6C6F6E67 		.ascii	"long long int\000"
+ 1719      206C6F6E 
+ 1719      6720696E 
+ 1719      7400
+ 1720              	.LASF15:
+ 1721 0255 63686172 		.ascii	"char\000"
+ 1721      00
+ 1722              	.LASF33:
+ 1723 025a 696E6465 		.ascii	"index\000"
+ 1723      7800
+ 1724              	.LASF24:
+ 1725 0260 7475726E 		.ascii	"turnHeatOn\000"
+ 1725      48656174 
+ 1725      4F6E00
+ 1726              	.LASF2:
+ 1727 026b 73686F72 		.ascii	"short int\000"
+ 1727      7420696E 
+ 1727      7400
+ 1728              	.LASF36:
+ 1729 0275 69727269 		.ascii	"irrigation\000"
+ 1729      67617469 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccyC8nDf.s 			page 37
+
+
+ 1729      6F6E00
+ 1730              	.LASF45:
+ 1731 0280 736F696C 		.ascii	"soilHum\000"
+ 1731      48756D00 
+ 1732              	.LASF4:
+ 1733 0288 6C6F6E67 		.ascii	"long int\000"
+ 1733      20696E74 
+ 1733      00
+ 1734              	.LASF29:
+ 1735 0291 7475726E 		.ascii	"turnOnVent\000"
+ 1735      4F6E5665 
+ 1735      6E7400
+ 1736              	.LASF38:
+ 1737 029c 77696E64 		.ascii	"window\000"
+ 1737      6F7700
+ 1738              	.LASF44:
+ 1739 02a3 67657453 		.ascii	"getSoilHum\000"
+ 1739      6F696C48 
+ 1739      756D00
+ 1740              	.LASF32:
+ 1741 02ae 61646A75 		.ascii	"adjustIrrigation\000"
+ 1741      73744972 
+ 1741      72696761 
+ 1741      74696F6E 
+ 1741      00
+ 1742              	.LASF42:
+ 1743 02bf 6765744C 		.ascii	"getLight\000"
+ 1743      69676874 
+ 1743      00
+ 1744              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

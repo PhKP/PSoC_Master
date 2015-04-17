@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
   18:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
   19:.\DSP_Class.c **** int32* humArrayPtr;
   20:.\DSP_Class.c **** int16 soilHumArray[6][ARRAYSIZE];
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 2
 
 
   21:.\DSP_Class.c **** int16* soilHumPtr[6];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
   74              		@ sp needed
   75 000a 80BD     		pop	{r7, pc}
   76              		.cfi_endproc
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 3
 
 
   77              	.LFE34:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  125 000a 1A70     		strb	r2, [r3]
   45:.\DSP_Class.c ****     index = 0;
  126              		.loc 1 45 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 4
 
 
  127 000c 3B1C     		mov	r3, r7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  175              	.LFB38:
   52:.\DSP_Class.c **** 
   53:.\DSP_Class.c **** void avgTemp(void){
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 5
 
 
  176              		.loc 1 53 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  222              		.loc 1 61 0
  223              		.cfi_startproc
  224 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 6
 
 
  225              		.cfi_def_cfa_offset 8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  273              		.global	inputTemp
  274              		.code	16
  275              		.thumb_func
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 7
 
 
  276              		.type	inputTemp, %function
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  323 000a 0022     		mov	r2, #0
  324 000c 1A60     		str	r2, [r3]
   75:.\DSP_Class.c **** }
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 8
 
 
  325              		.loc 1 75 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  374              		.global	inputLight
  375              		.code	16
  376              		.thumb_func
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 9
 
 
  377              		.type	inputLight, %function
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  427 002f 32010000 		.4byte	.LASF1
  428 0033 02       		.uleb128 0x2
  429 0034 02       		.byte	0x2
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 10
 
 
  430 0035 05       		.byte	0x5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  484 009b 01       		.byte	0x1
  485 009c 08       		.byte	0x8
  486 009d 25020000 		.4byte	.LASF14
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 11
 
 
  487 00a1 02       		.uleb128 0x2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  541 0116 00000000 		.4byte	.LFB37
  542 011a 0C000000 		.4byte	.LFE37-.LFB37
  543 011e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 12
 
 
  544 011f 9C       		.byte	0x9c
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  598 0191 01       		.byte	0x1
  599 0192 45       		.byte	0x45
  600 0193 9B010000 		.4byte	0x19b
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 13
 
 
  601 0197 02       		.uleb128 0x2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  655 01fd 09       		.uleb128 0x9
  656 01fe E3010000 		.4byte	.LASF30
  657 0202 01       		.byte	0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 14
 
 
  658 0203 52       		.byte	0x52
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  712 0275 0C       		.uleb128 0xc
  713 0276 76000000 		.4byte	0x76
  714 027a 8B020000 		.4byte	0x28b
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 15
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 15
 
 
  715 027e 0D       		.uleb128 0xd
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  769 02f0 0F       		.uleb128 0xf
  770 02f1 68756D00 		.ascii	"hum\000"
  771 02f5 01       		.byte	0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 16
 
 
  772 02f6 18       		.byte	0x18
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  826 0017 0B       		.uleb128 0xb
  827 0018 3E       		.uleb128 0x3e
  828 0019 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 17
 
 
  829 001a 03       		.uleb128 0x3
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  883 0051 3F       		.uleb128 0x3f
  884 0052 19       		.uleb128 0x19
  885 0053 03       		.uleb128 0x3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 18
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 18
 
 
  886 0054 0E       		.uleb128 0xe
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  940 008c 0B       		.uleb128 0xb
  941 008d 49       		.uleb128 0x49
  942 008e 13       		.uleb128 0x13
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 19
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 19
 
 
  943 008f 02       		.uleb128 0x2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  997 00c6 01       		.uleb128 0x1
  998 00c7 01       		.byte	0x1
  999 00c8 49       		.uleb128 0x49
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 20
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 20
 
 
  1000 00c9 13       		.uleb128 0x13
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  1054 000b 00       		.byte	0
  1055 000c 0000     		.2byte	0
  1056 000e 0000     		.2byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 21
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 21
 
 
  1057 0010 00000000 		.4byte	.LFB33
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  1111 0060 00000000 		.4byte	.LFB45
  1112 0064 14000000 		.4byte	.LFE45
  1113 0068 00000000 		.4byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 22
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 22
 
 
  1114 006c 00000000 		.4byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  1138      74536F69 
  1138      6C48756D 
  1138      00
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 23
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 23
 
 
  1139              	.LASF12:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  1162 018e 646F7562 		.ascii	"double\000"
  1162      6C6500
  1163              	.LASF29:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 24
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 24
 
 
  1164 0195 736F696C 		.ascii	"soilHum\000"
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 1
  1189              	.LASF14:
  1190 0225 63686172 		.ascii	"char\000"
  1190      00
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccdC3Gwe.s 			page 25
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc1TUvl7.s 			page 25
 
 
  1191              	.LASF24:

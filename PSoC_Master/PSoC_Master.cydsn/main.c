@@ -25,13 +25,13 @@ int main(){
     initPSoC_Master();
     initUART();
 
-    CyGlobalIntEnable;      // Global interrupt enable
-    UART_UartPutString("The UART is functional.\n\r");
-    uint16 blabla;
-    for(;;)
-    {
-  
-    }
+    adjustWindow(0xF);
+    CyDelay(5000);
+    adjustWindow(0x0);
+    CyDelay(5000);
+    adjustIrrigation(0x2,1);
+    for(;;);
+    
     return 0;
 }
 

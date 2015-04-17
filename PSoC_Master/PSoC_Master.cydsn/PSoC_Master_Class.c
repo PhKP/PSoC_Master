@@ -25,20 +25,55 @@ int16 tempSoilHum[6];
 int32 tempLight;
 
 // Private prototypes
-typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
-volatile state theState = IDLE;
+CY_ISR_PROTO(timer_ISR);
 CY_ISR_PROTO(UART_ISR);
 
-
-//Global variables
+// Buffers / flags
+typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
+volatile state theState = IDLE;
 volatile int8 irrigationIndex = 0;
-int32 tempTemp = 0;
-int32 tempHum = 0;
-int16 tempSoilHum[6] = {0};
-int32 tempLight = 0;
 
 void initPSoC_Master(void){
-    UART_ISR_StartEx(UART_ISR);
+	tempTemp = 0;
+    tempHum = 0;
+    tempSoilHum[0] = 0;
+    tempSoilHum[1] = 0;
+    tempSoilHum[2] = 0;
+    tempSoilHum[3] = 0;
+    tempSoilHum[4] = 0;
+    tempSoilHum[5] = 0;
+    tempLight = 0;
+	
+    // ISR
+    UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
+    timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
+    
+    UART_Start();                   //  Starts UART component
+    Timer_Start();                  // Starts timer component
+    
+    RedLED_Write(!0);               // Turn off red LED
+}
+
+// Timer ISR
+CY_ISR(timer_ISR)
+{
+    RedLED_Write(!1);       // Turn on red LED
+    
+    getTempAndHum(&tempTemp, &tempHum);
+    inputTemp(&tempTemp);
+    inputHum(&tempHum);
+    {
+        uint8 i;
+        for(i = 0; i<6 ; i++){
+            getSoilHum(i, &tempSoilHum[i]);
+            inputSoilHum(i,&tempSoilHum[i]);
+        }
+    }
+    getLight(&tempLight);
+    inputLight(&tempLight);
+    
+    RedLED_Write(!0);       // Turn off red LED
+    Timer_ClearInterrupt(Timer_INTR_MASK_TC);   // Clear interrupt
 }
 
 // UART ISR

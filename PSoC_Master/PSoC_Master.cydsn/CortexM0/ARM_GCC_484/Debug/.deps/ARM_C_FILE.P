@@ -1,12 +1,22 @@
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/CortexM0/ARM_GCC_484/Debug/Clock.o : C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.c 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/CortexM0/ARM_GCC_484/Debug/BlueLED.o : C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED_aliases.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED.c 
 
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.h : 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED.h : 
+
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED_aliases.h : 
 
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
 
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfitter.h : 
 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cypins.h : 
+
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/BlueLED.c : 
+
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/CortexM0/ARM_GCC_484/Debug/Clock.o : C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.c 
+
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.h : 
 
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/Clock.c : 
 
@@ -49,8 +59,6 @@ C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Genera
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/I2C_sda.h : 
 
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/I2C_sda_aliases.h : 
-
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cypins.h : 
 
 C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/I2C.c : 
 

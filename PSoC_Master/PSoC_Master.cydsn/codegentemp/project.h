@@ -36,6 +36,8 @@
 #include <I2C_I2C_PVT.h>
 #include <I2C_PVT.h>
 #include <I2C_BOOT.h>
+#include <BlueLED.h>
+#include <BlueLED_aliases.h>
 #include <UART_SCBCLK.h>
 #include <UART_tx.h>
 #include <UART_tx_aliases.h>

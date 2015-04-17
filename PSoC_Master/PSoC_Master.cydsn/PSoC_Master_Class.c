@@ -78,6 +78,8 @@ CY_ISR(timer_ISR)
 
 // UART ISR
 CY_ISR(UART_ISR){
+    BlueLED_Write(!1);       // Turn on blue LED
+    
     uint8 buff;
     buff = dkRequest();
     
@@ -160,7 +162,7 @@ CY_ISR(UART_ISR){
             theState = IDLE;
         }
     }
-    
+    BlueLED_Write(!0);       // Turn off blue LED
     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
 }
 

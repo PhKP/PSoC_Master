@@ -52,6 +52,9 @@
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\I2C_I2C_PVT.h" value="NONE;I2C" />
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\I2C_PVT.h" value="NONE;I2C" />
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\I2C_BOOT.h" value="NONE;I2C" />
+  <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\BlueLED.c" value="ARM_C_FILE;BlueLED" />
+  <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\BlueLED.h" value="NONE;BlueLED" />
+  <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\BlueLED_aliases.h" value="NONE;BlueLED" />
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\UART_SCBCLK.c" value="ARM_C_FILE;UART_SCBCLK" />
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\UART_SCBCLK.h" value="NONE;UART_SCBCLK" />
   <file name="C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\UART_tx.c" value="ARM_C_FILE;UART_tx" />

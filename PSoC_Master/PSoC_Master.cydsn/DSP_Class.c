@@ -12,22 +12,16 @@
 // Include files
 #include "DSP_Class.h"
 
-// Definitions
-#define ARRAYSIZE 100
-#define NMR_OF_VALID_DATAPOINTS_NEEDED 10
-#define NUMBER_OF_SOILHUM_SENSORS 6
-#define EMPTY -1
-
 // Private data members
 int32 tempArray[ARRAYSIZE];
 int32* tempArrayPtr;
 int32 humArray[ARRAYSIZE];
 int32* humArrayPtr;
-int16 soilHumArray[NUMBER_OF_SOILHUM_SENSORS][ARRAYSIZE];
-int16* soilHumPtr[NUMBER_OF_SOILHUM_SENSORS];
+int16 soilHumArray[NBR_OF_SOILHUM_SENSORS][ARRAYSIZE];
+int16* soilHumPtr[NBR_OF_SOILHUM_SENSORS];
 int32 lightArray[ARRAYSIZE];
 int32* lightArrayPtr;
-uint8 temp, hum, soilHum[NUMBER_OF_SOILHUM_SENSORS], light;     // Used for storing the newest, value to 
+uint8 temp, hum, soilHum[NBR_OF_SOILHUM_SENSORS], light;     // Used for storing the newest, value to 
 
 // Private prototypes
 void avgTemp(void);
@@ -44,8 +38,8 @@ void initDSP(void){
             humArray[i] = EMPTY;
             {
                 uint8 j;
-                for(j = 0 ; j<NUMBER_OF_SOILHUM_SENSORS ; j++){
-                    soilHumArray[i][j] = EMPTY;
+                for(j = 0 ; j<NBR_OF_SOILHUM_SENSORS ; j++){
+                    soilHumArray[j][i] = EMPTY;
                 }
             }
             lightArray[i] = EMPTY;
@@ -56,15 +50,15 @@ void initDSP(void){
     humArrayPtr = & humArray[0];
     {
         uint8 k;
-        for(k = 0 ; k<NUMBER_OF_SOILHUM_SENSORS ; k++){
+        for(k = 0 ; k<NBR_OF_SOILHUM_SENSORS ; k++){
             soilHumPtr[k] = & soilHumArray[k][0];
-            soilHum[k] = EMPTY; 
+            soilHum[k] = 0; 
             }
     }
     lightArrayPtr = & lightArray[0];
-    temp = EMPTY;
-    hum = EMPTY;
-    light = EMPTY;
+    temp = 0;
+    hum = 0;
+    light = 0;
 }
 
 uint8 getTemp_DSP(void){
@@ -85,12 +79,12 @@ uint8 getLight_DSP(void){
 
 void avgTemp(void){
     uint8 skip = 0;
-    int64 avgTempVar = 0;
+    int64 total = 0;
     {
         uint8 i;
         for(i = 0 ; i<ARRAYSIZE ; i++){
             if(tempArray[i]>=0){
-                avgTempVar += tempArray[i];
+                total += tempArray[i];
             }
             else{
                 skip++;
@@ -99,9 +93,9 @@ void avgTemp(void){
     }
     // Makes sure that enough datapoits are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        avgTempVar/=(ARRAYSIZE-skip);                               // Calculate the average value
-        float tempInDegreesC = (avgTempVar/((2^14)-2))*165-40;      // Conversion formula from datasheet
-        
+        float avg = total/(ARRAYSIZE-skip);                         // Calculate the average value
+        float tempInDegreesC = (((avg)/((16380)-2))*165)-40;        // Conversion formula from datasheet
+
         // tempInDegreesC is limited to -20 and +80 degrees C
         if ( -19.5 > tempInDegreesC){
             tempInDegreesC = -19.5;
@@ -109,6 +103,7 @@ void avgTemp(void){
         else if(tempInDegreesC > 80){
             tempInDegreesC = 80;
         }
+
         temp = (tempInDegreesC+20)*2;       // Conversion to UART protocol
     }
     else{
@@ -118,12 +113,12 @@ void avgTemp(void){
 
 void avgHum(void){
     uint8 skip = 0;
-    int64 avgHumVar = 0;
+    int64 total = 0;
     {
         uint8 i;
         for(i = 0 ; i<ARRAYSIZE ; i++){
             if(humArray[i]>=0){
-                avgHumVar += humArray[i];
+                total += humArray[i];
             }
             else{
                 skip++;
@@ -132,8 +127,8 @@ void avgHum(void){
     }
     // Makes sure that enough datapoits are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        avgHumVar/=(ARRAYSIZE-skip);                                // Calculate the average value
-        uint8 humInRH = (avgHumVar/((2^14)-2))*100;                 // Conversion formula from datasheet
+        float avg = total/(ARRAYSIZE-skip);                     // Calculate the average value
+        float humInRH = (avg/(16380-2))*100;                // Conversion formula from datasheet
         
         // humInRH is limited to 1 and 100 RH
         if(humInRH <= 0){
@@ -151,12 +146,12 @@ void avgHum(void){
 
 void avgSoilHum(uint8 index){
     uint8 skip = 0;
-    int64 avgSoilHumVar = 0;
+    int64 total = 0;
     {
         uint8 i;
         for(i = 0 ; i<ARRAYSIZE ; i++){
             if(soilHumArray[index][i]>=0){
-                avgSoilHumVar += soilHumArray[index][i];
+                total += soilHumArray[index][i];
             }
             else{
                 skip++;
@@ -165,7 +160,8 @@ void avgSoilHum(uint8 index){
     }
     // Makes sure that enough datapoits are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        uint8 soilHumInRH = avgSoilHumVar/(ARRAYSIZE-skip);         // Calculate the average value (assuming input from sensor is in RH)
+        float avg = total/(ARRAYSIZE-skip);         // Calculate the average value (assuming input from sensor is in RH)
+        float soilHumInRH = avg;                    // Takes care of conversion ( NB no conversion in this version)
         
         // soilHumInRH is limited to 1 and 100 RH
         if(soilHumInRH <= 0){
@@ -174,7 +170,7 @@ void avgSoilHum(uint8 index){
         else if(soilHumInRH > 100){
             soilHumInRH = 100;
         }
-        soilHum[index] = soilHumInRH;
+        soilHum[index] = (uint8)soilHumInRH;
     }
     else{
     soilHum[index] = 0;
@@ -183,12 +179,12 @@ void avgSoilHum(uint8 index){
 
 void avgLight(void){
     uint8 skip = 0;
-    int64 avgLightVar = 0;
+    int64 total = 0;
     {
         uint8 i;
         for(i = 0 ; i<ARRAYSIZE ; i++){
             if(lightArray[i]>=0){
-                avgLightVar += lightArray[i];
+                total += lightArray[i];
             }
             else{
                 skip++;
@@ -197,22 +193,22 @@ void avgLight(void){
     }
     // Makes sure that enough datapoits are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        avgLightVar/=(ARRAYSIZE-skip);                              // Calculate the average value
+        float avg = total/(ARRAYSIZE-skip);                              // Calculate the average value
         
         // Conversion to lux formula from datasheet
         // Range = 128000, R_EXT = 100kOhm, n = 7 and DATA max 128
-        int32 lightInLux = ((128000*(100/100))/(2^7))*(uint8)avgLightVar;
+        int32 lightInLux = ((128000*(100/100))/(128))*avg;
         
-        uint8 lightInuartVarSteps = lightInLux/1000;     // Conversion to UART ready value, 1 = 1000 lux
+        uint8 lightInUartVarSteps = lightInLux/1000;     // Conversion to UART ready value, 1 = 1000 lux
         
         // lightInLux is limited to 1 and 100 RH
-        if(lightInuartVarSteps <= 0){
-            lightInuartVarSteps = 1;
+        if(lightInUartVarSteps <= 0){
+            lightInUartVarSteps = 1;
         }
-        else if(lightInuartVarSteps > 100){
-            lightInuartVarSteps = 100;
+        else if(lightInUartVarSteps > 100){
+            lightInUartVarSteps = 100;
         }
-        light = lightInuartVarSteps;
+        light = lightInUartVarSteps;
     }
     else{
     light = 0;

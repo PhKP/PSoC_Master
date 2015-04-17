@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -17,15 +17,55 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.main,"ax",%progbits
+  17              		.section	.rodata
   18              		.align	2
-  19              		.global	main
-  20              		.code	16
-  21              		.thumb_func
-  22              		.type	main, %function
-  23              	main:
-  24              	.LFB33:
-  25              		.file 1 ".\\main.c"
+  19              	.LC0:
+  20 0000 5B324A00 		.ascii	"[2J\000"
+  21              		.align	2
+  22              	.LC2:
+  23 0004 5B4800   		.ascii	"[H\000"
+  24 0007 00       		.align	2
+  25              	.LC4:
+  26 0008 53797374 		.ascii	"System initialized..\012\015\000"
+  26      656D2069 
+  26      6E697469 
+  26      616C697A 
+  26      65642E2E 
+  27 001f 00       		.align	2
+  28              	.LC6:
+  29 0020 74656D70 		.ascii	"temp = %d\012\015\000"
+  29      203D2025 
+  29      640A0D00 
+  30              		.align	2
+  31              	.LC8:
+  32 002c 68756D20 		.ascii	"hum = %d\012\015\000"
+  32      3D202564 
+  32      0A0D00
+  33 0037 00       		.align	2
+  34              	.LC10:
+  35 0038 6C696768 		.ascii	"light = %d\012\015\000"
+  35      74203D20 
+  35      25640A0D 
+  35      00
+  36 0045 000000   		.align	2
+  37              	.LC12:
+  38 0048 736F696C 		.ascii	"soilHum( %d ) = %d\012\015\000"
+  38      48756D28 
+  38      20256420 
+  38      29203D20 
+  38      25640A0D 
+  39 005d 000000   		.section	.text.main,"ax",%progbits
+  40              		.align	2
+  41              		.global	main
+  42              		.code	16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 2
+
+
+  43              		.thumb_func
+  44              		.type	main, %function
+  45              	main:
+  46              	.LFB33:
+  47              		.file 1 ".\\main.c"
    1:.\main.c      **** /* ========================================
    2:.\main.c      ****  * 
    3:.\main.c      ****  * AutoGreen - PSoC_Master
@@ -44,330 +84,756 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 1
   16:.\main.c      **** #include "PSoC_Master_Class.h"
   17:.\main.c      **** #include "UART_Class.h"
   18:.\main.c      **** 
-  19:.\main.c      **** 
-  20:.\main.c      **** int main(){
-  26              		.loc 1 20 0
-  27              		.cfi_startproc
-  28 0000 80B5     		push	{r7, lr}
-  29              		.cfi_def_cfa_offset 8
-  30              		.cfi_offset 7, -8
-  31              		.cfi_offset 14, -4
-  32 0002 00AF     		add	r7, sp, #0
-  33              		.cfi_def_cfa_register 7
-  21:.\main.c      ****     
-  22:.\main.c      ****     // Init
-  23:.\main.c      ****     initDSP();
-  34              		.loc 1 23 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 2
+  19:.\main.c      **** // Uncomment to test one of these functions on boot
+  20:.\main.c      **** #define test_initDSP          // Test of initDSP()
+  21:.\main.c      **** //#define test_inputTemp        // Test of inputTemp() and avgTemp()
+  22:.\main.c      **** //#define test_inputHum         // Test of inputHum () and avgHum()
+  23:.\main.c      **** //#define test_inputLight       // Test of inputLight() and avgLight()
+  24:.\main.c      **** //#define test_inputSoilHum     // Test of inputSoilHum() and avgSoilHum()
+  25:.\main.c      **** 
+  26:.\main.c      **** 
+  27:.\main.c      **** int main(){
+  48              		.loc 1 27 0
+  49              		.cfi_startproc
+  50 0000 90B5     		push	{r4, r7, lr}
+  51              		.cfi_def_cfa_offset 12
+  52              		.cfi_offset 4, -12
+  53              		.cfi_offset 7, -8
+  54              		.cfi_offset 14, -4
+  55 0002 89B0     		sub	sp, sp, #36
+  56              		.cfi_def_cfa_offset 48
+  57 0004 00AF     		add	r7, sp, #0
+  58              		.cfi_def_cfa_register 7
+  28:.\main.c      ****     
+  29:.\main.c      ****     // Init
+  30:.\main.c      ****     initDSP();
+  59              		.loc 1 30 0
+  60 0006 FFF7FEFF 		bl	initDSP
+  31:.\main.c      ****     initI2C();
+  61              		.loc 1 31 0
+  62 000a FFF7FEFF 		bl	initI2C
+  32:.\main.c      ****     initPSoC_Master();
+  63              		.loc 1 32 0
+  64 000e FFF7FEFF 		bl	initPSoC_Master
+  33:.\main.c      ****     initUART();
+  65              		.loc 1 33 0
+  66 0012 FFF7FEFF 		bl	initUART
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 3
 
 
-  35 0004 FFF7FEFF 		bl	initDSP
-  24:.\main.c      ****     initI2C();
-  36              		.loc 1 24 0
-  37 0008 FFF7FEFF 		bl	initI2C
-  25:.\main.c      ****     initPSoC_Master();
-  38              		.loc 1 25 0
-  39 000c FFF7FEFF 		bl	initPSoC_Master
-  26:.\main.c      ****     initUART();
-  40              		.loc 1 26 0
-  41 0010 FFF7FEFF 		bl	initUART
-  27:.\main.c      **** 
-  28:.\main.c      ****     CyGlobalIntEnable;      // Global interrupt enable
-  42              		.loc 1 28 0
-  43              	@ 28 ".\main.c" 1
-  44 0014 62B6     		CPSIE   i
-  45              	@ 0 "" 2
-  46              		.code	16
-  47              	.L2:
-  29:.\main.c      **** 
-  30:.\main.c      ****     for(;;)
-  31:.\main.c      ****     {
-  32:.\main.c      **** 
-  33:.\main.c      ****     }
-  48              		.loc 1 33 0 discriminator 1
-  49 0016 FEE7     		b	.L2
-  50              		.cfi_endproc
-  51              	.LFE33:
-  52              		.size	main, .-main
-  53              		.text
-  54              	.Letext0:
-  55              		.section	.debug_info,"",%progbits
-  56              	.Ldebug_info0:
-  57 0000 99000000 		.4byte	0x99
-  58 0004 0400     		.2byte	0x4
-  59 0006 00000000 		.4byte	.Ldebug_abbrev0
-  60 000a 04       		.byte	0x4
-  61 000b 01       		.uleb128 0x1
-  62 000c 49000000 		.4byte	.LASF13
-  63 0010 01       		.byte	0x1
-  64 0011 61010000 		.4byte	.LASF14
-  65 0015 F2000000 		.4byte	.LASF15
-  66 0019 00000000 		.4byte	.Ldebug_ranges0+0
-  67 001d 00000000 		.4byte	0
-  68 0021 00000000 		.4byte	.Ldebug_line0
-  69 0025 02       		.uleb128 0x2
-  70 0026 01       		.byte	0x1
-  71 0027 06       		.byte	0x6
-  72 0028 4F010000 		.4byte	.LASF0
-  73 002c 02       		.uleb128 0x2
-  74 002d 01       		.byte	0x1
-  75 002e 08       		.byte	0x8
-  76 002f C5000000 		.4byte	.LASF1
-  77 0033 02       		.uleb128 0x2
-  78 0034 02       		.byte	0x2
-  79 0035 05       		.byte	0x5
-  80 0036 E1000000 		.4byte	.LASF2
-  81 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 3
+  34:.\main.c      **** 
+  35:.\main.c      ****     CyGlobalIntEnable;      // Global interrupt enable
+  67              		.loc 1 35 0
+  68              	@ 35 ".\main.c" 1
+  69 0016 62B6     		CPSIE   i
+  70              	@ 0 "" 2
+  36:.\main.c      ****     
+  37:.\main.c      ****     // Initialize UART
+  38:.\main.c      ****     UART_Start();
+  71              		.loc 1 38 0
+  72              		.code	16
+  73 0018 FFF7FEFF 		bl	UART_Start
+  39:.\main.c      ****     
+  40:.\main.c      ****     // Clears screen and prints opening msg
+  41:.\main.c      ****     UART_UartPutChar(27);           // ESC command
+  74              		.loc 1 41 0
+  75 001c 1B20     		mov	r0, #27
+  76 001e FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  42:.\main.c      ****     UART_UartPutString("[2J");      // clear screen command
+  77              		.loc 1 42 0
+  78 0022 3B4B     		ldr	r3, .L5
+  79 0024 181C     		mov	r0, r3
+  80 0026 FFF7FEFF 		bl	UART_UartPutString
+  43:.\main.c      ****     UART_UartPutChar(27);
+  81              		.loc 1 43 0
+  82 002a 1B20     		mov	r0, #27
+  83 002c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  44:.\main.c      ****     UART_UartPutString("[H");       // cursor to home command
+  84              		.loc 1 44 0
+  85 0030 384B     		ldr	r3, .L5+4
+  86 0032 181C     		mov	r0, r3
+  87 0034 FFF7FEFF 		bl	UART_UartPutString
+  45:.\main.c      ****     UART_UartPutString("System initialized..\n\r");
+  88              		.loc 1 45 0
+  89 0038 374B     		ldr	r3, .L5+8
+  90 003a 181C     		mov	r0, r3
+  91 003c FFF7FEFF 		bl	UART_UartPutString
+  46:.\main.c      ****     
+  47:.\main.c      ****     #ifdef test_initDSP
+  48:.\main.c      ****         char string[25];
+  49:.\main.c      ****         
+  50:.\main.c      ****         initUART();
+  92              		.loc 1 50 0
+  93 0040 FFF7FEFF 		bl	initUART
+  51:.\main.c      ****         
+  52:.\main.c      ****         uint8 temp = getTemp_DSP();
+  94              		.loc 1 52 0
+  95 0044 3C1C     		mov	r4, r7
+  96 0046 1E34     		add	r4, r4, #30
+  97 0048 FFF7FEFF 		bl	getTemp_DSP
+  98 004c 031C     		mov	r3, r0
+  99 004e 2370     		strb	r3, [r4]
+  53:.\main.c      ****         sprintf(string,"temp = %d\n\r",temp);
+ 100              		.loc 1 53 0
+ 101 0050 3B1C     		mov	r3, r7
+ 102 0052 1E33     		add	r3, r3, #30
+ 103 0054 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 4
 
 
-  82 003b 02       		.byte	0x2
-  83 003c 07       		.byte	0x7
-  84 003d 3C010000 		.4byte	.LASF3
-  85 0041 02       		.uleb128 0x2
-  86 0042 04       		.byte	0x4
-  87 0043 05       		.byte	0x5
-  88 0044 D8000000 		.4byte	.LASF4
-  89 0048 02       		.uleb128 0x2
-  90 0049 04       		.byte	0x4
-  91 004a 07       		.byte	0x7
-  92 004b 20000000 		.4byte	.LASF5
-  93 004f 02       		.uleb128 0x2
-  94 0050 08       		.byte	0x8
-  95 0051 05       		.byte	0x5
-  96 0052 00000000 		.4byte	.LASF6
-  97 0056 02       		.uleb128 0x2
-  98 0057 08       		.byte	0x8
-  99 0058 07       		.byte	0x7
- 100 0059 32000000 		.4byte	.LASF7
- 101 005d 03       		.uleb128 0x3
- 102 005e 04       		.byte	0x4
- 103 005f 05       		.byte	0x5
- 104 0060 696E7400 		.ascii	"int\000"
- 105 0064 02       		.uleb128 0x2
- 106 0065 04       		.byte	0x4
- 107 0066 07       		.byte	0x7
- 108 0067 0E000000 		.4byte	.LASF8
- 109 006b 02       		.uleb128 0x2
- 110 006c 04       		.byte	0x4
- 111 006d 04       		.byte	0x4
- 112 006e 5B010000 		.4byte	.LASF9
- 113 0072 02       		.uleb128 0x2
- 114 0073 08       		.byte	0x8
- 115 0074 04       		.byte	0x4
- 116 0075 EB000000 		.4byte	.LASF10
- 117 0079 02       		.uleb128 0x2
- 118 007a 01       		.byte	0x1
- 119 007b 08       		.byte	0x8
- 120 007c D3000000 		.4byte	.LASF11
- 121 0080 02       		.uleb128 0x2
- 122 0081 04       		.byte	0x4
- 123 0082 07       		.byte	0x7
- 124 0083 6A010000 		.4byte	.LASF12
- 125 0087 04       		.uleb128 0x4
- 126 0088 1B000000 		.4byte	.LASF16
- 127 008c 01       		.byte	0x1
- 128 008d 14       		.byte	0x14
- 129 008e 5D000000 		.4byte	0x5d
- 130 0092 00000000 		.4byte	.LFB33
- 131 0096 18000000 		.4byte	.LFE33-.LFB33
- 132 009a 01       		.uleb128 0x1
- 133 009b 9C       		.byte	0x9c
- 134 009c 00       		.byte	0
- 135              		.section	.debug_abbrev,"",%progbits
- 136              	.Ldebug_abbrev0:
- 137 0000 01       		.uleb128 0x1
- 138 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 4
+ 104 0056 391C     		mov	r1, r7
+ 105 0058 304A     		ldr	r2, .L5+12
+ 106 005a 081C     		mov	r0, r1
+ 107 005c 111C     		mov	r1, r2
+ 108 005e 1A1C     		mov	r2, r3
+ 109 0060 FFF7FEFF 		bl	sprintf
+  54:.\main.c      ****         UART_UartPutString(string);
+ 110              		.loc 1 54 0
+ 111 0064 3B1C     		mov	r3, r7
+ 112 0066 181C     		mov	r0, r3
+ 113 0068 FFF7FEFF 		bl	UART_UartPutString
+  55:.\main.c      ****         uint8 hum = getHum_DSP();
+ 114              		.loc 1 55 0
+ 115 006c 3C1C     		mov	r4, r7
+ 116 006e 1D34     		add	r4, r4, #29
+ 117 0070 FFF7FEFF 		bl	getHum_DSP
+ 118 0074 031C     		mov	r3, r0
+ 119 0076 2370     		strb	r3, [r4]
+  56:.\main.c      ****         sprintf(string,"hum = %d\n\r",hum);
+ 120              		.loc 1 56 0
+ 121 0078 3B1C     		mov	r3, r7
+ 122 007a 1D33     		add	r3, r3, #29
+ 123 007c 1B78     		ldrb	r3, [r3]
+ 124 007e 391C     		mov	r1, r7
+ 125 0080 274A     		ldr	r2, .L5+16
+ 126 0082 081C     		mov	r0, r1
+ 127 0084 111C     		mov	r1, r2
+ 128 0086 1A1C     		mov	r2, r3
+ 129 0088 FFF7FEFF 		bl	sprintf
+  57:.\main.c      ****         UART_UartPutString(string);
+ 130              		.loc 1 57 0
+ 131 008c 3B1C     		mov	r3, r7
+ 132 008e 181C     		mov	r0, r3
+ 133 0090 FFF7FEFF 		bl	UART_UartPutString
+  58:.\main.c      ****         uint8 light = getLight_DSP();
+ 134              		.loc 1 58 0
+ 135 0094 3C1C     		mov	r4, r7
+ 136 0096 1C34     		add	r4, r4, #28
+ 137 0098 FFF7FEFF 		bl	getLight_DSP
+ 138 009c 031C     		mov	r3, r0
+ 139 009e 2370     		strb	r3, [r4]
+  59:.\main.c      ****         sprintf(string,"light = %d\n\r",light);
+ 140              		.loc 1 59 0
+ 141 00a0 3B1C     		mov	r3, r7
+ 142 00a2 1C33     		add	r3, r3, #28
+ 143 00a4 1B78     		ldrb	r3, [r3]
+ 144 00a6 391C     		mov	r1, r7
+ 145 00a8 1E4A     		ldr	r2, .L5+20
+ 146 00aa 081C     		mov	r0, r1
+ 147 00ac 111C     		mov	r1, r2
+ 148 00ae 1A1C     		mov	r2, r3
+ 149 00b0 FFF7FEFF 		bl	sprintf
+  60:.\main.c      ****         UART_UartPutString(string);
+ 150              		.loc 1 60 0
+ 151 00b4 3B1C     		mov	r3, r7
+ 152 00b6 181C     		mov	r0, r3
+ 153 00b8 FFF7FEFF 		bl	UART_UartPutString
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 5
 
 
- 139 0002 01       		.byte	0x1
- 140 0003 25       		.uleb128 0x25
- 141 0004 0E       		.uleb128 0xe
- 142 0005 13       		.uleb128 0x13
- 143 0006 0B       		.uleb128 0xb
- 144 0007 03       		.uleb128 0x3
- 145 0008 0E       		.uleb128 0xe
- 146 0009 1B       		.uleb128 0x1b
- 147 000a 0E       		.uleb128 0xe
- 148 000b 55       		.uleb128 0x55
- 149 000c 17       		.uleb128 0x17
- 150 000d 11       		.uleb128 0x11
- 151 000e 01       		.uleb128 0x1
- 152 000f 10       		.uleb128 0x10
- 153 0010 17       		.uleb128 0x17
- 154 0011 00       		.byte	0
- 155 0012 00       		.byte	0
- 156 0013 02       		.uleb128 0x2
- 157 0014 24       		.uleb128 0x24
- 158 0015 00       		.byte	0
- 159 0016 0B       		.uleb128 0xb
- 160 0017 0B       		.uleb128 0xb
- 161 0018 3E       		.uleb128 0x3e
- 162 0019 0B       		.uleb128 0xb
- 163 001a 03       		.uleb128 0x3
- 164 001b 0E       		.uleb128 0xe
- 165 001c 00       		.byte	0
- 166 001d 00       		.byte	0
- 167 001e 03       		.uleb128 0x3
- 168 001f 24       		.uleb128 0x24
- 169 0020 00       		.byte	0
- 170 0021 0B       		.uleb128 0xb
- 171 0022 0B       		.uleb128 0xb
- 172 0023 3E       		.uleb128 0x3e
- 173 0024 0B       		.uleb128 0xb
- 174 0025 03       		.uleb128 0x3
- 175 0026 08       		.uleb128 0x8
- 176 0027 00       		.byte	0
- 177 0028 00       		.byte	0
- 178 0029 04       		.uleb128 0x4
- 179 002a 2E       		.uleb128 0x2e
- 180 002b 00       		.byte	0
- 181 002c 3F       		.uleb128 0x3f
- 182 002d 19       		.uleb128 0x19
- 183 002e 03       		.uleb128 0x3
- 184 002f 0E       		.uleb128 0xe
- 185 0030 3A       		.uleb128 0x3a
- 186 0031 0B       		.uleb128 0xb
- 187 0032 3B       		.uleb128 0x3b
- 188 0033 0B       		.uleb128 0xb
- 189 0034 49       		.uleb128 0x49
- 190 0035 13       		.uleb128 0x13
- 191 0036 11       		.uleb128 0x11
- 192 0037 01       		.uleb128 0x1
- 193 0038 12       		.uleb128 0x12
- 194 0039 06       		.uleb128 0x6
- 195 003a 40       		.uleb128 0x40
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 5
+  61:.\main.c      ****         
+  62:.\main.c      ****         uint8 i;
+  63:.\main.c      ****         for(i = 0 ; i < NBR_OF_SOILHUM_SENSORS ; i++)
+ 154              		.loc 1 63 0
+ 155 00bc 3B1C     		mov	r3, r7
+ 156 00be 1F33     		add	r3, r3, #31
+ 157 00c0 0022     		mov	r2, #0
+ 158 00c2 1A70     		strb	r2, [r3]
+ 159 00c4 1EE0     		b	.L2
+ 160              	.L3:
+ 161              	.LBB2:
+  64:.\main.c      ****         {
+  65:.\main.c      ****             uint8 soilHum = getSoilHum_DSP(i);
+ 162              		.loc 1 65 0 discriminator 2
+ 163 00c6 3C1C     		mov	r4, r7
+ 164 00c8 1B34     		add	r4, r4, #27
+ 165 00ca 3B1C     		mov	r3, r7
+ 166 00cc 1F33     		add	r3, r3, #31
+ 167 00ce 1B78     		ldrb	r3, [r3]
+ 168 00d0 181C     		mov	r0, r3
+ 169 00d2 FFF7FEFF 		bl	getSoilHum_DSP
+ 170 00d6 031C     		mov	r3, r0
+ 171 00d8 2370     		strb	r3, [r4]
+  66:.\main.c      ****             sprintf(string,"soilHum( %d ) = %d\n\r",i,soilHum);
+ 172              		.loc 1 66 0 discriminator 2
+ 173 00da 3B1C     		mov	r3, r7
+ 174 00dc 1F33     		add	r3, r3, #31
+ 175 00de 1A78     		ldrb	r2, [r3]
+ 176 00e0 3B1C     		mov	r3, r7
+ 177 00e2 1B33     		add	r3, r3, #27
+ 178 00e4 1B78     		ldrb	r3, [r3]
+ 179 00e6 381C     		mov	r0, r7
+ 180 00e8 0F49     		ldr	r1, .L5+24
+ 181 00ea FFF7FEFF 		bl	sprintf
+  67:.\main.c      ****             UART_UartPutString(string);
+ 182              		.loc 1 67 0 discriminator 2
+ 183 00ee 3B1C     		mov	r3, r7
+ 184 00f0 181C     		mov	r0, r3
+ 185 00f2 FFF7FEFF 		bl	UART_UartPutString
+ 186              	.LBE2:
+  63:.\main.c      ****         for(i = 0 ; i < NBR_OF_SOILHUM_SENSORS ; i++)
+ 187              		.loc 1 63 0 discriminator 2
+ 188 00f6 3B1C     		mov	r3, r7
+ 189 00f8 1F33     		add	r3, r3, #31
+ 190 00fa 1A78     		ldrb	r2, [r3]
+ 191 00fc 3B1C     		mov	r3, r7
+ 192 00fe 1F33     		add	r3, r3, #31
+ 193 0100 0132     		add	r2, r2, #1
+ 194 0102 1A70     		strb	r2, [r3]
+ 195              	.L2:
+  63:.\main.c      ****         for(i = 0 ; i < NBR_OF_SOILHUM_SENSORS ; i++)
+ 196              		.loc 1 63 0 is_stmt 0 discriminator 1
+ 197 0104 3B1C     		mov	r3, r7
+ 198 0106 1F33     		add	r3, r3, #31
+ 199 0108 1B78     		ldrb	r3, [r3]
+ 200 010a 052B     		cmp	r3, #5
+ 201 010c DBD9     		bls	.L3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 6
 
 
- 196 003b 18       		.uleb128 0x18
- 197 003c 9642     		.uleb128 0x2116
- 198 003e 19       		.uleb128 0x19
- 199 003f 00       		.byte	0
- 200 0040 00       		.byte	0
- 201 0041 00       		.byte	0
- 202              		.section	.debug_aranges,"",%progbits
- 203 0000 1C000000 		.4byte	0x1c
- 204 0004 0200     		.2byte	0x2
- 205 0006 00000000 		.4byte	.Ldebug_info0
- 206 000a 04       		.byte	0x4
- 207 000b 00       		.byte	0
- 208 000c 0000     		.2byte	0
- 209 000e 0000     		.2byte	0
- 210 0010 00000000 		.4byte	.LFB33
- 211 0014 18000000 		.4byte	.LFE33-.LFB33
- 212 0018 00000000 		.4byte	0
- 213 001c 00000000 		.4byte	0
- 214              		.section	.debug_ranges,"",%progbits
- 215              	.Ldebug_ranges0:
- 216 0000 00000000 		.4byte	.LFB33
- 217 0004 18000000 		.4byte	.LFE33
- 218 0008 00000000 		.4byte	0
- 219 000c 00000000 		.4byte	0
- 220              		.section	.debug_line,"",%progbits
- 221              	.Ldebug_line0:
- 222 0000 3E000000 		.section	.debug_str,"MS",%progbits,1
- 222      02001F00 
- 222      00000201 
- 222      FB0E0D00 
- 222      01010101 
- 223              	.LASF6:
- 224 0000 6C6F6E67 		.ascii	"long long int\000"
- 224      206C6F6E 
- 224      6720696E 
- 224      7400
- 225              	.LASF8:
- 226 000e 756E7369 		.ascii	"unsigned int\000"
- 226      676E6564 
- 226      20696E74 
- 226      00
- 227              	.LASF16:
- 228 001b 6D61696E 		.ascii	"main\000"
- 228      00
- 229              	.LASF5:
- 230 0020 6C6F6E67 		.ascii	"long unsigned int\000"
- 230      20756E73 
- 230      69676E65 
- 230      6420696E 
- 230      7400
- 231              	.LASF7:
- 232 0032 6C6F6E67 		.ascii	"long long unsigned int\000"
- 232      206C6F6E 
- 232      6720756E 
- 232      7369676E 
- 232      65642069 
- 233              	.LASF13:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 6
+ 202              	.L4:
+  68:.\main.c      ****         }
+  69:.\main.c      ****     #endif
+  70:.\main.c      ****         
+  71:.\main.c      ****     #ifdef test_inputTemp
+  72:.\main.c      ****         char string[25];
+  73:.\main.c      ****         int32 testVar = 3030;   // Inputs: 0 - 16383
+  74:.\main.c      ****         uint32 i;
+  75:.\main.c      ****         for(i = 0 ; i<ARRAYSIZE ; i++){
+  76:.\main.c      ****             inputTemp(&testVar);
+  77:.\main.c      ****             
+  78:.\main.c      ****             sprintf(string,"inputTemp( %ld )\n\r",testVar);
+  79:.\main.c      ****             UART_UartPutString(string);
+  80:.\main.c      ****         }
+  81:.\main.c      ****         uint8 temp = getTemp_DSP();
+  82:.\main.c      ****         sprintf(string,"getTemp_DSP() = %d\n\r",temp);
+  83:.\main.c      ****         UART_UartPutString(string);
+  84:.\main.c      ****     #endif
+  85:.\main.c      **** 
+  86:.\main.c      ****     #ifdef test_inputHum
+  87:.\main.c      ****         char string[25];
+  88:.\main.c      ****         int32 testVar = 3030;   // Inputs: 0 - 16383
+  89:.\main.c      ****         uint32 i;
+  90:.\main.c      ****         for(i = 0 ; i<ARRAYSIZE ; i++){
+  91:.\main.c      ****             inputHum(&testVar);
+  92:.\main.c      ****             
+  93:.\main.c      ****             sprintf(string,"inputHum( %ld )\n\r",testVar);
+  94:.\main.c      ****             UART_UartPutString(string);
+  95:.\main.c      ****         }
+  96:.\main.c      ****         uint8 hum = getHum_DSP();
+  97:.\main.c      ****         sprintf(string,"getHum_DSP() = %d\n\r",hum);
+  98:.\main.c      ****         UART_UartPutString(string);
+  99:.\main.c      ****     #endif
+ 100:.\main.c      ****     
+ 101:.\main.c      ****     #ifdef test_inputLight
+ 102:.\main.c      ****         char string[25];
+ 103:.\main.c      ****         int32 testVar = 2;   // Inputs: 0 - 127
+ 104:.\main.c      ****         uint32 i;
+ 105:.\main.c      ****         for(i = 0 ; i<ARRAYSIZE ; i++){
+ 106:.\main.c      ****             inputLight(&testVar);
+ 107:.\main.c      ****             
+ 108:.\main.c      ****             sprintf(string,"inputLight( %ld )\n\r",testVar);
+ 109:.\main.c      ****             UART_UartPutString(string);
+ 110:.\main.c      ****         }
+ 111:.\main.c      ****         uint8 light = getLight_DSP();
+ 112:.\main.c      ****         sprintf(string,"getLight_DSP() = %d\n\r",light);
+ 113:.\main.c      ****         UART_UartPutString(string);
+ 114:.\main.c      ****     #endif
+ 115:.\main.c      ****         
+ 116:.\main.c      ****     #ifdef test_inputSoilHum
+ 117:.\main.c      ****         char string[25];
+ 118:.\main.c      ****         int16 testVar = 0;   // Inputs: 0 - 100 ( This is not decided yet but this will work)
+ 119:.\main.c      ****         uint32 i, j;
+ 120:.\main.c      ****         for(i = 0 ; i<ARRAYSIZE ; i++){
+ 121:.\main.c      ****             for(j = 0 ; j < NBR_OF_SOILHUM_SENSORS ; j++){
+ 122:.\main.c      ****                 inputSoilHum(j ,&testVar);
+ 123:.\main.c      ****                 sprintf(string,"inputSoilHum( %lu , %hd )\n\r",j,testVar);
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 7
 
 
- 234 0049 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 234      4320342E 
- 234      382E3420 
- 234      32303134 
- 234      30353236 
- 235 007c 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 235      20726576 
- 235      6973696F 
- 235      6E203231 
- 235      31333538 
- 236 00af 30202D66 		.ascii	"0 -ffunction-sections\000"
- 236      66756E63 
- 236      74696F6E 
- 236      2D736563 
- 236      74696F6E 
- 237              	.LASF1:
- 238 00c5 756E7369 		.ascii	"unsigned char\000"
- 238      676E6564 
- 238      20636861 
- 238      7200
- 239              	.LASF11:
- 240 00d3 63686172 		.ascii	"char\000"
- 240      00
- 241              	.LASF4:
- 242 00d8 6C6F6E67 		.ascii	"long int\000"
- 242      20696E74 
- 242      00
- 243              	.LASF2:
- 244 00e1 73686F72 		.ascii	"short int\000"
- 244      7420696E 
- 244      7400
- 245              	.LASF10:
- 246 00eb 646F7562 		.ascii	"double\000"
- 246      6C6500
- 247              	.LASF15:
- 248 00f2 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 248      73657273 
- 248      5C506869 
- 248      6C69705C 
- 248      4F6E6544 
- 249 011f 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 249      4D617374 
- 249      65725C50 
- 249      536F435F 
- 249      4D617374 
- 250              	.LASF3:
- 251 013c 73686F72 		.ascii	"short unsigned int\000"
- 251      7420756E 
- 251      7369676E 
- 251      65642069 
- 251      6E7400
- 252              	.LASF0:
- 253 014f 7369676E 		.ascii	"signed char\000"
- 253      65642063 
- 253      68617200 
- 254              	.LASF9:
- 255 015b 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccw3DUQz.s 			page 7
+ 124:.\main.c      ****                 UART_UartPutString(string);
+ 125:.\main.c      ****             }
+ 126:.\main.c      ****         }
+ 127:.\main.c      ****         for(j = 0 ; j < NBR_OF_SOILHUM_SENSORS ; j++){
+ 128:.\main.c      ****             uint8 SoilHum = getSoilHum_DSP(j);
+ 129:.\main.c      ****             sprintf(string,"getSoilHum_DSP(%lu) = %d\n\r",j,SoilHum);
+ 130:.\main.c      ****             UART_UartPutString(string);
+ 131:.\main.c      ****         }
+ 132:.\main.c      ****     #endif
+ 133:.\main.c      ****     
+ 134:.\main.c      ****     for(;;)
+ 135:.\main.c      ****     {
+ 136:.\main.c      **** 
+ 137:.\main.c      ****     }
+ 203              		.loc 1 137 0 is_stmt 1 discriminator 1
+ 204 010e FEE7     		b	.L4
+ 205              	.L6:
+ 206              		.align	2
+ 207              	.L5:
+ 208 0110 00000000 		.word	.LC0
+ 209 0114 04000000 		.word	.LC2
+ 210 0118 08000000 		.word	.LC4
+ 211 011c 20000000 		.word	.LC6
+ 212 0120 2C000000 		.word	.LC8
+ 213 0124 38000000 		.word	.LC10
+ 214 0128 48000000 		.word	.LC12
+ 215              		.cfi_endproc
+ 216              	.LFE33:
+ 217              		.size	main, .-main
+ 218              		.text
+ 219              	.Letext0:
+ 220              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 221              		.section	.debug_info,"",%progbits
+ 222              	.Ldebug_info0:
+ 223 0000 1C010000 		.4byte	0x11c
+ 224 0004 0400     		.2byte	0x4
+ 225 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 226 000a 04       		.byte	0x4
+ 227 000b 01       		.uleb128 0x1
+ 228 000c 5D000000 		.4byte	.LASF19
+ 229 0010 01       		.byte	0x1
+ 230 0011 7B010000 		.4byte	.LASF20
+ 231 0015 0C010000 		.4byte	.LASF21
+ 232 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 233 001d 00000000 		.4byte	0
+ 234 0021 00000000 		.4byte	.Ldebug_line0
+ 235 0025 02       		.uleb128 0x2
+ 236 0026 01       		.byte	0x1
+ 237 0027 06       		.byte	0x6
+ 238 0028 69010000 		.4byte	.LASF0
+ 239 002c 02       		.uleb128 0x2
+ 240 002d 01       		.byte	0x1
+ 241 002e 08       		.byte	0x8
+ 242 002f D9000000 		.4byte	.LASF1
+ 243 0033 02       		.uleb128 0x2
+ 244 0034 02       		.byte	0x2
+ 245 0035 05       		.byte	0x5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 8
 
 
- 255      7400
- 256              	.LASF14:
- 257 0161 2E5C6D61 		.ascii	".\\main.c\000"
- 257      696E2E63 
- 257      00
- 258              	.LASF12:
- 259 016a 73697A65 		.ascii	"sizetype\000"
- 259      74797065 
- 259      00
- 260              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 246 0036 F5000000 		.4byte	.LASF2
+ 247 003a 02       		.uleb128 0x2
+ 248 003b 02       		.byte	0x2
+ 249 003c 07       		.byte	0x7
+ 250 003d 56010000 		.4byte	.LASF3
+ 251 0041 02       		.uleb128 0x2
+ 252 0042 04       		.byte	0x4
+ 253 0043 05       		.byte	0x5
+ 254 0044 EC000000 		.4byte	.LASF4
+ 255 0048 02       		.uleb128 0x2
+ 256 0049 04       		.byte	0x4
+ 257 004a 07       		.byte	0x7
+ 258 004b 34000000 		.4byte	.LASF5
+ 259 004f 02       		.uleb128 0x2
+ 260 0050 08       		.byte	0x8
+ 261 0051 05       		.byte	0x5
+ 262 0052 00000000 		.4byte	.LASF6
+ 263 0056 02       		.uleb128 0x2
+ 264 0057 08       		.byte	0x8
+ 265 0058 07       		.byte	0x7
+ 266 0059 46000000 		.4byte	.LASF7
+ 267 005d 03       		.uleb128 0x3
+ 268 005e 04       		.byte	0x4
+ 269 005f 05       		.byte	0x5
+ 270 0060 696E7400 		.ascii	"int\000"
+ 271 0064 02       		.uleb128 0x2
+ 272 0065 04       		.byte	0x4
+ 273 0066 07       		.byte	0x7
+ 274 0067 84010000 		.4byte	.LASF8
+ 275 006b 04       		.uleb128 0x4
+ 276 006c 2E000000 		.4byte	.LASF9
+ 277 0070 02       		.byte	0x2
+ 278 0071 A1       		.byte	0xa1
+ 279 0072 2C000000 		.4byte	0x2c
+ 280 0076 04       		.uleb128 0x4
+ 281 0077 0E000000 		.4byte	.LASF10
+ 282 007b 02       		.byte	0x2
+ 283 007c A3       		.byte	0xa3
+ 284 007d 48000000 		.4byte	0x48
+ 285 0081 02       		.uleb128 0x2
+ 286 0082 04       		.byte	0x4
+ 287 0083 04       		.byte	0x4
+ 288 0084 75010000 		.4byte	.LASF11
+ 289 0088 02       		.uleb128 0x2
+ 290 0089 08       		.byte	0x8
+ 291 008a 04       		.byte	0x4
+ 292 008b FF000000 		.4byte	.LASF12
+ 293 008f 02       		.uleb128 0x2
+ 294 0090 01       		.byte	0x1
+ 295 0091 08       		.byte	0x8
+ 296 0092 E7000000 		.4byte	.LASF13
+ 297 0096 02       		.uleb128 0x2
+ 298 0097 04       		.byte	0x4
+ 299 0098 07       		.byte	0x7
+ 300 0099 91010000 		.4byte	.LASF14
+ 301 009d 05       		.uleb128 0x5
+ 302 009e 8F000000 		.4byte	0x8f
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 9
+
+
+ 303 00a2 AD000000 		.4byte	0xad
+ 304 00a6 06       		.uleb128 0x6
+ 305 00a7 96000000 		.4byte	0x96
+ 306 00ab 18       		.byte	0x18
+ 307 00ac 00       		.byte	0
+ 308 00ad 07       		.uleb128 0x7
+ 309 00ae 1C000000 		.4byte	.LASF22
+ 310 00b2 01       		.byte	0x1
+ 311 00b3 1B       		.byte	0x1b
+ 312 00b4 5D000000 		.4byte	0x5d
+ 313 00b8 00000000 		.4byte	.LFB33
+ 314 00bc 2C010000 		.4byte	.LFE33-.LFB33
+ 315 00c0 01       		.uleb128 0x1
+ 316 00c1 9C       		.byte	0x9c
+ 317 00c2 08       		.uleb128 0x8
+ 318 00c3 15000000 		.4byte	.LASF15
+ 319 00c7 01       		.byte	0x1
+ 320 00c8 30       		.byte	0x30
+ 321 00c9 9D000000 		.4byte	0x9d
+ 322 00cd 02       		.uleb128 0x2
+ 323 00ce 91       		.byte	0x91
+ 324 00cf 50       		.sleb128 -48
+ 325 00d0 08       		.uleb128 0x8
+ 326 00d1 21000000 		.4byte	.LASF16
+ 327 00d5 01       		.byte	0x1
+ 328 00d6 34       		.byte	0x34
+ 329 00d7 6B000000 		.4byte	0x6b
+ 330 00db 02       		.uleb128 0x2
+ 331 00dc 91       		.byte	0x91
+ 332 00dd 6E       		.sleb128 -18
+ 333 00de 09       		.uleb128 0x9
+ 334 00df 68756D00 		.ascii	"hum\000"
+ 335 00e3 01       		.byte	0x1
+ 336 00e4 37       		.byte	0x37
+ 337 00e5 6B000000 		.4byte	0x6b
+ 338 00e9 02       		.uleb128 0x2
+ 339 00ea 91       		.byte	0x91
+ 340 00eb 6D       		.sleb128 -19
+ 341 00ec 08       		.uleb128 0x8
+ 342 00ed 06010000 		.4byte	.LASF17
+ 343 00f1 01       		.byte	0x1
+ 344 00f2 3A       		.byte	0x3a
+ 345 00f3 6B000000 		.4byte	0x6b
+ 346 00f7 02       		.uleb128 0x2
+ 347 00f8 91       		.byte	0x91
+ 348 00f9 6C       		.sleb128 -20
+ 349 00fa 09       		.uleb128 0x9
+ 350 00fb 6900     		.ascii	"i\000"
+ 351 00fd 01       		.byte	0x1
+ 352 00fe 3E       		.byte	0x3e
+ 353 00ff 6B000000 		.4byte	0x6b
+ 354 0103 02       		.uleb128 0x2
+ 355 0104 91       		.byte	0x91
+ 356 0105 6F       		.sleb128 -17
+ 357 0106 0A       		.uleb128 0xa
+ 358 0107 C6000000 		.4byte	.LBB2
+ 359 010b 30000000 		.4byte	.LBE2-.LBB2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 10
+
+
+ 360 010f 08       		.uleb128 0x8
+ 361 0110 26000000 		.4byte	.LASF18
+ 362 0114 01       		.byte	0x1
+ 363 0115 41       		.byte	0x41
+ 364 0116 6B000000 		.4byte	0x6b
+ 365 011a 02       		.uleb128 0x2
+ 366 011b 91       		.byte	0x91
+ 367 011c 6B       		.sleb128 -21
+ 368 011d 00       		.byte	0
+ 369 011e 00       		.byte	0
+ 370 011f 00       		.byte	0
+ 371              		.section	.debug_abbrev,"",%progbits
+ 372              	.Ldebug_abbrev0:
+ 373 0000 01       		.uleb128 0x1
+ 374 0001 11       		.uleb128 0x11
+ 375 0002 01       		.byte	0x1
+ 376 0003 25       		.uleb128 0x25
+ 377 0004 0E       		.uleb128 0xe
+ 378 0005 13       		.uleb128 0x13
+ 379 0006 0B       		.uleb128 0xb
+ 380 0007 03       		.uleb128 0x3
+ 381 0008 0E       		.uleb128 0xe
+ 382 0009 1B       		.uleb128 0x1b
+ 383 000a 0E       		.uleb128 0xe
+ 384 000b 55       		.uleb128 0x55
+ 385 000c 17       		.uleb128 0x17
+ 386 000d 11       		.uleb128 0x11
+ 387 000e 01       		.uleb128 0x1
+ 388 000f 10       		.uleb128 0x10
+ 389 0010 17       		.uleb128 0x17
+ 390 0011 00       		.byte	0
+ 391 0012 00       		.byte	0
+ 392 0013 02       		.uleb128 0x2
+ 393 0014 24       		.uleb128 0x24
+ 394 0015 00       		.byte	0
+ 395 0016 0B       		.uleb128 0xb
+ 396 0017 0B       		.uleb128 0xb
+ 397 0018 3E       		.uleb128 0x3e
+ 398 0019 0B       		.uleb128 0xb
+ 399 001a 03       		.uleb128 0x3
+ 400 001b 0E       		.uleb128 0xe
+ 401 001c 00       		.byte	0
+ 402 001d 00       		.byte	0
+ 403 001e 03       		.uleb128 0x3
+ 404 001f 24       		.uleb128 0x24
+ 405 0020 00       		.byte	0
+ 406 0021 0B       		.uleb128 0xb
+ 407 0022 0B       		.uleb128 0xb
+ 408 0023 3E       		.uleb128 0x3e
+ 409 0024 0B       		.uleb128 0xb
+ 410 0025 03       		.uleb128 0x3
+ 411 0026 08       		.uleb128 0x8
+ 412 0027 00       		.byte	0
+ 413 0028 00       		.byte	0
+ 414 0029 04       		.uleb128 0x4
+ 415 002a 16       		.uleb128 0x16
+ 416 002b 00       		.byte	0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 11
+
+
+ 417 002c 03       		.uleb128 0x3
+ 418 002d 0E       		.uleb128 0xe
+ 419 002e 3A       		.uleb128 0x3a
+ 420 002f 0B       		.uleb128 0xb
+ 421 0030 3B       		.uleb128 0x3b
+ 422 0031 0B       		.uleb128 0xb
+ 423 0032 49       		.uleb128 0x49
+ 424 0033 13       		.uleb128 0x13
+ 425 0034 00       		.byte	0
+ 426 0035 00       		.byte	0
+ 427 0036 05       		.uleb128 0x5
+ 428 0037 01       		.uleb128 0x1
+ 429 0038 01       		.byte	0x1
+ 430 0039 49       		.uleb128 0x49
+ 431 003a 13       		.uleb128 0x13
+ 432 003b 01       		.uleb128 0x1
+ 433 003c 13       		.uleb128 0x13
+ 434 003d 00       		.byte	0
+ 435 003e 00       		.byte	0
+ 436 003f 06       		.uleb128 0x6
+ 437 0040 21       		.uleb128 0x21
+ 438 0041 00       		.byte	0
+ 439 0042 49       		.uleb128 0x49
+ 440 0043 13       		.uleb128 0x13
+ 441 0044 2F       		.uleb128 0x2f
+ 442 0045 0B       		.uleb128 0xb
+ 443 0046 00       		.byte	0
+ 444 0047 00       		.byte	0
+ 445 0048 07       		.uleb128 0x7
+ 446 0049 2E       		.uleb128 0x2e
+ 447 004a 01       		.byte	0x1
+ 448 004b 3F       		.uleb128 0x3f
+ 449 004c 19       		.uleb128 0x19
+ 450 004d 03       		.uleb128 0x3
+ 451 004e 0E       		.uleb128 0xe
+ 452 004f 3A       		.uleb128 0x3a
+ 453 0050 0B       		.uleb128 0xb
+ 454 0051 3B       		.uleb128 0x3b
+ 455 0052 0B       		.uleb128 0xb
+ 456 0053 49       		.uleb128 0x49
+ 457 0054 13       		.uleb128 0x13
+ 458 0055 11       		.uleb128 0x11
+ 459 0056 01       		.uleb128 0x1
+ 460 0057 12       		.uleb128 0x12
+ 461 0058 06       		.uleb128 0x6
+ 462 0059 40       		.uleb128 0x40
+ 463 005a 18       		.uleb128 0x18
+ 464 005b 9642     		.uleb128 0x2116
+ 465 005d 19       		.uleb128 0x19
+ 466 005e 00       		.byte	0
+ 467 005f 00       		.byte	0
+ 468 0060 08       		.uleb128 0x8
+ 469 0061 34       		.uleb128 0x34
+ 470 0062 00       		.byte	0
+ 471 0063 03       		.uleb128 0x3
+ 472 0064 0E       		.uleb128 0xe
+ 473 0065 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 12
+
+
+ 474 0066 0B       		.uleb128 0xb
+ 475 0067 3B       		.uleb128 0x3b
+ 476 0068 0B       		.uleb128 0xb
+ 477 0069 49       		.uleb128 0x49
+ 478 006a 13       		.uleb128 0x13
+ 479 006b 02       		.uleb128 0x2
+ 480 006c 18       		.uleb128 0x18
+ 481 006d 00       		.byte	0
+ 482 006e 00       		.byte	0
+ 483 006f 09       		.uleb128 0x9
+ 484 0070 34       		.uleb128 0x34
+ 485 0071 00       		.byte	0
+ 486 0072 03       		.uleb128 0x3
+ 487 0073 08       		.uleb128 0x8
+ 488 0074 3A       		.uleb128 0x3a
+ 489 0075 0B       		.uleb128 0xb
+ 490 0076 3B       		.uleb128 0x3b
+ 491 0077 0B       		.uleb128 0xb
+ 492 0078 49       		.uleb128 0x49
+ 493 0079 13       		.uleb128 0x13
+ 494 007a 02       		.uleb128 0x2
+ 495 007b 18       		.uleb128 0x18
+ 496 007c 00       		.byte	0
+ 497 007d 00       		.byte	0
+ 498 007e 0A       		.uleb128 0xa
+ 499 007f 0B       		.uleb128 0xb
+ 500 0080 01       		.byte	0x1
+ 501 0081 11       		.uleb128 0x11
+ 502 0082 01       		.uleb128 0x1
+ 503 0083 12       		.uleb128 0x12
+ 504 0084 06       		.uleb128 0x6
+ 505 0085 00       		.byte	0
+ 506 0086 00       		.byte	0
+ 507 0087 00       		.byte	0
+ 508              		.section	.debug_aranges,"",%progbits
+ 509 0000 1C000000 		.4byte	0x1c
+ 510 0004 0200     		.2byte	0x2
+ 511 0006 00000000 		.4byte	.Ldebug_info0
+ 512 000a 04       		.byte	0x4
+ 513 000b 00       		.byte	0
+ 514 000c 0000     		.2byte	0
+ 515 000e 0000     		.2byte	0
+ 516 0010 00000000 		.4byte	.LFB33
+ 517 0014 2C010000 		.4byte	.LFE33-.LFB33
+ 518 0018 00000000 		.4byte	0
+ 519 001c 00000000 		.4byte	0
+ 520              		.section	.debug_ranges,"",%progbits
+ 521              	.Ldebug_ranges0:
+ 522 0000 00000000 		.4byte	.LFB33
+ 523 0004 2C010000 		.4byte	.LFE33
+ 524 0008 00000000 		.4byte	0
+ 525 000c 00000000 		.4byte	0
+ 526              		.section	.debug_line,"",%progbits
+ 527              	.Ldebug_line0:
+ 528 0000 93000000 		.section	.debug_str,"MS",%progbits,1
+ 528      02004500 
+ 528      00000201 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 13
+
+
+ 528      FB0E0D00 
+ 528      01010101 
+ 529              	.LASF6:
+ 530 0000 6C6F6E67 		.ascii	"long long int\000"
+ 530      206C6F6E 
+ 530      6720696E 
+ 530      7400
+ 531              	.LASF10:
+ 532 000e 75696E74 		.ascii	"uint32\000"
+ 532      333200
+ 533              	.LASF15:
+ 534 0015 73747269 		.ascii	"string\000"
+ 534      6E6700
+ 535              	.LASF22:
+ 536 001c 6D61696E 		.ascii	"main\000"
+ 536      00
+ 537              	.LASF16:
+ 538 0021 74656D70 		.ascii	"temp\000"
+ 538      00
+ 539              	.LASF18:
+ 540 0026 736F696C 		.ascii	"soilHum\000"
+ 540      48756D00 
+ 541              	.LASF9:
+ 542 002e 75696E74 		.ascii	"uint8\000"
+ 542      3800
+ 543              	.LASF5:
+ 544 0034 6C6F6E67 		.ascii	"long unsigned int\000"
+ 544      20756E73 
+ 544      69676E65 
+ 544      6420696E 
+ 544      7400
+ 545              	.LASF7:
+ 546 0046 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 546      206C6F6E 
+ 546      6720756E 
+ 546      7369676E 
+ 546      65642069 
+ 547              	.LASF19:
+ 548 005d 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 548      4320342E 
+ 548      382E3420 
+ 548      32303134 
+ 548      30353236 
+ 549 0090 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 549      20726576 
+ 549      6973696F 
+ 549      6E203231 
+ 549      31333538 
+ 550 00c3 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 550      66756E63 
+ 550      74696F6E 
+ 550      2D736563 
+ 550      74696F6E 
+ 551              	.LASF1:
+ 552 00d9 756E7369 		.ascii	"unsigned char\000"
+ 552      676E6564 
+ 552      20636861 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cciWD7R8.s 			page 14
+
+
+ 552      7200
+ 553              	.LASF13:
+ 554 00e7 63686172 		.ascii	"char\000"
+ 554      00
+ 555              	.LASF4:
+ 556 00ec 6C6F6E67 		.ascii	"long int\000"
+ 556      20696E74 
+ 556      00
+ 557              	.LASF2:
+ 558 00f5 73686F72 		.ascii	"short int\000"
+ 558      7420696E 
+ 558      7400
+ 559              	.LASF12:
+ 560 00ff 646F7562 		.ascii	"double\000"
+ 560      6C6500
+ 561              	.LASF17:
+ 562 0106 6C696768 		.ascii	"light\000"
+ 562      7400
+ 563              	.LASF21:
+ 564 010c 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 564      73657273 
+ 564      5C506869 
+ 564      6C69705C 
+ 564      4F6E6544 
+ 565 0139 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 565      4D617374 
+ 565      65725C50 
+ 565      536F435F 
+ 565      4D617374 
+ 566              	.LASF3:
+ 567 0156 73686F72 		.ascii	"short unsigned int\000"
+ 567      7420756E 
+ 567      7369676E 
+ 567      65642069 
+ 567      6E7400
+ 568              	.LASF0:
+ 569 0169 7369676E 		.ascii	"signed char\000"
+ 569      65642063 
+ 569      68617200 
+ 570              	.LASF11:
+ 571 0175 666C6F61 		.ascii	"float\000"
+ 571      7400
+ 572              	.LASF20:
+ 573 017b 2E5C6D61 		.ascii	".\\main.c\000"
+ 573      696E2E63 
+ 573      00
+ 574              	.LASF8:
+ 575 0184 756E7369 		.ascii	"unsigned int\000"
+ 575      676E6564 
+ 575      20696E74 
+ 575      00
+ 576              	.LASF14:
+ 577 0191 73697A65 		.ascii	"sizetype\000"
+ 577      74797065 
+ 577      00
+ 578              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

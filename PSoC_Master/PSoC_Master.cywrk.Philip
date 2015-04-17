@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_Master\PSoC_Master\Source Files\DSP_Class.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC_Master\PSoC_Master\Header Files\DSP_Class.h">
 <ExpandedNodeIds>
 <v>PSoC_Master</v>
 <v>PSoC_Master\PSoC_Master</v>
@@ -262,18 +262,30 @@
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
 </dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators>
+<CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="87" DocumentName=".\PSoC_Master.cydsn\DSP_Class.c" />
+</CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
+<CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="96" DocumentName=".\PSoC_Master.cydsn\DSP_Class.c" />
+</CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
+<CyGuid_67999771-01c6-4f62-90b3-2054bb36a318 type_name="CyDesigner.Framework.CyBookmark" version="1">
+<CyGuid_a1027fc4-3497-43a6-85d7-b91ffa0029b7 type_name="CyDesigner.Framework.CySerializableMarginIndicator" version="1" LineNumber="82" DocumentName=".\PSoC_Master.cydsn\DSP_Class.c" />
+</CyGuid_67999771-01c6-4f62-90b3-2054bb36a318>
+</indicators>
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.h" />
-<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.c" />
-<name v=".\PSoC_Master.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\PSoC_Master.cydsn\main.c" />
 <name v=".\PSoC_Master.cydsn\DSP_Class.h" />
-<name v=".\PSoC_Master.cydsn\I2C_Class.h" />
-<name v=".\PSoC_Master.cydsn\UART_Class.h" />
 <name v=".\PSoC_Master.cydsn\DSP_Class.c" />
+<name v=".\PSoC_Master.cydsn\PSoC_Master_Class.c" />
+<name v=".\PSoC_Master.cydsn\Generated_Source\PSoC4\UART.h" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

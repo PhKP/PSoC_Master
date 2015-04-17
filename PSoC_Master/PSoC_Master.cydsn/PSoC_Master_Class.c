@@ -17,6 +17,8 @@
 
 //Definitions
 #define CONVERT_TO_ASCII 48
+#define LED_ON 0
+#define LED_OFF 1
 
 // Private data members
 int32 tempTemp;
@@ -32,6 +34,7 @@ CY_ISR_PROTO(UART_ISR);
 typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
 volatile state theState = IDLE;
 volatile int8 irrigationIndex = 0;
+uint8 blueLEDState, redLEDState;
 
 void initPSoC_Master(void){
 	tempTemp = 0;
@@ -51,13 +54,16 @@ void initPSoC_Master(void){
     UART_Start();                   //  Starts UART component
     Timer_Start();                  // Starts timer component
     
-    RedLED_Write(!0);               // Turn off red LED
+    RedLED_Write(LED_OFF);              // Turn off red LED
+    BlueLED_Write(LED_OFF);             // Turn off blue LED
+    blueLEDState = LED_OFF;
+    redLEDState = LED_OFF;
 }
 
 // Timer ISR
 CY_ISR(timer_ISR)
 {
-    RedLED_Write(!1);       // Turn on red LED
+    RedLED_Write(LED_ON);           // Turn on red LED
     
     getTempAndHum(&tempTemp, &tempHum);
     inputTemp(&tempTemp);
@@ -72,14 +78,15 @@ CY_ISR(timer_ISR)
     getLight(&tempLight);
     inputLight(&tempLight);
     
-    RedLED_Write(!0);       // Turn off red LED
+    RedLED_Write(LED_OFF);              // Turn off red LED
     Timer_ClearInterrupt(Timer_INTR_MASK_TC);   // Clear interrupt
 }
 
 // UART ISR
 CY_ISR(UART_ISR){
-    BlueLED_Write(!1);       // Turn on blue LED
-    
+
+    BlueLED_Write(LED_ON);       // Turn on blue LED
+
     uint8 buff;
     buff = dkRequest();
     
@@ -162,7 +169,7 @@ CY_ISR(UART_ISR){
             theState = IDLE;
         }
     }
-    BlueLED_Write(!0);       // Turn off blue LED
+    BlueLED_Write(LED_OFF);         // Turn off blue LED
     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
 }
 

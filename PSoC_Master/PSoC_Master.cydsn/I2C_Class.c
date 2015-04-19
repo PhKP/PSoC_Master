@@ -28,14 +28,14 @@ uint8 irrigationStatus;
 void initI2C(void){
     I2C_Start();                    // Starts I2C component
     I2C_I2CMasterClearStatus();     // Clear status flags
+    CyGlobalIntEnable;
 }
 
 int8 adjustWindow(uint8 pos){
     uint8 openWindow = 0xF;
     uint8 closeWindow = 0x0;
     uint8 result = 0;
-    uint8 *tempWindow;
-    *tempWindow = 0;
+    uint8 *tempWindow = 0;
         
     if(pos == 0xF){
         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes, I2C_Mode)
@@ -48,8 +48,13 @@ int8 adjustWindow(uint8 pos){
     
     getActuatorStatus(tempWindow, NULL, NULL, NULL);
     
+    if (result == 0){
     if (*tempWindow == pos){ 
         return 0;	
+    }
+    else {
+        return -1;
+    }
     }
     else {
         return -1;
@@ -98,6 +103,7 @@ int8 adjustVentilation(uint8 speed){
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOffVent,1,I2C_I2C_MODE_COMPLETE_XFER);
     }
     
+    while (I2C_I2CMasterStatus() == I2C_I2C_MSTAT_WR_CMPLT);
     getActuatorStatus(NULL, NULL, vent, NULL);
     
     if (*vent == speed){

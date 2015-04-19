@@ -37,9 +37,9 @@
         <Files Root="C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn">
           <File BuildType="BUILD" Toolchain="">.\main.c</File>
           <File BuildType="BUILD" Toolchain="">.\DSP_Class.c</File>
-          <File BuildType="BUILD" Toolchain="">.\I2C_Class.c</File>
           <File BuildType="BUILD" Toolchain="">.\PSoC_Master_Class.c</File>
           <File BuildType="BUILD" Toolchain="">.\UART_Class.c</File>
+          <File BuildType="BUILD" Toolchain="">.\I2C_Class.c</File>
           <File BuildType="BUILD" Toolchain="">.\DSP_Class.h</File>
           <File BuildType="BUILD" Toolchain="">.\I2C_Class.h</File>
           <File BuildType="BUILD" Toolchain="">.\PSoC_Master_Class.h</File>

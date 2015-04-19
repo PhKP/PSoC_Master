@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
   30:.\Generated_Source\PSoC4/BlueLED.c **** ********************************************************************************
   31:.\Generated_Source\PSoC4/BlueLED.c **** *
   32:.\Generated_Source\PSoC4/BlueLED.c **** * Summary:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/BlueLED.c **** *  Assign a new value to the digital port's data output register.  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
   66 003c 0F32     		add	r2, r2, #15
   67 003e 1278     		ldrb	r2, [r2]
   68 0040 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 3
 
 
   47:.\Generated_Source\PSoC4/BlueLED.c **** }
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
   95 0002 82B0     		sub	sp, sp, #8
   96              		.cfi_def_cfa_offset 16
   97 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 4
 
 
   98              		.cfi_def_cfa_register 7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
   93:.\Generated_Source\PSoC4/BlueLED.c **** * Note:
   94:.\Generated_Source\PSoC4/BlueLED.c **** *  Macro BlueLED_ReadPS calls this function. 
   95:.\Generated_Source\PSoC4/BlueLED.c **** *  
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 5
 
 
   96:.\Generated_Source\PSoC4/BlueLED.c **** *******************************************************************************/
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  115:.\Generated_Source\PSoC4/BlueLED.c **** *  
  116:.\Generated_Source\PSoC4/BlueLED.c **** *******************************************************************************/
  117:.\Generated_Source\PSoC4/BlueLED.c **** uint8 BlueLED_ReadDataReg(void) 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 6
 
 
  118:.\Generated_Source\PSoC4/BlueLED.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  137:.\Generated_Source\PSoC4/BlueLED.c ****     * Return: 
  138:.\Generated_Source\PSoC4/BlueLED.c ****     *  Returns the value of the interrupt status register
  139:.\Generated_Source\PSoC4/BlueLED.c ****     *  
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 7
 
 
  140:.\Generated_Source\PSoC4/BlueLED.c ****     *******************************************************************************/
@@ -418,14 +418,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  251 0004 0400     		.2byte	0x4
  252 0006 00000000 		.4byte	.Ldebug_abbrev0
  253 000a 04       		.byte	0x4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 8
 
 
  254 000b 01       		.uleb128 0x1
  255 000c E9000000 		.4byte	.LASF24
  256 0010 01       		.byte	0x1
  257 0011 7F010000 		.4byte	.LASF25
- 258 0015 51000000 		.4byte	.LASF26
+ 258 0015 06000000 		.4byte	.LASF26
  259 0019 00000000 		.4byte	.Ldebug_ranges0+0
  260 001d 00000000 		.4byte	0
  261 0021 00000000 		.4byte	.Ldebug_line0
@@ -436,7 +436,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  266 002c 02       		.uleb128 0x2
  267 002d 01       		.byte	0x1
  268 002e 08       		.byte	0x8
- 269 002f 29000000 		.4byte	.LASF1
+ 269 002f 73000000 		.4byte	.LASF1
  270 0033 02       		.uleb128 0x2
  271 0034 02       		.byte	0x2
  272 0035 05       		.byte	0x5
@@ -460,7 +460,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  290 0056 02       		.uleb128 0x2
  291 0057 08       		.byte	0x8
  292 0058 07       		.byte	0x7
- 293 0059 12000000 		.4byte	.LASF7
+ 293 0059 5C000000 		.4byte	.LASF7
  294 005d 03       		.uleb128 0x3
  295 005e 04       		.byte	0x4
  296 005f 05       		.byte	0x5
@@ -478,14 +478,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  308 0077 D5000000 		.4byte	.LASF10
  309 007b 02       		.byte	0x2
  310 007c A3       		.byte	0xa3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 9
 
 
  311 007d 48000000 		.4byte	0x48
  312 0081 02       		.uleb128 0x2
  313 0082 04       		.byte	0x4
  314 0083 04       		.byte	0x4
- 315 0084 0C000000 		.4byte	.LASF11
+ 315 0084 56000000 		.4byte	.LASF11
  316 0088 02       		.uleb128 0x2
  317 0089 08       		.byte	0x8
  318 008a 04       		.byte	0x4
@@ -511,7 +511,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  338 00b7 9C       		.byte	0x9c
  339 00b8 D9000000 		.4byte	0xd9
  340 00bc 08       		.uleb128 0x8
- 341 00bd 06000000 		.4byte	.LASF17
+ 341 00bd 50000000 		.4byte	.LASF17
  342 00c1 01       		.byte	0x1
  343 00c2 2A       		.byte	0x2a
  344 00c3 6B000000 		.4byte	0x6b
@@ -519,7 +519,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  346 00c8 91       		.byte	0x91
  347 00c9 6F       		.sleb128 -17
  348 00ca 09       		.uleb128 0x9
- 349 00cb 4B000000 		.4byte	.LASF22
+ 349 00cb 95000000 		.4byte	.LASF22
  350 00cf 01       		.byte	0x1
  351 00d0 2C       		.byte	0x2c
  352 00d1 6B000000 		.4byte	0x6b
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  365 00ea FD000000 		.4byte	0xfd
  366 00ee 08       		.uleb128 0x8
  367 00ef 7A010000 		.4byte	.LASF18
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 10
 
 
  368 00f3 01       		.byte	0x1
@@ -558,7 +558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  382 0110 01       		.uleb128 0x1
  383 0111 9C       		.byte	0x9c
  384 0112 0A       		.uleb128 0xa
- 385 0113 37000000 		.4byte	.LASF20
+ 385 0113 81000000 		.4byte	.LASF20
  386 0117 01       		.byte	0x1
  387 0118 75       		.byte	0x75
  388 0119 6B000000 		.4byte	0x6b
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  422 0008 0E       		.uleb128 0xe
  423 0009 1B       		.uleb128 0x1b
  424 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 11
 
 
  425 000b 55       		.uleb128 0x55
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  479 0041 00       		.byte	0
  480 0042 00       		.byte	0
  481 0043 06       		.uleb128 0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 12
 
 
  482 0044 35       		.uleb128 0x35
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  536 007b 0B       		.uleb128 0xb
  537 007c 49       		.uleb128 0x49
  538 007d 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 13
 
 
  539 007e 02       		.uleb128 0x2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  593 00b6 00       		.byte	0
  594              		.section	.debug_aranges,"",%progbits
  595 0000 3C000000 		.4byte	0x3c
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 14
 
 
  596 0004 0200     		.2byte	0x2
@@ -823,46 +823,46 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  631              	.LASF14:
  632 0000 72656733 		.ascii	"reg32\000"
  632      3200
- 633              	.LASF17:
- 634 0006 76616C75 		.ascii	"value\000"
- 634      6500
- 635              	.LASF11:
- 636 000c 666C6F61 		.ascii	"float\000"
- 636      7400
- 637              	.LASF7:
- 638 0012 6C6F6E67 		.ascii	"long long unsigned int\000"
- 638      206C6F6E 
- 638      6720756E 
- 638      7369676E 
- 638      65642069 
- 639              	.LASF1:
- 640 0029 756E7369 		.ascii	"unsigned char\000"
- 640      676E6564 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 15
+ 633              	.LASF26:
+ 634 0006 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 634      73657273 
+ 634      5C4C6173 
+ 634      73655C44 
+ 634      6F63756D 
+ 635 0033 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 635      4D617374 
+ 635      65725C50 
+ 635      536F435F 
+ 635      4D617374 
+ 636              	.LASF17:
+ 637 0050 76616C75 		.ascii	"value\000"
+ 637      6500
+ 638              	.LASF11:
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 15
 
 
- 640      20636861 
- 640      7200
- 641              	.LASF20:
- 642 0037 426C7565 		.ascii	"BlueLED_ReadDataReg\000"
- 642      4C45445F 
- 642      52656164 
- 642      44617461 
- 642      52656700 
- 643              	.LASF22:
- 644 004b 64725661 		.ascii	"drVal\000"
- 644      6C00
- 645              	.LASF26:
- 646 0051 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 646      73657273 
- 646      5C506869 
- 646      6C69705C 
- 646      4F6E6544 
- 647 007e 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 647      4D617374 
- 647      65725C50 
- 647      536F435F 
- 647      4D617374 
+ 639 0056 666C6F61 		.ascii	"float\000"
+ 639      7400
+ 640              	.LASF7:
+ 641 005c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 641      206C6F6E 
+ 641      6720756E 
+ 641      7369676E 
+ 641      65642069 
+ 642              	.LASF1:
+ 643 0073 756E7369 		.ascii	"unsigned char\000"
+ 643      676E6564 
+ 643      20636861 
+ 643      7200
+ 644              	.LASF20:
+ 645 0081 426C7565 		.ascii	"BlueLED_ReadDataReg\000"
+ 645      4C45445F 
+ 645      52656164 
+ 645      44617461 
+ 645      52656700 
+ 646              	.LASF22:
+ 647 0095 64725661 		.ascii	"drVal\000"
+ 647      6C00
  648              	.LASF5:
  649 009b 6C6F6E67 		.ascii	"long unsigned int\000"
  649      20756E73 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  661      32303134 
  661      30353236 
  662 011c 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 16
 
 
  662      20726576 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 1
  684              	.LASF19:
  685 01f2 426C7565 		.ascii	"BlueLED_Read\000"
  685      4C45445F 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPAeqH0.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cckgc7PC.s 			page 17
 
 
  685      52656164 

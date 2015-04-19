@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
   18:.\DSP_Class.c **** int32 humArray[ARRAYSIZE];
   19:.\DSP_Class.c **** int32* humArrayPtr;
   20:.\DSP_Class.c **** int16 soilHumArray[NBR_OF_SOILHUM_SENSORS][ARRAYSIZE];
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 2
 
 
   21:.\DSP_Class.c **** int16* soilHumPtr[NBR_OF_SOILHUM_SENSORS];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
   41:.\DSP_Class.c ****                 for(j = 0 ; j<NBR_OF_SOILHUM_SENSORS ; j++){
   72              		.loc 1 41 0
   73 002a BB1D     		add	r3, r7, #6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 3
 
 
   74 002c 0022     		mov	r2, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
   36:.\DSP_Class.c ****         for(i = 0 ; i<ARRAYSIZE ; i++){
  121              		.loc 1 36 0 is_stmt 0 discriminator 1
  122 0078 FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 4
 
 
  123 007a 1B78     		ldrb	r3, [r3]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  166 00be 0132     		add	r2, r2, #1
  167 00c0 1A70     		strb	r2, [r3]
  168              	.L6:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 5
 
 
   53:.\DSP_Class.c ****         for(k = 0 ; k<NBR_OF_SOILHUM_SENSORS ; k++){
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  215              		.align	2
  216              		.global	getTemp_DSP
  217              		.code	16
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 6
 
 
  218              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  264              		.loc 1 70 0
  265 0008 181C     		mov	r0, r3
  266 000a BD46     		mov	sp, r7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 7
 
 
  267              		@ sp needed
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  317              		.global	getLight_DSP
  318              		.code	16
  319              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 8
 
 
  320              		.type	getLight_DSP, %function
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  368              		.cfi_offset 5, -16
  369              		.cfi_offset 6, -12
  370              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 9
 
 
  371              		.cfi_offset 14, -4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  418 004c 7E61     		str	r6, [r7, #20]
  419 004e 06E0     		b	.L29
  420              	.L28:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 10
 
 
   88:.\DSP_Class.c ****             }
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  464 0094 3869     		ldr	r0, [r7, #16]
  465 0096 7969     		ldr	r1, [r7, #20]
  466 0098 1A1C     		mov	r2, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 11
 
 
  467 009a 231C     		mov	r3, r4
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  105:.\DSP_Class.c ****         }
  106:.\DSP_Class.c **** 
  107:.\DSP_Class.c ****         temp = (tempInDegreesC+20)*2;       // Conversion to UART protocol
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 12
 
 
  513              		.loc 1 107 0 discriminator 1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  562              	avgHum:
  563              	.LFB39:
  113:.\DSP_Class.c **** 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 13
 
 
  114:.\DSP_Class.c **** void avgHum(void){
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  610 003a 2858     		ldr	r0, [r5, r0]
  611 003c 011C     		mov	r1, r0
  612 003e C017     		asr	r0, r0, #31
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 14
 
 
  613 0040 021C     		mov	r2, r0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  656              		.loc 1 130 0
  657 0084 3A1C     		mov	r2, r7
  658 0086 1F32     		add	r2, r2, #31
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 15
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 15
 
 
  659 0088 1278     		ldrb	r2, [r2]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  706 00e8 01D0     		beq	.L50
  138:.\DSP_Class.c ****             humInRH = 100;
  707              		.loc 1 138 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 16
 
 
  708 00ea 0A4B     		ldr	r3, .L56+8
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  753              		.cfi_offset 4, -20
  754              		.cfi_offset 5, -16
  755              		.cfi_offset 6, -12
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 17
 
 
  756              		.cfi_offset 7, -8
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  804 004e 002B     		cmp	r3, #0
  805 0050 21DB     		blt	.L60
  154:.\DSP_Class.c ****                 total += soilHumArray[index][i];
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 18
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 18
 
 
  806              		.loc 1 154 0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  856 00ac 3733     		add	r3, r3, #55
  857 00ae 0130     		add	r0, r0, #1
  858 00b0 1870     		strb	r0, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 19
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 19
 
 
  859              	.L59:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  902 00fc 0021     		mov	r1, #0
  903 00fe FFF7FEFF 		bl	__aeabi_fcmple
  904 0102 031C     		mov	r3, r0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 20
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 20
 
 
  905 0104 002B     		cmp	r3, #0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  948              		@ sp needed
  949 0148 F0BD     		pop	{r4, r5, r6, r7, pc}
  950              	.L73:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 21
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 21
 
 
  951 014a C046     		.align	2
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  998 001e 25E0     		b	.L75
  999              	.L78:
  186:.\DSP_Class.c ****             if(lightArray[i]>=0){
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 22
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 22
 
 
  1000              		.loc 1 186 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1048 0070 0078     		ldrb	r0, [r0]
  1049 0072 0928     		cmp	r0, #9
  1050 0074 D4D9     		bls	.L78
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 23
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 23
 
 
  1051              	.LBE11:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1093 00c6 181C     		mov	r0, r3
  1094 00c8 FA23     		mov	r3, #250
  1095 00ca 9900     		lsl	r1, r3, #2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 24
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 24
 
 
  1096 00cc FFF7FEFF 		bl	__aeabi_idiv
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1138 010e 0022     		mov	r2, #0
  1139 0110 1A70     		strb	r2, [r3]
  1140              	.L74:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 25
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 25
 
 
  215:.\DSP_Class.c ****     }
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1188 001e 1A68     		ldr	r2, [r3]
  1189 0020 064B     		ldr	r3, .L87+4
  1190 0022 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 26
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 26
 
 
  1191 0024 02D9     		bls	.L86
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1237 0010 1A60     		str	r2, [r3]
  230:.\DSP_Class.c ****     humArrayPtr++;              // The pointer is moved to the next place in array
  1238              		.loc 1 230 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 27
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 27
 
 
  1239 0012 094B     		ldr	r3, .L91
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1285 0002 82B0     		sub	sp, sp, #8
  1286              		.cfi_def_cfa_offset 16
  1287 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 28
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 28
 
 
  1288              		.cfi_def_cfa_register 7
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1338 0060 9B00     		lsl	r3, r3, #2
  1339 0062 074A     		ldr	r2, .L95+4
  1340 0064 9918     		add	r1, r3, r2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 29
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 29
 
 
  1341 0066 054B     		ldr	r3, .L95
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  250:.\DSP_Class.c ****     lightArrayPtr++;                // The pointer is moved to the next place in array
  1388              		.loc 1 250 0
  1389 0012 094B     		ldr	r3, .L99
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 30
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 30
 
 
  1390 0014 1B68     		ldr	r3, [r3]
@@ -1788,32 +1788,32 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1428 0006 00000000 		.4byte	.Ldebug_abbrev0
  1429 000a 04       		.byte	0x4
  1430 000b 01       		.uleb128 0x1
- 1431 000c 79000000 		.4byte	.LASF48
+ 1431 000c C3000000 		.4byte	.LASF48
  1432 0010 01       		.byte	0x1
- 1433 0011 62020000 		.4byte	.LASF49
- 1434 0015 03010000 		.4byte	.LASF50
+ 1433 0011 6C020000 		.4byte	.LASF49
+ 1434 0015 15000000 		.4byte	.LASF50
  1435 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1436 001d 00000000 		.4byte	0
  1437 0021 00000000 		.4byte	.Ldebug_line0
  1438 0025 02       		.uleb128 0x2
  1439 0026 01       		.byte	0x1
  1440 0027 06       		.byte	0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 31
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 31
 
 
  1441 0028 A1020000 		.4byte	.LASF0
  1442 002c 02       		.uleb128 0x2
  1443 002d 01       		.byte	0x1
  1444 002e 08       		.byte	0x8
- 1445 002f F5000000 		.4byte	.LASF1
+ 1445 002f 3F010000 		.4byte	.LASF1
  1446 0033 02       		.uleb128 0x2
  1447 0034 02       		.byte	0x2
  1448 0035 05       		.byte	0x5
- 1449 0036 70020000 		.4byte	.LASF2
+ 1449 0036 7A020000 		.4byte	.LASF2
  1450 003a 02       		.uleb128 0x2
  1451 003b 02       		.byte	0x2
  1452 003c 07       		.byte	0x7
- 1453 003d 3D000000 		.4byte	.LASF3
+ 1453 003d 87000000 		.4byte	.LASF3
  1454 0041 02       		.uleb128 0x2
  1455 0042 04       		.byte	0x4
  1456 0043 05       		.byte	0x5
@@ -1821,15 +1821,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1458 0048 02       		.uleb128 0x2
  1459 0049 04       		.byte	0x4
  1460 004a 07       		.byte	0x7
- 1461 004b 4D010000 		.4byte	.LASF5
+ 1461 004b 57010000 		.4byte	.LASF5
  1462 004f 02       		.uleb128 0x2
  1463 0050 08       		.byte	0x8
  1464 0051 05       		.byte	0x5
- 1465 0052 2A020000 		.4byte	.LASF6
+ 1465 0052 34020000 		.4byte	.LASF6
  1466 0056 02       		.uleb128 0x2
  1467 0057 08       		.byte	0x8
  1468 0058 07       		.byte	0x7
- 1469 0059 D9010000 		.4byte	.LASF7
+ 1469 0059 E3010000 		.4byte	.LASF7
  1470 005d 03       		.uleb128 0x3
  1471 005e 04       		.byte	0x4
  1472 005f 05       		.byte	0x5
@@ -1837,33 +1837,33 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1474 0064 02       		.uleb128 0x2
  1475 0065 04       		.byte	0x4
  1476 0066 07       		.byte	0x7
- 1477 0067 BB010000 		.4byte	.LASF8
+ 1477 0067 C5010000 		.4byte	.LASF8
  1478 006b 04       		.uleb128 0x4
  1479 006c 84020000 		.4byte	.LASF9
  1480 0070 02       		.byte	0x2
  1481 0071 A1       		.byte	0xa1
  1482 0072 2C000000 		.4byte	0x2c
  1483 0076 04       		.uleb128 0x4
- 1484 0077 FB010000 		.4byte	.LASF10
+ 1484 0077 05020000 		.4byte	.LASF10
  1485 007b 02       		.byte	0x2
  1486 007c A5       		.byte	0xa5
  1487 007d 33000000 		.4byte	0x33
  1488 0081 04       		.uleb128 0x4
- 1489 0082 1B020000 		.4byte	.LASF11
+ 1489 0082 25020000 		.4byte	.LASF11
  1490 0086 02       		.byte	0x2
  1491 0087 A6       		.byte	0xa6
  1492 0088 41000000 		.4byte	0x41
  1493 008c 02       		.uleb128 0x2
  1494 008d 04       		.byte	0x4
  1495 008e 04       		.byte	0x4
- 1496 008f 73000000 		.4byte	.LASF12
+ 1496 008f BD000000 		.4byte	.LASF12
  1497 0093 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 32
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 32
 
 
  1498 0094 08       		.byte	0x8
  1499 0095 04       		.byte	0x4
- 1500 0096 93010000 		.4byte	.LASF13
+ 1500 0096 9D010000 		.4byte	.LASF13
  1501 009a 04       		.uleb128 0x4
  1502 009b D1020000 		.4byte	.LASF14
  1503 009f 02       		.byte	0x2
@@ -1872,13 +1872,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1506 00a5 02       		.uleb128 0x2
  1507 00a6 01       		.byte	0x1
  1508 00a7 08       		.byte	0x8
- 1509 00a8 4C020000 		.4byte	.LASF15
+ 1509 00a8 56020000 		.4byte	.LASF15
  1510 00ac 02       		.uleb128 0x2
  1511 00ad 04       		.byte	0x4
  1512 00ae 07       		.byte	0x7
- 1513 00af 21020000 		.4byte	.LASF16
+ 1513 00af 2B020000 		.4byte	.LASF16
  1514 00b3 05       		.uleb128 0x5
- 1515 00b4 8B010000 		.4byte	.LASF20
+ 1515 00b4 95010000 		.4byte	.LASF20
  1516 00b8 01       		.byte	0x1
  1517 00b9 21       		.byte	0x21
  1518 00ba 00000000 		.4byte	.LFB33
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1552 0102 6B00     		.ascii	"k\000"
  1553 0104 01       		.byte	0x1
  1554 0105 34       		.byte	0x34
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 33
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 33
 
 
  1555 0106 6B000000 		.4byte	0x6b
@@ -1928,7 +1928,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1559 010d 00       		.byte	0
  1560 010e 00       		.byte	0
  1561 010f 09       		.uleb128 0x9
- 1562 0110 5F010000 		.4byte	.LASF17
+ 1562 0110 69010000 		.4byte	.LASF17
  1563 0114 01       		.byte	0x1
  1564 0115 40       		.byte	0x40
  1565 0116 6B000000 		.4byte	0x6b
@@ -1937,7 +1937,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1568 0122 01       		.uleb128 0x1
  1569 0123 9C       		.byte	0x9c
  1570 0124 09       		.uleb128 0x9
- 1571 0125 AB010000 		.4byte	.LASF18
+ 1571 0125 B5010000 		.4byte	.LASF18
  1572 0129 01       		.byte	0x1
  1573 012a 44       		.byte	0x44
  1574 012b 6B000000 		.4byte	0x6b
@@ -1946,7 +1946,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1577 0137 01       		.uleb128 0x1
  1578 0138 9C       		.byte	0x9c
  1579 0139 0A       		.uleb128 0xa
- 1580 013a 73010000 		.4byte	.LASF51
+ 1580 013a 7D010000 		.4byte	.LASF51
  1581 013e 01       		.byte	0x1
  1582 013f 48       		.byte	0x48
  1583 0140 6B000000 		.4byte	0x6b
@@ -1956,7 +1956,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1587 014d 9C       		.byte	0x9c
  1588 014e 61010000 		.4byte	0x161
  1589 0152 0B       		.uleb128 0xb
- 1590 0153 5C020000 		.4byte	.LASF28
+ 1590 0153 66020000 		.4byte	.LASF28
  1591 0157 01       		.byte	0x1
  1592 0158 48       		.byte	0x48
  1593 0159 6B000000 		.4byte	0x6b
@@ -1965,7 +1965,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1596 015f 77       		.sleb128 -9
  1597 0160 00       		.byte	0
  1598 0161 09       		.uleb128 0x9
- 1599 0162 0E020000 		.4byte	.LASF19
+ 1599 0162 18020000 		.4byte	.LASF19
  1600 0166 01       		.byte	0x1
  1601 0167 4C       		.byte	0x4c
  1602 0168 6B000000 		.4byte	0x6b
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1609 017b 01       		.byte	0x1
  1610 017c 50       		.byte	0x50
  1611 017d 00000000 		.4byte	.LFB38
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 34
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 34
 
 
  1612 0181 48010000 		.4byte	.LFE38-.LFB38
@@ -1986,7 +1986,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1614 0186 9C       		.byte	0x9c
  1615 0187 E8010000 		.4byte	0x1e8
  1616 018b 0D       		.uleb128 0xd
- 1617 018c B6010000 		.4byte	.LASF22
+ 1617 018c C0010000 		.4byte	.LASF22
  1618 0190 01       		.byte	0x1
  1619 0191 51       		.byte	0x51
  1620 0192 6B000000 		.4byte	0x6b
@@ -2036,9 +2036,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1664 01e6 00       		.byte	0
  1665 01e7 00       		.byte	0
  1666 01e8 0C       		.uleb128 0xc
- 1667 01e9 2A000000 		.4byte	.LASF25
+ 1667 01e9 74000000 		.4byte	.LASF25
  1668 01ed 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 35
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 35
 
 
  1669 01ee 72       		.byte	0x72
@@ -2048,7 +2048,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1673 01f8 9C       		.byte	0x9c
  1674 01f9 5A020000 		.4byte	0x25a
  1675 01fd 0D       		.uleb128 0xd
- 1676 01fe B6010000 		.4byte	.LASF22
+ 1676 01fe C0010000 		.4byte	.LASF22
  1677 0202 01       		.byte	0x1
  1678 0203 73       		.byte	0x73
  1679 0204 6B000000 		.4byte	0x6b
@@ -2088,7 +2088,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1713 0248 91       		.byte	0x91
  1714 0249 4C       		.sleb128 -52
  1715 024a 0D       		.uleb128 0xd
- 1716 024b 6B010000 		.4byte	.LASF26
+ 1716 024b 75010000 		.4byte	.LASF26
  1717 024f 01       		.byte	0x1
  1718 0250 83       		.byte	0x83
  1719 0251 8C000000 		.4byte	0x8c
@@ -2098,10 +2098,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1723 0258 00       		.byte	0
  1724 0259 00       		.byte	0
  1725 025a 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 36
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 36
 
 
- 1726 025b 51020000 		.4byte	.LASF27
+ 1726 025b 5B020000 		.4byte	.LASF27
  1727 025f 01       		.byte	0x1
  1728 0260 93       		.byte	0x93
  1729 0261 00000000 		.4byte	.LFB40
@@ -2110,7 +2110,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1732 026a 9C       		.byte	0x9c
  1733 026b DA020000 		.4byte	0x2da
  1734 026f 0B       		.uleb128 0xb
- 1735 0270 5C020000 		.4byte	.LASF28
+ 1735 0270 66020000 		.4byte	.LASF28
  1736 0274 01       		.byte	0x1
  1737 0275 93       		.byte	0x93
  1738 0276 6B000000 		.4byte	0x6b
@@ -2118,7 +2118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1740 027b 91       		.byte	0x91
  1741 027c 47       		.sleb128 -57
  1742 027d 0D       		.uleb128 0xd
- 1743 027e B6010000 		.4byte	.LASF22
+ 1743 027e C0010000 		.4byte	.LASF22
  1744 0282 01       		.byte	0x1
  1745 0283 94       		.byte	0x94
  1746 0284 6B000000 		.4byte	0x6b
@@ -2158,10 +2158,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1780 02c8 91       		.byte	0x91
  1781 02c9 4C       		.sleb128 -52
  1782 02ca 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 37
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 37
 
 
- 1783 02cb CD010000 		.4byte	.LASF29
+ 1783 02cb D7010000 		.4byte	.LASF29
  1784 02cf 01       		.byte	0x1
  1785 02d0 A4       		.byte	0xa4
  1786 02d1 8C000000 		.4byte	0x8c
@@ -2171,7 +2171,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1790 02d8 00       		.byte	0
  1791 02d9 00       		.byte	0
  1792 02da 0C       		.uleb128 0xc
- 1793 02db 82010000 		.4byte	.LASF30
+ 1793 02db 8C010000 		.4byte	.LASF30
  1794 02df 01       		.byte	0x1
  1795 02e0 B4       		.byte	0xb4
  1796 02e1 00000000 		.4byte	.LFB41
@@ -2180,7 +2180,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1799 02ea 9C       		.byte	0x9c
  1800 02eb 5A030000 		.4byte	0x35a
  1801 02ef 0D       		.uleb128 0xd
- 1802 02f0 B6010000 		.4byte	.LASF22
+ 1802 02f0 C0010000 		.4byte	.LASF22
  1803 02f4 01       		.byte	0x1
  1804 02f5 B5       		.byte	0xb5
  1805 02f6 6B000000 		.4byte	0x6b
@@ -2218,12 +2218,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1837 0335 8C000000 		.4byte	0x8c
  1838 0339 02       		.uleb128 0x2
  1839 033a 91       		.byte	0x91
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 38
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 38
 
 
  1840 033b 50       		.sleb128 -48
  1841 033c 0D       		.uleb128 0xd
- 1842 033d 68000000 		.4byte	.LASF31
+ 1842 033d B2000000 		.4byte	.LASF31
  1843 0341 01       		.byte	0x1
  1844 0342 C8       		.byte	0xc8
  1845 0343 81000000 		.4byte	0x81
@@ -2231,7 +2231,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1847 0348 91       		.byte	0x91
  1848 0349 4C       		.sleb128 -52
  1849 034a 0D       		.uleb128 0xd
- 1850 034b 38020000 		.4byte	.LASF32
+ 1850 034b 42020000 		.4byte	.LASF32
  1851 034f 01       		.byte	0x1
  1852 0350 CA       		.byte	0xca
  1853 0351 6B000000 		.4byte	0x6b
@@ -2241,7 +2241,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1857 0358 00       		.byte	0
  1858 0359 00       		.byte	0
  1859 035a 0C       		.uleb128 0xc
- 1860 035b 15000000 		.4byte	.LASF33
+ 1860 035b 5F000000 		.4byte	.LASF33
  1861 035f 01       		.byte	0x1
  1862 0360 DA       		.byte	0xda
  1863 0361 00000000 		.4byte	.LFB42
@@ -2250,7 +2250,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1866 036a 9C       		.byte	0x9c
  1867 036b 7E030000 		.4byte	0x37e
  1868 036f 0B       		.uleb128 0xb
- 1869 0370 C8010000 		.4byte	.LASF34
+ 1869 0370 D2010000 		.4byte	.LASF34
  1870 0374 01       		.byte	0x1
  1871 0375 DA       		.byte	0xda
  1872 0376 7E030000 		.4byte	0x37e
@@ -2262,7 +2262,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1878 037f 04       		.byte	0x4
  1879 0380 81000000 		.4byte	0x81
  1880 0384 0C       		.uleb128 0xc
- 1881 0385 A2010000 		.4byte	.LASF35
+ 1881 0385 AC010000 		.4byte	.LASF35
  1882 0389 01       		.byte	0x1
  1883 038a E4       		.byte	0xe4
  1884 038b 00000000 		.4byte	.LFB43
@@ -2278,12 +2278,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1894 03a4 02       		.uleb128 0x2
  1895 03a5 91       		.byte	0x91
  1896 03a6 74       		.sleb128 -12
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 39
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 39
 
 
  1897 03a7 00       		.byte	0
  1898 03a8 0C       		.uleb128 0xc
- 1899 03a9 5B000000 		.4byte	.LASF36
+ 1899 03a9 A5000000 		.4byte	.LASF36
  1900 03ad 01       		.byte	0x1
  1901 03ae EE       		.byte	0xee
  1902 03af 00000000 		.4byte	.LFB44
@@ -2292,7 +2292,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1905 03b8 9C       		.byte	0x9c
  1906 03b9 DA030000 		.4byte	0x3da
  1907 03bd 0B       		.uleb128 0xb
- 1908 03be 5C020000 		.4byte	.LASF28
+ 1908 03be 66020000 		.4byte	.LASF28
  1909 03c2 01       		.byte	0x1
  1910 03c3 EE       		.byte	0xee
  1911 03c4 6B000000 		.4byte	0x6b
@@ -2300,7 +2300,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1913 03c9 91       		.byte	0x91
  1914 03ca 77       		.sleb128 -9
  1915 03cb 0B       		.uleb128 0xb
- 1916 03cc 9A010000 		.4byte	.LASF37
+ 1916 03cc A4010000 		.4byte	.LASF37
  1917 03d0 01       		.byte	0x1
  1918 03d1 EE       		.byte	0xee
  1919 03d2 DA030000 		.4byte	0x3da
@@ -2312,7 +2312,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1925 03db 04       		.byte	0x4
  1926 03dc 76000000 		.4byte	0x76
  1927 03e0 0C       		.uleb128 0xc
- 1928 03e1 F0010000 		.4byte	.LASF38
+ 1928 03e1 FA010000 		.4byte	.LASF38
  1929 03e5 01       		.byte	0x1
  1930 03e6 F8       		.byte	0xf8
  1931 03e7 00000000 		.4byte	.LFB45
@@ -2337,8 +2337,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1950 0412 09       		.byte	0x9
  1951 0413 00       		.byte	0
  1952 0414 12       		.uleb128 0x12
- 1953 0415 7A020000 		.4byte	.LASF40
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 40
+ 1953 0415 4D010000 		.4byte	.LASF40
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 40
 
 
  1954 0419 01       		.byte	0x1
@@ -2348,7 +2348,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1958 0420 03       		.byte	0x3
  1959 0421 00000000 		.4byte	tempArray
  1960 0425 12       		.uleb128 0x12
- 1961 0426 01020000 		.4byte	.LASF41
+ 1961 0426 0B020000 		.4byte	.LASF41
  1962 042a 01       		.byte	0x1
  1963 042b 11       		.byte	0x11
  1964 042c 7E030000 		.4byte	0x37e
@@ -2364,7 +2364,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  1974 0442 03       		.byte	0x3
  1975 0443 00000000 		.4byte	humArray
  1976 0447 12       		.uleb128 0x12
- 1977 0448 31000000 		.4byte	.LASF43
+ 1977 0448 7B000000 		.4byte	.LASF43
  1978 044c 01       		.byte	0x1
  1979 044d 13       		.byte	0x13
  1980 044e 7E030000 		.4byte	0x37e
@@ -2397,8 +2397,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2007 048d 05       		.byte	0x5
  2008 048e 00       		.byte	0
  2009 048f 12       		.uleb128 0x12
- 2010 0490 1F000000 		.4byte	.LASF45
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 41
+ 2010 0490 69000000 		.4byte	.LASF45
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 41
 
 
  2011 0494 01       		.byte	0x1
@@ -2408,7 +2408,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2015 049b 03       		.byte	0x3
  2016 049c 00000000 		.4byte	soilHumPtr
  2017 04a0 12       		.uleb128 0x12
- 2018 04a1 50000000 		.4byte	.LASF46
+ 2018 04a1 9A000000 		.4byte	.LASF46
  2019 04a5 01       		.byte	0x1
  2020 04a6 16       		.byte	0x16
  2021 04a7 04040000 		.4byte	0x404
@@ -2424,7 +2424,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2031 04bd 03       		.byte	0x3
  2032 04be 00000000 		.4byte	lightArrayPtr
  2033 04c2 12       		.uleb128 0x12
- 2034 04c3 C8010000 		.4byte	.LASF34
+ 2034 04c3 D2010000 		.4byte	.LASF34
  2035 04c7 01       		.byte	0x1
  2036 04c8 18       		.byte	0x18
  2037 04c9 6B000000 		.4byte	0x6b
@@ -2447,7 +2447,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2054 04f2 05       		.byte	0x5
  2055 04f3 00       		.byte	0
  2056 04f4 12       		.uleb128 0x12
- 2057 04f5 9A010000 		.4byte	.LASF37
+ 2057 04f5 A4010000 		.4byte	.LASF37
  2058 04f9 01       		.byte	0x1
  2059 04fa 18       		.byte	0x18
  2060 04fb E4040000 		.4byte	0x4e4
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2065 0506 0F000000 		.4byte	.LASF39
  2066 050a 01       		.byte	0x1
  2067 050b 18       		.byte	0x18
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 42
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 42
 
 
  2068 050c 6B000000 		.4byte	0x6b
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2122 002f 0B       		.uleb128 0xb
  2123 0030 3B       		.uleb128 0x3b
  2124 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 43
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 43
 
 
  2125 0032 49       		.uleb128 0x49
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2179 0069 00       		.byte	0
  2180 006a 08       		.uleb128 0x8
  2181 006b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 44
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 44
 
 
  2182 006c 01       		.byte	0x1
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2236 00a4 19       		.uleb128 0x19
  2237 00a5 01       		.uleb128 0x1
  2238 00a6 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 45
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 45
 
 
  2239 00a7 00       		.byte	0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2293 00de 18       		.uleb128 0x18
  2294 00df 00       		.byte	0
  2295 00e0 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 46
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 46
 
 
  2296 00e1 0E       		.uleb128 0xe
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2350 0117 19       		.uleb128 0x19
  2351 0118 02       		.uleb128 0x2
  2352 0119 18       		.uleb128 0x18
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 47
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 47
 
 
  2353 011a 00       		.byte	0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2407 0078 00000000 		.4byte	0
  2408 007c 00000000 		.4byte	0
  2409              		.section	.debug_ranges,"",%progbits
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 48
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 48
 
 
  2410              	.Ldebug_ranges0:
@@ -2865,205 +2865,205 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 1
  2444              	.LASF39:
  2445 000f 6C696768 		.ascii	"light\000"
  2445      7400
- 2446              	.LASF33:
- 2447 0015 696E7075 		.ascii	"inputTemp\000"
- 2447      7454656D 
- 2447      7000
- 2448              	.LASF45:
- 2449 001f 736F696C 		.ascii	"soilHumPtr\000"
- 2449      48756D50 
- 2449      747200
- 2450              	.LASF25:
- 2451 002a 61766748 		.ascii	"avgHum\000"
- 2451      756D00
- 2452              	.LASF43:
- 2453 0031 68756D41 		.ascii	"humArrayPtr\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 49
+ 2446              	.LASF50:
+ 2447 0015 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 2447      73657273 
+ 2447      5C4C6173 
+ 2447      73655C44 
+ 2447      6F63756D 
+ 2448 0042 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 2448      4D617374 
+ 2448      65725C50 
+ 2448      536F435F 
+ 2448      4D617374 
+ 2449              	.LASF33:
+ 2450 005f 696E7075 		.ascii	"inputTemp\000"
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 49
 
 
- 2453      72726179 
- 2453      50747200 
- 2454              	.LASF3:
- 2455 003d 73686F72 		.ascii	"short unsigned int\000"
- 2455      7420756E 
- 2455      7369676E 
- 2455      65642069 
- 2455      6E7400
- 2456              	.LASF46:
- 2457 0050 6C696768 		.ascii	"lightArray\000"
- 2457      74417272 
- 2457      617900
- 2458              	.LASF36:
- 2459 005b 696E7075 		.ascii	"inputSoilHum\000"
- 2459      74536F69 
- 2459      6C48756D 
- 2459      00
- 2460              	.LASF31:
- 2461 0068 6C696768 		.ascii	"lightInLux\000"
- 2461      74496E4C 
- 2461      757800
- 2462              	.LASF12:
- 2463 0073 666C6F61 		.ascii	"float\000"
- 2463      7400
- 2464              	.LASF48:
- 2465 0079 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 2465      4320342E 
- 2465      382E3420 
- 2465      32303134 
- 2465      30353236 
- 2466 00ac 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 2466      20726576 
- 2466      6973696F 
- 2466      6E203231 
- 2466      31333538 
- 2467 00df 30202D66 		.ascii	"0 -ffunction-sections\000"
- 2467      66756E63 
- 2467      74696F6E 
- 2467      2D736563 
- 2467      74696F6E 
- 2468              	.LASF1:
- 2469 00f5 756E7369 		.ascii	"unsigned char\000"
- 2469      676E6564 
- 2469      20636861 
- 2469      7200
- 2470              	.LASF50:
- 2471 0103 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 2471      73657273 
- 2471      5C506869 
- 2471      6C69705C 
- 2471      4F6E6544 
- 2472 0130 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 2472      4D617374 
- 2472      65725C50 
- 2472      536F435F 
- 2472      4D617374 
- 2473              	.LASF5:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 50
+ 2450      7454656D 
+ 2450      7000
+ 2451              	.LASF45:
+ 2452 0069 736F696C 		.ascii	"soilHumPtr\000"
+ 2452      48756D50 
+ 2452      747200
+ 2453              	.LASF25:
+ 2454 0074 61766748 		.ascii	"avgHum\000"
+ 2454      756D00
+ 2455              	.LASF43:
+ 2456 007b 68756D41 		.ascii	"humArrayPtr\000"
+ 2456      72726179 
+ 2456      50747200 
+ 2457              	.LASF3:
+ 2458 0087 73686F72 		.ascii	"short unsigned int\000"
+ 2458      7420756E 
+ 2458      7369676E 
+ 2458      65642069 
+ 2458      6E7400
+ 2459              	.LASF46:
+ 2460 009a 6C696768 		.ascii	"lightArray\000"
+ 2460      74417272 
+ 2460      617900
+ 2461              	.LASF36:
+ 2462 00a5 696E7075 		.ascii	"inputSoilHum\000"
+ 2462      74536F69 
+ 2462      6C48756D 
+ 2462      00
+ 2463              	.LASF31:
+ 2464 00b2 6C696768 		.ascii	"lightInLux\000"
+ 2464      74496E4C 
+ 2464      757800
+ 2465              	.LASF12:
+ 2466 00bd 666C6F61 		.ascii	"float\000"
+ 2466      7400
+ 2467              	.LASF48:
+ 2468 00c3 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 2468      4320342E 
+ 2468      382E3420 
+ 2468      32303134 
+ 2468      30353236 
+ 2469 00f6 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 2469      20726576 
+ 2469      6973696F 
+ 2469      6E203231 
+ 2469      31333538 
+ 2470 0129 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 2470      66756E63 
+ 2470      74696F6E 
+ 2470      2D736563 
+ 2470      74696F6E 
+ 2471              	.LASF1:
+ 2472 013f 756E7369 		.ascii	"unsigned char\000"
+ 2472      676E6564 
+ 2472      20636861 
+ 2472      7200
+ 2473              	.LASF40:
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 50
 
 
- 2474 014d 6C6F6E67 		.ascii	"long unsigned int\000"
- 2474      20756E73 
- 2474      69676E65 
- 2474      6420696E 
- 2474      7400
- 2475              	.LASF17:
- 2476 015f 67657454 		.ascii	"getTemp_DSP\000"
- 2476      656D705F 
- 2476      44535000 
- 2477              	.LASF26:
- 2478 016b 68756D49 		.ascii	"humInRH\000"
- 2478      6E524800 
- 2479              	.LASF51:
- 2480 0173 67657453 		.ascii	"getSoilHum_DSP\000"
- 2480      6F696C48 
- 2480      756D5F44 
- 2480      535000
- 2481              	.LASF30:
- 2482 0182 6176674C 		.ascii	"avgLight\000"
- 2482      69676874 
- 2482      00
- 2483              	.LASF20:
- 2484 018b 696E6974 		.ascii	"initDSP\000"
- 2484      44535000 
- 2485              	.LASF13:
- 2486 0193 646F7562 		.ascii	"double\000"
- 2486      6C6500
- 2487              	.LASF37:
- 2488 019a 736F696C 		.ascii	"soilHum\000"
- 2488      48756D00 
- 2489              	.LASF35:
- 2490 01a2 696E7075 		.ascii	"inputHum\000"
- 2490      7448756D 
- 2490      00
- 2491              	.LASF18:
- 2492 01ab 67657448 		.ascii	"getHum_DSP\000"
- 2492      756D5F44 
- 2492      535000
- 2493              	.LASF22:
- 2494 01b6 736B6970 		.ascii	"skip\000"
- 2494      00
- 2495              	.LASF8:
- 2496 01bb 756E7369 		.ascii	"unsigned int\000"
- 2496      676E6564 
- 2496      20696E74 
+ 2474 014d 74656D70 		.ascii	"tempArray\000"
+ 2474      41727261 
+ 2474      7900
+ 2475              	.LASF5:
+ 2476 0157 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2476      20756E73 
+ 2476      69676E65 
+ 2476      6420696E 
+ 2476      7400
+ 2477              	.LASF17:
+ 2478 0169 67657454 		.ascii	"getTemp_DSP\000"
+ 2478      656D705F 
+ 2478      44535000 
+ 2479              	.LASF26:
+ 2480 0175 68756D49 		.ascii	"humInRH\000"
+ 2480      6E524800 
+ 2481              	.LASF51:
+ 2482 017d 67657453 		.ascii	"getSoilHum_DSP\000"
+ 2482      6F696C48 
+ 2482      756D5F44 
+ 2482      535000
+ 2483              	.LASF30:
+ 2484 018c 6176674C 		.ascii	"avgLight\000"
+ 2484      69676874 
+ 2484      00
+ 2485              	.LASF20:
+ 2486 0195 696E6974 		.ascii	"initDSP\000"
+ 2486      44535000 
+ 2487              	.LASF13:
+ 2488 019d 646F7562 		.ascii	"double\000"
+ 2488      6C6500
+ 2489              	.LASF37:
+ 2490 01a4 736F696C 		.ascii	"soilHum\000"
+ 2490      48756D00 
+ 2491              	.LASF35:
+ 2492 01ac 696E7075 		.ascii	"inputHum\000"
+ 2492      7448756D 
+ 2492      00
+ 2493              	.LASF18:
+ 2494 01b5 67657448 		.ascii	"getHum_DSP\000"
+ 2494      756D5F44 
+ 2494      535000
+ 2495              	.LASF22:
+ 2496 01c0 736B6970 		.ascii	"skip\000"
  2496      00
- 2497              	.LASF34:
- 2498 01c8 74656D70 		.ascii	"temp\000"
+ 2497              	.LASF8:
+ 2498 01c5 756E7369 		.ascii	"unsigned int\000"
+ 2498      676E6564 
+ 2498      20696E74 
  2498      00
- 2499              	.LASF29:
- 2500 01cd 736F696C 		.ascii	"soilHumInRH\000"
- 2500      48756D49 
- 2500      6E524800 
- 2501              	.LASF7:
- 2502 01d9 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2502      206C6F6E 
- 2502      6720756E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 51
+ 2499              	.LASF34:
+ 2500 01d2 74656D70 		.ascii	"temp\000"
+ 2500      00
+ 2501              	.LASF29:
+ 2502 01d7 736F696C 		.ascii	"soilHumInRH\000"
+ 2502      48756D49 
+ 2502      6E524800 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 51
 
 
- 2502      7369676E 
- 2502      65642069 
- 2503              	.LASF38:
- 2504 01f0 696E7075 		.ascii	"inputLight\000"
- 2504      744C6967 
- 2504      687400
- 2505              	.LASF10:
- 2506 01fb 696E7431 		.ascii	"int16\000"
- 2506      3600
- 2507              	.LASF41:
- 2508 0201 74656D70 		.ascii	"tempArrayPtr\000"
- 2508      41727261 
- 2508      79507472 
- 2508      00
- 2509              	.LASF19:
- 2510 020e 6765744C 		.ascii	"getLight_DSP\000"
- 2510      69676874 
- 2510      5F445350 
+ 2503              	.LASF7:
+ 2504 01e3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2504      206C6F6E 
+ 2504      6720756E 
+ 2504      7369676E 
+ 2504      65642069 
+ 2505              	.LASF38:
+ 2506 01fa 696E7075 		.ascii	"inputLight\000"
+ 2506      744C6967 
+ 2506      687400
+ 2507              	.LASF10:
+ 2508 0205 696E7431 		.ascii	"int16\000"
+ 2508      3600
+ 2509              	.LASF41:
+ 2510 020b 74656D70 		.ascii	"tempArrayPtr\000"
+ 2510      41727261 
+ 2510      79507472 
  2510      00
- 2511              	.LASF11:
- 2512 021b 696E7433 		.ascii	"int32\000"
- 2512      3200
- 2513              	.LASF16:
- 2514 0221 73697A65 		.ascii	"sizetype\000"
- 2514      74797065 
- 2514      00
- 2515              	.LASF6:
- 2516 022a 6C6F6E67 		.ascii	"long long int\000"
- 2516      206C6F6E 
- 2516      6720696E 
- 2516      7400
- 2517              	.LASF32:
- 2518 0238 6C696768 		.ascii	"lightInUartVarSteps\000"
- 2518      74496E55 
- 2518      61727456 
- 2518      61725374 
- 2518      65707300 
- 2519              	.LASF15:
- 2520 024c 63686172 		.ascii	"char\000"
- 2520      00
- 2521              	.LASF27:
- 2522 0251 61766753 		.ascii	"avgSoilHum\000"
- 2522      6F696C48 
- 2522      756D00
- 2523              	.LASF28:
- 2524 025c 696E6465 		.ascii	"index\000"
- 2524      7800
- 2525              	.LASF49:
- 2526 0262 2E5C4453 		.ascii	".\\DSP_Class.c\000"
- 2526      505F436C 
- 2526      6173732E 
- 2526      6300
- 2527              	.LASF2:
- 2528 0270 73686F72 		.ascii	"short int\000"
- 2528      7420696E 
- 2528      7400
- 2529              	.LASF40:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cccvsn0f.s 			page 52
+ 2511              	.LASF19:
+ 2512 0218 6765744C 		.ascii	"getLight_DSP\000"
+ 2512      69676874 
+ 2512      5F445350 
+ 2512      00
+ 2513              	.LASF11:
+ 2514 0225 696E7433 		.ascii	"int32\000"
+ 2514      3200
+ 2515              	.LASF16:
+ 2516 022b 73697A65 		.ascii	"sizetype\000"
+ 2516      74797065 
+ 2516      00
+ 2517              	.LASF6:
+ 2518 0234 6C6F6E67 		.ascii	"long long int\000"
+ 2518      206C6F6E 
+ 2518      6720696E 
+ 2518      7400
+ 2519              	.LASF32:
+ 2520 0242 6C696768 		.ascii	"lightInUartVarSteps\000"
+ 2520      74496E55 
+ 2520      61727456 
+ 2520      61725374 
+ 2520      65707300 
+ 2521              	.LASF15:
+ 2522 0256 63686172 		.ascii	"char\000"
+ 2522      00
+ 2523              	.LASF27:
+ 2524 025b 61766753 		.ascii	"avgSoilHum\000"
+ 2524      6F696C48 
+ 2524      756D00
+ 2525              	.LASF28:
+ 2526 0266 696E6465 		.ascii	"index\000"
+ 2526      7800
+ 2527              	.LASF49:
+ 2528 026c 2E5C4453 		.ascii	".\\DSP_Class.c\000"
+ 2528      505F436C 
+ 2528      6173732E 
+ 2528      6300
+ 2529              	.LASF2:
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccTcb8j9.s 			page 52
 
 
- 2530 027a 74656D70 		.ascii	"tempArray\000"
- 2530      41727261 
- 2530      7900
+ 2530 027a 73686F72 		.ascii	"short int\000"
+ 2530      7420696E 
+ 2530      7400
  2531              	.LASF9:
  2532 0284 75696E74 		.ascii	"uint8\000"
  2532      3800

@@ -49,7 +49,7 @@ void initPSoC_Master(void){
 	
     // ISR
     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
-    timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
+    //timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
     
     UART_Start();                   //  Starts UART component
     Timer_Start();                  // Starts timer component

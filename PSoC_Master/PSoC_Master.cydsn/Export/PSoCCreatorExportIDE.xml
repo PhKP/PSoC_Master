@@ -134,6 +134,9 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\core_cmInstr.h</File>
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Generated_Source\PSoC4\CyBootAsmIar.s</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\project.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BlueLED.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BlueLED.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\BlueLED_aliases.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\Export\ARM_GCC_Generic">

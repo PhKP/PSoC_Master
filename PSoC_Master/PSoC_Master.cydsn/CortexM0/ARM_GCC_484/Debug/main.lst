@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
   21:.\main.c      ****     
   22:.\main.c      ****     // Init
   23:.\main.c      ****     initDSP();
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 2
 
 
   35              		.loc 1 23 0
@@ -73,39 +73,38 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
   41              		.loc 1 26 0
   42 0010 FFF7FEFF 		bl	initUART
   27:.\main.c      **** 
-  28:.\main.c      ****     adjustVentilation(0x7);
+  28:.\main.c      ****     adjustWindow(0xFF);
   43              		.loc 1 28 0
-  44 0014 0720     		mov	r0, #7
-  45 0016 FFF7FEFF 		bl	adjustVentilation
+  44 0014 FF20     		mov	r0, #255
+  45 0016 FFF7FEFF 		bl	adjustWindow
   29:.\main.c      ****     CyDelay(5000);
   46              		.loc 1 29 0
-  47 001a 074B     		ldr	r3, .L3
+  47 001a 084B     		ldr	r3, .L3
   48 001c 181C     		mov	r0, r3
   49 001e FFF7FEFF 		bl	CyDelay
-  30:.\main.c      ****     adjustVentilation(0x0);
+  30:.\main.c      ****     adjustWindow(0x0);
   50              		.loc 1 30 0
   51 0022 0020     		mov	r0, #0
-  52 0024 FFF7FEFF 		bl	adjustVentilation
+  52 0024 FFF7FEFF 		bl	adjustWindow
   31:.\main.c      ****     CyDelay(5000);
   53              		.loc 1 31 0
-  54 0028 034B     		ldr	r3, .L3
+  54 0028 044B     		ldr	r3, .L3
   55 002a 181C     		mov	r0, r3
   56 002c FFF7FEFF 		bl	CyDelay
-  32:.\main.c      ****     
+  32:.\main.c      ****     adjustIrrigation(0x0,1);
+  57              		.loc 1 32 0
+  58 0030 0020     		mov	r0, #0
+  59 0032 0121     		mov	r1, #1
+  60 0034 FFF7FEFF 		bl	adjustIrrigation
+  61              	.L2:
   33:.\main.c      ****     
-  34:.\main.c      ****     return 0;
-  57              		.loc 1 34 0
-  58 0030 0023     		mov	r3, #0
-  35:.\main.c      **** }
-  59              		.loc 1 35 0
-  60 0032 181C     		mov	r0, r3
-  61 0034 BD46     		mov	sp, r7
-  62              		@ sp needed
-  63 0036 80BD     		pop	{r7, pc}
+  34:.\main.c      ****     for(;;);
+  62              		.loc 1 34 0 discriminator 1
+  63 0038 FEE7     		b	.L2
   64              	.L4:
-  65              		.align	2
+  65 003a C046     		.align	2
   66              	.L3:
-  67 0038 88130000 		.word	5000
+  67 003c 88130000 		.word	5000
   68              		.cfi_endproc
   69              	.LFE33:
   70              		.size	main, .-main
@@ -118,10 +117,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
   77 0000 B5000000 		.4byte	0xb5
   78 0004 0400     		.2byte	0x4
   79 0006 00000000 		.4byte	.Ldebug_abbrev0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 3
-
-
   80 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 3
+
+
   81 000b 01       		.uleb128 0x1
   82 000c 59000000 		.4byte	.LASF13
   83 0010 01       		.byte	0x1
@@ -178,10 +177,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  134 0076 02       		.uleb128 0x2
  135 0077 04       		.byte	0x4
  136 0078 04       		.byte	0x4
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 4
-
-
  137 0079 71010000 		.4byte	.LASF9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 4
+
+
  138 007d 02       		.uleb128 0x2
  139 007e 08       		.byte	0x8
  140 007f 04       		.byte	0x4
@@ -200,7 +199,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  153 0098 14       		.byte	0x14
  154 0099 5D000000 		.4byte	0x5d
  155 009d 00000000 		.4byte	.LFB33
- 156 00a1 3C000000 		.4byte	.LFE33-.LFB33
+ 156 00a1 40000000 		.4byte	.LFE33-.LFB33
  157 00a5 01       		.uleb128 0x1
  158 00a6 9C       		.byte	0x9c
  159 00a7 06       		.uleb128 0x6
@@ -238,10 +237,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  191 0015 00       		.byte	0
  192 0016 0B       		.uleb128 0xb
  193 0017 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 5
-
-
  194 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 5
+
+
  195 0019 0B       		.uleb128 0xb
  196 001a 03       		.uleb128 0x3
  197 001b 0E       		.uleb128 0xe
@@ -298,10 +297,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  248 004f 34       		.uleb128 0x34
  249 0050 00       		.byte	0
  250 0051 03       		.uleb128 0x3
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 6
-
-
  251 0052 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 6
+
+
  252 0053 3A       		.uleb128 0x3a
  253 0054 0B       		.uleb128 0xb
  254 0055 3B       		.uleb128 0x3b
@@ -324,18 +323,18 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  271 000c 0000     		.2byte	0
  272 000e 0000     		.2byte	0
  273 0010 00000000 		.4byte	.LFB33
- 274 0014 3C000000 		.4byte	.LFE33-.LFB33
+ 274 0014 40000000 		.4byte	.LFE33-.LFB33
  275 0018 00000000 		.4byte	0
  276 001c 00000000 		.4byte	0
  277              		.section	.debug_ranges,"",%progbits
  278              	.Ldebug_ranges0:
  279 0000 00000000 		.4byte	.LFB33
- 280 0004 3C000000 		.4byte	.LFE33
+ 280 0004 40000000 		.4byte	.LFE33
  281 0008 00000000 		.4byte	0
  282 000c 00000000 		.4byte	0
  283              		.section	.debug_line,"",%progbits
  284              	.Ldebug_line0:
- 285 0000 76000000 		.section	.debug_str,"MS",%progbits,1
+ 285 0000 7A000000 		.section	.debug_str,"MS",%progbits,1
  285      02005700 
  285      00000201 
  285      FB0E0D00 
@@ -358,10 +357,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  293      3800
  294              	.LASF5:
  295 0026 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 7
-
-
  295      20756E73 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 7
+
+
  295      69676E65 
  295      6420696E 
  295      7400
@@ -418,10 +417,10 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 1
  314      4D617374 
  314      65725C50 
  314      536F435F 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc05Uiel.s 			page 8
-
-
  314      4D617374 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccBrrfvC.s 			page 8
+
+
  315              	.LASF10:
  316 014b 646F7562 		.ascii	"double\000"
  316      6C6500

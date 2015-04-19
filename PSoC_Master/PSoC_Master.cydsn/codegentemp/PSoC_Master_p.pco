@@ -10,6 +10,7 @@ set_location "\I2C:SCB_IRQ\" interrupt -1 -1 10
 set_location "timer_ISR" interrupt -1 -1 16
 set_location "UART_ISR" interrupt -1 -1 11
 set_location "ClockBlock" m0s8clockblockcell -1 -1 0
+set_io "BlueLED(0)" iocell 1 5
 set_io "RedLED(0)" iocell 1 6
 set_io "\UART:tx(0)\" iocell 0 5
 set_location "\I2C:SCB\" m0s8scbcell -1 -1 0

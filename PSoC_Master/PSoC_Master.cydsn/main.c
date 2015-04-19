@@ -25,11 +25,13 @@ int main(){
     initPSoC_Master();
     initUART();
 
-    adjustVentilation(0x7);
+    adjustWindow(0xFF);
     CyDelay(5000);
-    adjustVentilation(0x0);
+    adjustWindow(0x0);
     CyDelay(5000);
+    adjustIrrigation(0x0,1);
     
+    for(;;);
     
     return 0;
 }

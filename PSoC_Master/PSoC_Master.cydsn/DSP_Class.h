@@ -9,16 +9,19 @@
  * ========================================
 */
 #ifndef DSP_Class_H
-#define DSP_Class_H 0
+#define DSP_Class_H
     
     // Include files
     #include <project.h>
     
     // Definitions
-    #define ARRAYSIZE 100
+    #define ARRAYSIZE 10
+    #define NMR_OF_VALID_DATAPOINTS_NEEDED 10
+    #define NBR_OF_SOILHUM_SENSORS 6
+    #define EMPTY -1
     
     // Public data members
-
+    
     
     // Public prototypes
     void initDSP(void);

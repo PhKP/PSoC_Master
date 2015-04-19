@@ -1,6 +1,6 @@
 -- ======================================================================
 -- PSoC_Master.ctl generated from PSoC_Master
--- 04/17/2015 at 15:38
+-- 04/19/2015 at 16:45
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

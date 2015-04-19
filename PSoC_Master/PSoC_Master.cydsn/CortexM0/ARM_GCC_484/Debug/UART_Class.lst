@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -41,14 +41,9 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 1
   12:.\UART_Class.c **** // Include files
   13:.\UART_Class.c **** #include "UART_Class.h"
   14:.\UART_Class.c **** 
-  15:.\UART_Class.c **** // Private data members
-  16:.\UART_Class.c **** uint8 receivedCommand;
-  17:.\UART_Class.c **** 
-  18:.\UART_Class.c **** // Private prototypes
-  19:.\UART_Class.c **** 
-  20:.\UART_Class.c **** 
-  21:.\UART_Class.c **** void initUART(void){
-  27              		.loc 1 21 0
+  15:.\UART_Class.c **** // Init
+  16:.\UART_Class.c **** void initUART(void){
+  27              		.loc 1 16 0
   28              		.cfi_startproc
   29 0000 80B5     		push	{r7, lr}
   30              		.cfi_def_cfa_offset 8
@@ -56,1156 +51,1389 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 1
   32              		.cfi_offset 14, -4
   33 0002 00AF     		add	r7, sp, #0
   34              		.cfi_def_cfa_register 7
-  22:.\UART_Class.c **** 
-  23:.\UART_Class.c **** }
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 2
+  17:.\UART_Class.c ****     UART_Start();                   // Starts UART component
+  35              		.loc 1 17 0
+  36 0004 FFF7FEFF 		bl	UART_Start
+  18:.\UART_Class.c **** }
+  37              		.loc 1 18 0
+  38 0008 BD46     		mov	sp, r7
+  39              		@ sp needed
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 2
 
 
-  35              		.loc 1 23 0
-  36 0004 BD46     		mov	sp, r7
-  37              		@ sp needed
-  38 0006 80BD     		pop	{r7, pc}
-  39              		.cfi_endproc
-  40              	.LFE33:
-  41              		.size	initUART, .-initUART
-  42              		.section	.text.respondTemp,"ax",%progbits
-  43              		.align	2
-  44              		.global	respondTemp
-  45              		.code	16
-  46              		.thumb_func
-  47              		.type	respondTemp, %function
-  48              	respondTemp:
-  49              	.LFB34:
-  24:.\UART_Class.c **** 
-  25:.\UART_Class.c **** int8 respondTemp(uint8 temp){
-  50              		.loc 1 25 0
-  51              		.cfi_startproc
-  52 0000 80B5     		push	{r7, lr}
-  53              		.cfi_def_cfa_offset 8
-  54              		.cfi_offset 7, -8
-  55              		.cfi_offset 14, -4
-  56 0002 84B0     		sub	sp, sp, #16
-  57              		.cfi_def_cfa_offset 24
-  58 0004 00AF     		add	r7, sp, #0
-  59              		.cfi_def_cfa_register 7
-  60 0006 021C     		mov	r2, r0
-  61 0008 FB1D     		add	r3, r7, #7
-  62 000a 1A70     		strb	r2, [r3]
-  26:.\UART_Class.c ****     temp = 0;
-  63              		.loc 1 26 0
-  64 000c 3B1C     		mov	r3, r7
-  65 000e 0F33     		add	r3, r3, #15
-  66 0010 0022     		mov	r2, #0
-  67 0012 1A70     		strb	r2, [r3]
-  27:.\UART_Class.c ****     return 0;
-  68              		.loc 1 27 0
-  69 0014 0023     		mov	r3, #0
-  70 0016 5BB2     		sxtb	r3, r3
-  28:.\UART_Class.c **** }
-  71              		.loc 1 28 0
-  72 0018 181C     		mov	r0, r3
-  73 001a BD46     		mov	sp, r7
-  74 001c 04B0     		add	sp, sp, #16
-  75              		@ sp needed
-  76 001e 80BD     		pop	{r7, pc}
-  77              		.cfi_endproc
-  78              	.LFE34:
-  79              		.size	respondTemp, .-respondTemp
-  80              		.section	.text.respondHum,"ax",%progbits
-  81              		.align	2
-  82              		.global	respondHum
-  83              		.code	16
-  84              		.thumb_func
-  85              		.type	respondHum, %function
-  86              	respondHum:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 3
+  40 000a 80BD     		pop	{r7, pc}
+  41              		.cfi_endproc
+  42              	.LFE33:
+  43              		.size	initUART, .-initUART
+  44              		.section	.text.respondTemp,"ax",%progbits
+  45              		.align	2
+  46              		.global	respondTemp
+  47              		.code	16
+  48              		.thumb_func
+  49              		.type	respondTemp, %function
+  50              	respondTemp:
+  51              	.LFB34:
+  19:.\UART_Class.c **** 
+  20:.\UART_Class.c **** int8 respondTemp(uint8 temp){
+  52              		.loc 1 20 0
+  53              		.cfi_startproc
+  54 0000 80B5     		push	{r7, lr}
+  55              		.cfi_def_cfa_offset 8
+  56              		.cfi_offset 7, -8
+  57              		.cfi_offset 14, -4
+  58 0002 82B0     		sub	sp, sp, #8
+  59              		.cfi_def_cfa_offset 16
+  60 0004 00AF     		add	r7, sp, #0
+  61              		.cfi_def_cfa_register 7
+  62 0006 021C     		mov	r2, r0
+  63 0008 FB1D     		add	r3, r7, #7
+  64 000a 1A70     		strb	r2, [r3]
+  21:.\UART_Class.c ****     if(temp){
+  65              		.loc 1 21 0
+  66 000c FB1D     		add	r3, r7, #7
+  67 000e 1B78     		ldrb	r3, [r3]
+  68 0010 002B     		cmp	r3, #0
+  69 0012 09D0     		beq	.L3
+  22:.\UART_Class.c ****         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
+  23:.\UART_Class.c ****         UART_UartPutChar('T');
+  70              		.loc 1 23 0
+  71 0014 5420     		mov	r0, #84
+  72 0016 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  24:.\UART_Class.c ****         UART_UartPutChar(temp);
+  73              		.loc 1 24 0
+  74 001a FB1D     		add	r3, r7, #7
+  75 001c 1B78     		ldrb	r3, [r3]
+  76 001e 181C     		mov	r0, r3
+  77 0020 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  25:.\UART_Class.c ****         return 0;
+  78              		.loc 1 25 0
+  79 0024 0023     		mov	r3, #0
+  80 0026 06E0     		b	.L4
+  81              	.L3:
+  26:.\UART_Class.c ****     }
+  27:.\UART_Class.c ****     else{
+  28:.\UART_Class.c ****         // If temp isn't between 1 and 200(both inclusive) "XT" is sent to DevKit8000
+  29:.\UART_Class.c ****         UART_UartPutChar('X');
+  82              		.loc 1 29 0
+  83 0028 5820     		mov	r0, #88
+  84 002a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  30:.\UART_Class.c ****         UART_UartPutChar('T');
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 3
 
 
-  87              	.LFB35:
-  29:.\UART_Class.c **** 
-  30:.\UART_Class.c **** int8 respondHum(uint8 hum){
-  88              		.loc 1 30 0
-  89              		.cfi_startproc
-  90 0000 80B5     		push	{r7, lr}
-  91              		.cfi_def_cfa_offset 8
-  92              		.cfi_offset 7, -8
-  93              		.cfi_offset 14, -4
-  94 0002 84B0     		sub	sp, sp, #16
-  95              		.cfi_def_cfa_offset 24
-  96 0004 00AF     		add	r7, sp, #0
-  97              		.cfi_def_cfa_register 7
-  98 0006 021C     		mov	r2, r0
-  99 0008 FB1D     		add	r3, r7, #7
- 100 000a 1A70     		strb	r2, [r3]
-  31:.\UART_Class.c ****     hum = 0;
- 101              		.loc 1 31 0
- 102 000c 3B1C     		mov	r3, r7
- 103 000e 0F33     		add	r3, r3, #15
- 104 0010 0022     		mov	r2, #0
- 105 0012 1A70     		strb	r2, [r3]
-  32:.\UART_Class.c ****     return 0;
- 106              		.loc 1 32 0
- 107 0014 0023     		mov	r3, #0
- 108 0016 5BB2     		sxtb	r3, r3
+  85              		.loc 1 30 0
+  86 002e 5420     		mov	r0, #84
+  87 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  31:.\UART_Class.c ****         return -1;
+  88              		.loc 1 31 0
+  89 0034 FF23     		mov	r3, #255
+  90              	.L4:
+  91 0036 5BB2     		sxtb	r3, r3
+  32:.\UART_Class.c ****     }
   33:.\UART_Class.c **** }
- 109              		.loc 1 33 0
- 110 0018 181C     		mov	r0, r3
- 111 001a BD46     		mov	sp, r7
- 112 001c 04B0     		add	sp, sp, #16
- 113              		@ sp needed
- 114 001e 80BD     		pop	{r7, pc}
- 115              		.cfi_endproc
- 116              	.LFE35:
- 117              		.size	respondHum, .-respondHum
- 118              		.section	.text.respondLight,"ax",%progbits
- 119              		.align	2
- 120              		.global	respondLight
- 121              		.code	16
- 122              		.thumb_func
- 123              		.type	respondLight, %function
- 124              	respondLight:
- 125              	.LFB36:
+  92              		.loc 1 33 0
+  93 0038 181C     		mov	r0, r3
+  94 003a BD46     		mov	sp, r7
+  95 003c 02B0     		add	sp, sp, #8
+  96              		@ sp needed
+  97 003e 80BD     		pop	{r7, pc}
+  98              		.cfi_endproc
+  99              	.LFE34:
+ 100              		.size	respondTemp, .-respondTemp
+ 101              		.section	.text.respondHum,"ax",%progbits
+ 102              		.align	2
+ 103              		.global	respondHum
+ 104              		.code	16
+ 105              		.thumb_func
+ 106              		.type	respondHum, %function
+ 107              	respondHum:
+ 108              	.LFB35:
   34:.\UART_Class.c **** 
-  35:.\UART_Class.c **** int8 respondLight(uint8 light){
- 126              		.loc 1 35 0
- 127              		.cfi_startproc
- 128 0000 80B5     		push	{r7, lr}
- 129              		.cfi_def_cfa_offset 8
- 130              		.cfi_offset 7, -8
- 131              		.cfi_offset 14, -4
- 132 0002 84B0     		sub	sp, sp, #16
- 133              		.cfi_def_cfa_offset 24
- 134 0004 00AF     		add	r7, sp, #0
- 135              		.cfi_def_cfa_register 7
- 136 0006 021C     		mov	r2, r0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 4
+  35:.\UART_Class.c **** int8 respondHum(uint8 hum){
+ 109              		.loc 1 35 0
+ 110              		.cfi_startproc
+ 111 0000 80B5     		push	{r7, lr}
+ 112              		.cfi_def_cfa_offset 8
+ 113              		.cfi_offset 7, -8
+ 114              		.cfi_offset 14, -4
+ 115 0002 82B0     		sub	sp, sp, #8
+ 116              		.cfi_def_cfa_offset 16
+ 117 0004 00AF     		add	r7, sp, #0
+ 118              		.cfi_def_cfa_register 7
+ 119 0006 021C     		mov	r2, r0
+ 120 0008 FB1D     		add	r3, r7, #7
+ 121 000a 1A70     		strb	r2, [r3]
+  36:.\UART_Class.c ****     if(hum){
+ 122              		.loc 1 36 0
+ 123 000c FB1D     		add	r3, r7, #7
+ 124 000e 1B78     		ldrb	r3, [r3]
+ 125 0010 002B     		cmp	r3, #0
+ 126 0012 09D0     		beq	.L6
+  37:.\UART_Class.c ****         // If hum is between 1 and 100(both inclusive) "A" and hum is sent to DevKit8000
+  38:.\UART_Class.c ****         UART_UartPutChar('A');
+ 127              		.loc 1 38 0
+ 128 0014 4120     		mov	r0, #65
+ 129 0016 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  39:.\UART_Class.c ****         UART_UartPutChar(hum);
+ 130              		.loc 1 39 0
+ 131 001a FB1D     		add	r3, r7, #7
+ 132 001c 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 4
 
 
- 137 0008 FB1D     		add	r3, r7, #7
- 138 000a 1A70     		strb	r2, [r3]
-  36:.\UART_Class.c ****     light = 0;
- 139              		.loc 1 36 0
- 140 000c 3B1C     		mov	r3, r7
- 141 000e 0F33     		add	r3, r3, #15
- 142 0010 0022     		mov	r2, #0
- 143 0012 1A70     		strb	r2, [r3]
-  37:.\UART_Class.c ****     return 0;
- 144              		.loc 1 37 0
- 145 0014 0023     		mov	r3, #0
- 146 0016 5BB2     		sxtb	r3, r3
-  38:.\UART_Class.c **** }
- 147              		.loc 1 38 0
- 148 0018 181C     		mov	r0, r3
- 149 001a BD46     		mov	sp, r7
- 150 001c 04B0     		add	sp, sp, #16
- 151              		@ sp needed
- 152 001e 80BD     		pop	{r7, pc}
- 153              		.cfi_endproc
- 154              	.LFE36:
- 155              		.size	respondLight, .-respondLight
- 156              		.section	.text.respondSoilHum,"ax",%progbits
- 157              		.align	2
- 158              		.global	respondSoilHum
- 159              		.code	16
- 160              		.thumb_func
- 161              		.type	respondSoilHum, %function
- 162              	respondSoilHum:
- 163              	.LFB37:
-  39:.\UART_Class.c **** 
-  40:.\UART_Class.c **** int8 respondSoilHum(uint8 index, uint8 soilHum){
- 164              		.loc 1 40 0
- 165              		.cfi_startproc
- 166 0000 80B5     		push	{r7, lr}
- 167              		.cfi_def_cfa_offset 8
- 168              		.cfi_offset 7, -8
- 169              		.cfi_offset 14, -4
- 170 0002 84B0     		sub	sp, sp, #16
- 171              		.cfi_def_cfa_offset 24
- 172 0004 00AF     		add	r7, sp, #0
- 173              		.cfi_def_cfa_register 7
- 174 0006 0A1C     		mov	r2, r1
- 175 0008 FB1D     		add	r3, r7, #7
- 176 000a 011C     		add	r1, r0, #0
- 177 000c 1970     		strb	r1, [r3]
- 178 000e BB1D     		add	r3, r7, #6
- 179 0010 1A70     		strb	r2, [r3]
-  41:.\UART_Class.c ****     index = 0;
- 180              		.loc 1 41 0
- 181 0012 3B1C     		mov	r3, r7
- 182 0014 0F33     		add	r3, r3, #15
- 183 0016 0022     		mov	r2, #0
- 184 0018 1A70     		strb	r2, [r3]
-  42:.\UART_Class.c ****     soilHum = 0;
- 185              		.loc 1 42 0
- 186 001a 3B1C     		mov	r3, r7
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 5
+ 133 001e 181C     		mov	r0, r3
+ 134 0020 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  40:.\UART_Class.c ****         return 0;
+ 135              		.loc 1 40 0
+ 136 0024 0023     		mov	r3, #0
+ 137 0026 06E0     		b	.L7
+ 138              	.L6:
+  41:.\UART_Class.c ****     }
+  42:.\UART_Class.c ****     else{
+  43:.\UART_Class.c ****         // If temp isn't between 1 and 100(both inclusive) "XA" is sent to DevKit8000
+  44:.\UART_Class.c ****         UART_UartPutChar('X');
+ 139              		.loc 1 44 0
+ 140 0028 5820     		mov	r0, #88
+ 141 002a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  45:.\UART_Class.c ****         UART_UartPutChar('A');
+ 142              		.loc 1 45 0
+ 143 002e 4120     		mov	r0, #65
+ 144 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  46:.\UART_Class.c ****         return -1;
+ 145              		.loc 1 46 0
+ 146 0034 FF23     		mov	r3, #255
+ 147              	.L7:
+ 148 0036 5BB2     		sxtb	r3, r3
+  47:.\UART_Class.c ****     }
+  48:.\UART_Class.c **** }
+ 149              		.loc 1 48 0
+ 150 0038 181C     		mov	r0, r3
+ 151 003a BD46     		mov	sp, r7
+ 152 003c 02B0     		add	sp, sp, #8
+ 153              		@ sp needed
+ 154 003e 80BD     		pop	{r7, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE35:
+ 157              		.size	respondHum, .-respondHum
+ 158              		.section	.text.respondLight,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	respondLight
+ 161              		.code	16
+ 162              		.thumb_func
+ 163              		.type	respondLight, %function
+ 164              	respondLight:
+ 165              	.LFB36:
+  49:.\UART_Class.c **** 
+  50:.\UART_Class.c **** int8 respondLight(uint8 light){
+ 166              		.loc 1 50 0
+ 167              		.cfi_startproc
+ 168 0000 80B5     		push	{r7, lr}
+ 169              		.cfi_def_cfa_offset 8
+ 170              		.cfi_offset 7, -8
+ 171              		.cfi_offset 14, -4
+ 172 0002 82B0     		sub	sp, sp, #8
+ 173              		.cfi_def_cfa_offset 16
+ 174 0004 00AF     		add	r7, sp, #0
+ 175              		.cfi_def_cfa_register 7
+ 176 0006 021C     		mov	r2, r0
+ 177 0008 FB1D     		add	r3, r7, #7
+ 178 000a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 5
 
 
- 187 001c 0E33     		add	r3, r3, #14
- 188 001e 0022     		mov	r2, #0
- 189 0020 1A70     		strb	r2, [r3]
-  43:.\UART_Class.c ****     return 0;
- 190              		.loc 1 43 0
- 191 0022 0023     		mov	r3, #0
- 192 0024 5BB2     		sxtb	r3, r3
-  44:.\UART_Class.c **** }
- 193              		.loc 1 44 0
- 194 0026 181C     		mov	r0, r3
- 195 0028 BD46     		mov	sp, r7
- 196 002a 04B0     		add	sp, sp, #16
- 197              		@ sp needed
- 198 002c 80BD     		pop	{r7, pc}
- 199              		.cfi_endproc
- 200              	.LFE37:
- 201              		.size	respondSoilHum, .-respondSoilHum
- 202 002e C046     		.section	.text.respondHeat,"ax",%progbits
- 203              		.align	2
- 204              		.global	respondHeat
- 205              		.code	16
- 206              		.thumb_func
- 207              		.type	respondHeat, %function
- 208              	respondHeat:
- 209              	.LFB38:
-  45:.\UART_Class.c **** 
-  46:.\UART_Class.c **** int8 respondHeat(int8 heatStatus, uint8 onOff){
- 210              		.loc 1 46 0
- 211              		.cfi_startproc
- 212 0000 80B5     		push	{r7, lr}
- 213              		.cfi_def_cfa_offset 8
- 214              		.cfi_offset 7, -8
- 215              		.cfi_offset 14, -4
- 216 0002 84B0     		sub	sp, sp, #16
- 217              		.cfi_def_cfa_offset 24
- 218 0004 00AF     		add	r7, sp, #0
- 219              		.cfi_def_cfa_register 7
- 220 0006 0A1C     		mov	r2, r1
- 221 0008 FB1D     		add	r3, r7, #7
- 222 000a 011C     		add	r1, r0, #0
- 223 000c 1970     		strb	r1, [r3]
- 224 000e BB1D     		add	r3, r7, #6
- 225 0010 1A70     		strb	r2, [r3]
-  47:.\UART_Class.c ****     heatStatus = 0;
- 226              		.loc 1 47 0
- 227 0012 3B1C     		mov	r3, r7
- 228 0014 0F33     		add	r3, r3, #15
- 229 0016 0022     		mov	r2, #0
- 230 0018 1A70     		strb	r2, [r3]
-  48:.\UART_Class.c ****     onOff = 0;
- 231              		.loc 1 48 0
- 232 001a 3B1C     		mov	r3, r7
- 233 001c 0E33     		add	r3, r3, #14
- 234 001e 0022     		mov	r2, #0
- 235 0020 1A70     		strb	r2, [r3]
-  49:.\UART_Class.c ****     return 0;
- 236              		.loc 1 49 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 6
+  51:.\UART_Class.c ****     if(light){
+ 179              		.loc 1 51 0
+ 180 000c FB1D     		add	r3, r7, #7
+ 181 000e 1B78     		ldrb	r3, [r3]
+ 182 0010 002B     		cmp	r3, #0
+ 183 0012 09D0     		beq	.L9
+  52:.\UART_Class.c ****         // If light is between 1 and 100(both inclusive) "L" and light is sent to DevKit8000
+  53:.\UART_Class.c ****         UART_UartPutChar('L');
+ 184              		.loc 1 53 0
+ 185 0014 4C20     		mov	r0, #76
+ 186 0016 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  54:.\UART_Class.c ****         UART_UartPutChar(light);
+ 187              		.loc 1 54 0
+ 188 001a FB1D     		add	r3, r7, #7
+ 189 001c 1B78     		ldrb	r3, [r3]
+ 190 001e 181C     		mov	r0, r3
+ 191 0020 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  55:.\UART_Class.c ****         return 0;
+ 192              		.loc 1 55 0
+ 193 0024 0023     		mov	r3, #0
+ 194 0026 06E0     		b	.L10
+ 195              	.L9:
+  56:.\UART_Class.c ****     }
+  57:.\UART_Class.c ****     else{
+  58:.\UART_Class.c ****         // If light isn't between 1 and 100(both inclusive) "XL" is sent to DevKit8000
+  59:.\UART_Class.c ****         UART_UartPutChar('X');
+ 196              		.loc 1 59 0
+ 197 0028 5820     		mov	r0, #88
+ 198 002a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  60:.\UART_Class.c ****         UART_UartPutChar('L');
+ 199              		.loc 1 60 0
+ 200 002e 4C20     		mov	r0, #76
+ 201 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  61:.\UART_Class.c ****         return -1;
+ 202              		.loc 1 61 0
+ 203 0034 FF23     		mov	r3, #255
+ 204              	.L10:
+ 205 0036 5BB2     		sxtb	r3, r3
+  62:.\UART_Class.c ****     }
+  63:.\UART_Class.c **** }
+ 206              		.loc 1 63 0
+ 207 0038 181C     		mov	r0, r3
+ 208 003a BD46     		mov	sp, r7
+ 209 003c 02B0     		add	sp, sp, #8
+ 210              		@ sp needed
+ 211 003e 80BD     		pop	{r7, pc}
+ 212              		.cfi_endproc
+ 213              	.LFE36:
+ 214              		.size	respondLight, .-respondLight
+ 215              		.section	.text.respondSoilHum,"ax",%progbits
+ 216              		.align	2
+ 217              		.global	respondSoilHum
+ 218              		.code	16
+ 219              		.thumb_func
+ 220              		.type	respondSoilHum, %function
+ 221              	respondSoilHum:
+ 222              	.LFB37:
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 6
 
 
- 237 0022 0023     		mov	r3, #0
- 238 0024 5BB2     		sxtb	r3, r3
-  50:.\UART_Class.c **** }
- 239              		.loc 1 50 0
- 240 0026 181C     		mov	r0, r3
- 241 0028 BD46     		mov	sp, r7
- 242 002a 04B0     		add	sp, sp, #16
- 243              		@ sp needed
- 244 002c 80BD     		pop	{r7, pc}
- 245              		.cfi_endproc
- 246              	.LFE38:
- 247              		.size	respondHeat, .-respondHeat
- 248 002e C046     		.section	.text.respondWin,"ax",%progbits
- 249              		.align	2
- 250              		.global	respondWin
- 251              		.code	16
- 252              		.thumb_func
- 253              		.type	respondWin, %function
- 254              	respondWin:
- 255              	.LFB39:
-  51:.\UART_Class.c **** 
-  52:.\UART_Class.c **** int8 respondWin(int8 winStatus){
- 256              		.loc 1 52 0
- 257              		.cfi_startproc
- 258 0000 80B5     		push	{r7, lr}
- 259              		.cfi_def_cfa_offset 8
- 260              		.cfi_offset 7, -8
- 261              		.cfi_offset 14, -4
- 262 0002 84B0     		sub	sp, sp, #16
- 263              		.cfi_def_cfa_offset 24
- 264 0004 00AF     		add	r7, sp, #0
- 265              		.cfi_def_cfa_register 7
- 266 0006 021C     		mov	r2, r0
- 267 0008 FB1D     		add	r3, r7, #7
- 268 000a 1A70     		strb	r2, [r3]
-  53:.\UART_Class.c ****     winStatus = 0;
- 269              		.loc 1 53 0
- 270 000c 3B1C     		mov	r3, r7
- 271 000e 0F33     		add	r3, r3, #15
- 272 0010 0022     		mov	r2, #0
- 273 0012 1A70     		strb	r2, [r3]
-  54:.\UART_Class.c ****     return 0;
- 274              		.loc 1 54 0
- 275 0014 0023     		mov	r3, #0
- 276 0016 5BB2     		sxtb	r3, r3
-  55:.\UART_Class.c **** }
- 277              		.loc 1 55 0
- 278 0018 181C     		mov	r0, r3
- 279 001a BD46     		mov	sp, r7
- 280 001c 04B0     		add	sp, sp, #16
- 281              		@ sp needed
- 282 001e 80BD     		pop	{r7, pc}
- 283              		.cfi_endproc
- 284              	.LFE39:
- 285              		.size	respondWin, .-respondWin
- 286              		.section	.text.respondVent,"ax",%progbits
- 287              		.align	2
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 7
+  64:.\UART_Class.c **** 
+  65:.\UART_Class.c **** int8 respondSoilHum(uint8 index, uint8 soilHum){
+ 223              		.loc 1 65 0
+ 224              		.cfi_startproc
+ 225 0000 80B5     		push	{r7, lr}
+ 226              		.cfi_def_cfa_offset 8
+ 227              		.cfi_offset 7, -8
+ 228              		.cfi_offset 14, -4
+ 229 0002 82B0     		sub	sp, sp, #8
+ 230              		.cfi_def_cfa_offset 16
+ 231 0004 00AF     		add	r7, sp, #0
+ 232              		.cfi_def_cfa_register 7
+ 233 0006 0A1C     		mov	r2, r1
+ 234 0008 FB1D     		add	r3, r7, #7
+ 235 000a 011C     		add	r1, r0, #0
+ 236 000c 1970     		strb	r1, [r3]
+ 237 000e BB1D     		add	r3, r7, #6
+ 238 0010 1A70     		strb	r2, [r3]
+  66:.\UART_Class.c ****     if(soilHum){
+ 239              		.loc 1 66 0
+ 240 0012 BB1D     		add	r3, r7, #6
+ 241 0014 1B78     		ldrb	r3, [r3]
+ 242 0016 002B     		cmp	r3, #0
+ 243 0018 0ED0     		beq	.L12
+  67:.\UART_Class.c ****         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent
+  68:.\UART_Class.c ****         UART_UartPutChar('S');
+ 244              		.loc 1 68 0
+ 245 001a 5320     		mov	r0, #83
+ 246 001c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  69:.\UART_Class.c ****         UART_UartPutChar(index);
+ 247              		.loc 1 69 0
+ 248 0020 FB1D     		add	r3, r7, #7
+ 249 0022 1B78     		ldrb	r3, [r3]
+ 250 0024 181C     		mov	r0, r3
+ 251 0026 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  70:.\UART_Class.c ****         UART_UartPutChar(soilHum);
+ 252              		.loc 1 70 0
+ 253 002a BB1D     		add	r3, r7, #6
+ 254 002c 1B78     		ldrb	r3, [r3]
+ 255 002e 181C     		mov	r0, r3
+ 256 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  71:.\UART_Class.c ****         return 0;
+ 257              		.loc 1 71 0
+ 258 0034 0023     		mov	r3, #0
+ 259 0036 06E0     		b	.L13
+ 260              	.L12:
+  72:.\UART_Class.c ****     }
+  73:.\UART_Class.c ****     else{
+  74:.\UART_Class.c ****         // If soilHum isn't between 1 and 10(both inclusive) "XS" is sent to DevKit8000
+  75:.\UART_Class.c ****         UART_UartPutChar('X');
+ 261              		.loc 1 75 0
+ 262 0038 5820     		mov	r0, #88
+ 263 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  76:.\UART_Class.c ****         UART_UartPutChar('S');
+ 264              		.loc 1 76 0
+ 265 003e 5320     		mov	r0, #83
+ 266 0040 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 7
 
 
- 288              		.global	respondVent
- 289              		.code	16
- 290              		.thumb_func
- 291              		.type	respondVent, %function
- 292              	respondVent:
- 293              	.LFB40:
-  56:.\UART_Class.c **** 
-  57:.\UART_Class.c **** int8 respondVent(int8 ventStatus){
- 294              		.loc 1 57 0
- 295              		.cfi_startproc
- 296 0000 80B5     		push	{r7, lr}
- 297              		.cfi_def_cfa_offset 8
- 298              		.cfi_offset 7, -8
- 299              		.cfi_offset 14, -4
- 300 0002 84B0     		sub	sp, sp, #16
- 301              		.cfi_def_cfa_offset 24
- 302 0004 00AF     		add	r7, sp, #0
- 303              		.cfi_def_cfa_register 7
- 304 0006 021C     		mov	r2, r0
- 305 0008 FB1D     		add	r3, r7, #7
- 306 000a 1A70     		strb	r2, [r3]
-  58:.\UART_Class.c ****     ventStatus = 0;
- 307              		.loc 1 58 0
- 308 000c 3B1C     		mov	r3, r7
- 309 000e 0F33     		add	r3, r3, #15
- 310 0010 0022     		mov	r2, #0
- 311 0012 1A70     		strb	r2, [r3]
-  59:.\UART_Class.c ****     return 0;
- 312              		.loc 1 59 0
- 313 0014 0023     		mov	r3, #0
- 314 0016 5BB2     		sxtb	r3, r3
-  60:.\UART_Class.c **** }
- 315              		.loc 1 60 0
- 316 0018 181C     		mov	r0, r3
- 317 001a BD46     		mov	sp, r7
- 318 001c 04B0     		add	sp, sp, #16
- 319              		@ sp needed
- 320 001e 80BD     		pop	{r7, pc}
- 321              		.cfi_endproc
- 322              	.LFE40:
- 323              		.size	respondVent, .-respondVent
- 324              		.section	.text.respondIrri,"ax",%progbits
- 325              		.align	2
- 326              		.global	respondIrri
- 327              		.code	16
- 328              		.thumb_func
- 329              		.type	respondIrri, %function
- 330              	respondIrri:
- 331              	.LFB41:
-  61:.\UART_Class.c **** 
-  62:.\UART_Class.c **** int8 respondIrri(int8 irriStatus){
- 332              		.loc 1 62 0
- 333              		.cfi_startproc
- 334 0000 80B5     		push	{r7, lr}
- 335              		.cfi_def_cfa_offset 8
- 336              		.cfi_offset 7, -8
- 337              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 8
+  77:.\UART_Class.c ****         return -1;
+ 267              		.loc 1 77 0
+ 268 0044 FF23     		mov	r3, #255
+ 269              	.L13:
+ 270 0046 5BB2     		sxtb	r3, r3
+  78:.\UART_Class.c ****     }
+  79:.\UART_Class.c **** }
+ 271              		.loc 1 79 0
+ 272 0048 181C     		mov	r0, r3
+ 273 004a BD46     		mov	sp, r7
+ 274 004c 02B0     		add	sp, sp, #8
+ 275              		@ sp needed
+ 276 004e 80BD     		pop	{r7, pc}
+ 277              		.cfi_endproc
+ 278              	.LFE37:
+ 279              		.size	respondSoilHum, .-respondSoilHum
+ 280              		.section	.text.respondHeat,"ax",%progbits
+ 281              		.align	2
+ 282              		.global	respondHeat
+ 283              		.code	16
+ 284              		.thumb_func
+ 285              		.type	respondHeat, %function
+ 286              	respondHeat:
+ 287              	.LFB38:
+  80:.\UART_Class.c **** 
+  81:.\UART_Class.c **** int8 respondHeat(int8 heatStatus, uint8 onOff){
+ 288              		.loc 1 81 0
+ 289              		.cfi_startproc
+ 290 0000 80B5     		push	{r7, lr}
+ 291              		.cfi_def_cfa_offset 8
+ 292              		.cfi_offset 7, -8
+ 293              		.cfi_offset 14, -4
+ 294 0002 82B0     		sub	sp, sp, #8
+ 295              		.cfi_def_cfa_offset 16
+ 296 0004 00AF     		add	r7, sp, #0
+ 297              		.cfi_def_cfa_register 7
+ 298 0006 0A1C     		mov	r2, r1
+ 299 0008 FB1D     		add	r3, r7, #7
+ 300 000a 011C     		add	r1, r0, #0
+ 301 000c 1970     		strb	r1, [r3]
+ 302 000e BB1D     		add	r3, r7, #6
+ 303 0010 1A70     		strb	r2, [r3]
+  82:.\UART_Class.c ****     if(heatStatus == 0){
+ 304              		.loc 1 82 0
+ 305 0012 FB1D     		add	r3, r7, #7
+ 306 0014 1B78     		ldrb	r3, [r3]
+ 307 0016 5BB2     		sxtb	r3, r3
+ 308 0018 002B     		cmp	r3, #0
+ 309 001a 06D1     		bne	.L15
+  83:.\UART_Class.c ****         // If heatStatus is 0 then onOff('H' or 'K') is sent to DevKit8000
+  84:.\UART_Class.c ****         UART_UartPutChar(onOff);
+ 310              		.loc 1 84 0
+ 311 001c BB1D     		add	r3, r7, #6
+ 312 001e 1B78     		ldrb	r3, [r3]
+ 313 0020 181C     		mov	r0, r3
+ 314 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  85:.\UART_Class.c ****         return 0;
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 8
 
 
- 338 0002 84B0     		sub	sp, sp, #16
- 339              		.cfi_def_cfa_offset 24
- 340 0004 00AF     		add	r7, sp, #0
- 341              		.cfi_def_cfa_register 7
- 342 0006 021C     		mov	r2, r0
- 343 0008 FB1D     		add	r3, r7, #7
- 344 000a 1A70     		strb	r2, [r3]
-  63:.\UART_Class.c ****     irriStatus = 0;
- 345              		.loc 1 63 0
- 346 000c 3B1C     		mov	r3, r7
- 347 000e 0F33     		add	r3, r3, #15
- 348 0010 0022     		mov	r2, #0
- 349 0012 1A70     		strb	r2, [r3]
-  64:.\UART_Class.c ****     return 0;
- 350              		.loc 1 64 0
- 351 0014 0023     		mov	r3, #0
- 352 0016 5BB2     		sxtb	r3, r3
-  65:.\UART_Class.c **** }
- 353              		.loc 1 65 0
- 354 0018 181C     		mov	r0, r3
- 355 001a BD46     		mov	sp, r7
- 356 001c 04B0     		add	sp, sp, #16
- 357              		@ sp needed
- 358 001e 80BD     		pop	{r7, pc}
- 359              		.cfi_endproc
- 360              	.LFE41:
- 361              		.size	respondIrri, .-respondIrri
- 362              		.section	.text.dkRequest,"ax",%progbits
- 363              		.align	2
- 364              		.global	dkRequest
- 365              		.code	16
- 366              		.thumb_func
- 367              		.type	dkRequest, %function
- 368              	dkRequest:
- 369              	.LFB42:
-  66:.\UART_Class.c **** 
-  67:.\UART_Class.c **** uint8 dkRequest(void){
- 370              		.loc 1 67 0
- 371              		.cfi_startproc
- 372 0000 80B5     		push	{r7, lr}
- 373              		.cfi_def_cfa_offset 8
- 374              		.cfi_offset 7, -8
- 375              		.cfi_offset 14, -4
- 376 0002 00AF     		add	r7, sp, #0
- 377              		.cfi_def_cfa_register 7
-  68:.\UART_Class.c ****     return 0;
- 378              		.loc 1 68 0
- 379 0004 0023     		mov	r3, #0
-  69:.\UART_Class.c **** }
- 380              		.loc 1 69 0
- 381 0006 181C     		mov	r0, r3
- 382 0008 BD46     		mov	sp, r7
- 383              		@ sp needed
- 384 000a 80BD     		pop	{r7, pc}
- 385              		.cfi_endproc
- 386              	.LFE42:
- 387              		.size	dkRequest, .-dkRequest
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 9
+ 315              		.loc 1 85 0
+ 316 0026 0023     		mov	r3, #0
+ 317 0028 08E0     		b	.L16
+ 318              	.L15:
+  86:.\UART_Class.c ****     }
+  87:.\UART_Class.c ****     else{
+  88:.\UART_Class.c ****         // If heatStatus isn't 0 then 'X' and onOff('H' or 'K') is sent to DevKit8000
+  89:.\UART_Class.c ****         UART_UartPutChar('X');
+ 319              		.loc 1 89 0
+ 320 002a 5820     		mov	r0, #88
+ 321 002c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  90:.\UART_Class.c ****         UART_UartPutChar(onOff);
+ 322              		.loc 1 90 0
+ 323 0030 BB1D     		add	r3, r7, #6
+ 324 0032 1B78     		ldrb	r3, [r3]
+ 325 0034 181C     		mov	r0, r3
+ 326 0036 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  91:.\UART_Class.c ****         return -1;
+ 327              		.loc 1 91 0
+ 328 003a FF23     		mov	r3, #255
+ 329              	.L16:
+ 330 003c 5BB2     		sxtb	r3, r3
+  92:.\UART_Class.c ****     }
+  93:.\UART_Class.c **** }
+ 331              		.loc 1 93 0
+ 332 003e 181C     		mov	r0, r3
+ 333 0040 BD46     		mov	sp, r7
+ 334 0042 02B0     		add	sp, sp, #8
+ 335              		@ sp needed
+ 336 0044 80BD     		pop	{r7, pc}
+ 337              		.cfi_endproc
+ 338              	.LFE38:
+ 339              		.size	respondHeat, .-respondHeat
+ 340 0046 C046     		.section	.text.respondWin,"ax",%progbits
+ 341              		.align	2
+ 342              		.global	respondWin
+ 343              		.code	16
+ 344              		.thumb_func
+ 345              		.type	respondWin, %function
+ 346              	respondWin:
+ 347              	.LFB39:
+  94:.\UART_Class.c **** 
+  95:.\UART_Class.c **** int8 respondWin(int8 winStatus){
+ 348              		.loc 1 95 0
+ 349              		.cfi_startproc
+ 350 0000 80B5     		push	{r7, lr}
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 7, -8
+ 353              		.cfi_offset 14, -4
+ 354 0002 82B0     		sub	sp, sp, #8
+ 355              		.cfi_def_cfa_offset 16
+ 356 0004 00AF     		add	r7, sp, #0
+ 357              		.cfi_def_cfa_register 7
+ 358 0006 021C     		mov	r2, r0
+ 359 0008 FB1D     		add	r3, r7, #7
+ 360 000a 1A70     		strb	r2, [r3]
+  96:.\UART_Class.c ****     if(winStatus == 0){
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 9
 
 
- 388              		.text
- 389              	.Letext0:
- 390              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 391              		.section	.debug_info,"",%progbits
- 392              	.Ldebug_info0:
- 393 0000 2D020000 		.4byte	0x22d
- 394 0004 0400     		.2byte	0x4
- 395 0006 00000000 		.4byte	.Ldebug_abbrev0
- 396 000a 04       		.byte	0x4
- 397 000b 01       		.uleb128 0x1
- 398 000c 89000000 		.4byte	.LASF32
- 399 0010 01       		.byte	0x1
- 400 0011 24020000 		.4byte	.LASF33
- 401 0015 11000000 		.4byte	.LASF34
- 402 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 403 001d 00000000 		.4byte	0
- 404 0021 00000000 		.4byte	.Ldebug_line0
- 405 0025 02       		.uleb128 0x2
- 406 0026 01       		.byte	0x1
- 407 0027 06       		.byte	0x6
- 408 0028 42020000 		.4byte	.LASF0
- 409 002c 02       		.uleb128 0x2
- 410 002d 01       		.byte	0x1
- 411 002e 08       		.byte	0x8
- 412 002f 05010000 		.4byte	.LASF1
- 413 0033 02       		.uleb128 0x2
- 414 0034 02       		.byte	0x2
- 415 0035 05       		.byte	0x5
- 416 0036 14020000 		.4byte	.LASF2
- 417 003a 02       		.uleb128 0x2
- 418 003b 02       		.byte	0x2
- 419 003c 07       		.byte	0x7
- 420 003d 64000000 		.4byte	.LASF3
- 421 0041 02       		.uleb128 0x2
- 422 0042 04       		.byte	0x4
- 423 0043 05       		.byte	0x5
- 424 0044 5B000000 		.4byte	.LASF4
- 425 0048 02       		.uleb128 0x2
- 426 0049 04       		.byte	0x4
- 427 004a 07       		.byte	0x7
- 428 004b 22010000 		.4byte	.LASF5
- 429 004f 02       		.uleb128 0x2
- 430 0050 08       		.byte	0x8
- 431 0051 05       		.byte	0x5
- 432 0052 EA010000 		.4byte	.LASF6
- 433 0056 02       		.uleb128 0x2
- 434 0057 08       		.byte	0x8
- 435 0058 07       		.byte	0x7
- 436 0059 97010000 		.4byte	.LASF7
- 437 005d 03       		.uleb128 0x3
- 438 005e 04       		.byte	0x4
- 439 005f 05       		.byte	0x5
- 440 0060 696E7400 		.ascii	"int\000"
- 441 0064 02       		.uleb128 0x2
- 442 0065 04       		.byte	0x4
- 443 0066 07       		.byte	0x7
- 444 0067 73010000 		.4byte	.LASF8
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 10
+ 361              		.loc 1 96 0
+ 362 000c FB1D     		add	r3, r7, #7
+ 363 000e 1B78     		ldrb	r3, [r3]
+ 364 0010 5BB2     		sxtb	r3, r3
+ 365 0012 002B     		cmp	r3, #0
+ 366 0014 04D1     		bne	.L18
+  97:.\UART_Class.c ****         // If winStatus is 0 then 'W' is sent to DevKit8000
+  98:.\UART_Class.c ****         UART_UartPutChar('W');
+ 367              		.loc 1 98 0
+ 368 0016 5720     		mov	r0, #87
+ 369 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  99:.\UART_Class.c ****         return 0;
+ 370              		.loc 1 99 0
+ 371 001c 0023     		mov	r3, #0
+ 372 001e 06E0     		b	.L19
+ 373              	.L18:
+ 100:.\UART_Class.c ****     }
+ 101:.\UART_Class.c ****     else{
+ 102:.\UART_Class.c ****         // If heatStatus isn't 0 then "XW" is sent to DevKit8000
+ 103:.\UART_Class.c ****         UART_UartPutChar('X');
+ 374              		.loc 1 103 0
+ 375 0020 5820     		mov	r0, #88
+ 376 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 104:.\UART_Class.c ****         UART_UartPutChar('W');
+ 377              		.loc 1 104 0
+ 378 0026 5720     		mov	r0, #87
+ 379 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 105:.\UART_Class.c ****         return -1;
+ 380              		.loc 1 105 0
+ 381 002c FF23     		mov	r3, #255
+ 382              	.L19:
+ 383 002e 5BB2     		sxtb	r3, r3
+ 106:.\UART_Class.c ****     }
+ 107:.\UART_Class.c **** }
+ 384              		.loc 1 107 0
+ 385 0030 181C     		mov	r0, r3
+ 386 0032 BD46     		mov	sp, r7
+ 387 0034 02B0     		add	sp, sp, #8
+ 388              		@ sp needed
+ 389 0036 80BD     		pop	{r7, pc}
+ 390              		.cfi_endproc
+ 391              	.LFE39:
+ 392              		.size	respondWin, .-respondWin
+ 393              		.section	.text.respondVent,"ax",%progbits
+ 394              		.align	2
+ 395              		.global	respondVent
+ 396              		.code	16
+ 397              		.thumb_func
+ 398              		.type	respondVent, %function
+ 399              	respondVent:
+ 400              	.LFB40:
+ 108:.\UART_Class.c **** 
+ 109:.\UART_Class.c **** int8 respondVent(int8 ventStatus){
+ 401              		.loc 1 109 0
+ 402              		.cfi_startproc
+ 403 0000 80B5     		push	{r7, lr}
+ 404              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 10
 
 
- 445 006b 04       		.uleb128 0x4
- 446 006c 39010000 		.4byte	.LASF9
- 447 0070 02       		.byte	0x2
- 448 0071 A1       		.byte	0xa1
- 449 0072 2C000000 		.4byte	0x2c
- 450 0076 04       		.uleb128 0x4
- 451 0077 6E010000 		.4byte	.LASF10
- 452 007b 02       		.byte	0x2
- 453 007c A4       		.byte	0xa4
- 454 007d 25000000 		.4byte	0x25
- 455 0081 02       		.uleb128 0x2
- 456 0082 04       		.byte	0x4
- 457 0083 04       		.byte	0x4
- 458 0084 83000000 		.4byte	.LASF11
- 459 0088 02       		.uleb128 0x2
- 460 0089 08       		.byte	0x8
- 461 008a 04       		.byte	0x4
- 462 008b 4A010000 		.4byte	.LASF12
- 463 008f 02       		.uleb128 0x2
- 464 0090 01       		.byte	0x1
- 465 0091 08       		.byte	0x8
- 466 0092 F8010000 		.4byte	.LASF13
- 467 0096 02       		.uleb128 0x2
- 468 0097 04       		.byte	0x4
- 469 0098 07       		.byte	0x7
- 470 0099 E1010000 		.4byte	.LASF14
- 471 009d 05       		.uleb128 0x5
- 472 009e 19010000 		.4byte	.LASF35
- 473 00a2 01       		.byte	0x1
- 474 00a3 15       		.byte	0x15
- 475 00a4 00000000 		.4byte	.LFB33
- 476 00a8 08000000 		.4byte	.LFE33-.LFB33
- 477 00ac 01       		.uleb128 0x1
- 478 00ad 9C       		.byte	0x9c
- 479 00ae 06       		.uleb128 0x6
- 480 00af AE010000 		.4byte	.LASF15
- 481 00b3 01       		.byte	0x1
- 482 00b4 19       		.byte	0x19
- 483 00b5 76000000 		.4byte	0x76
- 484 00b9 00000000 		.4byte	.LFB34
- 485 00bd 20000000 		.4byte	.LFE34-.LFB34
- 486 00c1 01       		.uleb128 0x1
- 487 00c2 9C       		.byte	0x9c
- 488 00c3 D6000000 		.4byte	0xd6
- 489 00c7 07       		.uleb128 0x7
- 490 00c8 34010000 		.4byte	.LASF17
- 491 00cc 01       		.byte	0x1
- 492 00cd 19       		.byte	0x19
- 493 00ce 6B000000 		.4byte	0x6b
- 494 00d2 02       		.uleb128 0x2
- 495 00d3 91       		.byte	0x91
- 496 00d4 6F       		.sleb128 -17
- 497 00d5 00       		.byte	0
- 498 00d6 06       		.uleb128 0x6
- 499 00d7 80010000 		.4byte	.LASF16
- 500 00db 01       		.byte	0x1
- 501 00dc 1E       		.byte	0x1e
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 11
+ 405              		.cfi_offset 7, -8
+ 406              		.cfi_offset 14, -4
+ 407 0002 82B0     		sub	sp, sp, #8
+ 408              		.cfi_def_cfa_offset 16
+ 409 0004 00AF     		add	r7, sp, #0
+ 410              		.cfi_def_cfa_register 7
+ 411 0006 021C     		mov	r2, r0
+ 412 0008 FB1D     		add	r3, r7, #7
+ 413 000a 1A70     		strb	r2, [r3]
+ 110:.\UART_Class.c ****     if(ventStatus == 0){
+ 414              		.loc 1 110 0
+ 415 000c FB1D     		add	r3, r7, #7
+ 416 000e 1B78     		ldrb	r3, [r3]
+ 417 0010 5BB2     		sxtb	r3, r3
+ 418 0012 002B     		cmp	r3, #0
+ 419 0014 04D1     		bne	.L21
+ 111:.\UART_Class.c ****         // If ventStatus is 0 then 'V' is sent to DevKit8000
+ 112:.\UART_Class.c ****         UART_UartPutChar('V');
+ 420              		.loc 1 112 0
+ 421 0016 5620     		mov	r0, #86
+ 422 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 113:.\UART_Class.c ****         return 0;
+ 423              		.loc 1 113 0
+ 424 001c 0023     		mov	r3, #0
+ 425 001e 06E0     		b	.L22
+ 426              	.L21:
+ 114:.\UART_Class.c ****     }
+ 115:.\UART_Class.c ****     else{
+ 116:.\UART_Class.c ****         // If ventStatus isn't 0 then "XV" is sent to DevKit8000
+ 117:.\UART_Class.c ****         UART_UartPutChar('X');
+ 427              		.loc 1 117 0
+ 428 0020 5820     		mov	r0, #88
+ 429 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 118:.\UART_Class.c ****         UART_UartPutChar('V');
+ 430              		.loc 1 118 0
+ 431 0026 5620     		mov	r0, #86
+ 432 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 119:.\UART_Class.c ****         return -1;
+ 433              		.loc 1 119 0
+ 434 002c FF23     		mov	r3, #255
+ 435              	.L22:
+ 436 002e 5BB2     		sxtb	r3, r3
+ 120:.\UART_Class.c ****     }
+ 121:.\UART_Class.c **** }
+ 437              		.loc 1 121 0
+ 438 0030 181C     		mov	r0, r3
+ 439 0032 BD46     		mov	sp, r7
+ 440 0034 02B0     		add	sp, sp, #8
+ 441              		@ sp needed
+ 442 0036 80BD     		pop	{r7, pc}
+ 443              		.cfi_endproc
+ 444              	.LFE40:
+ 445              		.size	respondVent, .-respondVent
+ 446              		.section	.text.respondIrri,"ax",%progbits
+ 447              		.align	2
+ 448              		.global	respondIrri
+ 449              		.code	16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 11
 
 
- 502 00dd 76000000 		.4byte	0x76
- 503 00e1 00000000 		.4byte	.LFB35
- 504 00e5 20000000 		.4byte	.LFE35-.LFB35
- 505 00e9 01       		.uleb128 0x1
- 506 00ea 9C       		.byte	0x9c
- 507 00eb FE000000 		.4byte	0xfe
- 508 00ef 08       		.uleb128 0x8
- 509 00f0 68756D00 		.ascii	"hum\000"
- 510 00f4 01       		.byte	0x1
- 511 00f5 1E       		.byte	0x1e
- 512 00f6 6B000000 		.4byte	0x6b
- 513 00fa 02       		.uleb128 0x2
- 514 00fb 91       		.byte	0x91
- 515 00fc 6F       		.sleb128 -17
- 516 00fd 00       		.byte	0
- 517 00fe 06       		.uleb128 0x6
- 518 00ff BA010000 		.4byte	.LASF18
- 519 0103 01       		.byte	0x1
- 520 0104 23       		.byte	0x23
- 521 0105 76000000 		.4byte	0x76
- 522 0109 00000000 		.4byte	.LFB36
- 523 010d 20000000 		.4byte	.LFE36-.LFB36
- 524 0111 01       		.uleb128 0x1
- 525 0112 9C       		.byte	0x9c
- 526 0113 26010000 		.4byte	0x126
- 527 0117 07       		.uleb128 0x7
- 528 0118 00000000 		.4byte	.LASF19
- 529 011c 01       		.byte	0x1
- 530 011d 23       		.byte	0x23
- 531 011e 6B000000 		.4byte	0x6b
- 532 0122 02       		.uleb128 0x2
- 533 0123 91       		.byte	0x91
- 534 0124 6F       		.sleb128 -17
- 535 0125 00       		.byte	0
- 536 0126 06       		.uleb128 0x6
- 537 0127 33020000 		.4byte	.LASF20
- 538 012b 01       		.byte	0x1
- 539 012c 28       		.byte	0x28
- 540 012d 76000000 		.4byte	0x76
- 541 0131 00000000 		.4byte	.LFB37
- 542 0135 2E000000 		.4byte	.LFE37-.LFB37
- 543 0139 01       		.uleb128 0x1
- 544 013a 9C       		.byte	0x9c
- 545 013b 5C010000 		.4byte	0x15c
- 546 013f 07       		.uleb128 0x7
- 547 0140 1E020000 		.4byte	.LASF21
- 548 0144 01       		.byte	0x1
- 549 0145 28       		.byte	0x28
- 550 0146 6B000000 		.4byte	0x6b
- 551 014a 02       		.uleb128 0x2
- 552 014b 91       		.byte	0x91
- 553 014c 6F       		.sleb128 -17
- 554 014d 07       		.uleb128 0x7
- 555 014e 51010000 		.4byte	.LASF22
- 556 0152 01       		.byte	0x1
- 557 0153 28       		.byte	0x28
- 558 0154 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 12
+ 450              		.thumb_func
+ 451              		.type	respondIrri, %function
+ 452              	respondIrri:
+ 453              	.LFB41:
+ 122:.\UART_Class.c **** 
+ 123:.\UART_Class.c **** int8 respondIrri(int8 irriStatus){
+ 454              		.loc 1 123 0
+ 455              		.cfi_startproc
+ 456 0000 80B5     		push	{r7, lr}
+ 457              		.cfi_def_cfa_offset 8
+ 458              		.cfi_offset 7, -8
+ 459              		.cfi_offset 14, -4
+ 460 0002 82B0     		sub	sp, sp, #8
+ 461              		.cfi_def_cfa_offset 16
+ 462 0004 00AF     		add	r7, sp, #0
+ 463              		.cfi_def_cfa_register 7
+ 464 0006 021C     		mov	r2, r0
+ 465 0008 FB1D     		add	r3, r7, #7
+ 466 000a 1A70     		strb	r2, [r3]
+ 124:.\UART_Class.c ****     if(irriStatus == 0){
+ 467              		.loc 1 124 0
+ 468 000c FB1D     		add	r3, r7, #7
+ 469 000e 1B78     		ldrb	r3, [r3]
+ 470 0010 5BB2     		sxtb	r3, r3
+ 471 0012 002B     		cmp	r3, #0
+ 472 0014 04D1     		bne	.L24
+ 125:.\UART_Class.c ****         // If irriStatus is 0 then 'F' is sent to DevKit8000
+ 126:.\UART_Class.c ****         UART_UartPutChar('F');
+ 473              		.loc 1 126 0
+ 474 0016 4620     		mov	r0, #70
+ 475 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 127:.\UART_Class.c ****         return 0;
+ 476              		.loc 1 127 0
+ 477 001c 0023     		mov	r3, #0
+ 478 001e 06E0     		b	.L25
+ 479              	.L24:
+ 128:.\UART_Class.c ****     }
+ 129:.\UART_Class.c ****     else{
+ 130:.\UART_Class.c ****         // If irriStatus isn't 0 then "XF" is sent to DevKit8000
+ 131:.\UART_Class.c ****         UART_UartPutChar('X');
+ 480              		.loc 1 131 0
+ 481 0020 5820     		mov	r0, #88
+ 482 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 132:.\UART_Class.c ****         UART_UartPutChar('F');
+ 483              		.loc 1 132 0
+ 484 0026 4620     		mov	r0, #70
+ 485 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 133:.\UART_Class.c ****         return -1;
+ 486              		.loc 1 133 0
+ 487 002c FF23     		mov	r3, #255
+ 488              	.L25:
+ 489 002e 5BB2     		sxtb	r3, r3
+ 134:.\UART_Class.c ****     }
+ 135:.\UART_Class.c **** }
+ 490              		.loc 1 135 0
+ 491 0030 181C     		mov	r0, r3
+ 492 0032 BD46     		mov	sp, r7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 12
 
 
- 559 0158 02       		.uleb128 0x2
- 560 0159 91       		.byte	0x91
- 561 015a 6E       		.sleb128 -18
- 562 015b 00       		.byte	0
- 563 015c 06       		.uleb128 0x6
- 564 015d FD010000 		.4byte	.LASF23
- 565 0161 01       		.byte	0x1
- 566 0162 2E       		.byte	0x2e
- 567 0163 76000000 		.4byte	0x76
- 568 0167 00000000 		.4byte	.LFB38
- 569 016b 2E000000 		.4byte	.LFE38-.LFB38
- 570 016f 01       		.uleb128 0x1
- 571 0170 9C       		.byte	0x9c
- 572 0171 92010000 		.4byte	0x192
- 573 0175 07       		.uleb128 0x7
- 574 0176 06000000 		.4byte	.LASF24
- 575 017a 01       		.byte	0x1
- 576 017b 2E       		.byte	0x2e
- 577 017c 76000000 		.4byte	0x76
- 578 0180 02       		.uleb128 0x2
- 579 0181 91       		.byte	0x91
- 580 0182 6F       		.sleb128 -17
- 581 0183 07       		.uleb128 0x7
- 582 0184 13010000 		.4byte	.LASF25
- 583 0188 01       		.byte	0x1
- 584 0189 2E       		.byte	0x2e
- 585 018a 6B000000 		.4byte	0x6b
- 586 018e 02       		.uleb128 0x2
- 587 018f 91       		.byte	0x91
- 588 0190 6E       		.sleb128 -18
- 589 0191 00       		.byte	0
- 590 0192 06       		.uleb128 0x6
- 591 0193 3F010000 		.4byte	.LASF26
- 592 0197 01       		.byte	0x1
- 593 0198 34       		.byte	0x34
- 594 0199 76000000 		.4byte	0x76
- 595 019d 00000000 		.4byte	.LFB39
- 596 01a1 20000000 		.4byte	.LFE39-.LFB39
- 597 01a5 01       		.uleb128 0x1
- 598 01a6 9C       		.byte	0x9c
- 599 01a7 BA010000 		.4byte	0x1ba
- 600 01ab 07       		.uleb128 0x7
- 601 01ac C7010000 		.4byte	.LASF27
- 602 01b0 01       		.byte	0x1
- 603 01b1 34       		.byte	0x34
- 604 01b2 76000000 		.4byte	0x76
- 605 01b6 02       		.uleb128 0x2
- 606 01b7 91       		.byte	0x91
- 607 01b8 6F       		.sleb128 -17
- 608 01b9 00       		.byte	0
- 609 01ba 06       		.uleb128 0x6
- 610 01bb 8B010000 		.4byte	.LASF28
- 611 01bf 01       		.byte	0x1
- 612 01c0 39       		.byte	0x39
- 613 01c1 76000000 		.4byte	0x76
- 614 01c5 00000000 		.4byte	.LFB40
- 615 01c9 20000000 		.4byte	.LFE40-.LFB40
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 13
+ 493 0034 02B0     		add	sp, sp, #8
+ 494              		@ sp needed
+ 495 0036 80BD     		pop	{r7, pc}
+ 496              		.cfi_endproc
+ 497              	.LFE41:
+ 498              		.size	respondIrri, .-respondIrri
+ 499              		.section	.text.dkRequest,"ax",%progbits
+ 500              		.align	2
+ 501              		.global	dkRequest
+ 502              		.code	16
+ 503              		.thumb_func
+ 504              		.type	dkRequest, %function
+ 505              	dkRequest:
+ 506              	.LFB42:
+ 136:.\UART_Class.c **** 
+ 137:.\UART_Class.c **** uint8 dkRequest(void){
+ 507              		.loc 1 137 0
+ 508              		.cfi_startproc
+ 509 0000 80B5     		push	{r7, lr}
+ 510              		.cfi_def_cfa_offset 8
+ 511              		.cfi_offset 7, -8
+ 512              		.cfi_offset 14, -4
+ 513 0002 00AF     		add	r7, sp, #0
+ 514              		.cfi_def_cfa_register 7
+ 138:.\UART_Class.c ****     // Reads the UART buffer
+ 139:.\UART_Class.c ****     return UART_UartGetChar();
+ 515              		.loc 1 139 0
+ 516 0004 FFF7FEFF 		bl	UART_UartGetChar
+ 517 0008 031C     		mov	r3, r0
+ 518 000a DBB2     		uxtb	r3, r3
+ 140:.\UART_Class.c **** }
+ 519              		.loc 1 140 0
+ 520 000c 181C     		mov	r0, r3
+ 521 000e BD46     		mov	sp, r7
+ 522              		@ sp needed
+ 523 0010 80BD     		pop	{r7, pc}
+ 524              		.cfi_endproc
+ 525              	.LFE42:
+ 526              		.size	dkRequest, .-dkRequest
+ 527 0012 C046     		.text
+ 528              	.Letext0:
+ 529              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 530              		.file 3 ".\\UART_Class.h"
+ 531              		.section	.debug_info,"",%progbits
+ 532              	.Ldebug_info0:
+ 533 0000 38020000 		.4byte	0x238
+ 534 0004 0400     		.2byte	0x4
+ 535 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 536 000a 04       		.byte	0x4
+ 537 000b 01       		.uleb128 0x1
+ 538 000c 89000000 		.4byte	.LASF33
+ 539 0010 01       		.byte	0x1
+ 540 0011 2B020000 		.4byte	.LASF34
+ 541 0015 11000000 		.4byte	.LASF35
+ 542 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 543 001d 00000000 		.4byte	0
+ 544 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 13
 
 
- 616 01cd 01       		.uleb128 0x1
- 617 01ce 9C       		.byte	0x9c
- 618 01cf E2010000 		.4byte	0x1e2
- 619 01d3 07       		.uleb128 0x7
- 620 01d4 63010000 		.4byte	.LASF29
- 621 01d8 01       		.byte	0x1
- 622 01d9 39       		.byte	0x39
- 623 01da 76000000 		.4byte	0x76
- 624 01de 02       		.uleb128 0x2
- 625 01df 91       		.byte	0x91
- 626 01e0 6F       		.sleb128 -17
- 627 01e1 00       		.byte	0
- 628 01e2 06       		.uleb128 0x6
- 629 01e3 77000000 		.4byte	.LASF30
- 630 01e7 01       		.byte	0x1
- 631 01e8 3E       		.byte	0x3e
- 632 01e9 76000000 		.4byte	0x76
- 633 01ed 00000000 		.4byte	.LFB41
- 634 01f1 20000000 		.4byte	.LFE41-.LFB41
- 635 01f5 01       		.uleb128 0x1
- 636 01f6 9C       		.byte	0x9c
- 637 01f7 0A020000 		.4byte	0x20a
- 638 01fb 07       		.uleb128 0x7
- 639 01fc 09020000 		.4byte	.LASF31
- 640 0200 01       		.byte	0x1
- 641 0201 3E       		.byte	0x3e
- 642 0202 76000000 		.4byte	0x76
- 643 0206 02       		.uleb128 0x2
- 644 0207 91       		.byte	0x91
- 645 0208 6F       		.sleb128 -17
- 646 0209 00       		.byte	0
- 647 020a 09       		.uleb128 0x9
- 648 020b 59010000 		.4byte	.LASF36
- 649 020f 01       		.byte	0x1
- 650 0210 43       		.byte	0x43
- 651 0211 6B000000 		.4byte	0x6b
- 652 0215 00000000 		.4byte	.LFB42
- 653 0219 0C000000 		.4byte	.LFE42-.LFB42
- 654 021d 01       		.uleb128 0x1
- 655 021e 9C       		.byte	0x9c
- 656 021f 0A       		.uleb128 0xa
- 657 0220 D1010000 		.4byte	.LASF37
- 658 0224 01       		.byte	0x1
- 659 0225 10       		.byte	0x10
- 660 0226 6B000000 		.4byte	0x6b
- 661 022a 05       		.uleb128 0x5
- 662 022b 03       		.byte	0x3
- 663 022c 00000000 		.4byte	receivedCommand
- 664 0230 00       		.byte	0
- 665              		.section	.debug_abbrev,"",%progbits
- 666              	.Ldebug_abbrev0:
- 667 0000 01       		.uleb128 0x1
- 668 0001 11       		.uleb128 0x11
- 669 0002 01       		.byte	0x1
- 670 0003 25       		.uleb128 0x25
- 671 0004 0E       		.uleb128 0xe
- 672 0005 13       		.uleb128 0x13
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 14
+ 545 0025 02       		.uleb128 0x2
+ 546 0026 01       		.byte	0x1
+ 547 0027 06       		.byte	0x6
+ 548 0028 49020000 		.4byte	.LASF0
+ 549 002c 02       		.uleb128 0x2
+ 550 002d 01       		.byte	0x1
+ 551 002e 08       		.byte	0x8
+ 552 002f 05010000 		.4byte	.LASF1
+ 553 0033 02       		.uleb128 0x2
+ 554 0034 02       		.byte	0x2
+ 555 0035 05       		.byte	0x5
+ 556 0036 1B020000 		.4byte	.LASF2
+ 557 003a 02       		.uleb128 0x2
+ 558 003b 02       		.byte	0x2
+ 559 003c 07       		.byte	0x7
+ 560 003d 64000000 		.4byte	.LASF3
+ 561 0041 02       		.uleb128 0x2
+ 562 0042 04       		.byte	0x4
+ 563 0043 05       		.byte	0x5
+ 564 0044 5B000000 		.4byte	.LASF4
+ 565 0048 02       		.uleb128 0x2
+ 566 0049 04       		.byte	0x4
+ 567 004a 07       		.byte	0x7
+ 568 004b 22010000 		.4byte	.LASF5
+ 569 004f 02       		.uleb128 0x2
+ 570 0050 08       		.byte	0x8
+ 571 0051 05       		.byte	0x5
+ 572 0052 F1010000 		.4byte	.LASF6
+ 573 0056 02       		.uleb128 0x2
+ 574 0057 08       		.byte	0x8
+ 575 0058 07       		.byte	0x7
+ 576 0059 9E010000 		.4byte	.LASF7
+ 577 005d 03       		.uleb128 0x3
+ 578 005e 04       		.byte	0x4
+ 579 005f 05       		.byte	0x5
+ 580 0060 696E7400 		.ascii	"int\000"
+ 581 0064 02       		.uleb128 0x2
+ 582 0065 04       		.byte	0x4
+ 583 0066 07       		.byte	0x7
+ 584 0067 7A010000 		.4byte	.LASF8
+ 585 006b 04       		.uleb128 0x4
+ 586 006c 39010000 		.4byte	.LASF9
+ 587 0070 02       		.byte	0x2
+ 588 0071 A1       		.byte	0xa1
+ 589 0072 2C000000 		.4byte	0x2c
+ 590 0076 04       		.uleb128 0x4
+ 591 0077 73010000 		.4byte	.LASF10
+ 592 007b 02       		.byte	0x2
+ 593 007c A3       		.byte	0xa3
+ 594 007d 48000000 		.4byte	0x48
+ 595 0081 04       		.uleb128 0x4
+ 596 0082 6E010000 		.4byte	.LASF11
+ 597 0086 02       		.byte	0x2
+ 598 0087 A4       		.byte	0xa4
+ 599 0088 25000000 		.4byte	0x25
+ 600 008c 02       		.uleb128 0x2
+ 601 008d 04       		.byte	0x4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 14
 
 
- 673 0006 0B       		.uleb128 0xb
- 674 0007 03       		.uleb128 0x3
- 675 0008 0E       		.uleb128 0xe
- 676 0009 1B       		.uleb128 0x1b
- 677 000a 0E       		.uleb128 0xe
- 678 000b 55       		.uleb128 0x55
- 679 000c 17       		.uleb128 0x17
- 680 000d 11       		.uleb128 0x11
- 681 000e 01       		.uleb128 0x1
- 682 000f 10       		.uleb128 0x10
- 683 0010 17       		.uleb128 0x17
- 684 0011 00       		.byte	0
- 685 0012 00       		.byte	0
- 686 0013 02       		.uleb128 0x2
- 687 0014 24       		.uleb128 0x24
- 688 0015 00       		.byte	0
- 689 0016 0B       		.uleb128 0xb
- 690 0017 0B       		.uleb128 0xb
- 691 0018 3E       		.uleb128 0x3e
- 692 0019 0B       		.uleb128 0xb
- 693 001a 03       		.uleb128 0x3
- 694 001b 0E       		.uleb128 0xe
- 695 001c 00       		.byte	0
- 696 001d 00       		.byte	0
- 697 001e 03       		.uleb128 0x3
- 698 001f 24       		.uleb128 0x24
- 699 0020 00       		.byte	0
- 700 0021 0B       		.uleb128 0xb
- 701 0022 0B       		.uleb128 0xb
- 702 0023 3E       		.uleb128 0x3e
- 703 0024 0B       		.uleb128 0xb
- 704 0025 03       		.uleb128 0x3
- 705 0026 08       		.uleb128 0x8
- 706 0027 00       		.byte	0
- 707 0028 00       		.byte	0
- 708 0029 04       		.uleb128 0x4
- 709 002a 16       		.uleb128 0x16
- 710 002b 00       		.byte	0
- 711 002c 03       		.uleb128 0x3
- 712 002d 0E       		.uleb128 0xe
- 713 002e 3A       		.uleb128 0x3a
- 714 002f 0B       		.uleb128 0xb
- 715 0030 3B       		.uleb128 0x3b
- 716 0031 0B       		.uleb128 0xb
- 717 0032 49       		.uleb128 0x49
- 718 0033 13       		.uleb128 0x13
- 719 0034 00       		.byte	0
- 720 0035 00       		.byte	0
- 721 0036 05       		.uleb128 0x5
- 722 0037 2E       		.uleb128 0x2e
- 723 0038 00       		.byte	0
- 724 0039 3F       		.uleb128 0x3f
- 725 003a 19       		.uleb128 0x19
- 726 003b 03       		.uleb128 0x3
- 727 003c 0E       		.uleb128 0xe
- 728 003d 3A       		.uleb128 0x3a
- 729 003e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 15
+ 602 008e 04       		.byte	0x4
+ 603 008f 83000000 		.4byte	.LASF12
+ 604 0093 02       		.uleb128 0x2
+ 605 0094 08       		.byte	0x8
+ 606 0095 04       		.byte	0x4
+ 607 0096 4A010000 		.4byte	.LASF13
+ 608 009a 02       		.uleb128 0x2
+ 609 009b 01       		.byte	0x1
+ 610 009c 08       		.byte	0x8
+ 611 009d FF010000 		.4byte	.LASF14
+ 612 00a1 02       		.uleb128 0x2
+ 613 00a2 04       		.byte	0x4
+ 614 00a3 07       		.byte	0x7
+ 615 00a4 E8010000 		.4byte	.LASF15
+ 616 00a8 05       		.uleb128 0x5
+ 617 00a9 19010000 		.4byte	.LASF36
+ 618 00ad 01       		.byte	0x1
+ 619 00ae 10       		.byte	0x10
+ 620 00af 00000000 		.4byte	.LFB33
+ 621 00b3 0C000000 		.4byte	.LFE33-.LFB33
+ 622 00b7 01       		.uleb128 0x1
+ 623 00b8 9C       		.byte	0x9c
+ 624 00b9 06       		.uleb128 0x6
+ 625 00ba B5010000 		.4byte	.LASF16
+ 626 00be 01       		.byte	0x1
+ 627 00bf 14       		.byte	0x14
+ 628 00c0 81000000 		.4byte	0x81
+ 629 00c4 00000000 		.4byte	.LFB34
+ 630 00c8 40000000 		.4byte	.LFE34-.LFB34
+ 631 00cc 01       		.uleb128 0x1
+ 632 00cd 9C       		.byte	0x9c
+ 633 00ce E1000000 		.4byte	0xe1
+ 634 00d2 07       		.uleb128 0x7
+ 635 00d3 34010000 		.4byte	.LASF18
+ 636 00d7 01       		.byte	0x1
+ 637 00d8 14       		.byte	0x14
+ 638 00d9 6B000000 		.4byte	0x6b
+ 639 00dd 02       		.uleb128 0x2
+ 640 00de 91       		.byte	0x91
+ 641 00df 77       		.sleb128 -9
+ 642 00e0 00       		.byte	0
+ 643 00e1 06       		.uleb128 0x6
+ 644 00e2 87010000 		.4byte	.LASF17
+ 645 00e6 01       		.byte	0x1
+ 646 00e7 23       		.byte	0x23
+ 647 00e8 81000000 		.4byte	0x81
+ 648 00ec 00000000 		.4byte	.LFB35
+ 649 00f0 40000000 		.4byte	.LFE35-.LFB35
+ 650 00f4 01       		.uleb128 0x1
+ 651 00f5 9C       		.byte	0x9c
+ 652 00f6 09010000 		.4byte	0x109
+ 653 00fa 08       		.uleb128 0x8
+ 654 00fb 68756D00 		.ascii	"hum\000"
+ 655 00ff 01       		.byte	0x1
+ 656 0100 23       		.byte	0x23
+ 657 0101 6B000000 		.4byte	0x6b
+ 658 0105 02       		.uleb128 0x2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 15
 
 
- 730 003f 3B       		.uleb128 0x3b
- 731 0040 0B       		.uleb128 0xb
- 732 0041 27       		.uleb128 0x27
- 733 0042 19       		.uleb128 0x19
- 734 0043 11       		.uleb128 0x11
- 735 0044 01       		.uleb128 0x1
- 736 0045 12       		.uleb128 0x12
- 737 0046 06       		.uleb128 0x6
- 738 0047 40       		.uleb128 0x40
- 739 0048 18       		.uleb128 0x18
- 740 0049 9742     		.uleb128 0x2117
- 741 004b 19       		.uleb128 0x19
- 742 004c 00       		.byte	0
- 743 004d 00       		.byte	0
- 744 004e 06       		.uleb128 0x6
- 745 004f 2E       		.uleb128 0x2e
- 746 0050 01       		.byte	0x1
- 747 0051 3F       		.uleb128 0x3f
- 748 0052 19       		.uleb128 0x19
- 749 0053 03       		.uleb128 0x3
- 750 0054 0E       		.uleb128 0xe
- 751 0055 3A       		.uleb128 0x3a
- 752 0056 0B       		.uleb128 0xb
- 753 0057 3B       		.uleb128 0x3b
- 754 0058 0B       		.uleb128 0xb
- 755 0059 27       		.uleb128 0x27
- 756 005a 19       		.uleb128 0x19
- 757 005b 49       		.uleb128 0x49
- 758 005c 13       		.uleb128 0x13
- 759 005d 11       		.uleb128 0x11
- 760 005e 01       		.uleb128 0x1
- 761 005f 12       		.uleb128 0x12
- 762 0060 06       		.uleb128 0x6
- 763 0061 40       		.uleb128 0x40
- 764 0062 18       		.uleb128 0x18
- 765 0063 9742     		.uleb128 0x2117
- 766 0065 19       		.uleb128 0x19
- 767 0066 01       		.uleb128 0x1
- 768 0067 13       		.uleb128 0x13
- 769 0068 00       		.byte	0
- 770 0069 00       		.byte	0
- 771 006a 07       		.uleb128 0x7
- 772 006b 05       		.uleb128 0x5
- 773 006c 00       		.byte	0
- 774 006d 03       		.uleb128 0x3
- 775 006e 0E       		.uleb128 0xe
- 776 006f 3A       		.uleb128 0x3a
- 777 0070 0B       		.uleb128 0xb
- 778 0071 3B       		.uleb128 0x3b
- 779 0072 0B       		.uleb128 0xb
- 780 0073 49       		.uleb128 0x49
- 781 0074 13       		.uleb128 0x13
- 782 0075 02       		.uleb128 0x2
- 783 0076 18       		.uleb128 0x18
- 784 0077 00       		.byte	0
- 785 0078 00       		.byte	0
- 786 0079 08       		.uleb128 0x8
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 16
+ 659 0106 91       		.byte	0x91
+ 660 0107 77       		.sleb128 -9
+ 661 0108 00       		.byte	0
+ 662 0109 06       		.uleb128 0x6
+ 663 010a C1010000 		.4byte	.LASF19
+ 664 010e 01       		.byte	0x1
+ 665 010f 32       		.byte	0x32
+ 666 0110 81000000 		.4byte	0x81
+ 667 0114 00000000 		.4byte	.LFB36
+ 668 0118 40000000 		.4byte	.LFE36-.LFB36
+ 669 011c 01       		.uleb128 0x1
+ 670 011d 9C       		.byte	0x9c
+ 671 011e 31010000 		.4byte	0x131
+ 672 0122 07       		.uleb128 0x7
+ 673 0123 00000000 		.4byte	.LASF20
+ 674 0127 01       		.byte	0x1
+ 675 0128 32       		.byte	0x32
+ 676 0129 6B000000 		.4byte	0x6b
+ 677 012d 02       		.uleb128 0x2
+ 678 012e 91       		.byte	0x91
+ 679 012f 77       		.sleb128 -9
+ 680 0130 00       		.byte	0
+ 681 0131 06       		.uleb128 0x6
+ 682 0132 3A020000 		.4byte	.LASF21
+ 683 0136 01       		.byte	0x1
+ 684 0137 41       		.byte	0x41
+ 685 0138 81000000 		.4byte	0x81
+ 686 013c 00000000 		.4byte	.LFB37
+ 687 0140 50000000 		.4byte	.LFE37-.LFB37
+ 688 0144 01       		.uleb128 0x1
+ 689 0145 9C       		.byte	0x9c
+ 690 0146 67010000 		.4byte	0x167
+ 691 014a 07       		.uleb128 0x7
+ 692 014b 25020000 		.4byte	.LASF22
+ 693 014f 01       		.byte	0x1
+ 694 0150 41       		.byte	0x41
+ 695 0151 6B000000 		.4byte	0x6b
+ 696 0155 02       		.uleb128 0x2
+ 697 0156 91       		.byte	0x91
+ 698 0157 77       		.sleb128 -9
+ 699 0158 07       		.uleb128 0x7
+ 700 0159 51010000 		.4byte	.LASF23
+ 701 015d 01       		.byte	0x1
+ 702 015e 41       		.byte	0x41
+ 703 015f 6B000000 		.4byte	0x6b
+ 704 0163 02       		.uleb128 0x2
+ 705 0164 91       		.byte	0x91
+ 706 0165 76       		.sleb128 -10
+ 707 0166 00       		.byte	0
+ 708 0167 06       		.uleb128 0x6
+ 709 0168 04020000 		.4byte	.LASF24
+ 710 016c 01       		.byte	0x1
+ 711 016d 51       		.byte	0x51
+ 712 016e 81000000 		.4byte	0x81
+ 713 0172 00000000 		.4byte	.LFB38
+ 714 0176 46000000 		.4byte	.LFE38-.LFB38
+ 715 017a 01       		.uleb128 0x1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 16
 
 
- 787 007a 05       		.uleb128 0x5
- 788 007b 00       		.byte	0
- 789 007c 03       		.uleb128 0x3
- 790 007d 08       		.uleb128 0x8
- 791 007e 3A       		.uleb128 0x3a
- 792 007f 0B       		.uleb128 0xb
- 793 0080 3B       		.uleb128 0x3b
- 794 0081 0B       		.uleb128 0xb
- 795 0082 49       		.uleb128 0x49
- 796 0083 13       		.uleb128 0x13
- 797 0084 02       		.uleb128 0x2
- 798 0085 18       		.uleb128 0x18
- 799 0086 00       		.byte	0
- 800 0087 00       		.byte	0
- 801 0088 09       		.uleb128 0x9
- 802 0089 2E       		.uleb128 0x2e
- 803 008a 00       		.byte	0
- 804 008b 3F       		.uleb128 0x3f
- 805 008c 19       		.uleb128 0x19
- 806 008d 03       		.uleb128 0x3
- 807 008e 0E       		.uleb128 0xe
- 808 008f 3A       		.uleb128 0x3a
- 809 0090 0B       		.uleb128 0xb
- 810 0091 3B       		.uleb128 0x3b
- 811 0092 0B       		.uleb128 0xb
- 812 0093 27       		.uleb128 0x27
- 813 0094 19       		.uleb128 0x19
- 814 0095 49       		.uleb128 0x49
- 815 0096 13       		.uleb128 0x13
- 816 0097 11       		.uleb128 0x11
- 817 0098 01       		.uleb128 0x1
- 818 0099 12       		.uleb128 0x12
- 819 009a 06       		.uleb128 0x6
- 820 009b 40       		.uleb128 0x40
- 821 009c 18       		.uleb128 0x18
- 822 009d 9742     		.uleb128 0x2117
- 823 009f 19       		.uleb128 0x19
- 824 00a0 00       		.byte	0
- 825 00a1 00       		.byte	0
- 826 00a2 0A       		.uleb128 0xa
- 827 00a3 34       		.uleb128 0x34
- 828 00a4 00       		.byte	0
- 829 00a5 03       		.uleb128 0x3
- 830 00a6 0E       		.uleb128 0xe
- 831 00a7 3A       		.uleb128 0x3a
- 832 00a8 0B       		.uleb128 0xb
- 833 00a9 3B       		.uleb128 0x3b
- 834 00aa 0B       		.uleb128 0xb
- 835 00ab 49       		.uleb128 0x49
- 836 00ac 13       		.uleb128 0x13
- 837 00ad 3F       		.uleb128 0x3f
- 838 00ae 19       		.uleb128 0x19
- 839 00af 02       		.uleb128 0x2
- 840 00b0 18       		.uleb128 0x18
- 841 00b1 00       		.byte	0
- 842 00b2 00       		.byte	0
- 843 00b3 00       		.byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 17
+ 716 017b 9C       		.byte	0x9c
+ 717 017c 9D010000 		.4byte	0x19d
+ 718 0180 07       		.uleb128 0x7
+ 719 0181 06000000 		.4byte	.LASF25
+ 720 0185 01       		.byte	0x1
+ 721 0186 51       		.byte	0x51
+ 722 0187 81000000 		.4byte	0x81
+ 723 018b 02       		.uleb128 0x2
+ 724 018c 91       		.byte	0x91
+ 725 018d 77       		.sleb128 -9
+ 726 018e 07       		.uleb128 0x7
+ 727 018f 13010000 		.4byte	.LASF26
+ 728 0193 01       		.byte	0x1
+ 729 0194 51       		.byte	0x51
+ 730 0195 6B000000 		.4byte	0x6b
+ 731 0199 02       		.uleb128 0x2
+ 732 019a 91       		.byte	0x91
+ 733 019b 76       		.sleb128 -10
+ 734 019c 00       		.byte	0
+ 735 019d 06       		.uleb128 0x6
+ 736 019e 3F010000 		.4byte	.LASF27
+ 737 01a2 01       		.byte	0x1
+ 738 01a3 5F       		.byte	0x5f
+ 739 01a4 81000000 		.4byte	0x81
+ 740 01a8 00000000 		.4byte	.LFB39
+ 741 01ac 38000000 		.4byte	.LFE39-.LFB39
+ 742 01b0 01       		.uleb128 0x1
+ 743 01b1 9C       		.byte	0x9c
+ 744 01b2 C5010000 		.4byte	0x1c5
+ 745 01b6 07       		.uleb128 0x7
+ 746 01b7 CE010000 		.4byte	.LASF28
+ 747 01bb 01       		.byte	0x1
+ 748 01bc 5F       		.byte	0x5f
+ 749 01bd 81000000 		.4byte	0x81
+ 750 01c1 02       		.uleb128 0x2
+ 751 01c2 91       		.byte	0x91
+ 752 01c3 77       		.sleb128 -9
+ 753 01c4 00       		.byte	0
+ 754 01c5 06       		.uleb128 0x6
+ 755 01c6 92010000 		.4byte	.LASF29
+ 756 01ca 01       		.byte	0x1
+ 757 01cb 6D       		.byte	0x6d
+ 758 01cc 81000000 		.4byte	0x81
+ 759 01d0 00000000 		.4byte	.LFB40
+ 760 01d4 38000000 		.4byte	.LFE40-.LFB40
+ 761 01d8 01       		.uleb128 0x1
+ 762 01d9 9C       		.byte	0x9c
+ 763 01da ED010000 		.4byte	0x1ed
+ 764 01de 07       		.uleb128 0x7
+ 765 01df 63010000 		.4byte	.LASF30
+ 766 01e3 01       		.byte	0x1
+ 767 01e4 6D       		.byte	0x6d
+ 768 01e5 81000000 		.4byte	0x81
+ 769 01e9 02       		.uleb128 0x2
+ 770 01ea 91       		.byte	0x91
+ 771 01eb 77       		.sleb128 -9
+ 772 01ec 00       		.byte	0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 17
 
 
- 844              		.section	.debug_aranges,"",%progbits
- 845 0000 64000000 		.4byte	0x64
- 846 0004 0200     		.2byte	0x2
- 847 0006 00000000 		.4byte	.Ldebug_info0
- 848 000a 04       		.byte	0x4
- 849 000b 00       		.byte	0
- 850 000c 0000     		.2byte	0
- 851 000e 0000     		.2byte	0
- 852 0010 00000000 		.4byte	.LFB33
- 853 0014 08000000 		.4byte	.LFE33-.LFB33
- 854 0018 00000000 		.4byte	.LFB34
- 855 001c 20000000 		.4byte	.LFE34-.LFB34
- 856 0020 00000000 		.4byte	.LFB35
- 857 0024 20000000 		.4byte	.LFE35-.LFB35
- 858 0028 00000000 		.4byte	.LFB36
- 859 002c 20000000 		.4byte	.LFE36-.LFB36
- 860 0030 00000000 		.4byte	.LFB37
- 861 0034 2E000000 		.4byte	.LFE37-.LFB37
- 862 0038 00000000 		.4byte	.LFB38
- 863 003c 2E000000 		.4byte	.LFE38-.LFB38
- 864 0040 00000000 		.4byte	.LFB39
- 865 0044 20000000 		.4byte	.LFE39-.LFB39
- 866 0048 00000000 		.4byte	.LFB40
- 867 004c 20000000 		.4byte	.LFE40-.LFB40
- 868 0050 00000000 		.4byte	.LFB41
- 869 0054 20000000 		.4byte	.LFE41-.LFB41
- 870 0058 00000000 		.4byte	.LFB42
- 871 005c 0C000000 		.4byte	.LFE42-.LFB42
- 872 0060 00000000 		.4byte	0
- 873 0064 00000000 		.4byte	0
- 874              		.section	.debug_ranges,"",%progbits
- 875              	.Ldebug_ranges0:
- 876 0000 00000000 		.4byte	.LFB33
- 877 0004 08000000 		.4byte	.LFE33
- 878 0008 00000000 		.4byte	.LFB34
- 879 000c 20000000 		.4byte	.LFE34
- 880 0010 00000000 		.4byte	.LFB35
- 881 0014 20000000 		.4byte	.LFE35
- 882 0018 00000000 		.4byte	.LFB36
- 883 001c 20000000 		.4byte	.LFE36
- 884 0020 00000000 		.4byte	.LFB37
- 885 0024 2E000000 		.4byte	.LFE37
- 886 0028 00000000 		.4byte	.LFB38
- 887 002c 2E000000 		.4byte	.LFE38
- 888 0030 00000000 		.4byte	.LFB39
- 889 0034 20000000 		.4byte	.LFE39
- 890 0038 00000000 		.4byte	.LFB40
- 891 003c 20000000 		.4byte	.LFE40
- 892 0040 00000000 		.4byte	.LFB41
- 893 0044 20000000 		.4byte	.LFE41
- 894 0048 00000000 		.4byte	.LFB42
- 895 004c 0C000000 		.4byte	.LFE42
- 896 0050 00000000 		.4byte	0
- 897 0054 00000000 		.4byte	0
- 898              		.section	.debug_line,"",%progbits
- 899              	.Ldebug_line0:
- 900 0000 05010000 		.section	.debug_str,"MS",%progbits,1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 18
+ 773 01ed 06       		.uleb128 0x6
+ 774 01ee 77000000 		.4byte	.LASF31
+ 775 01f2 01       		.byte	0x1
+ 776 01f3 7B       		.byte	0x7b
+ 777 01f4 81000000 		.4byte	0x81
+ 778 01f8 00000000 		.4byte	.LFB41
+ 779 01fc 38000000 		.4byte	.LFE41-.LFB41
+ 780 0200 01       		.uleb128 0x1
+ 781 0201 9C       		.byte	0x9c
+ 782 0202 15020000 		.4byte	0x215
+ 783 0206 07       		.uleb128 0x7
+ 784 0207 10020000 		.4byte	.LASF32
+ 785 020b 01       		.byte	0x1
+ 786 020c 7B       		.byte	0x7b
+ 787 020d 81000000 		.4byte	0x81
+ 788 0211 02       		.uleb128 0x2
+ 789 0212 91       		.byte	0x91
+ 790 0213 77       		.sleb128 -9
+ 791 0214 00       		.byte	0
+ 792 0215 09       		.uleb128 0x9
+ 793 0216 59010000 		.4byte	.LASF37
+ 794 021a 01       		.byte	0x1
+ 795 021b 89       		.byte	0x89
+ 796 021c 6B000000 		.4byte	0x6b
+ 797 0220 00000000 		.4byte	.LFB42
+ 798 0224 12000000 		.4byte	.LFE42-.LFB42
+ 799 0228 01       		.uleb128 0x1
+ 800 0229 9C       		.byte	0x9c
+ 801 022a 0A       		.uleb128 0xa
+ 802 022b D8010000 		.4byte	.LASF38
+ 803 022f 03       		.byte	0x3
+ 804 0230 12       		.byte	0x12
+ 805 0231 6B000000 		.4byte	0x6b
+ 806 0235 05       		.uleb128 0x5
+ 807 0236 03       		.byte	0x3
+ 808 0237 00000000 		.4byte	receivedCommand
+ 809 023b 00       		.byte	0
+ 810              		.section	.debug_abbrev,"",%progbits
+ 811              	.Ldebug_abbrev0:
+ 812 0000 01       		.uleb128 0x1
+ 813 0001 11       		.uleb128 0x11
+ 814 0002 01       		.byte	0x1
+ 815 0003 25       		.uleb128 0x25
+ 816 0004 0E       		.uleb128 0xe
+ 817 0005 13       		.uleb128 0x13
+ 818 0006 0B       		.uleb128 0xb
+ 819 0007 03       		.uleb128 0x3
+ 820 0008 0E       		.uleb128 0xe
+ 821 0009 1B       		.uleb128 0x1b
+ 822 000a 0E       		.uleb128 0xe
+ 823 000b 55       		.uleb128 0x55
+ 824 000c 17       		.uleb128 0x17
+ 825 000d 11       		.uleb128 0x11
+ 826 000e 01       		.uleb128 0x1
+ 827 000f 10       		.uleb128 0x10
+ 828 0010 17       		.uleb128 0x17
+ 829 0011 00       		.byte	0
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 18
 
 
- 900      02004B00 
- 900      00000201 
- 900      FB0E0D00 
- 900      01010101 
- 901              	.LASF19:
- 902 0000 6C696768 		.ascii	"light\000"
- 902      7400
- 903              	.LASF24:
- 904 0006 68656174 		.ascii	"heatStatus\000"
- 904      53746174 
- 904      757300
- 905              	.LASF34:
- 906 0011 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
- 906      73657273 
- 906      5C4C6173 
- 906      73655C44 
- 906      6F63756D 
- 907 003e 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 907      4D617374 
- 907      65725C50 
- 907      536F435F 
- 907      4D617374 
- 908              	.LASF4:
- 909 005b 6C6F6E67 		.ascii	"long int\000"
- 909      20696E74 
- 909      00
- 910              	.LASF3:
- 911 0064 73686F72 		.ascii	"short unsigned int\000"
- 911      7420756E 
- 911      7369676E 
- 911      65642069 
- 911      6E7400
- 912              	.LASF30:
- 913 0077 72657370 		.ascii	"respondIrri\000"
- 913      6F6E6449 
- 913      72726900 
- 914              	.LASF11:
- 915 0083 666C6F61 		.ascii	"float\000"
- 915      7400
- 916              	.LASF32:
- 917 0089 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 917      4320342E 
- 917      382E3420 
- 917      32303134 
- 917      30353236 
- 918 00bc 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 918      20726576 
- 918      6973696F 
- 918      6E203231 
- 918      31333538 
- 919 00ef 30202D66 		.ascii	"0 -ffunction-sections\000"
- 919      66756E63 
- 919      74696F6E 
- 919      2D736563 
- 919      74696F6E 
- 920              	.LASF1:
- 921 0105 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 19
+ 830 0012 00       		.byte	0
+ 831 0013 02       		.uleb128 0x2
+ 832 0014 24       		.uleb128 0x24
+ 833 0015 00       		.byte	0
+ 834 0016 0B       		.uleb128 0xb
+ 835 0017 0B       		.uleb128 0xb
+ 836 0018 3E       		.uleb128 0x3e
+ 837 0019 0B       		.uleb128 0xb
+ 838 001a 03       		.uleb128 0x3
+ 839 001b 0E       		.uleb128 0xe
+ 840 001c 00       		.byte	0
+ 841 001d 00       		.byte	0
+ 842 001e 03       		.uleb128 0x3
+ 843 001f 24       		.uleb128 0x24
+ 844 0020 00       		.byte	0
+ 845 0021 0B       		.uleb128 0xb
+ 846 0022 0B       		.uleb128 0xb
+ 847 0023 3E       		.uleb128 0x3e
+ 848 0024 0B       		.uleb128 0xb
+ 849 0025 03       		.uleb128 0x3
+ 850 0026 08       		.uleb128 0x8
+ 851 0027 00       		.byte	0
+ 852 0028 00       		.byte	0
+ 853 0029 04       		.uleb128 0x4
+ 854 002a 16       		.uleb128 0x16
+ 855 002b 00       		.byte	0
+ 856 002c 03       		.uleb128 0x3
+ 857 002d 0E       		.uleb128 0xe
+ 858 002e 3A       		.uleb128 0x3a
+ 859 002f 0B       		.uleb128 0xb
+ 860 0030 3B       		.uleb128 0x3b
+ 861 0031 0B       		.uleb128 0xb
+ 862 0032 49       		.uleb128 0x49
+ 863 0033 13       		.uleb128 0x13
+ 864 0034 00       		.byte	0
+ 865 0035 00       		.byte	0
+ 866 0036 05       		.uleb128 0x5
+ 867 0037 2E       		.uleb128 0x2e
+ 868 0038 00       		.byte	0
+ 869 0039 3F       		.uleb128 0x3f
+ 870 003a 19       		.uleb128 0x19
+ 871 003b 03       		.uleb128 0x3
+ 872 003c 0E       		.uleb128 0xe
+ 873 003d 3A       		.uleb128 0x3a
+ 874 003e 0B       		.uleb128 0xb
+ 875 003f 3B       		.uleb128 0x3b
+ 876 0040 0B       		.uleb128 0xb
+ 877 0041 27       		.uleb128 0x27
+ 878 0042 19       		.uleb128 0x19
+ 879 0043 11       		.uleb128 0x11
+ 880 0044 01       		.uleb128 0x1
+ 881 0045 12       		.uleb128 0x12
+ 882 0046 06       		.uleb128 0x6
+ 883 0047 40       		.uleb128 0x40
+ 884 0048 18       		.uleb128 0x18
+ 885 0049 9642     		.uleb128 0x2116
+ 886 004b 19       		.uleb128 0x19
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 19
 
 
- 921      676E6564 
- 921      20636861 
- 921      7200
- 922              	.LASF25:
- 923 0113 6F6E4F66 		.ascii	"onOff\000"
- 923      6600
- 924              	.LASF35:
- 925 0119 696E6974 		.ascii	"initUART\000"
- 925      55415254 
- 925      00
- 926              	.LASF5:
- 927 0122 6C6F6E67 		.ascii	"long unsigned int\000"
- 927      20756E73 
- 927      69676E65 
- 927      6420696E 
- 927      7400
- 928              	.LASF17:
- 929 0134 74656D70 		.ascii	"temp\000"
- 929      00
- 930              	.LASF9:
- 931 0139 75696E74 		.ascii	"uint8\000"
- 931      3800
- 932              	.LASF26:
- 933 013f 72657370 		.ascii	"respondWin\000"
- 933      6F6E6457 
- 933      696E00
- 934              	.LASF12:
- 935 014a 646F7562 		.ascii	"double\000"
- 935      6C6500
- 936              	.LASF22:
- 937 0151 736F696C 		.ascii	"soilHum\000"
- 937      48756D00 
- 938              	.LASF36:
- 939 0159 646B5265 		.ascii	"dkRequest\000"
- 939      71756573 
- 939      7400
- 940              	.LASF29:
- 941 0163 76656E74 		.ascii	"ventStatus\000"
- 941      53746174 
- 941      757300
- 942              	.LASF10:
- 943 016e 696E7438 		.ascii	"int8\000"
- 943      00
- 944              	.LASF8:
- 945 0173 756E7369 		.ascii	"unsigned int\000"
- 945      676E6564 
- 945      20696E74 
- 945      00
- 946              	.LASF16:
- 947 0180 72657370 		.ascii	"respondHum\000"
- 947      6F6E6448 
- 947      756D00
- 948              	.LASF28:
- 949 018b 72657370 		.ascii	"respondVent\000"
- 949      6F6E6456 
- 949      656E7400 
- 950              	.LASF7:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 20
+ 887 004c 00       		.byte	0
+ 888 004d 00       		.byte	0
+ 889 004e 06       		.uleb128 0x6
+ 890 004f 2E       		.uleb128 0x2e
+ 891 0050 01       		.byte	0x1
+ 892 0051 3F       		.uleb128 0x3f
+ 893 0052 19       		.uleb128 0x19
+ 894 0053 03       		.uleb128 0x3
+ 895 0054 0E       		.uleb128 0xe
+ 896 0055 3A       		.uleb128 0x3a
+ 897 0056 0B       		.uleb128 0xb
+ 898 0057 3B       		.uleb128 0x3b
+ 899 0058 0B       		.uleb128 0xb
+ 900 0059 27       		.uleb128 0x27
+ 901 005a 19       		.uleb128 0x19
+ 902 005b 49       		.uleb128 0x49
+ 903 005c 13       		.uleb128 0x13
+ 904 005d 11       		.uleb128 0x11
+ 905 005e 01       		.uleb128 0x1
+ 906 005f 12       		.uleb128 0x12
+ 907 0060 06       		.uleb128 0x6
+ 908 0061 40       		.uleb128 0x40
+ 909 0062 18       		.uleb128 0x18
+ 910 0063 9642     		.uleb128 0x2116
+ 911 0065 19       		.uleb128 0x19
+ 912 0066 01       		.uleb128 0x1
+ 913 0067 13       		.uleb128 0x13
+ 914 0068 00       		.byte	0
+ 915 0069 00       		.byte	0
+ 916 006a 07       		.uleb128 0x7
+ 917 006b 05       		.uleb128 0x5
+ 918 006c 00       		.byte	0
+ 919 006d 03       		.uleb128 0x3
+ 920 006e 0E       		.uleb128 0xe
+ 921 006f 3A       		.uleb128 0x3a
+ 922 0070 0B       		.uleb128 0xb
+ 923 0071 3B       		.uleb128 0x3b
+ 924 0072 0B       		.uleb128 0xb
+ 925 0073 49       		.uleb128 0x49
+ 926 0074 13       		.uleb128 0x13
+ 927 0075 02       		.uleb128 0x2
+ 928 0076 18       		.uleb128 0x18
+ 929 0077 00       		.byte	0
+ 930 0078 00       		.byte	0
+ 931 0079 08       		.uleb128 0x8
+ 932 007a 05       		.uleb128 0x5
+ 933 007b 00       		.byte	0
+ 934 007c 03       		.uleb128 0x3
+ 935 007d 08       		.uleb128 0x8
+ 936 007e 3A       		.uleb128 0x3a
+ 937 007f 0B       		.uleb128 0xb
+ 938 0080 3B       		.uleb128 0x3b
+ 939 0081 0B       		.uleb128 0xb
+ 940 0082 49       		.uleb128 0x49
+ 941 0083 13       		.uleb128 0x13
+ 942 0084 02       		.uleb128 0x2
+ 943 0085 18       		.uleb128 0x18
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 20
 
 
- 951 0197 6C6F6E67 		.ascii	"long long unsigned int\000"
- 951      206C6F6E 
- 951      6720756E 
- 951      7369676E 
- 951      65642069 
- 952              	.LASF15:
- 953 01ae 72657370 		.ascii	"respondTemp\000"
- 953      6F6E6454 
- 953      656D7000 
- 954              	.LASF18:
- 955 01ba 72657370 		.ascii	"respondLight\000"
- 955      6F6E644C 
- 955      69676874 
- 955      00
- 956              	.LASF27:
- 957 01c7 77696E53 		.ascii	"winStatus\000"
- 957      74617475 
- 957      7300
- 958              	.LASF37:
- 959 01d1 72656365 		.ascii	"receivedCommand\000"
- 959      69766564 
- 959      436F6D6D 
- 959      616E6400 
- 960              	.LASF14:
- 961 01e1 73697A65 		.ascii	"sizetype\000"
- 961      74797065 
- 961      00
- 962              	.LASF6:
- 963 01ea 6C6F6E67 		.ascii	"long long int\000"
- 963      206C6F6E 
- 963      6720696E 
- 963      7400
- 964              	.LASF13:
- 965 01f8 63686172 		.ascii	"char\000"
- 965      00
- 966              	.LASF23:
- 967 01fd 72657370 		.ascii	"respondHeat\000"
- 967      6F6E6448 
- 967      65617400 
- 968              	.LASF31:
- 969 0209 69727269 		.ascii	"irriStatus\000"
- 969      53746174 
- 969      757300
- 970              	.LASF2:
- 971 0214 73686F72 		.ascii	"short int\000"
- 971      7420696E 
- 971      7400
- 972              	.LASF21:
- 973 021e 696E6465 		.ascii	"index\000"
- 973      7800
- 974              	.LASF33:
- 975 0224 2E5C5541 		.ascii	".\\UART_Class.c\000"
- 975      52545F43 
- 975      6C617373 
- 975      2E6300
- 976              	.LASF20:
- 977 0233 72657370 		.ascii	"respondSoilHum\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccYV4AZh.s 			page 21
+ 944 0086 00       		.byte	0
+ 945 0087 00       		.byte	0
+ 946 0088 09       		.uleb128 0x9
+ 947 0089 2E       		.uleb128 0x2e
+ 948 008a 00       		.byte	0
+ 949 008b 3F       		.uleb128 0x3f
+ 950 008c 19       		.uleb128 0x19
+ 951 008d 03       		.uleb128 0x3
+ 952 008e 0E       		.uleb128 0xe
+ 953 008f 3A       		.uleb128 0x3a
+ 954 0090 0B       		.uleb128 0xb
+ 955 0091 3B       		.uleb128 0x3b
+ 956 0092 0B       		.uleb128 0xb
+ 957 0093 27       		.uleb128 0x27
+ 958 0094 19       		.uleb128 0x19
+ 959 0095 49       		.uleb128 0x49
+ 960 0096 13       		.uleb128 0x13
+ 961 0097 11       		.uleb128 0x11
+ 962 0098 01       		.uleb128 0x1
+ 963 0099 12       		.uleb128 0x12
+ 964 009a 06       		.uleb128 0x6
+ 965 009b 40       		.uleb128 0x40
+ 966 009c 18       		.uleb128 0x18
+ 967 009d 9642     		.uleb128 0x2116
+ 968 009f 19       		.uleb128 0x19
+ 969 00a0 00       		.byte	0
+ 970 00a1 00       		.byte	0
+ 971 00a2 0A       		.uleb128 0xa
+ 972 00a3 34       		.uleb128 0x34
+ 973 00a4 00       		.byte	0
+ 974 00a5 03       		.uleb128 0x3
+ 975 00a6 0E       		.uleb128 0xe
+ 976 00a7 3A       		.uleb128 0x3a
+ 977 00a8 0B       		.uleb128 0xb
+ 978 00a9 3B       		.uleb128 0x3b
+ 979 00aa 0B       		.uleb128 0xb
+ 980 00ab 49       		.uleb128 0x49
+ 981 00ac 13       		.uleb128 0x13
+ 982 00ad 3F       		.uleb128 0x3f
+ 983 00ae 19       		.uleb128 0x19
+ 984 00af 02       		.uleb128 0x2
+ 985 00b0 18       		.uleb128 0x18
+ 986 00b1 00       		.byte	0
+ 987 00b2 00       		.byte	0
+ 988 00b3 00       		.byte	0
+ 989              		.section	.debug_aranges,"",%progbits
+ 990 0000 64000000 		.4byte	0x64
+ 991 0004 0200     		.2byte	0x2
+ 992 0006 00000000 		.4byte	.Ldebug_info0
+ 993 000a 04       		.byte	0x4
+ 994 000b 00       		.byte	0
+ 995 000c 0000     		.2byte	0
+ 996 000e 0000     		.2byte	0
+ 997 0010 00000000 		.4byte	.LFB33
+ 998 0014 0C000000 		.4byte	.LFE33-.LFB33
+ 999 0018 00000000 		.4byte	.LFB34
+ 1000 001c 40000000 		.4byte	.LFE34-.LFB34
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 21
 
 
- 977      6F6E6453 
- 977      6F696C48 
- 977      756D00
- 978              	.LASF0:
- 979 0242 7369676E 		.ascii	"signed char\000"
- 979      65642063 
- 979      68617200 
- 980              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1001 0020 00000000 		.4byte	.LFB35
+ 1002 0024 40000000 		.4byte	.LFE35-.LFB35
+ 1003 0028 00000000 		.4byte	.LFB36
+ 1004 002c 40000000 		.4byte	.LFE36-.LFB36
+ 1005 0030 00000000 		.4byte	.LFB37
+ 1006 0034 50000000 		.4byte	.LFE37-.LFB37
+ 1007 0038 00000000 		.4byte	.LFB38
+ 1008 003c 46000000 		.4byte	.LFE38-.LFB38
+ 1009 0040 00000000 		.4byte	.LFB39
+ 1010 0044 38000000 		.4byte	.LFE39-.LFB39
+ 1011 0048 00000000 		.4byte	.LFB40
+ 1012 004c 38000000 		.4byte	.LFE40-.LFB40
+ 1013 0050 00000000 		.4byte	.LFB41
+ 1014 0054 38000000 		.4byte	.LFE41-.LFB41
+ 1015 0058 00000000 		.4byte	.LFB42
+ 1016 005c 12000000 		.4byte	.LFE42-.LFB42
+ 1017 0060 00000000 		.4byte	0
+ 1018 0064 00000000 		.4byte	0
+ 1019              		.section	.debug_ranges,"",%progbits
+ 1020              	.Ldebug_ranges0:
+ 1021 0000 00000000 		.4byte	.LFB33
+ 1022 0004 0C000000 		.4byte	.LFE33
+ 1023 0008 00000000 		.4byte	.LFB34
+ 1024 000c 40000000 		.4byte	.LFE34
+ 1025 0010 00000000 		.4byte	.LFB35
+ 1026 0014 40000000 		.4byte	.LFE35
+ 1027 0018 00000000 		.4byte	.LFB36
+ 1028 001c 40000000 		.4byte	.LFE36
+ 1029 0020 00000000 		.4byte	.LFB37
+ 1030 0024 50000000 		.4byte	.LFE37
+ 1031 0028 00000000 		.4byte	.LFB38
+ 1032 002c 46000000 		.4byte	.LFE38
+ 1033 0030 00000000 		.4byte	.LFB39
+ 1034 0034 38000000 		.4byte	.LFE39
+ 1035 0038 00000000 		.4byte	.LFB40
+ 1036 003c 38000000 		.4byte	.LFE40
+ 1037 0040 00000000 		.4byte	.LFB41
+ 1038 0044 38000000 		.4byte	.LFE41
+ 1039 0048 00000000 		.4byte	.LFB42
+ 1040 004c 12000000 		.4byte	.LFE42
+ 1041 0050 00000000 		.4byte	0
+ 1042 0054 00000000 		.4byte	0
+ 1043              		.section	.debug_line,"",%progbits
+ 1044              	.Ldebug_line0:
+ 1045 0000 40010000 		.section	.debug_str,"MS",%progbits,1
+ 1045      02005D00 
+ 1045      00000201 
+ 1045      FB0E0D00 
+ 1045      01010101 
+ 1046              	.LASF20:
+ 1047 0000 6C696768 		.ascii	"light\000"
+ 1047      7400
+ 1048              	.LASF25:
+ 1049 0006 68656174 		.ascii	"heatStatus\000"
+ 1049      53746174 
+ 1049      757300
+ 1050              	.LASF35:
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 22
+
+
+ 1051 0011 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
+ 1051      73657273 
+ 1051      5C4C6173 
+ 1051      73655C44 
+ 1051      6F63756D 
+ 1052 003e 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 1052      4D617374 
+ 1052      65725C50 
+ 1052      536F435F 
+ 1052      4D617374 
+ 1053              	.LASF4:
+ 1054 005b 6C6F6E67 		.ascii	"long int\000"
+ 1054      20696E74 
+ 1054      00
+ 1055              	.LASF3:
+ 1056 0064 73686F72 		.ascii	"short unsigned int\000"
+ 1056      7420756E 
+ 1056      7369676E 
+ 1056      65642069 
+ 1056      6E7400
+ 1057              	.LASF31:
+ 1058 0077 72657370 		.ascii	"respondIrri\000"
+ 1058      6F6E6449 
+ 1058      72726900 
+ 1059              	.LASF12:
+ 1060 0083 666C6F61 		.ascii	"float\000"
+ 1060      7400
+ 1061              	.LASF33:
+ 1062 0089 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1062      4320342E 
+ 1062      382E3420 
+ 1062      32303134 
+ 1062      30353236 
+ 1063 00bc 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1063      20726576 
+ 1063      6973696F 
+ 1063      6E203231 
+ 1063      31333538 
+ 1064 00ef 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1064      66756E63 
+ 1064      74696F6E 
+ 1064      2D736563 
+ 1064      74696F6E 
+ 1065              	.LASF1:
+ 1066 0105 756E7369 		.ascii	"unsigned char\000"
+ 1066      676E6564 
+ 1066      20636861 
+ 1066      7200
+ 1067              	.LASF26:
+ 1068 0113 6F6E4F66 		.ascii	"onOff\000"
+ 1068      6600
+ 1069              	.LASF36:
+ 1070 0119 696E6974 		.ascii	"initUART\000"
+ 1070      55415254 
+ 1070      00
+ 1071              	.LASF5:
+ 1072 0122 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 23
+
+
+ 1072      20756E73 
+ 1072      69676E65 
+ 1072      6420696E 
+ 1072      7400
+ 1073              	.LASF18:
+ 1074 0134 74656D70 		.ascii	"temp\000"
+ 1074      00
+ 1075              	.LASF9:
+ 1076 0139 75696E74 		.ascii	"uint8\000"
+ 1076      3800
+ 1077              	.LASF27:
+ 1078 013f 72657370 		.ascii	"respondWin\000"
+ 1078      6F6E6457 
+ 1078      696E00
+ 1079              	.LASF13:
+ 1080 014a 646F7562 		.ascii	"double\000"
+ 1080      6C6500
+ 1081              	.LASF23:
+ 1082 0151 736F696C 		.ascii	"soilHum\000"
+ 1082      48756D00 
+ 1083              	.LASF37:
+ 1084 0159 646B5265 		.ascii	"dkRequest\000"
+ 1084      71756573 
+ 1084      7400
+ 1085              	.LASF30:
+ 1086 0163 76656E74 		.ascii	"ventStatus\000"
+ 1086      53746174 
+ 1086      757300
+ 1087              	.LASF11:
+ 1088 016e 696E7438 		.ascii	"int8\000"
+ 1088      00
+ 1089              	.LASF10:
+ 1090 0173 75696E74 		.ascii	"uint32\000"
+ 1090      333200
+ 1091              	.LASF8:
+ 1092 017a 756E7369 		.ascii	"unsigned int\000"
+ 1092      676E6564 
+ 1092      20696E74 
+ 1092      00
+ 1093              	.LASF17:
+ 1094 0187 72657370 		.ascii	"respondHum\000"
+ 1094      6F6E6448 
+ 1094      756D00
+ 1095              	.LASF29:
+ 1096 0192 72657370 		.ascii	"respondVent\000"
+ 1096      6F6E6456 
+ 1096      656E7400 
+ 1097              	.LASF7:
+ 1098 019e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1098      206C6F6E 
+ 1098      6720756E 
+ 1098      7369676E 
+ 1098      65642069 
+ 1099              	.LASF16:
+ 1100 01b5 72657370 		.ascii	"respondTemp\000"
+ 1100      6F6E6454 
+ 1100      656D7000 
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccD7axQD.s 			page 24
+
+
+ 1101              	.LASF19:
+ 1102 01c1 72657370 		.ascii	"respondLight\000"
+ 1102      6F6E644C 
+ 1102      69676874 
+ 1102      00
+ 1103              	.LASF28:
+ 1104 01ce 77696E53 		.ascii	"winStatus\000"
+ 1104      74617475 
+ 1104      7300
+ 1105              	.LASF38:
+ 1106 01d8 72656365 		.ascii	"receivedCommand\000"
+ 1106      69766564 
+ 1106      436F6D6D 
+ 1106      616E6400 
+ 1107              	.LASF15:
+ 1108 01e8 73697A65 		.ascii	"sizetype\000"
+ 1108      74797065 
+ 1108      00
+ 1109              	.LASF6:
+ 1110 01f1 6C6F6E67 		.ascii	"long long int\000"
+ 1110      206C6F6E 
+ 1110      6720696E 
+ 1110      7400
+ 1111              	.LASF14:
+ 1112 01ff 63686172 		.ascii	"char\000"
+ 1112      00
+ 1113              	.LASF24:
+ 1114 0204 72657370 		.ascii	"respondHeat\000"
+ 1114      6F6E6448 
+ 1114      65617400 
+ 1115              	.LASF32:
+ 1116 0210 69727269 		.ascii	"irriStatus\000"
+ 1116      53746174 
+ 1116      757300
+ 1117              	.LASF2:
+ 1118 021b 73686F72 		.ascii	"short int\000"
+ 1118      7420696E 
+ 1118      7400
+ 1119              	.LASF22:
+ 1120 0225 696E6465 		.ascii	"index\000"
+ 1120      7800
+ 1121              	.LASF34:
+ 1122 022b 2E5C5541 		.ascii	".\\UART_Class.c\000"
+ 1122      52545F43 
+ 1122      6C617373 
+ 1122      2E6300
+ 1123              	.LASF21:
+ 1124 023a 72657370 		.ascii	"respondSoilHum\000"
+ 1124      6F6E6453 
+ 1124      6F696C48 
+ 1124      756D00
+ 1125              	.LASF0:
+ 1126 0249 7369676E 		.ascii	"signed char\000"
+ 1126      65642063 
+ 1126      68617200 
+ 1127              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

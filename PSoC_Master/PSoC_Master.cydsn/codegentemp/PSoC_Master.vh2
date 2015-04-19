@@ -2,7 +2,7 @@
 --	Conversion of PSoC_Master.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Apr 17 15:38:20 2015
+--	Sun Apr 19 16:45:08 2015
 --
 
 USE cypress.cypress.all;

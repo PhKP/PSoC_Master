@@ -21,7 +21,8 @@
 #define LIGHT_SENSOR_ADDRESS_MSB 0x05
 
 // Private data members
-uint8 irrigationStatus;
+static uint8 irrigationStatus = 0b11000000;
+static int size = 1;
 
 // Private prototypes
 
@@ -32,29 +33,30 @@ void initI2C(void){
 }
 
 int8 adjustWindow(uint8 pos){
-    uint8 openWindow = 0xF;
-    uint8 closeWindow = 0x0;
+    uint8 openWindow[size], closeWindow[size];
+    openWindow[0] = 0xF;
+    closeWindow[0] = 0x0;
     uint8 result = 0;
     uint8 *tempWindow = 0;
         
     if(pos == 0xF){
         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes, I2C_Mode)
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&openWindow,1,I2C_I2C_MODE_COMPLETE_XFER);
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,openWindow,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     else if(pos == 0x0){
         // Close window
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&closeWindow,1,I2C_I2C_MODE_COMPLETE_XFER);  // This goes wrong, see if you can figure it out tomorrow??
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,closeWindow,size,I2C_I2C_MODE_COMPLETE_XFER);  // This goes wrong, see if you can figure it out tomorrow??
     }
     
     getActuatorStatus(tempWindow, NULL, NULL, NULL);
     
     if (result == 0){
-    if (*tempWindow == pos){ 
-        return 0;	
-    }
-    else {
-        return -1;
-    }
+        if (*tempWindow == pos){ 
+            return 0;	
+        }
+        else {
+            return -1;
+        }
     }
     else {
         return -1;
@@ -62,8 +64,9 @@ int8 adjustWindow(uint8 pos){
 }
 
 int8 adjustHeat(uint8 heat){
-    uint8 turnHeatOn = 0b01000111;
-    uint8 turnHeatOff = 0b01000000;
+    uint8 turnHeatOn[size], turnOffHeat[size];
+    turnHeatOn[0] = 0b01000111;
+    turnOffHeat[0] = 0b01000000;
     uint8 result = 0;
     uint8 temp;
     uint8 *tempHeat = &temp;
@@ -71,11 +74,11 @@ int8 adjustHeat(uint8 heat){
     
     if(heat == 0b111){
         // Turn on heat
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOn,1,I2C_I2C_MODE_COMPLETE_XFER);
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnHeatOn,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     else if(heat == 0b0){
         // Turn off heat
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnHeatOff,1,I2C_I2C_MODE_COMPLETE_XFER);
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffHeat,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     
     getActuatorStatus(NULL, tempHeat, NULL, NULL);
@@ -94,22 +97,22 @@ int8 adjustHeat(uint8 heat){
 }
 
 int8 adjustVentilation(uint8 speed){
-    uint8 turnOnVent = 0b10000111;
-    uint8 turnOffVent = 0b10000000;
+    uint8 turnOnVent[size], turnOffVent[size];
+    turnOnVent[0] = 0b10000111;
+    turnOffVent[0] = 0b10000000;
     uint8 result = 0;
     uint8 temp;
     uint8 *vent = &temp;
         
     if(speed == 0b111){
         // Turn vent on
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOnVent,1,I2C_I2C_MODE_COMPLETE_XFER);
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOnVent,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     else if(speed == 0b0){
         // Turn vent off
-        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,&turnOffVent,1,I2C_I2C_MODE_COMPLETE_XFER);
+        result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffVent,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     
-    while (I2C_I2CMasterStatus() == I2C_I2C_MSTAT_WR_CMPLT);
     getActuatorStatus(NULL, NULL, vent, NULL);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
@@ -126,7 +129,7 @@ int8 adjustVentilation(uint8 speed){
 }
 
 int8 adjustIrrigation(uint8 index, uint8 onOff){
-    uint8 irriTransfer;
+    uint8 irriTransfer[size];
     uint8 temp;
     uint8 *irrigation = &temp;
     uint8 result = 0;
@@ -134,19 +137,19 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
         /* In order for this code to function properly, the static int "irrigation" 
         has to get updated each time this function is called. */
     if (onOff == 1){    // Irrigation turn on
-        irriTransfer = (irrigationStatus |= (1 << index));
-        irrigationStatus = irriTransfer;
+        irriTransfer[0] = (irrigationStatus |= (1 << index));
+        irrigationStatus = irriTransfer[0];
     }
     else if (onOff == 0){   // Irrigation turn off
-        irriTransfer = (irrigationStatus &= ~(1 << index));
-        irrigationStatus = irriTransfer;
+        irriTransfer[0] = (irrigationStatus &= ~(1 << index));
+        irrigationStatus = irriTransfer[0];
     }
     else{
     // Bad argument.
     return -1;
     }
     
-    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, &irriTransfer ,1,I2C_I2C_MODE_COMPLETE_XFER);
+    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer,size,I2C_I2C_MODE_COMPLETE_XFER);
  
     getActuatorStatus(NULL, NULL, NULL, irrigation);
     
@@ -166,6 +169,8 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
 int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
     uint8 dataget[2];
     uint8 result = 0;
+    
+    CyDelay(10); // This is only for test purposes
     
     result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
     

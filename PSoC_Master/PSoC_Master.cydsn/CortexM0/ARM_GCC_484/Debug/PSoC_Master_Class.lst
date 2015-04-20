@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
   12:.\PSoC_Master_Class.c **** // Include files
   13:.\PSoC_Master_Class.c **** #include "PSoC_Master_Class.h"
   14:.\PSoC_Master_Class.c **** #include "DSP_Class.h"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 2
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 2
 
 
   15:.\PSoC_Master_Class.c **** #include "I2C_Class.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
   68              		.loc 1 44 0
   69 001c 164B     		ldr	r3, .L2+8
   70 001e 0022     		mov	r2, #0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 3
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 3
 
 
   71 0020 9A80     		strh	r2, [r3, #4]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
   60:.\PSoC_Master_Class.c ****     redLEDState = LED_OFF;
  110              		.loc 1 60 0
  111 0064 094B     		ldr	r3, .L2+28
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 4
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 4
 
 
  112 0066 0122     		mov	r2, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  158 0014 FFF7FEFF 		bl	getTempAndHum
   69:.\PSoC_Master_Class.c ****     inputTemp(&tempTemp);
  159              		.loc 1 69 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 5
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 5
 
 
  160 0018 1D4B     		ldr	r3, .L7
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  206 006a 052B     		cmp	r3, #5
  207 006c E0D9     		bls	.L6
  208              	.LBE2:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 6
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 6
 
 
   76:.\PSoC_Master_Class.c ****         }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  252              		.cfi_offset 14, -4
  253 0002 83B0     		sub	sp, sp, #12
  254              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 7
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 7
 
 
  255 0004 00AF     		add	r7, sp, #0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  301 0040 9A000000 		.word	.L32
  302 0044 9A000000 		.word	.L32
  303 0048 9A000000 		.word	.L32
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 8
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 8
 
 
  304 004c 34000000 		.word	.L18
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  342 006e 15E0     		b	.L21
  343              	.L16:
  111:.\PSoC_Master_Class.c ****             }
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 9
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 9
 
 
  112:.\PSoC_Master_Class.c ****             case 'K':{ //TurnHeatOff
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  135:.\PSoC_Master_Class.c ****                 break;
  375              		.loc 1 135 0
  376 009a C046     		mov	r8, r8
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 10
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 10
 
 
  377              	.L21:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  149:.\PSoC_Master_Class.c ****         if(buff-CONVERT_TO_ASCII == 1){
  418              		.loc 1 149 0
  419 00e0 FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 11
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 11
 
 
  420 00e2 1B78     		ldrb	r3, [r3]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  161:.\PSoC_Master_Class.c ****         else{
  162:.\PSoC_Master_Class.c ****             if (buff-CONVERT_TO_ASCII == 1){
  463              		.loc 1 162 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 12
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 12
 
 
  464 012c FB1D     		add	r3, r7, #7
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  508 017c FFF7FEFF 		bl	BlueLED_Write
  173:.\PSoC_Master_Class.c ****     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
  509              		.loc 1 173 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 13
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 13
 
 
  510 0180 064B     		ldr	r3, .L33+12
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  563 003d 8F000000 		.4byte	.LASF3
  564 0041 02       		.uleb128 0x2
  565 0042 04       		.byte	0x4
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 14
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 14
 
 
  566 0043 05       		.byte	0x5
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  620 00ac 7A010000 		.4byte	.LASF15
  621 00b0 02       		.uleb128 0x2
  622 00b1 01       		.byte	0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 15
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 15
 
 
  623 00b2 08       		.byte	0x8
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  677 0122 9C       		.byte	0x9c
  678 0123 3E010000 		.4byte	0x13e
  679 0127 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 16
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 16
 
 
  680 0128 28000000 		.4byte	.LBB2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  734 0195 0F       		.uleb128 0xf
  735 0196 8C000000 		.4byte	0x8c
  736 019a A5010000 		.4byte	0x1a5
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 17
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 17
 
 
  737 019e 10       		.uleb128 0x10
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  791 0210 03       		.byte	0x3
  792 0211 00000000 		.4byte	redLEDState
  793 0215 00       		.byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 18
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 18
 
 
  794              		.section	.debug_abbrev,"",%progbits
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  848 0034 00       		.byte	0
  849 0035 00       		.byte	0
  850 0036 05       		.uleb128 0x5
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 19
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 19
 
 
  851 0037 16       		.uleb128 0x16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  905 006d 11       		.uleb128 0x11
  906 006e 01       		.uleb128 0x1
  907 006f 12       		.uleb128 0x12
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 20
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 20
 
 
  908 0070 06       		.uleb128 0x6
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  962 00a8 00       		.byte	0
  963 00a9 00       		.byte	0
  964 00aa 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 21
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 21
 
 
  965 00ab 34       		.uleb128 0x34
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  1019 000a 04       		.byte	0x4
  1020 000b 00       		.byte	0
  1021 000c 0000     		.2byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 22
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 22
 
 
  1022 000e 0000     		.2byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  1056 0073 73746174 		.ascii	"state\000"
  1056      6500
  1057              	.LASF38:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 23
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 23
 
 
  1058 0079 2E5C5053 		.ascii	".\\PSoC_Master_Class.c\000"
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  1078      64657800 
  1079              	.LASF33:
  1080 0167 74686553 		.ascii	"theState\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 24
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 24
 
 
  1080      74617465 
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 1
  1109              	.LASF6:
  1110 01ec 6C6F6E67 		.ascii	"long long int\000"
  1110      206C6F6E 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc4FkrDC.s 			page 25
+ARM GAS  C:\Users\Lasse\AppData\Local\Temp\cc0wKQ51.s 			page 25
 
 
  1110      6720696E 

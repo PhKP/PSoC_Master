@@ -1,4 +1,4 @@
---------------- Build Started: 04/19/2015 23:12:35 Project: PSoC_Master, Configuration: ARM GCC 4.8.4 Debug ---------------
+--------------- Build Started: 04/20/2015 08:23:38 Project: PSoC_Master, Configuration: ARM GCC 4.8.4 Debug ---------------
 cydsfit.exe -.appdatapath "C:\Users\Lasse\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -d CY8C4245AXI-483 -s C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 HDL Generation ...
@@ -63,4 +63,4 @@ cyelftool.exe -C C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Ma
 cyelftool.exe -S C:\Users\Lasse\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\CortexM0\ARM_GCC_484\Debug\PSoC_Master.elf
 Flash used: 19528 of 32768 bytes (59.6 %).
 SRAM used: 1788 of 4096 bytes (43.7 %). Stack: 1024 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 04/19/2015 23:12:56 ---------------
+--------------- Build Succeeded: 04/20/2015 08:24:02 ---------------

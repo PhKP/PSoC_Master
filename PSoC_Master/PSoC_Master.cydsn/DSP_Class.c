@@ -91,7 +91,7 @@ void avgTemp(void){
             }
         }
     }
-    // Makes sure that enough datapoits are pressent
+    // Makes sure that enough datapoints are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
         float avg = total/(ARRAYSIZE-skip);                         // Calculate the average value
         float tempInDegreesC = (((avg)/((16380)-2))*165)-40;        // Conversion formula from datasheet
@@ -105,6 +105,7 @@ void avgTemp(void){
         }
 
         temp = (tempInDegreesC+20)*2;       // Conversion to UART protocol
+        UART_UartPutChar(temp);
     }
     else{
         temp = 0;

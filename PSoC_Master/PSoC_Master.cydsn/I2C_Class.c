@@ -17,8 +17,8 @@
 #define ACTUATOR_ADRESS 0x42
 #define LIGHT_SENSOR_COMMAND_ADDRESS 0x00
 #define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
-#define LIGHT_SENSOR_ADDRESS_LSB 0x04  
-#define LIGHT_SENSOR_ADDRESS_MSB 0x05
+#define LIGHT_SENSOR_LSB 0x04  
+#define LIGHT_SENSOR_MSB 0x05
 
 // Private data members
 static uint8 irrigationStatus = 0b11000000;
@@ -30,6 +30,21 @@ void initI2C(void){
     I2C_Start();                    // Starts I2C component
     I2C_I2CMasterClearStatus();     // Clear status flags
     CyGlobalIntEnable;
+    
+    // Light sensor init.
+    /*sensor is set up to internal integration timing, light count data in signed and 2^(8) clock cycles.*/
+    uint8 lightCommand[size], lightControl[size];
+    lightCommand[0] = 0b10001010;       //ADC-normal, Normal operation, Internal timing, signed output, n = 8 (intern)
+    lightControl[0] = 0b00001100;       // Lux-range = 128000. Calculation: ((range(k)?*(100k/100k))/2^8)*data
+	uint8 result;
+    // lux range is set to 128.000 lux if REXT is set up to 50K resistor.
+    //uint8 lightControl = 0b00001100;
+    
+    result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_COMMAND_ADDRESS, lightCommand, size, I2C_I2C_MODE_COMPLETE_XFER);
+    
+    if (result == I2C_I2C_MSTR_NO_ERROR){
+        result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_CONTROL_ADDRESS, lightControl, size, I2C_I2C_MODE_COMPLETE_XFER);
+    }
 }
 
 int8 adjustWindow(uint8 pos){
@@ -39,7 +54,7 @@ int8 adjustWindow(uint8 pos){
     uint8 result = 0;
     uint8 *tempWindow = 0;
         
-    if(pos == 0xF){
+    if(pos == 0xFF){
         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes, I2C_Mode)
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,openWindow,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
@@ -71,6 +86,7 @@ int8 adjustHeat(uint8 heat){
     uint8 temp;
     uint8 *tempHeat = &temp;
     
+    I2C_I2CMasterClearStatus();
     
     if(heat == 0b111){
         // Turn on heat
@@ -80,7 +96,7 @@ int8 adjustHeat(uint8 heat){
         // Turn off heat
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffHeat,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
-    
+
     getActuatorStatus(NULL, tempHeat, NULL, NULL);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
@@ -104,7 +120,7 @@ int8 adjustVentilation(uint8 speed){
     uint8 temp;
     uint8 *vent = &temp;
         
-    if(speed == 0b111){
+    if(speed == 0xFF){
         // Turn vent on
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOnVent,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
@@ -167,31 +183,42 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
 }
 
 int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
-    uint8 dataget[2];
     uint8 result = 0;
+    int RDbuf = 2;
+    uint8 dataget[RDbuf];
     
-    CyDelay(10); // This is only for test purposes
+    I2C_I2CMasterClearReadBuf();
     
-    result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
+    I2C_I2CMasterClearStatus();     // Clear status flags TODO test
+    
+    //while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); TODO test
+    
+    result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLETE_XFER);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
         if (window)
         {                                   // Expecting to receive MSB first 
-            *window = (dataget[0] >> 3);      // Shifting out the 3 least significant bits.
+            *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
+            UART_UartPutChar(*window+48);
         }
         if (heat){              
             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shifting 1 right.
+            UART_UartPutChar(*heat+48);
+
         }
         if (vent){
-            if ((dataget[0] & 0b00000001) == 0b00000001){   // Maybe we can find a smarter way to do this?
-                *vent = (dataget[1] >> 5) | 0b00000100;                                           // The if statements checks if bit 1 of dataget[0] is 1 or not and then sends it onwards.
-            }                                                    // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
+            if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way to do this?
+                *vent = (dataget[1] >> 6) | 0b00000100;          // The if statements checks if bit 1 of dataget[0] is 1 or not and then sends it onwards.
+                UART_UartPutChar(*vent);                         // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
+            }                                                    
             else {
-                *vent = (dataget[1] >> 5) | 0b00000000;         // shifting 5 right since only the to most significant bits are relevant.
+                *vent = (dataget[1] >> 6) | 0b00000000;          // shifting 5 right since only the to most significant bits are relevant.
+                UART_UartPutChar(*vent);
             }
         }
         if (irrigation){
-            *irrigation = (dataget[1] & 0b00111111);        // Ignoring two most significant bits.
+            *irrigation = (dataget[1] & 0b00111111);             // Ignoring two most significant bits.
+            UART_UartPutChar(*irrigation);
         }   
         return 0;
     }
@@ -201,15 +228,16 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
 }
 
 int8 getTempAndHum(int32* temp, int32* hum){
-    uint8 dataget[4];
+    int32 RDbuf = 4;
+    uint8 dataget[RDbuf];
     uint8 result = 0;
     
-    result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, 4, I2C_I2C_MODE_COMPLETE_XFER);
+    result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLETE_XFER);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
         // Expecting to receive MSB first.
-        *temp = ((dataget[0] << 7) | dataget[1]);   
-        *hum = ((dataget[2] << 7) | dataget[3]);
+        *hum = ((dataget[0] << 8) | dataget[1]);   
+        *temp = (((dataget[2] << 8) | dataget[3]) >> 2);
         return 0;   // No error 
     }
     else {
@@ -218,17 +246,42 @@ int8 getTempAndHum(int32* temp, int32* hum){
 }
 
 int8 getLight(int32* light){
-    uint8 dataget[2];
+    
+    /* 
+    Command register: Adress 0x00.
+    Bit 7: resets '0' or enables '1' ADC.
+    Bit 6: Power down mode. Normal operation '0' or power down mode '1'.
+    Bit 5: Decides whether integration time (ADC is of integration type) is done internally '0' or externally. Page 6 in datasheet has formulas
+    Bit 4: Has to be zero.
+    Bit 3-2: Photodiode select 0:0 and 0:1 = disable ADC. 1:0 = Light count DATA output in signed (n-1)bit, n is decided in bit 1:0. Last mode 1:1 is no operation.
+    Bit 1-0: Prescaler or number of clockcycles 2^(n). 0:0 = 2^(16), 0:1 = 2^(12), 1:0 = 2^(8) and 1:1 = 2^(4).
+    
+    RW Control register: Adress 0x01.
+    Bit 3-2: Set lux range. watch table in page 6.
+    All other bits has to be zero.
+    
+    I2C Sensor data reg: Adress 0x04(LSB) and 0x05()
+    The sensor sends a 15 bit value that can be acceMSBssed by the adresses 0x04 and 0x05
+    these registers are automatically refreshed each new integration period.
+    */
+    
+    uint8 dataget[size];
     uint8 result = 0;
     
-    result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_ADDRESS_MSB, (uint8*) dataget, 2, I2C_I2C_MODE_COMPLETE_XFER); 
+    result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_MSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
         
     if (result == I2C_I2C_MSTR_NO_ERROR){
         // Expecting to receive MSB first.
         *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
-        *light = *light | dataget[1];  
-        return 0;   // No error 
-	}
+        result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
+            if (result == I2C_I2C_MSTR_NO_ERROR){
+                *light |= dataget[0]; 
+                return 0;   // No error 
+	        }
+            else {
+                return -1;
+            }
+    }
     else {
         return -1;
     }

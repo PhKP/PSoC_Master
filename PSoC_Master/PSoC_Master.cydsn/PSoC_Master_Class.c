@@ -55,7 +55,7 @@ void initPSoC_Master(void){
     timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
     
     UART_Start();                   //  Starts UART component
-    //Timer_Start();                  // Starts timer component
+    Timer_Start();                  // Starts timer component
     
     RedLED_Write(LED_OFF);              // Turn off red LED
     BlueLED_Write(LED_OFF);             // Turn off blue LED
@@ -64,8 +64,7 @@ void initPSoC_Master(void){
 }
 
 // Timer ISR
-CY_ISR(timer_ISR)
-{
+CY_ISR(timer_ISR){
     RedLED_Write(LED_ON);           // Turn on red LED
     
     getTempAndHum(&tempTemp, &tempHum);

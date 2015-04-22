@@ -20,6 +20,9 @@
 #define LIGHT_SENSOR_LSB 0x04  
 #define LIGHT_SENSOR_MSB 0x05
 
+//Uncomment to enable debugging
+//#define debugging 
+
 // Private data members
 static uint8 irrigationStatus = 0b11000000;
 static int size = 1;
@@ -52,7 +55,7 @@ int8 adjustWindow(uint8 pos){
     openWindow[0] = 0xF;
     closeWindow[0] = 0x0;
     uint8 result = 0;
-    uint8 *tempWindow = 0;
+    uint8 tempWindow = 0;
         
     if(pos == 0xFF){
         // Open window     -                write function  (adress,      dataToSend, NumberOfBytes, I2C_Mode)
@@ -63,10 +66,8 @@ int8 adjustWindow(uint8 pos){
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,closeWindow,size,I2C_I2C_MODE_COMPLETE_XFER);  // This goes wrong, see if you can figure it out tomorrow??
     }
     
-    getActuatorStatus(tempWindow, NULL, NULL, NULL);
-    
-    if (result == 0){
-        if (*tempWindow == pos){ 
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(&tempWindow, NULL, NULL, NULL))){
+        if (tempWindow == pos >> 4 ){  //hacky solution when dealing with fully open/closed window
             return 0;	
         }
         else {
@@ -83,8 +84,7 @@ int8 adjustHeat(uint8 heat){
     turnHeatOn[0] = 0b01000111;
     turnOffHeat[0] = 0b01000000;
     uint8 result = 0;
-    uint8 temp;
-    uint8 *tempHeat = &temp;
+    uint8 temp = 0xFF;
     
     I2C_I2CMasterClearStatus();
     
@@ -97,8 +97,8 @@ int8 adjustHeat(uint8 heat){
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffHeat,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
 
-    if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, tempHeat, NULL, NULL))){ //TODO Copy this to line to other adjustXXX functions
-        if (*tempHeat == heat){
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, &temp, NULL, NULL))){
+        if (temp == heat){
             return 0;
         }
         else {
@@ -115,8 +115,7 @@ int8 adjustVentilation(uint8 speed){
     turnOnVent[0] = 0b10000111;
     turnOffVent[0] = 0b10000000;
     uint8 result = 0;
-    uint8 temp;
-    uint8 *vent = &temp;
+    uint8 temp = 0xFF;
         
     if(speed == 0xFF){
         // Turn vent on
@@ -127,10 +126,8 @@ int8 adjustVentilation(uint8 speed){
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffVent,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
     
-    getActuatorStatus(NULL, NULL, vent, NULL);
-    
-    if (result == I2C_I2C_MSTR_NO_ERROR){
-        if (*vent == speed){
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, NULL, &temp, NULL))){
+        if (temp == speed >> 5){ //Hacky solution when not dealing with more than 2 steps
             return 0;
             }
         else {
@@ -144,8 +141,7 @@ int8 adjustVentilation(uint8 speed){
 
 int8 adjustIrrigation(uint8 index, uint8 onOff){
     uint8 irriTransfer[size];
-    uint8 temp;
-    uint8 *irrigation = &temp;
+    uint8 temp = 0xFF;
     uint8 result = 0;
 
         /* In order for this code to function properly, the static int "irrigation" 
@@ -165,10 +161,10 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
     
     result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer,size,I2C_I2C_MODE_COMPLETE_XFER);
  
-    getActuatorStatus(NULL, NULL, NULL, irrigation);
+    getActuatorStatus(NULL, NULL, NULL, &temp);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
-        if(*irrigation == irrigationStatus){
+        if(temp == irrigationStatus){
             return 0;
         }
         else {
@@ -197,25 +193,35 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
     if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){
         if (window){                                   // Expecting to receive MSB first 
             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
-            UART_UartPutChar(*window+48);
+            #ifdef debugging
+                UART_UartPutChar(*window+48);
+            #endif
         }
         if (heat){
             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shifting 1 right.
-            UART_UartPutChar(*heat+48);
+            #ifdef debugging
+                UART_UartPutChar(*heat+48);
+            #endif
         }
         if (vent){
             if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way to do this?
                 *vent = (dataget[1] >> 6) | 0b00000100;          // The if statements checks if bit 1 of dataget[0] is 1 or not and then sends it onwards.
-                UART_UartPutChar(*vent);                         // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
+                #ifdef debugging
+                    UART_UartPutChar(*vent+48);                         // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
+                #endif
             }                                                    
             else {
                 *vent = (dataget[1] >> 6) | 0b00000000;          // shifting 5 right since only the to most significant bits are relevant.
-                UART_UartPutChar(*vent);
+                #ifdef debugging
+                    UART_UartPutChar(*vent+48);
+                #endif
             }
         }
         if (irrigation){
             *irrigation = (dataget[1] & 0b00111111);             // Ignoring two most significant bits.
-            UART_UartPutChar(*irrigation);
+            #ifdef debugging
+                UART_UartPutChar(*irrigation);
+            #endif
         }   
         return 0;
     }

@@ -18,7 +18,6 @@
 
 
 int main(){
-    
     // Init
     initDSP();
     initI2C();
@@ -27,10 +26,10 @@ int main(){
 
     CyGlobalIntEnable;      // Global interrupt enable
 
-    for(;;)
-    {
-        
+    for(;;){
+        intHandler();
     }
+    
     return 0;
 }
 

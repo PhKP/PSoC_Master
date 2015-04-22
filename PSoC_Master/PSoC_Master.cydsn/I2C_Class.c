@@ -97,9 +97,7 @@ int8 adjustHeat(uint8 heat){
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffHeat,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
 
-    getActuatorStatus(NULL, tempHeat, NULL, NULL);
-    
-    if (result == I2C_I2C_MSTR_NO_ERROR){
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, tempHeat, NULL, NULL))){ //TODO Copy this to line to other adjustXXX functions
         if (*tempHeat == heat){
             return 0;
         }
@@ -187,24 +185,23 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
     int RDbuf = 2;
     uint8 dataget[RDbuf];
     
+    //I2C_I2CMasterClearStatus();     // Clear status flags TODO test
+    
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    
     I2C_I2CMasterClearReadBuf();
-    
-    I2C_I2CMasterClearStatus();     // Clear status flags TODO test
-    
-    //while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); TODO test
-    
     result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLETE_XFER);
     
-    if (result == I2C_I2C_MSTR_NO_ERROR){
-        if (window)
-        {                                   // Expecting to receive MSB first 
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the dataget array to be updated
+    
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){
+        if (window){                                   // Expecting to receive MSB first 
             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
             UART_UartPutChar(*window+48);
         }
-        if (heat){              
+        if (heat){
             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shifting 1 right.
             UART_UartPutChar(*heat+48);
-
         }
         if (vent){
             if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way to do this?

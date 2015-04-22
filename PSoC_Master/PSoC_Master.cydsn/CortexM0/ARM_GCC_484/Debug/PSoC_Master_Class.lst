@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -22,28 +22,34 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 1
   19              		.comm	tempHum,4,4
   20              		.comm	tempSoilHum,12,4
   21              		.comm	tempLight,4,4
-  22              		.global	theState
+  22              		.global	newByte
   23              		.bss
-  24              		.type	theState, %object
-  25              		.size	theState, 1
-  26              	theState:
+  24              		.type	newByte, %object
+  25              		.size	newByte, 1
+  26              	newByte:
   27 0000 00       		.space	1
-  28              		.global	irrigationIndex
-  29              		.type	irrigationIndex, %object
-  30              		.size	irrigationIndex, 1
-  31              	irrigationIndex:
-  32 0001 00       		.space	1
-  33              		.comm	blueLEDState,1,1
-  34              		.comm	redLEDState,1,1
-  35              		.section	.text.initPSoC_Master,"ax",%progbits
-  36              		.align	2
-  37              		.global	initPSoC_Master
-  38              		.code	16
-  39              		.thumb_func
-  40              		.type	initPSoC_Master, %function
-  41              	initPSoC_Master:
-  42              	.LFB33:
-  43              		.file 1 ".\\PSoC_Master_Class.c"
+  28              		.comm	buff,1,1
+  29              		.global	theState
+  30              		.type	theState, %object
+  31              		.size	theState, 1
+  32              	theState:
+  33 0001 00       		.space	1
+  34              		.global	irrigationIndex
+  35              		.type	irrigationIndex, %object
+  36              		.size	irrigationIndex, 1
+  37              	irrigationIndex:
+  38 0002 00       		.space	1
+  39              		.comm	blueLEDState,1,1
+  40              		.comm	redLEDState,1,1
+  41              		.section	.text.initPSoC_Master,"ax",%progbits
+  42              		.align	2
+  43              		.global	initPSoC_Master
+  44              		.code	16
+  45              		.thumb_func
+  46              		.type	initPSoC_Master, %function
+  47              	initPSoC_Master:
+  48              	.LFB33:
+  49              		.file 1 ".\\PSoC_Master_Class.c"
    1:.\PSoC_Master_Class.c **** /* ========================================
    2:.\PSoC_Master_Class.c ****  * 
    3:.\PSoC_Master_Class.c ****  * AutoGreen - PSoC_Master
@@ -52,15 +58,15 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 1
    6:.\PSoC_Master_Class.c ****  * PRJ3 - GRP9
    7:.\PSoC_Master_Class.c ****  * 2015-04-15
    8:.\PSoC_Master_Class.c ****  *
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 2
+
+
    9:.\PSoC_Master_Class.c ****  * ========================================
   10:.\PSoC_Master_Class.c **** */
   11:.\PSoC_Master_Class.c **** 
   12:.\PSoC_Master_Class.c **** // Include files
   13:.\PSoC_Master_Class.c **** #include "PSoC_Master_Class.h"
   14:.\PSoC_Master_Class.c **** #include "DSP_Class.h"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 2
-
-
   15:.\PSoC_Master_Class.c **** #include "I2C_Class.h"
   16:.\PSoC_Master_Class.c **** #include "UART_Class.h"
   17:.\PSoC_Master_Class.c **** 
@@ -74,1407 +80,1498 @@ ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 1
   25:.\PSoC_Master_Class.c **** int32 tempHum;
   26:.\PSoC_Master_Class.c **** int16 tempSoilHum[6];
   27:.\PSoC_Master_Class.c **** int32 tempLight;
-  28:.\PSoC_Master_Class.c **** 
-  29:.\PSoC_Master_Class.c **** // Private prototypes
-  30:.\PSoC_Master_Class.c **** CY_ISR_PROTO(timer_ISR);
-  31:.\PSoC_Master_Class.c **** CY_ISR_PROTO(UART_ISR);
-  32:.\PSoC_Master_Class.c **** 
-  33:.\PSoC_Master_Class.c **** // Buffers / flags
-  34:.\PSoC_Master_Class.c **** typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
-  35:.\PSoC_Master_Class.c **** volatile state theState = IDLE;
-  36:.\PSoC_Master_Class.c **** volatile int8 irrigationIndex = 0;
-  37:.\PSoC_Master_Class.c **** uint8 blueLEDState, redLEDState;
-  38:.\PSoC_Master_Class.c **** 
-  39:.\PSoC_Master_Class.c **** void initPSoC_Master(void){
-  44              		.loc 1 39 0
-  45              		.cfi_startproc
-  46 0000 80B5     		push	{r7, lr}
-  47              		.cfi_def_cfa_offset 8
-  48              		.cfi_offset 7, -8
-  49              		.cfi_offset 14, -4
-  50 0002 00AF     		add	r7, sp, #0
-  51              		.cfi_def_cfa_register 7
-  40:.\PSoC_Master_Class.c **** 	tempTemp = 0;
-  52              		.loc 1 40 0
-  53 0004 1A4B     		ldr	r3, .L2
-  54 0006 0022     		mov	r2, #0
-  55 0008 1A60     		str	r2, [r3]
-  41:.\PSoC_Master_Class.c ****     tempHum = 0;
-  56              		.loc 1 41 0
-  57 000a 1A4B     		ldr	r3, .L2+4
-  58 000c 0022     		mov	r2, #0
-  59 000e 1A60     		str	r2, [r3]
-  42:.\PSoC_Master_Class.c ****     tempSoilHum[0] = 0;
-  60              		.loc 1 42 0
-  61 0010 194B     		ldr	r3, .L2+8
-  62 0012 0022     		mov	r2, #0
-  63 0014 1A80     		strh	r2, [r3]
-  43:.\PSoC_Master_Class.c ****     tempSoilHum[1] = 0;
-  64              		.loc 1 43 0
-  65 0016 184B     		ldr	r3, .L2+8
-  66 0018 0022     		mov	r2, #0
-  67 001a 5A80     		strh	r2, [r3, #2]
-  44:.\PSoC_Master_Class.c ****     tempSoilHum[2] = 0;
-  68              		.loc 1 44 0
-  69 001c 164B     		ldr	r3, .L2+8
-  70 001e 0022     		mov	r2, #0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 3
+  28:.\PSoC_Master_Class.c **** uint8 newByte = 0;
+  29:.\PSoC_Master_Class.c **** uint8 buff;
+  30:.\PSoC_Master_Class.c **** 
+  31:.\PSoC_Master_Class.c **** 
+  32:.\PSoC_Master_Class.c **** // Private prototypes
+  33:.\PSoC_Master_Class.c **** CY_ISR_PROTO(timer_ISR);
+  34:.\PSoC_Master_Class.c **** CY_ISR_PROTO(UART_ISR);
+  35:.\PSoC_Master_Class.c **** 
+  36:.\PSoC_Master_Class.c **** // Buffers / flags
+  37:.\PSoC_Master_Class.c **** typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
+  38:.\PSoC_Master_Class.c **** volatile state theState = IDLE;
+  39:.\PSoC_Master_Class.c **** volatile int8 irrigationIndex = 0;
+  40:.\PSoC_Master_Class.c **** uint8 blueLEDState, redLEDState;
+  41:.\PSoC_Master_Class.c **** 
+  42:.\PSoC_Master_Class.c **** void initPSoC_Master(void){
+  50              		.loc 1 42 0
+  51              		.cfi_startproc
+  52 0000 80B5     		push	{r7, lr}
+  53              		.cfi_def_cfa_offset 8
+  54              		.cfi_offset 7, -8
+  55              		.cfi_offset 14, -4
+  56 0002 00AF     		add	r7, sp, #0
+  57              		.cfi_def_cfa_register 7
+  43:.\PSoC_Master_Class.c **** 	tempTemp = 0;
+  58              		.loc 1 43 0
+  59 0004 194B     		ldr	r3, .L2
+  60 0006 0022     		mov	r2, #0
+  61 0008 1A60     		str	r2, [r3]
+  44:.\PSoC_Master_Class.c ****     tempHum = 0;
+  62              		.loc 1 44 0
+  63 000a 194B     		ldr	r3, .L2+4
+  64 000c 0022     		mov	r2, #0
+  65 000e 1A60     		str	r2, [r3]
+  45:.\PSoC_Master_Class.c ****     tempSoilHum[0] = 0;
+  66              		.loc 1 45 0
+  67 0010 184B     		ldr	r3, .L2+8
+  68 0012 0022     		mov	r2, #0
+  69 0014 1A80     		strh	r2, [r3]
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 3
 
 
-  71 0020 9A80     		strh	r2, [r3, #4]
-  45:.\PSoC_Master_Class.c ****     tempSoilHum[3] = 0;
-  72              		.loc 1 45 0
-  73 0022 154B     		ldr	r3, .L2+8
-  74 0024 0022     		mov	r2, #0
-  75 0026 DA80     		strh	r2, [r3, #6]
-  46:.\PSoC_Master_Class.c ****     tempSoilHum[4] = 0;
-  76              		.loc 1 46 0
-  77 0028 134B     		ldr	r3, .L2+8
-  78 002a 0022     		mov	r2, #0
-  79 002c 1A81     		strh	r2, [r3, #8]
-  47:.\PSoC_Master_Class.c ****     tempSoilHum[5] = 0;
-  80              		.loc 1 47 0
-  81 002e 124B     		ldr	r3, .L2+8
-  82 0030 0022     		mov	r2, #0
-  83 0032 5A81     		strh	r2, [r3, #10]
-  48:.\PSoC_Master_Class.c ****     tempLight = 0;
-  84              		.loc 1 48 0
-  85 0034 114B     		ldr	r3, .L2+12
-  86 0036 0022     		mov	r2, #0
-  87 0038 1A60     		str	r2, [r3]
-  49:.\PSoC_Master_Class.c **** 	
-  50:.\PSoC_Master_Class.c ****     // ISR
-  51:.\PSoC_Master_Class.c ****     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
-  88              		.loc 1 51 0
-  89 003a 114B     		ldr	r3, .L2+16
-  90 003c 181C     		mov	r0, r3
-  91 003e FFF7FEFF 		bl	UART_ISR_StartEx
-  52:.\PSoC_Master_Class.c ****     timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
-  92              		.loc 1 52 0
-  93 0042 104B     		ldr	r3, .L2+20
-  94 0044 181C     		mov	r0, r3
-  95 0046 FFF7FEFF 		bl	timer_ISR_StartEx
-  53:.\PSoC_Master_Class.c ****     
-  54:.\PSoC_Master_Class.c ****     UART_Start();                   //  Starts UART component
-  96              		.loc 1 54 0
-  97 004a FFF7FEFF 		bl	UART_Start
-  55:.\PSoC_Master_Class.c ****     Timer_Start();                  // Starts timer component
+  46:.\PSoC_Master_Class.c ****     tempSoilHum[1] = 0;
+  70              		.loc 1 46 0
+  71 0016 174B     		ldr	r3, .L2+8
+  72 0018 0022     		mov	r2, #0
+  73 001a 5A80     		strh	r2, [r3, #2]
+  47:.\PSoC_Master_Class.c ****     tempSoilHum[2] = 0;
+  74              		.loc 1 47 0
+  75 001c 154B     		ldr	r3, .L2+8
+  76 001e 0022     		mov	r2, #0
+  77 0020 9A80     		strh	r2, [r3, #4]
+  48:.\PSoC_Master_Class.c ****     tempSoilHum[3] = 0;
+  78              		.loc 1 48 0
+  79 0022 144B     		ldr	r3, .L2+8
+  80 0024 0022     		mov	r2, #0
+  81 0026 DA80     		strh	r2, [r3, #6]
+  49:.\PSoC_Master_Class.c ****     tempSoilHum[4] = 0;
+  82              		.loc 1 49 0
+  83 0028 124B     		ldr	r3, .L2+8
+  84 002a 0022     		mov	r2, #0
+  85 002c 1A81     		strh	r2, [r3, #8]
+  50:.\PSoC_Master_Class.c ****     tempSoilHum[5] = 0;
+  86              		.loc 1 50 0
+  87 002e 114B     		ldr	r3, .L2+8
+  88 0030 0022     		mov	r2, #0
+  89 0032 5A81     		strh	r2, [r3, #10]
+  51:.\PSoC_Master_Class.c ****     tempLight = 0;
+  90              		.loc 1 51 0
+  91 0034 104B     		ldr	r3, .L2+12
+  92 0036 0022     		mov	r2, #0
+  93 0038 1A60     		str	r2, [r3]
+  52:.\PSoC_Master_Class.c **** 	
+  53:.\PSoC_Master_Class.c ****     // ISR
+  54:.\PSoC_Master_Class.c ****     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
+  94              		.loc 1 54 0
+  95 003a 104B     		ldr	r3, .L2+16
+  96 003c 181C     		mov	r0, r3
+  97 003e FFF7FEFF 		bl	UART_ISR_StartEx
+  55:.\PSoC_Master_Class.c ****     timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
   98              		.loc 1 55 0
-  99 004e FFF7FEFF 		bl	Timer_Start
+  99 0042 0F4B     		ldr	r3, .L2+20
+ 100 0044 181C     		mov	r0, r3
+ 101 0046 FFF7FEFF 		bl	timer_ISR_StartEx
   56:.\PSoC_Master_Class.c ****     
-  57:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
- 100              		.loc 1 57 0
- 101 0052 0120     		mov	r0, #1
- 102 0054 FFF7FEFF 		bl	RedLED_Write
-  58:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_OFF);             // Turn off blue LED
- 103              		.loc 1 58 0
- 104 0058 0120     		mov	r0, #1
- 105 005a FFF7FEFF 		bl	BlueLED_Write
-  59:.\PSoC_Master_Class.c ****     blueLEDState = LED_OFF;
- 106              		.loc 1 59 0
- 107 005e 0A4B     		ldr	r3, .L2+24
- 108 0060 0122     		mov	r2, #1
- 109 0062 1A70     		strb	r2, [r3]
-  60:.\PSoC_Master_Class.c ****     redLEDState = LED_OFF;
- 110              		.loc 1 60 0
- 111 0064 094B     		ldr	r3, .L2+28
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 4
+  57:.\PSoC_Master_Class.c ****     UART_Start();                   //  Starts UART component
+ 102              		.loc 1 57 0
+ 103 004a FFF7FEFF 		bl	UART_Start
+  58:.\PSoC_Master_Class.c ****     //Timer_Start();                  // Starts timer component
+  59:.\PSoC_Master_Class.c ****     
+  60:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
+ 104              		.loc 1 60 0
+ 105 004e 0120     		mov	r0, #1
+ 106 0050 FFF7FEFF 		bl	RedLED_Write
+  61:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_OFF);             // Turn off blue LED
+ 107              		.loc 1 61 0
+ 108 0054 0120     		mov	r0, #1
+ 109 0056 FFF7FEFF 		bl	BlueLED_Write
+  62:.\PSoC_Master_Class.c ****     blueLEDState = LED_OFF;
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 4
 
 
- 112 0066 0122     		mov	r2, #1
- 113 0068 1A70     		strb	r2, [r3]
-  61:.\PSoC_Master_Class.c **** }
- 114              		.loc 1 61 0
- 115 006a BD46     		mov	sp, r7
- 116              		@ sp needed
- 117 006c 80BD     		pop	{r7, pc}
- 118              	.L3:
- 119 006e C046     		.align	2
- 120              	.L2:
- 121 0070 00000000 		.word	tempTemp
- 122 0074 00000000 		.word	tempHum
- 123 0078 00000000 		.word	tempSoilHum
- 124 007c 00000000 		.word	tempLight
- 125 0080 00000000 		.word	UART_ISR
- 126 0084 00000000 		.word	timer_ISR
- 127 0088 00000000 		.word	blueLEDState
- 128 008c 00000000 		.word	redLEDState
- 129              		.cfi_endproc
- 130              	.LFE33:
- 131              		.size	initPSoC_Master, .-initPSoC_Master
- 132              		.section	.text.timer_ISR,"ax",%progbits
- 133              		.align	2
- 134              		.global	timer_ISR
- 135              		.code	16
- 136              		.thumb_func
- 137              		.type	timer_ISR, %function
- 138              	timer_ISR:
- 139              	.LFB34:
-  62:.\PSoC_Master_Class.c **** 
-  63:.\PSoC_Master_Class.c **** // Timer ISR
-  64:.\PSoC_Master_Class.c **** CY_ISR(timer_ISR)
-  65:.\PSoC_Master_Class.c **** {
- 140              		.loc 1 65 0
- 141              		.cfi_startproc
- 142 0000 80B5     		push	{r7, lr}
- 143              		.cfi_def_cfa_offset 8
- 144              		.cfi_offset 7, -8
- 145              		.cfi_offset 14, -4
- 146 0002 82B0     		sub	sp, sp, #8
- 147              		.cfi_def_cfa_offset 16
- 148 0004 00AF     		add	r7, sp, #0
- 149              		.cfi_def_cfa_register 7
-  66:.\PSoC_Master_Class.c ****     RedLED_Write(LED_ON);           // Turn on red LED
- 150              		.loc 1 66 0
- 151 0006 0020     		mov	r0, #0
- 152 0008 FFF7FEFF 		bl	RedLED_Write
-  67:.\PSoC_Master_Class.c ****     
-  68:.\PSoC_Master_Class.c ****     getTempAndHum(&tempTemp, &tempHum);
- 153              		.loc 1 68 0
- 154 000c 204A     		ldr	r2, .L7
- 155 000e 214B     		ldr	r3, .L7+4
- 156 0010 101C     		mov	r0, r2
- 157 0012 191C     		mov	r1, r3
- 158 0014 FFF7FEFF 		bl	getTempAndHum
-  69:.\PSoC_Master_Class.c ****     inputTemp(&tempTemp);
- 159              		.loc 1 69 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 5
+ 110              		.loc 1 62 0
+ 111 005a 0A4B     		ldr	r3, .L2+24
+ 112 005c 0122     		mov	r2, #1
+ 113 005e 1A70     		strb	r2, [r3]
+  63:.\PSoC_Master_Class.c ****     redLEDState = LED_OFF;
+ 114              		.loc 1 63 0
+ 115 0060 094B     		ldr	r3, .L2+28
+ 116 0062 0122     		mov	r2, #1
+ 117 0064 1A70     		strb	r2, [r3]
+  64:.\PSoC_Master_Class.c **** }
+ 118              		.loc 1 64 0
+ 119 0066 BD46     		mov	sp, r7
+ 120              		@ sp needed
+ 121 0068 80BD     		pop	{r7, pc}
+ 122              	.L3:
+ 123 006a C046     		.align	2
+ 124              	.L2:
+ 125 006c 00000000 		.word	tempTemp
+ 126 0070 00000000 		.word	tempHum
+ 127 0074 00000000 		.word	tempSoilHum
+ 128 0078 00000000 		.word	tempLight
+ 129 007c 00000000 		.word	UART_ISR
+ 130 0080 00000000 		.word	timer_ISR
+ 131 0084 00000000 		.word	blueLEDState
+ 132 0088 00000000 		.word	redLEDState
+ 133              		.cfi_endproc
+ 134              	.LFE33:
+ 135              		.size	initPSoC_Master, .-initPSoC_Master
+ 136              		.section	.text.timer_ISR,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	timer_ISR
+ 139              		.code	16
+ 140              		.thumb_func
+ 141              		.type	timer_ISR, %function
+ 142              	timer_ISR:
+ 143              	.LFB34:
+  65:.\PSoC_Master_Class.c **** 
+  66:.\PSoC_Master_Class.c **** // Timer ISR
+  67:.\PSoC_Master_Class.c **** CY_ISR(timer_ISR)
+  68:.\PSoC_Master_Class.c **** {
+ 144              		.loc 1 68 0
+ 145              		.cfi_startproc
+ 146 0000 80B5     		push	{r7, lr}
+ 147              		.cfi_def_cfa_offset 8
+ 148              		.cfi_offset 7, -8
+ 149              		.cfi_offset 14, -4
+ 150 0002 82B0     		sub	sp, sp, #8
+ 151              		.cfi_def_cfa_offset 16
+ 152 0004 00AF     		add	r7, sp, #0
+ 153              		.cfi_def_cfa_register 7
+  69:.\PSoC_Master_Class.c ****     RedLED_Write(LED_ON);           // Turn on red LED
+ 154              		.loc 1 69 0
+ 155 0006 0020     		mov	r0, #0
+ 156 0008 FFF7FEFF 		bl	RedLED_Write
+  70:.\PSoC_Master_Class.c ****     
+  71:.\PSoC_Master_Class.c ****     getTempAndHum(&tempTemp, &tempHum);
+ 157              		.loc 1 71 0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 5
 
 
- 160 0018 1D4B     		ldr	r3, .L7
- 161 001a 181C     		mov	r0, r3
- 162 001c FFF7FEFF 		bl	inputTemp
-  70:.\PSoC_Master_Class.c ****     inputHum(&tempHum);
- 163              		.loc 1 70 0
- 164 0020 1C4B     		ldr	r3, .L7+4
- 165 0022 181C     		mov	r0, r3
- 166 0024 FFF7FEFF 		bl	inputHum
- 167              	.LBB2:
-  71:.\PSoC_Master_Class.c ****     {
-  72:.\PSoC_Master_Class.c ****         uint8 i;
-  73:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
- 168              		.loc 1 73 0
- 169 0028 FB1D     		add	r3, r7, #7
- 170 002a 0022     		mov	r2, #0
- 171 002c 1A70     		strb	r2, [r3]
- 172 002e 1AE0     		b	.L5
- 173              	.L6:
-  74:.\PSoC_Master_Class.c ****             getSoilHum(i, &tempSoilHum[i]);
- 174              		.loc 1 74 0 discriminator 2
- 175 0030 FB1D     		add	r3, r7, #7
- 176 0032 1B78     		ldrb	r3, [r3]
- 177 0034 5A00     		lsl	r2, r3, #1
- 178 0036 184B     		ldr	r3, .L7+8
- 179 0038 D318     		add	r3, r2, r3
- 180 003a FA1D     		add	r2, r7, #7
- 181 003c 1278     		ldrb	r2, [r2]
- 182 003e 101C     		mov	r0, r2
- 183 0040 191C     		mov	r1, r3
- 184 0042 FFF7FEFF 		bl	getSoilHum
-  75:.\PSoC_Master_Class.c ****             inputSoilHum(i,&tempSoilHum[i]);
- 185              		.loc 1 75 0 discriminator 2
- 186 0046 FB1D     		add	r3, r7, #7
- 187 0048 1B78     		ldrb	r3, [r3]
- 188 004a 5A00     		lsl	r2, r3, #1
- 189 004c 124B     		ldr	r3, .L7+8
- 190 004e D318     		add	r3, r2, r3
- 191 0050 FA1D     		add	r2, r7, #7
- 192 0052 1278     		ldrb	r2, [r2]
- 193 0054 101C     		mov	r0, r2
- 194 0056 191C     		mov	r1, r3
- 195 0058 FFF7FEFF 		bl	inputSoilHum
-  73:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
- 196              		.loc 1 73 0 discriminator 2
- 197 005c FB1D     		add	r3, r7, #7
- 198 005e 1A78     		ldrb	r2, [r3]
- 199 0060 FB1D     		add	r3, r7, #7
- 200 0062 0132     		add	r2, r2, #1
- 201 0064 1A70     		strb	r2, [r3]
- 202              	.L5:
-  73:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
- 203              		.loc 1 73 0 is_stmt 0 discriminator 1
- 204 0066 FB1D     		add	r3, r7, #7
- 205 0068 1B78     		ldrb	r3, [r3]
- 206 006a 052B     		cmp	r3, #5
- 207 006c E0D9     		bls	.L6
- 208              	.LBE2:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 6
+ 158 000c 204A     		ldr	r2, .L7
+ 159 000e 214B     		ldr	r3, .L7+4
+ 160 0010 101C     		mov	r0, r2
+ 161 0012 191C     		mov	r1, r3
+ 162 0014 FFF7FEFF 		bl	getTempAndHum
+  72:.\PSoC_Master_Class.c ****     inputTemp(&tempTemp);
+ 163              		.loc 1 72 0
+ 164 0018 1D4B     		ldr	r3, .L7
+ 165 001a 181C     		mov	r0, r3
+ 166 001c FFF7FEFF 		bl	inputTemp
+  73:.\PSoC_Master_Class.c ****     inputHum(&tempHum);
+ 167              		.loc 1 73 0
+ 168 0020 1C4B     		ldr	r3, .L7+4
+ 169 0022 181C     		mov	r0, r3
+ 170 0024 FFF7FEFF 		bl	inputHum
+ 171              	.LBB2:
+  74:.\PSoC_Master_Class.c ****     {
+  75:.\PSoC_Master_Class.c ****         uint8 i;
+  76:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
+ 172              		.loc 1 76 0
+ 173 0028 FB1D     		add	r3, r7, #7
+ 174 002a 0022     		mov	r2, #0
+ 175 002c 1A70     		strb	r2, [r3]
+ 176 002e 1AE0     		b	.L5
+ 177              	.L6:
+  77:.\PSoC_Master_Class.c ****             getSoilHum(i, &tempSoilHum[i]);
+ 178              		.loc 1 77 0 discriminator 2
+ 179 0030 FB1D     		add	r3, r7, #7
+ 180 0032 1B78     		ldrb	r3, [r3]
+ 181 0034 5A00     		lsl	r2, r3, #1
+ 182 0036 184B     		ldr	r3, .L7+8
+ 183 0038 D318     		add	r3, r2, r3
+ 184 003a FA1D     		add	r2, r7, #7
+ 185 003c 1278     		ldrb	r2, [r2]
+ 186 003e 101C     		mov	r0, r2
+ 187 0040 191C     		mov	r1, r3
+ 188 0042 FFF7FEFF 		bl	getSoilHum
+  78:.\PSoC_Master_Class.c ****             inputSoilHum(i,&tempSoilHum[i]);
+ 189              		.loc 1 78 0 discriminator 2
+ 190 0046 FB1D     		add	r3, r7, #7
+ 191 0048 1B78     		ldrb	r3, [r3]
+ 192 004a 5A00     		lsl	r2, r3, #1
+ 193 004c 124B     		ldr	r3, .L7+8
+ 194 004e D318     		add	r3, r2, r3
+ 195 0050 FA1D     		add	r2, r7, #7
+ 196 0052 1278     		ldrb	r2, [r2]
+ 197 0054 101C     		mov	r0, r2
+ 198 0056 191C     		mov	r1, r3
+ 199 0058 FFF7FEFF 		bl	inputSoilHum
+  76:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
+ 200              		.loc 1 76 0 discriminator 2
+ 201 005c FB1D     		add	r3, r7, #7
+ 202 005e 1A78     		ldrb	r2, [r3]
+ 203 0060 FB1D     		add	r3, r7, #7
+ 204 0062 0132     		add	r2, r2, #1
+ 205 0064 1A70     		strb	r2, [r3]
+ 206              	.L5:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 6
 
 
-  76:.\PSoC_Master_Class.c ****         }
-  77:.\PSoC_Master_Class.c ****     }
-  78:.\PSoC_Master_Class.c ****     getLight(&tempLight);
- 209              		.loc 1 78 0 is_stmt 1
- 210 006e 0B4B     		ldr	r3, .L7+12
- 211 0070 181C     		mov	r0, r3
- 212 0072 FFF7FEFF 		bl	getLight
-  79:.\PSoC_Master_Class.c ****     inputLight(&tempLight);
- 213              		.loc 1 79 0
- 214 0076 094B     		ldr	r3, .L7+12
- 215 0078 181C     		mov	r0, r3
- 216 007a FFF7FEFF 		bl	inputLight
-  80:.\PSoC_Master_Class.c ****     
-  81:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
- 217              		.loc 1 81 0
- 218 007e 0120     		mov	r0, #1
- 219 0080 FFF7FEFF 		bl	RedLED_Write
-  82:.\PSoC_Master_Class.c ****     Timer_ClearInterrupt(Timer_INTR_MASK_TC);   // Clear interrupt
- 220              		.loc 1 82 0
- 221 0084 0120     		mov	r0, #1
- 222 0086 FFF7FEFF 		bl	Timer_ClearInterrupt
-  83:.\PSoC_Master_Class.c **** }
- 223              		.loc 1 83 0
- 224 008a BD46     		mov	sp, r7
- 225 008c 02B0     		add	sp, sp, #8
- 226              		@ sp needed
- 227 008e 80BD     		pop	{r7, pc}
- 228              	.L8:
- 229              		.align	2
- 230              	.L7:
- 231 0090 00000000 		.word	tempTemp
- 232 0094 00000000 		.word	tempHum
- 233 0098 00000000 		.word	tempSoilHum
- 234 009c 00000000 		.word	tempLight
- 235              		.cfi_endproc
- 236              	.LFE34:
- 237              		.size	timer_ISR, .-timer_ISR
- 238              		.section	.text.UART_ISR,"ax",%progbits
- 239              		.align	2
- 240              		.global	UART_ISR
- 241              		.code	16
- 242              		.thumb_func
- 243              		.type	UART_ISR, %function
- 244              	UART_ISR:
- 245              	.LFB35:
-  84:.\PSoC_Master_Class.c **** 
-  85:.\PSoC_Master_Class.c **** // UART ISR
-  86:.\PSoC_Master_Class.c **** CY_ISR(UART_ISR){
- 246              		.loc 1 86 0
- 247              		.cfi_startproc
- 248 0000 90B5     		push	{r4, r7, lr}
- 249              		.cfi_def_cfa_offset 12
- 250              		.cfi_offset 4, -12
- 251              		.cfi_offset 7, -8
- 252              		.cfi_offset 14, -4
- 253 0002 83B0     		sub	sp, sp, #12
- 254              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 7
-
-
- 255 0004 00AF     		add	r7, sp, #0
- 256              		.cfi_def_cfa_register 7
+  76:.\PSoC_Master_Class.c ****         for(i = 0; i<6 ; i++){
+ 207              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 208 0066 FB1D     		add	r3, r7, #7
+ 209 0068 1B78     		ldrb	r3, [r3]
+ 210 006a 052B     		cmp	r3, #5
+ 211 006c E0D9     		bls	.L6
+ 212              	.LBE2:
+  79:.\PSoC_Master_Class.c ****         }
+  80:.\PSoC_Master_Class.c ****     }
+  81:.\PSoC_Master_Class.c ****     getLight(&tempLight);
+ 213              		.loc 1 81 0 is_stmt 1
+ 214 006e 0B4B     		ldr	r3, .L7+12
+ 215 0070 181C     		mov	r0, r3
+ 216 0072 FFF7FEFF 		bl	getLight
+  82:.\PSoC_Master_Class.c ****     inputLight(&tempLight);
+ 217              		.loc 1 82 0
+ 218 0076 094B     		ldr	r3, .L7+12
+ 219 0078 181C     		mov	r0, r3
+ 220 007a FFF7FEFF 		bl	inputLight
+  83:.\PSoC_Master_Class.c ****     
+  84:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
+ 221              		.loc 1 84 0
+ 222 007e 0120     		mov	r0, #1
+ 223 0080 FFF7FEFF 		bl	RedLED_Write
+  85:.\PSoC_Master_Class.c ****     Timer_ClearInterrupt(Timer_INTR_MASK_TC);   // Clear interrupt
+ 224              		.loc 1 85 0
+ 225 0084 0120     		mov	r0, #1
+ 226 0086 FFF7FEFF 		bl	Timer_ClearInterrupt
+  86:.\PSoC_Master_Class.c **** }
+ 227              		.loc 1 86 0
+ 228 008a BD46     		mov	sp, r7
+ 229 008c 02B0     		add	sp, sp, #8
+ 230              		@ sp needed
+ 231 008e 80BD     		pop	{r7, pc}
+ 232              	.L8:
+ 233              		.align	2
+ 234              	.L7:
+ 235 0090 00000000 		.word	tempTemp
+ 236 0094 00000000 		.word	tempHum
+ 237 0098 00000000 		.word	tempSoilHum
+ 238 009c 00000000 		.word	tempLight
+ 239              		.cfi_endproc
+ 240              	.LFE34:
+ 241              		.size	timer_ISR, .-timer_ISR
+ 242              		.section	.text.UART_ISR,"ax",%progbits
+ 243              		.align	2
+ 244              		.global	UART_ISR
+ 245              		.code	16
+ 246              		.thumb_func
+ 247              		.type	UART_ISR, %function
+ 248              	UART_ISR:
+ 249              	.LFB35:
   87:.\PSoC_Master_Class.c **** 
-  88:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_ON);       // Turn on blue LED
- 257              		.loc 1 88 0
- 258 0006 0020     		mov	r0, #0
- 259 0008 FFF7FEFF 		bl	BlueLED_Write
-  89:.\PSoC_Master_Class.c **** 
-  90:.\PSoC_Master_Class.c ****     uint8 buff;
+  88:.\PSoC_Master_Class.c **** // UART ISR
+  89:.\PSoC_Master_Class.c **** CY_ISR(UART_ISR){
+ 250              		.loc 1 89 0
+ 251              		.cfi_startproc
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 7
+
+
+ 252 0000 80B5     		push	{r7, lr}
+ 253              		.cfi_def_cfa_offset 8
+ 254              		.cfi_offset 7, -8
+ 255              		.cfi_offset 14, -4
+ 256 0002 00AF     		add	r7, sp, #0
+ 257              		.cfi_def_cfa_register 7
+  90:.\PSoC_Master_Class.c ****     newByte = 1;
+ 258              		.loc 1 90 0
+ 259 0004 074B     		ldr	r3, .L10
+ 260 0006 0122     		mov	r2, #1
+ 261 0008 1A70     		strb	r2, [r3]
   91:.\PSoC_Master_Class.c ****     buff = dkRequest();
- 260              		.loc 1 91 0
- 261 000c FC1D     		add	r4, r7, #7
- 262 000e FFF7FEFF 		bl	dkRequest
- 263 0012 031C     		mov	r3, r0
- 264 0014 2370     		strb	r3, [r4]
-  92:.\PSoC_Master_Class.c ****     
-  93:.\PSoC_Master_Class.c ****     if(theState == IDLE){
- 265              		.loc 1 93 0
- 266 0016 5E4B     		ldr	r3, .L33
- 267 0018 1B78     		ldrb	r3, [r3]
- 268 001a DBB2     		uxtb	r3, r3
- 269 001c 002B     		cmp	r3, #0
- 270 001e 3ED1     		bne	.L10
-  94:.\PSoC_Master_Class.c ****         switch (buff){
- 271              		.loc 1 94 0
- 272 0020 FB1D     		add	r3, r7, #7
- 273 0022 1B78     		ldrb	r3, [r3]
- 274 0024 413B     		sub	r3, r3, #65
- 275 0026 162B     		cmp	r3, #22
- 276 0028 37D8     		bhi	.L32
- 277 002a 9A00     		lsl	r2, r3, #2
- 278 002c 594B     		ldr	r3, .L33+4
- 279 002e D318     		add	r3, r2, r3
- 280 0030 1B68     		ldr	r3, [r3]
- 281 0032 9F46     		mov	pc, r3
- 282              		.section	.rodata
- 283              		.align	2
- 284              	.L13:
- 285 0000 50000000 		.word	.L12
- 286 0004 9A000000 		.word	.L32
- 287 0008 9A000000 		.word	.L32
- 288 000c 9A000000 		.word	.L32
- 289 0010 9A000000 		.word	.L32
- 290 0014 92000000 		.word	.L14
- 291 0018 9A000000 		.word	.L32
- 292 001c 5E000000 		.word	.L15
- 293 0020 9A000000 		.word	.L32
- 294 0024 9A000000 		.word	.L32
- 295 0028 70000000 		.word	.L16
- 296 002c 42000000 		.word	.L17
- 297 0030 9A000000 		.word	.L32
- 298 0034 9A000000 		.word	.L32
- 299 0038 9A000000 		.word	.L32
- 300 003c 9A000000 		.word	.L32
- 301 0040 9A000000 		.word	.L32
- 302 0044 9A000000 		.word	.L32
- 303 0048 9A000000 		.word	.L32
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 8
+ 262              		.loc 1 91 0
+ 263 000a FFF7FEFF 		bl	dkRequest
+ 264 000e 031C     		mov	r3, r0
+ 265 0010 1A1C     		mov	r2, r3
+ 266 0012 054B     		ldr	r3, .L10+4
+ 267 0014 1A70     		strb	r2, [r3]
+  92:.\PSoC_Master_Class.c ****     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
+ 268              		.loc 1 92 0
+ 269 0016 054B     		ldr	r3, .L10+8
+ 270 0018 054A     		ldr	r2, .L10+12
+ 271 001a 1268     		ldr	r2, [r2]
+ 272 001c 1A60     		str	r2, [r3]
+  93:.\PSoC_Master_Class.c **** }
+ 273              		.loc 1 93 0
+ 274 001e BD46     		mov	sp, r7
+ 275              		@ sp needed
+ 276 0020 80BD     		pop	{r7, pc}
+ 277              	.L11:
+ 278 0022 C046     		.align	2
+ 279              	.L10:
+ 280 0024 00000000 		.word	newByte
+ 281 0028 00000000 		.word	buff
+ 282 002c C00F0740 		.word	1074204608
+ 283 0030 CC0F0740 		.word	1074204620
+ 284              		.cfi_endproc
+ 285              	.LFE35:
+ 286              		.size	UART_ISR, .-UART_ISR
+ 287              		.section	.text.intHandler,"ax",%progbits
+ 288              		.align	2
+ 289              		.global	intHandler
+ 290              		.code	16
+ 291              		.thumb_func
+ 292              		.type	intHandler, %function
+ 293              	intHandler:
+ 294              	.LFB36:
+  94:.\PSoC_Master_Class.c **** 
+  95:.\PSoC_Master_Class.c **** void intHandler(){
+ 295              		.loc 1 95 0
+ 296              		.cfi_startproc
+ 297 0000 80B5     		push	{r7, lr}
+ 298              		.cfi_def_cfa_offset 8
+ 299              		.cfi_offset 7, -8
+ 300              		.cfi_offset 14, -4
+ 301 0002 00AF     		add	r7, sp, #0
+ 302              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 8
 
 
- 304 004c 34000000 		.word	.L18
- 305 0050 9A000000 		.word	.L32
- 306 0054 8A000000 		.word	.L19
- 307 0058 82000000 		.word	.L20
- 308              		.section	.text.UART_ISR
- 309              	.L18:
-  95:.\PSoC_Master_Class.c ****             case 'T':{ //RequestTemp
-  96:.\PSoC_Master_Class.c ****                 respondTemp(getTemp_DSP());		
- 310              		.loc 1 96 0
- 311 0034 FFF7FEFF 		bl	getTemp_DSP
- 312 0038 031C     		mov	r3, r0
- 313 003a 181C     		mov	r0, r3
- 314 003c FFF7FEFF 		bl	respondTemp
-  97:.\PSoC_Master_Class.c ****                 break;
- 315              		.loc 1 97 0
- 316 0040 2CE0     		b	.L21
- 317              	.L17:
-  98:.\PSoC_Master_Class.c ****             }
-  99:.\PSoC_Master_Class.c ****             case 'L':{ //RequestLight
- 100:.\PSoC_Master_Class.c ****                 respondLight(getLight_DSP());
- 318              		.loc 1 100 0
- 319 0042 FFF7FEFF 		bl	getLight_DSP
- 320 0046 031C     		mov	r3, r0
- 321 0048 181C     		mov	r0, r3
- 322 004a FFF7FEFF 		bl	respondLight
- 101:.\PSoC_Master_Class.c ****                 break;
+  96:.\PSoC_Master_Class.c ****     if (newByte){
+ 303              		.loc 1 96 0
+ 304 0004 624B     		ldr	r3, .L37
+ 305 0006 1B78     		ldrb	r3, [r3]
+ 306 0008 002B     		cmp	r3, #0
+ 307 000a 00D1     		bne	.LCB218
+ 308 000c BEE0     		b	.L12	@long jump
+ 309              	.LCB218:
+  97:.\PSoC_Master_Class.c ****         newByte = 0;
+ 310              		.loc 1 97 0
+ 311 000e 604B     		ldr	r3, .L37
+ 312 0010 0022     		mov	r2, #0
+ 313 0012 1A70     		strb	r2, [r3]
+  98:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_ON);       // Turn on blue LED
+ 314              		.loc 1 98 0
+ 315 0014 0020     		mov	r0, #0
+ 316 0016 FFF7FEFF 		bl	BlueLED_Write
+  99:.\PSoC_Master_Class.c ****         
+ 100:.\PSoC_Master_Class.c ****         if(theState == IDLE){
+ 317              		.loc 1 100 0
+ 318 001a 5E4B     		ldr	r3, .L37+4
+ 319 001c 1B78     		ldrb	r3, [r3]
+ 320 001e DBB2     		uxtb	r3, r3
+ 321 0020 002B     		cmp	r3, #0
+ 322 0022 3ED1     		bne	.L14
+ 101:.\PSoC_Master_Class.c ****             switch (buff){
  323              		.loc 1 101 0
- 324 004e 25E0     		b	.L21
- 325              	.L12:
- 102:.\PSoC_Master_Class.c ****             }
- 103:.\PSoC_Master_Class.c ****             case 'A':{ //RequestAirhum
- 104:.\PSoC_Master_Class.c ****                 respondHum(getHum_DSP());
- 326              		.loc 1 104 0
- 327 0050 FFF7FEFF 		bl	getHum_DSP
- 328 0054 031C     		mov	r3, r0
- 329 0056 181C     		mov	r0, r3
- 330 0058 FFF7FEFF 		bl	respondHum
- 105:.\PSoC_Master_Class.c ****                 break;
- 331              		.loc 1 105 0
- 332 005c 1EE0     		b	.L21
- 333              	.L15:
- 106:.\PSoC_Master_Class.c ****             }        
- 107:.\PSoC_Master_Class.c ****             case 'H':{ //TurnHeatOn
- 108:.\PSoC_Master_Class.c ****                 // 0x7 is the maximum value.
- 109:.\PSoC_Master_Class.c ****                 respondHeat(adjustHeat(0x7), 'H');
- 334              		.loc 1 109 0
- 335 005e 0720     		mov	r0, #7
- 336 0060 FFF7FEFF 		bl	adjustHeat
- 337 0064 031C     		mov	r3, r0
- 338 0066 181C     		mov	r0, r3
- 339 0068 4821     		mov	r1, #72
- 340 006a FFF7FEFF 		bl	respondHeat
- 110:.\PSoC_Master_Class.c ****                 break;
- 341              		.loc 1 110 0
- 342 006e 15E0     		b	.L21
- 343              	.L16:
- 111:.\PSoC_Master_Class.c ****             }
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 9
+ 324 0024 5C4B     		ldr	r3, .L37+8
+ 325 0026 1B78     		ldrb	r3, [r3]
+ 326 0028 413B     		sub	r3, r3, #65
+ 327 002a 162B     		cmp	r3, #22
+ 328 002c 37D8     		bhi	.L36
+ 329 002e 9A00     		lsl	r2, r3, #2
+ 330 0030 5A4B     		ldr	r3, .L37+12
+ 331 0032 D318     		add	r3, r2, r3
+ 332 0034 1B68     		ldr	r3, [r3]
+ 333 0036 9F46     		mov	pc, r3
+ 334              		.section	.rodata
+ 335              		.align	2
+ 336              	.L17:
+ 337 0000 54000000 		.word	.L16
+ 338 0004 9E000000 		.word	.L36
+ 339 0008 9E000000 		.word	.L36
+ 340 000c 9E000000 		.word	.L36
+ 341 0010 9E000000 		.word	.L36
+ 342 0014 96000000 		.word	.L18
+ 343 0018 9E000000 		.word	.L36
+ 344 001c 62000000 		.word	.L19
+ 345 0020 9E000000 		.word	.L36
+ 346 0024 9E000000 		.word	.L36
+ 347 0028 74000000 		.word	.L20
+ 348 002c 46000000 		.word	.L21
+ 349 0030 9E000000 		.word	.L36
+ 350 0034 9E000000 		.word	.L36
+ 351 0038 9E000000 		.word	.L36
+ 352 003c 9E000000 		.word	.L36
+ 353 0040 9E000000 		.word	.L36
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 9
 
 
- 112:.\PSoC_Master_Class.c ****             case 'K':{ //TurnHeatOff
- 113:.\PSoC_Master_Class.c ****                 // 0x0 is the minimum value.
- 114:.\PSoC_Master_Class.c ****                 respondHeat(adjustHeat(0x0), 'K');
- 344              		.loc 1 114 0
- 345 0070 0020     		mov	r0, #0
- 346 0072 FFF7FEFF 		bl	adjustHeat
- 347 0076 031C     		mov	r3, r0
- 348 0078 181C     		mov	r0, r3
- 349 007a 4B21     		mov	r1, #75
- 350 007c FFF7FEFF 		bl	respondHeat
- 115:.\PSoC_Master_Class.c ****                 break;
- 351              		.loc 1 115 0
- 352 0080 0CE0     		b	.L21
- 353              	.L20:
- 116:.\PSoC_Master_Class.c ****             }
- 117:.\PSoC_Master_Class.c ****             case 'W':{ //AdjustWindow
- 118:.\PSoC_Master_Class.c ****                 theState = ADJW;
- 354              		.loc 1 118 0
- 355 0082 434B     		ldr	r3, .L33
- 356 0084 0122     		mov	r2, #1
- 357 0086 1A70     		strb	r2, [r3]
- 119:.\PSoC_Master_Class.c ****                 break;
- 358              		.loc 1 119 0
- 359 0088 08E0     		b	.L21
- 360              	.L19:
- 120:.\PSoC_Master_Class.c ****             }
- 121:.\PSoC_Master_Class.c ****             case 'V':{ //Ventilation
- 122:.\PSoC_Master_Class.c ****                 theState = ADJV;
- 361              		.loc 1 122 0
- 362 008a 414B     		ldr	r3, .L33
- 363 008c 0322     		mov	r2, #3
- 364 008e 1A70     		strb	r2, [r3]
- 123:.\PSoC_Master_Class.c ****                 break;
- 365              		.loc 1 123 0
- 366 0090 04E0     		b	.L21
- 367              	.L14:
- 124:.\PSoC_Master_Class.c ****             }
- 125:.\PSoC_Master_Class.c ****             case 'F':{ //Watering
- 126:.\PSoC_Master_Class.c ****                 theState = ADJI;
- 368              		.loc 1 126 0
- 369 0092 3F4B     		ldr	r3, .L33
- 370 0094 0422     		mov	r2, #4
- 371 0096 1A70     		strb	r2, [r3]
- 127:.\PSoC_Master_Class.c ****                 break;
- 372              		.loc 1 127 0
- 373 0098 00E0     		b	.L21
- 374              	.L32:
- 128:.\PSoC_Master_Class.c ****             }
- 129:.\PSoC_Master_Class.c ****             /*case 'S':{ //
- 130:.\PSoC_Master_Class.c ****                 respondSoilHum(); //TODO: Add stuff here
- 131:.\PSoC_Master_Class.c ****                 break;
- 132:.\PSoC_Master_Class.c ****             }*/
- 133:.\PSoC_Master_Class.c ****             default:{
- 134:.\PSoC_Master_Class.c ****                 // Do nothing - let the DevKit8000 timeout
- 135:.\PSoC_Master_Class.c ****                 break;
- 375              		.loc 1 135 0
- 376 009a C046     		mov	r8, r8
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 10
+ 354 0044 9E000000 		.word	.L36
+ 355 0048 9E000000 		.word	.L36
+ 356 004c 38000000 		.word	.L22
+ 357 0050 9E000000 		.word	.L36
+ 358 0054 8E000000 		.word	.L23
+ 359 0058 86000000 		.word	.L24
+ 360              		.section	.text.intHandler
+ 361              	.L22:
+ 102:.\PSoC_Master_Class.c ****                 case 'T':{ //RequestTemp
+ 103:.\PSoC_Master_Class.c ****                     respondTemp(getTemp_DSP());		
+ 362              		.loc 1 103 0
+ 363 0038 FFF7FEFF 		bl	getTemp_DSP
+ 364 003c 031C     		mov	r3, r0
+ 365 003e 181C     		mov	r0, r3
+ 366 0040 FFF7FEFF 		bl	respondTemp
+ 104:.\PSoC_Master_Class.c ****                     break;
+ 367              		.loc 1 104 0
+ 368 0044 2CE0     		b	.L25
+ 369              	.L21:
+ 105:.\PSoC_Master_Class.c ****                 }
+ 106:.\PSoC_Master_Class.c ****                 case 'L':{ //RequestLight
+ 107:.\PSoC_Master_Class.c ****                     respondLight(getLight_DSP());
+ 370              		.loc 1 107 0
+ 371 0046 FFF7FEFF 		bl	getLight_DSP
+ 372 004a 031C     		mov	r3, r0
+ 373 004c 181C     		mov	r0, r3
+ 374 004e FFF7FEFF 		bl	respondLight
+ 108:.\PSoC_Master_Class.c ****                     break;
+ 375              		.loc 1 108 0
+ 376 0052 25E0     		b	.L25
+ 377              	.L16:
+ 109:.\PSoC_Master_Class.c ****                 }
+ 110:.\PSoC_Master_Class.c ****                 case 'A':{ //RequestAirhum
+ 111:.\PSoC_Master_Class.c ****                     respondHum(getHum_DSP());
+ 378              		.loc 1 111 0
+ 379 0054 FFF7FEFF 		bl	getHum_DSP
+ 380 0058 031C     		mov	r3, r0
+ 381 005a 181C     		mov	r0, r3
+ 382 005c FFF7FEFF 		bl	respondHum
+ 112:.\PSoC_Master_Class.c ****                     break;
+ 383              		.loc 1 112 0
+ 384 0060 1EE0     		b	.L25
+ 385              	.L19:
+ 113:.\PSoC_Master_Class.c ****                 }        
+ 114:.\PSoC_Master_Class.c ****                 case 'H':{ //TurnHeatOn
+ 115:.\PSoC_Master_Class.c ****                     // 0x7 is the maximum value.
+ 116:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x7), 'H');
+ 386              		.loc 1 116 0
+ 387 0062 0720     		mov	r0, #7
+ 388 0064 FFF7FEFF 		bl	adjustHeat
+ 389 0068 031C     		mov	r3, r0
+ 390 006a 181C     		mov	r0, r3
+ 391 006c 4821     		mov	r1, #72
+ 392 006e FFF7FEFF 		bl	respondHeat
+ 117:.\PSoC_Master_Class.c ****                     break;
+ 393              		.loc 1 117 0
+ 394 0072 15E0     		b	.L25
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 10
 
 
- 377              	.L21:
- 378 009c 6DE0     		b	.L22
- 379              	.L10:
- 136:.\PSoC_Master_Class.c ****             }
- 137:.\PSoC_Master_Class.c ****         }
- 138:.\PSoC_Master_Class.c ****     }
- 139:.\PSoC_Master_Class.c ****     else if(theState == ADJW){
- 380              		.loc 1 139 0
- 381 009e 3C4B     		ldr	r3, .L33
- 382 00a0 1B78     		ldrb	r3, [r3]
- 383 00a2 DBB2     		uxtb	r3, r3
- 384 00a4 012B     		cmp	r3, #1
- 385 00a6 16D1     		bne	.L23
- 140:.\PSoC_Master_Class.c ****         if(buff-CONVERT_TO_ASCII == 1){
- 386              		.loc 1 140 0
- 387 00a8 FB1D     		add	r3, r7, #7
- 388 00aa 1B78     		ldrb	r3, [r3]
- 389 00ac 312B     		cmp	r3, #49
- 390 00ae 07D1     		bne	.L24
- 141:.\PSoC_Master_Class.c ****             respondWin(adjustWindow(0xFF));
- 391              		.loc 1 141 0
- 392 00b0 FF20     		mov	r0, #255
- 393 00b2 FFF7FEFF 		bl	adjustWindow
- 394 00b6 031C     		mov	r3, r0
- 395 00b8 181C     		mov	r0, r3
- 396 00ba FFF7FEFF 		bl	respondWin
- 397 00be 06E0     		b	.L25
- 398              	.L24:
- 142:.\PSoC_Master_Class.c ****         }
- 143:.\PSoC_Master_Class.c ****         else{
- 144:.\PSoC_Master_Class.c ****             respondWin(adjustWindow(0x00));
- 399              		.loc 1 144 0
- 400 00c0 0020     		mov	r0, #0
- 401 00c2 FFF7FEFF 		bl	adjustWindow
- 402 00c6 031C     		mov	r3, r0
- 403 00c8 181C     		mov	r0, r3
- 404 00ca FFF7FEFF 		bl	respondWin
- 405              	.L25:
+ 395              	.L20:
+ 118:.\PSoC_Master_Class.c ****                 }
+ 119:.\PSoC_Master_Class.c ****                 case 'K':{ //TurnHeatOff
+ 120:.\PSoC_Master_Class.c ****                     // 0x0 is the minimum value.
+ 121:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x0), 'K');
+ 396              		.loc 1 121 0
+ 397 0074 0020     		mov	r0, #0
+ 398 0076 FFF7FEFF 		bl	adjustHeat
+ 399 007a 031C     		mov	r3, r0
+ 400 007c 181C     		mov	r0, r3
+ 401 007e 4B21     		mov	r1, #75
+ 402 0080 FFF7FEFF 		bl	respondHeat
+ 122:.\PSoC_Master_Class.c ****                     break;
+ 403              		.loc 1 122 0
+ 404 0084 0CE0     		b	.L25
+ 405              	.L24:
+ 123:.\PSoC_Master_Class.c ****                 }
+ 124:.\PSoC_Master_Class.c ****                 case 'W':{ //AdjustWindow
+ 125:.\PSoC_Master_Class.c ****                     theState = ADJW;
+ 406              		.loc 1 125 0
+ 407 0086 434B     		ldr	r3, .L37+4
+ 408 0088 0122     		mov	r2, #1
+ 409 008a 1A70     		strb	r2, [r3]
+ 126:.\PSoC_Master_Class.c ****                     break;
+ 410              		.loc 1 126 0
+ 411 008c 08E0     		b	.L25
+ 412              	.L23:
+ 127:.\PSoC_Master_Class.c ****                 }
+ 128:.\PSoC_Master_Class.c ****                 case 'V':{ //Ventilation
+ 129:.\PSoC_Master_Class.c ****                     theState = ADJV;
+ 413              		.loc 1 129 0
+ 414 008e 414B     		ldr	r3, .L37+4
+ 415 0090 0322     		mov	r2, #3
+ 416 0092 1A70     		strb	r2, [r3]
+ 130:.\PSoC_Master_Class.c ****                     break;
+ 417              		.loc 1 130 0
+ 418 0094 04E0     		b	.L25
+ 419              	.L18:
+ 131:.\PSoC_Master_Class.c ****                 }
+ 132:.\PSoC_Master_Class.c ****                 case 'F':{ //Watering
+ 133:.\PSoC_Master_Class.c ****                     theState = ADJI;
+ 420              		.loc 1 133 0
+ 421 0096 3F4B     		ldr	r3, .L37+4
+ 422 0098 0422     		mov	r2, #4
+ 423 009a 1A70     		strb	r2, [r3]
+ 134:.\PSoC_Master_Class.c ****                     break;
+ 424              		.loc 1 134 0
+ 425 009c 00E0     		b	.L25
+ 426              	.L36:
+ 135:.\PSoC_Master_Class.c ****                 }
+ 136:.\PSoC_Master_Class.c ****                 /*case 'S':{ //
+ 137:.\PSoC_Master_Class.c ****                     respondSoilHum(); //TODO: Add stuff here
+ 138:.\PSoC_Master_Class.c ****                     break;
+ 139:.\PSoC_Master_Class.c ****                 }*/
+ 140:.\PSoC_Master_Class.c ****                 default:{
+ 141:.\PSoC_Master_Class.c ****                     // Do nothing - let the DevKit8000 timeout
+ 142:.\PSoC_Master_Class.c ****                     break;
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 11
+
+
+ 427              		.loc 1 142 0
+ 428 009e C046     		mov	r8, r8
+ 429              	.L25:
+ 430 00a0 6EE0     		b	.L26
+ 431              	.L14:
+ 143:.\PSoC_Master_Class.c ****                 }
+ 144:.\PSoC_Master_Class.c ****             }
  145:.\PSoC_Master_Class.c ****         }
- 146:.\PSoC_Master_Class.c ****         theState = IDLE;
- 406              		.loc 1 146 0 discriminator 1
- 407 00ce 304B     		ldr	r3, .L33
- 408 00d0 0022     		mov	r2, #0
- 409 00d2 1A70     		strb	r2, [r3]
- 410 00d4 51E0     		b	.L22
- 411              	.L23:
- 147:.\PSoC_Master_Class.c ****     }
- 148:.\PSoC_Master_Class.c ****     else if(theState == ADJV){
- 412              		.loc 1 148 0
- 413 00d6 2E4B     		ldr	r3, .L33
- 414 00d8 1B78     		ldrb	r3, [r3]
- 415 00da DBB2     		uxtb	r3, r3
- 416 00dc 032B     		cmp	r3, #3
- 417 00de 16D1     		bne	.L26
- 149:.\PSoC_Master_Class.c ****         if(buff-CONVERT_TO_ASCII == 1){
- 418              		.loc 1 149 0
- 419 00e0 FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 11
-
-
- 420 00e2 1B78     		ldrb	r3, [r3]
- 421 00e4 312B     		cmp	r3, #49
- 422 00e6 07D1     		bne	.L27
- 150:.\PSoC_Master_Class.c ****             respondVent(adjustVentilation(0xFF));
- 423              		.loc 1 150 0
- 424 00e8 FF20     		mov	r0, #255
- 425 00ea FFF7FEFF 		bl	adjustVentilation
- 426 00ee 031C     		mov	r3, r0
- 427 00f0 181C     		mov	r0, r3
- 428 00f2 FFF7FEFF 		bl	respondVent
- 429 00f6 06E0     		b	.L28
- 430              	.L27:
- 151:.\PSoC_Master_Class.c ****         }
- 152:.\PSoC_Master_Class.c ****         else{
- 153:.\PSoC_Master_Class.c ****             respondVent(adjustVentilation(0x00));
- 431              		.loc 1 153 0
- 432 00f8 0020     		mov	r0, #0
- 433 00fa FFF7FEFF 		bl	adjustVentilation
- 434 00fe 031C     		mov	r3, r0
- 435 0100 181C     		mov	r0, r3
- 436 0102 FFF7FEFF 		bl	respondVent
- 437              	.L28:
+ 146:.\PSoC_Master_Class.c ****         else if(theState == ADJW){
+ 432              		.loc 1 146 0
+ 433 00a2 3C4B     		ldr	r3, .L37+4
+ 434 00a4 1B78     		ldrb	r3, [r3]
+ 435 00a6 DBB2     		uxtb	r3, r3
+ 436 00a8 012B     		cmp	r3, #1
+ 437 00aa 16D1     		bne	.L27
+ 147:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
+ 438              		.loc 1 147 0
+ 439 00ac 3A4B     		ldr	r3, .L37+8
+ 440 00ae 1B78     		ldrb	r3, [r3]
+ 441 00b0 312B     		cmp	r3, #49
+ 442 00b2 07D1     		bne	.L28
+ 148:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0xFF));
+ 443              		.loc 1 148 0
+ 444 00b4 FF20     		mov	r0, #255
+ 445 00b6 FFF7FEFF 		bl	adjustWindow
+ 446 00ba 031C     		mov	r3, r0
+ 447 00bc 181C     		mov	r0, r3
+ 448 00be FFF7FEFF 		bl	respondWin
+ 449 00c2 06E0     		b	.L29
+ 450              	.L28:
+ 149:.\PSoC_Master_Class.c ****             }
+ 150:.\PSoC_Master_Class.c ****             else{
+ 151:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0x00));
+ 451              		.loc 1 151 0
+ 452 00c4 0020     		mov	r0, #0
+ 453 00c6 FFF7FEFF 		bl	adjustWindow
+ 454 00ca 031C     		mov	r3, r0
+ 455 00cc 181C     		mov	r0, r3
+ 456 00ce FFF7FEFF 		bl	respondWin
+ 457              	.L29:
+ 152:.\PSoC_Master_Class.c ****             }
+ 153:.\PSoC_Master_Class.c ****             theState = IDLE;
+ 458              		.loc 1 153 0 discriminator 1
+ 459 00d2 304B     		ldr	r3, .L37+4
+ 460 00d4 0022     		mov	r2, #0
+ 461 00d6 1A70     		strb	r2, [r3]
+ 462 00d8 52E0     		b	.L26
+ 463              	.L27:
  154:.\PSoC_Master_Class.c ****         }
- 155:.\PSoC_Master_Class.c ****         theState = IDLE;
- 438              		.loc 1 155 0 discriminator 2
- 439 0106 224B     		ldr	r3, .L33
- 440 0108 0022     		mov	r2, #0
- 441 010a 1A70     		strb	r2, [r3]
- 442 010c 35E0     		b	.L22
- 443              	.L26:
- 156:.\PSoC_Master_Class.c ****     }
- 157:.\PSoC_Master_Class.c ****     else if(theState == ADJI){
- 444              		.loc 1 157 0
- 445 010e 204B     		ldr	r3, .L33
- 446 0110 1B78     		ldrb	r3, [r3]
- 447 0112 DBB2     		uxtb	r3, r3
- 448 0114 042B     		cmp	r3, #4
- 449 0116 30D1     		bne	.L22
- 158:.\PSoC_Master_Class.c ****         if (!irrigationIndex){
- 450              		.loc 1 158 0
- 451 0118 1F4B     		ldr	r3, .L33+8
- 452 011a 1B78     		ldrb	r3, [r3]
- 453 011c DBB2     		uxtb	r3, r3
- 454 011e 002B     		cmp	r3, #0
- 455 0120 04D1     		bne	.L29
- 159:.\PSoC_Master_Class.c ****             irrigationIndex = buff;
- 456              		.loc 1 159 0
- 457 0122 FB1D     		add	r3, r7, #7
- 458 0124 1A78     		ldrb	r2, [r3]
- 459 0126 1C4B     		ldr	r3, .L33+8
- 460 0128 1A70     		strb	r2, [r3]
- 461 012a 26E0     		b	.L22
- 462              	.L29:
- 160:.\PSoC_Master_Class.c ****         }
- 161:.\PSoC_Master_Class.c ****         else{
- 162:.\PSoC_Master_Class.c ****             if (buff-CONVERT_TO_ASCII == 1){
- 463              		.loc 1 162 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 12
+ 155:.\PSoC_Master_Class.c ****         else if(theState == ADJV){
+ 464              		.loc 1 155 0
+ 465 00da 2E4B     		ldr	r3, .L37+4
+ 466 00dc 1B78     		ldrb	r3, [r3]
+ 467 00de DBB2     		uxtb	r3, r3
+ 468 00e0 032B     		cmp	r3, #3
+ 469 00e2 16D1     		bne	.L30
+ 156:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 12
 
 
- 464 012c FB1D     		add	r3, r7, #7
- 465 012e 1B78     		ldrb	r3, [r3]
- 466 0130 312B     		cmp	r3, #49
- 467 0132 0ED1     		bne	.L30
- 163:.\PSoC_Master_Class.c ****                 respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0xFF));
- 468              		.loc 1 163 0
- 469 0134 184B     		ldr	r3, .L33+8
- 470 0136 1B78     		ldrb	r3, [r3]
- 471 0138 DBB2     		uxtb	r3, r3
- 472 013a DBB2     		uxtb	r3, r3
- 473 013c 313B     		sub	r3, r3, #49
- 474 013e DBB2     		uxtb	r3, r3
- 475 0140 181C     		mov	r0, r3
- 476 0142 FF21     		mov	r1, #255
- 477 0144 FFF7FEFF 		bl	adjustIrrigation
- 478 0148 031C     		mov	r3, r0
- 479 014a 181C     		mov	r0, r3
- 480 014c FFF7FEFF 		bl	respondIrri
- 481 0150 0DE0     		b	.L31
- 482              	.L30:
- 164:.\PSoC_Master_Class.c ****             }
- 165:.\PSoC_Master_Class.c ****             else{
- 166:.\PSoC_Master_Class.c ****                 respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0x00));
- 483              		.loc 1 166 0
- 484 0152 114B     		ldr	r3, .L33+8
- 485 0154 1B78     		ldrb	r3, [r3]
- 486 0156 DBB2     		uxtb	r3, r3
- 487 0158 DBB2     		uxtb	r3, r3
- 488 015a 313B     		sub	r3, r3, #49
- 489 015c DBB2     		uxtb	r3, r3
- 490 015e 181C     		mov	r0, r3
- 491 0160 0021     		mov	r1, #0
- 492 0162 FFF7FEFF 		bl	adjustIrrigation
- 493 0166 031C     		mov	r3, r0
- 494 0168 181C     		mov	r0, r3
- 495 016a FFF7FEFF 		bl	respondIrri
- 496              	.L31:
+ 470              		.loc 1 156 0
+ 471 00e4 2C4B     		ldr	r3, .L37+8
+ 472 00e6 1B78     		ldrb	r3, [r3]
+ 473 00e8 312B     		cmp	r3, #49
+ 474 00ea 07D1     		bne	.L31
+ 157:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0xFF));
+ 475              		.loc 1 157 0
+ 476 00ec FF20     		mov	r0, #255
+ 477 00ee FFF7FEFF 		bl	adjustVentilation
+ 478 00f2 031C     		mov	r3, r0
+ 479 00f4 181C     		mov	r0, r3
+ 480 00f6 FFF7FEFF 		bl	respondVent
+ 481 00fa 06E0     		b	.L32
+ 482              	.L31:
+ 158:.\PSoC_Master_Class.c ****             }
+ 159:.\PSoC_Master_Class.c ****             else{
+ 160:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0x00));
+ 483              		.loc 1 160 0
+ 484 00fc 0020     		mov	r0, #0
+ 485 00fe FFF7FEFF 		bl	adjustVentilation
+ 486 0102 031C     		mov	r3, r0
+ 487 0104 181C     		mov	r0, r3
+ 488 0106 FFF7FEFF 		bl	respondVent
+ 489              	.L32:
+ 161:.\PSoC_Master_Class.c ****             }
+ 162:.\PSoC_Master_Class.c ****             theState = IDLE;
+ 490              		.loc 1 162 0 discriminator 2
+ 491 010a 224B     		ldr	r3, .L37+4
+ 492 010c 0022     		mov	r2, #0
+ 493 010e 1A70     		strb	r2, [r3]
+ 494 0110 36E0     		b	.L26
+ 495              	.L30:
+ 163:.\PSoC_Master_Class.c ****         }
+ 164:.\PSoC_Master_Class.c ****         else if(theState == ADJI){
+ 496              		.loc 1 164 0
+ 497 0112 204B     		ldr	r3, .L37+4
+ 498 0114 1B78     		ldrb	r3, [r3]
+ 499 0116 DBB2     		uxtb	r3, r3
+ 500 0118 042B     		cmp	r3, #4
+ 501 011a 31D1     		bne	.L26
+ 165:.\PSoC_Master_Class.c ****             if (!irrigationIndex){
+ 502              		.loc 1 165 0
+ 503 011c 204B     		ldr	r3, .L37+16
+ 504 011e 1B78     		ldrb	r3, [r3]
+ 505 0120 DBB2     		uxtb	r3, r3
+ 506 0122 002B     		cmp	r3, #0
+ 507 0124 05D1     		bne	.L33
+ 166:.\PSoC_Master_Class.c ****                 irrigationIndex = buff;
+ 508              		.loc 1 166 0
+ 509 0126 1C4B     		ldr	r3, .L37+8
+ 510 0128 1B78     		ldrb	r3, [r3]
+ 511 012a DAB2     		uxtb	r2, r3
+ 512 012c 1C4B     		ldr	r3, .L37+16
+ 513 012e 1A70     		strb	r2, [r3]
+ 514 0130 26E0     		b	.L26
+ 515              	.L33:
  167:.\PSoC_Master_Class.c ****             }
- 168:.\PSoC_Master_Class.c ****             irrigationIndex = 0;
- 497              		.loc 1 168 0
- 498 016e 0A4B     		ldr	r3, .L33+8
- 499 0170 0022     		mov	r2, #0
- 500 0172 1A70     		strb	r2, [r3]
- 169:.\PSoC_Master_Class.c ****             theState = IDLE;
- 501              		.loc 1 169 0
- 502 0174 064B     		ldr	r3, .L33
- 503 0176 0022     		mov	r2, #0
- 504 0178 1A70     		strb	r2, [r3]
- 505              	.L22:
- 170:.\PSoC_Master_Class.c ****         }
- 171:.\PSoC_Master_Class.c ****     }
- 172:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_OFF);         // Turn off blue LED
- 506              		.loc 1 172 0
- 507 017a 0120     		mov	r0, #1
- 508 017c FFF7FEFF 		bl	BlueLED_Write
- 173:.\PSoC_Master_Class.c ****     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
- 509              		.loc 1 173 0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 13
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 13
 
 
- 510 0180 064B     		ldr	r3, .L33+12
- 511 0182 074A     		ldr	r2, .L33+16
- 512 0184 1268     		ldr	r2, [r2]
- 513 0186 1A60     		str	r2, [r3]
- 174:.\PSoC_Master_Class.c **** }
- 514              		.loc 1 174 0
- 515 0188 BD46     		mov	sp, r7
- 516 018a 03B0     		add	sp, sp, #12
- 517              		@ sp needed
- 518 018c 90BD     		pop	{r4, r7, pc}
- 519              	.L34:
- 520 018e C046     		.align	2
- 521              	.L33:
- 522 0190 00000000 		.word	theState
- 523 0194 00000000 		.word	.L13
- 524 0198 00000000 		.word	irrigationIndex
- 525 019c C00F0740 		.word	1074204608
- 526 01a0 CC0F0740 		.word	1074204620
- 527              		.cfi_endproc
- 528              	.LFE35:
- 529              		.size	UART_ISR, .-UART_ISR
- 530              		.text
- 531              	.Letext0:
- 532              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 533              		.file 3 ".\\UART_Class.h"
- 534              		.section	.debug_info,"",%progbits
- 535              	.Ldebug_info0:
- 536 0000 12020000 		.4byte	0x212
- 537 0004 0400     		.2byte	0x4
- 538 0006 00000000 		.4byte	.Ldebug_abbrev0
- 539 000a 04       		.byte	0x4
- 540 000b 01       		.uleb128 0x1
- 541 000c B5000000 		.4byte	.LASF37
- 542 0010 01       		.byte	0x1
- 543 0011 79000000 		.4byte	.LASF38
- 544 0015 10000000 		.4byte	.LASF39
- 545 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 546 001d 00000000 		.4byte	0
- 547 0021 00000000 		.4byte	.Ldebug_line0
- 548 0025 02       		.uleb128 0x2
- 549 0026 01       		.byte	0x1
- 550 0027 06       		.byte	0x6
- 551 0028 39020000 		.4byte	.LASF0
- 552 002c 02       		.uleb128 0x2
- 553 002d 01       		.byte	0x1
- 554 002e 08       		.byte	0x8
- 555 002f 31010000 		.4byte	.LASF1
- 556 0033 02       		.uleb128 0x2
- 557 0034 02       		.byte	0x2
- 558 0035 05       		.byte	0x5
- 559 0036 10020000 		.4byte	.LASF2
- 560 003a 02       		.uleb128 0x2
- 561 003b 02       		.byte	0x2
- 562 003c 07       		.byte	0x7
- 563 003d 8F000000 		.4byte	.LASF3
- 564 0041 02       		.uleb128 0x2
- 565 0042 04       		.byte	0x4
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 14
+ 168:.\PSoC_Master_Class.c ****             else{
+ 169:.\PSoC_Master_Class.c ****                 if (buff-CONVERT_TO_ASCII == 1){
+ 516              		.loc 1 169 0
+ 517 0132 194B     		ldr	r3, .L37+8
+ 518 0134 1B78     		ldrb	r3, [r3]
+ 519 0136 312B     		cmp	r3, #49
+ 520 0138 0ED1     		bne	.L34
+ 170:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0xFF));
+ 521              		.loc 1 170 0
+ 522 013a 194B     		ldr	r3, .L37+16
+ 523 013c 1B78     		ldrb	r3, [r3]
+ 524 013e DBB2     		uxtb	r3, r3
+ 525 0140 DBB2     		uxtb	r3, r3
+ 526 0142 313B     		sub	r3, r3, #49
+ 527 0144 DBB2     		uxtb	r3, r3
+ 528 0146 181C     		mov	r0, r3
+ 529 0148 FF21     		mov	r1, #255
+ 530 014a FFF7FEFF 		bl	adjustIrrigation
+ 531 014e 031C     		mov	r3, r0
+ 532 0150 181C     		mov	r0, r3
+ 533 0152 FFF7FEFF 		bl	respondIrri
+ 534 0156 0DE0     		b	.L35
+ 535              	.L34:
+ 171:.\PSoC_Master_Class.c ****                 }
+ 172:.\PSoC_Master_Class.c ****                 else{
+ 173:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0x00));
+ 536              		.loc 1 173 0
+ 537 0158 114B     		ldr	r3, .L37+16
+ 538 015a 1B78     		ldrb	r3, [r3]
+ 539 015c DBB2     		uxtb	r3, r3
+ 540 015e DBB2     		uxtb	r3, r3
+ 541 0160 313B     		sub	r3, r3, #49
+ 542 0162 DBB2     		uxtb	r3, r3
+ 543 0164 181C     		mov	r0, r3
+ 544 0166 0021     		mov	r1, #0
+ 545 0168 FFF7FEFF 		bl	adjustIrrigation
+ 546 016c 031C     		mov	r3, r0
+ 547 016e 181C     		mov	r0, r3
+ 548 0170 FFF7FEFF 		bl	respondIrri
+ 549              	.L35:
+ 174:.\PSoC_Master_Class.c ****                 }
+ 175:.\PSoC_Master_Class.c ****                 irrigationIndex = 0;
+ 550              		.loc 1 175 0
+ 551 0174 0A4B     		ldr	r3, .L37+16
+ 552 0176 0022     		mov	r2, #0
+ 553 0178 1A70     		strb	r2, [r3]
+ 176:.\PSoC_Master_Class.c ****                 theState = IDLE;
+ 554              		.loc 1 176 0
+ 555 017a 064B     		ldr	r3, .L37+4
+ 556 017c 0022     		mov	r2, #0
+ 557 017e 1A70     		strb	r2, [r3]
+ 558              	.L26:
+ 177:.\PSoC_Master_Class.c ****             }
+ 178:.\PSoC_Master_Class.c ****         }
+ 179:.\PSoC_Master_Class.c ****         buff = 0;
+ 559              		.loc 1 179 0
+ 560 0180 054B     		ldr	r3, .L37+8
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 14
 
 
- 566 0043 05       		.byte	0x5
- 567 0044 30020000 		.4byte	.LASF4
- 568 0048 02       		.uleb128 0x2
- 569 0049 04       		.byte	0x4
- 570 004a 07       		.byte	0x7
- 571 004b 45010000 		.4byte	.LASF5
- 572 004f 02       		.uleb128 0x2
- 573 0050 08       		.byte	0x8
- 574 0051 05       		.byte	0x5
- 575 0052 EC010000 		.4byte	.LASF6
- 576 0056 02       		.uleb128 0x2
- 577 0057 08       		.byte	0x8
- 578 0058 07       		.byte	0x7
- 579 0059 AD010000 		.4byte	.LASF7
- 580 005d 03       		.uleb128 0x3
- 581 005e 04       		.byte	0x4
- 582 005f 05       		.byte	0x5
- 583 0060 696E7400 		.ascii	"int\000"
- 584 0064 02       		.uleb128 0x2
- 585 0065 04       		.byte	0x4
- 586 0066 07       		.byte	0x7
- 587 0067 A0010000 		.4byte	.LASF8
- 588 006b 04       		.uleb128 0x4
- 589 006c 2A020000 		.4byte	.LASF9
- 590 0070 02       		.byte	0x2
- 591 0071 A1       		.byte	0xa1
- 592 0072 2C000000 		.4byte	0x2c
- 593 0076 04       		.uleb128 0x4
- 594 0077 8F010000 		.4byte	.LASF10
- 595 007b 02       		.byte	0x2
- 596 007c A3       		.byte	0xa3
- 597 007d 48000000 		.4byte	0x48
- 598 0081 04       		.uleb128 0x4
- 599 0082 8A010000 		.4byte	.LASF11
- 600 0086 02       		.byte	0x2
- 601 0087 A4       		.byte	0xa4
- 602 0088 25000000 		.4byte	0x25
- 603 008c 04       		.uleb128 0x4
- 604 008d 3F010000 		.4byte	.LASF12
- 605 0091 02       		.byte	0x2
- 606 0092 A5       		.byte	0xa5
- 607 0093 33000000 		.4byte	0x33
- 608 0097 04       		.uleb128 0x4
- 609 0098 DD010000 		.4byte	.LASF13
- 610 009c 02       		.byte	0x2
- 611 009d A6       		.byte	0xa6
- 612 009e 41000000 		.4byte	0x41
- 613 00a2 02       		.uleb128 0x2
- 614 00a3 04       		.byte	0x4
- 615 00a4 04       		.byte	0x4
- 616 00a5 AF000000 		.4byte	.LASF14
- 617 00a9 02       		.uleb128 0x2
- 618 00aa 08       		.byte	0x8
- 619 00ab 04       		.byte	0x4
- 620 00ac 7A010000 		.4byte	.LASF15
- 621 00b0 02       		.uleb128 0x2
- 622 00b1 01       		.byte	0x1
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 15
+ 561 0182 0022     		mov	r2, #0
+ 562 0184 1A70     		strb	r2, [r3]
+ 180:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_OFF);         // Turn off blue LED
+ 563              		.loc 1 180 0
+ 564 0186 0120     		mov	r0, #1
+ 565 0188 FFF7FEFF 		bl	BlueLED_Write
+ 566              	.L12:
+ 181:.\PSoC_Master_Class.c ****     }
+ 182:.\PSoC_Master_Class.c **** }
+ 567              		.loc 1 182 0
+ 568 018c BD46     		mov	sp, r7
+ 569              		@ sp needed
+ 570 018e 80BD     		pop	{r7, pc}
+ 571              	.L38:
+ 572              		.align	2
+ 573              	.L37:
+ 574 0190 00000000 		.word	newByte
+ 575 0194 00000000 		.word	theState
+ 576 0198 00000000 		.word	buff
+ 577 019c 00000000 		.word	.L17
+ 578 01a0 00000000 		.word	irrigationIndex
+ 579              		.cfi_endproc
+ 580              	.LFE36:
+ 581              		.size	intHandler, .-intHandler
+ 582              		.text
+ 583              	.Letext0:
+ 584              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 585              		.file 3 ".\\UART_Class.h"
+ 586              		.section	.debug_info,"",%progbits
+ 587              	.Ldebug_info0:
+ 588 0000 32020000 		.4byte	0x232
+ 589 0004 0400     		.2byte	0x4
+ 590 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 591 000a 04       		.byte	0x4
+ 592 000b 01       		.uleb128 0x1
+ 593 000c 6B000000 		.4byte	.LASF38
+ 594 0010 01       		.byte	0x1
+ 595 0011 2F000000 		.4byte	.LASF39
+ 596 0015 85010000 		.4byte	.LASF40
+ 597 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 598 001d 00000000 		.4byte	0
+ 599 0021 00000000 		.4byte	.Ldebug_line0
+ 600 0025 02       		.uleb128 0x2
+ 601 0026 01       		.byte	0x1
+ 602 0027 06       		.byte	0x6
+ 603 0028 4E020000 		.4byte	.LASF0
+ 604 002c 02       		.uleb128 0x2
+ 605 002d 01       		.byte	0x1
+ 606 002e 08       		.byte	0x8
+ 607 002f 53010000 		.4byte	.LASF1
+ 608 0033 02       		.uleb128 0x2
+ 609 0034 02       		.byte	0x2
+ 610 0035 05       		.byte	0x5
+ 611 0036 25020000 		.4byte	.LASF2
+ 612 003a 02       		.uleb128 0x2
+ 613 003b 02       		.byte	0x2
+ 614 003c 07       		.byte	0x7
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 15
 
 
- 623 00b2 08       		.byte	0x8
- 624 00b3 06020000 		.4byte	.LASF16
- 625 00b7 05       		.uleb128 0x5
- 626 00b8 00000000 		.4byte	.LASF17
- 627 00bc 02       		.byte	0x2
- 628 00bd 4D01     		.2byte	0x14d
- 629 00bf C3000000 		.4byte	0xc3
- 630 00c3 06       		.uleb128 0x6
- 631 00c4 76000000 		.4byte	0x76
- 632 00c8 02       		.uleb128 0x2
- 633 00c9 04       		.byte	0x4
- 634 00ca 07       		.byte	0x7
- 635 00cb E3010000 		.4byte	.LASF18
- 636 00cf 07       		.uleb128 0x7
- 637 00d0 01       		.byte	0x1
- 638 00d1 01       		.byte	0x1
- 639 00d2 22       		.byte	0x22
- 640 00d3 F6000000 		.4byte	0xf6
- 641 00d7 08       		.uleb128 0x8
- 642 00d8 A2000000 		.4byte	.LASF19
- 643 00dc 00       		.sleb128 0
- 644 00dd 08       		.uleb128 0x8
- 645 00de 9B010000 		.4byte	.LASF20
- 646 00e2 01       		.sleb128 1
- 647 00e3 08       		.uleb128 0x8
- 648 00e4 96010000 		.4byte	.LASF21
- 649 00e8 02       		.sleb128 2
- 650 00e9 08       		.uleb128 0x8
- 651 00ea 0B020000 		.4byte	.LASF22
- 652 00ee 03       		.sleb128 3
- 653 00ef 08       		.uleb128 0x8
- 654 00f0 75010000 		.4byte	.LASF23
- 655 00f4 04       		.sleb128 4
- 656 00f5 00       		.byte	0
- 657 00f6 04       		.uleb128 0x4
- 658 00f7 73000000 		.4byte	.LASF24
- 659 00fb 01       		.byte	0x1
- 660 00fc 22       		.byte	0x22
- 661 00fd CF000000 		.4byte	0xcf
- 662 0101 09       		.uleb128 0x9
- 663 0102 1A020000 		.4byte	.LASF40
- 664 0106 01       		.byte	0x1
- 665 0107 27       		.byte	0x27
- 666 0108 00000000 		.4byte	.LFB33
- 667 010c 90000000 		.4byte	.LFE33-.LFB33
- 668 0110 01       		.uleb128 0x1
- 669 0111 9C       		.byte	0x9c
- 670 0112 0A       		.uleb128 0xa
- 671 0113 06000000 		.4byte	.LASF25
- 672 0117 01       		.byte	0x1
- 673 0118 40       		.byte	0x40
- 674 0119 00000000 		.4byte	.LFB34
- 675 011d A0000000 		.4byte	.LFE34-.LFB34
- 676 0121 01       		.uleb128 0x1
- 677 0122 9C       		.byte	0x9c
- 678 0123 3E010000 		.4byte	0x13e
- 679 0127 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 16
+ 615 003d 45000000 		.4byte	.LASF3
+ 616 0041 02       		.uleb128 0x2
+ 617 0042 04       		.byte	0x4
+ 618 0043 05       		.byte	0x5
+ 619 0044 45020000 		.4byte	.LASF4
+ 620 0048 02       		.uleb128 0x2
+ 621 0049 04       		.byte	0x4
+ 622 004a 07       		.byte	0x7
+ 623 004b F8000000 		.4byte	.LASF5
+ 624 004f 02       		.uleb128 0x2
+ 625 0050 08       		.byte	0x8
+ 626 0051 05       		.byte	0x5
+ 627 0052 01020000 		.4byte	.LASF6
+ 628 0056 02       		.uleb128 0x2
+ 629 0057 08       		.byte	0x8
+ 630 0058 07       		.byte	0x7
+ 631 0059 6E010000 		.4byte	.LASF7
+ 632 005d 03       		.uleb128 0x3
+ 633 005e 04       		.byte	0x4
+ 634 005f 05       		.byte	0x5
+ 635 0060 696E7400 		.ascii	"int\000"
+ 636 0064 02       		.uleb128 0x2
+ 637 0065 04       		.byte	0x4
+ 638 0066 07       		.byte	0x7
+ 639 0067 61010000 		.4byte	.LASF8
+ 640 006b 04       		.uleb128 0x4
+ 641 006c 3F020000 		.4byte	.LASF9
+ 642 0070 02       		.byte	0x2
+ 643 0071 A1       		.byte	0xa1
+ 644 0072 2C000000 		.4byte	0x2c
+ 645 0076 04       		.uleb128 0x4
+ 646 0077 42010000 		.4byte	.LASF10
+ 647 007b 02       		.byte	0x2
+ 648 007c A3       		.byte	0xa3
+ 649 007d 48000000 		.4byte	0x48
+ 650 0081 04       		.uleb128 0x4
+ 651 0082 3D010000 		.4byte	.LASF11
+ 652 0086 02       		.byte	0x2
+ 653 0087 A4       		.byte	0xa4
+ 654 0088 25000000 		.4byte	0x25
+ 655 008c 04       		.uleb128 0x4
+ 656 008d F2000000 		.4byte	.LASF12
+ 657 0091 02       		.byte	0x2
+ 658 0092 A5       		.byte	0xa5
+ 659 0093 33000000 		.4byte	0x33
+ 660 0097 04       		.uleb128 0x4
+ 661 0098 EA010000 		.4byte	.LASF13
+ 662 009c 02       		.byte	0x2
+ 663 009d A6       		.byte	0xa6
+ 664 009e 41000000 		.4byte	0x41
+ 665 00a2 02       		.uleb128 0x2
+ 666 00a3 04       		.byte	0x4
+ 667 00a4 04       		.byte	0x4
+ 668 00a5 65000000 		.4byte	.LASF14
+ 669 00a9 02       		.uleb128 0x2
+ 670 00aa 08       		.byte	0x8
+ 671 00ab 04       		.byte	0x4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 16
 
 
- 680 0128 28000000 		.4byte	.LBB2
- 681 012c 46000000 		.4byte	.LBE2-.LBB2
- 682 0130 0C       		.uleb128 0xc
- 683 0131 6900     		.ascii	"i\000"
- 684 0133 01       		.byte	0x1
- 685 0134 48       		.byte	0x48
- 686 0135 6B000000 		.4byte	0x6b
- 687 0139 02       		.uleb128 0x2
- 688 013a 91       		.byte	0x91
- 689 013b 77       		.sleb128 -9
- 690 013c 00       		.byte	0
- 691 013d 00       		.byte	0
- 692 013e 0A       		.uleb128 0xa
- 693 013f C4010000 		.4byte	.LASF26
- 694 0143 01       		.byte	0x1
- 695 0144 56       		.byte	0x56
- 696 0145 00000000 		.4byte	.LFB35
- 697 0149 A4010000 		.4byte	.LFE35-.LFB35
- 698 014d 01       		.uleb128 0x1
- 699 014e 9C       		.byte	0x9c
- 700 014f 62010000 		.4byte	0x162
- 701 0153 0D       		.uleb128 0xd
- 702 0154 70010000 		.4byte	.LASF27
- 703 0158 01       		.byte	0x1
- 704 0159 5A       		.byte	0x5a
- 705 015a 6B000000 		.4byte	0x6b
- 706 015e 02       		.uleb128 0x2
- 707 015f 91       		.byte	0x91
- 708 0160 6F       		.sleb128 -17
- 709 0161 00       		.byte	0
- 710 0162 0E       		.uleb128 0xe
- 711 0163 CD010000 		.4byte	.LASF28
- 712 0167 03       		.byte	0x3
- 713 0168 12       		.byte	0x12
- 714 0169 6B000000 		.4byte	0x6b
- 715 016d 05       		.uleb128 0x5
- 716 016e 03       		.byte	0x3
- 717 016f 00000000 		.4byte	receivedCommand
- 718 0173 0E       		.uleb128 0xe
- 719 0174 81010000 		.4byte	.LASF29
- 720 0178 01       		.byte	0x1
- 721 0179 18       		.byte	0x18
- 722 017a 97000000 		.4byte	0x97
- 723 017e 05       		.uleb128 0x5
- 724 017f 03       		.byte	0x3
- 725 0180 00000000 		.4byte	tempTemp
- 726 0184 0E       		.uleb128 0xe
- 727 0185 A7000000 		.4byte	.LASF30
- 728 0189 01       		.byte	0x1
- 729 018a 19       		.byte	0x19
- 730 018b 97000000 		.4byte	0x97
- 731 018f 05       		.uleb128 0x5
- 732 0190 03       		.byte	0x3
- 733 0191 00000000 		.4byte	tempHum
- 734 0195 0F       		.uleb128 0xf
- 735 0196 8C000000 		.4byte	0x8c
- 736 019a A5010000 		.4byte	0x1a5
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 17
+ 672 00ac 2D010000 		.4byte	.LASF15
+ 673 00b0 02       		.uleb128 0x2
+ 674 00b1 01       		.byte	0x1
+ 675 00b2 08       		.byte	0x8
+ 676 00b3 1B020000 		.4byte	.LASF16
+ 677 00b7 05       		.uleb128 0x5
+ 678 00b8 00000000 		.4byte	.LASF17
+ 679 00bc 02       		.byte	0x2
+ 680 00bd 4D01     		.2byte	0x14d
+ 681 00bf C3000000 		.4byte	0xc3
+ 682 00c3 06       		.uleb128 0x6
+ 683 00c4 76000000 		.4byte	0x76
+ 684 00c8 02       		.uleb128 0x2
+ 685 00c9 04       		.byte	0x4
+ 686 00ca 07       		.byte	0x7
+ 687 00cb F0010000 		.4byte	.LASF18
+ 688 00cf 07       		.uleb128 0x7
+ 689 00d0 01       		.byte	0x1
+ 690 00d1 01       		.byte	0x1
+ 691 00d2 25       		.byte	0x25
+ 692 00d3 F6000000 		.4byte	0xf6
+ 693 00d7 08       		.uleb128 0x8
+ 694 00d8 58000000 		.4byte	.LASF19
+ 695 00dc 00       		.sleb128 0
+ 696 00dd 08       		.uleb128 0x8
+ 697 00de 4E010000 		.4byte	.LASF20
+ 698 00e2 01       		.sleb128 1
+ 699 00e3 08       		.uleb128 0x8
+ 700 00e4 49010000 		.4byte	.LASF21
+ 701 00e8 02       		.sleb128 2
+ 702 00e9 08       		.uleb128 0x8
+ 703 00ea 20020000 		.4byte	.LASF22
+ 704 00ee 03       		.sleb128 3
+ 705 00ef 08       		.uleb128 0x8
+ 706 00f0 28010000 		.4byte	.LASF23
+ 707 00f4 04       		.sleb128 4
+ 708 00f5 00       		.byte	0
+ 709 00f6 04       		.uleb128 0x4
+ 710 00f7 29000000 		.4byte	.LASF24
+ 711 00fb 01       		.byte	0x1
+ 712 00fc 25       		.byte	0x25
+ 713 00fd CF000000 		.4byte	0xcf
+ 714 0101 09       		.uleb128 0x9
+ 715 0102 2F020000 		.4byte	.LASF25
+ 716 0106 01       		.byte	0x1
+ 717 0107 2A       		.byte	0x2a
+ 718 0108 00000000 		.4byte	.LFB33
+ 719 010c 8C000000 		.4byte	.LFE33-.LFB33
+ 720 0110 01       		.uleb128 0x1
+ 721 0111 9C       		.byte	0x9c
+ 722 0112 0A       		.uleb128 0xa
+ 723 0113 06000000 		.4byte	.LASF41
+ 724 0117 01       		.byte	0x1
+ 725 0118 43       		.byte	0x43
+ 726 0119 00000000 		.4byte	.LFB34
+ 727 011d A0000000 		.4byte	.LFE34-.LFB34
+ 728 0121 01       		.uleb128 0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 17
 
 
- 737 019e 10       		.uleb128 0x10
- 738 019f C8000000 		.4byte	0xc8
- 739 01a3 05       		.byte	0x5
- 740 01a4 00       		.byte	0
- 741 01a5 0E       		.uleb128 0xe
- 742 01a6 5A000000 		.4byte	.LASF31
- 743 01aa 01       		.byte	0x1
- 744 01ab 1A       		.byte	0x1a
- 745 01ac 95010000 		.4byte	0x195
- 746 01b0 05       		.uleb128 0x5
- 747 01b1 03       		.byte	0x3
- 748 01b2 00000000 		.4byte	tempSoilHum
- 749 01b6 0E       		.uleb128 0xe
- 750 01b7 45020000 		.4byte	.LASF32
- 751 01bb 01       		.byte	0x1
- 752 01bc 1B       		.byte	0x1b
- 753 01bd 97000000 		.4byte	0x97
- 754 01c1 05       		.uleb128 0x5
- 755 01c2 03       		.byte	0x3
- 756 01c3 00000000 		.4byte	tempLight
- 757 01c7 0E       		.uleb128 0xe
- 758 01c8 67010000 		.4byte	.LASF33
- 759 01cc 01       		.byte	0x1
- 760 01cd 23       		.byte	0x23
- 761 01ce D8010000 		.4byte	0x1d8
- 762 01d2 05       		.uleb128 0x5
- 763 01d3 03       		.byte	0x3
- 764 01d4 00000000 		.4byte	theState
- 765 01d8 06       		.uleb128 0x6
- 766 01d9 F6000000 		.4byte	0xf6
- 767 01dd 0E       		.uleb128 0xe
- 768 01de 57010000 		.4byte	.LASF34
- 769 01e2 01       		.byte	0x1
- 770 01e3 24       		.byte	0x24
- 771 01e4 EE010000 		.4byte	0x1ee
- 772 01e8 05       		.uleb128 0x5
- 773 01e9 03       		.byte	0x3
- 774 01ea 00000000 		.4byte	irrigationIndex
- 775 01ee 06       		.uleb128 0x6
- 776 01ef 81000000 		.4byte	0x81
- 777 01f3 0E       		.uleb128 0xe
- 778 01f4 66000000 		.4byte	.LASF35
- 779 01f8 01       		.byte	0x1
- 780 01f9 25       		.byte	0x25
- 781 01fa 6B000000 		.4byte	0x6b
- 782 01fe 05       		.uleb128 0x5
- 783 01ff 03       		.byte	0x3
- 784 0200 00000000 		.4byte	blueLEDState
- 785 0204 0E       		.uleb128 0xe
- 786 0205 FA010000 		.4byte	.LASF36
- 787 0209 01       		.byte	0x1
- 788 020a 25       		.byte	0x25
- 789 020b 6B000000 		.4byte	0x6b
- 790 020f 05       		.uleb128 0x5
- 791 0210 03       		.byte	0x3
- 792 0211 00000000 		.4byte	redLEDState
- 793 0215 00       		.byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 18
+ 729 0122 9C       		.byte	0x9c
+ 730 0123 3E010000 		.4byte	0x13e
+ 731 0127 0B       		.uleb128 0xb
+ 732 0128 28000000 		.4byte	.LBB2
+ 733 012c 46000000 		.4byte	.LBE2-.LBB2
+ 734 0130 0C       		.uleb128 0xc
+ 735 0131 6900     		.ascii	"i\000"
+ 736 0133 01       		.byte	0x1
+ 737 0134 4B       		.byte	0x4b
+ 738 0135 6B000000 		.4byte	0x6b
+ 739 0139 02       		.uleb128 0x2
+ 740 013a 91       		.byte	0x91
+ 741 013b 77       		.sleb128 -9
+ 742 013c 00       		.byte	0
+ 743 013d 00       		.byte	0
+ 744 013e 09       		.uleb128 0x9
+ 745 013f D1010000 		.4byte	.LASF26
+ 746 0143 01       		.byte	0x1
+ 747 0144 59       		.byte	0x59
+ 748 0145 00000000 		.4byte	.LFB35
+ 749 0149 34000000 		.4byte	.LFE35-.LFB35
+ 750 014d 01       		.uleb128 0x1
+ 751 014e 9C       		.byte	0x9c
+ 752 014f 0D       		.uleb128 0xd
+ 753 0150 E7000000 		.4byte	.LASF42
+ 754 0154 01       		.byte	0x1
+ 755 0155 5F       		.byte	0x5f
+ 756 0156 00000000 		.4byte	.LFB36
+ 757 015a A4010000 		.4byte	.LFE36-.LFB36
+ 758 015e 01       		.uleb128 0x1
+ 759 015f 9C       		.byte	0x9c
+ 760 0160 0E       		.uleb128 0xe
+ 761 0161 DA010000 		.4byte	.LASF27
+ 762 0165 03       		.byte	0x3
+ 763 0166 12       		.byte	0x12
+ 764 0167 6B000000 		.4byte	0x6b
+ 765 016b 05       		.uleb128 0x5
+ 766 016c 03       		.byte	0x3
+ 767 016d 00000000 		.4byte	receivedCommand
+ 768 0171 0E       		.uleb128 0xe
+ 769 0172 34010000 		.4byte	.LASF28
+ 770 0176 01       		.byte	0x1
+ 771 0177 18       		.byte	0x18
+ 772 0178 97000000 		.4byte	0x97
+ 773 017c 05       		.uleb128 0x5
+ 774 017d 03       		.byte	0x3
+ 775 017e 00000000 		.4byte	tempTemp
+ 776 0182 0E       		.uleb128 0xe
+ 777 0183 5D000000 		.4byte	.LASF29
+ 778 0187 01       		.byte	0x1
+ 779 0188 19       		.byte	0x19
+ 780 0189 97000000 		.4byte	0x97
+ 781 018d 05       		.uleb128 0x5
+ 782 018e 03       		.byte	0x3
+ 783 018f 00000000 		.4byte	tempHum
+ 784 0193 0F       		.uleb128 0xf
+ 785 0194 8C000000 		.4byte	0x8c
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 18
 
 
- 794              		.section	.debug_abbrev,"",%progbits
- 795              	.Ldebug_abbrev0:
- 796 0000 01       		.uleb128 0x1
- 797 0001 11       		.uleb128 0x11
- 798 0002 01       		.byte	0x1
- 799 0003 25       		.uleb128 0x25
- 800 0004 0E       		.uleb128 0xe
- 801 0005 13       		.uleb128 0x13
- 802 0006 0B       		.uleb128 0xb
- 803 0007 03       		.uleb128 0x3
- 804 0008 0E       		.uleb128 0xe
- 805 0009 1B       		.uleb128 0x1b
- 806 000a 0E       		.uleb128 0xe
- 807 000b 55       		.uleb128 0x55
- 808 000c 17       		.uleb128 0x17
- 809 000d 11       		.uleb128 0x11
- 810 000e 01       		.uleb128 0x1
- 811 000f 10       		.uleb128 0x10
- 812 0010 17       		.uleb128 0x17
- 813 0011 00       		.byte	0
- 814 0012 00       		.byte	0
- 815 0013 02       		.uleb128 0x2
- 816 0014 24       		.uleb128 0x24
- 817 0015 00       		.byte	0
- 818 0016 0B       		.uleb128 0xb
- 819 0017 0B       		.uleb128 0xb
- 820 0018 3E       		.uleb128 0x3e
- 821 0019 0B       		.uleb128 0xb
- 822 001a 03       		.uleb128 0x3
- 823 001b 0E       		.uleb128 0xe
- 824 001c 00       		.byte	0
- 825 001d 00       		.byte	0
- 826 001e 03       		.uleb128 0x3
- 827 001f 24       		.uleb128 0x24
- 828 0020 00       		.byte	0
- 829 0021 0B       		.uleb128 0xb
- 830 0022 0B       		.uleb128 0xb
- 831 0023 3E       		.uleb128 0x3e
- 832 0024 0B       		.uleb128 0xb
- 833 0025 03       		.uleb128 0x3
- 834 0026 08       		.uleb128 0x8
- 835 0027 00       		.byte	0
- 836 0028 00       		.byte	0
- 837 0029 04       		.uleb128 0x4
- 838 002a 16       		.uleb128 0x16
- 839 002b 00       		.byte	0
- 840 002c 03       		.uleb128 0x3
- 841 002d 0E       		.uleb128 0xe
- 842 002e 3A       		.uleb128 0x3a
- 843 002f 0B       		.uleb128 0xb
- 844 0030 3B       		.uleb128 0x3b
- 845 0031 0B       		.uleb128 0xb
- 846 0032 49       		.uleb128 0x49
- 847 0033 13       		.uleb128 0x13
- 848 0034 00       		.byte	0
- 849 0035 00       		.byte	0
- 850 0036 05       		.uleb128 0x5
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 19
+ 786 0198 A3010000 		.4byte	0x1a3
+ 787 019c 10       		.uleb128 0x10
+ 788 019d C8000000 		.4byte	0xc8
+ 789 01a1 05       		.byte	0x5
+ 790 01a2 00       		.byte	0
+ 791 01a3 0E       		.uleb128 0xe
+ 792 01a4 10000000 		.4byte	.LASF30
+ 793 01a8 01       		.byte	0x1
+ 794 01a9 1A       		.byte	0x1a
+ 795 01aa 93010000 		.4byte	0x193
+ 796 01ae 05       		.uleb128 0x5
+ 797 01af 03       		.byte	0x3
+ 798 01b0 00000000 		.4byte	tempSoilHum
+ 799 01b4 0E       		.uleb128 0xe
+ 800 01b5 5A020000 		.4byte	.LASF31
+ 801 01b9 01       		.byte	0x1
+ 802 01ba 1B       		.byte	0x1b
+ 803 01bb 97000000 		.4byte	0x97
+ 804 01bf 05       		.uleb128 0x5
+ 805 01c0 03       		.byte	0x3
+ 806 01c1 00000000 		.4byte	tempLight
+ 807 01c5 0E       		.uleb128 0xe
+ 808 01c6 F9010000 		.4byte	.LASF32
+ 809 01ca 01       		.byte	0x1
+ 810 01cb 1C       		.byte	0x1c
+ 811 01cc 6B000000 		.4byte	0x6b
+ 812 01d0 05       		.uleb128 0x5
+ 813 01d1 03       		.byte	0x3
+ 814 01d2 00000000 		.4byte	newByte
+ 815 01d6 0E       		.uleb128 0xe
+ 816 01d7 23010000 		.4byte	.LASF33
+ 817 01db 01       		.byte	0x1
+ 818 01dc 1D       		.byte	0x1d
+ 819 01dd 6B000000 		.4byte	0x6b
+ 820 01e1 05       		.uleb128 0x5
+ 821 01e2 03       		.byte	0x3
+ 822 01e3 00000000 		.4byte	buff
+ 823 01e7 0E       		.uleb128 0xe
+ 824 01e8 1A010000 		.4byte	.LASF34
+ 825 01ec 01       		.byte	0x1
+ 826 01ed 26       		.byte	0x26
+ 827 01ee F8010000 		.4byte	0x1f8
+ 828 01f2 05       		.uleb128 0x5
+ 829 01f3 03       		.byte	0x3
+ 830 01f4 00000000 		.4byte	theState
+ 831 01f8 06       		.uleb128 0x6
+ 832 01f9 F6000000 		.4byte	0xf6
+ 833 01fd 0E       		.uleb128 0xe
+ 834 01fe 0A010000 		.4byte	.LASF35
+ 835 0202 01       		.byte	0x1
+ 836 0203 27       		.byte	0x27
+ 837 0204 0E020000 		.4byte	0x20e
+ 838 0208 05       		.uleb128 0x5
+ 839 0209 03       		.byte	0x3
+ 840 020a 00000000 		.4byte	irrigationIndex
+ 841 020e 06       		.uleb128 0x6
+ 842 020f 81000000 		.4byte	0x81
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 19
 
 
- 851 0037 16       		.uleb128 0x16
- 852 0038 00       		.byte	0
- 853 0039 03       		.uleb128 0x3
- 854 003a 0E       		.uleb128 0xe
- 855 003b 3A       		.uleb128 0x3a
- 856 003c 0B       		.uleb128 0xb
- 857 003d 3B       		.uleb128 0x3b
- 858 003e 05       		.uleb128 0x5
- 859 003f 49       		.uleb128 0x49
- 860 0040 13       		.uleb128 0x13
- 861 0041 00       		.byte	0
- 862 0042 00       		.byte	0
- 863 0043 06       		.uleb128 0x6
- 864 0044 35       		.uleb128 0x35
- 865 0045 00       		.byte	0
- 866 0046 49       		.uleb128 0x49
- 867 0047 13       		.uleb128 0x13
- 868 0048 00       		.byte	0
- 869 0049 00       		.byte	0
- 870 004a 07       		.uleb128 0x7
- 871 004b 04       		.uleb128 0x4
- 872 004c 01       		.byte	0x1
- 873 004d 0B       		.uleb128 0xb
- 874 004e 0B       		.uleb128 0xb
- 875 004f 3A       		.uleb128 0x3a
- 876 0050 0B       		.uleb128 0xb
- 877 0051 3B       		.uleb128 0x3b
- 878 0052 0B       		.uleb128 0xb
- 879 0053 01       		.uleb128 0x1
- 880 0054 13       		.uleb128 0x13
- 881 0055 00       		.byte	0
- 882 0056 00       		.byte	0
- 883 0057 08       		.uleb128 0x8
- 884 0058 28       		.uleb128 0x28
- 885 0059 00       		.byte	0
- 886 005a 03       		.uleb128 0x3
- 887 005b 0E       		.uleb128 0xe
- 888 005c 1C       		.uleb128 0x1c
- 889 005d 0D       		.uleb128 0xd
- 890 005e 00       		.byte	0
- 891 005f 00       		.byte	0
- 892 0060 09       		.uleb128 0x9
- 893 0061 2E       		.uleb128 0x2e
- 894 0062 00       		.byte	0
- 895 0063 3F       		.uleb128 0x3f
- 896 0064 19       		.uleb128 0x19
- 897 0065 03       		.uleb128 0x3
- 898 0066 0E       		.uleb128 0xe
- 899 0067 3A       		.uleb128 0x3a
- 900 0068 0B       		.uleb128 0xb
- 901 0069 3B       		.uleb128 0x3b
- 902 006a 0B       		.uleb128 0xb
- 903 006b 27       		.uleb128 0x27
- 904 006c 19       		.uleb128 0x19
- 905 006d 11       		.uleb128 0x11
- 906 006e 01       		.uleb128 0x1
- 907 006f 12       		.uleb128 0x12
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 20
+ 843 0213 0E       		.uleb128 0xe
+ 844 0214 1C000000 		.4byte	.LASF36
+ 845 0218 01       		.byte	0x1
+ 846 0219 28       		.byte	0x28
+ 847 021a 6B000000 		.4byte	0x6b
+ 848 021e 05       		.uleb128 0x5
+ 849 021f 03       		.byte	0x3
+ 850 0220 00000000 		.4byte	blueLEDState
+ 851 0224 0E       		.uleb128 0xe
+ 852 0225 0F020000 		.4byte	.LASF37
+ 853 0229 01       		.byte	0x1
+ 854 022a 28       		.byte	0x28
+ 855 022b 6B000000 		.4byte	0x6b
+ 856 022f 05       		.uleb128 0x5
+ 857 0230 03       		.byte	0x3
+ 858 0231 00000000 		.4byte	redLEDState
+ 859 0235 00       		.byte	0
+ 860              		.section	.debug_abbrev,"",%progbits
+ 861              	.Ldebug_abbrev0:
+ 862 0000 01       		.uleb128 0x1
+ 863 0001 11       		.uleb128 0x11
+ 864 0002 01       		.byte	0x1
+ 865 0003 25       		.uleb128 0x25
+ 866 0004 0E       		.uleb128 0xe
+ 867 0005 13       		.uleb128 0x13
+ 868 0006 0B       		.uleb128 0xb
+ 869 0007 03       		.uleb128 0x3
+ 870 0008 0E       		.uleb128 0xe
+ 871 0009 1B       		.uleb128 0x1b
+ 872 000a 0E       		.uleb128 0xe
+ 873 000b 55       		.uleb128 0x55
+ 874 000c 17       		.uleb128 0x17
+ 875 000d 11       		.uleb128 0x11
+ 876 000e 01       		.uleb128 0x1
+ 877 000f 10       		.uleb128 0x10
+ 878 0010 17       		.uleb128 0x17
+ 879 0011 00       		.byte	0
+ 880 0012 00       		.byte	0
+ 881 0013 02       		.uleb128 0x2
+ 882 0014 24       		.uleb128 0x24
+ 883 0015 00       		.byte	0
+ 884 0016 0B       		.uleb128 0xb
+ 885 0017 0B       		.uleb128 0xb
+ 886 0018 3E       		.uleb128 0x3e
+ 887 0019 0B       		.uleb128 0xb
+ 888 001a 03       		.uleb128 0x3
+ 889 001b 0E       		.uleb128 0xe
+ 890 001c 00       		.byte	0
+ 891 001d 00       		.byte	0
+ 892 001e 03       		.uleb128 0x3
+ 893 001f 24       		.uleb128 0x24
+ 894 0020 00       		.byte	0
+ 895 0021 0B       		.uleb128 0xb
+ 896 0022 0B       		.uleb128 0xb
+ 897 0023 3E       		.uleb128 0x3e
+ 898 0024 0B       		.uleb128 0xb
+ 899 0025 03       		.uleb128 0x3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 20
 
 
- 908 0070 06       		.uleb128 0x6
- 909 0071 40       		.uleb128 0x40
- 910 0072 18       		.uleb128 0x18
- 911 0073 9642     		.uleb128 0x2116
- 912 0075 19       		.uleb128 0x19
- 913 0076 00       		.byte	0
- 914 0077 00       		.byte	0
- 915 0078 0A       		.uleb128 0xa
- 916 0079 2E       		.uleb128 0x2e
- 917 007a 01       		.byte	0x1
- 918 007b 3F       		.uleb128 0x3f
- 919 007c 19       		.uleb128 0x19
- 920 007d 03       		.uleb128 0x3
- 921 007e 0E       		.uleb128 0xe
- 922 007f 3A       		.uleb128 0x3a
- 923 0080 0B       		.uleb128 0xb
- 924 0081 3B       		.uleb128 0x3b
- 925 0082 0B       		.uleb128 0xb
- 926 0083 27       		.uleb128 0x27
- 927 0084 19       		.uleb128 0x19
- 928 0085 11       		.uleb128 0x11
- 929 0086 01       		.uleb128 0x1
- 930 0087 12       		.uleb128 0x12
- 931 0088 06       		.uleb128 0x6
- 932 0089 40       		.uleb128 0x40
- 933 008a 18       		.uleb128 0x18
- 934 008b 9642     		.uleb128 0x2116
- 935 008d 19       		.uleb128 0x19
- 936 008e 01       		.uleb128 0x1
- 937 008f 13       		.uleb128 0x13
- 938 0090 00       		.byte	0
- 939 0091 00       		.byte	0
- 940 0092 0B       		.uleb128 0xb
- 941 0093 0B       		.uleb128 0xb
- 942 0094 01       		.byte	0x1
- 943 0095 11       		.uleb128 0x11
- 944 0096 01       		.uleb128 0x1
- 945 0097 12       		.uleb128 0x12
- 946 0098 06       		.uleb128 0x6
- 947 0099 00       		.byte	0
- 948 009a 00       		.byte	0
- 949 009b 0C       		.uleb128 0xc
- 950 009c 34       		.uleb128 0x34
- 951 009d 00       		.byte	0
- 952 009e 03       		.uleb128 0x3
- 953 009f 08       		.uleb128 0x8
- 954 00a0 3A       		.uleb128 0x3a
- 955 00a1 0B       		.uleb128 0xb
- 956 00a2 3B       		.uleb128 0x3b
- 957 00a3 0B       		.uleb128 0xb
- 958 00a4 49       		.uleb128 0x49
- 959 00a5 13       		.uleb128 0x13
- 960 00a6 02       		.uleb128 0x2
- 961 00a7 18       		.uleb128 0x18
- 962 00a8 00       		.byte	0
- 963 00a9 00       		.byte	0
- 964 00aa 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 21
+ 900 0026 08       		.uleb128 0x8
+ 901 0027 00       		.byte	0
+ 902 0028 00       		.byte	0
+ 903 0029 04       		.uleb128 0x4
+ 904 002a 16       		.uleb128 0x16
+ 905 002b 00       		.byte	0
+ 906 002c 03       		.uleb128 0x3
+ 907 002d 0E       		.uleb128 0xe
+ 908 002e 3A       		.uleb128 0x3a
+ 909 002f 0B       		.uleb128 0xb
+ 910 0030 3B       		.uleb128 0x3b
+ 911 0031 0B       		.uleb128 0xb
+ 912 0032 49       		.uleb128 0x49
+ 913 0033 13       		.uleb128 0x13
+ 914 0034 00       		.byte	0
+ 915 0035 00       		.byte	0
+ 916 0036 05       		.uleb128 0x5
+ 917 0037 16       		.uleb128 0x16
+ 918 0038 00       		.byte	0
+ 919 0039 03       		.uleb128 0x3
+ 920 003a 0E       		.uleb128 0xe
+ 921 003b 3A       		.uleb128 0x3a
+ 922 003c 0B       		.uleb128 0xb
+ 923 003d 3B       		.uleb128 0x3b
+ 924 003e 05       		.uleb128 0x5
+ 925 003f 49       		.uleb128 0x49
+ 926 0040 13       		.uleb128 0x13
+ 927 0041 00       		.byte	0
+ 928 0042 00       		.byte	0
+ 929 0043 06       		.uleb128 0x6
+ 930 0044 35       		.uleb128 0x35
+ 931 0045 00       		.byte	0
+ 932 0046 49       		.uleb128 0x49
+ 933 0047 13       		.uleb128 0x13
+ 934 0048 00       		.byte	0
+ 935 0049 00       		.byte	0
+ 936 004a 07       		.uleb128 0x7
+ 937 004b 04       		.uleb128 0x4
+ 938 004c 01       		.byte	0x1
+ 939 004d 0B       		.uleb128 0xb
+ 940 004e 0B       		.uleb128 0xb
+ 941 004f 3A       		.uleb128 0x3a
+ 942 0050 0B       		.uleb128 0xb
+ 943 0051 3B       		.uleb128 0x3b
+ 944 0052 0B       		.uleb128 0xb
+ 945 0053 01       		.uleb128 0x1
+ 946 0054 13       		.uleb128 0x13
+ 947 0055 00       		.byte	0
+ 948 0056 00       		.byte	0
+ 949 0057 08       		.uleb128 0x8
+ 950 0058 28       		.uleb128 0x28
+ 951 0059 00       		.byte	0
+ 952 005a 03       		.uleb128 0x3
+ 953 005b 0E       		.uleb128 0xe
+ 954 005c 1C       		.uleb128 0x1c
+ 955 005d 0D       		.uleb128 0xd
+ 956 005e 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 21
 
 
- 965 00ab 34       		.uleb128 0x34
- 966 00ac 00       		.byte	0
- 967 00ad 03       		.uleb128 0x3
- 968 00ae 0E       		.uleb128 0xe
- 969 00af 3A       		.uleb128 0x3a
- 970 00b0 0B       		.uleb128 0xb
- 971 00b1 3B       		.uleb128 0x3b
- 972 00b2 0B       		.uleb128 0xb
- 973 00b3 49       		.uleb128 0x49
- 974 00b4 13       		.uleb128 0x13
- 975 00b5 02       		.uleb128 0x2
- 976 00b6 18       		.uleb128 0x18
- 977 00b7 00       		.byte	0
- 978 00b8 00       		.byte	0
- 979 00b9 0E       		.uleb128 0xe
- 980 00ba 34       		.uleb128 0x34
- 981 00bb 00       		.byte	0
- 982 00bc 03       		.uleb128 0x3
- 983 00bd 0E       		.uleb128 0xe
- 984 00be 3A       		.uleb128 0x3a
- 985 00bf 0B       		.uleb128 0xb
- 986 00c0 3B       		.uleb128 0x3b
- 987 00c1 0B       		.uleb128 0xb
- 988 00c2 49       		.uleb128 0x49
- 989 00c3 13       		.uleb128 0x13
- 990 00c4 3F       		.uleb128 0x3f
- 991 00c5 19       		.uleb128 0x19
- 992 00c6 02       		.uleb128 0x2
- 993 00c7 18       		.uleb128 0x18
- 994 00c8 00       		.byte	0
- 995 00c9 00       		.byte	0
- 996 00ca 0F       		.uleb128 0xf
- 997 00cb 01       		.uleb128 0x1
- 998 00cc 01       		.byte	0x1
- 999 00cd 49       		.uleb128 0x49
- 1000 00ce 13       		.uleb128 0x13
- 1001 00cf 01       		.uleb128 0x1
- 1002 00d0 13       		.uleb128 0x13
- 1003 00d1 00       		.byte	0
- 1004 00d2 00       		.byte	0
- 1005 00d3 10       		.uleb128 0x10
- 1006 00d4 21       		.uleb128 0x21
- 1007 00d5 00       		.byte	0
- 1008 00d6 49       		.uleb128 0x49
- 1009 00d7 13       		.uleb128 0x13
- 1010 00d8 2F       		.uleb128 0x2f
- 1011 00d9 0B       		.uleb128 0xb
- 1012 00da 00       		.byte	0
- 1013 00db 00       		.byte	0
- 1014 00dc 00       		.byte	0
- 1015              		.section	.debug_aranges,"",%progbits
- 1016 0000 2C000000 		.4byte	0x2c
- 1017 0004 0200     		.2byte	0x2
- 1018 0006 00000000 		.4byte	.Ldebug_info0
- 1019 000a 04       		.byte	0x4
- 1020 000b 00       		.byte	0
- 1021 000c 0000     		.2byte	0
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 22
+ 957 005f 00       		.byte	0
+ 958 0060 09       		.uleb128 0x9
+ 959 0061 2E       		.uleb128 0x2e
+ 960 0062 00       		.byte	0
+ 961 0063 3F       		.uleb128 0x3f
+ 962 0064 19       		.uleb128 0x19
+ 963 0065 03       		.uleb128 0x3
+ 964 0066 0E       		.uleb128 0xe
+ 965 0067 3A       		.uleb128 0x3a
+ 966 0068 0B       		.uleb128 0xb
+ 967 0069 3B       		.uleb128 0x3b
+ 968 006a 0B       		.uleb128 0xb
+ 969 006b 27       		.uleb128 0x27
+ 970 006c 19       		.uleb128 0x19
+ 971 006d 11       		.uleb128 0x11
+ 972 006e 01       		.uleb128 0x1
+ 973 006f 12       		.uleb128 0x12
+ 974 0070 06       		.uleb128 0x6
+ 975 0071 40       		.uleb128 0x40
+ 976 0072 18       		.uleb128 0x18
+ 977 0073 9642     		.uleb128 0x2116
+ 978 0075 19       		.uleb128 0x19
+ 979 0076 00       		.byte	0
+ 980 0077 00       		.byte	0
+ 981 0078 0A       		.uleb128 0xa
+ 982 0079 2E       		.uleb128 0x2e
+ 983 007a 01       		.byte	0x1
+ 984 007b 3F       		.uleb128 0x3f
+ 985 007c 19       		.uleb128 0x19
+ 986 007d 03       		.uleb128 0x3
+ 987 007e 0E       		.uleb128 0xe
+ 988 007f 3A       		.uleb128 0x3a
+ 989 0080 0B       		.uleb128 0xb
+ 990 0081 3B       		.uleb128 0x3b
+ 991 0082 0B       		.uleb128 0xb
+ 992 0083 27       		.uleb128 0x27
+ 993 0084 19       		.uleb128 0x19
+ 994 0085 11       		.uleb128 0x11
+ 995 0086 01       		.uleb128 0x1
+ 996 0087 12       		.uleb128 0x12
+ 997 0088 06       		.uleb128 0x6
+ 998 0089 40       		.uleb128 0x40
+ 999 008a 18       		.uleb128 0x18
+ 1000 008b 9642     		.uleb128 0x2116
+ 1001 008d 19       		.uleb128 0x19
+ 1002 008e 01       		.uleb128 0x1
+ 1003 008f 13       		.uleb128 0x13
+ 1004 0090 00       		.byte	0
+ 1005 0091 00       		.byte	0
+ 1006 0092 0B       		.uleb128 0xb
+ 1007 0093 0B       		.uleb128 0xb
+ 1008 0094 01       		.byte	0x1
+ 1009 0095 11       		.uleb128 0x11
+ 1010 0096 01       		.uleb128 0x1
+ 1011 0097 12       		.uleb128 0x12
+ 1012 0098 06       		.uleb128 0x6
+ 1013 0099 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 22
 
 
- 1022 000e 0000     		.2byte	0
- 1023 0010 00000000 		.4byte	.LFB33
- 1024 0014 90000000 		.4byte	.LFE33-.LFB33
- 1025 0018 00000000 		.4byte	.LFB34
- 1026 001c A0000000 		.4byte	.LFE34-.LFB34
- 1027 0020 00000000 		.4byte	.LFB35
- 1028 0024 A4010000 		.4byte	.LFE35-.LFB35
- 1029 0028 00000000 		.4byte	0
- 1030 002c 00000000 		.4byte	0
- 1031              		.section	.debug_ranges,"",%progbits
- 1032              	.Ldebug_ranges0:
- 1033 0000 00000000 		.4byte	.LFB33
- 1034 0004 90000000 		.4byte	.LFE33
- 1035 0008 00000000 		.4byte	.LFB34
- 1036 000c A0000000 		.4byte	.LFE34
- 1037 0010 00000000 		.4byte	.LFB35
- 1038 0014 A4010000 		.4byte	.LFE35
- 1039 0018 00000000 		.4byte	0
- 1040 001c 00000000 		.4byte	0
- 1041              		.section	.debug_line,"",%progbits
- 1042              	.Ldebug_line0:
- 1043 0000 FD000000 		.section	.debug_str,"MS",%progbits,1
- 1043      02006400 
- 1043      00000201 
- 1043      FB0E0D00 
- 1043      01010101 
- 1044              	.LASF17:
- 1045 0000 72656733 		.ascii	"reg32\000"
- 1045      3200
- 1046              	.LASF25:
- 1047 0006 74696D65 		.ascii	"timer_ISR\000"
- 1047      725F4953 
- 1047      5200
- 1048              	.LASF39:
- 1049 0010 433A5C55 		.ascii	"C:\\Users\\Lasse\\Documents\\GitHub\\PSoC_Master\\P"
- 1049      73657273 
- 1049      5C4C6173 
- 1049      73655C44 
- 1049      6F63756D 
- 1050 003d 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 1050      4D617374 
- 1050      65725C50 
- 1050      536F435F 
- 1050      4D617374 
- 1051              	.LASF31:
- 1052 005a 74656D70 		.ascii	"tempSoilHum\000"
- 1052      536F696C 
- 1052      48756D00 
- 1053              	.LASF35:
- 1054 0066 626C7565 		.ascii	"blueLEDState\000"
- 1054      4C454453 
- 1054      74617465 
- 1054      00
- 1055              	.LASF24:
- 1056 0073 73746174 		.ascii	"state\000"
- 1056      6500
- 1057              	.LASF38:
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 23
+ 1014 009a 00       		.byte	0
+ 1015 009b 0C       		.uleb128 0xc
+ 1016 009c 34       		.uleb128 0x34
+ 1017 009d 00       		.byte	0
+ 1018 009e 03       		.uleb128 0x3
+ 1019 009f 08       		.uleb128 0x8
+ 1020 00a0 3A       		.uleb128 0x3a
+ 1021 00a1 0B       		.uleb128 0xb
+ 1022 00a2 3B       		.uleb128 0x3b
+ 1023 00a3 0B       		.uleb128 0xb
+ 1024 00a4 49       		.uleb128 0x49
+ 1025 00a5 13       		.uleb128 0x13
+ 1026 00a6 02       		.uleb128 0x2
+ 1027 00a7 18       		.uleb128 0x18
+ 1028 00a8 00       		.byte	0
+ 1029 00a9 00       		.byte	0
+ 1030 00aa 0D       		.uleb128 0xd
+ 1031 00ab 2E       		.uleb128 0x2e
+ 1032 00ac 00       		.byte	0
+ 1033 00ad 3F       		.uleb128 0x3f
+ 1034 00ae 19       		.uleb128 0x19
+ 1035 00af 03       		.uleb128 0x3
+ 1036 00b0 0E       		.uleb128 0xe
+ 1037 00b1 3A       		.uleb128 0x3a
+ 1038 00b2 0B       		.uleb128 0xb
+ 1039 00b3 3B       		.uleb128 0x3b
+ 1040 00b4 0B       		.uleb128 0xb
+ 1041 00b5 11       		.uleb128 0x11
+ 1042 00b6 01       		.uleb128 0x1
+ 1043 00b7 12       		.uleb128 0x12
+ 1044 00b8 06       		.uleb128 0x6
+ 1045 00b9 40       		.uleb128 0x40
+ 1046 00ba 18       		.uleb128 0x18
+ 1047 00bb 9642     		.uleb128 0x2116
+ 1048 00bd 19       		.uleb128 0x19
+ 1049 00be 00       		.byte	0
+ 1050 00bf 00       		.byte	0
+ 1051 00c0 0E       		.uleb128 0xe
+ 1052 00c1 34       		.uleb128 0x34
+ 1053 00c2 00       		.byte	0
+ 1054 00c3 03       		.uleb128 0x3
+ 1055 00c4 0E       		.uleb128 0xe
+ 1056 00c5 3A       		.uleb128 0x3a
+ 1057 00c6 0B       		.uleb128 0xb
+ 1058 00c7 3B       		.uleb128 0x3b
+ 1059 00c8 0B       		.uleb128 0xb
+ 1060 00c9 49       		.uleb128 0x49
+ 1061 00ca 13       		.uleb128 0x13
+ 1062 00cb 3F       		.uleb128 0x3f
+ 1063 00cc 19       		.uleb128 0x19
+ 1064 00cd 02       		.uleb128 0x2
+ 1065 00ce 18       		.uleb128 0x18
+ 1066 00cf 00       		.byte	0
+ 1067 00d0 00       		.byte	0
+ 1068 00d1 0F       		.uleb128 0xf
+ 1069 00d2 01       		.uleb128 0x1
+ 1070 00d3 01       		.byte	0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 23
 
 
- 1058 0079 2E5C5053 		.ascii	".\\PSoC_Master_Class.c\000"
- 1058      6F435F4D 
- 1058      61737465 
- 1058      725F436C 
- 1058      6173732E 
- 1059              	.LASF3:
- 1060 008f 73686F72 		.ascii	"short unsigned int\000"
- 1060      7420756E 
- 1060      7369676E 
- 1060      65642069 
- 1060      6E7400
- 1061              	.LASF19:
- 1062 00a2 49444C45 		.ascii	"IDLE\000"
- 1062      00
- 1063              	.LASF30:
- 1064 00a7 74656D70 		.ascii	"tempHum\000"
- 1064      48756D00 
- 1065              	.LASF14:
- 1066 00af 666C6F61 		.ascii	"float\000"
- 1066      7400
- 1067              	.LASF37:
- 1068 00b5 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1068      4320342E 
- 1068      382E3420 
- 1068      32303134 
- 1068      30353236 
- 1069 00e8 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1069      20726576 
- 1069      6973696F 
- 1069      6E203231 
- 1069      31333538 
- 1070 011b 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1070      66756E63 
- 1070      74696F6E 
- 1070      2D736563 
- 1070      74696F6E 
- 1071              	.LASF1:
- 1072 0131 756E7369 		.ascii	"unsigned char\000"
- 1072      676E6564 
- 1072      20636861 
- 1072      7200
- 1073              	.LASF12:
- 1074 013f 696E7431 		.ascii	"int16\000"
- 1074      3600
- 1075              	.LASF5:
- 1076 0145 6C6F6E67 		.ascii	"long unsigned int\000"
- 1076      20756E73 
- 1076      69676E65 
- 1076      6420696E 
- 1076      7400
- 1077              	.LASF34:
- 1078 0157 69727269 		.ascii	"irrigationIndex\000"
- 1078      67617469 
- 1078      6F6E496E 
- 1078      64657800 
- 1079              	.LASF33:
- 1080 0167 74686553 		.ascii	"theState\000"
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 24
+ 1071 00d4 49       		.uleb128 0x49
+ 1072 00d5 13       		.uleb128 0x13
+ 1073 00d6 01       		.uleb128 0x1
+ 1074 00d7 13       		.uleb128 0x13
+ 1075 00d8 00       		.byte	0
+ 1076 00d9 00       		.byte	0
+ 1077 00da 10       		.uleb128 0x10
+ 1078 00db 21       		.uleb128 0x21
+ 1079 00dc 00       		.byte	0
+ 1080 00dd 49       		.uleb128 0x49
+ 1081 00de 13       		.uleb128 0x13
+ 1082 00df 2F       		.uleb128 0x2f
+ 1083 00e0 0B       		.uleb128 0xb
+ 1084 00e1 00       		.byte	0
+ 1085 00e2 00       		.byte	0
+ 1086 00e3 00       		.byte	0
+ 1087              		.section	.debug_aranges,"",%progbits
+ 1088 0000 34000000 		.4byte	0x34
+ 1089 0004 0200     		.2byte	0x2
+ 1090 0006 00000000 		.4byte	.Ldebug_info0
+ 1091 000a 04       		.byte	0x4
+ 1092 000b 00       		.byte	0
+ 1093 000c 0000     		.2byte	0
+ 1094 000e 0000     		.2byte	0
+ 1095 0010 00000000 		.4byte	.LFB33
+ 1096 0014 8C000000 		.4byte	.LFE33-.LFB33
+ 1097 0018 00000000 		.4byte	.LFB34
+ 1098 001c A0000000 		.4byte	.LFE34-.LFB34
+ 1099 0020 00000000 		.4byte	.LFB35
+ 1100 0024 34000000 		.4byte	.LFE35-.LFB35
+ 1101 0028 00000000 		.4byte	.LFB36
+ 1102 002c A4010000 		.4byte	.LFE36-.LFB36
+ 1103 0030 00000000 		.4byte	0
+ 1104 0034 00000000 		.4byte	0
+ 1105              		.section	.debug_ranges,"",%progbits
+ 1106              	.Ldebug_ranges0:
+ 1107 0000 00000000 		.4byte	.LFB33
+ 1108 0004 8C000000 		.4byte	.LFE33
+ 1109 0008 00000000 		.4byte	.LFB34
+ 1110 000c A0000000 		.4byte	.LFE34
+ 1111 0010 00000000 		.4byte	.LFB35
+ 1112 0014 34000000 		.4byte	.LFE35
+ 1113 0018 00000000 		.4byte	.LFB36
+ 1114 001c A4010000 		.4byte	.LFE36
+ 1115 0020 00000000 		.4byte	0
+ 1116 0024 00000000 		.4byte	0
+ 1117              		.section	.debug_line,"",%progbits
+ 1118              	.Ldebug_line0:
+ 1119 0000 11010000 		.section	.debug_str,"MS",%progbits,1
+ 1119      02006400 
+ 1119      00000201 
+ 1119      FB0E0D00 
+ 1119      01010101 
+ 1120              	.LASF17:
+ 1121 0000 72656733 		.ascii	"reg32\000"
+ 1121      3200
+ 1122              	.LASF41:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 24
 
 
- 1080      74617465 
- 1080      00
- 1081              	.LASF27:
- 1082 0170 62756666 		.ascii	"buff\000"
- 1082      00
- 1083              	.LASF23:
- 1084 0175 41444A49 		.ascii	"ADJI\000"
- 1084      00
- 1085              	.LASF15:
- 1086 017a 646F7562 		.ascii	"double\000"
- 1086      6C6500
- 1087              	.LASF29:
- 1088 0181 74656D70 		.ascii	"tempTemp\000"
- 1088      54656D70 
- 1088      00
- 1089              	.LASF11:
- 1090 018a 696E7438 		.ascii	"int8\000"
- 1090      00
- 1091              	.LASF10:
- 1092 018f 75696E74 		.ascii	"uint32\000"
- 1092      333200
- 1093              	.LASF21:
- 1094 0196 41444A48 		.ascii	"ADJH\000"
- 1094      00
- 1095              	.LASF20:
- 1096 019b 41444A57 		.ascii	"ADJW\000"
- 1096      00
- 1097              	.LASF8:
- 1098 01a0 756E7369 		.ascii	"unsigned int\000"
- 1098      676E6564 
- 1098      20696E74 
- 1098      00
- 1099              	.LASF7:
- 1100 01ad 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1100      206C6F6E 
- 1100      6720756E 
- 1100      7369676E 
- 1100      65642069 
- 1101              	.LASF26:
- 1102 01c4 55415254 		.ascii	"UART_ISR\000"
- 1102      5F495352 
- 1102      00
- 1103              	.LASF28:
- 1104 01cd 72656365 		.ascii	"receivedCommand\000"
- 1104      69766564 
- 1104      436F6D6D 
- 1104      616E6400 
- 1105              	.LASF13:
- 1106 01dd 696E7433 		.ascii	"int32\000"
- 1106      3200
- 1107              	.LASF18:
- 1108 01e3 73697A65 		.ascii	"sizetype\000"
- 1108      74797065 
- 1108      00
- 1109              	.LASF6:
- 1110 01ec 6C6F6E67 		.ascii	"long long int\000"
- 1110      206C6F6E 
-ARM GAS  C:\Users\Lasse\AppData\Local\Temp\ccol9VQQ.s 			page 25
+ 1123 0006 74696D65 		.ascii	"timer_ISR\000"
+ 1123      725F4953 
+ 1123      5200
+ 1124              	.LASF30:
+ 1125 0010 74656D70 		.ascii	"tempSoilHum\000"
+ 1125      536F696C 
+ 1125      48756D00 
+ 1126              	.LASF36:
+ 1127 001c 626C7565 		.ascii	"blueLEDState\000"
+ 1127      4C454453 
+ 1127      74617465 
+ 1127      00
+ 1128              	.LASF24:
+ 1129 0029 73746174 		.ascii	"state\000"
+ 1129      6500
+ 1130              	.LASF39:
+ 1131 002f 2E5C5053 		.ascii	".\\PSoC_Master_Class.c\000"
+ 1131      6F435F4D 
+ 1131      61737465 
+ 1131      725F436C 
+ 1131      6173732E 
+ 1132              	.LASF3:
+ 1133 0045 73686F72 		.ascii	"short unsigned int\000"
+ 1133      7420756E 
+ 1133      7369676E 
+ 1133      65642069 
+ 1133      6E7400
+ 1134              	.LASF19:
+ 1135 0058 49444C45 		.ascii	"IDLE\000"
+ 1135      00
+ 1136              	.LASF29:
+ 1137 005d 74656D70 		.ascii	"tempHum\000"
+ 1137      48756D00 
+ 1138              	.LASF14:
+ 1139 0065 666C6F61 		.ascii	"float\000"
+ 1139      7400
+ 1140              	.LASF38:
+ 1141 006b 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1141      4320342E 
+ 1141      382E3420 
+ 1141      32303134 
+ 1141      30353236 
+ 1142 009e 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1142      20726576 
+ 1142      6973696F 
+ 1142      6E203231 
+ 1142      31333538 
+ 1143 00d1 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1143      66756E63 
+ 1143      74696F6E 
+ 1143      2D736563 
+ 1143      74696F6E 
+ 1144              	.LASF42:
+ 1145 00e7 696E7448 		.ascii	"intHandler\000"
+ 1145      616E646C 
+ 1145      657200
+ 1146              	.LASF12:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 25
 
 
- 1110      6720696E 
- 1110      7400
- 1111              	.LASF36:
- 1112 01fa 7265644C 		.ascii	"redLEDState\000"
- 1112      45445374 
- 1112      61746500 
- 1113              	.LASF16:
- 1114 0206 63686172 		.ascii	"char\000"
- 1114      00
- 1115              	.LASF22:
- 1116 020b 41444A56 		.ascii	"ADJV\000"
- 1116      00
- 1117              	.LASF2:
- 1118 0210 73686F72 		.ascii	"short int\000"
- 1118      7420696E 
- 1118      7400
- 1119              	.LASF40:
- 1120 021a 696E6974 		.ascii	"initPSoC_Master\000"
- 1120      50536F43 
- 1120      5F4D6173 
- 1120      74657200 
- 1121              	.LASF9:
- 1122 022a 75696E74 		.ascii	"uint8\000"
- 1122      3800
- 1123              	.LASF4:
- 1124 0230 6C6F6E67 		.ascii	"long int\000"
- 1124      20696E74 
- 1124      00
- 1125              	.LASF0:
- 1126 0239 7369676E 		.ascii	"signed char\000"
- 1126      65642063 
- 1126      68617200 
- 1127              	.LASF32:
- 1128 0245 74656D70 		.ascii	"tempLight\000"
- 1128      4C696768 
- 1128      7400
- 1129              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1147 00f2 696E7431 		.ascii	"int16\000"
+ 1147      3600
+ 1148              	.LASF5:
+ 1149 00f8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1149      20756E73 
+ 1149      69676E65 
+ 1149      6420696E 
+ 1149      7400
+ 1150              	.LASF35:
+ 1151 010a 69727269 		.ascii	"irrigationIndex\000"
+ 1151      67617469 
+ 1151      6F6E496E 
+ 1151      64657800 
+ 1152              	.LASF34:
+ 1153 011a 74686553 		.ascii	"theState\000"
+ 1153      74617465 
+ 1153      00
+ 1154              	.LASF33:
+ 1155 0123 62756666 		.ascii	"buff\000"
+ 1155      00
+ 1156              	.LASF23:
+ 1157 0128 41444A49 		.ascii	"ADJI\000"
+ 1157      00
+ 1158              	.LASF15:
+ 1159 012d 646F7562 		.ascii	"double\000"
+ 1159      6C6500
+ 1160              	.LASF28:
+ 1161 0134 74656D70 		.ascii	"tempTemp\000"
+ 1161      54656D70 
+ 1161      00
+ 1162              	.LASF11:
+ 1163 013d 696E7438 		.ascii	"int8\000"
+ 1163      00
+ 1164              	.LASF10:
+ 1165 0142 75696E74 		.ascii	"uint32\000"
+ 1165      333200
+ 1166              	.LASF21:
+ 1167 0149 41444A48 		.ascii	"ADJH\000"
+ 1167      00
+ 1168              	.LASF20:
+ 1169 014e 41444A57 		.ascii	"ADJW\000"
+ 1169      00
+ 1170              	.LASF1:
+ 1171 0153 756E7369 		.ascii	"unsigned char\000"
+ 1171      676E6564 
+ 1171      20636861 
+ 1171      7200
+ 1172              	.LASF8:
+ 1173 0161 756E7369 		.ascii	"unsigned int\000"
+ 1173      676E6564 
+ 1173      20696E74 
+ 1173      00
+ 1174              	.LASF7:
+ 1175 016e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1175      206C6F6E 
+ 1175      6720756E 
+ 1175      7369676E 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 26
+
+
+ 1175      65642069 
+ 1176              	.LASF40:
+ 1177 0185 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 1177      73657273 
+ 1177      5C536E75 
+ 1177      666B696E 
+ 1177      5C446F63 
+ 1178 01b3 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 1178      5F4D6173 
+ 1178      7465725C 
+ 1178      50536F43 
+ 1178      5F4D6173 
+ 1179              	.LASF26:
+ 1180 01d1 55415254 		.ascii	"UART_ISR\000"
+ 1180      5F495352 
+ 1180      00
+ 1181              	.LASF27:
+ 1182 01da 72656365 		.ascii	"receivedCommand\000"
+ 1182      69766564 
+ 1182      436F6D6D 
+ 1182      616E6400 
+ 1183              	.LASF13:
+ 1184 01ea 696E7433 		.ascii	"int32\000"
+ 1184      3200
+ 1185              	.LASF18:
+ 1186 01f0 73697A65 		.ascii	"sizetype\000"
+ 1186      74797065 
+ 1186      00
+ 1187              	.LASF32:
+ 1188 01f9 6E657742 		.ascii	"newByte\000"
+ 1188      79746500 
+ 1189              	.LASF6:
+ 1190 0201 6C6F6E67 		.ascii	"long long int\000"
+ 1190      206C6F6E 
+ 1190      6720696E 
+ 1190      7400
+ 1191              	.LASF37:
+ 1192 020f 7265644C 		.ascii	"redLEDState\000"
+ 1192      45445374 
+ 1192      61746500 
+ 1193              	.LASF16:
+ 1194 021b 63686172 		.ascii	"char\000"
+ 1194      00
+ 1195              	.LASF22:
+ 1196 0220 41444A56 		.ascii	"ADJV\000"
+ 1196      00
+ 1197              	.LASF2:
+ 1198 0225 73686F72 		.ascii	"short int\000"
+ 1198      7420696E 
+ 1198      7400
+ 1199              	.LASF25:
+ 1200 022f 696E6974 		.ascii	"initPSoC_Master\000"
+ 1200      50536F43 
+ 1200      5F4D6173 
+ 1200      74657200 
+ 1201              	.LASF9:
+ 1202 023f 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccajpZ09.s 			page 27
+
+
+ 1202      3800
+ 1203              	.LASF4:
+ 1204 0245 6C6F6E67 		.ascii	"long int\000"
+ 1204      20696E74 
+ 1204      00
+ 1205              	.LASF0:
+ 1206 024e 7369676E 		.ascii	"signed char\000"
+ 1206      65642063 
+ 1206      68617200 
+ 1207              	.LASF31:
+ 1208 025a 74656D70 		.ascii	"tempLight\000"
+ 1208      4C696768 
+ 1208      7400
+ 1209              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

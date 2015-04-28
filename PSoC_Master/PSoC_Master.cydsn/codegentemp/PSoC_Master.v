@@ -1,6 +1,6 @@
 // ======================================================================
 // PSoC_Master.v generated from TopDesign.cysch
-// 04/22/2015 at 14:14
+// 04/28/2015 at 11:05
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -51,102 +51,6 @@
 `define CYDEV_CHIP_FAMILY_USED 2
 `define CYDEV_CHIP_MEMBER_USED 3
 `define CYDEV_CHIP_REVISION_USED 17
-// Component: cy_virtualmux_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0"
-`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
-`endif
-
-// TCPWM_P4_v2_0(Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, PinVisibility_index=false, PinVisibility_kill=false, PinVisibility_phiA=false, PinVisibility_phiB=false, PinVisibility_switch=false, PWMCompare=65535, PWMCompareBuf=65535, PWMCompareSwap=0, PWMCountMode=3, PWMCountPresent=false, PWMDeadTimeCycle=0, PWMInterruptMask=1, PWMKillEvent=0, PWMLinenSignal=0, PWMLineSignal=0, PWMMode=4, PWMPeriod=65535, PWMPeriodBuf=65535, PWMPeriodSwap=0, PWMPrescaler=0, PWMReloadMode=0, PWMReloadPresent=false, PWMRunMode=0, PWMSetAlign=0, PWMStartMode=0, PWMStartPresent=false, PWMStopEvent=0, PWMStopMode=0, PWMStopPresent=false, PWMSwitchMode=0, PWMSwitchPresent=false, QuadEncodingModes=0, QuadIndexMode=0, QuadIndexPresent=false, QuadInterruptMask=1, QuadPhiAMode=3, QuadPhiBMode=3, QuadStopMode=0, QuadStopPresent=false, TCCaptureMode=0, TCCapturePresent=false, TCCompare=65535, TCCompareBuf=65535, TCCompareSwap=0, TCCompCapMode=2, TCCountingModes=1, TCCountMode=3, TCCountPresent=false, TCInterruptMask=1, TCPeriod=46875, TCPrescaler=6, TCPWMCapturePresent=false, TCPWMConfig=1, TCPWMCountPresent=false, TCPWMReloadPresent=false, TCPWMStartPresent=false, TCPWMStopPresent=false, TCReloadMode=0, TCReloadPresent=false, TCRunMode=0, TCStartMode=0, TCStartPresent=false, TCStopMode=0, TCStopPresent=false, TermMode_capture=0, TermMode_cc=0, TermMode_clock=0, TermMode_count=0, TermMode_interrupt=0, TermMode_line=0, TermMode_line_n=0, TermMode_ov=0, TermMode_reload=0, TermMode_start=0, TermMode_stop=0, TermMode_un=0, TermModeStates=, TermVisibility_capture=false, TermVisibility_cc=true, TermVisibility_clock=true, TermVisibility_count=false, TermVisibility_interrupt=true, TermVisibility_line=false, TermVisibility_line_n=false, TermVisibility_ov=true, TermVisibility_reload=false, TermVisibility_start=false, TermVisibility_stop=false, TermVisibility_un=true, CY_COMPONENT_NAME=TCPWM_P4_v2_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer, CY_INSTANCE_SHORT_NAME=Timer, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1 SP2, INSTANCE_NAME=Timer, )
-module TCPWM_P4_v2_0_0 (
-    stop,
-    count,
-    reload,
-    start,
-    capture,
-    interrupt,
-    ov,
-    un,
-    cc,
-    clock,
-    line,
-    line_n);
-    input       stop;
-    input       count;
-    input       reload;
-    input       start;
-    input       capture;
-    output      interrupt;
-    output      ov;
-    output      un;
-    output      cc;
-    input       clock;
-    output      line;
-    output      line_n;
-
-
-          wire  Net_64;
-          wire  Net_63;
-          wire  Net_85;
-          wire  Net_62;
-          wire  Net_110;
-          wire  Net_95;
-          wire  Net_106;
-          wire  Net_104;
-          wire  Net_109;
-          wire  Net_98;
-          wire  Net_108;
-          wire  Net_101;
-          wire  Net_66;
-          wire  Net_81;
-          wire  Net_75;
-          wire  Net_69;
-          wire  Net_82;
-          wire  Net_72;
-
-    cy_m0s8_tcpwm_v1_0 cy_m0s8_tcpwm_1 (
-        .capture(Net_75),
-        .underflow(un),
-        .overflow(ov),
-        .line_out_compl(line_n),
-        .line_out(line),
-        .compare_match(cc),
-        .interrupt(interrupt),
-        .count(Net_69),
-        .reload(Net_66),
-        .stop(Net_82),
-        .start(Net_72),
-        .clock(Net_81));
-
-	// VMux_reload (cy_virtualmux_v1_0)
-	assign Net_66 = reload;
-
-	// VMux_count (cy_virtualmux_v1_0)
-	assign Net_69 = count;
-
-	// VMux_start (cy_virtualmux_v1_0)
-	assign Net_72 = start;
-
-	// VMux_capture (cy_virtualmux_v1_0)
-	assign Net_75 = capture;
-
-	// VMux_stop (cy_virtualmux_v1_0)
-	assign Net_82 = stop;
-
-	// VMux_clock (cy_virtualmux_v1_0)
-	assign Net_81 = clock;
-
-
-
-endmodule
-
 // Component: ZeroTerminal
 `ifdef CY_BLK_DIR
 `undef CY_BLK_DIR
@@ -158,6 +62,19 @@ endmodule
 `else
 `define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal"
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v"
+`endif
+
+// Component: cy_virtualmux_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0"
+`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
 `endif
 
 // Component: or_v1_0
@@ -174,7 +91,7 @@ endmodule
 `endif
 
 // SCB_P4_v2_0(ApplySbClockParam=false, BitWidthReplacementStringRx=uint8, BitWidthReplacementStringTx=uint8, BufNum=1, Clock_CheckTolerance=false, Clock_desired_freq=24000, Clock_desired_freq_unit=3, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Cond=#, DBGW_SCB_IP_V0=true, DBGW_SCB_IP_V1=false, DBGW_SCB_IP_V2=false, EndCond=#endif, EzI2cBitWidthReplacementString=uint16, EzI2cBusVoltage=3.3, EzI2cByteModeEnable=false, EzI2cClkFreqDes=1550, EzI2cClockFromTerm=false, EzI2cClockStretching=true, EzI2cDataRate=100, EzI2cIsPrimarySlaveAddressHex=true, EzI2cIsSecondarySlaveAddressHex=true, EzI2cMedianFilterEnable=true, EzI2cNumberOfAddresses=0, EzI2cOvsFactor=16, EzI2cPrimarySlaveAddress=8, EzI2cSecondarySlaveAddress=9, EzI2cSlaveAddressMask=254, EzI2cSlewRate=0, EzI2cSubAddressSize=0, EzI2cWakeEnable=false, I2cAcceptAddress=false, I2cBusVoltage=3.3, I2cBusVoltageLevel=, I2cByteModeEnable=false, I2cClkFreqDes=1550, I2cClockFromTerm=false, I2cDataRate=100, I2cExternIntrHandler=false, I2cIsSlaveAddressHex=true, I2cIsSlaveAddressMaskHex=true, I2cManualOversampleControl=true, I2cMedianFilterEnable=true, I2cMode=1, I2cOvsFactor=16, I2cOvsFactorHigh=8, I2cOvsFactorLow=8, I2cSlaveAddress=8, I2cSlaveAddressMask=254, I2cSlewRate=0, I2cSlewRateSettings=0, I2cWakeEnable=false, PinName0Unconfig=spi_mosi_i2c_scl_uart_rx, PinName0UnconfigWake=spi_mosi_i2c_scl_uart_rx_wake, PinName1Unconfig=spi_miso_i2c_sda_uart_tx, PinName2Unconfig=spi_sclk, PinName3Unconfig=spi_ss0, RemoveI2cPins=true, RemoveMisoSdaTx=true, RemoveMosiSclRx=true, RemoveMosiSclRxWake=true, RemoveScbClk=false, RemoveScbIrq=true, RemoveSpiMasterPins=true, RemoveSpiMasterSs0Pin=true, RemoveSpiMasterSs1Pin=true, RemoveSpiMasterSs2Pin=true, RemoveSpiMasterSs3Pin=true, RemoveSpiSclk=true, RemoveSpiSlavePins=true, RemoveSpiSs0=true, RemoveSpiSs1=true, RemoveSpiSs2=true, RemoveSpiSs3=true, RemoveUartCtsPin=true, RemoveUartRtsPin=true, RemoveUartRxPin=false, RemoveUartRxTxPin=true, RemoveUartRxWake=true, RemoveUartRxWakeupIrq=true, RemoveUartTxPin=false, ScbClkFreqDes=115.2, ScbClkMinusTolerance=5, ScbClkPlusTolerance=5, ScbClockSelect=1, ScbClockTermEnable=false, ScbCustomIntrHandlerEnable=true, ScbInterruptTermEnable=true, ScbMisoSdaTxEnable=true, ScbMode=4, ScbModeHw=2, ScbMosiSclRxEnable=true, ScbRxWakeIrqEnable=false, ScbSclkEnable=false, ScbSs0Enable=false, ScbSs1Enable=false, ScbSs2Enable=false, ScbSs3Enable=false, SpiBitRate=1000, SpiBitsOrder=1, SpiByteModeEnable=false, SpiClkFreqDes=16000, SpiClockFromTerm=false, SpiFreeRunningSclk=false, SpiInterruptMode=0, SpiIntrMasterSpiDone=false, SpiIntrRxFull=false, SpiIntrRxNotEmpty=false, SpiIntrRxOverflow=false, SpiIntrRxTrigger=false, SpiIntrRxUnderflow=false, SpiIntrSlaveBusError=false, SpiIntrTxEmpty=false, SpiIntrTxNotFull=false, SpiIntrTxOverflow=false, SpiIntrTxTrigger=false, SpiIntrTxUnderflow=false, SpiLateMisoSampleEnable=false, SpiManualOversampleControl=true, SpiMedianFilterEnable=false, SpiMode=0, SpiNumberOfRxDataBits=8, SpiNumberOfSelectLines=1, SpiNumberOfTxDataBits=8, SpiOvsFactor=16, SpiRxBufferSize=8, SpiRxIntrMask=0, SpiRxTriggerLevel=7, SpiSclkMode=0, SpiSs0Polarity=0, SpiSs1Polarity=0, SpiSs2Polarity=0, SpiSs3Polarity=0, SpiSubMode=0, SpiTransferSeparation=1, SpiTxBufferSize=8, SpiTxIntrMask=0, SpiTxTriggerLevel=0, SpiWakeEnable=false, TermMode_clock=0, TermMode_interrupt=0, TermVisibility_clock=false, TermVisibility_interrupt=true, UartByteModeEnable=false, UartClkFreqDes=115.2, UartClockFromTerm=false, UartCtsEnable=false, UartCtsPolarity=0, UartDataRate=9600, UartDirection=3, UartDropOnFrameErr=false, UartDropOnParityErr=false, UartInterruptMode=2, UartIntrRxFrameErr=false, UartIntrRxFull=false, UartIntrRxNotEmpty=true, UartIntrRxOverflow=false, UartIntrRxParityErr=false, UartIntrRxTrigger=false, UartIntrRxUnderflow=false, UartIntrTxEmpty=false, UartIntrTxNotFull=false, UartIntrTxOverflow=false, UartIntrTxTrigger=false, UartIntrTxUartDone=false, UartIntrTxUartLostArb=false, UartIntrTxUartNack=false, UartIntrTxUnderflow=false, UartIrdaLowPower=false, UartIrdaPolarity=0, UartMedianFilterEnable=false, UartMpEnable=false, UartMpRxAcceptAddress=false, UartMpRxAddress=2, UartMpRxAddressMask=255, UartNumberOfDataBits=8, UartNumberOfStopBits=2, UartOvsFactor=12, UartParityType=2, UartRtsEnable=false, UartRtsPolarity=0, UartRtsTriggerLevel=4, UartRxBufferSize=8, UartRxEnable=true, UartRxIntrMask=4, UartRxTriggerLevel=7, UartSmCardRetryOnNack=false, UartSubMode=0, UartTxBufferSize=8, UartTxEnable=true, UartTxIntrMask=0, UartTxTriggerLevel=0, UartWakeEnable=false, CY_COMPONENT_NAME=SCB_P4_v2_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART, CY_INSTANCE_SHORT_NAME=UART, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1 SP2, INSTANCE_NAME=UART, )
-module SCB_P4_v2_0_1 (
+module SCB_P4_v2_0_0 (
     interrupt,
     clock);
     output      interrupt;
@@ -479,7 +396,7 @@ module SCB_P4_v2_0_1 (
 endmodule
 
 // SCB_P4_v2_0(ApplySbClockParam=false, BitWidthReplacementStringRx=uint8, BitWidthReplacementStringTx=uint8, BufNum=1, Clock_CheckTolerance=false, Clock_desired_freq=12000, Clock_desired_freq_unit=3, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=413DE2EF-D9F2-4233-A808-DFAF137FD877, Clock_ph_align_clock_name=HFCLK, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Cond=#, DBGW_SCB_IP_V0=true, DBGW_SCB_IP_V1=false, DBGW_SCB_IP_V2=false, EndCond=#endif, EzI2cBitWidthReplacementString=uint16, EzI2cBusVoltage=3.3, EzI2cByteModeEnable=false, EzI2cClkFreqDes=1550, EzI2cClockFromTerm=false, EzI2cClockStretching=true, EzI2cDataRate=100, EzI2cIsPrimarySlaveAddressHex=true, EzI2cIsSecondarySlaveAddressHex=true, EzI2cMedianFilterEnable=true, EzI2cNumberOfAddresses=0, EzI2cOvsFactor=16, EzI2cPrimarySlaveAddress=8, EzI2cSecondarySlaveAddress=9, EzI2cSlaveAddressMask=254, EzI2cSlewRate=0, EzI2cSubAddressSize=0, EzI2cWakeEnable=false, I2cAcceptAddress=false, I2cBusVoltage=3.3, I2cBusVoltageLevel=, I2cByteModeEnable=false, I2cClkFreqDes=1550, I2cClockFromTerm=false, I2cDataRate=100, I2cExternIntrHandler=false, I2cIsSlaveAddressHex=true, I2cIsSlaveAddressMaskHex=true, I2cManualOversampleControl=false, I2cMedianFilterEnable=true, I2cMode=2, I2cOvsFactor=16, I2cOvsFactorHigh=8, I2cOvsFactorLow=8, I2cSlaveAddress=8, I2cSlaveAddressMask=254, I2cSlewRate=0, I2cSlewRateSettings=0, I2cWakeEnable=false, PinName0Unconfig=spi_mosi_i2c_scl_uart_rx, PinName0UnconfigWake=spi_mosi_i2c_scl_uart_rx_wake, PinName1Unconfig=spi_miso_i2c_sda_uart_tx, PinName2Unconfig=spi_sclk, PinName3Unconfig=spi_ss0, RemoveI2cPins=false, RemoveMisoSdaTx=true, RemoveMosiSclRx=true, RemoveMosiSclRxWake=true, RemoveScbClk=false, RemoveScbIrq=false, RemoveSpiMasterPins=true, RemoveSpiMasterSs0Pin=true, RemoveSpiMasterSs1Pin=true, RemoveSpiMasterSs2Pin=true, RemoveSpiMasterSs3Pin=true, RemoveSpiSclk=true, RemoveSpiSlavePins=true, RemoveSpiSs0=true, RemoveSpiSs1=true, RemoveSpiSs2=true, RemoveSpiSs3=true, RemoveUartCtsPin=true, RemoveUartRtsPin=true, RemoveUartRxPin=true, RemoveUartRxTxPin=true, RemoveUartRxWake=true, RemoveUartRxWakeupIrq=true, RemoveUartTxPin=true, ScbClkFreqDes=1550, ScbClkMinusTolerance=0, ScbClkPlusTolerance=106.451612903226, ScbClockSelect=1, ScbClockTermEnable=false, ScbCustomIntrHandlerEnable=true, ScbInterruptTermEnable=false, ScbMisoSdaTxEnable=true, ScbMode=1, ScbModeHw=0, ScbMosiSclRxEnable=true, ScbRxWakeIrqEnable=false, ScbSclkEnable=false, ScbSs0Enable=false, ScbSs1Enable=false, ScbSs2Enable=false, ScbSs3Enable=false, SpiBitRate=1000, SpiBitsOrder=1, SpiByteModeEnable=false, SpiClkFreqDes=16000, SpiClockFromTerm=false, SpiFreeRunningSclk=false, SpiInterruptMode=0, SpiIntrMasterSpiDone=false, SpiIntrRxFull=false, SpiIntrRxNotEmpty=false, SpiIntrRxOverflow=false, SpiIntrRxTrigger=false, SpiIntrRxUnderflow=false, SpiIntrSlaveBusError=false, SpiIntrTxEmpty=false, SpiIntrTxNotFull=false, SpiIntrTxOverflow=false, SpiIntrTxTrigger=false, SpiIntrTxUnderflow=false, SpiLateMisoSampleEnable=false, SpiManualOversampleControl=true, SpiMedianFilterEnable=false, SpiMode=0, SpiNumberOfRxDataBits=8, SpiNumberOfSelectLines=1, SpiNumberOfTxDataBits=8, SpiOvsFactor=16, SpiRxBufferSize=8, SpiRxIntrMask=0, SpiRxTriggerLevel=7, SpiSclkMode=0, SpiSs0Polarity=0, SpiSs1Polarity=0, SpiSs2Polarity=0, SpiSs3Polarity=0, SpiSubMode=0, SpiTransferSeparation=1, SpiTxBufferSize=8, SpiTxIntrMask=0, SpiTxTriggerLevel=0, SpiWakeEnable=false, TermMode_clock=0, TermMode_interrupt=0, TermVisibility_clock=false, TermVisibility_interrupt=false, UartByteModeEnable=false, UartClkFreqDes=1382.4, UartClockFromTerm=false, UartCtsEnable=false, UartCtsPolarity=0, UartDataRate=115200, UartDirection=3, UartDropOnFrameErr=false, UartDropOnParityErr=false, UartInterruptMode=0, UartIntrRxFrameErr=false, UartIntrRxFull=false, UartIntrRxNotEmpty=false, UartIntrRxOverflow=false, UartIntrRxParityErr=false, UartIntrRxTrigger=false, UartIntrRxUnderflow=false, UartIntrTxEmpty=false, UartIntrTxNotFull=false, UartIntrTxOverflow=false, UartIntrTxTrigger=false, UartIntrTxUartDone=false, UartIntrTxUartLostArb=false, UartIntrTxUartNack=false, UartIntrTxUnderflow=false, UartIrdaLowPower=false, UartIrdaPolarity=0, UartMedianFilterEnable=false, UartMpEnable=false, UartMpRxAcceptAddress=false, UartMpRxAddress=2, UartMpRxAddressMask=255, UartNumberOfDataBits=8, UartNumberOfStopBits=2, UartOvsFactor=12, UartParityType=2, UartRtsEnable=false, UartRtsPolarity=0, UartRtsTriggerLevel=4, UartRxBufferSize=8, UartRxEnable=true, UartRxIntrMask=0, UartRxTriggerLevel=7, UartSmCardRetryOnNack=false, UartSubMode=0, UartTxBufferSize=8, UartTxEnable=true, UartTxIntrMask=0, UartTxTriggerLevel=0, UartWakeEnable=false, CY_COMPONENT_NAME=SCB_P4_v2_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=I2C, CY_INSTANCE_SHORT_NAME=I2C, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1 SP2, INSTANCE_NAME=I2C, )
-module SCB_P4_v2_0_2 (
+module SCB_P4_v2_0_1 (
     interrupt,
     clock);
     output      interrupt;
@@ -789,58 +706,91 @@ module SCB_P4_v2_0_2 (
 
 endmodule
 
+// Component: B_Timer_v2_70
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70"
+`include "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v"
+`endif
+
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=true, CaptureMode=1, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG32, CySetRegReplacementString=CY_SET_REG32, DeviceFamily=PSoC4, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=true, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=1, NumberOfCaptures=1, param45=1, Period=119999999, RegDefReplacementString=reg32, RegSizeReplacementString=uint32, Resolution=32, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=17, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=true, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT32, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer, CY_INSTANCE_SHORT_NAME=Timer, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.1 SP2, INSTANCE_NAME=Timer, )
+module Timer_v2_70_2 (
+    clock,
+    reset,
+    interrupt,
+    enable,
+    capture,
+    trigger,
+    capture_out,
+    tc);
+    input       clock;
+    input       reset;
+    output      interrupt;
+    input       enable;
+    input       capture;
+    input       trigger;
+    output      capture_out;
+    output      tc;
+
+    parameter CaptureCount = 2;
+    parameter CaptureCounterEnabled = 0;
+    parameter DeviceFamily = "PSoC4";
+    parameter InterruptOnCapture = 0;
+    parameter InterruptOnTC = 1;
+    parameter Resolution = 32;
+    parameter SiliconRevision = "17";
+
+
+    B_Timer_v2_70 TimerUDB (
+        .reset(reset),
+        .interrupt(interrupt),
+        .enable(enable),
+        .trigger(trigger),
+        .capture_in(capture),
+        .capture_out(capture_out),
+        .tc(tc),
+        .clock(clock));
+    defparam TimerUDB.Capture_Count = 2;
+    defparam TimerUDB.CaptureCounterEnabled = 0;
+    defparam TimerUDB.CaptureMode = 1;
+    defparam TimerUDB.EnableMode = 0;
+    defparam TimerUDB.InterruptOnCapture = 0;
+    defparam TimerUDB.Resolution = 32;
+    defparam TimerUDB.RunMode = 0;
+    defparam TimerUDB.TriggerMode = 0;
+
+
+
+endmodule
+
 // top
 module top ;
 
+          wire  Net_163;
+          wire  Net_162;
+          wire  Net_161;
+          wire  Net_160;
+          wire  Net_159;
+          wire  Net_158;
           wire  Net_29;
           wire  Net_28;
           wire  Net_26;
-          wire  Net_30;
-          wire  Net_22;
-          wire  Net_21;
-          wire  Net_20;
-          wire  Net_19;
-          wire  Net_18;
-          wire  Net_17;
-          wire  Net_16;
-          wire  Net_15;
-          wire  Net_14;
-          wire  Net_13;
+          wire  Net_109;
+          wire  Net_12;
+          wire  Net_10;
           wire  Net_25;
-          wire  Net_50;
-          wire  Net_76;
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		timer_ISR
-		 (.int_signal(Net_76));
-
-
-    TCPWM_P4_v2_0_0 Timer (
-        .stop(1'b0),
-        .reload(1'b0),
-        .start(1'b0),
-        .count(1'b1),
-        .capture(1'b0),
-        .interrupt(Net_76),
-        .ov(Net_18),
-        .un(Net_19),
-        .cc(Net_20),
-        .line(Net_21),
-        .line_n(Net_22),
-        .clock(Net_50));
-
-
-	cy_clock_v1_0
-		#(.id("8b5fb2a0-b311-4054-8fef-5fb2c6dbf34a"),
-		  .source_clock_id("413DE2EF-D9F2-4233-A808-DFAF137FD877"),
-		  .divisor(0),
-		  .period("1666666666.66667"),
-		  .is_direct(0),
-		  .is_digital(0))
-		Clock
-		 (.clock_out(Net_50));
+		 (.int_signal(Net_109));
 
 
 	wire [0:0] tmpOE__RedLED_net;
@@ -916,7 +866,7 @@ module top ;
 
 	assign tmpOE__RedLED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    SCB_P4_v2_0_1 UART (
+    SCB_P4_v2_0_0 UART (
         .interrupt(Net_25),
         .clock(1'b0));
 
@@ -927,7 +877,7 @@ module top ;
 		 (.int_signal(Net_25));
 
 
-    SCB_P4_v2_0_2 I2C (
+    SCB_P4_v2_0_1 I2C (
         .interrupt(Net_28),
         .clock(1'b0));
 
@@ -1003,6 +953,38 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__BlueLED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_clock_v1_0
+		#(.id("920ac626-75fc-42be-bddc-386ba9cec7f2"),
+		  .source_clock_id("413DE2EF-D9F2-4233-A808-DFAF137FD877"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(0))
+		timer_clock
+		 (.clock_out(Net_10));
+
+
+    ZeroTerminal ZeroTerminal_1 (
+        .z(Net_12));
+
+    Timer_v2_70_2 Timer (
+        .reset(Net_12),
+        .interrupt(Net_109),
+        .enable(1'b1),
+        .trigger(1'b1),
+        .capture(1'b0),
+        .capture_out(Net_162),
+        .tc(Net_163),
+        .clock(Net_10));
+    defparam Timer.CaptureCount = 2;
+    defparam Timer.CaptureCounterEnabled = 0;
+    defparam Timer.DeviceFamily = "PSoC4";
+    defparam Timer.InterruptOnCapture = 0;
+    defparam Timer.InterruptOnTC = 1;
+    defparam Timer.Resolution = 32;
+    defparam Timer.SiliconRevision = "17";
 
 
 

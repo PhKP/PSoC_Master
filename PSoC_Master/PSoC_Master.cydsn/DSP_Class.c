@@ -21,7 +21,7 @@ int16 soilHumArray[NBR_OF_SOILHUM_SENSORS][ARRAYSIZE];
 int16* soilHumPtr[NBR_OF_SOILHUM_SENSORS];
 int32 lightArray[ARRAYSIZE];
 int32* lightArrayPtr;
-uint8 temp, hum, soilHum[NBR_OF_SOILHUM_SENSORS], light;     // Used for storing the newest, value to 
+uint8 temp, hum, soilHum[NBR_OF_SOILHUM_SENSORS], light;
 
 // Private prototypes
 void avgTemp(void);
@@ -93,19 +93,11 @@ void avgTemp(void){
     }
     // Makes sure that enough datapoints are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        float avg = total/(ARRAYSIZE-skip);                         // Calculate the average value
-        float tempInDegreesC = (((avg)/((16380)-2))*165)-40;        // Conversion formula from datasheet
-
-        // tempInDegreesC is limited to -20 and +80 degrees C
-        if ( -19.5 > tempInDegreesC){
-            tempInDegreesC = -19.5;
-        }
-        else if(tempInDegreesC > 80){
-            tempInDegreesC = 80;
-        }
-
-        temp = (tempInDegreesC+20)*2;       // Conversion to UART protocol
-        UART_UartPutChar(temp);
+        int32 avg = total/(ARRAYSIZE-skip);                         // Calculate the average value
+        
+        // TODO limit temp output to 1 and 200
+        
+        temp = (uint8)avg;
     }
     else{
         temp = 0;

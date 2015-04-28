@@ -1,20 +1,25 @@
 /*******************************************************************************
 * File Name: Timer.c
-* Version 2.0
+* Version 2.70
 *
 * Description:
-*  This file provides the source code to the API for the Timer
-*  component
+*  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+*  a selectable period between 2 and 2^Width - 1.  The timer may free run
+*  or be used as a capture timer as well.  The capture can be initiated
+*  by a positive or negative edge signal as well as via software.
+*  A trigger input can be programmed to enable the timer on rising edge
+*  falling edge, either edge or continous run.
+*  Interrupts may be generated due to a terminal count condition
+*  or a capture event.
 *
 * Note:
-*  None
 *
 ********************************************************************************
-* Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
-*******************************************************************************/
+********************************************************************************/
 
 #include "Timer.h"
 
@@ -26,137 +31,135 @@ uint8 Timer_initVar = 0u;
 ********************************************************************************
 *
 * Summary:
-*  Initialize/Restore default Timer configuration.
+*  Initialize to the schematic state
 *
 * Parameters:
-*  None
+*  void
 *
 * Return:
-*  None
+*  void
 *
 *******************************************************************************/
-void Timer_Init(void)
+void Timer_Init(void) 
 {
+    #if(!Timer_UsingFixedFunction)
+            /* Interrupt State Backup for Critical Region*/
+            uint8 Timer_interruptState;
+    #endif /* Interrupt state back up for Fixed Function only */
 
-    /* Set values from customizer to CTRL */
-    #if (Timer__QUAD == Timer_CONFIG)
-        Timer_CONTROL_REG = Timer_CTRL_QUAD_BASE_CONFIG;
-        
-        /* Set values from customizer to CTRL1 */
-        Timer_TRIG_CONTROL1_REG  = Timer_QUAD_SIGNALS_MODES;
+    #if (Timer_UsingFixedFunction)
+        /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+        Timer_CONTROL &= Timer_CTRL_ENABLE;
 
-        /* Set values from customizer to INTR */
-        Timer_SetInterruptMode(Timer_QUAD_INTERRUPT_MASK);
-        
-         /* Set other values */
-        Timer_SetCounterMode(Timer_COUNT_DOWN);
-        Timer_WritePeriod(Timer_QUAD_PERIOD_INIT_VALUE);
-        Timer_WriteCounter(Timer_QUAD_PERIOD_INIT_VALUE);
-    #endif  /* (Timer__QUAD == Timer_CONFIG) */
+        /* Clear the mode bits for continuous run mode */
+        #if (CY_PSOC5A)
+            Timer_CONTROL2 &= ((uint8)(~Timer_CTRL_MODE_MASK));
+        #endif /* Clear bits in CONTROL2 only in PSOC5A */
 
-    #if (Timer__TIMER == Timer_CONFIG)
-        Timer_CONTROL_REG = Timer_CTRL_TIMER_BASE_CONFIG;
-        
-        /* Set values from customizer to CTRL1 */
-        Timer_TRIG_CONTROL1_REG  = Timer_TIMER_SIGNALS_MODES;
-    
-        /* Set values from customizer to INTR */
-        Timer_SetInterruptMode(Timer_TC_INTERRUPT_MASK);
-        
-        /* Set other values from customizer */
-        Timer_WritePeriod(Timer_TC_PERIOD_VALUE );
+        #if (CY_PSOC3 || CY_PSOC5LP)
+            Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_MODE_MASK));
+        #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
 
-        #if (Timer__COMPARE == Timer_TC_COMP_CAP_MODE)
-            Timer_WriteCompare(Timer_TC_COMPARE_VALUE);
+        /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+        #if (Timer_RunModeUsed != 0x0u)
+            /* Set 3rd bit of Control register to enable one shot mode */
+            Timer_CONTROL |= 0x04u;
+        #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
 
-            #if (1u == Timer_TC_COMPARE_SWAP)
-                Timer_SetCompareSwap(1u);
-                Timer_WriteCompareBuf(Timer_TC_COMPARE_BUF_VALUE);
-            #endif  /* (1u == Timer_TC_COMPARE_SWAP) */
-        #endif  /* (Timer__COMPARE == Timer_TC_COMP_CAP_MODE) */
+        #if (Timer_RunModeUsed == 2)
+            #if (CY_PSOC5A)
+                /* Set last 2 bits of control2 register if one shot(halt on
+                interrupt) is enabled*/
+                Timer_CONTROL2 |= 0x03u;
+            #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
 
-        /* Initialize counter value */
-        #if (Timer_CY_TCPWM_V2 && Timer_TIMER_UPDOWN_CNT_USED && !Timer_CY_TCPWM_4000)
-            Timer_WriteCounter(1u);
-        #elif(Timer__COUNT_DOWN == Timer_TC_COUNTER_MODE)
-            Timer_WriteCounter(Timer_TC_PERIOD_VALUE);
-        #else
-            Timer_WriteCounter(0u);
-        #endif /* (Timer_CY_TCPWM_V2 && Timer_TIMER_UPDOWN_CNT_USED && !Timer_CY_TCPWM_4000) */
-    #endif  /* (Timer__TIMER == Timer_CONFIG) */
+            #if (CY_PSOC3 || CY_PSOC5LP)
+                /* Set last 2 bits of control3 register if one shot(halt on
+                interrupt) is enabled*/
+                Timer_CONTROL3 |= 0x03u;
+            #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
 
-    #if (Timer__PWM_SEL == Timer_CONFIG)
-        Timer_CONTROL_REG = Timer_CTRL_PWM_BASE_CONFIG;
+        #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
 
-        #if (Timer__PWM_PR == Timer_PWM_MODE)
-            Timer_CONTROL_REG |= Timer_CTRL_PWM_RUN_MODE;
-            Timer_WriteCounter(Timer_PWM_PR_INIT_VALUE);
-        #else
-            Timer_CONTROL_REG |= Timer_CTRL_PWM_ALIGN | Timer_CTRL_PWM_KILL_EVENT;
-            
-            /* Initialize counter value */
-            #if (Timer_CY_TCPWM_V2 && Timer_PWM_UPDOWN_CNT_USED && !Timer_CY_TCPWM_4000)
-                Timer_WriteCounter(1u);
-            #elif (Timer__RIGHT == Timer_PWM_ALIGN)
-                Timer_WriteCounter(Timer_PWM_PERIOD_VALUE);
-            #else 
-                Timer_WriteCounter(0u);
-            #endif  /* (Timer_CY_TCPWM_V2 && Timer_PWM_UPDOWN_CNT_USED && !Timer_CY_TCPWM_4000) */
-        #endif  /* (Timer__PWM_PR == Timer_PWM_MODE) */
+        #if (Timer_UsingHWEnable != 0)
+            #if (CY_PSOC5A)
+                /* Set the default Run Mode of the Timer to Continuous */
+                Timer_CONTROL2 |= Timer_CTRL_MODE_PULSEWIDTH;
+            #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
 
-        #if (Timer__PWM_DT == Timer_PWM_MODE)
-            Timer_CONTROL_REG |= Timer_CTRL_PWM_DEAD_TIME_CYCLE;
-        #endif  /* (Timer__PWM_DT == Timer_PWM_MODE) */
+            #if (CY_PSOC3 || CY_PSOC5LP)
+                /* Clear and Set ROD and COD bits of CFG2 register */
+                Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_RCOD_MASK));
+                Timer_CONTROL3 |= Timer_CTRL_RCOD;
 
-        #if (Timer__PWM == Timer_PWM_MODE)
-            Timer_CONTROL_REG |= Timer_CTRL_PWM_PRESCALER;
-        #endif  /* (Timer__PWM == Timer_PWM_MODE) */
+                /* Clear and Enable the HW enable bit in CFG2 register */
+                Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_ENBL_MASK));
+                Timer_CONTROL3 |= Timer_CTRL_ENBL;
 
-        /* Set values from customizer to CTRL1 */
-        Timer_TRIG_CONTROL1_REG  = Timer_PWM_SIGNALS_MODES;
-    
-        /* Set values from customizer to INTR */
-        Timer_SetInterruptMode(Timer_PWM_INTERRUPT_MASK);
+                /* Set the default Run Mode of the Timer to Continuous */
+                Timer_CONTROL3 |= Timer_CTRL_MODE_CONTINUOUS;
+            #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
 
-        /* Set values from customizer to CTRL2 */
-        #if (Timer__PWM_PR == Timer_PWM_MODE)
-            Timer_TRIG_CONTROL2_REG =
-                    (Timer_CC_MATCH_NO_CHANGE    |
-                    Timer_OVERLOW_NO_CHANGE      |
-                    Timer_UNDERFLOW_NO_CHANGE);
-        #else
-            #if (Timer__LEFT == Timer_PWM_ALIGN)
-                Timer_TRIG_CONTROL2_REG = Timer_PWM_MODE_LEFT;
-            #endif  /* ( Timer_PWM_LEFT == Timer_PWM_ALIGN) */
+        #endif /* Configure Run Mode with hardware enable */
 
-            #if (Timer__RIGHT == Timer_PWM_ALIGN)
-                Timer_TRIG_CONTROL2_REG = Timer_PWM_MODE_RIGHT;
-            #endif  /* ( Timer_PWM_RIGHT == Timer_PWM_ALIGN) */
+        /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+        Timer_RT1 &= ((uint8)(~Timer_RT1_MASK));
+        Timer_RT1 |= Timer_SYNC;
 
-            #if (Timer__CENTER == Timer_PWM_ALIGN)
-                Timer_TRIG_CONTROL2_REG = Timer_PWM_MODE_CENTER;
-            #endif  /* ( Timer_PWM_CENTER == Timer_PWM_ALIGN) */
+        /*Enable DSI Sync all all inputs of the Timer*/
+        Timer_RT1 &= ((uint8)(~Timer_SYNCDSI_MASK));
+        Timer_RT1 |= Timer_SYNCDSI_EN;
 
-            #if (Timer__ASYMMETRIC == Timer_PWM_ALIGN)
-                Timer_TRIG_CONTROL2_REG = Timer_PWM_MODE_ASYM;
-            #endif  /* (Timer__ASYMMETRIC == Timer_PWM_ALIGN) */
-        #endif  /* (Timer__PWM_PR == Timer_PWM_MODE) */
+        /* Set the IRQ to use the status register interrupts */
+        Timer_CONTROL2 |= Timer_CTRL2_IRQ_SEL;
+    #endif /* Configuring registers of fixed function implementation */
 
-        /* Set other values from customizer */
-        Timer_WritePeriod(Timer_PWM_PERIOD_VALUE );
-        Timer_WriteCompare(Timer_PWM_COMPARE_VALUE);
+    /* Set Initial values from Configuration */
+    Timer_WritePeriod(Timer_INIT_PERIOD);
+    Timer_WriteCounter(Timer_INIT_PERIOD);
 
-        #if (1u == Timer_PWM_COMPARE_SWAP)
-            Timer_SetCompareSwap(1u);
-            Timer_WriteCompareBuf(Timer_PWM_COMPARE_BUF_VALUE);
-        #endif  /* (1u == Timer_PWM_COMPARE_SWAP) */
+    #if (Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+        Timer_CAPTURE_COUNT_CTRL |= Timer_CNTR_ENABLE;
+        Timer_SetCaptureCount(Timer_INIT_CAPTURE_COUNT);
+    #endif /* Configure capture counter value */
 
-        #if (1u == Timer_PWM_PERIOD_SWAP)
-            Timer_SetPeriodSwap(1u);
-            Timer_WritePeriodBuf(Timer_PWM_PERIOD_BUF_VALUE);
-        #endif  /* (1u == Timer_PWM_PERIOD_SWAP) */
-    #endif  /* (Timer__PWM_SEL == Timer_CONFIG) */
-    
+    #if (!Timer_UsingFixedFunction)
+        #if (Timer_SoftwareCaptureMode)
+            Timer_SetCaptureMode(Timer_INIT_CAPTURE_MODE);
+        #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+
+        #if (Timer_SoftwareTriggerMode)
+            #if (!Timer_UDB_CONTROL_REG_REMOVED)
+                if (0u == (Timer_CONTROL & Timer__B_TIMER__TM_SOFTWARE))
+                {
+                    Timer_SetTriggerMode(Timer_INIT_TRIGGER_MODE);
+                }
+            #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+        #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+
+        /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
+        /* Enter Critical Region*/
+        Timer_interruptState = CyEnterCriticalSection();
+
+        /* Use the interrupt output of the status register for IRQ output */
+        Timer_STATUS_AUX_CTRL |= Timer_STATUS_ACTL_INT_EN_MASK;
+
+        /* Exit Critical Region*/
+        CyExitCriticalSection(Timer_interruptState);
+
+        #if (Timer_EnableTriggerMode)
+            Timer_EnableTrigger();
+        #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+		
+		
+        #if (Timer_InterruptOnCaptureCount && !Timer_UDB_CONTROL_REG_REMOVED)
+            Timer_SetInterruptCount(Timer_INIT_INT_CAPTURE_COUNT);
+        #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*/
+
+        Timer_ClearFIFO();
+    #endif /* Configure additional features of UDB implementation */
+
+    Timer_SetInterruptMode(Timer_INIT_INTERRUPT_MODE);
 }
 
 
@@ -165,35 +168,27 @@ void Timer_Init(void)
 ********************************************************************************
 *
 * Summary:
-*  Enables the Timer.
+*  Enable the Timer
 *
 * Parameters:
-*  None
+*  void
 *
 * Return:
-*  None
+*  void
 *
 *******************************************************************************/
-void Timer_Enable(void)
+void Timer_Enable(void) 
 {
-    uint8 enableInterrupts;
+    /* Globally Enable the Fixed Function Block chosen */
+    #if (Timer_UsingFixedFunction)
+        Timer_GLOBAL_ENABLE |= Timer_BLOCK_EN_MASK;
+        Timer_GLOBAL_STBY_ENABLE |= Timer_BLOCK_STBY_EN_MASK;
+    #endif /* Set Enable bit for enabling Fixed function timer*/
 
-    enableInterrupts = CyEnterCriticalSection();
-    Timer_BLOCK_CONTROL_REG |= Timer_MASK;
-    CyExitCriticalSection(enableInterrupts);
-
-    /* Start Timer or PWM if start input is absent */
-    #if (Timer__PWM_SEL == Timer_CONFIG)
-        #if (0u == Timer_PWM_START_SIGNAL_PRESENT)
-            Timer_TriggerCommand(Timer_MASK, Timer_CMD_START);
-        #endif /* (0u == Timer_PWM_START_SIGNAL_PRESENT) */
-    #endif /* (Timer__PWM_SEL == Timer_CONFIG) */
-
-    #if (Timer__TIMER == Timer_CONFIG)
-        #if (0u == Timer_TC_START_SIGNAL_PRESENT)
-            Timer_TriggerCommand(Timer_MASK, Timer_CMD_START);
-        #endif /* (0u == Timer_TC_START_SIGNAL_PRESENT) */
-    #endif /* (Timer__TIMER == Timer_CONFIG) */
+    /* Remove assignment if control register is removed */
+    #if (!Timer_UDB_CONTROL_REG_REMOVED || Timer_UsingFixedFunction)
+        Timer_CONTROL |= Timer_CTRL_ENABLE;
+    #endif /* Remove assignment if control register is removed */
 }
 
 
@@ -202,33 +197,31 @@ void Timer_Enable(void)
 ********************************************************************************
 *
 * Summary:
-*  Initializes the Timer with default customizer
-*  values when called the first time and enables the Timer.
-*  For subsequent calls the configuration is left unchanged and the component is
-*  just enabled.
+*  The start function initializes the timer with the default values, the
+*  enables the timerto begin counting.  It does not enable interrupts,
+*  the EnableInt command should be called if interrupt generation is required.
 *
 * Parameters:
-*  None
+*  void
 *
 * Return:
-*  None
+*  void
 *
 * Global variables:
-*  Timer_initVar: global variable is used to indicate initial
-*  configuration of this component.  The variable is initialized to zero and set
-*  to 1 the first time Timer_Start() is called. This allows
-*  enabling/disabling a component without re-initialization in all subsequent
-*  calls to the Timer_Start() routine.
+*  Timer_initVar: Is modified when this function is called for the
+*   first time. Is used to ensure that initialization happens only once.
 *
 *******************************************************************************/
-void Timer_Start(void)
+void Timer_Start(void) 
 {
-    if (0u == Timer_initVar)
+    if(Timer_initVar == 0u)
     {
         Timer_Init();
-        Timer_initVar = 1u;
+
+        Timer_initVar = 1u;   /* Clear this bit for Initialization */
     }
 
+    /* Enable the Timer */
     Timer_Enable();
 }
 
@@ -238,1028 +231,31 @@ void Timer_Start(void)
 ********************************************************************************
 *
 * Summary:
-*  Disables the Timer.
+*  The stop function halts the timer, but does not change any modes or disable
+*  interrupts.
 *
 * Parameters:
-*  None
+*  void
 *
 * Return:
-*  None
+*  void
+*
+* Side Effects: If the Enable mode is set to Hardware only then this function
+*               has no effect on the operation of the timer.
 *
 *******************************************************************************/
-void Timer_Stop(void)
+void Timer_Stop(void) 
 {
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_BLOCK_CONTROL_REG &= (uint32)~Timer_MASK;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetMode
-********************************************************************************
-*
-* Summary:
-*  Sets the operation mode of the Timer. This function is used when
-*  configured as a generic Timer and the actual mode of operation is
-*  set at runtime. The mode must be set while the component is disabled.
-*
-* Parameters:
-*  mode: Mode for the Timer to operate in
-*   Values:
-*   - Timer_MODE_TIMER_COMPARE - Timer / Counter with
-*                                                 compare capability
-*         - Timer_MODE_TIMER_CAPTURE - Timer / Counter with
-*                                                 capture capability
-*         - Timer_MODE_QUAD - Quadrature decoder
-*         - Timer_MODE_PWM - PWM
-*         - Timer_MODE_PWM_DT - PWM with dead time
-*         - Timer_MODE_PWM_PR - PWM with pseudo random capability
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetMode(uint32 mode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_MODE_MASK;
-    Timer_CONTROL_REG |= mode;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetQDMode
-********************************************************************************
-*
-* Summary:
-*  Sets the the Quadrature Decoder to one of the 3 supported modes.
-*  Its functionality is only applicable to Quadrature Decoder operation.
-*
-* Parameters:
-*  qdMode: Quadrature Decoder mode
-*   Values:
-*         - Timer_MODE_X1 - Counts on phi 1 rising
-*         - Timer_MODE_X2 - Counts on both edges of phi1 (2x faster)
-*         - Timer_MODE_X4 - Counts on both edges of phi1 and phi2
-*                                        (4x faster)
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetQDMode(uint32 qdMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_QUAD_MODE_MASK;
-    Timer_CONTROL_REG |= qdMode;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPrescaler
-********************************************************************************
-*
-* Summary:
-*  Sets the prescaler value that is applied to the clock input.  Not applicable
-*  to a PWM with the dead time mode or Quadrature Decoder mode.
-*
-* Parameters:
-*  prescaler: Prescaler divider value
-*   Values:
-*         - Timer_PRESCALE_DIVBY1    - Divide by 1 (no prescaling)
-*         - Timer_PRESCALE_DIVBY2    - Divide by 2
-*         - Timer_PRESCALE_DIVBY4    - Divide by 4
-*         - Timer_PRESCALE_DIVBY8    - Divide by 8
-*         - Timer_PRESCALE_DIVBY16   - Divide by 16
-*         - Timer_PRESCALE_DIVBY32   - Divide by 32
-*         - Timer_PRESCALE_DIVBY64   - Divide by 64
-*         - Timer_PRESCALE_DIVBY128  - Divide by 128
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPrescaler(uint32 prescaler)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_PRESCALER_MASK;
-    Timer_CONTROL_REG |= prescaler;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetOneShot
-********************************************************************************
-*
-* Summary:
-*  Writes the register that controls whether the Timer runs
-*  continuously or stops when terminal count is reached.  By default the
-*  Timer operates in the continuous mode.
-*
-* Parameters:
-*  oneShotEnable
-*   Values:
-*     - 0 - Continuous
-*     - 1 - Enable One Shot
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetOneShot(uint32 oneShotEnable)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_ONESHOT_MASK;
-    Timer_CONTROL_REG |= ((uint32)((oneShotEnable & Timer_1BIT_MASK) <<
-                                                               Timer_ONESHOT_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPWMMode
-********************************************************************************
-*
-* Summary:
-*  Writes the control register that determines what mode of operation the PWM
-*  output lines are driven in.  There is a setting for what to do on a
-*  comparison match (CC_MATCH), on an overflow (OVERFLOW) and on an underflow
-*  (UNDERFLOW).  The value for each of the three must be ORed together to form
-*  the mode.
-*
-* Parameters:
-*  modeMask: A combination of three mode settings.  Mask must include a value
-*  for each of the three or use one of the preconfigured PWM settings.
-*   Values:
-*     - CC_MATCH_SET        - Set on comparison match
-*     - CC_MATCH_CLEAR      - Clear on comparison match
-*     - CC_MATCH_INVERT     - Invert on comparison match
-*     - CC_MATCH_NO_CHANGE  - No change on comparison match
-*     - OVERLOW_SET         - Set on overflow
-*     - OVERLOW_CLEAR       - Clear on  overflow
-*     - OVERLOW_INVERT      - Invert on overflow
-*     - OVERLOW_NO_CHANGE   - No change on overflow
-*     - UNDERFLOW_SET       - Set on underflow
-*     - UNDERFLOW_CLEAR     - Clear on underflow
-*     - UNDERFLOW_INVERT    - Invert on underflow
-*     - UNDERFLOW_NO_CHANGE - No change on underflow
-*     - PWM_MODE_LEFT       - Setting for left aligned PWM.  Should be combined
-*                             with up counting mode
-*     - PWM_MODE_RIGHT      - Setting for right aligned PWM.  Should be combined
-*                             with down counting mode
-*     - PWM_MODE_CENTER     - Setting for center aligned PWM.  Should be
-*                             combined with up/down 0 mode
-*     - PWM_MODE_ASYM       - Setting for asymmetric PWM.  Should be combined
-*                             with up/down 1 mode
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPWMMode(uint32 modeMask)
-{
-    Timer_TRIG_CONTROL2_REG = (modeMask & Timer_6BIT_MASK);
-}
-
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPWMSyncKill
-********************************************************************************
-*
-* Summary:
-*  Writes the register that controls whether the PWM kill signal (stop input)
-*  causes asynchronous or synchronous kill operation.  By default the kill
-*  operation is asynchronous.  This functionality is only applicable to the PWM
-*  and PWM with dead time modes.
-*
-*  For Synchronous mode the kill signal disables both the line and line_n
-*  signals until the next terminal count.
-*
-*  For Asynchronous mode the kill signal disables both the line and line_n
-*  signals when the kill signal is present.  This mode should only be used
-*  when the kill signal (stop input) is configured in the pass through mode
-*  (Level sensitive signal).
-
-*
-* Parameters:
-*  syncKillEnable
-*   Values:
-*     - 0 - Asynchronous
-*     - 1 - Synchronous
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPWMSyncKill(uint32 syncKillEnable)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_PWM_SYNC_KILL_MASK;
-    Timer_CONTROL_REG |= ((uint32)((syncKillEnable & Timer_1BIT_MASK)  <<
-                                               Timer_PWM_SYNC_KILL_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPWMStopOnKill
-********************************************************************************
-*
-* Summary:
-*  Writes the register that controls whether the PWM kill signal (stop input)
-*  causes the PWM counter to stop.  By default the kill operation does not stop
-*  the counter.  This functionality is only applicable to the three PWM modes.
-*
-*
-* Parameters:
-*  stopOnKillEnable
-*   Values:
-*     - 0 - Don't stop
-*     - 1 - Stop
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPWMStopOnKill(uint32 stopOnKillEnable)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_PWM_STOP_KILL_MASK;
-    Timer_CONTROL_REG |= ((uint32)((stopOnKillEnable & Timer_1BIT_MASK)  <<
-                                                         Timer_PWM_STOP_KILL_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPWMDeadTime
-********************************************************************************
-*
-* Summary:
-*  Writes the dead time control value.  This value delays the rising edge of
-*  both the line and line_n signals the designated number of cycles resulting
-*  in both signals being inactive for that many cycles.  This functionality is
-*  only applicable to the PWM in the dead time mode.
-
-*
-* Parameters:
-*  Dead time to insert
-*   Values: 0 to 255
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPWMDeadTime(uint32 deadTime)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_PRESCALER_MASK;
-    Timer_CONTROL_REG |= ((uint32)((deadTime & Timer_8BIT_MASK) <<
-                                                          Timer_PRESCALER_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPWMInvert
-********************************************************************************
-*
-* Summary:
-*  Writes the bits that control whether the line and line_n outputs are
-*  inverted from their normal output values.  This functionality is only
-*  applicable to the three PWM modes.
-*
-* Parameters:
-*  mask: Mask of outputs to invert.
-*   Values:
-*         - Timer_INVERT_LINE   - Inverts the line output
-*         - Timer_INVERT_LINE_N - Inverts the line_n output
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPWMInvert(uint32 mask)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_INV_OUT_MASK;
-    Timer_CONTROL_REG |= mask;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-
-/*******************************************************************************
-* Function Name: Timer_WriteCounter
-********************************************************************************
-*
-* Summary:
-*  Writes a new 16bit counter value directly into the counter register, thus
-*  setting the counter (not the period) to the value written. It is not
-*  advised to write to this field when the counter is running.
-*
-* Parameters:
-*  count: value to write
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_WriteCounter(uint32 count)
-{
-    Timer_COUNTER_REG = (count & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadCounter
-********************************************************************************
-*
-* Summary:
-*  Reads the current counter value.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Current counter value
-*
-*******************************************************************************/
-uint32 Timer_ReadCounter(void)
-{
-    return (Timer_COUNTER_REG & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetCounterMode
-********************************************************************************
-*
-* Summary:
-*  Sets the counter mode.  Applicable to all modes except Quadrature Decoder
-*  and the PWM with a pseudo random output.
-*
-* Parameters:
-*  counterMode: Enumerated counter type values
-*   Values:
-*     - Timer_COUNT_UP       - Counts up
-*     - Timer_COUNT_DOWN     - Counts down
-*     - Timer_COUNT_UPDOWN0  - Counts up and down. Terminal count
-*                                         generated when counter reaches 0
-*     - Timer_COUNT_UPDOWN1  - Counts up and down. Terminal count
-*                                         generated both when counter reaches 0
-*                                         and period
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetCounterMode(uint32 counterMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_UPDOWN_MASK;
-    Timer_CONTROL_REG |= counterMode;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_WritePeriod
-********************************************************************************
-*
-* Summary:
-*  Writes the 16 bit period register with the new period value.
-*  To cause the counter to count for N cycles this register should be written
-*  with N-1 (counts from 0 to period inclusive).
-*
-* Parameters:
-*  period: Period value
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_WritePeriod(uint32 period)
-{
-    Timer_PERIOD_REG = (period & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadPeriod
-********************************************************************************
-*
-* Summary:
-*  Reads the 16 bit period register.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Period value
-*
-*******************************************************************************/
-uint32 Timer_ReadPeriod(void)
-{
-    return (Timer_PERIOD_REG & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetCompareSwap
-********************************************************************************
-*
-* Summary:
-*  Writes the register that controls whether the compare registers are
-*  swapped. When enabled in the Timer/Counter mode(without capture) the swap
-*  occurs at a TC event. In the PWM mode the swap occurs at the next TC event
-*  following a hardware switch event.
-*
-* Parameters:
-*  swapEnable
-*   Values:
-*     - 0 - Disable swap
-*     - 1 - Enable swap
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetCompareSwap(uint32 swapEnable)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_RELOAD_CC_MASK;
-    Timer_CONTROL_REG |= (swapEnable & Timer_1BIT_MASK);
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_WritePeriodBuf
-********************************************************************************
-*
-* Summary:
-*  Writes the 16 bit period buf register with the new period value.
-*
-* Parameters:
-*  periodBuf: Period value
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_WritePeriodBuf(uint32 periodBuf)
-{
-    Timer_PERIOD_BUF_REG = (periodBuf & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadPeriodBuf
-********************************************************************************
-*
-* Summary:
-*  Reads the 16 bit period buf register.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Period value
-*
-*******************************************************************************/
-uint32 Timer_ReadPeriodBuf(void)
-{
-    return (Timer_PERIOD_BUF_REG & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetPeriodSwap
-********************************************************************************
-*
-* Summary:
-*  Writes the register that controls whether the period registers are
-*  swapped. When enabled in Timer/Counter mode the swap occurs at a TC event.
-*  In the PWM mode the swap occurs at the next TC event following a hardware
-*  switch event.
-*
-* Parameters:
-*  swapEnable
-*   Values:
-*     - 0 - Disable swap
-*     - 1 - Enable swap
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetPeriodSwap(uint32 swapEnable)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_CONTROL_REG &= (uint32)~Timer_RELOAD_PERIOD_MASK;
-    Timer_CONTROL_REG |= ((uint32)((swapEnable & Timer_1BIT_MASK) <<
-                                                            Timer_RELOAD_PERIOD_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_WriteCompare
-********************************************************************************
-*
-* Summary:
-*  Writes the 16 bit compare register with the new compare value. Not
-*  applicable for Timer/Counter with Capture or in Quadrature Decoder modes.
-*
-* Parameters:
-*  compare: Compare value
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_WriteCompare(uint32 compare)
-{
-    #if (Timer_CY_TCPWM_4000)
-        uint32 currentMode;
-    #endif /* (Timer_CY_TCPWM_4000) */
-
-    #if (Timer_CY_TCPWM_4000)
-        currentMode = ((Timer_CONTROL_REG & Timer_UPDOWN_MASK) >> Timer_UPDOWN_SHIFT);
-
-        if (((uint32)Timer__COUNT_DOWN == currentMode) && (0xFFFFu != compare))
-        {
-            compare++;
-        }
-        else if (((uint32)Timer__COUNT_UP == currentMode) && (0u != compare))
-        {
-            compare--;
-        }
-        else
-        {
-        }
-        
-    
-    #endif /* (Timer_CY_TCPWM_4000) */
-    
-    Timer_COMP_CAP_REG = (compare & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadCompare
-********************************************************************************
-*
-* Summary:
-*  Reads the compare register. Not applicable for Timer/Counter with Capture
-*  or in Quadrature Decoder modes.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Compare value
-*
-*******************************************************************************/
-uint32 Timer_ReadCompare(void)
-{
-    #if (Timer_CY_TCPWM_4000)
-        uint32 currentMode;
-        uint32 regVal;
-    #endif /* (Timer_CY_TCPWM_4000) */
-
-    #if (Timer_CY_TCPWM_4000)
-        currentMode = ((Timer_CONTROL_REG & Timer_UPDOWN_MASK) >> Timer_UPDOWN_SHIFT);
-        
-        regVal = Timer_COMP_CAP_REG;
-        
-        if (((uint32)Timer__COUNT_DOWN == currentMode) && (0u != regVal))
-        {
-            regVal--;
-        }
-        else if (((uint32)Timer__COUNT_UP == currentMode) && (0xFFFFu != regVal))
-        {
-            regVal++;
-        }
-        else
-        {
-        }
-
-        return (regVal & Timer_16BIT_MASK);
-    #else
-        return (Timer_COMP_CAP_REG & Timer_16BIT_MASK);
-    #endif /* (Timer_CY_TCPWM_4000) */
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_WriteCompareBuf
-********************************************************************************
-*
-* Summary:
-*  Writes the 16 bit compare buffer register with the new compare value. Not
-*  applicable for Timer/Counter with Capture or in Quadrature Decoder modes.
-*
-* Parameters:
-*  compareBuf: Compare value
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_WriteCompareBuf(uint32 compareBuf)
-{
-    #if (Timer_CY_TCPWM_4000)
-        uint32 currentMode;
-    #endif /* (Timer_CY_TCPWM_4000) */
-
-    #if (Timer_CY_TCPWM_4000)
-        currentMode = ((Timer_CONTROL_REG & Timer_UPDOWN_MASK) >> Timer_UPDOWN_SHIFT);
-
-        if (((uint32)Timer__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
-        {
-            compareBuf++;
-        }
-        else if (((uint32)Timer__COUNT_UP == currentMode) && (0u != compareBuf))
-        {
-            compareBuf --;
-        }
-        else
-        {
-        }
-    #endif /* (Timer_CY_TCPWM_4000) */
-    
-    Timer_COMP_CAP_BUF_REG = (compareBuf & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadCompareBuf
-********************************************************************************
-*
-* Summary:
-*  Reads the compare buffer register. Not applicable for Timer/Counter with
-*  Capture or in Quadrature Decoder modes.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Compare buffer value
-*
-*******************************************************************************/
-uint32 Timer_ReadCompareBuf(void)
-{
-    #if (Timer_CY_TCPWM_4000)
-        uint32 currentMode;
-        uint32 regVal;
-    #endif /* (Timer_CY_TCPWM_4000) */
-
-    #if (Timer_CY_TCPWM_4000)
-        currentMode = ((Timer_CONTROL_REG & Timer_UPDOWN_MASK) >> Timer_UPDOWN_SHIFT);
-
-        regVal = Timer_COMP_CAP_BUF_REG;
-        
-        if (((uint32)Timer__COUNT_DOWN == currentMode) && (0u != regVal))
-        {
-            regVal--;
-        }
-        else if (((uint32)Timer__COUNT_UP == currentMode) && (0xFFFFu != regVal))
-        {
-            regVal++;
-        }
-        else
-        {
-        }
-
-        return (regVal & Timer_16BIT_MASK);
-    #else
-        return (Timer_COMP_CAP_BUF_REG & Timer_16BIT_MASK);
-    #endif /* (Timer_CY_TCPWM_4000) */
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadCapture
-********************************************************************************
-*
-* Summary:
-*  Reads the captured counter value. This API is applicable only for
-*  Timer/Counter with the capture mode and Quadrature Decoder modes.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Capture value
-*
-*******************************************************************************/
-uint32 Timer_ReadCapture(void)
-{
-    return (Timer_COMP_CAP_REG & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadCaptureBuf
-********************************************************************************
-*
-* Summary:
-*  Reads the capture buffer register. This API is applicable only for
-*  Timer/Counter with the capture mode and Quadrature Decoder modes.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Capture buffer value
-*
-*******************************************************************************/
-uint32 Timer_ReadCaptureBuf(void)
-{
-    return (Timer_COMP_CAP_BUF_REG & Timer_16BIT_MASK);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetCaptureMode
-********************************************************************************
-*
-* Summary:
-*  Sets the capture trigger mode. For PWM mode this is the switch input.
-*  This input is not applicable to the Timer/Counter without Capture and
-*  Quadrature Decoder modes.
-*
-* Parameters:
-*  triggerMode: Enumerated trigger mode value
-*   Values:
-*     - Timer_TRIG_LEVEL     - Level
-*     - Timer_TRIG_RISING    - Rising edge
-*     - Timer_TRIG_FALLING   - Falling edge
-*     - Timer_TRIG_BOTH      - Both rising and falling edge
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetCaptureMode(uint32 triggerMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_TRIG_CONTROL1_REG &= (uint32)~Timer_CAPTURE_MASK;
-    Timer_TRIG_CONTROL1_REG |= triggerMode;
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetReloadMode
-********************************************************************************
-*
-* Summary:
-*  Sets the reload trigger mode. For Quadrature Decoder mode this is the index
-*  input.
-*
-* Parameters:
-*  triggerMode: Enumerated trigger mode value
-*   Values:
-*     - Timer_TRIG_LEVEL     - Level
-*     - Timer_TRIG_RISING    - Rising edge
-*     - Timer_TRIG_FALLING   - Falling edge
-*     - Timer_TRIG_BOTH      - Both rising and falling edge
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetReloadMode(uint32 triggerMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_TRIG_CONTROL1_REG &= (uint32)~Timer_RELOAD_MASK;
-    Timer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Timer_RELOAD_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetStartMode
-********************************************************************************
-*
-* Summary:
-*  Sets the start trigger mode. For Quadrature Decoder mode this is the
-*  phiB input.
-*
-* Parameters:
-*  triggerMode: Enumerated trigger mode value
-*   Values:
-*     - Timer_TRIG_LEVEL     - Level
-*     - Timer_TRIG_RISING    - Rising edge
-*     - Timer_TRIG_FALLING   - Falling edge
-*     - Timer_TRIG_BOTH      - Both rising and falling edge
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetStartMode(uint32 triggerMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_TRIG_CONTROL1_REG &= (uint32)~Timer_START_MASK;
-    Timer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Timer_START_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetStopMode
-********************************************************************************
-*
-* Summary:
-*  Sets the stop trigger mode. For PWM mode this is the kill input.
-*
-* Parameters:
-*  triggerMode: Enumerated trigger mode value
-*   Values:
-*     - Timer_TRIG_LEVEL     - Level
-*     - Timer_TRIG_RISING    - Rising edge
-*     - Timer_TRIG_FALLING   - Falling edge
-*     - Timer_TRIG_BOTH      - Both rising and falling edge
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetStopMode(uint32 triggerMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_TRIG_CONTROL1_REG &= (uint32)~Timer_STOP_MASK;
-    Timer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Timer_STOP_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_SetCountMode
-********************************************************************************
-*
-* Summary:
-*  Sets the count trigger mode. For Quadrature Decoder mode this is the phiA
-*  input.
-*
-* Parameters:
-*  triggerMode: Enumerated trigger mode value
-*   Values:
-*     - Timer_TRIG_LEVEL     - Level
-*     - Timer_TRIG_RISING    - Rising edge
-*     - Timer_TRIG_FALLING   - Falling edge
-*     - Timer_TRIG_BOTH      - Both rising and falling edge
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_SetCountMode(uint32 triggerMode)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_TRIG_CONTROL1_REG &= (uint32)~Timer_COUNT_MASK;
-    Timer_TRIG_CONTROL1_REG |= ((uint32)(triggerMode << Timer_COUNT_SHIFT));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_TriggerCommand
-********************************************************************************
-*
-* Summary:
-*  Triggers the designated command to occur on the designated TCPWM instances.
-*  The mask can be used to apply this command simultaneously to more than one
-*  instance.  This allows multiple TCPWM instances to be synchronized.
-*
-* Parameters:
-*  mask: A combination of mask bits for each instance of the TCPWM that the
-*        command should apply to.  This function from one instance can be used
-*        to apply the command to any of the instances in the design.
-*        The mask value for a specific instance is available with the MASK
-*        define.
-*  command: Enumerated command values. Capture command only applicable for
-*           Timer/Counter with Capture and PWM modes.
-*   Values:
-*     - Timer_CMD_CAPTURE    - Trigger Capture command
-*     - Timer_CMD_RELOAD     - Trigger Reload command
-*     - Timer_CMD_STOP       - Trigger Stop command
-*     - Timer_CMD_START      - Trigger Start command
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void Timer_TriggerCommand(uint32 mask, uint32 command)
-{
-    uint8 enableInterrupts;
-
-    enableInterrupts = CyEnterCriticalSection();
-
-    Timer_COMMAND_REG = ((uint32)(mask << command));
-
-    CyExitCriticalSection(enableInterrupts);
-}
-
-
-/*******************************************************************************
-* Function Name: Timer_ReadStatus
-********************************************************************************
-*
-* Summary:
-*  Reads the status of the Timer.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  Status
-*   Values:
-*     - Timer_STATUS_DOWN    - Set if counting down
-*     - Timer_STATUS_RUNNING - Set if counter is running
-*
-*******************************************************************************/
-uint32 Timer_ReadStatus(void)
-{
-    return ((Timer_STATUS_REG >> Timer_RUNNING_STATUS_SHIFT) |
-            (Timer_STATUS_REG & Timer_STATUS_DOWN));
+    /* Disable Timer */
+    #if(!Timer_UDB_CONTROL_REG_REMOVED || Timer_UsingFixedFunction)
+        Timer_CONTROL &= ((uint8)(~Timer_CTRL_ENABLE));
+    #endif /* Remove assignment if control register is removed */
+
+    /* Globally disable the Fixed Function Block chosen */
+    #if (Timer_UsingFixedFunction)
+        Timer_GLOBAL_ENABLE &= ((uint8)(~Timer_BLOCK_EN_MASK));
+        Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~Timer_BLOCK_STBY_EN_MASK));
+    #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
 }
 
 
@@ -1268,115 +264,511 @@ uint32 Timer_ReadStatus(void)
 ********************************************************************************
 *
 * Summary:
-*  Sets the interrupt mask to control which interrupt
-*  requests generate the interrupt signal.
+*  This function selects which of the interrupt inputs may cause an interrupt.
+*  The twosources are caputure and terminal.  One, both or neither may
+*  be selected.
 *
 * Parameters:
-*   interruptMask: Mask of bits to be enabled
-*   Values:
-*     - Timer_INTR_MASK_TC       - Terminal count mask
-*     - Timer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*  interruptMode:   This parameter is used to enable interrups on either/or
+*                   terminal count or capture.
 *
 * Return:
-*  None
+*  void
 *
 *******************************************************************************/
-void Timer_SetInterruptMode(uint32 interruptMask)
+void Timer_SetInterruptMode(uint8 interruptMode) 
 {
-    Timer_INTERRUPT_MASK_REG =  interruptMask;
+    Timer_STATUS_MASK = interruptMode;
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_GetInterruptSourceMasked
+* Function Name: Timer_SoftwareCapture
 ********************************************************************************
 *
 * Summary:
-*  Gets the interrupt requests masked by the interrupt mask.
+*  This function forces a capture independent of the capture signal.
 *
 * Parameters:
-*   None
+*  void
 *
 * Return:
-*  Masked interrupt source
-*   Values:
-*     - Timer_INTR_MASK_TC       - Terminal count mask
-*     - Timer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*  void
+*
+* Side Effects:
+*  An existing hardware capture could be overwritten.
 *
 *******************************************************************************/
-uint32 Timer_GetInterruptSourceMasked(void)
+void Timer_SoftwareCapture(void) 
 {
-    return (Timer_INTERRUPT_MASKED_REG);
+    /* Generate a software capture by reading the counter register */
+    #if(Timer_UsingFixedFunction)
+        (void)CY_GET_REG16(Timer_COUNTER_LSB_PTR);
+    #else
+        (void)CY_GET_REG8(Timer_COUNTER_LSB_PTR_8BIT);
+    #endif/* (Timer_UsingFixedFunction) */
+    /* Capture Data is now in the FIFO */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_GetInterruptSource
+* Function Name: Timer_ReadStatusRegister
 ********************************************************************************
 *
 * Summary:
-*  Gets the interrupt requests (without masking).
+*  Reads the status register and returns it's state. This function should use
+*  defined types for the bit-field information as the bits in this register may
+*  be permuteable.
 *
 * Parameters:
-*  None
+*  void
 *
 * Return:
-*  Interrupt request value
-*   Values:
-*     - Timer_INTR_MASK_TC       - Terminal count mask
-*     - Timer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*  The contents of the status register
+*
+* Side Effects:
+*  Status register bits may be clear on read.
 *
 *******************************************************************************/
-uint32 Timer_GetInterruptSource(void)
+uint8   Timer_ReadStatusRegister(void) 
 {
-    return (Timer_INTERRUPT_REQ_REG);
+    return (Timer_STATUS);
+}
+
+
+#if (!Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+
+
+/*******************************************************************************
+* Function Name: Timer_ReadControlRegister
+********************************************************************************
+*
+* Summary:
+*  Reads the control register and returns it's value.
+*
+* Parameters:
+*  void
+*
+* Return:
+*  The contents of the control register
+*
+*******************************************************************************/
+uint8 Timer_ReadControlRegister(void) 
+{
+    #if (!Timer_UDB_CONTROL_REG_REMOVED) 
+        return ((uint8)Timer_CONTROL);
+    #else
+        return (0);
+    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_ClearInterrupt
+* Function Name: Timer_WriteControlRegister
 ********************************************************************************
 *
 * Summary:
-*  Clears the interrupt request.
+*  Sets the bit-field of the control register.
 *
 * Parameters:
-*   interruptMask: Mask of interrupts to clear
-*   Values:
-*     - Timer_INTR_MASK_TC       - Terminal count mask
-*     - Timer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*  control: The contents of the control register
 *
 * Return:
-*  None
 *
 *******************************************************************************/
-void Timer_ClearInterrupt(uint32 interruptMask)
+void Timer_WriteControlRegister(uint8 control) 
 {
-    Timer_INTERRUPT_REQ_REG = interruptMask;
+    #if (!Timer_UDB_CONTROL_REG_REMOVED) 
+        Timer_CONTROL = control;
+    #else
+        control = 0u;
+    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+}
+
+#endif /* Remove API if control register is unused */
+
+
+/*******************************************************************************
+* Function Name: Timer_ReadPeriod
+********************************************************************************
+*
+* Summary:
+*  This function returns the current value of the Period.
+*
+* Parameters:
+*  void
+*
+* Return:
+*  The present value of the counter.
+*
+*******************************************************************************/
+uint32 Timer_ReadPeriod(void) 
+{
+   #if(Timer_UsingFixedFunction)
+       return ((uint32)CY_GET_REG16(Timer_PERIOD_LSB_PTR));
+   #else
+       return (CY_GET_REG32(Timer_PERIOD_LSB_PTR));
+   #endif /* (Timer_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_SetInterrupt
+* Function Name: Timer_WritePeriod
 ********************************************************************************
 *
 * Summary:
-*  Sets a software interrupt request.
+*  This function is used to change the period of the counter.  The new period
+*  will be loaded the next time terminal count is detected.
 *
 * Parameters:
-*   interruptMask: Mask of interrupts to set
-*   Values:
-*     - Timer_INTR_MASK_TC       - Terminal count mask
-*     - Timer_INTR_MASK_CC_MATCH - Compare count / capture mask
+*  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+*          result in the counter remaining at zero.
 *
 * Return:
-*  None
+*  void
 *
 *******************************************************************************/
-void Timer_SetInterrupt(uint32 interruptMask)
+void Timer_WritePeriod(uint32 period) 
 {
-    Timer_INTERRUPT_SET_REG = interruptMask;
+    #if(Timer_UsingFixedFunction)
+        uint16 period_temp = (uint16)period;
+        CY_SET_REG16(Timer_PERIOD_LSB_PTR, period_temp);
+    #else
+        CY_SET_REG32(Timer_PERIOD_LSB_PTR, period);
+    #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function implementation */
 }
+
+
+/*******************************************************************************
+* Function Name: Timer_ReadCapture
+********************************************************************************
+*
+* Summary:
+*  This function returns the last value captured.
+*
+* Parameters:
+*  void
+*
+* Return:
+*  Present Capture value.
+*
+*******************************************************************************/
+uint32 Timer_ReadCapture(void) 
+{
+   #if(Timer_UsingFixedFunction)
+       return ((uint32)CY_GET_REG16(Timer_CAPTURE_LSB_PTR));
+   #else
+       return (CY_GET_REG32(Timer_CAPTURE_LSB_PTR));
+   #endif /* (Timer_UsingFixedFunction) */
+}
+
+
+/*******************************************************************************
+* Function Name: Timer_WriteCounter
+********************************************************************************
+*
+* Summary:
+*  This funtion is used to set the counter to a specific value
+*
+* Parameters:
+*  counter:  New counter value.
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_WriteCounter(uint32 counter) 
+{
+   #if(Timer_UsingFixedFunction)
+        /* This functionality is removed until a FixedFunction HW update to
+         * allow this register to be written
+         */
+        CY_SET_REG16(Timer_COUNTER_LSB_PTR, (uint16)counter);
+        
+    #else
+        CY_SET_REG32(Timer_COUNTER_LSB_PTR, counter);
+    #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fixed function Timer */
+}
+
+
+/*******************************************************************************
+* Function Name: Timer_ReadCounter
+********************************************************************************
+*
+* Summary:
+*  This function returns the current counter value.
+*
+* Parameters:
+*  void
+*
+* Return:
+*  Present compare value.
+*
+*******************************************************************************/
+uint32 Timer_ReadCounter(void) 
+{
+    /* Force capture by reading Accumulator */
+    /* Must first do a software capture to be able to read the counter */
+    /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+    #if(Timer_UsingFixedFunction)
+        (void)CY_GET_REG16(Timer_COUNTER_LSB_PTR);
+    #else
+        (void)CY_GET_REG8(Timer_COUNTER_LSB_PTR_8BIT);
+    #endif/* (Timer_UsingFixedFunction) */
+
+    /* Read the data from the FIFO (or capture register for Fixed Function)*/
+    #if(Timer_UsingFixedFunction)
+        return ((uint32)CY_GET_REG16(Timer_CAPTURE_LSB_PTR));
+    #else
+        return (CY_GET_REG32(Timer_CAPTURE_LSB_PTR));
+    #endif /* (Timer_UsingFixedFunction) */
+}
+
+
+#if(!Timer_UsingFixedFunction) /* UDB Specific Functions */
+
+    
+/*******************************************************************************
+ * The functions below this point are only available using the UDB
+ * implementation.  If a feature is selected, then the API is enabled.
+ ******************************************************************************/
+
+
+#if (Timer_SoftwareCaptureMode)
+
+
+/*******************************************************************************
+* Function Name: Timer_SetCaptureMode
+********************************************************************************
+*
+* Summary:
+*  This function sets the capture mode to either rising or falling edge.
+*
+* Parameters:
+*  captureMode: This parameter sets the capture mode of the UDB capture feature
+*  The parameter values are defined using the
+*  #define Timer__B_TIMER__CM_NONE 0
+#define Timer__B_TIMER__CM_RISINGEDGE 1
+#define Timer__B_TIMER__CM_FALLINGEDGE 2
+#define Timer__B_TIMER__CM_EITHEREDGE 3
+#define Timer__B_TIMER__CM_SOFTWARE 4
+ identifiers
+*  The following are the possible values of the parameter
+*  Timer__B_TIMER__CM_NONE        - Set Capture mode to None
+*  Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+*  Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+*  Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_SetCaptureMode(uint8 captureMode) 
+{
+    /* This must only set to two bits of the control register associated */
+    captureMode = ((uint8)((uint8)captureMode << Timer_CTRL_CAP_MODE_SHIFT));
+    captureMode &= (Timer_CTRL_CAP_MODE_MASK);
+
+    #if (!Timer_UDB_CONTROL_REG_REMOVED)
+        /* Clear the Current Setting */
+        Timer_CONTROL &= ((uint8)(~Timer_CTRL_CAP_MODE_MASK));
+
+        /* Write The New Setting */
+        Timer_CONTROL |= captureMode;
+    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+}
+#endif /* Remove API if Capture Mode is not Software Controlled */
+
+
+#if (Timer_SoftwareTriggerMode)
+
+
+/*******************************************************************************
+* Function Name: Timer_SetTriggerMode
+********************************************************************************
+*
+* Summary:
+*  This function sets the trigger input mode
+*
+* Parameters:
+*  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+    #define Timer__B_TIMER__TM_NONE 0x00u
+    #define Timer__B_TIMER__TM_RISINGEDGE 0x04u
+    #define Timer__B_TIMER__TM_FALLINGEDGE 0x08u
+    #define Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
+    #define Timer__B_TIMER__TM_SOFTWARE 0x10u
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_SetTriggerMode(uint8 triggerMode) 
+{
+    /* This must only set to two bits of the control register associated */
+    triggerMode &= Timer_CTRL_TRIG_MODE_MASK;
+
+    #if (!Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+    
+        /* Clear the Current Setting */
+        Timer_CONTROL &= ((uint8)(~Timer_CTRL_TRIG_MODE_MASK));
+
+        /* Write The New Setting */
+        Timer_CONTROL |= (triggerMode | Timer__B_TIMER__TM_SOFTWARE);
+    #endif /* Remove code section if control register is not used */
+}
+#endif /* Remove API if Trigger Mode is not Software Controlled */
+
+#if (Timer_EnableTriggerMode)
+
+
+/*******************************************************************************
+* Function Name: Timer_EnableTrigger
+********************************************************************************
+*
+* Summary:
+*  Sets the control bit enabling Hardware Trigger mode
+*
+* Parameters:
+*  void
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_EnableTrigger(void) 
+{
+    #if (!Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+        Timer_CONTROL |= Timer_CTRL_TRIG_EN;
+    #endif /* Remove code section if control register is not used */
+}
+
+
+/*******************************************************************************
+* Function Name: Timer_DisableTrigger
+********************************************************************************
+*
+* Summary:
+*  Clears the control bit enabling Hardware Trigger mode
+*
+* Parameters:
+*  void
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_DisableTrigger(void) 
+{
+    #if (!Timer_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is removed */
+        Timer_CONTROL &= ((uint8)(~Timer_CTRL_TRIG_EN));
+    #endif /* Remove code section if control register is not used */
+}
+#endif /* Remove API is Trigger Mode is set to None */
+
+#if(Timer_InterruptOnCaptureCount)
+
+
+/*******************************************************************************
+* Function Name: Timer_SetInterruptCount
+********************************************************************************
+*
+* Summary:
+*  This function sets the capture count before an interrupt is triggered.
+*
+* Parameters:
+*  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+*                   an interrupt will occur each time a capture occurs.
+*                   A value of 1 to 3 will cause the interrupt
+*                   to delay by the same number of captures.
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_SetInterruptCount(uint8 interruptCount) 
+{
+    /* This must only set to two bits of the control register associated */
+    interruptCount &= Timer_CTRL_INTCNT_MASK;
+
+    #if (!Timer_UDB_CONTROL_REG_REMOVED)
+        /* Clear the Current Setting */
+        Timer_CONTROL &= ((uint8)(~Timer_CTRL_INTCNT_MASK));
+        /* Write The New Setting */
+        Timer_CONTROL |= interruptCount;
+    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+}
+#endif /* Timer_InterruptOnCaptureCount */
+
+
+#if (Timer_UsingHWCaptureCounter)
+
+
+/*******************************************************************************
+* Function Name: Timer_SetCaptureCount
+********************************************************************************
+*
+* Summary:
+*  This function sets the capture count
+*
+* Parameters:
+*  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+*                to 127 will cause the interrupt to delay by the same number of
+*                captures.
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_SetCaptureCount(uint8 captureCount) 
+{
+    Timer_CAP_COUNT = captureCount;
+}
+
+
+/*******************************************************************************
+* Function Name: Timer_ReadCaptureCount
+********************************************************************************
+*
+* Summary:
+*  This function reads the capture count setting
+*
+* Parameters:
+*  void
+*
+* Return:
+*  Returns the Capture Count Setting
+*
+*******************************************************************************/
+uint8 Timer_ReadCaptureCount(void) 
+{
+    return ((uint8)Timer_CAP_COUNT);
+}
+#endif /* Timer_UsingHWCaptureCounter */
+
+
+/*******************************************************************************
+* Function Name: Timer_ClearFIFO
+********************************************************************************
+*
+* Summary:
+*  This function clears all capture data from the capture FIFO
+*
+* Parameters:
+*  void
+*
+* Return:
+*  void
+*
+*******************************************************************************/
+void Timer_ClearFIFO(void) 
+{
+    while(0u != (Timer_ReadStatusRegister() & Timer_STATUS_FIFONEMP))
+    {
+        (void)Timer_ReadCapture();
+    }
+}
+
+#endif /* UDB Specific Functions */
 
 
 /* [] END OF FILE */

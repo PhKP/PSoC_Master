@@ -19,8 +19,6 @@
 #include <cyfitter.h>
 #include <cydisabledsheets.h>
 #include <timer_ISR.h>
-#include <Timer.h>
-#include <Clock.h>
 #include <RedLED.h>
 #include <RedLED_aliases.h>
 #include <UART.h>
@@ -38,6 +36,7 @@
 #include <I2C_BOOT.h>
 #include <BlueLED.h>
 #include <BlueLED_aliases.h>
+#include <Timer.h>
 #include <UART_SCBCLK.h>
 #include <UART_tx.h>
 #include <UART_tx_aliases.h>

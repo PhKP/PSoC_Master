@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Timer.c
+* File Name: Timer_1.c
 * Version 2.70
 *
 * Description:
@@ -21,13 +21,13 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#include "Timer.h"
+#include "Timer_1.h"
 
-uint8 Timer_initVar = 0u;
+uint8 Timer_1_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: Timer_Init
+* Function Name: Timer_1_Init
 ********************************************************************************
 *
 * Summary:
@@ -40,131 +40,131 @@ uint8 Timer_initVar = 0u;
 *  void
 *
 *******************************************************************************/
-void Timer_Init(void) 
+void Timer_1_Init(void) 
 {
-    #if(!Timer_UsingFixedFunction)
+    #if(!Timer_1_UsingFixedFunction)
             /* Interrupt State Backup for Critical Region*/
-            uint8 Timer_interruptState;
+            uint8 Timer_1_interruptState;
     #endif /* Interrupt state back up for Fixed Function only */
 
-    #if (Timer_UsingFixedFunction)
+    #if (Timer_1_UsingFixedFunction)
         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
-        Timer_CONTROL &= Timer_CTRL_ENABLE;
+        Timer_1_CONTROL &= Timer_1_CTRL_ENABLE;
 
         /* Clear the mode bits for continuous run mode */
         #if (CY_PSOC5A)
-            Timer_CONTROL2 &= ((uint8)(~Timer_CTRL_MODE_MASK));
+            Timer_1_CONTROL2 &= ((uint8)(~Timer_1_CTRL_MODE_MASK));
         #endif /* Clear bits in CONTROL2 only in PSOC5A */
 
         #if (CY_PSOC3 || CY_PSOC5LP)
-            Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_MODE_MASK));
+            Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_MODE_MASK));
         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
 
         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
-        #if (Timer_RunModeUsed != 0x0u)
+        #if (Timer_1_RunModeUsed != 0x0u)
             /* Set 3rd bit of Control register to enable one shot mode */
-            Timer_CONTROL |= 0x04u;
+            Timer_1_CONTROL |= 0x04u;
         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
 
-        #if (Timer_RunModeUsed == 2)
+        #if (Timer_1_RunModeUsed == 2)
             #if (CY_PSOC5A)
                 /* Set last 2 bits of control2 register if one shot(halt on
                 interrupt) is enabled*/
-                Timer_CONTROL2 |= 0x03u;
+                Timer_1_CONTROL2 |= 0x03u;
             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
 
             #if (CY_PSOC3 || CY_PSOC5LP)
                 /* Set last 2 bits of control3 register if one shot(halt on
                 interrupt) is enabled*/
-                Timer_CONTROL3 |= 0x03u;
+                Timer_1_CONTROL3 |= 0x03u;
             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
 
         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
 
-        #if (Timer_UsingHWEnable != 0)
+        #if (Timer_1_UsingHWEnable != 0)
             #if (CY_PSOC5A)
                 /* Set the default Run Mode of the Timer to Continuous */
-                Timer_CONTROL2 |= Timer_CTRL_MODE_PULSEWIDTH;
+                Timer_1_CONTROL2 |= Timer_1_CTRL_MODE_PULSEWIDTH;
             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
 
             #if (CY_PSOC3 || CY_PSOC5LP)
                 /* Clear and Set ROD and COD bits of CFG2 register */
-                Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_RCOD_MASK));
-                Timer_CONTROL3 |= Timer_CTRL_RCOD;
+                Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_RCOD_MASK));
+                Timer_1_CONTROL3 |= Timer_1_CTRL_RCOD;
 
                 /* Clear and Enable the HW enable bit in CFG2 register */
-                Timer_CONTROL3 &= ((uint8)(~Timer_CTRL_ENBL_MASK));
-                Timer_CONTROL3 |= Timer_CTRL_ENBL;
+                Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_ENBL_MASK));
+                Timer_1_CONTROL3 |= Timer_1_CTRL_ENBL;
 
                 /* Set the default Run Mode of the Timer to Continuous */
-                Timer_CONTROL3 |= Timer_CTRL_MODE_CONTINUOUS;
+                Timer_1_CONTROL3 |= Timer_1_CTRL_MODE_CONTINUOUS;
             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
 
         #endif /* Configure Run Mode with hardware enable */
 
         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
-        Timer_RT1 &= ((uint8)(~Timer_RT1_MASK));
-        Timer_RT1 |= Timer_SYNC;
+        Timer_1_RT1 &= ((uint8)(~Timer_1_RT1_MASK));
+        Timer_1_RT1 |= Timer_1_SYNC;
 
         /*Enable DSI Sync all all inputs of the Timer*/
-        Timer_RT1 &= ((uint8)(~Timer_SYNCDSI_MASK));
-        Timer_RT1 |= Timer_SYNCDSI_EN;
+        Timer_1_RT1 &= ((uint8)(~Timer_1_SYNCDSI_MASK));
+        Timer_1_RT1 |= Timer_1_SYNCDSI_EN;
 
         /* Set the IRQ to use the status register interrupts */
-        Timer_CONTROL2 |= Timer_CTRL2_IRQ_SEL;
+        Timer_1_CONTROL2 |= Timer_1_CTRL2_IRQ_SEL;
     #endif /* Configuring registers of fixed function implementation */
 
     /* Set Initial values from Configuration */
-    Timer_WritePeriod(Timer_INIT_PERIOD);
-    Timer_WriteCounter(Timer_INIT_PERIOD);
+    Timer_1_WritePeriod(Timer_1_INIT_PERIOD);
+    Timer_1_WriteCounter(Timer_1_INIT_PERIOD);
 
-    #if (Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
-        Timer_CAPTURE_COUNT_CTRL |= Timer_CNTR_ENABLE;
-        Timer_SetCaptureCount(Timer_INIT_CAPTURE_COUNT);
+    #if (Timer_1_UsingHWCaptureCounter)/* Capture counter is enabled */
+        Timer_1_CAPTURE_COUNT_CTRL |= Timer_1_CNTR_ENABLE;
+        Timer_1_SetCaptureCount(Timer_1_INIT_CAPTURE_COUNT);
     #endif /* Configure capture counter value */
 
-    #if (!Timer_UsingFixedFunction)
-        #if (Timer_SoftwareCaptureMode)
-            Timer_SetCaptureMode(Timer_INIT_CAPTURE_MODE);
+    #if (!Timer_1_UsingFixedFunction)
+        #if (Timer_1_SoftwareCaptureMode)
+            Timer_1_SetCaptureMode(Timer_1_INIT_CAPTURE_MODE);
         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
 
-        #if (Timer_SoftwareTriggerMode)
-            #if (!Timer_UDB_CONTROL_REG_REMOVED)
-                if (0u == (Timer_CONTROL & Timer__B_TIMER__TM_SOFTWARE))
+        #if (Timer_1_SoftwareTriggerMode)
+            #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
+                if (0u == (Timer_1_CONTROL & Timer_1__B_TIMER__TM_SOFTWARE))
                 {
-                    Timer_SetTriggerMode(Timer_INIT_TRIGGER_MODE);
+                    Timer_1_SetTriggerMode(Timer_1_INIT_TRIGGER_MODE);
                 }
-            #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+            #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
 
         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
         /* Enter Critical Region*/
-        Timer_interruptState = CyEnterCriticalSection();
+        Timer_1_interruptState = CyEnterCriticalSection();
 
         /* Use the interrupt output of the status register for IRQ output */
-        Timer_STATUS_AUX_CTRL |= Timer_STATUS_ACTL_INT_EN_MASK;
+        Timer_1_STATUS_AUX_CTRL |= Timer_1_STATUS_ACTL_INT_EN_MASK;
 
         /* Exit Critical Region*/
-        CyExitCriticalSection(Timer_interruptState);
+        CyExitCriticalSection(Timer_1_interruptState);
 
-        #if (Timer_EnableTriggerMode)
-            Timer_EnableTrigger();
+        #if (Timer_1_EnableTriggerMode)
+            Timer_1_EnableTrigger();
         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
 		
 		
-        #if (Timer_InterruptOnCaptureCount && !Timer_UDB_CONTROL_REG_REMOVED)
-            Timer_SetInterruptCount(Timer_INIT_INT_CAPTURE_COUNT);
+        #if (Timer_1_InterruptOnCaptureCount && !Timer_1_UDB_CONTROL_REG_REMOVED)
+            Timer_1_SetInterruptCount(Timer_1_INIT_INT_CAPTURE_COUNT);
         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*/
 
-        Timer_ClearFIFO();
+        Timer_1_ClearFIFO();
     #endif /* Configure additional features of UDB implementation */
 
-    Timer_SetInterruptMode(Timer_INIT_INTERRUPT_MODE);
+    Timer_1_SetInterruptMode(Timer_1_INIT_INTERRUPT_MODE);
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_Enable
+* Function Name: Timer_1_Enable
 ********************************************************************************
 *
 * Summary:
@@ -177,23 +177,23 @@ void Timer_Init(void)
 *  void
 *
 *******************************************************************************/
-void Timer_Enable(void) 
+void Timer_1_Enable(void) 
 {
     /* Globally Enable the Fixed Function Block chosen */
-    #if (Timer_UsingFixedFunction)
-        Timer_GLOBAL_ENABLE |= Timer_BLOCK_EN_MASK;
-        Timer_GLOBAL_STBY_ENABLE |= Timer_BLOCK_STBY_EN_MASK;
+    #if (Timer_1_UsingFixedFunction)
+        Timer_1_GLOBAL_ENABLE |= Timer_1_BLOCK_EN_MASK;
+        Timer_1_GLOBAL_STBY_ENABLE |= Timer_1_BLOCK_STBY_EN_MASK;
     #endif /* Set Enable bit for enabling Fixed function timer*/
 
     /* Remove assignment if control register is removed */
-    #if (!Timer_UDB_CONTROL_REG_REMOVED || Timer_UsingFixedFunction)
-        Timer_CONTROL |= Timer_CTRL_ENABLE;
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED || Timer_1_UsingFixedFunction)
+        Timer_1_CONTROL |= Timer_1_CTRL_ENABLE;
     #endif /* Remove assignment if control register is removed */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_Start
+* Function Name: Timer_1_Start
 ********************************************************************************
 *
 * Summary:
@@ -208,26 +208,26 @@ void Timer_Enable(void)
 *  void
 *
 * Global variables:
-*  Timer_initVar: Is modified when this function is called for the
+*  Timer_1_initVar: Is modified when this function is called for the
 *   first time. Is used to ensure that initialization happens only once.
 *
 *******************************************************************************/
-void Timer_Start(void) 
+void Timer_1_Start(void) 
 {
-    if(Timer_initVar == 0u)
+    if(Timer_1_initVar == 0u)
     {
-        Timer_Init();
+        Timer_1_Init();
 
-        Timer_initVar = 1u;   /* Clear this bit for Initialization */
+        Timer_1_initVar = 1u;   /* Clear this bit for Initialization */
     }
 
     /* Enable the Timer */
-    Timer_Enable();
+    Timer_1_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_Stop
+* Function Name: Timer_1_Stop
 ********************************************************************************
 *
 * Summary:
@@ -244,23 +244,23 @@ void Timer_Start(void)
 *               has no effect on the operation of the timer.
 *
 *******************************************************************************/
-void Timer_Stop(void) 
+void Timer_1_Stop(void) 
 {
     /* Disable Timer */
-    #if(!Timer_UDB_CONTROL_REG_REMOVED || Timer_UsingFixedFunction)
-        Timer_CONTROL &= ((uint8)(~Timer_CTRL_ENABLE));
+    #if(!Timer_1_UDB_CONTROL_REG_REMOVED || Timer_1_UsingFixedFunction)
+        Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_ENABLE));
     #endif /* Remove assignment if control register is removed */
 
     /* Globally disable the Fixed Function Block chosen */
-    #if (Timer_UsingFixedFunction)
-        Timer_GLOBAL_ENABLE &= ((uint8)(~Timer_BLOCK_EN_MASK));
-        Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~Timer_BLOCK_STBY_EN_MASK));
+    #if (Timer_1_UsingFixedFunction)
+        Timer_1_GLOBAL_ENABLE &= ((uint8)(~Timer_1_BLOCK_EN_MASK));
+        Timer_1_GLOBAL_STBY_ENABLE &= ((uint8)(~Timer_1_BLOCK_STBY_EN_MASK));
     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_SetInterruptMode
+* Function Name: Timer_1_SetInterruptMode
 ********************************************************************************
 *
 * Summary:
@@ -276,14 +276,14 @@ void Timer_Stop(void)
 *  void
 *
 *******************************************************************************/
-void Timer_SetInterruptMode(uint8 interruptMode) 
+void Timer_1_SetInterruptMode(uint8 interruptMode) 
 {
-    Timer_STATUS_MASK = interruptMode;
+    Timer_1_STATUS_MASK = interruptMode;
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_SoftwareCapture
+* Function Name: Timer_1_SoftwareCapture
 ********************************************************************************
 *
 * Summary:
@@ -299,20 +299,20 @@ void Timer_SetInterruptMode(uint8 interruptMode)
 *  An existing hardware capture could be overwritten.
 *
 *******************************************************************************/
-void Timer_SoftwareCapture(void) 
+void Timer_1_SoftwareCapture(void) 
 {
     /* Generate a software capture by reading the counter register */
-    #if(Timer_UsingFixedFunction)
-        (void)CY_GET_REG16(Timer_COUNTER_LSB_PTR);
+    #if(Timer_1_UsingFixedFunction)
+        (void)CY_GET_REG16(Timer_1_COUNTER_LSB_PTR);
     #else
-        (void)CY_GET_REG8(Timer_COUNTER_LSB_PTR_8BIT);
-    #endif/* (Timer_UsingFixedFunction) */
+        (void)CY_GET_REG8(Timer_1_COUNTER_LSB_PTR_8BIT);
+    #endif/* (Timer_1_UsingFixedFunction) */
     /* Capture Data is now in the FIFO */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadStatusRegister
+* Function Name: Timer_1_ReadStatusRegister
 ********************************************************************************
 *
 * Summary:
@@ -330,17 +330,17 @@ void Timer_SoftwareCapture(void)
 *  Status register bits may be clear on read.
 *
 *******************************************************************************/
-uint8   Timer_ReadStatusRegister(void) 
+uint8   Timer_1_ReadStatusRegister(void) 
 {
-    return (Timer_STATUS);
+    return (Timer_1_STATUS);
 }
 
 
-#if (!Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+#if (!Timer_1_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadControlRegister
+* Function Name: Timer_1_ReadControlRegister
 ********************************************************************************
 *
 * Summary:
@@ -353,18 +353,18 @@ uint8   Timer_ReadStatusRegister(void)
 *  The contents of the control register
 *
 *******************************************************************************/
-uint8 Timer_ReadControlRegister(void) 
+uint8 Timer_1_ReadControlRegister(void) 
 {
-    #if (!Timer_UDB_CONTROL_REG_REMOVED) 
-        return ((uint8)Timer_CONTROL);
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED) 
+        return ((uint8)Timer_1_CONTROL);
     #else
         return (0);
-    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+    #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_WriteControlRegister
+* Function Name: Timer_1_WriteControlRegister
 ********************************************************************************
 *
 * Summary:
@@ -376,20 +376,20 @@ uint8 Timer_ReadControlRegister(void)
 * Return:
 *
 *******************************************************************************/
-void Timer_WriteControlRegister(uint8 control) 
+void Timer_1_WriteControlRegister(uint8 control) 
 {
-    #if (!Timer_UDB_CONTROL_REG_REMOVED) 
-        Timer_CONTROL = control;
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED) 
+        Timer_1_CONTROL = control;
     #else
         control = 0u;
-    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+    #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
 }
 
 #endif /* Remove API if control register is unused */
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadPeriod
+* Function Name: Timer_1_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -402,18 +402,18 @@ void Timer_WriteControlRegister(uint8 control)
 *  The present value of the counter.
 *
 *******************************************************************************/
-uint32 Timer_ReadPeriod(void) 
+uint32 Timer_1_ReadPeriod(void) 
 {
-   #if(Timer_UsingFixedFunction)
-       return ((uint32)CY_GET_REG16(Timer_PERIOD_LSB_PTR));
+   #if(Timer_1_UsingFixedFunction)
+       return ((uint32)CY_GET_REG16(Timer_1_PERIOD_LSB_PTR));
    #else
-       return (CY_GET_REG32(Timer_PERIOD_LSB_PTR));
-   #endif /* (Timer_UsingFixedFunction) */
+       return (CY_GET_REG32(Timer_1_PERIOD_LSB_PTR));
+   #endif /* (Timer_1_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_WritePeriod
+* Function Name: Timer_1_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -428,19 +428,19 @@ uint32 Timer_ReadPeriod(void)
 *  void
 *
 *******************************************************************************/
-void Timer_WritePeriod(uint32 period) 
+void Timer_1_WritePeriod(uint32 period) 
 {
-    #if(Timer_UsingFixedFunction)
+    #if(Timer_1_UsingFixedFunction)
         uint16 period_temp = (uint16)period;
-        CY_SET_REG16(Timer_PERIOD_LSB_PTR, period_temp);
+        CY_SET_REG16(Timer_1_PERIOD_LSB_PTR, period_temp);
     #else
-        CY_SET_REG32(Timer_PERIOD_LSB_PTR, period);
+        CY_SET_REG32(Timer_1_PERIOD_LSB_PTR, period);
     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function implementation */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadCapture
+* Function Name: Timer_1_ReadCapture
 ********************************************************************************
 *
 * Summary:
@@ -453,18 +453,18 @@ void Timer_WritePeriod(uint32 period)
 *  Present Capture value.
 *
 *******************************************************************************/
-uint32 Timer_ReadCapture(void) 
+uint32 Timer_1_ReadCapture(void) 
 {
-   #if(Timer_UsingFixedFunction)
-       return ((uint32)CY_GET_REG16(Timer_CAPTURE_LSB_PTR));
+   #if(Timer_1_UsingFixedFunction)
+       return ((uint32)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
    #else
-       return (CY_GET_REG32(Timer_CAPTURE_LSB_PTR));
-   #endif /* (Timer_UsingFixedFunction) */
+       return (CY_GET_REG32(Timer_1_CAPTURE_LSB_PTR));
+   #endif /* (Timer_1_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_WriteCounter
+* Function Name: Timer_1_WriteCounter
 ********************************************************************************
 *
 * Summary:
@@ -477,22 +477,22 @@ uint32 Timer_ReadCapture(void)
 *  void
 *
 *******************************************************************************/
-void Timer_WriteCounter(uint32 counter) 
+void Timer_1_WriteCounter(uint32 counter) 
 {
-   #if(Timer_UsingFixedFunction)
+   #if(Timer_1_UsingFixedFunction)
         /* This functionality is removed until a FixedFunction HW update to
          * allow this register to be written
          */
-        CY_SET_REG16(Timer_COUNTER_LSB_PTR, (uint16)counter);
+        CY_SET_REG16(Timer_1_COUNTER_LSB_PTR, (uint16)counter);
         
     #else
-        CY_SET_REG32(Timer_COUNTER_LSB_PTR, counter);
+        CY_SET_REG32(Timer_1_COUNTER_LSB_PTR, counter);
     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fixed function Timer */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadCounter
+* Function Name: Timer_1_ReadCounter
 ********************************************************************************
 *
 * Summary:
@@ -505,27 +505,27 @@ void Timer_WriteCounter(uint32 counter)
 *  Present compare value.
 *
 *******************************************************************************/
-uint32 Timer_ReadCounter(void) 
+uint32 Timer_1_ReadCounter(void) 
 {
     /* Force capture by reading Accumulator */
     /* Must first do a software capture to be able to read the counter */
     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-    #if(Timer_UsingFixedFunction)
-        (void)CY_GET_REG16(Timer_COUNTER_LSB_PTR);
+    #if(Timer_1_UsingFixedFunction)
+        (void)CY_GET_REG16(Timer_1_COUNTER_LSB_PTR);
     #else
-        (void)CY_GET_REG8(Timer_COUNTER_LSB_PTR_8BIT);
-    #endif/* (Timer_UsingFixedFunction) */
+        (void)CY_GET_REG8(Timer_1_COUNTER_LSB_PTR_8BIT);
+    #endif/* (Timer_1_UsingFixedFunction) */
 
     /* Read the data from the FIFO (or capture register for Fixed Function)*/
-    #if(Timer_UsingFixedFunction)
-        return ((uint32)CY_GET_REG16(Timer_CAPTURE_LSB_PTR));
+    #if(Timer_1_UsingFixedFunction)
+        return ((uint32)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
     #else
-        return (CY_GET_REG32(Timer_CAPTURE_LSB_PTR));
-    #endif /* (Timer_UsingFixedFunction) */
+        return (CY_GET_REG32(Timer_1_CAPTURE_LSB_PTR));
+    #endif /* (Timer_1_UsingFixedFunction) */
 }
 
 
-#if(!Timer_UsingFixedFunction) /* UDB Specific Functions */
+#if(!Timer_1_UsingFixedFunction) /* UDB Specific Functions */
 
     
 /*******************************************************************************
@@ -534,11 +534,11 @@ uint32 Timer_ReadCounter(void)
  ******************************************************************************/
 
 
-#if (Timer_SoftwareCaptureMode)
+#if (Timer_1_SoftwareCaptureMode)
 
 
 /*******************************************************************************
-* Function Name: Timer_SetCaptureMode
+* Function Name: Timer_1_SetCaptureMode
 ********************************************************************************
 *
 * Summary:
@@ -547,44 +547,44 @@ uint32 Timer_ReadCounter(void)
 * Parameters:
 *  captureMode: This parameter sets the capture mode of the UDB capture feature
 *  The parameter values are defined using the
-*  #define Timer__B_TIMER__CM_NONE 0
-#define Timer__B_TIMER__CM_RISINGEDGE 1
-#define Timer__B_TIMER__CM_FALLINGEDGE 2
-#define Timer__B_TIMER__CM_EITHEREDGE 3
-#define Timer__B_TIMER__CM_SOFTWARE 4
+*  #define Timer_1__B_TIMER__CM_NONE 0
+#define Timer_1__B_TIMER__CM_RISINGEDGE 1
+#define Timer_1__B_TIMER__CM_FALLINGEDGE 2
+#define Timer_1__B_TIMER__CM_EITHEREDGE 3
+#define Timer_1__B_TIMER__CM_SOFTWARE 4
  identifiers
 *  The following are the possible values of the parameter
-*  Timer__B_TIMER__CM_NONE        - Set Capture mode to None
-*  Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
-*  Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
-*  Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+*  Timer_1__B_TIMER__CM_NONE        - Set Capture mode to None
+*  Timer_1__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+*  Timer_1__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+*  Timer_1__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
 *
 * Return:
 *  void
 *
 *******************************************************************************/
-void Timer_SetCaptureMode(uint8 captureMode) 
+void Timer_1_SetCaptureMode(uint8 captureMode) 
 {
     /* This must only set to two bits of the control register associated */
-    captureMode = ((uint8)((uint8)captureMode << Timer_CTRL_CAP_MODE_SHIFT));
-    captureMode &= (Timer_CTRL_CAP_MODE_MASK);
+    captureMode = ((uint8)((uint8)captureMode << Timer_1_CTRL_CAP_MODE_SHIFT));
+    captureMode &= (Timer_1_CTRL_CAP_MODE_MASK);
 
-    #if (!Timer_UDB_CONTROL_REG_REMOVED)
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
         /* Clear the Current Setting */
-        Timer_CONTROL &= ((uint8)(~Timer_CTRL_CAP_MODE_MASK));
+        Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_CAP_MODE_MASK));
 
         /* Write The New Setting */
-        Timer_CONTROL |= captureMode;
-    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+        Timer_1_CONTROL |= captureMode;
+    #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
 }
 #endif /* Remove API if Capture Mode is not Software Controlled */
 
 
-#if (Timer_SoftwareTriggerMode)
+#if (Timer_1_SoftwareTriggerMode)
 
 
 /*******************************************************************************
-* Function Name: Timer_SetTriggerMode
+* Function Name: Timer_1_SetTriggerMode
 ********************************************************************************
 *
 * Summary:
@@ -592,37 +592,37 @@ void Timer_SetCaptureMode(uint8 captureMode)
 *
 * Parameters:
 *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
-    #define Timer__B_TIMER__TM_NONE 0x00u
-    #define Timer__B_TIMER__TM_RISINGEDGE 0x04u
-    #define Timer__B_TIMER__TM_FALLINGEDGE 0x08u
-    #define Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
-    #define Timer__B_TIMER__TM_SOFTWARE 0x10u
+    #define Timer_1__B_TIMER__TM_NONE 0x00u
+    #define Timer_1__B_TIMER__TM_RISINGEDGE 0x04u
+    #define Timer_1__B_TIMER__TM_FALLINGEDGE 0x08u
+    #define Timer_1__B_TIMER__TM_EITHEREDGE 0x0Cu
+    #define Timer_1__B_TIMER__TM_SOFTWARE 0x10u
 *
 * Return:
 *  void
 *
 *******************************************************************************/
-void Timer_SetTriggerMode(uint8 triggerMode) 
+void Timer_1_SetTriggerMode(uint8 triggerMode) 
 {
     /* This must only set to two bits of the control register associated */
-    triggerMode &= Timer_CTRL_TRIG_MODE_MASK;
+    triggerMode &= Timer_1_CTRL_TRIG_MODE_MASK;
 
-    #if (!Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
     
         /* Clear the Current Setting */
-        Timer_CONTROL &= ((uint8)(~Timer_CTRL_TRIG_MODE_MASK));
+        Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_TRIG_MODE_MASK));
 
         /* Write The New Setting */
-        Timer_CONTROL |= (triggerMode | Timer__B_TIMER__TM_SOFTWARE);
+        Timer_1_CONTROL |= (triggerMode | Timer_1__B_TIMER__TM_SOFTWARE);
     #endif /* Remove code section if control register is not used */
 }
 #endif /* Remove API if Trigger Mode is not Software Controlled */
 
-#if (Timer_EnableTriggerMode)
+#if (Timer_1_EnableTriggerMode)
 
 
 /*******************************************************************************
-* Function Name: Timer_EnableTrigger
+* Function Name: Timer_1_EnableTrigger
 ********************************************************************************
 *
 * Summary:
@@ -635,16 +635,16 @@ void Timer_SetTriggerMode(uint8 triggerMode)
 *  void
 *
 *******************************************************************************/
-void Timer_EnableTrigger(void) 
+void Timer_1_EnableTrigger(void) 
 {
-    #if (!Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
-        Timer_CONTROL |= Timer_CTRL_TRIG_EN;
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+        Timer_1_CONTROL |= Timer_1_CTRL_TRIG_EN;
     #endif /* Remove code section if control register is not used */
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_DisableTrigger
+* Function Name: Timer_1_DisableTrigger
 ********************************************************************************
 *
 * Summary:
@@ -657,19 +657,19 @@ void Timer_EnableTrigger(void)
 *  void
 *
 *******************************************************************************/
-void Timer_DisableTrigger(void) 
+void Timer_1_DisableTrigger(void) 
 {
-    #if (!Timer_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is removed */
-        Timer_CONTROL &= ((uint8)(~Timer_CTRL_TRIG_EN));
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is removed */
+        Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_TRIG_EN));
     #endif /* Remove code section if control register is not used */
 }
 #endif /* Remove API is Trigger Mode is set to None */
 
-#if(Timer_InterruptOnCaptureCount)
+#if(Timer_1_InterruptOnCaptureCount)
 
 
 /*******************************************************************************
-* Function Name: Timer_SetInterruptCount
+* Function Name: Timer_1_SetInterruptCount
 ********************************************************************************
 *
 * Summary:
@@ -685,26 +685,26 @@ void Timer_DisableTrigger(void)
 *  void
 *
 *******************************************************************************/
-void Timer_SetInterruptCount(uint8 interruptCount) 
+void Timer_1_SetInterruptCount(uint8 interruptCount) 
 {
     /* This must only set to two bits of the control register associated */
-    interruptCount &= Timer_CTRL_INTCNT_MASK;
+    interruptCount &= Timer_1_CTRL_INTCNT_MASK;
 
-    #if (!Timer_UDB_CONTROL_REG_REMOVED)
+    #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
         /* Clear the Current Setting */
-        Timer_CONTROL &= ((uint8)(~Timer_CTRL_INTCNT_MASK));
+        Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_INTCNT_MASK));
         /* Write The New Setting */
-        Timer_CONTROL |= interruptCount;
-    #endif /* (!Timer_UDB_CONTROL_REG_REMOVED) */
+        Timer_1_CONTROL |= interruptCount;
+    #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
 }
-#endif /* Timer_InterruptOnCaptureCount */
+#endif /* Timer_1_InterruptOnCaptureCount */
 
 
-#if (Timer_UsingHWCaptureCounter)
+#if (Timer_1_UsingHWCaptureCounter)
 
 
 /*******************************************************************************
-* Function Name: Timer_SetCaptureCount
+* Function Name: Timer_1_SetCaptureCount
 ********************************************************************************
 *
 * Summary:
@@ -719,14 +719,14 @@ void Timer_SetInterruptCount(uint8 interruptCount)
 *  void
 *
 *******************************************************************************/
-void Timer_SetCaptureCount(uint8 captureCount) 
+void Timer_1_SetCaptureCount(uint8 captureCount) 
 {
-    Timer_CAP_COUNT = captureCount;
+    Timer_1_CAP_COUNT = captureCount;
 }
 
 
 /*******************************************************************************
-* Function Name: Timer_ReadCaptureCount
+* Function Name: Timer_1_ReadCaptureCount
 ********************************************************************************
 *
 * Summary:
@@ -739,15 +739,15 @@ void Timer_SetCaptureCount(uint8 captureCount)
 *  Returns the Capture Count Setting
 *
 *******************************************************************************/
-uint8 Timer_ReadCaptureCount(void) 
+uint8 Timer_1_ReadCaptureCount(void) 
 {
-    return ((uint8)Timer_CAP_COUNT);
+    return ((uint8)Timer_1_CAP_COUNT);
 }
-#endif /* Timer_UsingHWCaptureCounter */
+#endif /* Timer_1_UsingHWCaptureCounter */
 
 
 /*******************************************************************************
-* Function Name: Timer_ClearFIFO
+* Function Name: Timer_1_ClearFIFO
 ********************************************************************************
 *
 * Summary:
@@ -760,11 +760,11 @@ uint8 Timer_ReadCaptureCount(void)
 *  void
 *
 *******************************************************************************/
-void Timer_ClearFIFO(void) 
+void Timer_1_ClearFIFO(void) 
 {
-    while(0u != (Timer_ReadStatusRegister() & Timer_STATUS_FIFONEMP))
+    while(0u != (Timer_1_ReadStatusRegister() & Timer_1_STATUS_FIFONEMP))
     {
-        (void)Timer_ReadCapture();
+        (void)Timer_1_ReadCapture();
     }
 }
 

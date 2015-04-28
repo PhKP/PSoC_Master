@@ -27,7 +27,8 @@ int main(){
     CyGlobalIntEnable;      // Global interrupt enable
 
     for(;;){
-        intHandler();
+        uartIntHandler();
+        timerIntHandler();
     }
     
     return 0;

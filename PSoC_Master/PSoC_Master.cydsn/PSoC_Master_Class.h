@@ -19,7 +19,8 @@
 
 // Public prototypes
 void initPSoC_Master(void);
-void intHandler();
+void uartIntHandler(void);
+void timerIntHandler(void);
 
 
 #endif /* PSoC_Master_Class_H */

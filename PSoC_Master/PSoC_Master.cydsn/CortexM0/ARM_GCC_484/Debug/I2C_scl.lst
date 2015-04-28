@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
   30:.\Generated_Source\PSoC4/I2C_scl.c **** ********************************************************************************
   31:.\Generated_Source\PSoC4/I2C_scl.c **** *
   32:.\Generated_Source\PSoC4/I2C_scl.c **** * Summary:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/I2C_scl.c **** *  Assign a new value to the digital port's data output register.  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
   66 003c 1A60     		str	r2, [r3]
   47:.\Generated_Source\PSoC4/I2C_scl.c **** }
   67              		.loc 1 47 0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 3
 
 
   68 003e BD46     		mov	sp, r7
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
   95 0004 00AF     		add	r7, sp, #0
   96              		.cfi_def_cfa_register 7
   97 0006 021C     		mov	r2, r0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 4
 
 
   98 0008 FB1D     		add	r3, r7, #7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
   95:.\Generated_Source\PSoC4/I2C_scl.c **** *  
   96:.\Generated_Source\PSoC4/I2C_scl.c **** *******************************************************************************/
   97:.\Generated_Source\PSoC4/I2C_scl.c **** uint8 I2C_scl_Read(void) 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 5
 
 
   98:.\Generated_Source\PSoC4/I2C_scl.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  117:.\Generated_Source\PSoC4/I2C_scl.c **** uint8 I2C_scl_ReadDataReg(void) 
  118:.\Generated_Source\PSoC4/I2C_scl.c **** {
  167              		.loc 1 118 0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 6
 
 
  168              		.cfi_startproc
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  139:.\Generated_Source\PSoC4/I2C_scl.c ****     *  
  140:.\Generated_Source\PSoC4/I2C_scl.c ****     *******************************************************************************/
  141:.\Generated_Source\PSoC4/I2C_scl.c ****     uint8 I2C_scl_ClearInterrupt(void) 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 7
 
 
  142:.\Generated_Source\PSoC4/I2C_scl.c ****     {
@@ -415,20 +415,20 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  248 0006 00000000 		.4byte	.Ldebug_abbrev0
  249 000a 04       		.byte	0x4
  250 000b 01       		.uleb128 0x1
- 251 000c 98000000 		.4byte	.LASF24
+ 251 000c E2000000 		.4byte	.LASF24
  252 0010 01       		.byte	0x1
- 253 0011 C1010000 		.4byte	.LASF25
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 8
+ 253 0011 BF010000 		.4byte	.LASF25
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 8
 
 
- 254 0015 14010000 		.4byte	.LASF26
+ 254 0015 4A000000 		.4byte	.LASF26
  255 0019 00000000 		.4byte	.Ldebug_ranges0+0
  256 001d 00000000 		.4byte	0
  257 0021 00000000 		.4byte	.Ldebug_line0
  258 0025 02       		.uleb128 0x2
  259 0026 01       		.byte	0x1
  260 0027 06       		.byte	0x6
- 261 0028 ED010000 		.4byte	.LASF0
+ 261 0028 EB010000 		.4byte	.LASF0
  262 002c 02       		.uleb128 0x2
  263 002d 01       		.byte	0x1
  264 002e 08       		.byte	0x8
@@ -436,23 +436,23 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  266 0033 02       		.uleb128 0x2
  267 0034 02       		.byte	0x2
  268 0035 05       		.byte	0x5
- 269 0036 B1010000 		.4byte	.LASF2
+ 269 0036 AF010000 		.4byte	.LASF2
  270 003a 02       		.uleb128 0x2
  271 003b 02       		.byte	0x2
  272 003c 07       		.byte	0x7
- 273 003d 5C000000 		.4byte	.LASF3
+ 273 003d A6000000 		.4byte	.LASF3
  274 0041 02       		.uleb128 0x2
  275 0042 04       		.byte	0x4
  276 0043 05       		.byte	0x5
- 277 0044 E4010000 		.4byte	.LASF4
+ 277 0044 E2010000 		.4byte	.LASF4
  278 0048 02       		.uleb128 0x2
  279 0049 04       		.byte	0x4
  280 004a 07       		.byte	0x7
- 281 004b 4A000000 		.4byte	.LASF5
+ 281 004b 94000000 		.4byte	.LASF5
  282 004f 02       		.uleb128 0x2
  283 0050 08       		.byte	0x8
  284 0051 05       		.byte	0x5
- 285 0052 7A010000 		.4byte	.LASF6
+ 285 0052 78010000 		.4byte	.LASF6
  286 0056 02       		.uleb128 0x2
  287 0057 08       		.byte	0x8
  288 0058 07       		.byte	0x7
@@ -464,32 +464,32 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  294 0064 02       		.uleb128 0x2
  295 0065 04       		.byte	0x4
  296 0066 07       		.byte	0x7
- 297 0067 8B000000 		.4byte	.LASF8
+ 297 0067 D5000000 		.4byte	.LASF8
  298 006b 04       		.uleb128 0x4
- 299 006c BB010000 		.4byte	.LASF9
+ 299 006c B9010000 		.4byte	.LASF9
  300 0070 02       		.byte	0x2
  301 0071 A1       		.byte	0xa1
  302 0072 2C000000 		.4byte	0x2c
  303 0076 04       		.uleb128 0x4
- 304 0077 84000000 		.4byte	.LASF10
+ 304 0077 CE000000 		.4byte	.LASF10
  305 007b 02       		.byte	0x2
  306 007c A3       		.byte	0xa3
  307 007d 48000000 		.4byte	0x48
  308 0081 02       		.uleb128 0x2
  309 0082 04       		.byte	0x4
  310 0083 04       		.byte	0x4
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 9
 
 
  311 0084 19000000 		.4byte	.LASF11
  312 0088 02       		.uleb128 0x2
  313 0089 08       		.byte	0x8
  314 008a 04       		.byte	0x4
- 315 008b 7D000000 		.4byte	.LASF12
+ 315 008b C7000000 		.4byte	.LASF12
  316 008f 02       		.uleb128 0x2
  317 0090 01       		.byte	0x1
  318 0091 08       		.byte	0x8
- 319 0092 95010000 		.4byte	.LASF13
+ 319 0092 93010000 		.4byte	.LASF13
  320 0096 05       		.uleb128 0x5
  321 0097 00000000 		.4byte	.LASF14
  322 009b 02       		.byte	0x2
@@ -498,7 +498,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  325 00a2 06       		.uleb128 0x6
  326 00a3 76000000 		.4byte	0x76
  327 00a7 07       		.uleb128 0x7
- 328 00a8 6F000000 		.4byte	.LASF15
+ 328 00a8 B9000000 		.4byte	.LASF15
  329 00ac 01       		.byte	0x1
  330 00ad 2A       		.byte	0x2a
  331 00ae 00000000 		.4byte	.LFB0
@@ -524,7 +524,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  351 00d7 77       		.sleb128 -9
  352 00d8 00       		.byte	0
  353 00d9 07       		.uleb128 0x7
- 354 00da 65010000 		.4byte	.LASF16
+ 354 00da 63010000 		.4byte	.LASF16
  355 00de 01       		.byte	0x1
  356 00df 49       		.byte	0x49
  357 00e0 00000000 		.4byte	.LFB1
@@ -533,12 +533,12 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  360 00e9 9C       		.byte	0x9c
  361 00ea FD000000 		.4byte	0xfd
  362 00ee 08       		.uleb128 0x8
- 363 00ef 60010000 		.4byte	.LASF18
+ 363 00ef 5E010000 		.4byte	.LASF18
  364 00f3 01       		.byte	0x1
  365 00f4 49       		.byte	0x49
  366 00f5 6B000000 		.4byte	0x6b
  367 00f9 02       		.uleb128 0x2
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 10
 
 
  368 00fa 91       		.byte	0x91
@@ -554,7 +554,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  378 0110 01       		.uleb128 0x1
  379 0111 9C       		.byte	0x9c
  380 0112 0A       		.uleb128 0xa
- 381 0113 F9010000 		.4byte	.LASF20
+ 381 0113 F7010000 		.4byte	.LASF20
  382 0117 01       		.byte	0x1
  383 0118 75       		.byte	0x75
  384 0119 6B000000 		.4byte	0x6b
@@ -563,7 +563,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  387 0125 01       		.uleb128 0x1
  388 0126 9C       		.byte	0x9c
  389 0127 0B       		.uleb128 0xb
- 390 0128 9A010000 		.4byte	.LASF21
+ 390 0128 98010000 		.4byte	.LASF21
  391 012c 01       		.byte	0x1
  392 012d 8D       		.byte	0x8d
  393 012e 6B000000 		.4byte	0x6b
@@ -572,7 +572,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  396 013a 01       		.uleb128 0x1
  397 013b 9C       		.byte	0x9c
  398 013c 09       		.uleb128 0x9
- 399 013d 88010000 		.4byte	.LASF23
+ 399 013d 86010000 		.4byte	.LASF23
  400 0141 01       		.byte	0x1
  401 0142 8F       		.byte	0x8f
  402 0143 6B000000 		.4byte	0x6b
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  422 000c 17       		.uleb128 0x17
  423 000d 11       		.uleb128 0x11
  424 000e 01       		.uleb128 0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 11
 
 
  425 000f 10       		.uleb128 0x10
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  479 0045 00       		.byte	0
  480 0046 49       		.uleb128 0x49
  481 0047 13       		.uleb128 0x13
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 12
 
 
  482 0048 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  536 007f 18       		.uleb128 0x18
  537 0080 00       		.byte	0
  538 0081 00       		.byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 13
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 13
 
 
  539 0082 0A       		.uleb128 0xa
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  593 0006 00000000 		.4byte	.Ldebug_info0
  594 000a 04       		.byte	0x4
  595 000b 00       		.byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 14
 
 
  596 000c 0000     		.2byte	0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  636      65642069 
  637              	.LASF1:
  638 0036 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 15
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 15
 
 
  638      676E6564 
@@ -847,118 +847,118 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 1
  639              	.LASF22:
  640 0044 64725661 		.ascii	"drVal\000"
  640      6C00
- 641              	.LASF5:
- 642 004a 6C6F6E67 		.ascii	"long unsigned int\000"
- 642      20756E73 
- 642      69676E65 
- 642      6420696E 
- 642      7400
- 643              	.LASF3:
- 644 005c 73686F72 		.ascii	"short unsigned int\000"
- 644      7420756E 
- 644      7369676E 
- 644      65642069 
- 644      6E7400
- 645              	.LASF15:
- 646 006f 4932435F 		.ascii	"I2C_scl_Write\000"
- 646      73636C5F 
- 646      57726974 
- 646      6500
- 647              	.LASF12:
- 648 007d 646F7562 		.ascii	"double\000"
- 648      6C6500
- 649              	.LASF10:
- 650 0084 75696E74 		.ascii	"uint32\000"
- 650      333200
- 651              	.LASF8:
- 652 008b 756E7369 		.ascii	"unsigned int\000"
- 652      676E6564 
- 652      20696E74 
- 652      00
- 653              	.LASF24:
- 654 0098 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 654      4320342E 
- 654      382E3420 
- 654      32303134 
- 654      30353236 
- 655 00cb 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 655      20726576 
- 655      6973696F 
- 655      6E203231 
- 655      31333538 
- 656 00fe 30202D66 		.ascii	"0 -ffunction-sections\000"
- 656      66756E63 
- 656      74696F6E 
- 656      2D736563 
- 656      74696F6E 
- 657              	.LASF26:
- 658 0114 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
- 658      73657273 
- 658      5C536E75 
- 658      666B696E 
- 658      5C446F63 
- 659 0142 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 16
+ 641              	.LASF26:
+ 642 004a 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 642      73657273 
+ 642      5C506869 
+ 642      6C69705C 
+ 642      4F6E6544 
+ 643 0077 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 643      4D617374 
+ 643      65725C50 
+ 643      536F435F 
+ 643      4D617374 
+ 644              	.LASF5:
+ 645 0094 6C6F6E67 		.ascii	"long unsigned int\000"
+ 645      20756E73 
+ 645      69676E65 
+ 645      6420696E 
+ 645      7400
+ 646              	.LASF3:
+ 647 00a6 73686F72 		.ascii	"short unsigned int\000"
+ 647      7420756E 
+ 647      7369676E 
+ 647      65642069 
+ 647      6E7400
+ 648              	.LASF15:
+ 649 00b9 4932435F 		.ascii	"I2C_scl_Write\000"
+ 649      73636C5F 
+ 649      57726974 
+ 649      6500
+ 650              	.LASF12:
+ 651 00c7 646F7562 		.ascii	"double\000"
+ 651      6C6500
+ 652              	.LASF10:
+ 653 00ce 75696E74 		.ascii	"uint32\000"
+ 653      333200
+ 654              	.LASF8:
+ 655 00d5 756E7369 		.ascii	"unsigned int\000"
+ 655      676E6564 
+ 655      20696E74 
+ 655      00
+ 656              	.LASF24:
+ 657 00e2 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 657      4320342E 
+ 657      382E3420 
+ 657      32303134 
+ 657      30353236 
+ 658 0115 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 658      20726576 
+ 658      6973696F 
+ 658      6E203231 
+ 658      31333538 
+ 659 0148 30202D66 		.ascii	"0 -ffunction-sections\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 16
 
 
- 659      5F4D6173 
- 659      7465725C 
- 659      50536F43 
- 659      5F4D6173 
+ 659      66756E63 
+ 659      74696F6E 
+ 659      2D736563 
+ 659      74696F6E 
  660              	.LASF18:
- 661 0160 6D6F6465 		.ascii	"mode\000"
+ 661 015e 6D6F6465 		.ascii	"mode\000"
  661      00
  662              	.LASF16:
- 663 0165 4932435F 		.ascii	"I2C_scl_SetDriveMode\000"
+ 663 0163 4932435F 		.ascii	"I2C_scl_SetDriveMode\000"
  663      73636C5F 
  663      53657444 
  663      72697665 
  663      4D6F6465 
  664              	.LASF6:
- 665 017a 6C6F6E67 		.ascii	"long long int\000"
+ 665 0178 6C6F6E67 		.ascii	"long long int\000"
  665      206C6F6E 
  665      6720696E 
  665      7400
  666              	.LASF23:
- 667 0188 6D61736B 		.ascii	"maskedStatus\000"
+ 667 0186 6D61736B 		.ascii	"maskedStatus\000"
  667      65645374 
  667      61747573 
  667      00
  668              	.LASF13:
- 669 0195 63686172 		.ascii	"char\000"
+ 669 0193 63686172 		.ascii	"char\000"
  669      00
  670              	.LASF21:
- 671 019a 4932435F 		.ascii	"I2C_scl_ClearInterrupt\000"
+ 671 0198 4932435F 		.ascii	"I2C_scl_ClearInterrupt\000"
  671      73636C5F 
  671      436C6561 
  671      72496E74 
  671      65727275 
  672              	.LASF2:
- 673 01b1 73686F72 		.ascii	"short int\000"
+ 673 01af 73686F72 		.ascii	"short int\000"
  673      7420696E 
  673      7400
  674              	.LASF9:
- 675 01bb 75696E74 		.ascii	"uint8\000"
+ 675 01b9 75696E74 		.ascii	"uint8\000"
  675      3800
  676              	.LASF25:
- 677 01c1 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\I2C_scl.c\000"
+ 677 01bf 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\I2C_scl.c\000"
  677      6E657261 
  677      7465645F 
  677      536F7572 
  677      63655C50 
  678              	.LASF4:
- 679 01e4 6C6F6E67 		.ascii	"long int\000"
+ 679 01e2 6C6F6E67 		.ascii	"long int\000"
  679      20696E74 
  679      00
  680              	.LASF0:
- 681 01ed 7369676E 		.ascii	"signed char\000"
+ 681 01eb 7369676E 		.ascii	"signed char\000"
  681      65642063 
  681      68617200 
  682              	.LASF20:
- 683 01f9 4932435F 		.ascii	"I2C_scl_ReadDataReg\000"
+ 683 01f7 4932435F 		.ascii	"I2C_scl_ReadDataReg\000"
  683      73636C5F 
  683      52656164 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccMOzKzq.s 			page 17
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccFvDRii.s 			page 17
 
 
  683      44617461 

@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.228ms
+Loading plugins phase: Elapsed time ==> 0s.230ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -d CY8C4245AXI-483 -s C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -d CY8C4245AXI-483 -s C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.478ms
+Elaboration phase: Elapsed time ==> 2s.210ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.093ms
+HDL generation phase: Elapsed time ==> 0s.060ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.093ms
 ======================================================================
 Compiling:  PSoC_Master.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  PSoC_Master.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  PSoC_Master.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Wed Apr 22 14:14:13 2015
+Tue Apr 28 11:05:38 2015
 
 
 ======================================================================
@@ -51,11 +51,14 @@ Options  :    -yv2 -q10 PSoC_Master.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Wed Apr 22 14:14:13 2015
+Tue Apr 28 11:05:38 2015
 
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'
 
 vpp:  No errors.
 
@@ -72,6 +75,10 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
 Using control file 'PSoC_Master.ctl'.
+C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v (line 368, col 46):  Note: Substituting module 'cmp_vv_vv' for '='.
+C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v (line 374, col 62):  Note: Substituting module 'add_vv_vv' for '+'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
 vlogfe:  No errors.
 
@@ -79,11 +86,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  PSoC_Master.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Wed Apr 22 14:14:13 2015
+Tue Apr 28 11:05:38 2015
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -94,11 +101,16 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.ctl'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.v'.
+Linking 'C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cypress.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
 tovif:  No errors.
 
@@ -106,11 +118,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  PSoC_Master.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 -verilog PSoC_Master.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Wed Apr 22 14:14:13 2015
+Tue Apr 28 11:05:39 2015
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -121,11 +133,16 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.ctl'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.v'.
+Linking 'C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\codegentemp\PSoC_Master.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cypress.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\lib\lcpsoc3\stdlogic\cpsoc3.vif'.
 
 ----------------------------------------------------------
@@ -149,81 +166,158 @@ Detecting unused logic.
 	\I2C:Net_891\
 	\I2C:Net_474\
 	\I2C:Net_899\
+	\Timer:TimerUDB:ctrl_ten\
+	\Timer:TimerUDB:ctrl_cmode_0\
+	\Timer:TimerUDB:ctrl_tmode_1\
+	\Timer:TimerUDB:ctrl_tmode_0\
+	\Timer:TimerUDB:ctrl_ic_1\
+	\Timer:TimerUDB:ctrl_ic_0\
+	Net_163
+	Net_162
 
 
-Deleted 17 User equations/components.
+Deleted 25 User equations/components.
 Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
 Alias Detection
 ------------------------------------------------------
-Aliasing \Timer:Net_66\ to \Timer:Net_75\
-Aliasing \Timer:Net_82\ to \Timer:Net_75\
-Aliasing \Timer:Net_72\ to \Timer:Net_75\
-Aliasing tmpOE__RedLED_net_0 to \Timer:Net_69\
-Aliasing zero to \Timer:Net_75\
-Aliasing one to \Timer:Net_69\
-Aliasing \UART:Net_459\ to \Timer:Net_75\
-Aliasing \UART:Net_676\ to \Timer:Net_75\
-Aliasing \UART:Net_245\ to \Timer:Net_75\
-Aliasing \UART:Net_416\ to \Timer:Net_75\
-Aliasing \UART:tmpOE__tx_net_0\ to \Timer:Net_69\
-Aliasing \UART:tmpOE__rx_net_0\ to \Timer:Net_69\
-Aliasing \UART:Net_747\ to \Timer:Net_75\
-Aliasing \I2C:Net_459\ to \Timer:Net_75\
-Aliasing \I2C:Net_452\ to \Timer:Net_75\
-Aliasing \I2C:Net_676\ to \Timer:Net_75\
-Aliasing \I2C:Net_245\ to \Timer:Net_75\
-Aliasing \I2C:Net_416\ to \Timer:Net_75\
-Aliasing \I2C:tmpOE__sda_net_0\ to \Timer:Net_69\
-Aliasing \I2C:tmpOE__scl_net_0\ to \Timer:Net_69\
-Aliasing \I2C:Net_747\ to \Timer:Net_75\
-Aliasing tmpOE__BlueLED_net_0 to \Timer:Net_69\
-Removing Lhs of wire \Timer:Net_81\[3] = Net_50[14]
-Removing Lhs of wire \Timer:Net_66\[6] = \Timer:Net_75\[4]
-Removing Lhs of wire \Timer:Net_82\[7] = \Timer:Net_75\[4]
-Removing Lhs of wire \Timer:Net_72\[8] = \Timer:Net_75\[4]
-Removing Rhs of wire tmpOE__RedLED_net_0[17] = \Timer:Net_69\[5]
-Removing Rhs of wire zero[18] = \Timer:Net_75\[4]
-Removing Lhs of wire one[22] = tmpOE__RedLED_net_0[17]
-Removing Lhs of wire \UART:Net_459\[26] = zero[18]
-Removing Lhs of wire \UART:Net_652\[27] = zero[18]
-Removing Lhs of wire \UART:Net_676\[29] = zero[18]
-Removing Lhs of wire \UART:Net_245\[30] = zero[18]
-Removing Lhs of wire \UART:Net_416\[31] = zero[18]
-Removing Rhs of wire \UART:Net_654\[32] = \UART:Net_379\[33]
-Removing Lhs of wire \UART:SCBclock\[36] = \UART:Net_847\[25]
-Removing Lhs of wire \UART:Net_653\[37] = zero[18]
-Removing Lhs of wire \UART:Net_909\[38] = zero[18]
-Removing Lhs of wire \UART:Net_663\[39] = zero[18]
-Removing Lhs of wire \UART:tmpOE__tx_net_0\[41] = tmpOE__RedLED_net_0[17]
-Removing Lhs of wire \UART:tmpOE__rx_net_0\[50] = tmpOE__RedLED_net_0[17]
-Removing Lhs of wire \UART:Net_739\[54] = zero[18]
-Removing Lhs of wire \UART:Net_747\[55] = zero[18]
-Removing Lhs of wire \I2C:Net_459\[82] = zero[18]
-Removing Lhs of wire \I2C:Net_652\[83] = zero[18]
-Removing Lhs of wire \I2C:Net_452\[84] = zero[18]
-Removing Lhs of wire \I2C:Net_676\[85] = zero[18]
-Removing Lhs of wire \I2C:Net_245\[86] = zero[18]
-Removing Lhs of wire \I2C:Net_416\[87] = zero[18]
-Removing Lhs of wire \I2C:Net_654\[88] = zero[18]
-Removing Lhs of wire \I2C:SCBclock\[91] = \I2C:Net_847\[81]
-Removing Lhs of wire \I2C:Net_653\[92] = zero[18]
-Removing Lhs of wire \I2C:Net_909\[93] = zero[18]
-Removing Lhs of wire \I2C:Net_663\[94] = zero[18]
-Removing Lhs of wire \I2C:tmpOE__sda_net_0\[96] = tmpOE__RedLED_net_0[17]
-Removing Lhs of wire \I2C:tmpOE__scl_net_0\[102] = tmpOE__RedLED_net_0[17]
-Removing Lhs of wire \I2C:Net_739\[111] = zero[18]
-Removing Lhs of wire \I2C:Net_747\[112] = zero[18]
-Removing Lhs of wire tmpOE__BlueLED_net_0[135] = tmpOE__RedLED_net_0[17]
+Aliasing one to tmpOE__RedLED_net_0
+Aliasing \UART:Net_459\ to zero
+Aliasing \UART:Net_676\ to zero
+Aliasing \UART:Net_245\ to zero
+Aliasing \UART:Net_416\ to zero
+Aliasing \UART:tmpOE__tx_net_0\ to tmpOE__RedLED_net_0
+Aliasing \UART:tmpOE__rx_net_0\ to tmpOE__RedLED_net_0
+Aliasing \UART:Net_747\ to zero
+Aliasing \I2C:Net_459\ to zero
+Aliasing \I2C:Net_452\ to zero
+Aliasing \I2C:Net_676\ to zero
+Aliasing \I2C:Net_245\ to zero
+Aliasing \I2C:Net_416\ to zero
+Aliasing \I2C:tmpOE__sda_net_0\ to tmpOE__RedLED_net_0
+Aliasing \I2C:tmpOE__scl_net_0\ to tmpOE__RedLED_net_0
+Aliasing \I2C:Net_747\ to zero
+Aliasing tmpOE__BlueLED_net_0 to tmpOE__RedLED_net_0
+Aliasing Net_12 to zero
+Aliasing \Timer:TimerUDB:ctrl_cmode_1\ to zero
+Aliasing \Timer:TimerUDB:trigger_enable\ to tmpOE__RedLED_net_0
+Aliasing \Timer:TimerUDB:status_6\ to zero
+Aliasing \Timer:TimerUDB:status_5\ to zero
+Aliasing \Timer:TimerUDB:status_4\ to zero
+Aliasing \Timer:TimerUDB:status_0\ to \Timer:TimerUDB:tc_i\
+Aliasing \Timer:TimerUDB:capture_last\\D\ to zero
+Aliasing \Timer:TimerUDB:hwEnable_reg\\D\ to \Timer:TimerUDB:run_mode\
+Aliasing \Timer:TimerUDB:capture_out_reg_i\\D\ to \Timer:TimerUDB:capt_fifo_load_int\
+Removing Lhs of wire one[8] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \UART:Net_459\[12] = zero[4]
+Removing Lhs of wire \UART:Net_652\[13] = zero[4]
+Removing Lhs of wire \UART:Net_676\[15] = zero[4]
+Removing Lhs of wire \UART:Net_245\[16] = zero[4]
+Removing Lhs of wire \UART:Net_416\[17] = zero[4]
+Removing Rhs of wire \UART:Net_654\[18] = \UART:Net_379\[19]
+Removing Lhs of wire \UART:SCBclock\[22] = \UART:Net_847\[11]
+Removing Lhs of wire \UART:Net_653\[23] = zero[4]
+Removing Lhs of wire \UART:Net_909\[24] = zero[4]
+Removing Lhs of wire \UART:Net_663\[25] = zero[4]
+Removing Lhs of wire \UART:tmpOE__tx_net_0\[27] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \UART:tmpOE__rx_net_0\[36] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \UART:Net_739\[40] = zero[4]
+Removing Lhs of wire \UART:Net_747\[41] = zero[4]
+Removing Lhs of wire \I2C:Net_459\[68] = zero[4]
+Removing Lhs of wire \I2C:Net_652\[69] = zero[4]
+Removing Lhs of wire \I2C:Net_452\[70] = zero[4]
+Removing Lhs of wire \I2C:Net_676\[71] = zero[4]
+Removing Lhs of wire \I2C:Net_245\[72] = zero[4]
+Removing Lhs of wire \I2C:Net_416\[73] = zero[4]
+Removing Lhs of wire \I2C:Net_654\[74] = zero[4]
+Removing Lhs of wire \I2C:SCBclock\[77] = \I2C:Net_847\[67]
+Removing Lhs of wire \I2C:Net_653\[78] = zero[4]
+Removing Lhs of wire \I2C:Net_909\[79] = zero[4]
+Removing Lhs of wire \I2C:Net_663\[80] = zero[4]
+Removing Lhs of wire \I2C:tmpOE__sda_net_0\[82] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \I2C:tmpOE__scl_net_0\[88] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \I2C:Net_739\[97] = zero[4]
+Removing Lhs of wire \I2C:Net_747\[98] = zero[4]
+Removing Lhs of wire tmpOE__BlueLED_net_0[121] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire Net_12[128] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:ctrl_enable\[142] = \Timer:TimerUDB:control_7\[134]
+Removing Lhs of wire \Timer:TimerUDB:ctrl_cmode_1\[144] = zero[4]
+Removing Rhs of wire \Timer:TimerUDB:timer_enable\[153] = \Timer:TimerUDB:runmode_enable\[166]
+Removing Rhs of wire \Timer:TimerUDB:run_mode\[154] = \Timer:TimerUDB:hwEnable\[155]
+Removing Lhs of wire \Timer:TimerUDB:run_mode\[154] = \Timer:TimerUDB:control_7\[134]
+Removing Lhs of wire \Timer:TimerUDB:trigger_enable\[157] = tmpOE__RedLED_net_0[3]
+Removing Lhs of wire \Timer:TimerUDB:tc_i\[159] = \Timer:TimerUDB:status_tc\[156]
+Removing Lhs of wire \Timer:TimerUDB:capt_fifo_load_int\[165] = \Timer:TimerUDB:capt_fifo_load\[152]
+Removing Lhs of wire \Timer:TimerUDB:status_6\[168] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:status_5\[169] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:status_4\[170] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:status_0\[171] = \Timer:TimerUDB:status_tc\[156]
+Removing Lhs of wire \Timer:TimerUDB:status_1\[172] = \Timer:TimerUDB:capt_fifo_load\[152]
+Removing Rhs of wire \Timer:TimerUDB:status_2\[173] = \Timer:TimerUDB:fifo_full\[174]
+Removing Rhs of wire \Timer:TimerUDB:status_3\[175] = \Timer:TimerUDB:fifo_nempty\[176]
+Removing Lhs of wire \Timer:TimerUDB:cs_addr_2\[178] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:cs_addr_1\[179] = \Timer:TimerUDB:trig_reg\[167]
+Removing Lhs of wire \Timer:TimerUDB:cs_addr_0\[180] = \Timer:TimerUDB:per_zero\[158]
+Removing Lhs of wire \Timer:TimerUDB:capture_last\\D\[355] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:tc_reg_i\\D\[356] = \Timer:TimerUDB:status_tc\[156]
+Removing Lhs of wire \Timer:TimerUDB:hwEnable_reg\\D\[357] = \Timer:TimerUDB:control_7\[134]
+Removing Lhs of wire \Timer:TimerUDB:capture_out_reg_i\\D\[358] = \Timer:TimerUDB:capt_fifo_load\[152]
 
 ------------------------------------------------------
-Aliased 0 equations, 37 wires.
+Aliased 0 equations, 54 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
 Circuit simplification
 ----------------------------------------------------------
+
+Substituting virtuals - pass 1:
+
+Note:  Expanding virtual equation for 'tmpOE__RedLED_net_0' (cost = 0):
+tmpOE__RedLED_net_0 <=  ('1') ;
+
+Note:  Expanding virtual equation for 'zero' (cost = 0):
+zero <=  ('0') ;
+
+Note:  Expanding virtual equation for '\Timer:TimerUDB:fifo_load_polarized\' (cost = 0):
+\Timer:TimerUDB:fifo_load_polarized\ <=  ('0') ;
+
+Note:  Expanding virtual equation for '\Timer:TimerUDB:timer_enable\' (cost = 0):
+\Timer:TimerUDB:timer_enable\ <= (\Timer:TimerUDB:control_7\);
+
+
+Substituting virtuals - pass 2:
+
+
+----------------------------------------------------------
+Circuit simplification results:
+
+	Expanded 4 signals.
+	Turned 0 signals into soft nodes.
+	Maximum default expansion cost was set at 3.
+----------------------------------------------------------
+
+------------------------------------------------------
+Alias Detection
+------------------------------------------------------
+Aliasing \Timer:TimerUDB:capt_fifo_load\ to zero
+Removing Lhs of wire \Timer:TimerUDB:capt_fifo_load\[152] = zero[4]
+Removing Lhs of wire \Timer:TimerUDB:trig_reg\[167] = \Timer:TimerUDB:control_7\[134]
+
+------------------------------------------------------
+Aliased 0 equations, 2 wires.
+------------------------------------------------------
+
+----------------------------------------------------------
+Circuit simplification
+----------------------------------------------------------
+
+Eliminating unused logic - pass 1:
+
+
+Eliminating unused logic - pass 2:
+
 
 Substituting virtuals - pass 1:
 
@@ -240,24 +334,37 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\warp\bin/warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -dcpsoc3 PSoC_Master.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.641ms
+Warp synthesis phase: Elapsed time ==> 1s.660ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.1.0.2177, Family: PSoC3, Started at: Wednesday, 22 April 2015 14:14:14
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -d CY8C4245AXI-483 PSoC_Master.v -verilog
+cyp3fit: V3.1.0.2177, Family: PSoC3, Started at: Tuesday, 28 April 2015 11:05:39
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj -d CY8C4245AXI-483 PSoC_Master.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.016ms
+Design parsing phase: Elapsed time ==> 0s.020ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
+    Converted constant MacroCell: \Timer:TimerUDB:capture_last\ from registered to combinatorial
+    Converted constant MacroCell: \Timer:TimerUDB:capture_out_reg_i\ from registered to combinatorial
+Assigning clock timer_clock to clock HFCLK because it is a pass-through
+
+Removing unused cells resulting from optimization
+Done removing unused cells.
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Fixed Function Clock 2: Automatic-assigning  clock 'I2C_SCBCLK'. Signal=\I2C:Net_847_ff2\
-    Fixed Function Clock 8: Automatic-assigning  clock 'Clock'. Signal=Net_50_ff8
     Fixed Function Clock 3: Automatic-assigning  clock 'UART_SCBCLK'. Signal=\UART:Net_847_ff3\
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
+    UDB Clk/Enable \Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: HFCLK was determined to be a global clock that is synchronous to HFCLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: HFCLK, EnableOut: Constant 1
+    UDB Clk/Enable \Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\: with output requested to be synchronous
+        ClockIn: HFCLK was determined to be a global clock that is synchronous to HFCLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: HFCLK, EnableOut: Constant 1
 </CYPRESSTAG>
 </CYPRESSTAG>
 
@@ -512,16 +619,223 @@ Design Equations
         }
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
+
+    ------------------------------------------------------------
+    Macrocell listing
+    ------------------------------------------------------------
+
+    MacroCell: Name=\Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Timer:TimerUDB:control_7\ * \Timer:TimerUDB:per_zero\
+        );
+        Output = \Timer:TimerUDB:status_tc\ (fanout=1)
     </CYPRESSTAG>
     <CYPRESSTAG name="Datapath listing">
+
+    ------------------------------------------------------------
+    Datapath listing
+    ------------------------------------------------------------
+
+    datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u0\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+            cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+            chain_out => \Timer:TimerUDB:sT32:timerdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \Timer:TimerUDB:sT32:timerdp:u1\
+
+    datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u1\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+            cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+            chain_in => \Timer:TimerUDB:sT32:timerdp:carry0\ ,
+            chain_out => \Timer:TimerUDB:sT32:timerdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \Timer:TimerUDB:sT32:timerdp:u0\
+        Next in chain : \Timer:TimerUDB:sT32:timerdp:u2\
+
+    datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u2\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+            cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+            chain_in => \Timer:TimerUDB:sT32:timerdp:carry1\ ,
+            chain_out => \Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \Timer:TimerUDB:sT32:timerdp:u1\
+        Next in chain : \Timer:TimerUDB:sT32:timerdp:u3\
+
+    datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u3\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+            cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+            z0_comb => \Timer:TimerUDB:per_zero\ ,
+            f0_bus_stat_comb => \Timer:TimerUDB:status_3\ ,
+            f0_blk_stat_comb => \Timer:TimerUDB:status_2\ ,
+            chain_in => \Timer:TimerUDB:sT32:timerdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \Timer:TimerUDB:sT32:timerdp:u2\
     </CYPRESSTAG>
     <CYPRESSTAG name="Status register listing">
     </CYPRESSTAG>
     <CYPRESSTAG name="StatusI register listing">
+
+    ------------------------------------------------------------
+    StatusI register listing
+    ------------------------------------------------------------
+
+    statusicell: Name =\Timer:TimerUDB:rstSts:stsreg\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            status_3 => \Timer:TimerUDB:status_3\ ,
+            status_2 => \Timer:TimerUDB:status_2\ ,
+            status_0 => \Timer:TimerUDB:status_tc\ ,
+            interrupt => Net_109 );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0000011"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
     </CYPRESSTAG>
     <CYPRESSTAG name="Sync listing">
     </CYPRESSTAG>
     <CYPRESSTAG name="Control register listing">
+
+    ------------------------------------------------------------
+    Control register listing
+    ------------------------------------------------------------
+
+    controlcell: Name =\Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
+        PORT MAP (
+            clock => ClockBlock_HFCLK ,
+            control_7 => \Timer:TimerUDB:control_7\ ,
+            control_6 => \Timer:TimerUDB:control_6\ ,
+            control_5 => \Timer:TimerUDB:control_5\ ,
+            control_4 => \Timer:TimerUDB:control_4\ ,
+            control_3 => \Timer:TimerUDB:control_3\ ,
+            control_2 => \Timer:TimerUDB:control_2\ ,
+            control_1 => \Timer:TimerUDB:control_1\ ,
+            control_0 => \Timer:TimerUDB:control_0\ );
+        Properties:
+        {
+            cy_ctrl_mode_0 = "11111111"
+            cy_ctrl_mode_1 = "00000000"
+            cy_ext_reset = 0
+            cy_force_order = 1
+            cy_init_value = "00000000"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
     </CYPRESSTAG>
     <CYPRESSTAG name="Count7 listing">
     </CYPRESSTAG>
@@ -551,7 +865,7 @@ Design Equations
 
     interrupt: Name =timer_ISR
         PORT MAP (
-            interrupt => Net_76 );
+            interrupt => Net_109 );
         Properties:
         {
             int_type = "10"
@@ -568,11 +882,14 @@ Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
 Digital clock dividers        :    0 :    4 :    4 :   0.00%
 Pins                          :    8 :   28 :   36 :  22.22%
-UDB Macrocells                :    0 :   32 :   32 :   0.00%
-UDB Unique Pterms             :    0 :   64 :   64 :   0.00%
-UDB Datapath Cells            :    0 :    4 :    4 :   0.00%
-UDB Status Cells              :    0 :    4 :    4 :   0.00%
-UDB Control Cells             :    0 :    4 :    4 :   0.00%
+UDB Macrocells                :    1 :   31 :   32 :   3.13%
+UDB Unique Pterms             :    1 :   63 :   64 :   1.56%
+UDB Total Pterms              :    1 :      :      : 
+UDB Datapath Cells            :    4 :    0 :    4 : 100.00%
+UDB Status Cells              :    1 :    3 :    4 :  25.00%
+            StatusI Registers :    1 
+UDB Control Cells             :    1 :    3 :    4 :  25.00%
+            Control Registers :    1 
 Interrupts                    :    3 :   29 :   32 :   9.38%
 Comparator/Opamp Fixed Blocks :    0 :    2 :    2 :   0.00%
 SAR Fixed Blocks              :    0 :    1 :    1 :   0.00%
@@ -582,24 +899,24 @@ CapSense Blocks               :    0 :    1 :    1 :   0.00%
 7-bit CapSense IDACs          :    0 :    1 :    1 :   0.00%
 Temperature Sensors           :    0 :    1 :    1 :   0.00%
 Low Power Comparators         :    0 :    2 :    2 :   0.00%
-TCPWM Blocks                  :    1 :    3 :    4 :  25.00%
+TCPWM Blocks                  :    0 :    4 :    4 :   0.00%
 Serial Communication Blocks   :    2 :    0 :    2 : 100.00%
 Segment LCD Blocks            :    0 :    1 :    1 :   0.00%
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.426ms
-Tech mapping phase: Elapsed time ==> 0s.475ms
+Technology Mapping: Elapsed time ==> 0s.400ms
+Tech mapping phase: Elapsed time ==> 0s.430ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 <CYPRESSTAG name="Analog Placement">
-Elapsed time ==> 0.0114822s
+Elapsed time ==> 0.0094776s
 </CYPRESSTAG>
-Analog Placement phase: Elapsed time ==> 0s.097ms
+Analog Placement phase: Elapsed time ==> 0s.030ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 <CYPRESSTAG name="Analog Routing">
-Route success=True, Iterations=1 Elapsed=0.0012581 secs
+Route success=True, Iterations=1 Elapsed=0.0013227 secs
 </CYPRESSTAG>
-Analog Routing phase: Elapsed time ==> 0s.002ms
+Analog Routing phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -610,32 +927,48 @@ Map of item to net {
 }
 Mux Info {
 }
-Analog Code Generation phase: Elapsed time ==> 0s.103ms
+Analog Code Generation phase: Elapsed time ==> 0s.150ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
-I2076: Total run-time: 0.2 sec.
+I2076: Total run-time: 0.4 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
-<CYPRESSTAG name="PLD Packing Summary">
-No PLDs were packed.
+<CYPRESSTAG name="PLD Packing Summary" expanded>
+
+------------------------------------------------------------
+PLD Packing Summary
+------------------------------------------------------------
+            Resource Type : Used : Free :  Max :  % Used
+    ====================================================
+                     PLDs :    1 :    7 :    8 :  12.50%
+
+<CYPRESSTAG name="PLD Statistics">
+
+        PLD Resource Type :     Average/LAB
+    =======================================
+                   Inputs :            2.00
+                   Pterms :            1.00
+               Macrocells :            1.00
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+<CYPRESSTAG name="Packed PLD Contents">
+Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
+</CYPRESSTAG>
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.016ms
+Partitioning: Elapsed time ==> 0s.020ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 33, final cost is 33 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 63, final cost is 63 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -645,18 +978,227 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          0 :       0.00 :       0.00
+                 UDB :          4 :       0.50 :       0.25
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
 ------------------------------------------------------------
 Component Placement Details
 ------------------------------------------------------------
-UDB [UDB=(0,0)] is empty.
-UDB [UDB=(0,1)] is empty.
-UDB [UDB=(1,0)] is empty.
-UDB [UDB=(1,1)] is empty.
+UDB [UDB=(0,0)] contents:
+LAB@[UDB=(0,0)][LB=0] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Timer:TimerUDB:control_7\ * \Timer:TimerUDB:per_zero\
+        );
+        Output = \Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u3\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+        z0_comb => \Timer:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \Timer:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \Timer:TimerUDB:status_2\ ,
+        chain_in => \Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer:TimerUDB:sT32:timerdp:u2\
+
+statusicell: Name =\Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        status_3 => \Timer:TimerUDB:status_3\ ,
+        status_2 => \Timer:TimerUDB:status_2\ ,
+        status_0 => \Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_109 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,1)] contents:
+datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u0\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+        chain_out => \Timer:TimerUDB:sT32:timerdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \Timer:TimerUDB:sT32:timerdp:u1\
+
+UDB [UDB=(1,0)] contents:
+datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+        chain_in => \Timer:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \Timer:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \Timer:TimerUDB:sT32:timerdp:u3\
+
+UDB [UDB=(1,1)] contents:
+datapathcell: Name =\Timer:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        cs_addr_1 => \Timer:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer:TimerUDB:per_zero\ ,
+        chain_in => \Timer:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \Timer:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \Timer:TimerUDB:sT32:timerdp:u2\
+
+controlcell: Name =\Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
+    PORT MAP (
+        clock => ClockBlock_HFCLK ,
+        control_7 => \Timer:TimerUDB:control_7\ ,
+        control_6 => \Timer:TimerUDB:control_6\ ,
+        control_5 => \Timer:TimerUDB:control_5\ ,
+        control_4 => \Timer:TimerUDB:control_4\ ,
+        control_3 => \Timer:TimerUDB:control_3\ ,
+        control_2 => \Timer:TimerUDB:control_2\ ,
+        control_1 => \Timer:TimerUDB:control_1\ ,
+        control_0 => \Timer:TimerUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 Intr hod @ [IntrHod=(0)]: 
+  Intr@ [IntrHod=(0)][IntrId=(0)] 
+    interrupt: Name =timer_ISR
+        PORT MAP (
+            interrupt => Net_109 );
+        Properties:
+        {
+            int_type = "10"
+        }
   Intr@ [IntrHod=(0)][IntrId=(10)] 
     interrupt: Name =\I2C:SCB_IRQ\
         PORT MAP (
@@ -669,14 +1211,6 @@ Intr hod @ [IntrHod=(0)]:
     interrupt: Name =UART_ISR
         PORT MAP (
             interrupt => Net_25 );
-        Properties:
-        {
-            int_type = "10"
-        }
-  Intr@ [IntrHod=(0)][IntrId=(16)] 
-    interrupt: Name =timer_ISR
-        PORT MAP (
-            interrupt => Net_76 );
         Properties:
         {
             int_type = "10"
@@ -936,7 +1470,6 @@ Clock group 0:
             imo => ClockBlock_IMO ,
             hfclk => ClockBlock_HFCLK ,
             ff_div_2 => \I2C:Net_847_ff2\ ,
-            ff_div_8 => Net_50_ff8 ,
             ff_div_3 => \UART:Net_847_ff3\ );
         Properties:
         {
@@ -995,26 +1528,7 @@ Serial Communication Block group 0:
 CSD Fixed Block group 0: empty
 8-bit CapSense IDAC group 0: empty
 7-bit CapSense IDAC group 0: empty
-TCPWM Block group 0: 
-    Tcpwm Block @ [FFB(TCPWM,0)]: 
-    m0s8tcpwmcell: Name =\Timer:cy_m0s8_tcpwm_1\
-        PORT MAP (
-            clock => Net_50_ff8 ,
-            capture => zero ,
-            count => tmpOE__RedLED_net_0 ,
-            reload => zero ,
-            stop => zero ,
-            start => zero ,
-            tr_underflow => Net_19 ,
-            tr_overflow => Net_18 ,
-            tr_compare_match => Net_20 ,
-            line_out => Net_21 ,
-            line_out_compl => Net_22 ,
-            interrupt => Net_76 );
-        Properties:
-        {
-            cy_registers = ""
-        }
+TCPWM Block group 0: empty
 Comparator/Opamp Fixed Block group 0: empty
 Temperature Sensor group 0: empty
 SAR Fixed Block group 0: empty
@@ -1051,32 +1565,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |         Name | Connections
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.002ms
-Digital Placement phase: Elapsed time ==> 0s.470ms
+Digital component placer commit/Report: Elapsed time ==> 0s.010ms
+Digital Placement phase: Elapsed time ==> 0s.620ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.475ms
+Digital Routing phase: Elapsed time ==> 0s.500ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.110ms
+Bitstream and API generation phase: Elapsed time ==> 0s.090ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.033ms
+Bitstream verification phase: Elapsed time ==> 0s.030ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in PSoC_Master_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.166ms
+Static timing analysis phase: Elapsed time ==> 0s.239ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.143ms
+Design database save phase: Elapsed time ==> 0s.140ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 2s.118ms
+cydsfit: Elapsed time ==> 2s.270ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 2s.165ms
-API generation phase: Elapsed time ==> 1s.200ms
-Dependency generation phase: Elapsed time ==> 0s.018ms
+Fitter phase: Elapsed time ==> 2s.319ms
+API generation phase: Elapsed time ==> 0s.840ms
+Dependency generation phase: Elapsed time ==> 0s.009ms
 Cleanup phase: Elapsed time ==> 0s.000ms

@@ -13,7 +13,8 @@
 #include "I2C_Class.h"
 
 // Definitions
-#define TEMP_AND_HUM_SENSOR_ADDRESS 0x27
+//#define TEMP_AND_HUM_SENSOR_ADDRESS 0x27             // TODO This is old
+#define TEMP_SENSOR_ADDRESS 0x48                       // For LM75 temp sensor with A0 = 0, A1 = 0 and A3 = 0
 #define ACTUATOR_ADRESS 0x42
 #define LIGHT_SENSOR_COMMAND_ADDRESS 0x00
 #define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
@@ -232,6 +233,7 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
     }
 }
 
+/*
 int8 getTempAndHum(int32* temp, int32* hum){
     int32 RDbuf = 4;
     uint8 dataget[RDbuf];
@@ -248,6 +250,29 @@ int8 getTempAndHum(int32* temp, int32* hum){
     else {
         return -1;
     }
+}
+*/
+
+int8 getTemp(int32* temp){
+
+    uint8 dataget[2] = {0,0};
+    uint32 errorStatus[2] = {9,9};      // For debugging and error handling
+    
+    errorStatus[0] = I2C_I2CMasterSendStart(TEMP_SENSOR_ADDRESS, I2C_I2C_READ_XFER_MODE);
+    if (errorStatus[0] == I2C_I2C_MSTR_NO_ERROR){
+        dataget[0] = I2C_I2CMasterReadByte(I2C_I2C_ACK_DATA);
+        dataget[1] = I2C_I2CMasterReadByte(I2C_I2C_NAK_DATA);
+        errorStatus[1] = I2C_I2CMasterSendStop();
+    }
+    else{
+        I2C_I2CMasterSendStop();
+        return -1;
+    }
+
+    // The data is converted directly to UART protocol because of the ,5 resolution
+    *temp = (dataget[0]*2)+(dataget[1] >> 7)+40;
+
+    return 0;
 }
 
 int8 getLight(int32* light){

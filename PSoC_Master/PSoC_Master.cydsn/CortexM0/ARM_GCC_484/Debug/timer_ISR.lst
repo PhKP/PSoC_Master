@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
   30:.\Generated_Source\PSoC4/timer_ISR.c **** /* `#END` */
   31:.\Generated_Source\PSoC4/timer_ISR.c **** 
   32:.\Generated_Source\PSoC4/timer_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/timer_ISR.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
   68:.\Generated_Source\PSoC4/timer_ISR.c **** }
   45              		.loc 1 68 0
   46 001a BD46     		mov	sp, r7
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 3
 
 
   47              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
   70 0002 82B0     		sub	sp, sp, #8
   71              		.cfi_def_cfa_offset 16
   72 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 4
 
 
   73              		.cfi_def_cfa_register 7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  125:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  126:.\Generated_Source\PSoC4/timer_ISR.c **** *
  127:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 5
 
 
  128:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_Stop(void)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  149:.\Generated_Source\PSoC4/timer_ISR.c **** *   your own separate ISR through ISR_StartEx().
  150:.\Generated_Source\PSoC4/timer_ISR.c **** *
  151:.\Generated_Source\PSoC4/timer_ISR.c **** * Parameters:  
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 6
 
 
  152:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  183:.\Generated_Source\PSoC4/timer_ISR.c **** *
  184:.\Generated_Source\PSoC4/timer_ISR.c **** *   Function prototype example:
  185:.\Generated_Source\PSoC4/timer_ISR.c **** *     CY_ISR_PROTO(MyISR);
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 7
 
 
  186:.\Generated_Source\PSoC4/timer_ISR.c **** *
@@ -384,31 +384,30 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  168 0006 7860     		str	r0, [r7, #4]
  196:.\Generated_Source\PSoC4/timer_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + timer_ISR__INTC_NUMBER] = address;
  169              		.loc 1 196 0
- 170 0008 034A     		ldr	r2, .L10
- 171 000a 8023     		mov	r3, #128
- 172 000c 7968     		ldr	r1, [r7, #4]
- 173 000e D150     		str	r1, [r2, r3]
+ 170 0008 024B     		ldr	r3, .L10
+ 171 000a 7A68     		ldr	r2, [r7, #4]
+ 172 000c 1A64     		str	r2, [r3, #64]
  197:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 174              		.loc 1 197 0
- 175 0010 BD46     		mov	sp, r7
- 176 0012 02B0     		add	sp, sp, #8
- 177              		@ sp needed
- 178 0014 80BD     		pop	{r7, pc}
- 179              	.L11:
- 180 0016 C046     		.align	2
- 181              	.L10:
- 182 0018 00000000 		.word	CyRamVectors
- 183              		.cfi_endproc
- 184              	.LFE4:
- 185              		.size	timer_ISR_SetVector, .-timer_ISR_SetVector
- 186              		.section	.text.timer_ISR_GetVector,"ax",%progbits
- 187              		.align	2
- 188              		.global	timer_ISR_GetVector
- 189              		.code	16
- 190              		.thumb_func
- 191              		.type	timer_ISR_GetVector, %function
- 192              	timer_ISR_GetVector:
- 193              	.LFB5:
+ 173              		.loc 1 197 0
+ 174 000e BD46     		mov	sp, r7
+ 175 0010 02B0     		add	sp, sp, #8
+ 176              		@ sp needed
+ 177 0012 80BD     		pop	{r7, pc}
+ 178              	.L11:
+ 179              		.align	2
+ 180              	.L10:
+ 181 0014 00000000 		.word	CyRamVectors
+ 182              		.cfi_endproc
+ 183              	.LFE4:
+ 184              		.size	timer_ISR_SetVector, .-timer_ISR_SetVector
+ 185              		.section	.text.timer_ISR_GetVector,"ax",%progbits
+ 186              		.align	2
+ 187              		.global	timer_ISR_GetVector
+ 188              		.code	16
+ 189              		.thumb_func
+ 190              		.type	timer_ISR_GetVector, %function
+ 191              	timer_ISR_GetVector:
+ 192              	.LFB5:
  198:.\Generated_Source\PSoC4/timer_ISR.c **** 
  199:.\Generated_Source\PSoC4/timer_ISR.c **** 
  200:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -418,10 +417,10 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  204:.\Generated_Source\PSoC4/timer_ISR.c **** * Summary:
  205:.\Generated_Source\PSoC4/timer_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
  206:.\Generated_Source\PSoC4/timer_ISR.c **** *
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 8
-
-
  207:.\Generated_Source\PSoC4/timer_ISR.c **** * Parameters:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 8
+
+
  208:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  209:.\Generated_Source\PSoC4/timer_ISR.c **** *
  210:.\Generated_Source\PSoC4/timer_ISR.c **** * Return:
@@ -430,40 +429,39 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  213:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  214:.\Generated_Source\PSoC4/timer_ISR.c **** cyisraddress timer_ISR_GetVector(void)
  215:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 194              		.loc 1 215 0
- 195              		.cfi_startproc
- 196 0000 80B5     		push	{r7, lr}
- 197              		.cfi_def_cfa_offset 8
- 198              		.cfi_offset 7, -8
- 199              		.cfi_offset 14, -4
- 200 0002 00AF     		add	r7, sp, #0
- 201              		.cfi_def_cfa_register 7
+ 193              		.loc 1 215 0
+ 194              		.cfi_startproc
+ 195 0000 80B5     		push	{r7, lr}
+ 196              		.cfi_def_cfa_offset 8
+ 197              		.cfi_offset 7, -8
+ 198              		.cfi_offset 14, -4
+ 199 0002 00AF     		add	r7, sp, #0
+ 200              		.cfi_def_cfa_register 7
  216:.\Generated_Source\PSoC4/timer_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + timer_ISR__INTC_NUMBER];
- 202              		.loc 1 216 0
- 203 0004 024A     		ldr	r2, .L14
- 204 0006 8023     		mov	r3, #128
- 205 0008 D358     		ldr	r3, [r2, r3]
+ 201              		.loc 1 216 0
+ 202 0004 024B     		ldr	r3, .L14
+ 203 0006 1B6C     		ldr	r3, [r3, #64]
  217:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 206              		.loc 1 217 0
- 207 000a 181C     		mov	r0, r3
- 208 000c BD46     		mov	sp, r7
- 209              		@ sp needed
- 210 000e 80BD     		pop	{r7, pc}
- 211              	.L15:
- 212              		.align	2
- 213              	.L14:
- 214 0010 00000000 		.word	CyRamVectors
- 215              		.cfi_endproc
- 216              	.LFE5:
- 217              		.size	timer_ISR_GetVector, .-timer_ISR_GetVector
- 218              		.section	.text.timer_ISR_SetPriority,"ax",%progbits
- 219              		.align	2
- 220              		.global	timer_ISR_SetPriority
- 221              		.code	16
- 222              		.thumb_func
- 223              		.type	timer_ISR_SetPriority, %function
- 224              	timer_ISR_SetPriority:
- 225              	.LFB6:
+ 204              		.loc 1 217 0
+ 205 0008 181C     		mov	r0, r3
+ 206 000a BD46     		mov	sp, r7
+ 207              		@ sp needed
+ 208 000c 80BD     		pop	{r7, pc}
+ 209              	.L15:
+ 210 000e C046     		.align	2
+ 211              	.L14:
+ 212 0010 00000000 		.word	CyRamVectors
+ 213              		.cfi_endproc
+ 214              	.LFE5:
+ 215              		.size	timer_ISR_GetVector, .-timer_ISR_GetVector
+ 216              		.section	.text.timer_ISR_SetPriority,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	timer_ISR_SetPriority
+ 219              		.code	16
+ 220              		.thumb_func
+ 221              		.type	timer_ISR_SetPriority, %function
+ 222              	timer_ISR_SetPriority:
+ 223              	.LFB6:
  218:.\Generated_Source\PSoC4/timer_ISR.c **** 
  219:.\Generated_Source\PSoC4/timer_ISR.c **** 
  220:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -478,11 +476,11 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  229:.\Generated_Source\PSoC4/timer_ISR.c **** *   after timer_ISR_Start or timer_ISR_StartEx has been called. 
  230:.\Generated_Source\PSoC4/timer_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
  231:.\Generated_Source\PSoC4/timer_ISR.c **** *   Interrupt Editor.
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 9
-
-
  232:.\Generated_Source\PSoC4/timer_ISR.c **** *
  233:.\Generated_Source\PSoC4/timer_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 9
+
+
  234:.\Generated_Source\PSoC4/timer_ISR.c **** *
  235:.\Generated_Source\PSoC4/timer_ISR.c **** * Parameters:
  236:.\Generated_Source\PSoC4/timer_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
@@ -495,85 +493,85 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  243:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  244:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_SetPriority(uint8 priority)
  245:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 226              		.loc 1 245 0
- 227              		.cfi_startproc
- 228 0000 90B5     		push	{r4, r7, lr}
- 229              		.cfi_def_cfa_offset 12
- 230              		.cfi_offset 4, -12
- 231              		.cfi_offset 7, -8
- 232              		.cfi_offset 14, -4
- 233 0002 85B0     		sub	sp, sp, #20
- 234              		.cfi_def_cfa_offset 32
- 235 0004 00AF     		add	r7, sp, #0
- 236              		.cfi_def_cfa_register 7
- 237 0006 021C     		mov	r2, r0
- 238 0008 FB1D     		add	r3, r7, #7
- 239 000a 1A70     		strb	r2, [r3]
+ 224              		.loc 1 245 0
+ 225              		.cfi_startproc
+ 226 0000 90B5     		push	{r4, r7, lr}
+ 227              		.cfi_def_cfa_offset 12
+ 228              		.cfi_offset 4, -12
+ 229              		.cfi_offset 7, -8
+ 230              		.cfi_offset 14, -4
+ 231 0002 85B0     		sub	sp, sp, #20
+ 232              		.cfi_def_cfa_offset 32
+ 233 0004 00AF     		add	r7, sp, #0
+ 234              		.cfi_def_cfa_register 7
+ 235 0006 021C     		mov	r2, r0
+ 236 0008 FB1D     		add	r3, r7, #7
+ 237 000a 1A70     		strb	r2, [r3]
  246:.\Generated_Source\PSoC4/timer_ISR.c **** 	uint8 interruptState;
  247:.\Generated_Source\PSoC4/timer_ISR.c ****     uint32 priorityOffset = ((timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 240              		.loc 1 247 0
- 241 000c 0623     		mov	r3, #6
- 242 000e FB60     		str	r3, [r7, #12]
+ 238              		.loc 1 247 0
+ 239 000c 0623     		mov	r3, #6
+ 240 000e FB60     		str	r3, [r7, #12]
  248:.\Generated_Source\PSoC4/timer_ISR.c ****     
  249:.\Generated_Source\PSoC4/timer_ISR.c **** 	interruptState = CyEnterCriticalSection();
- 243              		.loc 1 249 0
- 244 0010 3C1C     		mov	r4, r7
- 245 0012 0B34     		add	r4, r4, #11
- 246 0014 FFF7FEFF 		bl	CyEnterCriticalSection
- 247 0018 031C     		mov	r3, r0
- 248 001a 2370     		strb	r3, [r4]
+ 241              		.loc 1 249 0
+ 242 0010 3C1C     		mov	r4, r7
+ 243 0012 0B34     		add	r4, r4, #11
+ 244 0014 FFF7FEFF 		bl	CyEnterCriticalSection
+ 245 0018 031C     		mov	r3, r0
+ 246 001a 2370     		strb	r3, [r4]
  250:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_PRIOR = (*timer_ISR_INTC_PRIOR & (uint32)(~timer_ISR__INTC_PRIOR_MASK)) |
- 249              		.loc 1 250 0
- 250 001c 0B4B     		ldr	r3, .L17
- 251 001e 0B4A     		ldr	r2, .L17
- 252 0020 1268     		ldr	r2, [r2]
- 253 0022 C021     		mov	r1, #192
- 254 0024 101C     		mov	r0, r2
- 255 0026 8843     		bic	r0, r1
- 256 0028 011C     		mov	r1, r0
+ 247              		.loc 1 250 0
+ 248 001c 0B4B     		ldr	r3, .L17
+ 249 001e 0B4A     		ldr	r2, .L17
+ 250 0020 1268     		ldr	r2, [r2]
+ 251 0022 C021     		mov	r1, #192
+ 252 0024 101C     		mov	r0, r2
+ 253 0026 8843     		bic	r0, r1
+ 254 0028 011C     		mov	r1, r0
  251:.\Generated_Source\PSoC4/timer_ISR.c ****                                     ((uint32)priority << priorityOffset);
- 257              		.loc 1 251 0
- 258 002a FA1D     		add	r2, r7, #7
- 259 002c 1078     		ldrb	r0, [r2]
- 260 002e FA68     		ldr	r2, [r7, #12]
- 261 0030 041C     		mov	r4, r0
- 262 0032 9440     		lsl	r4, r4, r2
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 10
-
-
- 263 0034 221C     		mov	r2, r4
+ 255              		.loc 1 251 0
+ 256 002a FA1D     		add	r2, r7, #7
+ 257 002c 1078     		ldrb	r0, [r2]
+ 258 002e FA68     		ldr	r2, [r7, #12]
+ 259 0030 041C     		mov	r4, r0
+ 260 0032 9440     		lsl	r4, r4, r2
+ 261 0034 221C     		mov	r2, r4
  250:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_PRIOR = (*timer_ISR_INTC_PRIOR & (uint32)(~timer_ISR__INTC_PRIOR_MASK)) |
- 264              		.loc 1 250 0
- 265 0036 0A43     		orr	r2, r1
- 266 0038 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 10
+
+
+ 262              		.loc 1 250 0
+ 263 0036 0A43     		orr	r2, r1
+ 264 0038 1A60     		str	r2, [r3]
  252:.\Generated_Source\PSoC4/timer_ISR.c **** 	CyExitCriticalSection(interruptState);
- 267              		.loc 1 252 0
- 268 003a 3B1C     		mov	r3, r7
- 269 003c 0B33     		add	r3, r3, #11
- 270 003e 1B78     		ldrb	r3, [r3]
- 271 0040 181C     		mov	r0, r3
- 272 0042 FFF7FEFF 		bl	CyExitCriticalSection
+ 265              		.loc 1 252 0
+ 266 003a 3B1C     		mov	r3, r7
+ 267 003c 0B33     		add	r3, r3, #11
+ 268 003e 1B78     		ldrb	r3, [r3]
+ 269 0040 181C     		mov	r0, r3
+ 270 0042 FFF7FEFF 		bl	CyExitCriticalSection
  253:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 273              		.loc 1 253 0
- 274 0046 BD46     		mov	sp, r7
- 275 0048 05B0     		add	sp, sp, #20
- 276              		@ sp needed
- 277 004a 90BD     		pop	{r4, r7, pc}
- 278              	.L18:
- 279              		.align	2
- 280              	.L17:
- 281 004c 10E400E0 		.word	-536812528
- 282              		.cfi_endproc
- 283              	.LFE6:
- 284              		.size	timer_ISR_SetPriority, .-timer_ISR_SetPriority
- 285              		.section	.text.timer_ISR_GetPriority,"ax",%progbits
- 286              		.align	2
- 287              		.global	timer_ISR_GetPriority
- 288              		.code	16
- 289              		.thumb_func
- 290              		.type	timer_ISR_GetPriority, %function
- 291              	timer_ISR_GetPriority:
- 292              	.LFB7:
+ 271              		.loc 1 253 0
+ 272 0046 BD46     		mov	sp, r7
+ 273 0048 05B0     		add	sp, sp, #20
+ 274              		@ sp needed
+ 275 004a 90BD     		pop	{r4, r7, pc}
+ 276              	.L18:
+ 277              		.align	2
+ 278              	.L17:
+ 279 004c 00E400E0 		.word	-536812544
+ 280              		.cfi_endproc
+ 281              	.LFE6:
+ 282              		.size	timer_ISR_SetPriority, .-timer_ISR_SetPriority
+ 283              		.section	.text.timer_ISR_GetPriority,"ax",%progbits
+ 284              		.align	2
+ 285              		.global	timer_ISR_GetPriority
+ 286              		.code	16
+ 287              		.thumb_func
+ 288              		.type	timer_ISR_GetPriority, %function
+ 289              	timer_ISR_GetPriority:
+ 290              	.LFB7:
  254:.\Generated_Source\PSoC4/timer_ISR.c **** 
  255:.\Generated_Source\PSoC4/timer_ISR.c **** 
  256:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -594,63 +592,63 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  271:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  272:.\Generated_Source\PSoC4/timer_ISR.c **** uint8 timer_ISR_GetPriority(void)
  273:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 293              		.loc 1 273 0
- 294              		.cfi_startproc
- 295 0000 80B5     		push	{r7, lr}
- 296              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 11
+ 291              		.loc 1 273 0
+ 292              		.cfi_startproc
+ 293 0000 80B5     		push	{r7, lr}
+ 294              		.cfi_def_cfa_offset 8
+ 295              		.cfi_offset 7, -8
+ 296              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 11
 
 
- 297              		.cfi_offset 7, -8
- 298              		.cfi_offset 14, -4
- 299 0002 82B0     		sub	sp, sp, #8
- 300              		.cfi_def_cfa_offset 16
- 301 0004 00AF     		add	r7, sp, #0
- 302              		.cfi_def_cfa_register 7
+ 297 0002 82B0     		sub	sp, sp, #8
+ 298              		.cfi_def_cfa_offset 16
+ 299 0004 00AF     		add	r7, sp, #0
+ 300              		.cfi_def_cfa_register 7
  274:.\Generated_Source\PSoC4/timer_ISR.c ****     uint32 priority;
  275:.\Generated_Source\PSoC4/timer_ISR.c **** 	uint32 priorityOffset = ((timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 303              		.loc 1 275 0
- 304 0006 0623     		mov	r3, #6
- 305 0008 7B60     		str	r3, [r7, #4]
+ 301              		.loc 1 275 0
+ 302 0006 0623     		mov	r3, #6
+ 303 0008 7B60     		str	r3, [r7, #4]
  276:.\Generated_Source\PSoC4/timer_ISR.c **** 
  277:.\Generated_Source\PSoC4/timer_ISR.c ****     priority = (*timer_ISR_INTC_PRIOR & timer_ISR__INTC_PRIOR_MASK) >> priorityOffset;
- 306              		.loc 1 277 0
- 307 000a 074B     		ldr	r3, .L21
- 308 000c 1A68     		ldr	r2, [r3]
- 309 000e C023     		mov	r3, #192
- 310 0010 1A40     		and	r2, r3
- 311 0012 7B68     		ldr	r3, [r7, #4]
- 312 0014 111C     		mov	r1, r2
- 313 0016 D940     		lsr	r1, r1, r3
- 314 0018 0B1C     		mov	r3, r1
- 315 001a 3B60     		str	r3, [r7]
+ 304              		.loc 1 277 0
+ 305 000a 074B     		ldr	r3, .L21
+ 306 000c 1A68     		ldr	r2, [r3]
+ 307 000e C023     		mov	r3, #192
+ 308 0010 1A40     		and	r2, r3
+ 309 0012 7B68     		ldr	r3, [r7, #4]
+ 310 0014 111C     		mov	r1, r2
+ 311 0016 D940     		lsr	r1, r1, r3
+ 312 0018 0B1C     		mov	r3, r1
+ 313 001a 3B60     		str	r3, [r7]
  278:.\Generated_Source\PSoC4/timer_ISR.c **** 
  279:.\Generated_Source\PSoC4/timer_ISR.c ****     return (uint8)priority;
- 316              		.loc 1 279 0
- 317 001c 3B68     		ldr	r3, [r7]
- 318 001e DBB2     		uxtb	r3, r3
+ 314              		.loc 1 279 0
+ 315 001c 3B68     		ldr	r3, [r7]
+ 316 001e DBB2     		uxtb	r3, r3
  280:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 319              		.loc 1 280 0
- 320 0020 181C     		mov	r0, r3
- 321 0022 BD46     		mov	sp, r7
- 322 0024 02B0     		add	sp, sp, #8
- 323              		@ sp needed
- 324 0026 80BD     		pop	{r7, pc}
- 325              	.L22:
- 326              		.align	2
- 327              	.L21:
- 328 0028 10E400E0 		.word	-536812528
- 329              		.cfi_endproc
- 330              	.LFE7:
- 331              		.size	timer_ISR_GetPriority, .-timer_ISR_GetPriority
- 332              		.section	.text.timer_ISR_Enable,"ax",%progbits
- 333              		.align	2
- 334              		.global	timer_ISR_Enable
- 335              		.code	16
- 336              		.thumb_func
- 337              		.type	timer_ISR_Enable, %function
- 338              	timer_ISR_Enable:
- 339              	.LFB8:
+ 317              		.loc 1 280 0
+ 318 0020 181C     		mov	r0, r3
+ 319 0022 BD46     		mov	sp, r7
+ 320 0024 02B0     		add	sp, sp, #8
+ 321              		@ sp needed
+ 322 0026 80BD     		pop	{r7, pc}
+ 323              	.L22:
+ 324              		.align	2
+ 325              	.L21:
+ 326 0028 00E400E0 		.word	-536812544
+ 327              		.cfi_endproc
+ 328              	.LFE7:
+ 329              		.size	timer_ISR_GetPriority, .-timer_ISR_GetPriority
+ 330              		.section	.text.timer_ISR_Enable,"ax",%progbits
+ 331              		.align	2
+ 332              		.global	timer_ISR_Enable
+ 333              		.code	16
+ 334              		.thumb_func
+ 335              		.type	timer_ISR_Enable, %function
+ 336              	timer_ISR_Enable:
+ 337              	.LFB8:
  281:.\Generated_Source\PSoC4/timer_ISR.c **** 
  282:.\Generated_Source\PSoC4/timer_ISR.c **** 
  283:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -658,11 +656,11 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  285:.\Generated_Source\PSoC4/timer_ISR.c **** ********************************************************************************
  286:.\Generated_Source\PSoC4/timer_ISR.c **** *
  287:.\Generated_Source\PSoC4/timer_ISR.c **** * Summary:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 12
-
-
  288:.\Generated_Source\PSoC4/timer_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
  289:.\Generated_Source\PSoC4/timer_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 12
+
+
  290:.\Generated_Source\PSoC4/timer_ISR.c **** *   function, which sets the vector and the priority, has been called.
  291:.\Generated_Source\PSoC4/timer_ISR.c **** *
  292:.\Generated_Source\PSoC4/timer_ISR.c **** * Parameters:
@@ -674,41 +672,40 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  298:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  299:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_Enable(void)
  300:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 340              		.loc 1 300 0
- 341              		.cfi_startproc
- 342 0000 80B5     		push	{r7, lr}
- 343              		.cfi_def_cfa_offset 8
- 344              		.cfi_offset 7, -8
- 345              		.cfi_offset 14, -4
- 346 0002 00AF     		add	r7, sp, #0
- 347              		.cfi_def_cfa_register 7
+ 338              		.loc 1 300 0
+ 339              		.cfi_startproc
+ 340 0000 80B5     		push	{r7, lr}
+ 341              		.cfi_def_cfa_offset 8
+ 342              		.cfi_offset 7, -8
+ 343              		.cfi_offset 14, -4
+ 344 0002 00AF     		add	r7, sp, #0
+ 345              		.cfi_def_cfa_register 7
  301:.\Generated_Source\PSoC4/timer_ISR.c ****     /* Enable the general interrupt. */
  302:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_SET_EN = timer_ISR__INTC_MASK;
- 348              		.loc 1 302 0
- 349 0004 024B     		ldr	r3, .L24
- 350 0006 8022     		mov	r2, #128
- 351 0008 5202     		lsl	r2, r2, #9
- 352 000a 1A60     		str	r2, [r3]
+ 346              		.loc 1 302 0
+ 347 0004 024B     		ldr	r3, .L24
+ 348 0006 0122     		mov	r2, #1
+ 349 0008 1A60     		str	r2, [r3]
  303:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 353              		.loc 1 303 0
- 354 000c BD46     		mov	sp, r7
- 355              		@ sp needed
- 356 000e 80BD     		pop	{r7, pc}
- 357              	.L25:
- 358              		.align	2
- 359              	.L24:
- 360 0010 00E100E0 		.word	-536813312
- 361              		.cfi_endproc
- 362              	.LFE8:
- 363              		.size	timer_ISR_Enable, .-timer_ISR_Enable
- 364              		.section	.text.timer_ISR_GetState,"ax",%progbits
- 365              		.align	2
- 366              		.global	timer_ISR_GetState
- 367              		.code	16
- 368              		.thumb_func
- 369              		.type	timer_ISR_GetState, %function
- 370              	timer_ISR_GetState:
- 371              	.LFB9:
+ 350              		.loc 1 303 0
+ 351 000a BD46     		mov	sp, r7
+ 352              		@ sp needed
+ 353 000c 80BD     		pop	{r7, pc}
+ 354              	.L25:
+ 355 000e C046     		.align	2
+ 356              	.L24:
+ 357 0010 00E100E0 		.word	-536813312
+ 358              		.cfi_endproc
+ 359              	.LFE8:
+ 360              		.size	timer_ISR_Enable, .-timer_ISR_Enable
+ 361              		.section	.text.timer_ISR_GetState,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	timer_ISR_GetState
+ 364              		.code	16
+ 365              		.thumb_func
+ 366              		.type	timer_ISR_GetState, %function
+ 367              	timer_ISR_GetState:
+ 368              	.LFB9:
  304:.\Generated_Source\PSoC4/timer_ISR.c **** 
  305:.\Generated_Source\PSoC4/timer_ISR.c **** 
  306:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -718,69 +715,59 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  310:.\Generated_Source\PSoC4/timer_ISR.c **** * Summary:
  311:.\Generated_Source\PSoC4/timer_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
  312:.\Generated_Source\PSoC4/timer_ISR.c **** *
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 13
-
-
  313:.\Generated_Source\PSoC4/timer_ISR.c **** * Parameters:
  314:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  315:.\Generated_Source\PSoC4/timer_ISR.c **** *
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 13
+
+
  316:.\Generated_Source\PSoC4/timer_ISR.c **** * Return:
  317:.\Generated_Source\PSoC4/timer_ISR.c **** *   1 if enabled, 0 if disabled.
  318:.\Generated_Source\PSoC4/timer_ISR.c **** *
  319:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  320:.\Generated_Source\PSoC4/timer_ISR.c **** uint8 timer_ISR_GetState(void)
  321:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 372              		.loc 1 321 0
- 373              		.cfi_startproc
- 374 0000 80B5     		push	{r7, lr}
- 375              		.cfi_def_cfa_offset 8
- 376              		.cfi_offset 7, -8
- 377              		.cfi_offset 14, -4
- 378 0002 00AF     		add	r7, sp, #0
- 379              		.cfi_def_cfa_register 7
+ 369              		.loc 1 321 0
+ 370              		.cfi_startproc
+ 371 0000 80B5     		push	{r7, lr}
+ 372              		.cfi_def_cfa_offset 8
+ 373              		.cfi_offset 7, -8
+ 374              		.cfi_offset 14, -4
+ 375 0002 00AF     		add	r7, sp, #0
+ 376              		.cfi_def_cfa_register 7
  322:.\Generated_Source\PSoC4/timer_ISR.c ****     /* Get the state of the general interrupt. */
  323:.\Generated_Source\PSoC4/timer_ISR.c ****     return ((*timer_ISR_INTC_SET_EN & (uint32)timer_ISR__INTC_MASK) != 0u) ? 1u:0u;
- 380              		.loc 1 323 0
- 381 0004 054B     		ldr	r3, .L30
- 382 0006 1A68     		ldr	r2, [r3]
- 383 0008 8023     		mov	r3, #128
- 384 000a 5B02     		lsl	r3, r3, #9
- 385 000c 1340     		and	r3, r2
- 386 000e 01D0     		beq	.L27
- 387              		.loc 1 323 0 is_stmt 0 discriminator 1
- 388 0010 0123     		mov	r3, #1
- 389 0012 00E0     		b	.L28
- 390              	.L27:
- 391              		.loc 1 323 0 discriminator 2
- 392 0014 0023     		mov	r3, #0
- 393              	.L28:
+ 377              		.loc 1 323 0
+ 378 0004 044B     		ldr	r3, .L28
+ 379 0006 1B68     		ldr	r3, [r3]
+ 380 0008 DAB2     		uxtb	r2, r3
+ 381 000a 0123     		mov	r3, #1
+ 382 000c 1340     		and	r3, r2
+ 383 000e DBB2     		uxtb	r3, r3
  324:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 394              		.loc 1 324 0 is_stmt 1 discriminator 3
- 395 0016 181C     		mov	r0, r3
- 396 0018 BD46     		mov	sp, r7
- 397              		@ sp needed
- 398 001a 80BD     		pop	{r7, pc}
- 399              	.L31:
- 400              		.align	2
- 401              	.L30:
- 402 001c 00E100E0 		.word	-536813312
- 403              		.cfi_endproc
- 404              	.LFE9:
- 405              		.size	timer_ISR_GetState, .-timer_ISR_GetState
- 406              		.section	.text.timer_ISR_Disable,"ax",%progbits
- 407              		.align	2
- 408              		.global	timer_ISR_Disable
- 409              		.code	16
- 410              		.thumb_func
- 411              		.type	timer_ISR_Disable, %function
- 412              	timer_ISR_Disable:
- 413              	.LFB10:
+ 384              		.loc 1 324 0
+ 385 0010 181C     		mov	r0, r3
+ 386 0012 BD46     		mov	sp, r7
+ 387              		@ sp needed
+ 388 0014 80BD     		pop	{r7, pc}
+ 389              	.L29:
+ 390 0016 C046     		.align	2
+ 391              	.L28:
+ 392 0018 00E100E0 		.word	-536813312
+ 393              		.cfi_endproc
+ 394              	.LFE9:
+ 395              		.size	timer_ISR_GetState, .-timer_ISR_GetState
+ 396              		.section	.text.timer_ISR_Disable,"ax",%progbits
+ 397              		.align	2
+ 398              		.global	timer_ISR_Disable
+ 399              		.code	16
+ 400              		.thumb_func
+ 401              		.type	timer_ISR_Disable, %function
+ 402              	timer_ISR_Disable:
+ 403              	.LFB10:
  325:.\Generated_Source\PSoC4/timer_ISR.c **** 
  326:.\Generated_Source\PSoC4/timer_ISR.c **** 
  327:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 14
-
-
  328:.\Generated_Source\PSoC4/timer_ISR.c **** * Function Name: timer_ISR_Disable
  329:.\Generated_Source\PSoC4/timer_ISR.c **** ********************************************************************************
  330:.\Generated_Source\PSoC4/timer_ISR.c **** *
@@ -791,46 +778,48 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  335:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  336:.\Generated_Source\PSoC4/timer_ISR.c **** *
  337:.\Generated_Source\PSoC4/timer_ISR.c **** * Return:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 14
+
+
  338:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  339:.\Generated_Source\PSoC4/timer_ISR.c **** *
  340:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  341:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_Disable(void)
  342:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 414              		.loc 1 342 0
- 415              		.cfi_startproc
- 416 0000 80B5     		push	{r7, lr}
- 417              		.cfi_def_cfa_offset 8
- 418              		.cfi_offset 7, -8
- 419              		.cfi_offset 14, -4
- 420 0002 00AF     		add	r7, sp, #0
- 421              		.cfi_def_cfa_register 7
+ 404              		.loc 1 342 0
+ 405              		.cfi_startproc
+ 406 0000 80B5     		push	{r7, lr}
+ 407              		.cfi_def_cfa_offset 8
+ 408              		.cfi_offset 7, -8
+ 409              		.cfi_offset 14, -4
+ 410 0002 00AF     		add	r7, sp, #0
+ 411              		.cfi_def_cfa_register 7
  343:.\Generated_Source\PSoC4/timer_ISR.c ****     /* Disable the general interrupt. */
  344:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_CLR_EN = timer_ISR__INTC_MASK;
- 422              		.loc 1 344 0
- 423 0004 024B     		ldr	r3, .L33
- 424 0006 8022     		mov	r2, #128
- 425 0008 5202     		lsl	r2, r2, #9
- 426 000a 1A60     		str	r2, [r3]
+ 412              		.loc 1 344 0
+ 413 0004 024B     		ldr	r3, .L31
+ 414 0006 0122     		mov	r2, #1
+ 415 0008 1A60     		str	r2, [r3]
  345:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 427              		.loc 1 345 0
- 428 000c BD46     		mov	sp, r7
- 429              		@ sp needed
- 430 000e 80BD     		pop	{r7, pc}
- 431              	.L34:
- 432              		.align	2
- 433              	.L33:
- 434 0010 80E100E0 		.word	-536813184
- 435              		.cfi_endproc
- 436              	.LFE10:
- 437              		.size	timer_ISR_Disable, .-timer_ISR_Disable
- 438              		.section	.text.timer_ISR_SetPending,"ax",%progbits
- 439              		.align	2
- 440              		.global	timer_ISR_SetPending
- 441              		.code	16
- 442              		.thumb_func
- 443              		.type	timer_ISR_SetPending, %function
- 444              	timer_ISR_SetPending:
- 445              	.LFB11:
+ 416              		.loc 1 345 0
+ 417 000a BD46     		mov	sp, r7
+ 418              		@ sp needed
+ 419 000c 80BD     		pop	{r7, pc}
+ 420              	.L32:
+ 421 000e C046     		.align	2
+ 422              	.L31:
+ 423 0010 80E100E0 		.word	-536813184
+ 424              		.cfi_endproc
+ 425              	.LFE10:
+ 426              		.size	timer_ISR_Disable, .-timer_ISR_Disable
+ 427              		.section	.text.timer_ISR_SetPending,"ax",%progbits
+ 428              		.align	2
+ 429              		.global	timer_ISR_SetPending
+ 430              		.code	16
+ 431              		.thumb_func
+ 432              		.type	timer_ISR_SetPending, %function
+ 433              	timer_ISR_SetPending:
+ 434              	.LFB11:
  346:.\Generated_Source\PSoC4/timer_ISR.c **** 
  347:.\Generated_Source\PSoC4/timer_ISR.c **** 
  348:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
@@ -838,9 +827,6 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  350:.\Generated_Source\PSoC4/timer_ISR.c **** ********************************************************************************
  351:.\Generated_Source\PSoC4/timer_ISR.c **** *
  352:.\Generated_Source\PSoC4/timer_ISR.c **** * Summary:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 15
-
-
  353:.\Generated_Source\PSoC4/timer_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
  354:.\Generated_Source\PSoC4/timer_ISR.c **** *   generating the interrupt.
  355:.\Generated_Source\PSoC4/timer_ISR.c **** *
@@ -852,55 +838,54 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  361:.\Generated_Source\PSoC4/timer_ISR.c **** *
  362:.\Generated_Source\PSoC4/timer_ISR.c **** * Side Effects:
  363:.\Generated_Source\PSoC4/timer_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 15
+
+
  364:.\Generated_Source\PSoC4/timer_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
  365:.\Generated_Source\PSoC4/timer_ISR.c **** *   interrupts).
  366:.\Generated_Source\PSoC4/timer_ISR.c **** *
  367:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  368:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_SetPending(void)
  369:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 446              		.loc 1 369 0
- 447              		.cfi_startproc
- 448 0000 80B5     		push	{r7, lr}
- 449              		.cfi_def_cfa_offset 8
- 450              		.cfi_offset 7, -8
- 451              		.cfi_offset 14, -4
- 452 0002 00AF     		add	r7, sp, #0
- 453              		.cfi_def_cfa_register 7
+ 435              		.loc 1 369 0
+ 436              		.cfi_startproc
+ 437 0000 80B5     		push	{r7, lr}
+ 438              		.cfi_def_cfa_offset 8
+ 439              		.cfi_offset 7, -8
+ 440              		.cfi_offset 14, -4
+ 441 0002 00AF     		add	r7, sp, #0
+ 442              		.cfi_def_cfa_register 7
  370:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_SET_PD = timer_ISR__INTC_MASK;
- 454              		.loc 1 370 0
- 455 0004 024B     		ldr	r3, .L36
- 456 0006 8022     		mov	r2, #128
- 457 0008 5202     		lsl	r2, r2, #9
- 458 000a 1A60     		str	r2, [r3]
+ 443              		.loc 1 370 0
+ 444 0004 024B     		ldr	r3, .L34
+ 445 0006 0122     		mov	r2, #1
+ 446 0008 1A60     		str	r2, [r3]
  371:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 459              		.loc 1 371 0
- 460 000c BD46     		mov	sp, r7
- 461              		@ sp needed
- 462 000e 80BD     		pop	{r7, pc}
- 463              	.L37:
- 464              		.align	2
- 465              	.L36:
- 466 0010 00E200E0 		.word	-536813056
- 467              		.cfi_endproc
- 468              	.LFE11:
- 469              		.size	timer_ISR_SetPending, .-timer_ISR_SetPending
- 470              		.section	.text.timer_ISR_ClearPending,"ax",%progbits
- 471              		.align	2
- 472              		.global	timer_ISR_ClearPending
- 473              		.code	16
- 474              		.thumb_func
- 475              		.type	timer_ISR_ClearPending, %function
- 476              	timer_ISR_ClearPending:
- 477              	.LFB12:
+ 447              		.loc 1 371 0
+ 448 000a BD46     		mov	sp, r7
+ 449              		@ sp needed
+ 450 000c 80BD     		pop	{r7, pc}
+ 451              	.L35:
+ 452 000e C046     		.align	2
+ 453              	.L34:
+ 454 0010 00E200E0 		.word	-536813056
+ 455              		.cfi_endproc
+ 456              	.LFE11:
+ 457              		.size	timer_ISR_SetPending, .-timer_ISR_SetPending
+ 458              		.section	.text.timer_ISR_ClearPending,"ax",%progbits
+ 459              		.align	2
+ 460              		.global	timer_ISR_ClearPending
+ 461              		.code	16
+ 462              		.thumb_func
+ 463              		.type	timer_ISR_ClearPending, %function
+ 464              	timer_ISR_ClearPending:
+ 465              	.LFB12:
  372:.\Generated_Source\PSoC4/timer_ISR.c **** 
  373:.\Generated_Source\PSoC4/timer_ISR.c **** 
  374:.\Generated_Source\PSoC4/timer_ISR.c **** /*******************************************************************************
  375:.\Generated_Source\PSoC4/timer_ISR.c **** * Function Name: timer_ISR_ClearPending
  376:.\Generated_Source\PSoC4/timer_ISR.c **** ********************************************************************************
  377:.\Generated_Source\PSoC4/timer_ISR.c **** *
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 16
-
-
  378:.\Generated_Source\PSoC4/timer_ISR.c **** * Summary:
  379:.\Generated_Source\PSoC4/timer_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
  380:.\Generated_Source\PSoC4/timer_ISR.c **** *
@@ -913,1014 +898,1013 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 1
  387:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  388:.\Generated_Source\PSoC4/timer_ISR.c **** *
  389:.\Generated_Source\PSoC4/timer_ISR.c **** * Return:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 16
+
+
  390:.\Generated_Source\PSoC4/timer_ISR.c **** *   None
  391:.\Generated_Source\PSoC4/timer_ISR.c **** *
  392:.\Generated_Source\PSoC4/timer_ISR.c **** *******************************************************************************/
  393:.\Generated_Source\PSoC4/timer_ISR.c **** void timer_ISR_ClearPending(void)
  394:.\Generated_Source\PSoC4/timer_ISR.c **** {
- 478              		.loc 1 394 0
- 479              		.cfi_startproc
- 480 0000 80B5     		push	{r7, lr}
- 481              		.cfi_def_cfa_offset 8
- 482              		.cfi_offset 7, -8
- 483              		.cfi_offset 14, -4
- 484 0002 00AF     		add	r7, sp, #0
- 485              		.cfi_def_cfa_register 7
+ 466              		.loc 1 394 0
+ 467              		.cfi_startproc
+ 468 0000 80B5     		push	{r7, lr}
+ 469              		.cfi_def_cfa_offset 8
+ 470              		.cfi_offset 7, -8
+ 471              		.cfi_offset 14, -4
+ 472 0002 00AF     		add	r7, sp, #0
+ 473              		.cfi_def_cfa_register 7
  395:.\Generated_Source\PSoC4/timer_ISR.c ****     *timer_ISR_INTC_CLR_PD = timer_ISR__INTC_MASK;
- 486              		.loc 1 395 0
- 487 0004 024B     		ldr	r3, .L39
- 488 0006 8022     		mov	r2, #128
- 489 0008 5202     		lsl	r2, r2, #9
- 490 000a 1A60     		str	r2, [r3]
+ 474              		.loc 1 395 0
+ 475 0004 024B     		ldr	r3, .L37
+ 476 0006 0122     		mov	r2, #1
+ 477 0008 1A60     		str	r2, [r3]
  396:.\Generated_Source\PSoC4/timer_ISR.c **** }
- 491              		.loc 1 396 0
- 492 000c BD46     		mov	sp, r7
- 493              		@ sp needed
- 494 000e 80BD     		pop	{r7, pc}
- 495              	.L40:
- 496              		.align	2
- 497              	.L39:
- 498 0010 80E200E0 		.word	-536812928
- 499              		.cfi_endproc
- 500              	.LFE12:
- 501              		.size	timer_ISR_ClearPending, .-timer_ISR_ClearPending
- 502              		.text
- 503              	.Letext0:
- 504              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 505              		.section	.debug_info,"",%progbits
- 506              	.Ldebug_info0:
- 507 0000 40020000 		.4byte	0x240
- 508 0004 0400     		.2byte	0x4
- 509 0006 00000000 		.4byte	.Ldebug_abbrev0
- 510 000a 04       		.byte	0x4
- 511 000b 01       		.uleb128 0x1
- 512 000c 9B000000 		.4byte	.LASF33
- 513 0010 01       		.byte	0x1
- 514 0011 25000000 		.4byte	.LASF34
- 515 0015 C8010000 		.4byte	.LASF35
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 17
+ 478              		.loc 1 396 0
+ 479 000a BD46     		mov	sp, r7
+ 480              		@ sp needed
+ 481 000c 80BD     		pop	{r7, pc}
+ 482              	.L38:
+ 483 000e C046     		.align	2
+ 484              	.L37:
+ 485 0010 80E200E0 		.word	-536812928
+ 486              		.cfi_endproc
+ 487              	.LFE12:
+ 488              		.size	timer_ISR_ClearPending, .-timer_ISR_ClearPending
+ 489              		.text
+ 490              	.Letext0:
+ 491              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 492              		.section	.debug_info,"",%progbits
+ 493              	.Ldebug_info0:
+ 494 0000 40020000 		.4byte	0x240
+ 495 0004 0400     		.2byte	0x4
+ 496 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 497 000a 04       		.byte	0x4
+ 498 000b 01       		.uleb128 0x1
+ 499 000c 9B000000 		.4byte	.LASF33
+ 500 0010 01       		.byte	0x1
+ 501 0011 25000000 		.4byte	.LASF34
+ 502 0015 25010000 		.4byte	.LASF35
+ 503 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 504 001d 00000000 		.4byte	0
+ 505 0021 00000000 		.4byte	.Ldebug_line0
+ 506 0025 02       		.uleb128 0x2
+ 507 0026 01       		.byte	0x1
+ 508 0027 06       		.byte	0x6
+ 509 0028 C1020000 		.4byte	.LASF0
+ 510 002c 02       		.uleb128 0x2
+ 511 002d 01       		.byte	0x1
+ 512 002e 08       		.byte	0x8
+ 513 002f 17010000 		.4byte	.LASF1
+ 514 0033 02       		.uleb128 0x2
+ 515 0034 02       		.byte	0x2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 17
 
 
- 516 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 517 001d 00000000 		.4byte	0
- 518 0021 00000000 		.4byte	.Ldebug_line0
- 519 0025 02       		.uleb128 0x2
- 520 0026 01       		.byte	0x1
- 521 0027 06       		.byte	0x6
- 522 0028 C3020000 		.4byte	.LASF0
- 523 002c 02       		.uleb128 0x2
- 524 002d 01       		.byte	0x1
- 525 002e 08       		.byte	0x8
- 526 002f 17010000 		.4byte	.LASF1
- 527 0033 02       		.uleb128 0x2
- 528 0034 02       		.byte	0x2
- 529 0035 05       		.byte	0x5
- 530 0036 76020000 		.4byte	.LASF2
- 531 003a 02       		.uleb128 0x2
- 532 003b 02       		.byte	0x2
- 533 003c 07       		.byte	0x7
- 534 003d 6D000000 		.4byte	.LASF3
- 535 0041 02       		.uleb128 0x2
- 536 0042 04       		.byte	0x4
- 537 0043 05       		.byte	0x5
- 538 0044 A3020000 		.4byte	.LASF4
- 539 0048 02       		.uleb128 0x2
- 540 0049 04       		.byte	0x4
- 541 004a 07       		.byte	0x7
- 542 004b 34010000 		.4byte	.LASF5
- 543 004f 02       		.uleb128 0x2
- 544 0050 08       		.byte	0x8
- 545 0051 05       		.byte	0x5
- 546 0052 40020000 		.4byte	.LASF6
- 547 0056 02       		.uleb128 0x2
- 548 0057 08       		.byte	0x8
- 549 0058 07       		.byte	0x7
- 550 0059 B1010000 		.4byte	.LASF7
- 551 005d 03       		.uleb128 0x3
- 552 005e 04       		.byte	0x4
- 553 005f 05       		.byte	0x5
- 554 0060 696E7400 		.ascii	"int\000"
- 555 0064 02       		.uleb128 0x2
- 556 0065 04       		.byte	0x4
- 557 0066 07       		.byte	0x7
- 558 0067 9C010000 		.4byte	.LASF8
- 559 006b 04       		.uleb128 0x4
- 560 006c 46010000 		.4byte	.LASF9
- 561 0070 02       		.byte	0x2
- 562 0071 A1       		.byte	0xa1
- 563 0072 2C000000 		.4byte	0x2c
- 564 0076 04       		.uleb128 0x4
- 565 0077 95010000 		.4byte	.LASF10
- 566 007b 02       		.byte	0x2
- 567 007c A3       		.byte	0xa3
- 568 007d 48000000 		.4byte	0x48
- 569 0081 02       		.uleb128 0x2
- 570 0082 04       		.byte	0x4
- 571 0083 04       		.byte	0x4
- 572 0084 95000000 		.4byte	.LASF11
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 18
+ 516 0035 05       		.byte	0x5
+ 517 0036 74020000 		.4byte	.LASF2
+ 518 003a 02       		.uleb128 0x2
+ 519 003b 02       		.byte	0x2
+ 520 003c 07       		.byte	0x7
+ 521 003d 6D000000 		.4byte	.LASF3
+ 522 0041 02       		.uleb128 0x2
+ 523 0042 04       		.byte	0x4
+ 524 0043 05       		.byte	0x5
+ 525 0044 A1020000 		.4byte	.LASF4
+ 526 0048 02       		.uleb128 0x2
+ 527 0049 04       		.byte	0x4
+ 528 004a 07       		.byte	0x7
+ 529 004b 6F010000 		.4byte	.LASF5
+ 530 004f 02       		.uleb128 0x2
+ 531 0050 08       		.byte	0x8
+ 532 0051 05       		.byte	0x5
+ 533 0052 3E020000 		.4byte	.LASF6
+ 534 0056 02       		.uleb128 0x2
+ 535 0057 08       		.byte	0x8
+ 536 0058 07       		.byte	0x7
+ 537 0059 EC010000 		.4byte	.LASF7
+ 538 005d 03       		.uleb128 0x3
+ 539 005e 04       		.byte	0x4
+ 540 005f 05       		.byte	0x5
+ 541 0060 696E7400 		.ascii	"int\000"
+ 542 0064 02       		.uleb128 0x2
+ 543 0065 04       		.byte	0x4
+ 544 0066 07       		.byte	0x7
+ 545 0067 D7010000 		.4byte	.LASF8
+ 546 006b 04       		.uleb128 0x4
+ 547 006c 81010000 		.4byte	.LASF9
+ 548 0070 02       		.byte	0x2
+ 549 0071 A1       		.byte	0xa1
+ 550 0072 2C000000 		.4byte	0x2c
+ 551 0076 04       		.uleb128 0x4
+ 552 0077 D0010000 		.4byte	.LASF10
+ 553 007b 02       		.byte	0x2
+ 554 007c A3       		.byte	0xa3
+ 555 007d 48000000 		.4byte	0x48
+ 556 0081 02       		.uleb128 0x2
+ 557 0082 04       		.byte	0x4
+ 558 0083 04       		.byte	0x4
+ 559 0084 95000000 		.4byte	.LASF11
+ 560 0088 02       		.uleb128 0x2
+ 561 0089 08       		.byte	0x8
+ 562 008a 04       		.byte	0x4
+ 563 008b C9010000 		.4byte	.LASF12
+ 564 008f 02       		.uleb128 0x2
+ 565 0090 01       		.byte	0x1
+ 566 0091 08       		.byte	0x8
+ 567 0092 4C020000 		.4byte	.LASF13
+ 568 0096 05       		.uleb128 0x5
+ 569 0097 00000000 		.4byte	.LASF14
+ 570 009b 02       		.byte	0x2
+ 571 009c 4D01     		.2byte	0x14d
+ 572 009e A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 18
 
 
- 573 0088 02       		.uleb128 0x2
- 574 0089 08       		.byte	0x8
- 575 008a 04       		.byte	0x4
- 576 008b 8E010000 		.4byte	.LASF12
- 577 008f 02       		.uleb128 0x2
- 578 0090 01       		.byte	0x1
- 579 0091 08       		.byte	0x8
- 580 0092 4E020000 		.4byte	.LASF13
- 581 0096 05       		.uleb128 0x5
- 582 0097 00000000 		.4byte	.LASF14
- 583 009b 02       		.byte	0x2
- 584 009c 4D01     		.2byte	0x14d
- 585 009e A2000000 		.4byte	0xa2
- 586 00a2 06       		.uleb128 0x6
- 587 00a3 76000000 		.4byte	0x76
- 588 00a7 05       		.uleb128 0x5
- 589 00a8 14020000 		.4byte	.LASF15
- 590 00ac 02       		.byte	0x2
- 591 00ad 5D01     		.2byte	0x15d
- 592 00af B3000000 		.4byte	0xb3
- 593 00b3 07       		.uleb128 0x7
- 594 00b4 04       		.byte	0x4
- 595 00b5 B9000000 		.4byte	0xb9
- 596 00b9 08       		.uleb128 0x8
- 597 00ba 02       		.uleb128 0x2
- 598 00bb 04       		.byte	0x4
- 599 00bc 07       		.byte	0x7
- 600 00bd 37020000 		.4byte	.LASF16
- 601 00c1 09       		.uleb128 0x9
- 602 00c2 4A000000 		.4byte	.LASF17
- 603 00c6 01       		.byte	0x1
- 604 00c7 37       		.byte	0x37
- 605 00c8 00000000 		.4byte	.LFB0
- 606 00cc 24000000 		.4byte	.LFE0-.LFB0
- 607 00d0 01       		.uleb128 0x1
- 608 00d1 9C       		.byte	0x9c
- 609 00d2 0A       		.uleb128 0xa
- 610 00d3 64020000 		.4byte	.LASF20
- 611 00d7 01       		.byte	0x1
- 612 00d8 62       		.byte	0x62
- 613 00d9 00000000 		.4byte	.LFB1
- 614 00dd 24000000 		.4byte	.LFE1-.LFB1
- 615 00e1 01       		.uleb128 0x1
- 616 00e2 9C       		.byte	0x9c
- 617 00e3 F6000000 		.4byte	0xf6
- 618 00e7 0B       		.uleb128 0xb
- 619 00e8 A9010000 		.4byte	.LASF22
- 620 00ec 01       		.byte	0x1
- 621 00ed 62       		.byte	0x62
- 622 00ee A7000000 		.4byte	0xa7
- 623 00f2 02       		.uleb128 0x2
- 624 00f3 91       		.byte	0x91
- 625 00f4 74       		.sleb128 -12
- 626 00f5 00       		.byte	0
- 627 00f6 09       		.uleb128 0x9
- 628 00f7 62010000 		.4byte	.LASF18
- 629 00fb 01       		.byte	0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 19
+ 573 00a2 06       		.uleb128 0x6
+ 574 00a3 76000000 		.4byte	0x76
+ 575 00a7 05       		.uleb128 0x5
+ 576 00a8 03020000 		.4byte	.LASF15
+ 577 00ac 02       		.byte	0x2
+ 578 00ad 5D01     		.2byte	0x15d
+ 579 00af B3000000 		.4byte	0xb3
+ 580 00b3 07       		.uleb128 0x7
+ 581 00b4 04       		.byte	0x4
+ 582 00b5 B9000000 		.4byte	0xb9
+ 583 00b9 08       		.uleb128 0x8
+ 584 00ba 02       		.uleb128 0x2
+ 585 00bb 04       		.byte	0x4
+ 586 00bc 07       		.byte	0x7
+ 587 00bd 35020000 		.4byte	.LASF16
+ 588 00c1 09       		.uleb128 0x9
+ 589 00c2 4A000000 		.4byte	.LASF17
+ 590 00c6 01       		.byte	0x1
+ 591 00c7 37       		.byte	0x37
+ 592 00c8 00000000 		.4byte	.LFB0
+ 593 00cc 24000000 		.4byte	.LFE0-.LFB0
+ 594 00d0 01       		.uleb128 0x1
+ 595 00d1 9C       		.byte	0x9c
+ 596 00d2 0A       		.uleb128 0xa
+ 597 00d3 62020000 		.4byte	.LASF20
+ 598 00d7 01       		.byte	0x1
+ 599 00d8 62       		.byte	0x62
+ 600 00d9 00000000 		.4byte	.LFB1
+ 601 00dd 24000000 		.4byte	.LFE1-.LFB1
+ 602 00e1 01       		.uleb128 0x1
+ 603 00e2 9C       		.byte	0x9c
+ 604 00e3 F6000000 		.4byte	0xf6
+ 605 00e7 0B       		.uleb128 0xb
+ 606 00e8 E4010000 		.4byte	.LASF22
+ 607 00ec 01       		.byte	0x1
+ 608 00ed 62       		.byte	0x62
+ 609 00ee A7000000 		.4byte	0xa7
+ 610 00f2 02       		.uleb128 0x2
+ 611 00f3 91       		.byte	0x91
+ 612 00f4 74       		.sleb128 -12
+ 613 00f5 00       		.byte	0
+ 614 00f6 09       		.uleb128 0x9
+ 615 00f7 9D010000 		.4byte	.LASF18
+ 616 00fb 01       		.byte	0x1
+ 617 00fc 80       		.byte	0x80
+ 618 00fd 00000000 		.4byte	.LFB2
+ 619 0101 18000000 		.4byte	.LFE2-.LFB2
+ 620 0105 01       		.uleb128 0x1
+ 621 0106 9C       		.byte	0x9c
+ 622 0107 0C       		.uleb128 0xc
+ 623 0108 7E020000 		.4byte	.LASF19
+ 624 010c 01       		.byte	0x1
+ 625 010d 9E       		.byte	0x9e
+ 626 010e 00000000 		.4byte	.LFB3
+ 627 0112 08000000 		.4byte	.LFE3-.LFB3
+ 628 0116 01       		.uleb128 0x1
+ 629 0117 9C       		.byte	0x9c
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 19
 
 
- 630 00fc 80       		.byte	0x80
- 631 00fd 00000000 		.4byte	.LFB2
- 632 0101 18000000 		.4byte	.LFE2-.LFB2
- 633 0105 01       		.uleb128 0x1
- 634 0106 9C       		.byte	0x9c
- 635 0107 0C       		.uleb128 0xc
- 636 0108 80020000 		.4byte	.LASF19
- 637 010c 01       		.byte	0x1
- 638 010d 9E       		.byte	0x9e
- 639 010e 00000000 		.4byte	.LFB3
- 640 0112 08000000 		.4byte	.LFE3-.LFB3
- 641 0116 01       		.uleb128 0x1
- 642 0117 9C       		.byte	0x9c
- 643 0118 0D       		.uleb128 0xd
- 644 0119 7A010000 		.4byte	.LASF21
- 645 011d 01       		.byte	0x1
- 646 011e C2       		.byte	0xc2
- 647 011f 00000000 		.4byte	.LFB4
- 648 0123 1C000000 		.4byte	.LFE4-.LFB4
- 649 0127 01       		.uleb128 0x1
- 650 0128 9C       		.byte	0x9c
- 651 0129 3C010000 		.4byte	0x13c
- 652 012d 0B       		.uleb128 0xb
- 653 012e A9010000 		.4byte	.LASF22
- 654 0132 01       		.byte	0x1
- 655 0133 C2       		.byte	0xc2
- 656 0134 A7000000 		.4byte	0xa7
- 657 0138 02       		.uleb128 0x2
- 658 0139 91       		.byte	0x91
- 659 013a 74       		.sleb128 -12
- 660 013b 00       		.byte	0
- 661 013c 0E       		.uleb128 0xe
- 662 013d CF020000 		.4byte	.LASF28
- 663 0141 01       		.byte	0x1
- 664 0142 D6       		.byte	0xd6
- 665 0143 A7000000 		.4byte	0xa7
- 666 0147 00000000 		.4byte	.LFB5
- 667 014b 14000000 		.4byte	.LFE5-.LFB5
- 668 014f 01       		.uleb128 0x1
- 669 0150 9C       		.byte	0x9c
- 670 0151 0A       		.uleb128 0xa
- 671 0152 21020000 		.4byte	.LASF23
- 672 0156 01       		.byte	0x1
- 673 0157 F4       		.byte	0xf4
- 674 0158 00000000 		.4byte	.LFB6
- 675 015c 50000000 		.4byte	.LFE6-.LFB6
- 676 0160 01       		.uleb128 0x1
- 677 0161 9C       		.byte	0x9c
- 678 0162 91010000 		.4byte	0x191
- 679 0166 0B       		.uleb128 0xb
- 680 0167 71010000 		.4byte	.LASF24
- 681 016b 01       		.byte	0x1
- 682 016c F4       		.byte	0xf4
- 683 016d 6B000000 		.4byte	0x6b
- 684 0171 02       		.uleb128 0x2
- 685 0172 91       		.byte	0x91
- 686 0173 67       		.sleb128 -25
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 20
+ 630 0118 0D       		.uleb128 0xd
+ 631 0119 B5010000 		.4byte	.LASF21
+ 632 011d 01       		.byte	0x1
+ 633 011e C2       		.byte	0xc2
+ 634 011f 00000000 		.4byte	.LFB4
+ 635 0123 18000000 		.4byte	.LFE4-.LFB4
+ 636 0127 01       		.uleb128 0x1
+ 637 0128 9C       		.byte	0x9c
+ 638 0129 3C010000 		.4byte	0x13c
+ 639 012d 0B       		.uleb128 0xb
+ 640 012e E4010000 		.4byte	.LASF22
+ 641 0132 01       		.byte	0x1
+ 642 0133 C2       		.byte	0xc2
+ 643 0134 A7000000 		.4byte	0xa7
+ 644 0138 02       		.uleb128 0x2
+ 645 0139 91       		.byte	0x91
+ 646 013a 74       		.sleb128 -12
+ 647 013b 00       		.byte	0
+ 648 013c 0E       		.uleb128 0xe
+ 649 013d CD020000 		.4byte	.LASF28
+ 650 0141 01       		.byte	0x1
+ 651 0142 D6       		.byte	0xd6
+ 652 0143 A7000000 		.4byte	0xa7
+ 653 0147 00000000 		.4byte	.LFB5
+ 654 014b 14000000 		.4byte	.LFE5-.LFB5
+ 655 014f 01       		.uleb128 0x1
+ 656 0150 9C       		.byte	0x9c
+ 657 0151 0A       		.uleb128 0xa
+ 658 0152 1F020000 		.4byte	.LASF23
+ 659 0156 01       		.byte	0x1
+ 660 0157 F4       		.byte	0xf4
+ 661 0158 00000000 		.4byte	.LFB6
+ 662 015c 50000000 		.4byte	.LFE6-.LFB6
+ 663 0160 01       		.uleb128 0x1
+ 664 0161 9C       		.byte	0x9c
+ 665 0162 91010000 		.4byte	0x191
+ 666 0166 0B       		.uleb128 0xb
+ 667 0167 AC010000 		.4byte	.LASF24
+ 668 016b 01       		.byte	0x1
+ 669 016c F4       		.byte	0xf4
+ 670 016d 6B000000 		.4byte	0x6b
+ 671 0171 02       		.uleb128 0x2
+ 672 0172 91       		.byte	0x91
+ 673 0173 67       		.sleb128 -25
+ 674 0174 0F       		.uleb128 0xf
+ 675 0175 10020000 		.4byte	.LASF25
+ 676 0179 01       		.byte	0x1
+ 677 017a F6       		.byte	0xf6
+ 678 017b 6B000000 		.4byte	0x6b
+ 679 017f 02       		.uleb128 0x2
+ 680 0180 91       		.byte	0x91
+ 681 0181 6B       		.sleb128 -21
+ 682 0182 0F       		.uleb128 0xf
+ 683 0183 92020000 		.4byte	.LASF26
+ 684 0187 01       		.byte	0x1
+ 685 0188 F7       		.byte	0xf7
+ 686 0189 76000000 		.4byte	0x76
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 20
 
 
- 687 0174 0F       		.uleb128 0xf
- 688 0175 25010000 		.4byte	.LASF25
- 689 0179 01       		.byte	0x1
- 690 017a F6       		.byte	0xf6
- 691 017b 6B000000 		.4byte	0x6b
- 692 017f 02       		.uleb128 0x2
- 693 0180 91       		.byte	0x91
- 694 0181 6B       		.sleb128 -21
- 695 0182 0F       		.uleb128 0xf
- 696 0183 94020000 		.4byte	.LASF26
- 697 0187 01       		.byte	0x1
- 698 0188 F7       		.byte	0xf7
- 699 0189 76000000 		.4byte	0x76
- 700 018d 02       		.uleb128 0x2
- 701 018e 91       		.byte	0x91
- 702 018f 6C       		.sleb128 -20
- 703 0190 00       		.byte	0
- 704 0191 10       		.uleb128 0x10
- 705 0192 4C010000 		.4byte	.LASF36
- 706 0196 01       		.byte	0x1
- 707 0197 1001     		.2byte	0x110
- 708 0199 6B000000 		.4byte	0x6b
- 709 019d 00000000 		.4byte	.LFB7
- 710 01a1 2C000000 		.4byte	.LFE7-.LFB7
- 711 01a5 01       		.uleb128 0x1
- 712 01a6 9C       		.byte	0x9c
- 713 01a7 CA010000 		.4byte	0x1ca
- 714 01ab 11       		.uleb128 0x11
- 715 01ac 71010000 		.4byte	.LASF24
- 716 01b0 01       		.byte	0x1
- 717 01b1 1201     		.2byte	0x112
- 718 01b3 76000000 		.4byte	0x76
- 719 01b7 02       		.uleb128 0x2
- 720 01b8 91       		.byte	0x91
- 721 01b9 70       		.sleb128 -16
- 722 01ba 11       		.uleb128 0x11
- 723 01bb 94020000 		.4byte	.LASF26
- 724 01bf 01       		.byte	0x1
- 725 01c0 1301     		.2byte	0x113
- 726 01c2 76000000 		.4byte	0x76
- 727 01c6 02       		.uleb128 0x2
- 728 01c7 91       		.byte	0x91
- 729 01c8 74       		.sleb128 -12
- 730 01c9 00       		.byte	0
- 731 01ca 12       		.uleb128 0x12
- 732 01cb 53020000 		.4byte	.LASF27
- 733 01cf 01       		.byte	0x1
- 734 01d0 2B01     		.2byte	0x12b
- 735 01d2 00000000 		.4byte	.LFB8
- 736 01d6 14000000 		.4byte	.LFE8-.LFB8
- 737 01da 01       		.uleb128 0x1
- 738 01db 9C       		.byte	0x9c
- 739 01dc 13       		.uleb128 0x13
- 740 01dd 5A000000 		.4byte	.LASF29
- 741 01e1 01       		.byte	0x1
- 742 01e2 4001     		.2byte	0x140
- 743 01e4 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 21
+ 687 018d 02       		.uleb128 0x2
+ 688 018e 91       		.byte	0x91
+ 689 018f 6C       		.sleb128 -20
+ 690 0190 00       		.byte	0
+ 691 0191 10       		.uleb128 0x10
+ 692 0192 87010000 		.4byte	.LASF36
+ 693 0196 01       		.byte	0x1
+ 694 0197 1001     		.2byte	0x110
+ 695 0199 6B000000 		.4byte	0x6b
+ 696 019d 00000000 		.4byte	.LFB7
+ 697 01a1 2C000000 		.4byte	.LFE7-.LFB7
+ 698 01a5 01       		.uleb128 0x1
+ 699 01a6 9C       		.byte	0x9c
+ 700 01a7 CA010000 		.4byte	0x1ca
+ 701 01ab 11       		.uleb128 0x11
+ 702 01ac AC010000 		.4byte	.LASF24
+ 703 01b0 01       		.byte	0x1
+ 704 01b1 1201     		.2byte	0x112
+ 705 01b3 76000000 		.4byte	0x76
+ 706 01b7 02       		.uleb128 0x2
+ 707 01b8 91       		.byte	0x91
+ 708 01b9 70       		.sleb128 -16
+ 709 01ba 11       		.uleb128 0x11
+ 710 01bb 92020000 		.4byte	.LASF26
+ 711 01bf 01       		.byte	0x1
+ 712 01c0 1301     		.2byte	0x113
+ 713 01c2 76000000 		.4byte	0x76
+ 714 01c6 02       		.uleb128 0x2
+ 715 01c7 91       		.byte	0x91
+ 716 01c8 74       		.sleb128 -12
+ 717 01c9 00       		.byte	0
+ 718 01ca 12       		.uleb128 0x12
+ 719 01cb 51020000 		.4byte	.LASF27
+ 720 01cf 01       		.byte	0x1
+ 721 01d0 2B01     		.2byte	0x12b
+ 722 01d2 00000000 		.4byte	.LFB8
+ 723 01d6 14000000 		.4byte	.LFE8-.LFB8
+ 724 01da 01       		.uleb128 0x1
+ 725 01db 9C       		.byte	0x9c
+ 726 01dc 13       		.uleb128 0x13
+ 727 01dd 5A000000 		.4byte	.LASF29
+ 728 01e1 01       		.byte	0x1
+ 729 01e2 4001     		.2byte	0x140
+ 730 01e4 6B000000 		.4byte	0x6b
+ 731 01e8 00000000 		.4byte	.LFB9
+ 732 01ec 1C000000 		.4byte	.LFE9-.LFB9
+ 733 01f0 01       		.uleb128 0x1
+ 734 01f1 9C       		.byte	0x9c
+ 735 01f2 12       		.uleb128 0x12
+ 736 01f3 06000000 		.4byte	.LASF30
+ 737 01f7 01       		.byte	0x1
+ 738 01f8 5501     		.2byte	0x155
+ 739 01fa 00000000 		.4byte	.LFB10
+ 740 01fe 14000000 		.4byte	.LFE10-.LFB10
+ 741 0202 01       		.uleb128 0x1
+ 742 0203 9C       		.byte	0x9c
+ 743 0204 12       		.uleb128 0x12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 21
 
 
- 744 01e8 00000000 		.4byte	.LFB9
- 745 01ec 20000000 		.4byte	.LFE9-.LFB9
- 746 01f0 01       		.uleb128 0x1
- 747 01f1 9C       		.byte	0x9c
- 748 01f2 12       		.uleb128 0x12
- 749 01f3 06000000 		.4byte	.LASF30
- 750 01f7 01       		.byte	0x1
- 751 01f8 5501     		.2byte	0x155
- 752 01fa 00000000 		.4byte	.LFB10
- 753 01fe 14000000 		.4byte	.LFE10-.LFB10
- 754 0202 01       		.uleb128 0x1
- 755 0203 9C       		.byte	0x9c
- 756 0204 12       		.uleb128 0x12
- 757 0205 80000000 		.4byte	.LASF31
- 758 0209 01       		.byte	0x1
- 759 020a 7001     		.2byte	0x170
- 760 020c 00000000 		.4byte	.LFB11
- 761 0210 14000000 		.4byte	.LFE11-.LFB11
- 762 0214 01       		.uleb128 0x1
- 763 0215 9C       		.byte	0x9c
- 764 0216 12       		.uleb128 0x12
- 765 0217 AC020000 		.4byte	.LASF32
- 766 021b 01       		.byte	0x1
- 767 021c 8901     		.2byte	0x189
- 768 021e 00000000 		.4byte	.LFB12
- 769 0222 14000000 		.4byte	.LFE12-.LFB12
- 770 0226 01       		.uleb128 0x1
- 771 0227 9C       		.byte	0x9c
- 772 0228 14       		.uleb128 0x14
- 773 0229 A7000000 		.4byte	0xa7
- 774 022d 38020000 		.4byte	0x238
- 775 0231 15       		.uleb128 0x15
- 776 0232 BA000000 		.4byte	0xba
- 777 0236 2F       		.byte	0x2f
- 778 0237 00       		.byte	0
- 779 0238 16       		.uleb128 0x16
- 780 0239 18000000 		.4byte	.LASF37
- 781 023d 01       		.byte	0x1
- 782 023e 20       		.byte	0x20
- 783 023f 28020000 		.4byte	0x228
- 784 0243 00       		.byte	0
- 785              		.section	.debug_abbrev,"",%progbits
- 786              	.Ldebug_abbrev0:
- 787 0000 01       		.uleb128 0x1
- 788 0001 11       		.uleb128 0x11
- 789 0002 01       		.byte	0x1
- 790 0003 25       		.uleb128 0x25
- 791 0004 0E       		.uleb128 0xe
- 792 0005 13       		.uleb128 0x13
- 793 0006 0B       		.uleb128 0xb
- 794 0007 03       		.uleb128 0x3
- 795 0008 0E       		.uleb128 0xe
- 796 0009 1B       		.uleb128 0x1b
- 797 000a 0E       		.uleb128 0xe
- 798 000b 55       		.uleb128 0x55
- 799 000c 17       		.uleb128 0x17
- 800 000d 11       		.uleb128 0x11
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 22
+ 744 0205 80000000 		.4byte	.LASF31
+ 745 0209 01       		.byte	0x1
+ 746 020a 7001     		.2byte	0x170
+ 747 020c 00000000 		.4byte	.LFB11
+ 748 0210 14000000 		.4byte	.LFE11-.LFB11
+ 749 0214 01       		.uleb128 0x1
+ 750 0215 9C       		.byte	0x9c
+ 751 0216 12       		.uleb128 0x12
+ 752 0217 AA020000 		.4byte	.LASF32
+ 753 021b 01       		.byte	0x1
+ 754 021c 8901     		.2byte	0x189
+ 755 021e 00000000 		.4byte	.LFB12
+ 756 0222 14000000 		.4byte	.LFE12-.LFB12
+ 757 0226 01       		.uleb128 0x1
+ 758 0227 9C       		.byte	0x9c
+ 759 0228 14       		.uleb128 0x14
+ 760 0229 A7000000 		.4byte	0xa7
+ 761 022d 38020000 		.4byte	0x238
+ 762 0231 15       		.uleb128 0x15
+ 763 0232 BA000000 		.4byte	0xba
+ 764 0236 2F       		.byte	0x2f
+ 765 0237 00       		.byte	0
+ 766 0238 16       		.uleb128 0x16
+ 767 0239 18000000 		.4byte	.LASF37
+ 768 023d 01       		.byte	0x1
+ 769 023e 20       		.byte	0x20
+ 770 023f 28020000 		.4byte	0x228
+ 771 0243 00       		.byte	0
+ 772              		.section	.debug_abbrev,"",%progbits
+ 773              	.Ldebug_abbrev0:
+ 774 0000 01       		.uleb128 0x1
+ 775 0001 11       		.uleb128 0x11
+ 776 0002 01       		.byte	0x1
+ 777 0003 25       		.uleb128 0x25
+ 778 0004 0E       		.uleb128 0xe
+ 779 0005 13       		.uleb128 0x13
+ 780 0006 0B       		.uleb128 0xb
+ 781 0007 03       		.uleb128 0x3
+ 782 0008 0E       		.uleb128 0xe
+ 783 0009 1B       		.uleb128 0x1b
+ 784 000a 0E       		.uleb128 0xe
+ 785 000b 55       		.uleb128 0x55
+ 786 000c 17       		.uleb128 0x17
+ 787 000d 11       		.uleb128 0x11
+ 788 000e 01       		.uleb128 0x1
+ 789 000f 10       		.uleb128 0x10
+ 790 0010 17       		.uleb128 0x17
+ 791 0011 00       		.byte	0
+ 792 0012 00       		.byte	0
+ 793 0013 02       		.uleb128 0x2
+ 794 0014 24       		.uleb128 0x24
+ 795 0015 00       		.byte	0
+ 796 0016 0B       		.uleb128 0xb
+ 797 0017 0B       		.uleb128 0xb
+ 798 0018 3E       		.uleb128 0x3e
+ 799 0019 0B       		.uleb128 0xb
+ 800 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 22
 
 
- 801 000e 01       		.uleb128 0x1
- 802 000f 10       		.uleb128 0x10
- 803 0010 17       		.uleb128 0x17
- 804 0011 00       		.byte	0
- 805 0012 00       		.byte	0
- 806 0013 02       		.uleb128 0x2
- 807 0014 24       		.uleb128 0x24
- 808 0015 00       		.byte	0
- 809 0016 0B       		.uleb128 0xb
- 810 0017 0B       		.uleb128 0xb
- 811 0018 3E       		.uleb128 0x3e
- 812 0019 0B       		.uleb128 0xb
- 813 001a 03       		.uleb128 0x3
- 814 001b 0E       		.uleb128 0xe
- 815 001c 00       		.byte	0
- 816 001d 00       		.byte	0
- 817 001e 03       		.uleb128 0x3
- 818 001f 24       		.uleb128 0x24
- 819 0020 00       		.byte	0
- 820 0021 0B       		.uleb128 0xb
- 821 0022 0B       		.uleb128 0xb
- 822 0023 3E       		.uleb128 0x3e
- 823 0024 0B       		.uleb128 0xb
- 824 0025 03       		.uleb128 0x3
- 825 0026 08       		.uleb128 0x8
- 826 0027 00       		.byte	0
- 827 0028 00       		.byte	0
- 828 0029 04       		.uleb128 0x4
- 829 002a 16       		.uleb128 0x16
- 830 002b 00       		.byte	0
- 831 002c 03       		.uleb128 0x3
- 832 002d 0E       		.uleb128 0xe
- 833 002e 3A       		.uleb128 0x3a
- 834 002f 0B       		.uleb128 0xb
- 835 0030 3B       		.uleb128 0x3b
- 836 0031 0B       		.uleb128 0xb
- 837 0032 49       		.uleb128 0x49
- 838 0033 13       		.uleb128 0x13
- 839 0034 00       		.byte	0
- 840 0035 00       		.byte	0
- 841 0036 05       		.uleb128 0x5
- 842 0037 16       		.uleb128 0x16
- 843 0038 00       		.byte	0
- 844 0039 03       		.uleb128 0x3
- 845 003a 0E       		.uleb128 0xe
- 846 003b 3A       		.uleb128 0x3a
- 847 003c 0B       		.uleb128 0xb
- 848 003d 3B       		.uleb128 0x3b
- 849 003e 05       		.uleb128 0x5
- 850 003f 49       		.uleb128 0x49
- 851 0040 13       		.uleb128 0x13
- 852 0041 00       		.byte	0
- 853 0042 00       		.byte	0
- 854 0043 06       		.uleb128 0x6
- 855 0044 35       		.uleb128 0x35
- 856 0045 00       		.byte	0
- 857 0046 49       		.uleb128 0x49
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 23
+ 801 001b 0E       		.uleb128 0xe
+ 802 001c 00       		.byte	0
+ 803 001d 00       		.byte	0
+ 804 001e 03       		.uleb128 0x3
+ 805 001f 24       		.uleb128 0x24
+ 806 0020 00       		.byte	0
+ 807 0021 0B       		.uleb128 0xb
+ 808 0022 0B       		.uleb128 0xb
+ 809 0023 3E       		.uleb128 0x3e
+ 810 0024 0B       		.uleb128 0xb
+ 811 0025 03       		.uleb128 0x3
+ 812 0026 08       		.uleb128 0x8
+ 813 0027 00       		.byte	0
+ 814 0028 00       		.byte	0
+ 815 0029 04       		.uleb128 0x4
+ 816 002a 16       		.uleb128 0x16
+ 817 002b 00       		.byte	0
+ 818 002c 03       		.uleb128 0x3
+ 819 002d 0E       		.uleb128 0xe
+ 820 002e 3A       		.uleb128 0x3a
+ 821 002f 0B       		.uleb128 0xb
+ 822 0030 3B       		.uleb128 0x3b
+ 823 0031 0B       		.uleb128 0xb
+ 824 0032 49       		.uleb128 0x49
+ 825 0033 13       		.uleb128 0x13
+ 826 0034 00       		.byte	0
+ 827 0035 00       		.byte	0
+ 828 0036 05       		.uleb128 0x5
+ 829 0037 16       		.uleb128 0x16
+ 830 0038 00       		.byte	0
+ 831 0039 03       		.uleb128 0x3
+ 832 003a 0E       		.uleb128 0xe
+ 833 003b 3A       		.uleb128 0x3a
+ 834 003c 0B       		.uleb128 0xb
+ 835 003d 3B       		.uleb128 0x3b
+ 836 003e 05       		.uleb128 0x5
+ 837 003f 49       		.uleb128 0x49
+ 838 0040 13       		.uleb128 0x13
+ 839 0041 00       		.byte	0
+ 840 0042 00       		.byte	0
+ 841 0043 06       		.uleb128 0x6
+ 842 0044 35       		.uleb128 0x35
+ 843 0045 00       		.byte	0
+ 844 0046 49       		.uleb128 0x49
+ 845 0047 13       		.uleb128 0x13
+ 846 0048 00       		.byte	0
+ 847 0049 00       		.byte	0
+ 848 004a 07       		.uleb128 0x7
+ 849 004b 0F       		.uleb128 0xf
+ 850 004c 00       		.byte	0
+ 851 004d 0B       		.uleb128 0xb
+ 852 004e 0B       		.uleb128 0xb
+ 853 004f 49       		.uleb128 0x49
+ 854 0050 13       		.uleb128 0x13
+ 855 0051 00       		.byte	0
+ 856 0052 00       		.byte	0
+ 857 0053 08       		.uleb128 0x8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 23
 
 
- 858 0047 13       		.uleb128 0x13
- 859 0048 00       		.byte	0
- 860 0049 00       		.byte	0
- 861 004a 07       		.uleb128 0x7
- 862 004b 0F       		.uleb128 0xf
- 863 004c 00       		.byte	0
- 864 004d 0B       		.uleb128 0xb
- 865 004e 0B       		.uleb128 0xb
- 866 004f 49       		.uleb128 0x49
- 867 0050 13       		.uleb128 0x13
- 868 0051 00       		.byte	0
- 869 0052 00       		.byte	0
- 870 0053 08       		.uleb128 0x8
- 871 0054 15       		.uleb128 0x15
- 872 0055 00       		.byte	0
- 873 0056 27       		.uleb128 0x27
- 874 0057 19       		.uleb128 0x19
- 875 0058 00       		.byte	0
- 876 0059 00       		.byte	0
- 877 005a 09       		.uleb128 0x9
- 878 005b 2E       		.uleb128 0x2e
- 879 005c 00       		.byte	0
- 880 005d 3F       		.uleb128 0x3f
- 881 005e 19       		.uleb128 0x19
- 882 005f 03       		.uleb128 0x3
- 883 0060 0E       		.uleb128 0xe
- 884 0061 3A       		.uleb128 0x3a
- 885 0062 0B       		.uleb128 0xb
- 886 0063 3B       		.uleb128 0x3b
- 887 0064 0B       		.uleb128 0xb
- 888 0065 27       		.uleb128 0x27
- 889 0066 19       		.uleb128 0x19
- 890 0067 11       		.uleb128 0x11
- 891 0068 01       		.uleb128 0x1
- 892 0069 12       		.uleb128 0x12
- 893 006a 06       		.uleb128 0x6
- 894 006b 40       		.uleb128 0x40
- 895 006c 18       		.uleb128 0x18
- 896 006d 9642     		.uleb128 0x2116
- 897 006f 19       		.uleb128 0x19
- 898 0070 00       		.byte	0
- 899 0071 00       		.byte	0
- 900 0072 0A       		.uleb128 0xa
- 901 0073 2E       		.uleb128 0x2e
- 902 0074 01       		.byte	0x1
- 903 0075 3F       		.uleb128 0x3f
- 904 0076 19       		.uleb128 0x19
- 905 0077 03       		.uleb128 0x3
- 906 0078 0E       		.uleb128 0xe
- 907 0079 3A       		.uleb128 0x3a
- 908 007a 0B       		.uleb128 0xb
- 909 007b 3B       		.uleb128 0x3b
- 910 007c 0B       		.uleb128 0xb
- 911 007d 27       		.uleb128 0x27
- 912 007e 19       		.uleb128 0x19
- 913 007f 11       		.uleb128 0x11
- 914 0080 01       		.uleb128 0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 24
+ 858 0054 15       		.uleb128 0x15
+ 859 0055 00       		.byte	0
+ 860 0056 27       		.uleb128 0x27
+ 861 0057 19       		.uleb128 0x19
+ 862 0058 00       		.byte	0
+ 863 0059 00       		.byte	0
+ 864 005a 09       		.uleb128 0x9
+ 865 005b 2E       		.uleb128 0x2e
+ 866 005c 00       		.byte	0
+ 867 005d 3F       		.uleb128 0x3f
+ 868 005e 19       		.uleb128 0x19
+ 869 005f 03       		.uleb128 0x3
+ 870 0060 0E       		.uleb128 0xe
+ 871 0061 3A       		.uleb128 0x3a
+ 872 0062 0B       		.uleb128 0xb
+ 873 0063 3B       		.uleb128 0x3b
+ 874 0064 0B       		.uleb128 0xb
+ 875 0065 27       		.uleb128 0x27
+ 876 0066 19       		.uleb128 0x19
+ 877 0067 11       		.uleb128 0x11
+ 878 0068 01       		.uleb128 0x1
+ 879 0069 12       		.uleb128 0x12
+ 880 006a 06       		.uleb128 0x6
+ 881 006b 40       		.uleb128 0x40
+ 882 006c 18       		.uleb128 0x18
+ 883 006d 9642     		.uleb128 0x2116
+ 884 006f 19       		.uleb128 0x19
+ 885 0070 00       		.byte	0
+ 886 0071 00       		.byte	0
+ 887 0072 0A       		.uleb128 0xa
+ 888 0073 2E       		.uleb128 0x2e
+ 889 0074 01       		.byte	0x1
+ 890 0075 3F       		.uleb128 0x3f
+ 891 0076 19       		.uleb128 0x19
+ 892 0077 03       		.uleb128 0x3
+ 893 0078 0E       		.uleb128 0xe
+ 894 0079 3A       		.uleb128 0x3a
+ 895 007a 0B       		.uleb128 0xb
+ 896 007b 3B       		.uleb128 0x3b
+ 897 007c 0B       		.uleb128 0xb
+ 898 007d 27       		.uleb128 0x27
+ 899 007e 19       		.uleb128 0x19
+ 900 007f 11       		.uleb128 0x11
+ 901 0080 01       		.uleb128 0x1
+ 902 0081 12       		.uleb128 0x12
+ 903 0082 06       		.uleb128 0x6
+ 904 0083 40       		.uleb128 0x40
+ 905 0084 18       		.uleb128 0x18
+ 906 0085 9642     		.uleb128 0x2116
+ 907 0087 19       		.uleb128 0x19
+ 908 0088 01       		.uleb128 0x1
+ 909 0089 13       		.uleb128 0x13
+ 910 008a 00       		.byte	0
+ 911 008b 00       		.byte	0
+ 912 008c 0B       		.uleb128 0xb
+ 913 008d 05       		.uleb128 0x5
+ 914 008e 00       		.byte	0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 24
 
 
- 915 0081 12       		.uleb128 0x12
- 916 0082 06       		.uleb128 0x6
- 917 0083 40       		.uleb128 0x40
- 918 0084 18       		.uleb128 0x18
- 919 0085 9642     		.uleb128 0x2116
- 920 0087 19       		.uleb128 0x19
- 921 0088 01       		.uleb128 0x1
- 922 0089 13       		.uleb128 0x13
- 923 008a 00       		.byte	0
- 924 008b 00       		.byte	0
- 925 008c 0B       		.uleb128 0xb
- 926 008d 05       		.uleb128 0x5
- 927 008e 00       		.byte	0
- 928 008f 03       		.uleb128 0x3
- 929 0090 0E       		.uleb128 0xe
- 930 0091 3A       		.uleb128 0x3a
- 931 0092 0B       		.uleb128 0xb
- 932 0093 3B       		.uleb128 0x3b
- 933 0094 0B       		.uleb128 0xb
- 934 0095 49       		.uleb128 0x49
- 935 0096 13       		.uleb128 0x13
- 936 0097 02       		.uleb128 0x2
- 937 0098 18       		.uleb128 0x18
- 938 0099 00       		.byte	0
- 939 009a 00       		.byte	0
- 940 009b 0C       		.uleb128 0xc
- 941 009c 2E       		.uleb128 0x2e
- 942 009d 00       		.byte	0
- 943 009e 3F       		.uleb128 0x3f
- 944 009f 19       		.uleb128 0x19
- 945 00a0 03       		.uleb128 0x3
- 946 00a1 0E       		.uleb128 0xe
- 947 00a2 3A       		.uleb128 0x3a
- 948 00a3 0B       		.uleb128 0xb
- 949 00a4 3B       		.uleb128 0x3b
- 950 00a5 0B       		.uleb128 0xb
- 951 00a6 27       		.uleb128 0x27
- 952 00a7 19       		.uleb128 0x19
- 953 00a8 11       		.uleb128 0x11
- 954 00a9 01       		.uleb128 0x1
- 955 00aa 12       		.uleb128 0x12
- 956 00ab 06       		.uleb128 0x6
- 957 00ac 40       		.uleb128 0x40
- 958 00ad 18       		.uleb128 0x18
- 959 00ae 9742     		.uleb128 0x2117
- 960 00b0 19       		.uleb128 0x19
- 961 00b1 00       		.byte	0
- 962 00b2 00       		.byte	0
- 963 00b3 0D       		.uleb128 0xd
- 964 00b4 2E       		.uleb128 0x2e
- 965 00b5 01       		.byte	0x1
- 966 00b6 3F       		.uleb128 0x3f
- 967 00b7 19       		.uleb128 0x19
- 968 00b8 03       		.uleb128 0x3
- 969 00b9 0E       		.uleb128 0xe
- 970 00ba 3A       		.uleb128 0x3a
- 971 00bb 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 25
+ 915 008f 03       		.uleb128 0x3
+ 916 0090 0E       		.uleb128 0xe
+ 917 0091 3A       		.uleb128 0x3a
+ 918 0092 0B       		.uleb128 0xb
+ 919 0093 3B       		.uleb128 0x3b
+ 920 0094 0B       		.uleb128 0xb
+ 921 0095 49       		.uleb128 0x49
+ 922 0096 13       		.uleb128 0x13
+ 923 0097 02       		.uleb128 0x2
+ 924 0098 18       		.uleb128 0x18
+ 925 0099 00       		.byte	0
+ 926 009a 00       		.byte	0
+ 927 009b 0C       		.uleb128 0xc
+ 928 009c 2E       		.uleb128 0x2e
+ 929 009d 00       		.byte	0
+ 930 009e 3F       		.uleb128 0x3f
+ 931 009f 19       		.uleb128 0x19
+ 932 00a0 03       		.uleb128 0x3
+ 933 00a1 0E       		.uleb128 0xe
+ 934 00a2 3A       		.uleb128 0x3a
+ 935 00a3 0B       		.uleb128 0xb
+ 936 00a4 3B       		.uleb128 0x3b
+ 937 00a5 0B       		.uleb128 0xb
+ 938 00a6 27       		.uleb128 0x27
+ 939 00a7 19       		.uleb128 0x19
+ 940 00a8 11       		.uleb128 0x11
+ 941 00a9 01       		.uleb128 0x1
+ 942 00aa 12       		.uleb128 0x12
+ 943 00ab 06       		.uleb128 0x6
+ 944 00ac 40       		.uleb128 0x40
+ 945 00ad 18       		.uleb128 0x18
+ 946 00ae 9742     		.uleb128 0x2117
+ 947 00b0 19       		.uleb128 0x19
+ 948 00b1 00       		.byte	0
+ 949 00b2 00       		.byte	0
+ 950 00b3 0D       		.uleb128 0xd
+ 951 00b4 2E       		.uleb128 0x2e
+ 952 00b5 01       		.byte	0x1
+ 953 00b6 3F       		.uleb128 0x3f
+ 954 00b7 19       		.uleb128 0x19
+ 955 00b8 03       		.uleb128 0x3
+ 956 00b9 0E       		.uleb128 0xe
+ 957 00ba 3A       		.uleb128 0x3a
+ 958 00bb 0B       		.uleb128 0xb
+ 959 00bc 3B       		.uleb128 0x3b
+ 960 00bd 0B       		.uleb128 0xb
+ 961 00be 27       		.uleb128 0x27
+ 962 00bf 19       		.uleb128 0x19
+ 963 00c0 11       		.uleb128 0x11
+ 964 00c1 01       		.uleb128 0x1
+ 965 00c2 12       		.uleb128 0x12
+ 966 00c3 06       		.uleb128 0x6
+ 967 00c4 40       		.uleb128 0x40
+ 968 00c5 18       		.uleb128 0x18
+ 969 00c6 9742     		.uleb128 0x2117
+ 970 00c8 19       		.uleb128 0x19
+ 971 00c9 01       		.uleb128 0x1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 25
 
 
- 972 00bc 3B       		.uleb128 0x3b
- 973 00bd 0B       		.uleb128 0xb
- 974 00be 27       		.uleb128 0x27
- 975 00bf 19       		.uleb128 0x19
- 976 00c0 11       		.uleb128 0x11
- 977 00c1 01       		.uleb128 0x1
- 978 00c2 12       		.uleb128 0x12
- 979 00c3 06       		.uleb128 0x6
- 980 00c4 40       		.uleb128 0x40
- 981 00c5 18       		.uleb128 0x18
- 982 00c6 9742     		.uleb128 0x2117
- 983 00c8 19       		.uleb128 0x19
- 984 00c9 01       		.uleb128 0x1
- 985 00ca 13       		.uleb128 0x13
- 986 00cb 00       		.byte	0
- 987 00cc 00       		.byte	0
- 988 00cd 0E       		.uleb128 0xe
- 989 00ce 2E       		.uleb128 0x2e
- 990 00cf 00       		.byte	0
- 991 00d0 3F       		.uleb128 0x3f
- 992 00d1 19       		.uleb128 0x19
- 993 00d2 03       		.uleb128 0x3
- 994 00d3 0E       		.uleb128 0xe
- 995 00d4 3A       		.uleb128 0x3a
- 996 00d5 0B       		.uleb128 0xb
- 997 00d6 3B       		.uleb128 0x3b
- 998 00d7 0B       		.uleb128 0xb
- 999 00d8 27       		.uleb128 0x27
- 1000 00d9 19       		.uleb128 0x19
- 1001 00da 49       		.uleb128 0x49
- 1002 00db 13       		.uleb128 0x13
- 1003 00dc 11       		.uleb128 0x11
- 1004 00dd 01       		.uleb128 0x1
- 1005 00de 12       		.uleb128 0x12
- 1006 00df 06       		.uleb128 0x6
- 1007 00e0 40       		.uleb128 0x40
- 1008 00e1 18       		.uleb128 0x18
- 1009 00e2 9742     		.uleb128 0x2117
- 1010 00e4 19       		.uleb128 0x19
- 1011 00e5 00       		.byte	0
- 1012 00e6 00       		.byte	0
- 1013 00e7 0F       		.uleb128 0xf
- 1014 00e8 34       		.uleb128 0x34
- 1015 00e9 00       		.byte	0
- 1016 00ea 03       		.uleb128 0x3
- 1017 00eb 0E       		.uleb128 0xe
- 1018 00ec 3A       		.uleb128 0x3a
- 1019 00ed 0B       		.uleb128 0xb
- 1020 00ee 3B       		.uleb128 0x3b
- 1021 00ef 0B       		.uleb128 0xb
- 1022 00f0 49       		.uleb128 0x49
- 1023 00f1 13       		.uleb128 0x13
- 1024 00f2 02       		.uleb128 0x2
- 1025 00f3 18       		.uleb128 0x18
- 1026 00f4 00       		.byte	0
- 1027 00f5 00       		.byte	0
- 1028 00f6 10       		.uleb128 0x10
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 26
+ 972 00ca 13       		.uleb128 0x13
+ 973 00cb 00       		.byte	0
+ 974 00cc 00       		.byte	0
+ 975 00cd 0E       		.uleb128 0xe
+ 976 00ce 2E       		.uleb128 0x2e
+ 977 00cf 00       		.byte	0
+ 978 00d0 3F       		.uleb128 0x3f
+ 979 00d1 19       		.uleb128 0x19
+ 980 00d2 03       		.uleb128 0x3
+ 981 00d3 0E       		.uleb128 0xe
+ 982 00d4 3A       		.uleb128 0x3a
+ 983 00d5 0B       		.uleb128 0xb
+ 984 00d6 3B       		.uleb128 0x3b
+ 985 00d7 0B       		.uleb128 0xb
+ 986 00d8 27       		.uleb128 0x27
+ 987 00d9 19       		.uleb128 0x19
+ 988 00da 49       		.uleb128 0x49
+ 989 00db 13       		.uleb128 0x13
+ 990 00dc 11       		.uleb128 0x11
+ 991 00dd 01       		.uleb128 0x1
+ 992 00de 12       		.uleb128 0x12
+ 993 00df 06       		.uleb128 0x6
+ 994 00e0 40       		.uleb128 0x40
+ 995 00e1 18       		.uleb128 0x18
+ 996 00e2 9742     		.uleb128 0x2117
+ 997 00e4 19       		.uleb128 0x19
+ 998 00e5 00       		.byte	0
+ 999 00e6 00       		.byte	0
+ 1000 00e7 0F       		.uleb128 0xf
+ 1001 00e8 34       		.uleb128 0x34
+ 1002 00e9 00       		.byte	0
+ 1003 00ea 03       		.uleb128 0x3
+ 1004 00eb 0E       		.uleb128 0xe
+ 1005 00ec 3A       		.uleb128 0x3a
+ 1006 00ed 0B       		.uleb128 0xb
+ 1007 00ee 3B       		.uleb128 0x3b
+ 1008 00ef 0B       		.uleb128 0xb
+ 1009 00f0 49       		.uleb128 0x49
+ 1010 00f1 13       		.uleb128 0x13
+ 1011 00f2 02       		.uleb128 0x2
+ 1012 00f3 18       		.uleb128 0x18
+ 1013 00f4 00       		.byte	0
+ 1014 00f5 00       		.byte	0
+ 1015 00f6 10       		.uleb128 0x10
+ 1016 00f7 2E       		.uleb128 0x2e
+ 1017 00f8 01       		.byte	0x1
+ 1018 00f9 3F       		.uleb128 0x3f
+ 1019 00fa 19       		.uleb128 0x19
+ 1020 00fb 03       		.uleb128 0x3
+ 1021 00fc 0E       		.uleb128 0xe
+ 1022 00fd 3A       		.uleb128 0x3a
+ 1023 00fe 0B       		.uleb128 0xb
+ 1024 00ff 3B       		.uleb128 0x3b
+ 1025 0100 05       		.uleb128 0x5
+ 1026 0101 27       		.uleb128 0x27
+ 1027 0102 19       		.uleb128 0x19
+ 1028 0103 49       		.uleb128 0x49
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 26
 
 
- 1029 00f7 2E       		.uleb128 0x2e
- 1030 00f8 01       		.byte	0x1
- 1031 00f9 3F       		.uleb128 0x3f
- 1032 00fa 19       		.uleb128 0x19
- 1033 00fb 03       		.uleb128 0x3
- 1034 00fc 0E       		.uleb128 0xe
- 1035 00fd 3A       		.uleb128 0x3a
- 1036 00fe 0B       		.uleb128 0xb
- 1037 00ff 3B       		.uleb128 0x3b
- 1038 0100 05       		.uleb128 0x5
- 1039 0101 27       		.uleb128 0x27
- 1040 0102 19       		.uleb128 0x19
- 1041 0103 49       		.uleb128 0x49
- 1042 0104 13       		.uleb128 0x13
- 1043 0105 11       		.uleb128 0x11
- 1044 0106 01       		.uleb128 0x1
- 1045 0107 12       		.uleb128 0x12
- 1046 0108 06       		.uleb128 0x6
- 1047 0109 40       		.uleb128 0x40
- 1048 010a 18       		.uleb128 0x18
- 1049 010b 9742     		.uleb128 0x2117
- 1050 010d 19       		.uleb128 0x19
- 1051 010e 01       		.uleb128 0x1
- 1052 010f 13       		.uleb128 0x13
- 1053 0110 00       		.byte	0
- 1054 0111 00       		.byte	0
- 1055 0112 11       		.uleb128 0x11
- 1056 0113 34       		.uleb128 0x34
- 1057 0114 00       		.byte	0
- 1058 0115 03       		.uleb128 0x3
- 1059 0116 0E       		.uleb128 0xe
- 1060 0117 3A       		.uleb128 0x3a
- 1061 0118 0B       		.uleb128 0xb
- 1062 0119 3B       		.uleb128 0x3b
- 1063 011a 05       		.uleb128 0x5
- 1064 011b 49       		.uleb128 0x49
- 1065 011c 13       		.uleb128 0x13
- 1066 011d 02       		.uleb128 0x2
- 1067 011e 18       		.uleb128 0x18
- 1068 011f 00       		.byte	0
- 1069 0120 00       		.byte	0
- 1070 0121 12       		.uleb128 0x12
- 1071 0122 2E       		.uleb128 0x2e
- 1072 0123 00       		.byte	0
- 1073 0124 3F       		.uleb128 0x3f
- 1074 0125 19       		.uleb128 0x19
- 1075 0126 03       		.uleb128 0x3
- 1076 0127 0E       		.uleb128 0xe
- 1077 0128 3A       		.uleb128 0x3a
- 1078 0129 0B       		.uleb128 0xb
- 1079 012a 3B       		.uleb128 0x3b
- 1080 012b 05       		.uleb128 0x5
- 1081 012c 27       		.uleb128 0x27
- 1082 012d 19       		.uleb128 0x19
- 1083 012e 11       		.uleb128 0x11
- 1084 012f 01       		.uleb128 0x1
- 1085 0130 12       		.uleb128 0x12
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 27
+ 1029 0104 13       		.uleb128 0x13
+ 1030 0105 11       		.uleb128 0x11
+ 1031 0106 01       		.uleb128 0x1
+ 1032 0107 12       		.uleb128 0x12
+ 1033 0108 06       		.uleb128 0x6
+ 1034 0109 40       		.uleb128 0x40
+ 1035 010a 18       		.uleb128 0x18
+ 1036 010b 9742     		.uleb128 0x2117
+ 1037 010d 19       		.uleb128 0x19
+ 1038 010e 01       		.uleb128 0x1
+ 1039 010f 13       		.uleb128 0x13
+ 1040 0110 00       		.byte	0
+ 1041 0111 00       		.byte	0
+ 1042 0112 11       		.uleb128 0x11
+ 1043 0113 34       		.uleb128 0x34
+ 1044 0114 00       		.byte	0
+ 1045 0115 03       		.uleb128 0x3
+ 1046 0116 0E       		.uleb128 0xe
+ 1047 0117 3A       		.uleb128 0x3a
+ 1048 0118 0B       		.uleb128 0xb
+ 1049 0119 3B       		.uleb128 0x3b
+ 1050 011a 05       		.uleb128 0x5
+ 1051 011b 49       		.uleb128 0x49
+ 1052 011c 13       		.uleb128 0x13
+ 1053 011d 02       		.uleb128 0x2
+ 1054 011e 18       		.uleb128 0x18
+ 1055 011f 00       		.byte	0
+ 1056 0120 00       		.byte	0
+ 1057 0121 12       		.uleb128 0x12
+ 1058 0122 2E       		.uleb128 0x2e
+ 1059 0123 00       		.byte	0
+ 1060 0124 3F       		.uleb128 0x3f
+ 1061 0125 19       		.uleb128 0x19
+ 1062 0126 03       		.uleb128 0x3
+ 1063 0127 0E       		.uleb128 0xe
+ 1064 0128 3A       		.uleb128 0x3a
+ 1065 0129 0B       		.uleb128 0xb
+ 1066 012a 3B       		.uleb128 0x3b
+ 1067 012b 05       		.uleb128 0x5
+ 1068 012c 27       		.uleb128 0x27
+ 1069 012d 19       		.uleb128 0x19
+ 1070 012e 11       		.uleb128 0x11
+ 1071 012f 01       		.uleb128 0x1
+ 1072 0130 12       		.uleb128 0x12
+ 1073 0131 06       		.uleb128 0x6
+ 1074 0132 40       		.uleb128 0x40
+ 1075 0133 18       		.uleb128 0x18
+ 1076 0134 9742     		.uleb128 0x2117
+ 1077 0136 19       		.uleb128 0x19
+ 1078 0137 00       		.byte	0
+ 1079 0138 00       		.byte	0
+ 1080 0139 13       		.uleb128 0x13
+ 1081 013a 2E       		.uleb128 0x2e
+ 1082 013b 00       		.byte	0
+ 1083 013c 3F       		.uleb128 0x3f
+ 1084 013d 19       		.uleb128 0x19
+ 1085 013e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 27
 
 
- 1086 0131 06       		.uleb128 0x6
- 1087 0132 40       		.uleb128 0x40
- 1088 0133 18       		.uleb128 0x18
- 1089 0134 9742     		.uleb128 0x2117
- 1090 0136 19       		.uleb128 0x19
- 1091 0137 00       		.byte	0
- 1092 0138 00       		.byte	0
- 1093 0139 13       		.uleb128 0x13
- 1094 013a 2E       		.uleb128 0x2e
- 1095 013b 00       		.byte	0
- 1096 013c 3F       		.uleb128 0x3f
- 1097 013d 19       		.uleb128 0x19
- 1098 013e 03       		.uleb128 0x3
- 1099 013f 0E       		.uleb128 0xe
- 1100 0140 3A       		.uleb128 0x3a
- 1101 0141 0B       		.uleb128 0xb
- 1102 0142 3B       		.uleb128 0x3b
- 1103 0143 05       		.uleb128 0x5
- 1104 0144 27       		.uleb128 0x27
- 1105 0145 19       		.uleb128 0x19
- 1106 0146 49       		.uleb128 0x49
- 1107 0147 13       		.uleb128 0x13
- 1108 0148 11       		.uleb128 0x11
- 1109 0149 01       		.uleb128 0x1
- 1110 014a 12       		.uleb128 0x12
- 1111 014b 06       		.uleb128 0x6
- 1112 014c 40       		.uleb128 0x40
- 1113 014d 18       		.uleb128 0x18
- 1114 014e 9742     		.uleb128 0x2117
- 1115 0150 19       		.uleb128 0x19
- 1116 0151 00       		.byte	0
- 1117 0152 00       		.byte	0
- 1118 0153 14       		.uleb128 0x14
- 1119 0154 01       		.uleb128 0x1
- 1120 0155 01       		.byte	0x1
- 1121 0156 49       		.uleb128 0x49
- 1122 0157 13       		.uleb128 0x13
- 1123 0158 01       		.uleb128 0x1
- 1124 0159 13       		.uleb128 0x13
- 1125 015a 00       		.byte	0
- 1126 015b 00       		.byte	0
- 1127 015c 15       		.uleb128 0x15
- 1128 015d 21       		.uleb128 0x21
- 1129 015e 00       		.byte	0
- 1130 015f 49       		.uleb128 0x49
- 1131 0160 13       		.uleb128 0x13
- 1132 0161 2F       		.uleb128 0x2f
- 1133 0162 0B       		.uleb128 0xb
- 1134 0163 00       		.byte	0
- 1135 0164 00       		.byte	0
- 1136 0165 16       		.uleb128 0x16
- 1137 0166 34       		.uleb128 0x34
- 1138 0167 00       		.byte	0
- 1139 0168 03       		.uleb128 0x3
- 1140 0169 0E       		.uleb128 0xe
- 1141 016a 3A       		.uleb128 0x3a
- 1142 016b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 28
+ 1086 013f 0E       		.uleb128 0xe
+ 1087 0140 3A       		.uleb128 0x3a
+ 1088 0141 0B       		.uleb128 0xb
+ 1089 0142 3B       		.uleb128 0x3b
+ 1090 0143 05       		.uleb128 0x5
+ 1091 0144 27       		.uleb128 0x27
+ 1092 0145 19       		.uleb128 0x19
+ 1093 0146 49       		.uleb128 0x49
+ 1094 0147 13       		.uleb128 0x13
+ 1095 0148 11       		.uleb128 0x11
+ 1096 0149 01       		.uleb128 0x1
+ 1097 014a 12       		.uleb128 0x12
+ 1098 014b 06       		.uleb128 0x6
+ 1099 014c 40       		.uleb128 0x40
+ 1100 014d 18       		.uleb128 0x18
+ 1101 014e 9742     		.uleb128 0x2117
+ 1102 0150 19       		.uleb128 0x19
+ 1103 0151 00       		.byte	0
+ 1104 0152 00       		.byte	0
+ 1105 0153 14       		.uleb128 0x14
+ 1106 0154 01       		.uleb128 0x1
+ 1107 0155 01       		.byte	0x1
+ 1108 0156 49       		.uleb128 0x49
+ 1109 0157 13       		.uleb128 0x13
+ 1110 0158 01       		.uleb128 0x1
+ 1111 0159 13       		.uleb128 0x13
+ 1112 015a 00       		.byte	0
+ 1113 015b 00       		.byte	0
+ 1114 015c 15       		.uleb128 0x15
+ 1115 015d 21       		.uleb128 0x21
+ 1116 015e 00       		.byte	0
+ 1117 015f 49       		.uleb128 0x49
+ 1118 0160 13       		.uleb128 0x13
+ 1119 0161 2F       		.uleb128 0x2f
+ 1120 0162 0B       		.uleb128 0xb
+ 1121 0163 00       		.byte	0
+ 1122 0164 00       		.byte	0
+ 1123 0165 16       		.uleb128 0x16
+ 1124 0166 34       		.uleb128 0x34
+ 1125 0167 00       		.byte	0
+ 1126 0168 03       		.uleb128 0x3
+ 1127 0169 0E       		.uleb128 0xe
+ 1128 016a 3A       		.uleb128 0x3a
+ 1129 016b 0B       		.uleb128 0xb
+ 1130 016c 3B       		.uleb128 0x3b
+ 1131 016d 0B       		.uleb128 0xb
+ 1132 016e 49       		.uleb128 0x49
+ 1133 016f 13       		.uleb128 0x13
+ 1134 0170 3F       		.uleb128 0x3f
+ 1135 0171 19       		.uleb128 0x19
+ 1136 0172 3C       		.uleb128 0x3c
+ 1137 0173 19       		.uleb128 0x19
+ 1138 0174 00       		.byte	0
+ 1139 0175 00       		.byte	0
+ 1140 0176 00       		.byte	0
+ 1141              		.section	.debug_aranges,"",%progbits
+ 1142 0000 7C000000 		.4byte	0x7c
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 28
 
 
- 1143 016c 3B       		.uleb128 0x3b
- 1144 016d 0B       		.uleb128 0xb
- 1145 016e 49       		.uleb128 0x49
- 1146 016f 13       		.uleb128 0x13
- 1147 0170 3F       		.uleb128 0x3f
- 1148 0171 19       		.uleb128 0x19
- 1149 0172 3C       		.uleb128 0x3c
- 1150 0173 19       		.uleb128 0x19
- 1151 0174 00       		.byte	0
- 1152 0175 00       		.byte	0
- 1153 0176 00       		.byte	0
- 1154              		.section	.debug_aranges,"",%progbits
- 1155 0000 7C000000 		.4byte	0x7c
- 1156 0004 0200     		.2byte	0x2
- 1157 0006 00000000 		.4byte	.Ldebug_info0
- 1158 000a 04       		.byte	0x4
- 1159 000b 00       		.byte	0
- 1160 000c 0000     		.2byte	0
- 1161 000e 0000     		.2byte	0
- 1162 0010 00000000 		.4byte	.LFB0
- 1163 0014 24000000 		.4byte	.LFE0-.LFB0
- 1164 0018 00000000 		.4byte	.LFB1
- 1165 001c 24000000 		.4byte	.LFE1-.LFB1
- 1166 0020 00000000 		.4byte	.LFB2
- 1167 0024 18000000 		.4byte	.LFE2-.LFB2
- 1168 0028 00000000 		.4byte	.LFB3
- 1169 002c 08000000 		.4byte	.LFE3-.LFB3
- 1170 0030 00000000 		.4byte	.LFB4
- 1171 0034 1C000000 		.4byte	.LFE4-.LFB4
- 1172 0038 00000000 		.4byte	.LFB5
- 1173 003c 14000000 		.4byte	.LFE5-.LFB5
- 1174 0040 00000000 		.4byte	.LFB6
- 1175 0044 50000000 		.4byte	.LFE6-.LFB6
- 1176 0048 00000000 		.4byte	.LFB7
- 1177 004c 2C000000 		.4byte	.LFE7-.LFB7
- 1178 0050 00000000 		.4byte	.LFB8
- 1179 0054 14000000 		.4byte	.LFE8-.LFB8
- 1180 0058 00000000 		.4byte	.LFB9
- 1181 005c 20000000 		.4byte	.LFE9-.LFB9
- 1182 0060 00000000 		.4byte	.LFB10
- 1183 0064 14000000 		.4byte	.LFE10-.LFB10
- 1184 0068 00000000 		.4byte	.LFB11
- 1185 006c 14000000 		.4byte	.LFE11-.LFB11
- 1186 0070 00000000 		.4byte	.LFB12
- 1187 0074 14000000 		.4byte	.LFE12-.LFB12
- 1188 0078 00000000 		.4byte	0
- 1189 007c 00000000 		.4byte	0
- 1190              		.section	.debug_ranges,"",%progbits
- 1191              	.Ldebug_ranges0:
- 1192 0000 00000000 		.4byte	.LFB0
- 1193 0004 24000000 		.4byte	.LFE0
- 1194 0008 00000000 		.4byte	.LFB1
- 1195 000c 24000000 		.4byte	.LFE1
- 1196 0010 00000000 		.4byte	.LFB2
- 1197 0014 18000000 		.4byte	.LFE2
- 1198 0018 00000000 		.4byte	.LFB3
- 1199 001c 08000000 		.4byte	.LFE3
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 29
+ 1143 0004 0200     		.2byte	0x2
+ 1144 0006 00000000 		.4byte	.Ldebug_info0
+ 1145 000a 04       		.byte	0x4
+ 1146 000b 00       		.byte	0
+ 1147 000c 0000     		.2byte	0
+ 1148 000e 0000     		.2byte	0
+ 1149 0010 00000000 		.4byte	.LFB0
+ 1150 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1151 0018 00000000 		.4byte	.LFB1
+ 1152 001c 24000000 		.4byte	.LFE1-.LFB1
+ 1153 0020 00000000 		.4byte	.LFB2
+ 1154 0024 18000000 		.4byte	.LFE2-.LFB2
+ 1155 0028 00000000 		.4byte	.LFB3
+ 1156 002c 08000000 		.4byte	.LFE3-.LFB3
+ 1157 0030 00000000 		.4byte	.LFB4
+ 1158 0034 18000000 		.4byte	.LFE4-.LFB4
+ 1159 0038 00000000 		.4byte	.LFB5
+ 1160 003c 14000000 		.4byte	.LFE5-.LFB5
+ 1161 0040 00000000 		.4byte	.LFB6
+ 1162 0044 50000000 		.4byte	.LFE6-.LFB6
+ 1163 0048 00000000 		.4byte	.LFB7
+ 1164 004c 2C000000 		.4byte	.LFE7-.LFB7
+ 1165 0050 00000000 		.4byte	.LFB8
+ 1166 0054 14000000 		.4byte	.LFE8-.LFB8
+ 1167 0058 00000000 		.4byte	.LFB9
+ 1168 005c 1C000000 		.4byte	.LFE9-.LFB9
+ 1169 0060 00000000 		.4byte	.LFB10
+ 1170 0064 14000000 		.4byte	.LFE10-.LFB10
+ 1171 0068 00000000 		.4byte	.LFB11
+ 1172 006c 14000000 		.4byte	.LFE11-.LFB11
+ 1173 0070 00000000 		.4byte	.LFB12
+ 1174 0074 14000000 		.4byte	.LFE12-.LFB12
+ 1175 0078 00000000 		.4byte	0
+ 1176 007c 00000000 		.4byte	0
+ 1177              		.section	.debug_ranges,"",%progbits
+ 1178              	.Ldebug_ranges0:
+ 1179 0000 00000000 		.4byte	.LFB0
+ 1180 0004 24000000 		.4byte	.LFE0
+ 1181 0008 00000000 		.4byte	.LFB1
+ 1182 000c 24000000 		.4byte	.LFE1
+ 1183 0010 00000000 		.4byte	.LFB2
+ 1184 0014 18000000 		.4byte	.LFE2
+ 1185 0018 00000000 		.4byte	.LFB3
+ 1186 001c 08000000 		.4byte	.LFE3
+ 1187 0020 00000000 		.4byte	.LFB4
+ 1188 0024 18000000 		.4byte	.LFE4
+ 1189 0028 00000000 		.4byte	.LFB5
+ 1190 002c 14000000 		.4byte	.LFE5
+ 1191 0030 00000000 		.4byte	.LFB6
+ 1192 0034 50000000 		.4byte	.LFE6
+ 1193 0038 00000000 		.4byte	.LFB7
+ 1194 003c 2C000000 		.4byte	.LFE7
+ 1195 0040 00000000 		.4byte	.LFB8
+ 1196 0044 14000000 		.4byte	.LFE8
+ 1197 0048 00000000 		.4byte	.LFB9
+ 1198 004c 1C000000 		.4byte	.LFE9
+ 1199 0050 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 29
 
 
- 1200 0020 00000000 		.4byte	.LFB4
- 1201 0024 1C000000 		.4byte	.LFE4
- 1202 0028 00000000 		.4byte	.LFB5
- 1203 002c 14000000 		.4byte	.LFE5
- 1204 0030 00000000 		.4byte	.LFB6
- 1205 0034 50000000 		.4byte	.LFE6
- 1206 0038 00000000 		.4byte	.LFB7
- 1207 003c 2C000000 		.4byte	.LFE7
- 1208 0040 00000000 		.4byte	.LFB8
- 1209 0044 14000000 		.4byte	.LFE8
- 1210 0048 00000000 		.4byte	.LFB9
- 1211 004c 20000000 		.4byte	.LFE9
- 1212 0050 00000000 		.4byte	.LFB10
- 1213 0054 14000000 		.4byte	.LFE10
- 1214 0058 00000000 		.4byte	.LFB11
- 1215 005c 14000000 		.4byte	.LFE11
- 1216 0060 00000000 		.4byte	.LFB12
- 1217 0064 14000000 		.4byte	.LFE12
- 1218 0068 00000000 		.4byte	0
- 1219 006c 00000000 		.4byte	0
- 1220              		.section	.debug_line,"",%progbits
- 1221              	.Ldebug_line0:
- 1222 0000 54010000 		.section	.debug_str,"MS",%progbits,1
- 1222      02004800 
- 1222      00000201 
- 1222      FB0E0D00 
- 1222      01010101 
- 1223              	.LASF14:
- 1224 0000 72656733 		.ascii	"reg32\000"
- 1224      3200
- 1225              	.LASF30:
- 1226 0006 74696D65 		.ascii	"timer_ISR_Disable\000"
- 1226      725F4953 
- 1226      525F4469 
- 1226      7361626C 
- 1226      6500
- 1227              	.LASF37:
- 1228 0018 43795261 		.ascii	"CyRamVectors\000"
- 1228      6D566563 
- 1228      746F7273 
- 1228      00
- 1229              	.LASF34:
- 1230 0025 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\timer_ISR.c\000"
- 1230      6E657261 
- 1230      7465645F 
- 1230      536F7572 
- 1230      63655C50 
- 1231              	.LASF17:
- 1232 004a 74696D65 		.ascii	"timer_ISR_Start\000"
- 1232      725F4953 
- 1232      525F5374 
- 1232      61727400 
- 1233              	.LASF29:
- 1234 005a 74696D65 		.ascii	"timer_ISR_GetState\000"
- 1234      725F4953 
- 1234      525F4765 
- 1234      74537461 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 30
+ 1200 0054 14000000 		.4byte	.LFE10
+ 1201 0058 00000000 		.4byte	.LFB11
+ 1202 005c 14000000 		.4byte	.LFE11
+ 1203 0060 00000000 		.4byte	.LFB12
+ 1204 0064 14000000 		.4byte	.LFE12
+ 1205 0068 00000000 		.4byte	0
+ 1206 006c 00000000 		.4byte	0
+ 1207              		.section	.debug_line,"",%progbits
+ 1208              	.Ldebug_line0:
+ 1209 0000 44010000 		.section	.debug_str,"MS",%progbits,1
+ 1209      02004800 
+ 1209      00000201 
+ 1209      FB0E0D00 
+ 1209      01010101 
+ 1210              	.LASF14:
+ 1211 0000 72656733 		.ascii	"reg32\000"
+ 1211      3200
+ 1212              	.LASF30:
+ 1213 0006 74696D65 		.ascii	"timer_ISR_Disable\000"
+ 1213      725F4953 
+ 1213      525F4469 
+ 1213      7361626C 
+ 1213      6500
+ 1214              	.LASF37:
+ 1215 0018 43795261 		.ascii	"CyRamVectors\000"
+ 1215      6D566563 
+ 1215      746F7273 
+ 1215      00
+ 1216              	.LASF34:
+ 1217 0025 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\timer_ISR.c\000"
+ 1217      6E657261 
+ 1217      7465645F 
+ 1217      536F7572 
+ 1217      63655C50 
+ 1218              	.LASF17:
+ 1219 004a 74696D65 		.ascii	"timer_ISR_Start\000"
+ 1219      725F4953 
+ 1219      525F5374 
+ 1219      61727400 
+ 1220              	.LASF29:
+ 1221 005a 74696D65 		.ascii	"timer_ISR_GetState\000"
+ 1221      725F4953 
+ 1221      525F4765 
+ 1221      74537461 
+ 1221      746500
+ 1222              	.LASF3:
+ 1223 006d 73686F72 		.ascii	"short unsigned int\000"
+ 1223      7420756E 
+ 1223      7369676E 
+ 1223      65642069 
+ 1223      6E7400
+ 1224              	.LASF31:
+ 1225 0080 74696D65 		.ascii	"timer_ISR_SetPending\000"
+ 1225      725F4953 
+ 1225      525F5365 
+ 1225      7450656E 
+ 1225      64696E67 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 30
 
 
- 1234      746500
- 1235              	.LASF3:
- 1236 006d 73686F72 		.ascii	"short unsigned int\000"
- 1236      7420756E 
- 1236      7369676E 
- 1236      65642069 
- 1236      6E7400
- 1237              	.LASF31:
- 1238 0080 74696D65 		.ascii	"timer_ISR_SetPending\000"
- 1238      725F4953 
- 1238      525F5365 
- 1238      7450656E 
- 1238      64696E67 
- 1239              	.LASF11:
- 1240 0095 666C6F61 		.ascii	"float\000"
- 1240      7400
- 1241              	.LASF33:
- 1242 009b 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1242      4320342E 
- 1242      382E3420 
- 1242      32303134 
- 1242      30353236 
- 1243 00ce 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1243      20726576 
- 1243      6973696F 
- 1243      6E203231 
- 1243      31333538 
- 1244 0101 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1244      66756E63 
- 1244      74696F6E 
- 1244      2D736563 
- 1244      74696F6E 
- 1245              	.LASF1:
- 1246 0117 756E7369 		.ascii	"unsigned char\000"
- 1246      676E6564 
- 1246      20636861 
- 1246      7200
- 1247              	.LASF25:
- 1248 0125 696E7465 		.ascii	"interruptState\000"
- 1248      72727570 
- 1248      74537461 
- 1248      746500
- 1249              	.LASF5:
- 1250 0134 6C6F6E67 		.ascii	"long unsigned int\000"
- 1250      20756E73 
- 1250      69676E65 
- 1250      6420696E 
- 1250      7400
- 1251              	.LASF9:
- 1252 0146 75696E74 		.ascii	"uint8\000"
- 1252      3800
- 1253              	.LASF36:
- 1254 014c 74696D65 		.ascii	"timer_ISR_GetPriority\000"
- 1254      725F4953 
- 1254      525F4765 
- 1254      74507269 
- 1254      6F726974 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 31
+ 1226              	.LASF11:
+ 1227 0095 666C6F61 		.ascii	"float\000"
+ 1227      7400
+ 1228              	.LASF33:
+ 1229 009b 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1229      4320342E 
+ 1229      382E3420 
+ 1229      32303134 
+ 1229      30353236 
+ 1230 00ce 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1230      20726576 
+ 1230      6973696F 
+ 1230      6E203231 
+ 1230      31333538 
+ 1231 0101 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1231      66756E63 
+ 1231      74696F6E 
+ 1231      2D736563 
+ 1231      74696F6E 
+ 1232              	.LASF1:
+ 1233 0117 756E7369 		.ascii	"unsigned char\000"
+ 1233      676E6564 
+ 1233      20636861 
+ 1233      7200
+ 1234              	.LASF35:
+ 1235 0125 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 1235      73657273 
+ 1235      5C506869 
+ 1235      6C69705C 
+ 1235      4F6E6544 
+ 1236 0152 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
+ 1236      4D617374 
+ 1236      65725C50 
+ 1236      536F435F 
+ 1236      4D617374 
+ 1237              	.LASF5:
+ 1238 016f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1238      20756E73 
+ 1238      69676E65 
+ 1238      6420696E 
+ 1238      7400
+ 1239              	.LASF9:
+ 1240 0181 75696E74 		.ascii	"uint8\000"
+ 1240      3800
+ 1241              	.LASF36:
+ 1242 0187 74696D65 		.ascii	"timer_ISR_GetPriority\000"
+ 1242      725F4953 
+ 1242      525F4765 
+ 1242      74507269 
+ 1242      6F726974 
+ 1243              	.LASF18:
+ 1244 019d 74696D65 		.ascii	"timer_ISR_Stop\000"
+ 1244      725F4953 
+ 1244      525F5374 
+ 1244      6F7000
+ 1245              	.LASF24:
+ 1246 01ac 7072696F 		.ascii	"priority\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 31
 
 
- 1255              	.LASF18:
- 1256 0162 74696D65 		.ascii	"timer_ISR_Stop\000"
- 1256      725F4953 
- 1256      525F5374 
- 1256      6F7000
- 1257              	.LASF24:
- 1258 0171 7072696F 		.ascii	"priority\000"
- 1258      72697479 
- 1258      00
- 1259              	.LASF21:
- 1260 017a 74696D65 		.ascii	"timer_ISR_SetVector\000"
- 1260      725F4953 
- 1260      525F5365 
- 1260      74566563 
- 1260      746F7200 
- 1261              	.LASF12:
- 1262 018e 646F7562 		.ascii	"double\000"
- 1262      6C6500
- 1263              	.LASF10:
- 1264 0195 75696E74 		.ascii	"uint32\000"
- 1264      333200
- 1265              	.LASF8:
- 1266 019c 756E7369 		.ascii	"unsigned int\000"
- 1266      676E6564 
- 1266      20696E74 
+ 1246      72697479 
+ 1246      00
+ 1247              	.LASF21:
+ 1248 01b5 74696D65 		.ascii	"timer_ISR_SetVector\000"
+ 1248      725F4953 
+ 1248      525F5365 
+ 1248      74566563 
+ 1248      746F7200 
+ 1249              	.LASF12:
+ 1250 01c9 646F7562 		.ascii	"double\000"
+ 1250      6C6500
+ 1251              	.LASF10:
+ 1252 01d0 75696E74 		.ascii	"uint32\000"
+ 1252      333200
+ 1253              	.LASF8:
+ 1254 01d7 756E7369 		.ascii	"unsigned int\000"
+ 1254      676E6564 
+ 1254      20696E74 
+ 1254      00
+ 1255              	.LASF22:
+ 1256 01e4 61646472 		.ascii	"address\000"
+ 1256      65737300 
+ 1257              	.LASF7:
+ 1258 01ec 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1258      206C6F6E 
+ 1258      6720756E 
+ 1258      7369676E 
+ 1258      65642069 
+ 1259              	.LASF15:
+ 1260 0203 63796973 		.ascii	"cyisraddress\000"
+ 1260      72616464 
+ 1260      72657373 
+ 1260      00
+ 1261              	.LASF25:
+ 1262 0210 696E7465 		.ascii	"interruptState\000"
+ 1262      72727570 
+ 1262      74537461 
+ 1262      746500
+ 1263              	.LASF23:
+ 1264 021f 74696D65 		.ascii	"timer_ISR_SetPriority\000"
+ 1264      725F4953 
+ 1264      525F5365 
+ 1264      74507269 
+ 1264      6F726974 
+ 1265              	.LASF16:
+ 1266 0235 73697A65 		.ascii	"sizetype\000"
+ 1266      74797065 
  1266      00
- 1267              	.LASF22:
- 1268 01a9 61646472 		.ascii	"address\000"
- 1268      65737300 
- 1269              	.LASF7:
- 1270 01b1 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1270      206C6F6E 
- 1270      6720756E 
- 1270      7369676E 
- 1270      65642069 
- 1271              	.LASF35:
- 1272 01c8 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
- 1272      73657273 
- 1272      5C536E75 
- 1272      666B696E 
- 1272      5C446F63 
- 1273 01f6 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
- 1273      5F4D6173 
- 1273      7465725C 
- 1273      50536F43 
- 1273      5F4D6173 
- 1274              	.LASF15:
- 1275 0214 63796973 		.ascii	"cyisraddress\000"
- 1275      72616464 
- 1275      72657373 
- 1275      00
- 1276              	.LASF23:
- 1277 0221 74696D65 		.ascii	"timer_ISR_SetPriority\000"
- 1277      725F4953 
- 1277      525F5365 
- 1277      74507269 
- 1277      6F726974 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 32
+ 1267              	.LASF6:
+ 1268 023e 6C6F6E67 		.ascii	"long long int\000"
+ 1268      206C6F6E 
+ 1268      6720696E 
+ 1268      7400
+ 1269              	.LASF13:
+ 1270 024c 63686172 		.ascii	"char\000"
+ 1270      00
+ 1271              	.LASF27:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccnq7rDg.s 			page 32
 
 
- 1278              	.LASF16:
- 1279 0237 73697A65 		.ascii	"sizetype\000"
- 1279      74797065 
- 1279      00
- 1280              	.LASF6:
- 1281 0240 6C6F6E67 		.ascii	"long long int\000"
- 1281      206C6F6E 
- 1281      6720696E 
- 1281      7400
- 1282              	.LASF13:
- 1283 024e 63686172 		.ascii	"char\000"
- 1283      00
- 1284              	.LASF27:
- 1285 0253 74696D65 		.ascii	"timer_ISR_Enable\000"
- 1285      725F4953 
- 1285      525F456E 
- 1285      61626C65 
- 1285      00
- 1286              	.LASF20:
- 1287 0264 74696D65 		.ascii	"timer_ISR_StartEx\000"
- 1287      725F4953 
- 1287      525F5374 
- 1287      61727445 
- 1287      7800
- 1288              	.LASF2:
- 1289 0276 73686F72 		.ascii	"short int\000"
- 1289      7420696E 
- 1289      7400
- 1290              	.LASF19:
- 1291 0280 74696D65 		.ascii	"timer_ISR_Interrupt\000"
- 1291      725F4953 
- 1291      525F496E 
- 1291      74657272 
- 1291      75707400 
- 1292              	.LASF26:
- 1293 0294 7072696F 		.ascii	"priorityOffset\000"
- 1293      72697479 
- 1293      4F666673 
- 1293      657400
- 1294              	.LASF4:
- 1295 02a3 6C6F6E67 		.ascii	"long int\000"
- 1295      20696E74 
- 1295      00
- 1296              	.LASF32:
- 1297 02ac 74696D65 		.ascii	"timer_ISR_ClearPending\000"
- 1297      725F4953 
- 1297      525F436C 
- 1297      65617250 
- 1297      656E6469 
- 1298              	.LASF0:
- 1299 02c3 7369676E 		.ascii	"signed char\000"
- 1299      65642063 
- 1299      68617200 
- 1300              	.LASF28:
- 1301 02cf 74696D65 		.ascii	"timer_ISR_GetVector\000"
- 1301      725F4953 
- 1301      525F4765 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccN4Scvv.s 			page 33
-
-
- 1301      74566563 
- 1301      746F7200 
- 1302              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1272 0251 74696D65 		.ascii	"timer_ISR_Enable\000"
+ 1272      725F4953 
+ 1272      525F456E 
+ 1272      61626C65 
+ 1272      00
+ 1273              	.LASF20:
+ 1274 0262 74696D65 		.ascii	"timer_ISR_StartEx\000"
+ 1274      725F4953 
+ 1274      525F5374 
+ 1274      61727445 
+ 1274      7800
+ 1275              	.LASF2:
+ 1276 0274 73686F72 		.ascii	"short int\000"
+ 1276      7420696E 
+ 1276      7400
+ 1277              	.LASF19:
+ 1278 027e 74696D65 		.ascii	"timer_ISR_Interrupt\000"
+ 1278      725F4953 
+ 1278      525F496E 
+ 1278      74657272 
+ 1278      75707400 
+ 1279              	.LASF26:
+ 1280 0292 7072696F 		.ascii	"priorityOffset\000"
+ 1280      72697479 
+ 1280      4F666673 
+ 1280      657400
+ 1281              	.LASF4:
+ 1282 02a1 6C6F6E67 		.ascii	"long int\000"
+ 1282      20696E74 
+ 1282      00
+ 1283              	.LASF32:
+ 1284 02aa 74696D65 		.ascii	"timer_ISR_ClearPending\000"
+ 1284      725F4953 
+ 1284      525F436C 
+ 1284      65617250 
+ 1284      656E6469 
+ 1285              	.LASF0:
+ 1286 02c1 7369676E 		.ascii	"signed char\000"
+ 1286      65642063 
+ 1286      68617200 
+ 1287              	.LASF28:
+ 1288 02cd 74696D65 		.ascii	"timer_ISR_GetVector\000"
+ 1288      725F4953 
+ 1288      525F4765 
+ 1288      74566563 
+ 1288      746F7200 
+ 1289              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

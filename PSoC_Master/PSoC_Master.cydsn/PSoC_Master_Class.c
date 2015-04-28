@@ -25,8 +25,6 @@ int32 tempTemp;
 int32 tempHum;
 int16 tempSoilHum[6];
 int32 tempLight;
-uint8 newByte = 0;
-uint8 buff;
 
 
 // Private prototypes
@@ -37,7 +35,9 @@ CY_ISR_PROTO(UART_ISR);
 typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
 volatile state theState = IDLE;
 volatile int8 irrigationIndex = 0;
-uint8 blueLEDState, redLEDState;
+uint8 uartInt = 0;
+uint8 buff;
+uint8 timerInt = 0;
 
 void initPSoC_Master(void){
 	tempTemp = 0;
@@ -59,41 +59,24 @@ void initPSoC_Master(void){
     
     RedLED_Write(LED_OFF);              // Turn off red LED
     BlueLED_Write(LED_OFF);             // Turn off blue LED
-    blueLEDState = LED_OFF;
-    redLEDState = LED_OFF;
+
 }
 
 // Timer ISR
 CY_ISR(timer_ISR){
-    RedLED_Write(LED_ON);           // Turn on red LED
-    
-    getTempAndHum(&tempTemp, &tempHum);
-    inputTemp(&tempTemp);
-    inputHum(&tempHum);
-    {
-        uint8 i;
-        for(i = 0; i<6 ; i++){
-            getSoilHum(i, &tempSoilHum[i]);
-            inputSoilHum(i,&tempSoilHum[i]);
-        }
-    }
-    getLight(&tempLight);
-    inputLight(&tempLight);
-    
-    RedLED_Write(LED_OFF);              // Turn off red LED
-    Timer_ClearInterrupt(Timer_INTR_MASK_TC);   // Clear interrupt
+    timerInt = 1;
 }
 
 // UART ISR
 CY_ISR(UART_ISR){
-    newByte = 1;
+    uartInt = 1;
     buff = dkRequest();
     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
 }
 
-void intHandler(){
-    if (newByte){
-        newByte = 0;
+void uartIntHandler(void){
+    if (uartInt){
+        uartInt = 0;
         BlueLED_Write(LED_ON);       // Turn on blue LED
         
         if(theState == IDLE){
@@ -180,5 +163,28 @@ void intHandler(){
     }
 }
 
+void timerIntHandler(void){
+    if(timerInt){
+        timerInt = 0;   // Reset flag
+        RedLED_Write(LED_ON);           // Turn on red LED
+        
+        // getTempAndHum(&tempTemp, &tempHum);  // TODO this is old
+        getTemp(&tempTemp);
+        
+        inputTemp(&tempTemp);
+        // inputHum(&tempHum);      // TODO there is no way to take Hum measurements
+        {
+            uint8 i;
+            for(i = 0; i<6 ; i++){
+                getSoilHum(i, &tempSoilHum[i]);
+                inputSoilHum(i,&tempSoilHum[i]);
+            }
+        }
+        getLight(&tempLight);
+        inputLight(&tempLight);
+        
+        RedLED_Write(LED_OFF);              // Turn off red LED    
+    }    
+}
 
 /* [] END OF FILE */

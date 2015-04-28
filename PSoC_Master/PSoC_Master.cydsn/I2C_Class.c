@@ -258,6 +258,7 @@ int8 getTemp(int32* temp){
     uint8 dataget[2] = {0,0};
     uint32 errorStatus[2] = {9,9};      // For debugging and error handling
     
+    I2C_I2CMasterClearReadBuf();
     errorStatus[0] = I2C_I2CMasterSendStart(TEMP_SENSOR_ADDRESS, I2C_I2C_READ_XFER_MODE);
     if (errorStatus[0] == I2C_I2C_MSTR_NO_ERROR){
         dataget[0] = I2C_I2CMasterReadByte(I2C_I2C_ACK_DATA);
@@ -298,19 +299,22 @@ int8 getLight(int32* light){
     uint8 dataget[size];
     uint8 result = 0;
     
+    I2C_I2CMasterClearReadBuf();
     result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_MSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT));
         
     if (result == I2C_I2C_MSTR_NO_ERROR){
         // Expecting to receive MSB first.
         *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
-        result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
-            if (result == I2C_I2C_MSTR_NO_ERROR){
-                *light |= dataget[0]; 
-                return 0;   // No error 
-	        }
-            else {
-                return -1;
-            }
+        result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER);
+        while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be ready
+        if (result == I2C_I2C_MSTR_NO_ERROR){
+            *light |= dataget[0]; 
+            return 0;   // No error 
+        }
+        else {
+            return -1;
+        }
     }
     else {
         return -1;

@@ -64,6 +64,7 @@ void initPSoC_Master(void){
 
 // Timer ISR
 CY_ISR(timer_ISR){
+    Timer_ReadStatusRegister(); //Resets the interrupt
     timerInt = 1;
 }
 

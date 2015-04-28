@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
   29:.\Generated_Source\PSoC4/I2C_I2C.c **** 
   30:.\Generated_Source\PSoC4/I2C_I2C.c ****     /***************************************
   31:.\Generated_Source\PSoC4/I2C_I2C.c ****     *  Configuration Structure Initialization
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 2
 
 
   32:.\Generated_Source\PSoC4/I2C_I2C.c ****     ***************************************/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
   86:.\Generated_Source\PSoC4/I2C_I2C.c ****             I2C_acceptAddr    = (uint8) config->acceptAddr;
   87:.\Generated_Source\PSoC4/I2C_I2C.c **** 
   88:.\Generated_Source\PSoC4/I2C_I2C.c ****         #if (I2C_CY_SCBIP_V0)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 3
 
 
   89:.\Generated_Source\PSoC4/I2C_I2C.c ****             /* Adjust SDA filter settings. Ticket ID#150521 */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  143:.\Generated_Source\PSoC4/I2C_I2C.c ****             /* Configure interrupt with I2C handler but do not enable it */
  144:.\Generated_Source\PSoC4/I2C_I2C.c ****             CyIntDisable    (I2C_ISR_NUMBER);
  145:.\Generated_Source\PSoC4/I2C_I2C.c ****             CyIntSetPriority(I2C_ISR_NUMBER, I2C_ISR_PRIORITY);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 4
 
 
  146:.\Generated_Source\PSoC4/I2C_I2C.c ****             (void) CyIntSetVector(I2C_ISR_NUMBER, &I2C_I2C_ISR);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
   28              		.cfi_startproc
   29 0000 80B5     		push	{r7, lr}
   30              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 5
 
 
   31              		.cfi_offset 7, -8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
   64 0030 1D4A     		ldr	r2, .L2+20
   65 0032 1A60     		str	r2, [r3]
  220:.\Generated_Source\PSoC4/I2C_I2C.c ****         I2C_TX_FIFO_CTRL_REG = I2C_I2C_DEFAULT_TX_FIFO_CTRL;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 6
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 6
 
 
   66              		.loc 1 220 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  238:.\Generated_Source\PSoC4/I2C_I2C.c ****         I2C_INTR_TX_MASK_REG     = I2C_I2C_DEFAULT_INTR_TX_MASK;
  103              		.loc 1 238 0
  104 0072 184B     		ldr	r3, .L2+64
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 7
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 7
 
 
  105 0074 0022     		mov	r2, #0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  140 00bc 00000000 		.word	I2C_I2C_ISR
  141 00c0 C80E0640 		.word	1074138824
  142 00c4 880E0640 		.word	1074138760
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 8
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 8
 
 
  143 00c8 480F0640 		.word	1074138952
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  281:.\Generated_Source\PSoC4/I2C_I2C.c **** 
  282:.\Generated_Source\PSoC4/I2C_I2C.c **** #if(I2C_CY_SCBIP_V0)
  283:.\Generated_Source\PSoC4/I2C_I2C.c ****     /* Clear a pending interrupt as the TX FIFO becomes empty and the block does not gate
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 9
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 9
 
 
  284:.\Generated_Source\PSoC4/I2C_I2C.c ****     * an interrupt trigger when disabled.
@@ -518,40 +518,40 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  201 0006 00000000 		.4byte	.Ldebug_abbrev0
  202 000a 04       		.byte	0x4
  203 000b 01       		.uleb128 0x1
- 204 000c 8F000000 		.4byte	.LASF23
+ 204 000c DB000000 		.4byte	.LASF23
  205 0010 01       		.byte	0x1
- 206 0011 22000000 		.4byte	.LASF24
- 207 0015 54010000 		.4byte	.LASF25
+ 206 0011 6E000000 		.4byte	.LASF24
+ 207 0015 22000000 		.4byte	.LASF25
  208 0019 00000000 		.4byte	.Ldebug_ranges0+0
  209 001d 00000000 		.4byte	0
  210 0021 00000000 		.4byte	.Ldebug_line0
  211 0025 02       		.uleb128 0x2
  212 0026 01       		.byte	0x1
  213 0027 06       		.byte	0x6
- 214 0028 B7010000 		.4byte	.LASF0
+ 214 0028 B9010000 		.4byte	.LASF0
  215 002c 02       		.uleb128 0x2
  216 002d 01       		.byte	0x1
  217 002e 08       		.byte	0x8
- 218 002f 0B010000 		.4byte	.LASF1
+ 218 002f 57010000 		.4byte	.LASF1
  219 0033 02       		.uleb128 0x2
  220 0034 02       		.byte	0x2
  221 0035 05       		.byte	0x5
- 222 0036 D5010000 		.4byte	.LASF2
+ 222 0036 D7010000 		.4byte	.LASF2
  223 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 10
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 10
 
 
  224 003b 02       		.byte	0x2
  225 003c 07       		.byte	0x7
- 226 003d A4010000 		.4byte	.LASF3
+ 226 003d A6010000 		.4byte	.LASF3
  227 0041 02       		.uleb128 0x2
  228 0042 04       		.byte	0x4
  229 0043 05       		.byte	0x5
- 230 0044 31010000 		.4byte	.LASF4
+ 230 0044 7D010000 		.4byte	.LASF4
  231 0048 02       		.uleb128 0x2
  232 0049 04       		.byte	0x4
  233 004a 07       		.byte	0x7
- 234 004b 5A000000 		.4byte	.LASF5
+ 234 004b A6000000 		.4byte	.LASF5
  235 004f 02       		.uleb128 0x2
  236 0050 08       		.byte	0x8
  237 0051 05       		.byte	0x5
@@ -559,7 +559,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  239 0056 02       		.uleb128 0x2
  240 0057 08       		.byte	0x8
  241 0058 07       		.byte	0x7
- 242 0059 78000000 		.4byte	.LASF7
+ 242 0059 C4000000 		.4byte	.LASF7
  243 005d 03       		.uleb128 0x3
  244 005e 04       		.byte	0x4
  245 005f 05       		.byte	0x5
@@ -569,12 +569,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  249 0066 07       		.byte	0x7
  250 0067 15000000 		.4byte	.LASF8
  251 006b 04       		.uleb128 0x4
- 252 006c 54000000 		.4byte	.LASF9
+ 252 006c A0000000 		.4byte	.LASF9
  253 0070 02       		.byte	0x2
  254 0071 A1       		.byte	0xa1
  255 0072 2C000000 		.4byte	0x2c
  256 0076 04       		.uleb128 0x4
- 257 0077 DF010000 		.4byte	.LASF10
+ 257 0077 E1010000 		.4byte	.LASF10
  258 007b 02       		.byte	0x2
  259 007c A2       		.byte	0xa2
  260 007d 3A000000 		.4byte	0x3a
@@ -586,24 +586,24 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  266 008c 02       		.uleb128 0x2
  267 008d 04       		.byte	0x4
  268 008e 04       		.byte	0x4
- 269 008f CF010000 		.4byte	.LASF12
+ 269 008f D1010000 		.4byte	.LASF12
  270 0093 02       		.uleb128 0x2
  271 0094 08       		.byte	0x8
  272 0095 04       		.byte	0x4
- 273 0096 4D010000 		.4byte	.LASF13
+ 273 0096 99010000 		.4byte	.LASF13
  274 009a 02       		.uleb128 0x2
  275 009b 01       		.byte	0x1
  276 009c 08       		.byte	0x8
- 277 009d 19010000 		.4byte	.LASF14
+ 277 009d 65010000 		.4byte	.LASF14
  278 00a1 05       		.uleb128 0x5
  279 00a2 6B000000 		.4byte	0x6b
  280 00a6 05       		.uleb128 0x5
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 11
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 11
 
 
  281 00a7 76000000 		.4byte	0x76
  282 00ab 06       		.uleb128 0x6
- 283 00ac 9E010000 		.4byte	.LASF15
+ 283 00ac A0010000 		.4byte	.LASF15
  284 00b0 02       		.byte	0x2
  285 00b1 4D01     		.2byte	0x14d
  286 00b3 B7000000 		.4byte	0xb7
@@ -612,9 +612,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  289 00bc 02       		.uleb128 0x2
  290 00bd 04       		.byte	0x4
  291 00be 07       		.byte	0x7
- 292 00bf F0010000 		.4byte	.LASF16
+ 292 00bf F2010000 		.4byte	.LASF16
  293 00c3 07       		.uleb128 0x7
- 294 00c4 6C000000 		.4byte	.LASF17
+ 294 00c4 B8000000 		.4byte	.LASF17
  295 00c8 01       		.byte	0x1
  296 00c9 C5       		.byte	0xc5
  297 00ca 00000000 		.4byte	.LFB0
@@ -622,7 +622,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  299 00d2 01       		.uleb128 0x1
  300 00d3 9C       		.byte	0x9c
  301 00d4 08       		.uleb128 0x8
- 302 00d5 C3010000 		.4byte	.LASF18
+ 302 00d5 C5010000 		.4byte	.LASF18
  303 00d9 01       		.byte	0x1
  304 00da 1301     		.2byte	0x113
  305 00dc 00000000 		.4byte	.LFB1
@@ -630,7 +630,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  307 00e4 01       		.uleb128 0x1
  308 00e5 9C       		.byte	0x9c
  309 00e6 09       		.uleb128 0x9
- 310 00e7 E6010000 		.4byte	.LASF19
+ 310 00e7 E8010000 		.4byte	.LASF19
  311 00eb 01       		.byte	0x1
  312 00ec 1A       		.byte	0x1a
  313 00ed A1000000 		.4byte	0xa1
@@ -638,17 +638,17 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  315 00f2 03       		.byte	0x3
  316 00f3 00000000 		.4byte	I2C_state
  317 00f7 0A       		.uleb128 0xa
- 318 00f8 45000000 		.4byte	.LASF20
+ 318 00f8 91000000 		.4byte	.LASF20
  319 00fc 03       		.byte	0x3
  320 00fd 30       		.byte	0x30
  321 00fe A6000000 		.4byte	0xa6
  322 0102 0A       		.uleb128 0xa
- 323 0103 1E010000 		.4byte	.LASF21
+ 323 0103 6A010000 		.4byte	.LASF21
  324 0107 03       		.byte	0x3
  325 0108 36       		.byte	0x36
  326 0109 B7000000 		.4byte	0xb7
  327 010d 0A       		.uleb128 0xa
- 328 010e 3A010000 		.4byte	.LASF22
+ 328 010e 86010000 		.4byte	.LASF22
  329 0112 03       		.byte	0x3
  330 0113 3B       		.byte	0x3b
  331 0114 B7000000 		.4byte	0xb7
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  335 0000 01       		.uleb128 0x1
  336 0001 11       		.uleb128 0x11
  337 0002 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 12
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 12
 
 
  338 0003 25       		.uleb128 0x25
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  392 0039 49       		.uleb128 0x49
  393 003a 13       		.uleb128 0x13
  394 003b 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 13
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 13
 
 
  395 003c 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  449 0073 40       		.uleb128 0x40
  450 0074 18       		.uleb128 0x18
  451 0075 9642     		.uleb128 0x2116
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 14
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 14
 
 
  452 0077 19       		.uleb128 0x19
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  506 0000 00000000 		.4byte	.LFB0
  507 0004 E8000000 		.4byte	.LFE0
  508 0008 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 15
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 15
 
 
  509 000c 24000000 		.4byte	.LFE1
@@ -864,129 +864,129 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 1
  520      676E6564 
  520      20696E74 
  520      00
- 521              	.LASF24:
- 522 0022 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\I2C_I2C.c\000"
- 522      6E657261 
- 522      7465645F 
- 522      536F7572 
- 522      63655C50 
- 523              	.LASF20:
- 524 0045 4932435F 		.ascii	"I2C_mstrStatus\000"
- 524      6D737472 
- 524      53746174 
- 524      757300
- 525              	.LASF9:
- 526 0054 75696E74 		.ascii	"uint8\000"
- 526      3800
- 527              	.LASF5:
- 528 005a 6C6F6E67 		.ascii	"long unsigned int\000"
- 528      20756E73 
- 528      69676E65 
- 528      6420696E 
- 528      7400
- 529              	.LASF17:
- 530 006c 4932435F 		.ascii	"I2C_I2CInit\000"
- 530      49324349 
- 530      6E697400 
- 531              	.LASF7:
- 532 0078 6C6F6E67 		.ascii	"long long unsigned int\000"
- 532      206C6F6E 
- 532      6720756E 
- 532      7369676E 
- 532      65642069 
- 533              	.LASF23:
- 534 008f 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 534      4320342E 
- 534      382E3420 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 16
+ 521              	.LASF25:
+ 522 0022 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 522      73657273 
+ 522      5C536E75 
+ 522      666B696E 
+ 522      5C446F63 
+ 523 0050 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 523      5F4D6173 
+ 523      7465725C 
+ 523      50536F43 
+ 523      5F4D6173 
+ 524              	.LASF24:
+ 525 006e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\I2C_I2C.c\000"
+ 525      6E657261 
+ 525      7465645F 
+ 525      536F7572 
+ 525      63655C50 
+ 526              	.LASF20:
+ 527 0091 4932435F 		.ascii	"I2C_mstrStatus\000"
+ 527      6D737472 
+ 527      53746174 
+ 527      757300
+ 528              	.LASF9:
+ 529 00a0 75696E74 		.ascii	"uint8\000"
+ 529      3800
+ 530              	.LASF5:
+ 531 00a6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 531      20756E73 
+ 531      69676E65 
+ 531      6420696E 
+ 531      7400
+ 532              	.LASF17:
+ 533 00b8 4932435F 		.ascii	"I2C_I2CInit\000"
+ 533      49324349 
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 16
 
 
- 534      32303134 
- 534      30353236 
- 535 00c2 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 535      20726576 
- 535      6973696F 
- 535      6E203231 
- 535      31333538 
- 536 00f5 30202D66 		.ascii	"0 -ffunction-sections\000"
- 536      66756E63 
- 536      74696F6E 
- 536      2D736563 
- 536      74696F6E 
- 537              	.LASF1:
- 538 010b 756E7369 		.ascii	"unsigned char\000"
- 538      676E6564 
- 538      20636861 
- 538      7200
- 539              	.LASF14:
- 540 0119 63686172 		.ascii	"char\000"
- 540      00
- 541              	.LASF21:
- 542 011e 4932435F 		.ascii	"I2C_mstrRdBufIndex\000"
- 542      6D737472 
- 542      52644275 
- 542      66496E64 
- 542      657800
- 543              	.LASF4:
- 544 0131 6C6F6E67 		.ascii	"long int\000"
- 544      20696E74 
- 544      00
- 545              	.LASF22:
- 546 013a 4932435F 		.ascii	"I2C_mstrWrBufIndex\000"
- 546      6D737472 
- 546      57724275 
- 546      66496E64 
- 546      657800
- 547              	.LASF13:
- 548 014d 646F7562 		.ascii	"double\000"
- 548      6C6500
- 549              	.LASF25:
- 550 0154 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 550      73657273 
- 550      5C506869 
- 550      6C69705C 
- 550      4F6E6544 
- 551 0181 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 551      4D617374 
- 551      65725C50 
- 551      536F435F 
- 551      4D617374 
+ 533      6E697400 
+ 534              	.LASF7:
+ 535 00c4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 535      206C6F6E 
+ 535      6720756E 
+ 535      7369676E 
+ 535      65642069 
+ 536              	.LASF23:
+ 537 00db 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 537      4320342E 
+ 537      382E3420 
+ 537      32303134 
+ 537      30353236 
+ 538 010e 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 538      20726576 
+ 538      6973696F 
+ 538      6E203231 
+ 538      31333538 
+ 539 0141 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 539      66756E63 
+ 539      74696F6E 
+ 539      2D736563 
+ 539      74696F6E 
+ 540              	.LASF1:
+ 541 0157 756E7369 		.ascii	"unsigned char\000"
+ 541      676E6564 
+ 541      20636861 
+ 541      7200
+ 542              	.LASF14:
+ 543 0165 63686172 		.ascii	"char\000"
+ 543      00
+ 544              	.LASF21:
+ 545 016a 4932435F 		.ascii	"I2C_mstrRdBufIndex\000"
+ 545      6D737472 
+ 545      52644275 
+ 545      66496E64 
+ 545      657800
+ 546              	.LASF4:
+ 547 017d 6C6F6E67 		.ascii	"long int\000"
+ 547      20696E74 
+ 547      00
+ 548              	.LASF22:
+ 549 0186 4932435F 		.ascii	"I2C_mstrWrBufIndex\000"
+ 549      6D737472 
+ 549      57724275 
+ 549      66496E64 
+ 549      657800
+ 550              	.LASF13:
+ 551 0199 646F7562 		.ascii	"double\000"
+ 551      6C6500
  552              	.LASF15:
- 553 019e 72656733 		.ascii	"reg32\000"
+ 553 01a0 72656733 		.ascii	"reg32\000"
  553      3200
  554              	.LASF3:
- 555 01a4 73686F72 		.ascii	"short unsigned int\000"
+ 555 01a6 73686F72 		.ascii	"short unsigned int\000"
  555      7420756E 
  555      7369676E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccdoHeFg.s 			page 17
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccPIqc0J.s 			page 17
 
 
  555      65642069 
  555      6E7400
  556              	.LASF0:
- 557 01b7 7369676E 		.ascii	"signed char\000"
+ 557 01b9 7369676E 		.ascii	"signed char\000"
  557      65642063 
  557      68617200 
  558              	.LASF18:
- 559 01c3 4932435F 		.ascii	"I2C_I2CStop\000"
+ 559 01c5 4932435F 		.ascii	"I2C_I2CStop\000"
  559      49324353 
  559      746F7000 
  560              	.LASF12:
- 561 01cf 666C6F61 		.ascii	"float\000"
+ 561 01d1 666C6F61 		.ascii	"float\000"
  561      7400
  562              	.LASF2:
- 563 01d5 73686F72 		.ascii	"short int\000"
+ 563 01d7 73686F72 		.ascii	"short int\000"
  563      7420696E 
  563      7400
  564              	.LASF10:
- 565 01df 75696E74 		.ascii	"uint16\000"
+ 565 01e1 75696E74 		.ascii	"uint16\000"
  565      313600
  566              	.LASF19:
- 567 01e6 4932435F 		.ascii	"I2C_state\000"
+ 567 01e8 4932435F 		.ascii	"I2C_state\000"
  567      73746174 
  567      6500
  568              	.LASF16:
- 569 01f0 73697A65 		.ascii	"sizetype\000"
+ 569 01f2 73697A65 		.ascii	"sizetype\000"
  569      74797065 
  569      00
  570              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

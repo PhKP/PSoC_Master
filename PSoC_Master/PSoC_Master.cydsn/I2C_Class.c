@@ -20,6 +20,7 @@
 #define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
 #define LIGHT_SENSOR_LSB 0x04  
 #define LIGHT_SENSOR_MSB 0x05
+#define SOILHUM_SENSOR_ADDRESS 0x32
 
 //Uncomment to enable debugging
 //#define debugging 
@@ -160,7 +161,7 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
     return -1;
     }
     
-    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer,size,I2C_I2C_MODE_COMPLETE_XFER);
+    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer ,size ,I2C_I2C_MODE_COMPLETE_XFER);
  
     getActuatorStatus(NULL, NULL, NULL, &temp);
     
@@ -321,10 +322,29 @@ int8 getLight(int32* light){
     }
 }
 
-int8 getSoilHum(uint8 index, int16* soilHum){   // TODO: THIS HAS NOT BEEN IMPLEMENTED.
-    index = 0;
-    *soilHum = 0;
-    return 0;
+int8 getSoilHum(uint8 index, int16* soilHum){
+    uint32 result;
+    uint8 soilTransfer[1] = {index};
+    
+    /*pseudo kode
+    write, address, 0-5 (LSB)
+    read, address, 7 = status, 0-6 = value (1-100)*/
+    
+    result = I2C_I2CMasterWriteBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLETE_XFER);
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
+        
+    if (result == I2C_I2C_MSTR_NO_ERROR){
+        CyDelay(60);
+        result = I2C_I2CMasterReadBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLETE_XFER);
+        while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be ready
+        if (result == I2C_I2C_MSTR_NO_ERROR){
+            if ((soilTransfer[0] >> 7) == 0){
+                *soilHum = soilTransfer[0];
+                return 0;
+            }
+        }
+    }
+    return -1;
 }
 
 

@@ -32,7 +32,7 @@ CY_ISR_PROTO(timer_ISR);
 CY_ISR_PROTO(UART_ISR);
 
 // Buffers / flags
-typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI} state;
+typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI, RESP_SOIL_HUM} state;
 volatile state theState = IDLE;
 volatile int8 irrigationIndex = 0;
 uint8 uartInt = 0;
@@ -116,10 +116,10 @@ void uartIntHandler(void){
                     theState = ADJI;
                     break;
                 }
-                /*case 'S':{ //
-                    respondSoilHum(); //TODO: Add stuff here
+                case 'S':{
+                    theState = RESP_SOIL_HUM;
                     break;
-                }*/
+                }
                 default:{
                     // Do nothing - let the DevKit8000 timeout
                     break;
@@ -159,6 +159,13 @@ void uartIntHandler(void){
                 theState = IDLE;
             }
         }
+        else if(theState == RESP_SOIL_HUM){
+            uint8 temp = buff - CONVERT_TO_ASCII - 1; //incoming number is in ASCII 1-6, DSP works in 0-5.
+            if (temp <= 5 && temp >= 0){
+                respondSoilHum(temp, getSoilHum_DSP(temp));
+                theState = IDLE;
+            }
+        }
         buff = 0;
         BlueLED_Write(LED_OFF);         // Turn off blue LED
     }
@@ -178,7 +185,7 @@ void timerIntHandler(void){
             uint8 i;
             for(i = 0; i<6 ; i++){
                 getSoilHum(i, &tempSoilHum[i]);
-                inputSoilHum(i,&tempSoilHum[i]);
+                inputSoilHum(i, &tempSoilHum[i]);
             }
         }
         getLight(&tempLight);

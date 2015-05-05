@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
   37              		.loc 1 18 0
   38 0008 BD46     		mov	sp, r7
   39              		@ sp needed
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 2
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 2
 
 
   40 000a 80BD     		pop	{r7, pc}
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
   83 0028 5820     		mov	r0, #88
   84 002a FFF7FEFF 		bl	UART_SpiUartWriteTxData
   30:.\UART_Class.c ****         UART_UartPutChar('T');
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 3
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 3
 
 
   85              		.loc 1 30 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
  130              		.loc 1 39 0
  131 001a FB1D     		add	r3, r7, #7
  132 001c 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 4
 
 
  133 001e 181C     		mov	r0, r3
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
  176 0006 021C     		mov	r2, r0
  177 0008 FB1D     		add	r3, r7, #7
  178 000a 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 5
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 5
 
 
   51:.\UART_Class.c ****     if(light){
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
  220              		.type	respondSoilHum, %function
  221              	respondSoilHum:
  222              	.LFB37:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 6
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 6
 
 
   64:.\UART_Class.c **** 
@@ -319,1121 +319,1130 @@ ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 1
  236 000c 1970     		strb	r1, [r3]
  237 000e BB1D     		add	r3, r7, #6
  238 0010 1A70     		strb	r2, [r3]
-  66:.\UART_Class.c ****     if(soilHum){
+  66:.\UART_Class.c ****     if(soilHum <= 10 && soilHum >= 1){
  239              		.loc 1 66 0
  240 0012 BB1D     		add	r3, r7, #6
  241 0014 1B78     		ldrb	r3, [r3]
- 242 0016 002B     		cmp	r3, #0
- 243 0018 0ED0     		beq	.L12
+ 242 0016 0A2B     		cmp	r3, #10
+ 243 0018 13D8     		bhi	.L12
+ 244              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 245 001a BB1D     		add	r3, r7, #6
+ 246 001c 1B78     		ldrb	r3, [r3]
+ 247 001e 002B     		cmp	r3, #0
+ 248 0020 0FD0     		beq	.L12
   67:.\UART_Class.c ****         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent
   68:.\UART_Class.c ****         UART_UartPutChar('S');
- 244              		.loc 1 68 0
- 245 001a 5320     		mov	r0, #83
- 246 001c FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  69:.\UART_Class.c ****         UART_UartPutChar(index);
- 247              		.loc 1 69 0
- 248 0020 FB1D     		add	r3, r7, #7
- 249 0022 1B78     		ldrb	r3, [r3]
- 250 0024 181C     		mov	r0, r3
- 251 0026 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 249              		.loc 1 68 0 is_stmt 1
+ 250 0022 5320     		mov	r0, #83
+ 251 0024 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+  69:.\UART_Class.c ****         UART_UartPutChar(index + 48 + 1); //Conevert to ASCII and convert to 1-6.
+ 252              		.loc 1 69 0
+ 253 0028 FB1D     		add	r3, r7, #7
+ 254 002a 1B78     		ldrb	r3, [r3]
+ 255 002c 3133     		add	r3, r3, #49
+ 256 002e 181C     		mov	r0, r3
+ 257 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
   70:.\UART_Class.c ****         UART_UartPutChar(soilHum);
- 252              		.loc 1 70 0
- 253 002a BB1D     		add	r3, r7, #6
- 254 002c 1B78     		ldrb	r3, [r3]
- 255 002e 181C     		mov	r0, r3
- 256 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 258              		.loc 1 70 0
+ 259 0034 BB1D     		add	r3, r7, #6
+ 260 0036 1B78     		ldrb	r3, [r3]
+ 261 0038 181C     		mov	r0, r3
+ 262 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
   71:.\UART_Class.c ****         return 0;
- 257              		.loc 1 71 0
- 258 0034 0023     		mov	r3, #0
- 259 0036 06E0     		b	.L13
- 260              	.L12:
+ 263              		.loc 1 71 0
+ 264 003e 0023     		mov	r3, #0
+ 265 0040 06E0     		b	.L13
+ 266              	.L12:
   72:.\UART_Class.c ****     }
   73:.\UART_Class.c ****     else{
   74:.\UART_Class.c ****         // If soilHum isn't between 1 and 10(both inclusive) "XS" is sent to DevKit8000
   75:.\UART_Class.c ****         UART_UartPutChar('X');
- 261              		.loc 1 75 0
- 262 0038 5820     		mov	r0, #88
- 263 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 267              		.loc 1 75 0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 7
+
+
+ 268 0042 5820     		mov	r0, #88
+ 269 0044 FFF7FEFF 		bl	UART_SpiUartWriteTxData
   76:.\UART_Class.c ****         UART_UartPutChar('S');
- 264              		.loc 1 76 0
- 265 003e 5320     		mov	r0, #83
- 266 0040 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 7
-
-
+ 270              		.loc 1 76 0
+ 271 0048 5320     		mov	r0, #83
+ 272 004a FFF7FEFF 		bl	UART_SpiUartWriteTxData
   77:.\UART_Class.c ****         return -1;
- 267              		.loc 1 77 0
- 268 0044 FF23     		mov	r3, #255
- 269              	.L13:
- 270 0046 5BB2     		sxtb	r3, r3
+ 273              		.loc 1 77 0
+ 274 004e FF23     		mov	r3, #255
+ 275              	.L13:
+ 276 0050 5BB2     		sxtb	r3, r3
   78:.\UART_Class.c ****     }
   79:.\UART_Class.c **** }
- 271              		.loc 1 79 0
- 272 0048 181C     		mov	r0, r3
- 273 004a BD46     		mov	sp, r7
- 274 004c 02B0     		add	sp, sp, #8
- 275              		@ sp needed
- 276 004e 80BD     		pop	{r7, pc}
- 277              		.cfi_endproc
- 278              	.LFE37:
- 279              		.size	respondSoilHum, .-respondSoilHum
- 280              		.section	.text.respondHeat,"ax",%progbits
- 281              		.align	2
- 282              		.global	respondHeat
- 283              		.code	16
- 284              		.thumb_func
- 285              		.type	respondHeat, %function
- 286              	respondHeat:
- 287              	.LFB38:
+ 277              		.loc 1 79 0
+ 278 0052 181C     		mov	r0, r3
+ 279 0054 BD46     		mov	sp, r7
+ 280 0056 02B0     		add	sp, sp, #8
+ 281              		@ sp needed
+ 282 0058 80BD     		pop	{r7, pc}
+ 283              		.cfi_endproc
+ 284              	.LFE37:
+ 285              		.size	respondSoilHum, .-respondSoilHum
+ 286 005a C046     		.section	.text.respondHeat,"ax",%progbits
+ 287              		.align	2
+ 288              		.global	respondHeat
+ 289              		.code	16
+ 290              		.thumb_func
+ 291              		.type	respondHeat, %function
+ 292              	respondHeat:
+ 293              	.LFB38:
   80:.\UART_Class.c **** 
   81:.\UART_Class.c **** int8 respondHeat(int8 heatStatus, uint8 onOff){
- 288              		.loc 1 81 0
- 289              		.cfi_startproc
- 290 0000 80B5     		push	{r7, lr}
- 291              		.cfi_def_cfa_offset 8
- 292              		.cfi_offset 7, -8
- 293              		.cfi_offset 14, -4
- 294 0002 82B0     		sub	sp, sp, #8
- 295              		.cfi_def_cfa_offset 16
- 296 0004 00AF     		add	r7, sp, #0
- 297              		.cfi_def_cfa_register 7
- 298 0006 0A1C     		mov	r2, r1
- 299 0008 FB1D     		add	r3, r7, #7
- 300 000a 011C     		add	r1, r0, #0
- 301 000c 1970     		strb	r1, [r3]
- 302 000e BB1D     		add	r3, r7, #6
- 303 0010 1A70     		strb	r2, [r3]
+ 294              		.loc 1 81 0
+ 295              		.cfi_startproc
+ 296 0000 80B5     		push	{r7, lr}
+ 297              		.cfi_def_cfa_offset 8
+ 298              		.cfi_offset 7, -8
+ 299              		.cfi_offset 14, -4
+ 300 0002 82B0     		sub	sp, sp, #8
+ 301              		.cfi_def_cfa_offset 16
+ 302 0004 00AF     		add	r7, sp, #0
+ 303              		.cfi_def_cfa_register 7
+ 304 0006 0A1C     		mov	r2, r1
+ 305 0008 FB1D     		add	r3, r7, #7
+ 306 000a 011C     		add	r1, r0, #0
+ 307 000c 1970     		strb	r1, [r3]
+ 308 000e BB1D     		add	r3, r7, #6
+ 309 0010 1A70     		strb	r2, [r3]
   82:.\UART_Class.c ****     if(heatStatus == 0){
- 304              		.loc 1 82 0
- 305 0012 FB1D     		add	r3, r7, #7
- 306 0014 1B78     		ldrb	r3, [r3]
- 307 0016 5BB2     		sxtb	r3, r3
- 308 0018 002B     		cmp	r3, #0
- 309 001a 06D1     		bne	.L15
+ 310              		.loc 1 82 0
+ 311 0012 FB1D     		add	r3, r7, #7
+ 312 0014 1B78     		ldrb	r3, [r3]
+ 313 0016 5BB2     		sxtb	r3, r3
+ 314 0018 002B     		cmp	r3, #0
+ 315 001a 06D1     		bne	.L15
   83:.\UART_Class.c ****         // If heatStatus is 0 then onOff('H' or 'K') is sent to DevKit8000
   84:.\UART_Class.c ****         UART_UartPutChar(onOff);
- 310              		.loc 1 84 0
- 311 001c BB1D     		add	r3, r7, #6
- 312 001e 1B78     		ldrb	r3, [r3]
- 313 0020 181C     		mov	r0, r3
- 314 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 8
+
+
+ 316              		.loc 1 84 0
+ 317 001c BB1D     		add	r3, r7, #6
+ 318 001e 1B78     		ldrb	r3, [r3]
+ 319 0020 181C     		mov	r0, r3
+ 320 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
   85:.\UART_Class.c ****         return 0;
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 8
-
-
- 315              		.loc 1 85 0
- 316 0026 0023     		mov	r3, #0
- 317 0028 08E0     		b	.L16
- 318              	.L15:
+ 321              		.loc 1 85 0
+ 322 0026 0023     		mov	r3, #0
+ 323 0028 08E0     		b	.L16
+ 324              	.L15:
   86:.\UART_Class.c ****     }
   87:.\UART_Class.c ****     else{
   88:.\UART_Class.c ****         // If heatStatus isn't 0 then 'X' and onOff('H' or 'K') is sent to DevKit8000
   89:.\UART_Class.c ****         UART_UartPutChar('X');
- 319              		.loc 1 89 0
- 320 002a 5820     		mov	r0, #88
- 321 002c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 325              		.loc 1 89 0
+ 326 002a 5820     		mov	r0, #88
+ 327 002c FFF7FEFF 		bl	UART_SpiUartWriteTxData
   90:.\UART_Class.c ****         UART_UartPutChar(onOff);
- 322              		.loc 1 90 0
- 323 0030 BB1D     		add	r3, r7, #6
- 324 0032 1B78     		ldrb	r3, [r3]
- 325 0034 181C     		mov	r0, r3
- 326 0036 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 328              		.loc 1 90 0
+ 329 0030 BB1D     		add	r3, r7, #6
+ 330 0032 1B78     		ldrb	r3, [r3]
+ 331 0034 181C     		mov	r0, r3
+ 332 0036 FFF7FEFF 		bl	UART_SpiUartWriteTxData
   91:.\UART_Class.c ****         return -1;
- 327              		.loc 1 91 0
- 328 003a FF23     		mov	r3, #255
- 329              	.L16:
- 330 003c 5BB2     		sxtb	r3, r3
+ 333              		.loc 1 91 0
+ 334 003a FF23     		mov	r3, #255
+ 335              	.L16:
+ 336 003c 5BB2     		sxtb	r3, r3
   92:.\UART_Class.c ****     }
   93:.\UART_Class.c **** }
- 331              		.loc 1 93 0
- 332 003e 181C     		mov	r0, r3
- 333 0040 BD46     		mov	sp, r7
- 334 0042 02B0     		add	sp, sp, #8
- 335              		@ sp needed
- 336 0044 80BD     		pop	{r7, pc}
- 337              		.cfi_endproc
- 338              	.LFE38:
- 339              		.size	respondHeat, .-respondHeat
- 340 0046 C046     		.section	.text.respondWin,"ax",%progbits
- 341              		.align	2
- 342              		.global	respondWin
- 343              		.code	16
- 344              		.thumb_func
- 345              		.type	respondWin, %function
- 346              	respondWin:
- 347              	.LFB39:
+ 337              		.loc 1 93 0
+ 338 003e 181C     		mov	r0, r3
+ 339 0040 BD46     		mov	sp, r7
+ 340 0042 02B0     		add	sp, sp, #8
+ 341              		@ sp needed
+ 342 0044 80BD     		pop	{r7, pc}
+ 343              		.cfi_endproc
+ 344              	.LFE38:
+ 345              		.size	respondHeat, .-respondHeat
+ 346 0046 C046     		.section	.text.respondWin,"ax",%progbits
+ 347              		.align	2
+ 348              		.global	respondWin
+ 349              		.code	16
+ 350              		.thumb_func
+ 351              		.type	respondWin, %function
+ 352              	respondWin:
+ 353              	.LFB39:
   94:.\UART_Class.c **** 
   95:.\UART_Class.c **** int8 respondWin(int8 winStatus){
- 348              		.loc 1 95 0
- 349              		.cfi_startproc
- 350 0000 80B5     		push	{r7, lr}
- 351              		.cfi_def_cfa_offset 8
- 352              		.cfi_offset 7, -8
- 353              		.cfi_offset 14, -4
- 354 0002 82B0     		sub	sp, sp, #8
- 355              		.cfi_def_cfa_offset 16
- 356 0004 00AF     		add	r7, sp, #0
- 357              		.cfi_def_cfa_register 7
- 358 0006 021C     		mov	r2, r0
- 359 0008 FB1D     		add	r3, r7, #7
- 360 000a 1A70     		strb	r2, [r3]
+ 354              		.loc 1 95 0
+ 355              		.cfi_startproc
+ 356 0000 80B5     		push	{r7, lr}
+ 357              		.cfi_def_cfa_offset 8
+ 358              		.cfi_offset 7, -8
+ 359              		.cfi_offset 14, -4
+ 360 0002 82B0     		sub	sp, sp, #8
+ 361              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 9
+
+
+ 362 0004 00AF     		add	r7, sp, #0
+ 363              		.cfi_def_cfa_register 7
+ 364 0006 021C     		mov	r2, r0
+ 365 0008 FB1D     		add	r3, r7, #7
+ 366 000a 1A70     		strb	r2, [r3]
   96:.\UART_Class.c ****     if(winStatus == 0){
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 9
-
-
- 361              		.loc 1 96 0
- 362 000c FB1D     		add	r3, r7, #7
- 363 000e 1B78     		ldrb	r3, [r3]
- 364 0010 5BB2     		sxtb	r3, r3
- 365 0012 002B     		cmp	r3, #0
- 366 0014 04D1     		bne	.L18
+ 367              		.loc 1 96 0
+ 368 000c FB1D     		add	r3, r7, #7
+ 369 000e 1B78     		ldrb	r3, [r3]
+ 370 0010 5BB2     		sxtb	r3, r3
+ 371 0012 002B     		cmp	r3, #0
+ 372 0014 04D1     		bne	.L18
   97:.\UART_Class.c ****         // If winStatus is 0 then 'W' is sent to DevKit8000
   98:.\UART_Class.c ****         UART_UartPutChar('W');
- 367              		.loc 1 98 0
- 368 0016 5720     		mov	r0, #87
- 369 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 373              		.loc 1 98 0
+ 374 0016 5720     		mov	r0, #87
+ 375 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
   99:.\UART_Class.c ****         return 0;
- 370              		.loc 1 99 0
- 371 001c 0023     		mov	r3, #0
- 372 001e 06E0     		b	.L19
- 373              	.L18:
+ 376              		.loc 1 99 0
+ 377 001c 0023     		mov	r3, #0
+ 378 001e 06E0     		b	.L19
+ 379              	.L18:
  100:.\UART_Class.c ****     }
  101:.\UART_Class.c ****     else{
  102:.\UART_Class.c ****         // If heatStatus isn't 0 then "XW" is sent to DevKit8000
  103:.\UART_Class.c ****         UART_UartPutChar('X');
- 374              		.loc 1 103 0
- 375 0020 5820     		mov	r0, #88
- 376 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 380              		.loc 1 103 0
+ 381 0020 5820     		mov	r0, #88
+ 382 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  104:.\UART_Class.c ****         UART_UartPutChar('W');
- 377              		.loc 1 104 0
- 378 0026 5720     		mov	r0, #87
- 379 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 383              		.loc 1 104 0
+ 384 0026 5720     		mov	r0, #87
+ 385 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  105:.\UART_Class.c ****         return -1;
- 380              		.loc 1 105 0
- 381 002c FF23     		mov	r3, #255
- 382              	.L19:
- 383 002e 5BB2     		sxtb	r3, r3
+ 386              		.loc 1 105 0
+ 387 002c FF23     		mov	r3, #255
+ 388              	.L19:
+ 389 002e 5BB2     		sxtb	r3, r3
  106:.\UART_Class.c ****     }
  107:.\UART_Class.c **** }
- 384              		.loc 1 107 0
- 385 0030 181C     		mov	r0, r3
- 386 0032 BD46     		mov	sp, r7
- 387 0034 02B0     		add	sp, sp, #8
- 388              		@ sp needed
- 389 0036 80BD     		pop	{r7, pc}
- 390              		.cfi_endproc
- 391              	.LFE39:
- 392              		.size	respondWin, .-respondWin
- 393              		.section	.text.respondVent,"ax",%progbits
- 394              		.align	2
- 395              		.global	respondVent
- 396              		.code	16
- 397              		.thumb_func
- 398              		.type	respondVent, %function
- 399              	respondVent:
- 400              	.LFB40:
+ 390              		.loc 1 107 0
+ 391 0030 181C     		mov	r0, r3
+ 392 0032 BD46     		mov	sp, r7
+ 393 0034 02B0     		add	sp, sp, #8
+ 394              		@ sp needed
+ 395 0036 80BD     		pop	{r7, pc}
+ 396              		.cfi_endproc
+ 397              	.LFE39:
+ 398              		.size	respondWin, .-respondWin
+ 399              		.section	.text.respondVent,"ax",%progbits
+ 400              		.align	2
+ 401              		.global	respondVent
+ 402              		.code	16
+ 403              		.thumb_func
+ 404              		.type	respondVent, %function
+ 405              	respondVent:
+ 406              	.LFB40:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 10
+
+
  108:.\UART_Class.c **** 
  109:.\UART_Class.c **** int8 respondVent(int8 ventStatus){
- 401              		.loc 1 109 0
- 402              		.cfi_startproc
- 403 0000 80B5     		push	{r7, lr}
- 404              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 10
-
-
- 405              		.cfi_offset 7, -8
- 406              		.cfi_offset 14, -4
- 407 0002 82B0     		sub	sp, sp, #8
- 408              		.cfi_def_cfa_offset 16
- 409 0004 00AF     		add	r7, sp, #0
- 410              		.cfi_def_cfa_register 7
- 411 0006 021C     		mov	r2, r0
- 412 0008 FB1D     		add	r3, r7, #7
- 413 000a 1A70     		strb	r2, [r3]
+ 407              		.loc 1 109 0
+ 408              		.cfi_startproc
+ 409 0000 80B5     		push	{r7, lr}
+ 410              		.cfi_def_cfa_offset 8
+ 411              		.cfi_offset 7, -8
+ 412              		.cfi_offset 14, -4
+ 413 0002 82B0     		sub	sp, sp, #8
+ 414              		.cfi_def_cfa_offset 16
+ 415 0004 00AF     		add	r7, sp, #0
+ 416              		.cfi_def_cfa_register 7
+ 417 0006 021C     		mov	r2, r0
+ 418 0008 FB1D     		add	r3, r7, #7
+ 419 000a 1A70     		strb	r2, [r3]
  110:.\UART_Class.c ****     if(ventStatus == 0){
- 414              		.loc 1 110 0
- 415 000c FB1D     		add	r3, r7, #7
- 416 000e 1B78     		ldrb	r3, [r3]
- 417 0010 5BB2     		sxtb	r3, r3
- 418 0012 002B     		cmp	r3, #0
- 419 0014 04D1     		bne	.L21
+ 420              		.loc 1 110 0
+ 421 000c FB1D     		add	r3, r7, #7
+ 422 000e 1B78     		ldrb	r3, [r3]
+ 423 0010 5BB2     		sxtb	r3, r3
+ 424 0012 002B     		cmp	r3, #0
+ 425 0014 04D1     		bne	.L21
  111:.\UART_Class.c ****         // If ventStatus is 0 then 'V' is sent to DevKit8000
  112:.\UART_Class.c ****         UART_UartPutChar('V');
- 420              		.loc 1 112 0
- 421 0016 5620     		mov	r0, #86
- 422 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 426              		.loc 1 112 0
+ 427 0016 5620     		mov	r0, #86
+ 428 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  113:.\UART_Class.c ****         return 0;
- 423              		.loc 1 113 0
- 424 001c 0023     		mov	r3, #0
- 425 001e 06E0     		b	.L22
- 426              	.L21:
+ 429              		.loc 1 113 0
+ 430 001c 0023     		mov	r3, #0
+ 431 001e 06E0     		b	.L22
+ 432              	.L21:
  114:.\UART_Class.c ****     }
  115:.\UART_Class.c ****     else{
  116:.\UART_Class.c ****         // If ventStatus isn't 0 then "XV" is sent to DevKit8000
  117:.\UART_Class.c ****         UART_UartPutChar('X');
- 427              		.loc 1 117 0
- 428 0020 5820     		mov	r0, #88
- 429 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 433              		.loc 1 117 0
+ 434 0020 5820     		mov	r0, #88
+ 435 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  118:.\UART_Class.c ****         UART_UartPutChar('V');
- 430              		.loc 1 118 0
- 431 0026 5620     		mov	r0, #86
- 432 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 436              		.loc 1 118 0
+ 437 0026 5620     		mov	r0, #86
+ 438 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  119:.\UART_Class.c ****         return -1;
- 433              		.loc 1 119 0
- 434 002c FF23     		mov	r3, #255
- 435              	.L22:
- 436 002e 5BB2     		sxtb	r3, r3
+ 439              		.loc 1 119 0
+ 440 002c FF23     		mov	r3, #255
+ 441              	.L22:
+ 442 002e 5BB2     		sxtb	r3, r3
  120:.\UART_Class.c ****     }
  121:.\UART_Class.c **** }
- 437              		.loc 1 121 0
- 438 0030 181C     		mov	r0, r3
- 439 0032 BD46     		mov	sp, r7
- 440 0034 02B0     		add	sp, sp, #8
- 441              		@ sp needed
- 442 0036 80BD     		pop	{r7, pc}
- 443              		.cfi_endproc
- 444              	.LFE40:
- 445              		.size	respondVent, .-respondVent
- 446              		.section	.text.respondIrri,"ax",%progbits
- 447              		.align	2
- 448              		.global	respondIrri
- 449              		.code	16
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 11
+ 443              		.loc 1 121 0
+ 444 0030 181C     		mov	r0, r3
+ 445 0032 BD46     		mov	sp, r7
+ 446 0034 02B0     		add	sp, sp, #8
+ 447              		@ sp needed
+ 448 0036 80BD     		pop	{r7, pc}
+ 449              		.cfi_endproc
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 11
 
 
- 450              		.thumb_func
- 451              		.type	respondIrri, %function
- 452              	respondIrri:
- 453              	.LFB41:
+ 450              	.LFE40:
+ 451              		.size	respondVent, .-respondVent
+ 452              		.section	.text.respondIrri,"ax",%progbits
+ 453              		.align	2
+ 454              		.global	respondIrri
+ 455              		.code	16
+ 456              		.thumb_func
+ 457              		.type	respondIrri, %function
+ 458              	respondIrri:
+ 459              	.LFB41:
  122:.\UART_Class.c **** 
  123:.\UART_Class.c **** int8 respondIrri(int8 irriStatus){
- 454              		.loc 1 123 0
- 455              		.cfi_startproc
- 456 0000 80B5     		push	{r7, lr}
- 457              		.cfi_def_cfa_offset 8
- 458              		.cfi_offset 7, -8
- 459              		.cfi_offset 14, -4
- 460 0002 82B0     		sub	sp, sp, #8
- 461              		.cfi_def_cfa_offset 16
- 462 0004 00AF     		add	r7, sp, #0
- 463              		.cfi_def_cfa_register 7
- 464 0006 021C     		mov	r2, r0
- 465 0008 FB1D     		add	r3, r7, #7
- 466 000a 1A70     		strb	r2, [r3]
+ 460              		.loc 1 123 0
+ 461              		.cfi_startproc
+ 462 0000 80B5     		push	{r7, lr}
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 7, -8
+ 465              		.cfi_offset 14, -4
+ 466 0002 82B0     		sub	sp, sp, #8
+ 467              		.cfi_def_cfa_offset 16
+ 468 0004 00AF     		add	r7, sp, #0
+ 469              		.cfi_def_cfa_register 7
+ 470 0006 021C     		mov	r2, r0
+ 471 0008 FB1D     		add	r3, r7, #7
+ 472 000a 1A70     		strb	r2, [r3]
  124:.\UART_Class.c ****     if(irriStatus == 0){
- 467              		.loc 1 124 0
- 468 000c FB1D     		add	r3, r7, #7
- 469 000e 1B78     		ldrb	r3, [r3]
- 470 0010 5BB2     		sxtb	r3, r3
- 471 0012 002B     		cmp	r3, #0
- 472 0014 04D1     		bne	.L24
+ 473              		.loc 1 124 0
+ 474 000c FB1D     		add	r3, r7, #7
+ 475 000e 1B78     		ldrb	r3, [r3]
+ 476 0010 5BB2     		sxtb	r3, r3
+ 477 0012 002B     		cmp	r3, #0
+ 478 0014 04D1     		bne	.L24
  125:.\UART_Class.c ****         // If irriStatus is 0 then 'F' is sent to DevKit8000
  126:.\UART_Class.c ****         UART_UartPutChar('F');
- 473              		.loc 1 126 0
- 474 0016 4620     		mov	r0, #70
- 475 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 479              		.loc 1 126 0
+ 480 0016 4620     		mov	r0, #70
+ 481 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  127:.\UART_Class.c ****         return 0;
- 476              		.loc 1 127 0
- 477 001c 0023     		mov	r3, #0
- 478 001e 06E0     		b	.L25
- 479              	.L24:
+ 482              		.loc 1 127 0
+ 483 001c 0023     		mov	r3, #0
+ 484 001e 06E0     		b	.L25
+ 485              	.L24:
  128:.\UART_Class.c ****     }
  129:.\UART_Class.c ****     else{
  130:.\UART_Class.c ****         // If irriStatus isn't 0 then "XF" is sent to DevKit8000
  131:.\UART_Class.c ****         UART_UartPutChar('X');
- 480              		.loc 1 131 0
- 481 0020 5820     		mov	r0, #88
- 482 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 486              		.loc 1 131 0
+ 487 0020 5820     		mov	r0, #88
+ 488 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  132:.\UART_Class.c ****         UART_UartPutChar('F');
- 483              		.loc 1 132 0
- 484 0026 4620     		mov	r0, #70
- 485 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 489              		.loc 1 132 0
+ 490 0026 4620     		mov	r0, #70
+ 491 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
  133:.\UART_Class.c ****         return -1;
- 486              		.loc 1 133 0
- 487 002c FF23     		mov	r3, #255
- 488              	.L25:
- 489 002e 5BB2     		sxtb	r3, r3
+ 492              		.loc 1 133 0
+ 493 002c FF23     		mov	r3, #255
+ 494              	.L25:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 12
+
+
+ 495 002e 5BB2     		sxtb	r3, r3
  134:.\UART_Class.c ****     }
  135:.\UART_Class.c **** }
- 490              		.loc 1 135 0
- 491 0030 181C     		mov	r0, r3
- 492 0032 BD46     		mov	sp, r7
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 12
-
-
- 493 0034 02B0     		add	sp, sp, #8
- 494              		@ sp needed
- 495 0036 80BD     		pop	{r7, pc}
- 496              		.cfi_endproc
- 497              	.LFE41:
- 498              		.size	respondIrri, .-respondIrri
- 499              		.section	.text.dkRequest,"ax",%progbits
- 500              		.align	2
- 501              		.global	dkRequest
- 502              		.code	16
- 503              		.thumb_func
- 504              		.type	dkRequest, %function
- 505              	dkRequest:
- 506              	.LFB42:
+ 496              		.loc 1 135 0
+ 497 0030 181C     		mov	r0, r3
+ 498 0032 BD46     		mov	sp, r7
+ 499 0034 02B0     		add	sp, sp, #8
+ 500              		@ sp needed
+ 501 0036 80BD     		pop	{r7, pc}
+ 502              		.cfi_endproc
+ 503              	.LFE41:
+ 504              		.size	respondIrri, .-respondIrri
+ 505              		.section	.text.dkRequest,"ax",%progbits
+ 506              		.align	2
+ 507              		.global	dkRequest
+ 508              		.code	16
+ 509              		.thumb_func
+ 510              		.type	dkRequest, %function
+ 511              	dkRequest:
+ 512              	.LFB42:
  136:.\UART_Class.c **** 
  137:.\UART_Class.c **** uint8 dkRequest(void){
- 507              		.loc 1 137 0
- 508              		.cfi_startproc
- 509 0000 80B5     		push	{r7, lr}
- 510              		.cfi_def_cfa_offset 8
- 511              		.cfi_offset 7, -8
- 512              		.cfi_offset 14, -4
- 513 0002 00AF     		add	r7, sp, #0
- 514              		.cfi_def_cfa_register 7
+ 513              		.loc 1 137 0
+ 514              		.cfi_startproc
+ 515 0000 80B5     		push	{r7, lr}
+ 516              		.cfi_def_cfa_offset 8
+ 517              		.cfi_offset 7, -8
+ 518              		.cfi_offset 14, -4
+ 519 0002 00AF     		add	r7, sp, #0
+ 520              		.cfi_def_cfa_register 7
  138:.\UART_Class.c ****     // Reads the UART buffer
  139:.\UART_Class.c ****     return UART_UartGetChar();
- 515              		.loc 1 139 0
- 516 0004 FFF7FEFF 		bl	UART_UartGetChar
- 517 0008 031C     		mov	r3, r0
- 518 000a DBB2     		uxtb	r3, r3
+ 521              		.loc 1 139 0
+ 522 0004 FFF7FEFF 		bl	UART_UartGetChar
+ 523 0008 031C     		mov	r3, r0
+ 524 000a DBB2     		uxtb	r3, r3
  140:.\UART_Class.c **** }
- 519              		.loc 1 140 0
- 520 000c 181C     		mov	r0, r3
- 521 000e BD46     		mov	sp, r7
- 522              		@ sp needed
- 523 0010 80BD     		pop	{r7, pc}
- 524              		.cfi_endproc
- 525              	.LFE42:
- 526              		.size	dkRequest, .-dkRequest
- 527 0012 C046     		.text
- 528              	.Letext0:
- 529              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
- 530              		.file 3 ".\\UART_Class.h"
- 531              		.section	.debug_info,"",%progbits
- 532              	.Ldebug_info0:
- 533 0000 38020000 		.4byte	0x238
- 534 0004 0400     		.2byte	0x4
- 535 0006 00000000 		.4byte	.Ldebug_abbrev0
- 536 000a 04       		.byte	0x4
- 537 000b 01       		.uleb128 0x1
- 538 000c 3F000000 		.4byte	.LASF33
- 539 0010 01       		.byte	0x1
- 540 0011 2D020000 		.4byte	.LASF34
- 541 0015 84010000 		.4byte	.LASF35
- 542 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 543 001d 00000000 		.4byte	0
- 544 0021 00000000 		.4byte	.Ldebug_line0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 13
+ 525              		.loc 1 140 0
+ 526 000c 181C     		mov	r0, r3
+ 527 000e BD46     		mov	sp, r7
+ 528              		@ sp needed
+ 529 0010 80BD     		pop	{r7, pc}
+ 530              		.cfi_endproc
+ 531              	.LFE42:
+ 532              		.size	dkRequest, .-dkRequest
+ 533 0012 C046     		.text
+ 534              	.Letext0:
+ 535              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 536              		.file 3 ".\\UART_Class.h"
+ 537              		.section	.debug_info,"",%progbits
+ 538              	.Ldebug_info0:
+ 539 0000 38020000 		.4byte	0x238
+ 540 0004 0400     		.2byte	0x4
+ 541 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 542 000a 04       		.byte	0x4
+ 543 000b 01       		.uleb128 0x1
+ 544 000c 3F000000 		.4byte	.LASF33
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 13
 
 
- 545 0025 02       		.uleb128 0x2
- 546 0026 01       		.byte	0x1
- 547 0027 06       		.byte	0x6
- 548 0028 4B020000 		.4byte	.LASF0
- 549 002c 02       		.uleb128 0x2
- 550 002d 01       		.byte	0x1
- 551 002e 08       		.byte	0x8
- 552 002f BB000000 		.4byte	.LASF1
- 553 0033 02       		.uleb128 0x2
- 554 0034 02       		.byte	0x2
- 555 0035 05       		.byte	0x5
- 556 0036 1D020000 		.4byte	.LASF2
- 557 003a 02       		.uleb128 0x2
- 558 003b 02       		.byte	0x2
- 559 003c 07       		.byte	0x7
- 560 003d 1A000000 		.4byte	.LASF3
- 561 0041 02       		.uleb128 0x2
- 562 0042 04       		.byte	0x4
- 563 0043 05       		.byte	0x5
- 564 0044 11000000 		.4byte	.LASF4
- 565 0048 02       		.uleb128 0x2
- 566 0049 04       		.byte	0x4
- 567 004a 07       		.byte	0x7
- 568 004b D8000000 		.4byte	.LASF5
- 569 004f 02       		.uleb128 0x2
- 570 0050 08       		.byte	0x8
- 571 0051 05       		.byte	0x5
- 572 0052 F3010000 		.4byte	.LASF6
- 573 0056 02       		.uleb128 0x2
- 574 0057 08       		.byte	0x8
- 575 0058 07       		.byte	0x7
- 576 0059 54010000 		.4byte	.LASF7
- 577 005d 03       		.uleb128 0x3
- 578 005e 04       		.byte	0x4
- 579 005f 05       		.byte	0x5
- 580 0060 696E7400 		.ascii	"int\000"
- 581 0064 02       		.uleb128 0x2
- 582 0065 04       		.byte	0x4
- 583 0066 07       		.byte	0x7
- 584 0067 30010000 		.4byte	.LASF8
- 585 006b 04       		.uleb128 0x4
- 586 006c EF000000 		.4byte	.LASF9
- 587 0070 02       		.byte	0x2
- 588 0071 A1       		.byte	0xa1
- 589 0072 2C000000 		.4byte	0x2c
- 590 0076 04       		.uleb128 0x4
- 591 0077 29010000 		.4byte	.LASF10
- 592 007b 02       		.byte	0x2
- 593 007c A3       		.byte	0xa3
- 594 007d 48000000 		.4byte	0x48
- 595 0081 04       		.uleb128 0x4
- 596 0082 24010000 		.4byte	.LASF11
- 597 0086 02       		.byte	0x2
- 598 0087 A4       		.byte	0xa4
- 599 0088 25000000 		.4byte	0x25
- 600 008c 02       		.uleb128 0x2
- 601 008d 04       		.byte	0x4
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 14
+ 545 0010 01       		.byte	0x1
+ 546 0011 2D020000 		.4byte	.LASF34
+ 547 0015 84010000 		.4byte	.LASF35
+ 548 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 549 001d 00000000 		.4byte	0
+ 550 0021 00000000 		.4byte	.Ldebug_line0
+ 551 0025 02       		.uleb128 0x2
+ 552 0026 01       		.byte	0x1
+ 553 0027 06       		.byte	0x6
+ 554 0028 4B020000 		.4byte	.LASF0
+ 555 002c 02       		.uleb128 0x2
+ 556 002d 01       		.byte	0x1
+ 557 002e 08       		.byte	0x8
+ 558 002f BB000000 		.4byte	.LASF1
+ 559 0033 02       		.uleb128 0x2
+ 560 0034 02       		.byte	0x2
+ 561 0035 05       		.byte	0x5
+ 562 0036 1D020000 		.4byte	.LASF2
+ 563 003a 02       		.uleb128 0x2
+ 564 003b 02       		.byte	0x2
+ 565 003c 07       		.byte	0x7
+ 566 003d 1A000000 		.4byte	.LASF3
+ 567 0041 02       		.uleb128 0x2
+ 568 0042 04       		.byte	0x4
+ 569 0043 05       		.byte	0x5
+ 570 0044 11000000 		.4byte	.LASF4
+ 571 0048 02       		.uleb128 0x2
+ 572 0049 04       		.byte	0x4
+ 573 004a 07       		.byte	0x7
+ 574 004b D8000000 		.4byte	.LASF5
+ 575 004f 02       		.uleb128 0x2
+ 576 0050 08       		.byte	0x8
+ 577 0051 05       		.byte	0x5
+ 578 0052 F3010000 		.4byte	.LASF6
+ 579 0056 02       		.uleb128 0x2
+ 580 0057 08       		.byte	0x8
+ 581 0058 07       		.byte	0x7
+ 582 0059 54010000 		.4byte	.LASF7
+ 583 005d 03       		.uleb128 0x3
+ 584 005e 04       		.byte	0x4
+ 585 005f 05       		.byte	0x5
+ 586 0060 696E7400 		.ascii	"int\000"
+ 587 0064 02       		.uleb128 0x2
+ 588 0065 04       		.byte	0x4
+ 589 0066 07       		.byte	0x7
+ 590 0067 30010000 		.4byte	.LASF8
+ 591 006b 04       		.uleb128 0x4
+ 592 006c EF000000 		.4byte	.LASF9
+ 593 0070 02       		.byte	0x2
+ 594 0071 A1       		.byte	0xa1
+ 595 0072 2C000000 		.4byte	0x2c
+ 596 0076 04       		.uleb128 0x4
+ 597 0077 29010000 		.4byte	.LASF10
+ 598 007b 02       		.byte	0x2
+ 599 007c A3       		.byte	0xa3
+ 600 007d 48000000 		.4byte	0x48
+ 601 0081 04       		.uleb128 0x4
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 14
 
 
- 602 008e 04       		.byte	0x4
- 603 008f 39000000 		.4byte	.LASF12
- 604 0093 02       		.uleb128 0x2
- 605 0094 08       		.byte	0x8
- 606 0095 04       		.byte	0x4
- 607 0096 00010000 		.4byte	.LASF13
- 608 009a 02       		.uleb128 0x2
- 609 009b 01       		.byte	0x1
- 610 009c 08       		.byte	0x8
- 611 009d 01020000 		.4byte	.LASF14
- 612 00a1 02       		.uleb128 0x2
- 613 00a2 04       		.byte	0x4
- 614 00a3 07       		.byte	0x7
- 615 00a4 EA010000 		.4byte	.LASF15
- 616 00a8 05       		.uleb128 0x5
- 617 00a9 CF000000 		.4byte	.LASF36
- 618 00ad 01       		.byte	0x1
- 619 00ae 10       		.byte	0x10
- 620 00af 00000000 		.4byte	.LFB33
- 621 00b3 0C000000 		.4byte	.LFE33-.LFB33
- 622 00b7 01       		.uleb128 0x1
- 623 00b8 9C       		.byte	0x9c
- 624 00b9 06       		.uleb128 0x6
- 625 00ba 6B010000 		.4byte	.LASF16
- 626 00be 01       		.byte	0x1
- 627 00bf 14       		.byte	0x14
- 628 00c0 81000000 		.4byte	0x81
- 629 00c4 00000000 		.4byte	.LFB34
- 630 00c8 40000000 		.4byte	.LFE34-.LFB34
- 631 00cc 01       		.uleb128 0x1
- 632 00cd 9C       		.byte	0x9c
- 633 00ce E1000000 		.4byte	0xe1
- 634 00d2 07       		.uleb128 0x7
- 635 00d3 EA000000 		.4byte	.LASF18
- 636 00d7 01       		.byte	0x1
- 637 00d8 14       		.byte	0x14
- 638 00d9 6B000000 		.4byte	0x6b
- 639 00dd 02       		.uleb128 0x2
- 640 00de 91       		.byte	0x91
- 641 00df 77       		.sleb128 -9
- 642 00e0 00       		.byte	0
- 643 00e1 06       		.uleb128 0x6
- 644 00e2 3D010000 		.4byte	.LASF17
- 645 00e6 01       		.byte	0x1
- 646 00e7 23       		.byte	0x23
- 647 00e8 81000000 		.4byte	0x81
- 648 00ec 00000000 		.4byte	.LFB35
- 649 00f0 40000000 		.4byte	.LFE35-.LFB35
- 650 00f4 01       		.uleb128 0x1
- 651 00f5 9C       		.byte	0x9c
- 652 00f6 09010000 		.4byte	0x109
- 653 00fa 08       		.uleb128 0x8
- 654 00fb 68756D00 		.ascii	"hum\000"
- 655 00ff 01       		.byte	0x1
- 656 0100 23       		.byte	0x23
- 657 0101 6B000000 		.4byte	0x6b
- 658 0105 02       		.uleb128 0x2
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 15
+ 602 0082 24010000 		.4byte	.LASF11
+ 603 0086 02       		.byte	0x2
+ 604 0087 A4       		.byte	0xa4
+ 605 0088 25000000 		.4byte	0x25
+ 606 008c 02       		.uleb128 0x2
+ 607 008d 04       		.byte	0x4
+ 608 008e 04       		.byte	0x4
+ 609 008f 39000000 		.4byte	.LASF12
+ 610 0093 02       		.uleb128 0x2
+ 611 0094 08       		.byte	0x8
+ 612 0095 04       		.byte	0x4
+ 613 0096 00010000 		.4byte	.LASF13
+ 614 009a 02       		.uleb128 0x2
+ 615 009b 01       		.byte	0x1
+ 616 009c 08       		.byte	0x8
+ 617 009d 01020000 		.4byte	.LASF14
+ 618 00a1 02       		.uleb128 0x2
+ 619 00a2 04       		.byte	0x4
+ 620 00a3 07       		.byte	0x7
+ 621 00a4 EA010000 		.4byte	.LASF15
+ 622 00a8 05       		.uleb128 0x5
+ 623 00a9 CF000000 		.4byte	.LASF36
+ 624 00ad 01       		.byte	0x1
+ 625 00ae 10       		.byte	0x10
+ 626 00af 00000000 		.4byte	.LFB33
+ 627 00b3 0C000000 		.4byte	.LFE33-.LFB33
+ 628 00b7 01       		.uleb128 0x1
+ 629 00b8 9C       		.byte	0x9c
+ 630 00b9 06       		.uleb128 0x6
+ 631 00ba 6B010000 		.4byte	.LASF16
+ 632 00be 01       		.byte	0x1
+ 633 00bf 14       		.byte	0x14
+ 634 00c0 81000000 		.4byte	0x81
+ 635 00c4 00000000 		.4byte	.LFB34
+ 636 00c8 40000000 		.4byte	.LFE34-.LFB34
+ 637 00cc 01       		.uleb128 0x1
+ 638 00cd 9C       		.byte	0x9c
+ 639 00ce E1000000 		.4byte	0xe1
+ 640 00d2 07       		.uleb128 0x7
+ 641 00d3 EA000000 		.4byte	.LASF18
+ 642 00d7 01       		.byte	0x1
+ 643 00d8 14       		.byte	0x14
+ 644 00d9 6B000000 		.4byte	0x6b
+ 645 00dd 02       		.uleb128 0x2
+ 646 00de 91       		.byte	0x91
+ 647 00df 77       		.sleb128 -9
+ 648 00e0 00       		.byte	0
+ 649 00e1 06       		.uleb128 0x6
+ 650 00e2 3D010000 		.4byte	.LASF17
+ 651 00e6 01       		.byte	0x1
+ 652 00e7 23       		.byte	0x23
+ 653 00e8 81000000 		.4byte	0x81
+ 654 00ec 00000000 		.4byte	.LFB35
+ 655 00f0 40000000 		.4byte	.LFE35-.LFB35
+ 656 00f4 01       		.uleb128 0x1
+ 657 00f5 9C       		.byte	0x9c
+ 658 00f6 09010000 		.4byte	0x109
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 15
 
 
- 659 0106 91       		.byte	0x91
- 660 0107 77       		.sleb128 -9
- 661 0108 00       		.byte	0
- 662 0109 06       		.uleb128 0x6
- 663 010a 77010000 		.4byte	.LASF19
- 664 010e 01       		.byte	0x1
- 665 010f 32       		.byte	0x32
- 666 0110 81000000 		.4byte	0x81
- 667 0114 00000000 		.4byte	.LFB36
- 668 0118 40000000 		.4byte	.LFE36-.LFB36
- 669 011c 01       		.uleb128 0x1
- 670 011d 9C       		.byte	0x9c
- 671 011e 31010000 		.4byte	0x131
- 672 0122 07       		.uleb128 0x7
- 673 0123 00000000 		.4byte	.LASF20
- 674 0127 01       		.byte	0x1
- 675 0128 32       		.byte	0x32
- 676 0129 6B000000 		.4byte	0x6b
- 677 012d 02       		.uleb128 0x2
- 678 012e 91       		.byte	0x91
- 679 012f 77       		.sleb128 -9
- 680 0130 00       		.byte	0
- 681 0131 06       		.uleb128 0x6
- 682 0132 3C020000 		.4byte	.LASF21
- 683 0136 01       		.byte	0x1
- 684 0137 41       		.byte	0x41
- 685 0138 81000000 		.4byte	0x81
- 686 013c 00000000 		.4byte	.LFB37
- 687 0140 50000000 		.4byte	.LFE37-.LFB37
- 688 0144 01       		.uleb128 0x1
- 689 0145 9C       		.byte	0x9c
- 690 0146 67010000 		.4byte	0x167
- 691 014a 07       		.uleb128 0x7
- 692 014b 27020000 		.4byte	.LASF22
- 693 014f 01       		.byte	0x1
- 694 0150 41       		.byte	0x41
- 695 0151 6B000000 		.4byte	0x6b
- 696 0155 02       		.uleb128 0x2
- 697 0156 91       		.byte	0x91
- 698 0157 77       		.sleb128 -9
- 699 0158 07       		.uleb128 0x7
- 700 0159 07010000 		.4byte	.LASF23
- 701 015d 01       		.byte	0x1
- 702 015e 41       		.byte	0x41
- 703 015f 6B000000 		.4byte	0x6b
- 704 0163 02       		.uleb128 0x2
- 705 0164 91       		.byte	0x91
- 706 0165 76       		.sleb128 -10
- 707 0166 00       		.byte	0
- 708 0167 06       		.uleb128 0x6
- 709 0168 06020000 		.4byte	.LASF24
- 710 016c 01       		.byte	0x1
- 711 016d 51       		.byte	0x51
- 712 016e 81000000 		.4byte	0x81
- 713 0172 00000000 		.4byte	.LFB38
- 714 0176 46000000 		.4byte	.LFE38-.LFB38
- 715 017a 01       		.uleb128 0x1
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 16
+ 659 00fa 08       		.uleb128 0x8
+ 660 00fb 68756D00 		.ascii	"hum\000"
+ 661 00ff 01       		.byte	0x1
+ 662 0100 23       		.byte	0x23
+ 663 0101 6B000000 		.4byte	0x6b
+ 664 0105 02       		.uleb128 0x2
+ 665 0106 91       		.byte	0x91
+ 666 0107 77       		.sleb128 -9
+ 667 0108 00       		.byte	0
+ 668 0109 06       		.uleb128 0x6
+ 669 010a 77010000 		.4byte	.LASF19
+ 670 010e 01       		.byte	0x1
+ 671 010f 32       		.byte	0x32
+ 672 0110 81000000 		.4byte	0x81
+ 673 0114 00000000 		.4byte	.LFB36
+ 674 0118 40000000 		.4byte	.LFE36-.LFB36
+ 675 011c 01       		.uleb128 0x1
+ 676 011d 9C       		.byte	0x9c
+ 677 011e 31010000 		.4byte	0x131
+ 678 0122 07       		.uleb128 0x7
+ 679 0123 00000000 		.4byte	.LASF20
+ 680 0127 01       		.byte	0x1
+ 681 0128 32       		.byte	0x32
+ 682 0129 6B000000 		.4byte	0x6b
+ 683 012d 02       		.uleb128 0x2
+ 684 012e 91       		.byte	0x91
+ 685 012f 77       		.sleb128 -9
+ 686 0130 00       		.byte	0
+ 687 0131 06       		.uleb128 0x6
+ 688 0132 3C020000 		.4byte	.LASF21
+ 689 0136 01       		.byte	0x1
+ 690 0137 41       		.byte	0x41
+ 691 0138 81000000 		.4byte	0x81
+ 692 013c 00000000 		.4byte	.LFB37
+ 693 0140 5A000000 		.4byte	.LFE37-.LFB37
+ 694 0144 01       		.uleb128 0x1
+ 695 0145 9C       		.byte	0x9c
+ 696 0146 67010000 		.4byte	0x167
+ 697 014a 07       		.uleb128 0x7
+ 698 014b 27020000 		.4byte	.LASF22
+ 699 014f 01       		.byte	0x1
+ 700 0150 41       		.byte	0x41
+ 701 0151 6B000000 		.4byte	0x6b
+ 702 0155 02       		.uleb128 0x2
+ 703 0156 91       		.byte	0x91
+ 704 0157 77       		.sleb128 -9
+ 705 0158 07       		.uleb128 0x7
+ 706 0159 07010000 		.4byte	.LASF23
+ 707 015d 01       		.byte	0x1
+ 708 015e 41       		.byte	0x41
+ 709 015f 6B000000 		.4byte	0x6b
+ 710 0163 02       		.uleb128 0x2
+ 711 0164 91       		.byte	0x91
+ 712 0165 76       		.sleb128 -10
+ 713 0166 00       		.byte	0
+ 714 0167 06       		.uleb128 0x6
+ 715 0168 06020000 		.4byte	.LASF24
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 16
 
 
- 716 017b 9C       		.byte	0x9c
- 717 017c 9D010000 		.4byte	0x19d
- 718 0180 07       		.uleb128 0x7
- 719 0181 06000000 		.4byte	.LASF25
- 720 0185 01       		.byte	0x1
- 721 0186 51       		.byte	0x51
- 722 0187 81000000 		.4byte	0x81
- 723 018b 02       		.uleb128 0x2
- 724 018c 91       		.byte	0x91
- 725 018d 77       		.sleb128 -9
- 726 018e 07       		.uleb128 0x7
- 727 018f C9000000 		.4byte	.LASF26
- 728 0193 01       		.byte	0x1
- 729 0194 51       		.byte	0x51
- 730 0195 6B000000 		.4byte	0x6b
- 731 0199 02       		.uleb128 0x2
- 732 019a 91       		.byte	0x91
- 733 019b 76       		.sleb128 -10
- 734 019c 00       		.byte	0
- 735 019d 06       		.uleb128 0x6
- 736 019e F5000000 		.4byte	.LASF27
- 737 01a2 01       		.byte	0x1
- 738 01a3 5F       		.byte	0x5f
- 739 01a4 81000000 		.4byte	0x81
- 740 01a8 00000000 		.4byte	.LFB39
- 741 01ac 38000000 		.4byte	.LFE39-.LFB39
- 742 01b0 01       		.uleb128 0x1
- 743 01b1 9C       		.byte	0x9c
- 744 01b2 C5010000 		.4byte	0x1c5
- 745 01b6 07       		.uleb128 0x7
- 746 01b7 D0010000 		.4byte	.LASF28
- 747 01bb 01       		.byte	0x1
- 748 01bc 5F       		.byte	0x5f
- 749 01bd 81000000 		.4byte	0x81
- 750 01c1 02       		.uleb128 0x2
- 751 01c2 91       		.byte	0x91
- 752 01c3 77       		.sleb128 -9
- 753 01c4 00       		.byte	0
- 754 01c5 06       		.uleb128 0x6
- 755 01c6 48010000 		.4byte	.LASF29
- 756 01ca 01       		.byte	0x1
- 757 01cb 6D       		.byte	0x6d
- 758 01cc 81000000 		.4byte	0x81
- 759 01d0 00000000 		.4byte	.LFB40
- 760 01d4 38000000 		.4byte	.LFE40-.LFB40
- 761 01d8 01       		.uleb128 0x1
- 762 01d9 9C       		.byte	0x9c
- 763 01da ED010000 		.4byte	0x1ed
- 764 01de 07       		.uleb128 0x7
- 765 01df 19010000 		.4byte	.LASF30
- 766 01e3 01       		.byte	0x1
- 767 01e4 6D       		.byte	0x6d
- 768 01e5 81000000 		.4byte	0x81
- 769 01e9 02       		.uleb128 0x2
- 770 01ea 91       		.byte	0x91
- 771 01eb 77       		.sleb128 -9
- 772 01ec 00       		.byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 17
+ 716 016c 01       		.byte	0x1
+ 717 016d 51       		.byte	0x51
+ 718 016e 81000000 		.4byte	0x81
+ 719 0172 00000000 		.4byte	.LFB38
+ 720 0176 46000000 		.4byte	.LFE38-.LFB38
+ 721 017a 01       		.uleb128 0x1
+ 722 017b 9C       		.byte	0x9c
+ 723 017c 9D010000 		.4byte	0x19d
+ 724 0180 07       		.uleb128 0x7
+ 725 0181 06000000 		.4byte	.LASF25
+ 726 0185 01       		.byte	0x1
+ 727 0186 51       		.byte	0x51
+ 728 0187 81000000 		.4byte	0x81
+ 729 018b 02       		.uleb128 0x2
+ 730 018c 91       		.byte	0x91
+ 731 018d 77       		.sleb128 -9
+ 732 018e 07       		.uleb128 0x7
+ 733 018f C9000000 		.4byte	.LASF26
+ 734 0193 01       		.byte	0x1
+ 735 0194 51       		.byte	0x51
+ 736 0195 6B000000 		.4byte	0x6b
+ 737 0199 02       		.uleb128 0x2
+ 738 019a 91       		.byte	0x91
+ 739 019b 76       		.sleb128 -10
+ 740 019c 00       		.byte	0
+ 741 019d 06       		.uleb128 0x6
+ 742 019e F5000000 		.4byte	.LASF27
+ 743 01a2 01       		.byte	0x1
+ 744 01a3 5F       		.byte	0x5f
+ 745 01a4 81000000 		.4byte	0x81
+ 746 01a8 00000000 		.4byte	.LFB39
+ 747 01ac 38000000 		.4byte	.LFE39-.LFB39
+ 748 01b0 01       		.uleb128 0x1
+ 749 01b1 9C       		.byte	0x9c
+ 750 01b2 C5010000 		.4byte	0x1c5
+ 751 01b6 07       		.uleb128 0x7
+ 752 01b7 D0010000 		.4byte	.LASF28
+ 753 01bb 01       		.byte	0x1
+ 754 01bc 5F       		.byte	0x5f
+ 755 01bd 81000000 		.4byte	0x81
+ 756 01c1 02       		.uleb128 0x2
+ 757 01c2 91       		.byte	0x91
+ 758 01c3 77       		.sleb128 -9
+ 759 01c4 00       		.byte	0
+ 760 01c5 06       		.uleb128 0x6
+ 761 01c6 48010000 		.4byte	.LASF29
+ 762 01ca 01       		.byte	0x1
+ 763 01cb 6D       		.byte	0x6d
+ 764 01cc 81000000 		.4byte	0x81
+ 765 01d0 00000000 		.4byte	.LFB40
+ 766 01d4 38000000 		.4byte	.LFE40-.LFB40
+ 767 01d8 01       		.uleb128 0x1
+ 768 01d9 9C       		.byte	0x9c
+ 769 01da ED010000 		.4byte	0x1ed
+ 770 01de 07       		.uleb128 0x7
+ 771 01df 19010000 		.4byte	.LASF30
+ 772 01e3 01       		.byte	0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 17
 
 
- 773 01ed 06       		.uleb128 0x6
- 774 01ee 2D000000 		.4byte	.LASF31
- 775 01f2 01       		.byte	0x1
- 776 01f3 7B       		.byte	0x7b
- 777 01f4 81000000 		.4byte	0x81
- 778 01f8 00000000 		.4byte	.LFB41
- 779 01fc 38000000 		.4byte	.LFE41-.LFB41
- 780 0200 01       		.uleb128 0x1
- 781 0201 9C       		.byte	0x9c
- 782 0202 15020000 		.4byte	0x215
- 783 0206 07       		.uleb128 0x7
- 784 0207 12020000 		.4byte	.LASF32
- 785 020b 01       		.byte	0x1
- 786 020c 7B       		.byte	0x7b
- 787 020d 81000000 		.4byte	0x81
- 788 0211 02       		.uleb128 0x2
- 789 0212 91       		.byte	0x91
- 790 0213 77       		.sleb128 -9
- 791 0214 00       		.byte	0
- 792 0215 09       		.uleb128 0x9
- 793 0216 0F010000 		.4byte	.LASF37
- 794 021a 01       		.byte	0x1
- 795 021b 89       		.byte	0x89
- 796 021c 6B000000 		.4byte	0x6b
- 797 0220 00000000 		.4byte	.LFB42
- 798 0224 12000000 		.4byte	.LFE42-.LFB42
- 799 0228 01       		.uleb128 0x1
- 800 0229 9C       		.byte	0x9c
- 801 022a 0A       		.uleb128 0xa
- 802 022b DA010000 		.4byte	.LASF38
- 803 022f 03       		.byte	0x3
- 804 0230 12       		.byte	0x12
- 805 0231 6B000000 		.4byte	0x6b
- 806 0235 05       		.uleb128 0x5
- 807 0236 03       		.byte	0x3
- 808 0237 00000000 		.4byte	receivedCommand
- 809 023b 00       		.byte	0
- 810              		.section	.debug_abbrev,"",%progbits
- 811              	.Ldebug_abbrev0:
- 812 0000 01       		.uleb128 0x1
- 813 0001 11       		.uleb128 0x11
- 814 0002 01       		.byte	0x1
- 815 0003 25       		.uleb128 0x25
- 816 0004 0E       		.uleb128 0xe
- 817 0005 13       		.uleb128 0x13
- 818 0006 0B       		.uleb128 0xb
- 819 0007 03       		.uleb128 0x3
- 820 0008 0E       		.uleb128 0xe
- 821 0009 1B       		.uleb128 0x1b
- 822 000a 0E       		.uleb128 0xe
- 823 000b 55       		.uleb128 0x55
- 824 000c 17       		.uleb128 0x17
- 825 000d 11       		.uleb128 0x11
- 826 000e 01       		.uleb128 0x1
- 827 000f 10       		.uleb128 0x10
- 828 0010 17       		.uleb128 0x17
- 829 0011 00       		.byte	0
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 18
+ 773 01e4 6D       		.byte	0x6d
+ 774 01e5 81000000 		.4byte	0x81
+ 775 01e9 02       		.uleb128 0x2
+ 776 01ea 91       		.byte	0x91
+ 777 01eb 77       		.sleb128 -9
+ 778 01ec 00       		.byte	0
+ 779 01ed 06       		.uleb128 0x6
+ 780 01ee 2D000000 		.4byte	.LASF31
+ 781 01f2 01       		.byte	0x1
+ 782 01f3 7B       		.byte	0x7b
+ 783 01f4 81000000 		.4byte	0x81
+ 784 01f8 00000000 		.4byte	.LFB41
+ 785 01fc 38000000 		.4byte	.LFE41-.LFB41
+ 786 0200 01       		.uleb128 0x1
+ 787 0201 9C       		.byte	0x9c
+ 788 0202 15020000 		.4byte	0x215
+ 789 0206 07       		.uleb128 0x7
+ 790 0207 12020000 		.4byte	.LASF32
+ 791 020b 01       		.byte	0x1
+ 792 020c 7B       		.byte	0x7b
+ 793 020d 81000000 		.4byte	0x81
+ 794 0211 02       		.uleb128 0x2
+ 795 0212 91       		.byte	0x91
+ 796 0213 77       		.sleb128 -9
+ 797 0214 00       		.byte	0
+ 798 0215 09       		.uleb128 0x9
+ 799 0216 0F010000 		.4byte	.LASF37
+ 800 021a 01       		.byte	0x1
+ 801 021b 89       		.byte	0x89
+ 802 021c 6B000000 		.4byte	0x6b
+ 803 0220 00000000 		.4byte	.LFB42
+ 804 0224 12000000 		.4byte	.LFE42-.LFB42
+ 805 0228 01       		.uleb128 0x1
+ 806 0229 9C       		.byte	0x9c
+ 807 022a 0A       		.uleb128 0xa
+ 808 022b DA010000 		.4byte	.LASF38
+ 809 022f 03       		.byte	0x3
+ 810 0230 12       		.byte	0x12
+ 811 0231 6B000000 		.4byte	0x6b
+ 812 0235 05       		.uleb128 0x5
+ 813 0236 03       		.byte	0x3
+ 814 0237 00000000 		.4byte	receivedCommand
+ 815 023b 00       		.byte	0
+ 816              		.section	.debug_abbrev,"",%progbits
+ 817              	.Ldebug_abbrev0:
+ 818 0000 01       		.uleb128 0x1
+ 819 0001 11       		.uleb128 0x11
+ 820 0002 01       		.byte	0x1
+ 821 0003 25       		.uleb128 0x25
+ 822 0004 0E       		.uleb128 0xe
+ 823 0005 13       		.uleb128 0x13
+ 824 0006 0B       		.uleb128 0xb
+ 825 0007 03       		.uleb128 0x3
+ 826 0008 0E       		.uleb128 0xe
+ 827 0009 1B       		.uleb128 0x1b
+ 828 000a 0E       		.uleb128 0xe
+ 829 000b 55       		.uleb128 0x55
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 18
 
 
- 830 0012 00       		.byte	0
- 831 0013 02       		.uleb128 0x2
- 832 0014 24       		.uleb128 0x24
- 833 0015 00       		.byte	0
- 834 0016 0B       		.uleb128 0xb
- 835 0017 0B       		.uleb128 0xb
- 836 0018 3E       		.uleb128 0x3e
- 837 0019 0B       		.uleb128 0xb
- 838 001a 03       		.uleb128 0x3
- 839 001b 0E       		.uleb128 0xe
- 840 001c 00       		.byte	0
- 841 001d 00       		.byte	0
- 842 001e 03       		.uleb128 0x3
- 843 001f 24       		.uleb128 0x24
- 844 0020 00       		.byte	0
- 845 0021 0B       		.uleb128 0xb
- 846 0022 0B       		.uleb128 0xb
- 847 0023 3E       		.uleb128 0x3e
- 848 0024 0B       		.uleb128 0xb
- 849 0025 03       		.uleb128 0x3
- 850 0026 08       		.uleb128 0x8
- 851 0027 00       		.byte	0
- 852 0028 00       		.byte	0
- 853 0029 04       		.uleb128 0x4
- 854 002a 16       		.uleb128 0x16
- 855 002b 00       		.byte	0
- 856 002c 03       		.uleb128 0x3
- 857 002d 0E       		.uleb128 0xe
- 858 002e 3A       		.uleb128 0x3a
- 859 002f 0B       		.uleb128 0xb
- 860 0030 3B       		.uleb128 0x3b
- 861 0031 0B       		.uleb128 0xb
- 862 0032 49       		.uleb128 0x49
- 863 0033 13       		.uleb128 0x13
- 864 0034 00       		.byte	0
- 865 0035 00       		.byte	0
- 866 0036 05       		.uleb128 0x5
- 867 0037 2E       		.uleb128 0x2e
- 868 0038 00       		.byte	0
- 869 0039 3F       		.uleb128 0x3f
- 870 003a 19       		.uleb128 0x19
- 871 003b 03       		.uleb128 0x3
- 872 003c 0E       		.uleb128 0xe
- 873 003d 3A       		.uleb128 0x3a
- 874 003e 0B       		.uleb128 0xb
- 875 003f 3B       		.uleb128 0x3b
- 876 0040 0B       		.uleb128 0xb
- 877 0041 27       		.uleb128 0x27
- 878 0042 19       		.uleb128 0x19
- 879 0043 11       		.uleb128 0x11
- 880 0044 01       		.uleb128 0x1
- 881 0045 12       		.uleb128 0x12
- 882 0046 06       		.uleb128 0x6
- 883 0047 40       		.uleb128 0x40
- 884 0048 18       		.uleb128 0x18
- 885 0049 9642     		.uleb128 0x2116
- 886 004b 19       		.uleb128 0x19
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 19
+ 830 000c 17       		.uleb128 0x17
+ 831 000d 11       		.uleb128 0x11
+ 832 000e 01       		.uleb128 0x1
+ 833 000f 10       		.uleb128 0x10
+ 834 0010 17       		.uleb128 0x17
+ 835 0011 00       		.byte	0
+ 836 0012 00       		.byte	0
+ 837 0013 02       		.uleb128 0x2
+ 838 0014 24       		.uleb128 0x24
+ 839 0015 00       		.byte	0
+ 840 0016 0B       		.uleb128 0xb
+ 841 0017 0B       		.uleb128 0xb
+ 842 0018 3E       		.uleb128 0x3e
+ 843 0019 0B       		.uleb128 0xb
+ 844 001a 03       		.uleb128 0x3
+ 845 001b 0E       		.uleb128 0xe
+ 846 001c 00       		.byte	0
+ 847 001d 00       		.byte	0
+ 848 001e 03       		.uleb128 0x3
+ 849 001f 24       		.uleb128 0x24
+ 850 0020 00       		.byte	0
+ 851 0021 0B       		.uleb128 0xb
+ 852 0022 0B       		.uleb128 0xb
+ 853 0023 3E       		.uleb128 0x3e
+ 854 0024 0B       		.uleb128 0xb
+ 855 0025 03       		.uleb128 0x3
+ 856 0026 08       		.uleb128 0x8
+ 857 0027 00       		.byte	0
+ 858 0028 00       		.byte	0
+ 859 0029 04       		.uleb128 0x4
+ 860 002a 16       		.uleb128 0x16
+ 861 002b 00       		.byte	0
+ 862 002c 03       		.uleb128 0x3
+ 863 002d 0E       		.uleb128 0xe
+ 864 002e 3A       		.uleb128 0x3a
+ 865 002f 0B       		.uleb128 0xb
+ 866 0030 3B       		.uleb128 0x3b
+ 867 0031 0B       		.uleb128 0xb
+ 868 0032 49       		.uleb128 0x49
+ 869 0033 13       		.uleb128 0x13
+ 870 0034 00       		.byte	0
+ 871 0035 00       		.byte	0
+ 872 0036 05       		.uleb128 0x5
+ 873 0037 2E       		.uleb128 0x2e
+ 874 0038 00       		.byte	0
+ 875 0039 3F       		.uleb128 0x3f
+ 876 003a 19       		.uleb128 0x19
+ 877 003b 03       		.uleb128 0x3
+ 878 003c 0E       		.uleb128 0xe
+ 879 003d 3A       		.uleb128 0x3a
+ 880 003e 0B       		.uleb128 0xb
+ 881 003f 3B       		.uleb128 0x3b
+ 882 0040 0B       		.uleb128 0xb
+ 883 0041 27       		.uleb128 0x27
+ 884 0042 19       		.uleb128 0x19
+ 885 0043 11       		.uleb128 0x11
+ 886 0044 01       		.uleb128 0x1
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 19
 
 
- 887 004c 00       		.byte	0
- 888 004d 00       		.byte	0
- 889 004e 06       		.uleb128 0x6
- 890 004f 2E       		.uleb128 0x2e
- 891 0050 01       		.byte	0x1
- 892 0051 3F       		.uleb128 0x3f
- 893 0052 19       		.uleb128 0x19
- 894 0053 03       		.uleb128 0x3
- 895 0054 0E       		.uleb128 0xe
- 896 0055 3A       		.uleb128 0x3a
- 897 0056 0B       		.uleb128 0xb
- 898 0057 3B       		.uleb128 0x3b
- 899 0058 0B       		.uleb128 0xb
- 900 0059 27       		.uleb128 0x27
- 901 005a 19       		.uleb128 0x19
- 902 005b 49       		.uleb128 0x49
- 903 005c 13       		.uleb128 0x13
- 904 005d 11       		.uleb128 0x11
- 905 005e 01       		.uleb128 0x1
- 906 005f 12       		.uleb128 0x12
- 907 0060 06       		.uleb128 0x6
- 908 0061 40       		.uleb128 0x40
- 909 0062 18       		.uleb128 0x18
- 910 0063 9642     		.uleb128 0x2116
- 911 0065 19       		.uleb128 0x19
- 912 0066 01       		.uleb128 0x1
- 913 0067 13       		.uleb128 0x13
- 914 0068 00       		.byte	0
- 915 0069 00       		.byte	0
- 916 006a 07       		.uleb128 0x7
- 917 006b 05       		.uleb128 0x5
- 918 006c 00       		.byte	0
- 919 006d 03       		.uleb128 0x3
- 920 006e 0E       		.uleb128 0xe
- 921 006f 3A       		.uleb128 0x3a
- 922 0070 0B       		.uleb128 0xb
- 923 0071 3B       		.uleb128 0x3b
- 924 0072 0B       		.uleb128 0xb
- 925 0073 49       		.uleb128 0x49
- 926 0074 13       		.uleb128 0x13
- 927 0075 02       		.uleb128 0x2
- 928 0076 18       		.uleb128 0x18
- 929 0077 00       		.byte	0
- 930 0078 00       		.byte	0
- 931 0079 08       		.uleb128 0x8
- 932 007a 05       		.uleb128 0x5
- 933 007b 00       		.byte	0
- 934 007c 03       		.uleb128 0x3
- 935 007d 08       		.uleb128 0x8
- 936 007e 3A       		.uleb128 0x3a
- 937 007f 0B       		.uleb128 0xb
- 938 0080 3B       		.uleb128 0x3b
- 939 0081 0B       		.uleb128 0xb
- 940 0082 49       		.uleb128 0x49
- 941 0083 13       		.uleb128 0x13
- 942 0084 02       		.uleb128 0x2
- 943 0085 18       		.uleb128 0x18
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 20
+ 887 0045 12       		.uleb128 0x12
+ 888 0046 06       		.uleb128 0x6
+ 889 0047 40       		.uleb128 0x40
+ 890 0048 18       		.uleb128 0x18
+ 891 0049 9642     		.uleb128 0x2116
+ 892 004b 19       		.uleb128 0x19
+ 893 004c 00       		.byte	0
+ 894 004d 00       		.byte	0
+ 895 004e 06       		.uleb128 0x6
+ 896 004f 2E       		.uleb128 0x2e
+ 897 0050 01       		.byte	0x1
+ 898 0051 3F       		.uleb128 0x3f
+ 899 0052 19       		.uleb128 0x19
+ 900 0053 03       		.uleb128 0x3
+ 901 0054 0E       		.uleb128 0xe
+ 902 0055 3A       		.uleb128 0x3a
+ 903 0056 0B       		.uleb128 0xb
+ 904 0057 3B       		.uleb128 0x3b
+ 905 0058 0B       		.uleb128 0xb
+ 906 0059 27       		.uleb128 0x27
+ 907 005a 19       		.uleb128 0x19
+ 908 005b 49       		.uleb128 0x49
+ 909 005c 13       		.uleb128 0x13
+ 910 005d 11       		.uleb128 0x11
+ 911 005e 01       		.uleb128 0x1
+ 912 005f 12       		.uleb128 0x12
+ 913 0060 06       		.uleb128 0x6
+ 914 0061 40       		.uleb128 0x40
+ 915 0062 18       		.uleb128 0x18
+ 916 0063 9642     		.uleb128 0x2116
+ 917 0065 19       		.uleb128 0x19
+ 918 0066 01       		.uleb128 0x1
+ 919 0067 13       		.uleb128 0x13
+ 920 0068 00       		.byte	0
+ 921 0069 00       		.byte	0
+ 922 006a 07       		.uleb128 0x7
+ 923 006b 05       		.uleb128 0x5
+ 924 006c 00       		.byte	0
+ 925 006d 03       		.uleb128 0x3
+ 926 006e 0E       		.uleb128 0xe
+ 927 006f 3A       		.uleb128 0x3a
+ 928 0070 0B       		.uleb128 0xb
+ 929 0071 3B       		.uleb128 0x3b
+ 930 0072 0B       		.uleb128 0xb
+ 931 0073 49       		.uleb128 0x49
+ 932 0074 13       		.uleb128 0x13
+ 933 0075 02       		.uleb128 0x2
+ 934 0076 18       		.uleb128 0x18
+ 935 0077 00       		.byte	0
+ 936 0078 00       		.byte	0
+ 937 0079 08       		.uleb128 0x8
+ 938 007a 05       		.uleb128 0x5
+ 939 007b 00       		.byte	0
+ 940 007c 03       		.uleb128 0x3
+ 941 007d 08       		.uleb128 0x8
+ 942 007e 3A       		.uleb128 0x3a
+ 943 007f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 20
 
 
- 944 0086 00       		.byte	0
- 945 0087 00       		.byte	0
- 946 0088 09       		.uleb128 0x9
- 947 0089 2E       		.uleb128 0x2e
- 948 008a 00       		.byte	0
- 949 008b 3F       		.uleb128 0x3f
- 950 008c 19       		.uleb128 0x19
- 951 008d 03       		.uleb128 0x3
- 952 008e 0E       		.uleb128 0xe
- 953 008f 3A       		.uleb128 0x3a
- 954 0090 0B       		.uleb128 0xb
- 955 0091 3B       		.uleb128 0x3b
- 956 0092 0B       		.uleb128 0xb
- 957 0093 27       		.uleb128 0x27
- 958 0094 19       		.uleb128 0x19
- 959 0095 49       		.uleb128 0x49
- 960 0096 13       		.uleb128 0x13
- 961 0097 11       		.uleb128 0x11
- 962 0098 01       		.uleb128 0x1
- 963 0099 12       		.uleb128 0x12
- 964 009a 06       		.uleb128 0x6
- 965 009b 40       		.uleb128 0x40
- 966 009c 18       		.uleb128 0x18
- 967 009d 9642     		.uleb128 0x2116
- 968 009f 19       		.uleb128 0x19
- 969 00a0 00       		.byte	0
- 970 00a1 00       		.byte	0
- 971 00a2 0A       		.uleb128 0xa
- 972 00a3 34       		.uleb128 0x34
- 973 00a4 00       		.byte	0
- 974 00a5 03       		.uleb128 0x3
- 975 00a6 0E       		.uleb128 0xe
- 976 00a7 3A       		.uleb128 0x3a
- 977 00a8 0B       		.uleb128 0xb
- 978 00a9 3B       		.uleb128 0x3b
- 979 00aa 0B       		.uleb128 0xb
- 980 00ab 49       		.uleb128 0x49
- 981 00ac 13       		.uleb128 0x13
- 982 00ad 3F       		.uleb128 0x3f
- 983 00ae 19       		.uleb128 0x19
- 984 00af 02       		.uleb128 0x2
- 985 00b0 18       		.uleb128 0x18
- 986 00b1 00       		.byte	0
- 987 00b2 00       		.byte	0
- 988 00b3 00       		.byte	0
- 989              		.section	.debug_aranges,"",%progbits
- 990 0000 64000000 		.4byte	0x64
- 991 0004 0200     		.2byte	0x2
- 992 0006 00000000 		.4byte	.Ldebug_info0
- 993 000a 04       		.byte	0x4
- 994 000b 00       		.byte	0
- 995 000c 0000     		.2byte	0
- 996 000e 0000     		.2byte	0
- 997 0010 00000000 		.4byte	.LFB33
- 998 0014 0C000000 		.4byte	.LFE33-.LFB33
- 999 0018 00000000 		.4byte	.LFB34
- 1000 001c 40000000 		.4byte	.LFE34-.LFB34
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 21
+ 944 0080 3B       		.uleb128 0x3b
+ 945 0081 0B       		.uleb128 0xb
+ 946 0082 49       		.uleb128 0x49
+ 947 0083 13       		.uleb128 0x13
+ 948 0084 02       		.uleb128 0x2
+ 949 0085 18       		.uleb128 0x18
+ 950 0086 00       		.byte	0
+ 951 0087 00       		.byte	0
+ 952 0088 09       		.uleb128 0x9
+ 953 0089 2E       		.uleb128 0x2e
+ 954 008a 00       		.byte	0
+ 955 008b 3F       		.uleb128 0x3f
+ 956 008c 19       		.uleb128 0x19
+ 957 008d 03       		.uleb128 0x3
+ 958 008e 0E       		.uleb128 0xe
+ 959 008f 3A       		.uleb128 0x3a
+ 960 0090 0B       		.uleb128 0xb
+ 961 0091 3B       		.uleb128 0x3b
+ 962 0092 0B       		.uleb128 0xb
+ 963 0093 27       		.uleb128 0x27
+ 964 0094 19       		.uleb128 0x19
+ 965 0095 49       		.uleb128 0x49
+ 966 0096 13       		.uleb128 0x13
+ 967 0097 11       		.uleb128 0x11
+ 968 0098 01       		.uleb128 0x1
+ 969 0099 12       		.uleb128 0x12
+ 970 009a 06       		.uleb128 0x6
+ 971 009b 40       		.uleb128 0x40
+ 972 009c 18       		.uleb128 0x18
+ 973 009d 9642     		.uleb128 0x2116
+ 974 009f 19       		.uleb128 0x19
+ 975 00a0 00       		.byte	0
+ 976 00a1 00       		.byte	0
+ 977 00a2 0A       		.uleb128 0xa
+ 978 00a3 34       		.uleb128 0x34
+ 979 00a4 00       		.byte	0
+ 980 00a5 03       		.uleb128 0x3
+ 981 00a6 0E       		.uleb128 0xe
+ 982 00a7 3A       		.uleb128 0x3a
+ 983 00a8 0B       		.uleb128 0xb
+ 984 00a9 3B       		.uleb128 0x3b
+ 985 00aa 0B       		.uleb128 0xb
+ 986 00ab 49       		.uleb128 0x49
+ 987 00ac 13       		.uleb128 0x13
+ 988 00ad 3F       		.uleb128 0x3f
+ 989 00ae 19       		.uleb128 0x19
+ 990 00af 02       		.uleb128 0x2
+ 991 00b0 18       		.uleb128 0x18
+ 992 00b1 00       		.byte	0
+ 993 00b2 00       		.byte	0
+ 994 00b3 00       		.byte	0
+ 995              		.section	.debug_aranges,"",%progbits
+ 996 0000 64000000 		.4byte	0x64
+ 997 0004 0200     		.2byte	0x2
+ 998 0006 00000000 		.4byte	.Ldebug_info0
+ 999 000a 04       		.byte	0x4
+ 1000 000b 00       		.byte	0
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 21
 
 
- 1001 0020 00000000 		.4byte	.LFB35
- 1002 0024 40000000 		.4byte	.LFE35-.LFB35
- 1003 0028 00000000 		.4byte	.LFB36
- 1004 002c 40000000 		.4byte	.LFE36-.LFB36
- 1005 0030 00000000 		.4byte	.LFB37
- 1006 0034 50000000 		.4byte	.LFE37-.LFB37
- 1007 0038 00000000 		.4byte	.LFB38
- 1008 003c 46000000 		.4byte	.LFE38-.LFB38
- 1009 0040 00000000 		.4byte	.LFB39
- 1010 0044 38000000 		.4byte	.LFE39-.LFB39
- 1011 0048 00000000 		.4byte	.LFB40
- 1012 004c 38000000 		.4byte	.LFE40-.LFB40
- 1013 0050 00000000 		.4byte	.LFB41
- 1014 0054 38000000 		.4byte	.LFE41-.LFB41
- 1015 0058 00000000 		.4byte	.LFB42
- 1016 005c 12000000 		.4byte	.LFE42-.LFB42
- 1017 0060 00000000 		.4byte	0
- 1018 0064 00000000 		.4byte	0
- 1019              		.section	.debug_ranges,"",%progbits
- 1020              	.Ldebug_ranges0:
- 1021 0000 00000000 		.4byte	.LFB33
- 1022 0004 0C000000 		.4byte	.LFE33
- 1023 0008 00000000 		.4byte	.LFB34
- 1024 000c 40000000 		.4byte	.LFE34
- 1025 0010 00000000 		.4byte	.LFB35
- 1026 0014 40000000 		.4byte	.LFE35
- 1027 0018 00000000 		.4byte	.LFB36
- 1028 001c 40000000 		.4byte	.LFE36
- 1029 0020 00000000 		.4byte	.LFB37
- 1030 0024 50000000 		.4byte	.LFE37
- 1031 0028 00000000 		.4byte	.LFB38
- 1032 002c 46000000 		.4byte	.LFE38
- 1033 0030 00000000 		.4byte	.LFB39
- 1034 0034 38000000 		.4byte	.LFE39
- 1035 0038 00000000 		.4byte	.LFB40
- 1036 003c 38000000 		.4byte	.LFE40
- 1037 0040 00000000 		.4byte	.LFB41
- 1038 0044 38000000 		.4byte	.LFE41
- 1039 0048 00000000 		.4byte	.LFB42
- 1040 004c 12000000 		.4byte	.LFE42
- 1041 0050 00000000 		.4byte	0
- 1042 0054 00000000 		.4byte	0
- 1043              		.section	.debug_line,"",%progbits
- 1044              	.Ldebug_line0:
- 1045 0000 40010000 		.section	.debug_str,"MS",%progbits,1
- 1045      02005D00 
- 1045      00000201 
- 1045      FB0E0D00 
- 1045      01010101 
- 1046              	.LASF20:
- 1047 0000 6C696768 		.ascii	"light\000"
- 1047      7400
- 1048              	.LASF25:
- 1049 0006 68656174 		.ascii	"heatStatus\000"
- 1049      53746174 
- 1049      757300
- 1050              	.LASF4:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 22
+ 1001 000c 0000     		.2byte	0
+ 1002 000e 0000     		.2byte	0
+ 1003 0010 00000000 		.4byte	.LFB33
+ 1004 0014 0C000000 		.4byte	.LFE33-.LFB33
+ 1005 0018 00000000 		.4byte	.LFB34
+ 1006 001c 40000000 		.4byte	.LFE34-.LFB34
+ 1007 0020 00000000 		.4byte	.LFB35
+ 1008 0024 40000000 		.4byte	.LFE35-.LFB35
+ 1009 0028 00000000 		.4byte	.LFB36
+ 1010 002c 40000000 		.4byte	.LFE36-.LFB36
+ 1011 0030 00000000 		.4byte	.LFB37
+ 1012 0034 5A000000 		.4byte	.LFE37-.LFB37
+ 1013 0038 00000000 		.4byte	.LFB38
+ 1014 003c 46000000 		.4byte	.LFE38-.LFB38
+ 1015 0040 00000000 		.4byte	.LFB39
+ 1016 0044 38000000 		.4byte	.LFE39-.LFB39
+ 1017 0048 00000000 		.4byte	.LFB40
+ 1018 004c 38000000 		.4byte	.LFE40-.LFB40
+ 1019 0050 00000000 		.4byte	.LFB41
+ 1020 0054 38000000 		.4byte	.LFE41-.LFB41
+ 1021 0058 00000000 		.4byte	.LFB42
+ 1022 005c 12000000 		.4byte	.LFE42-.LFB42
+ 1023 0060 00000000 		.4byte	0
+ 1024 0064 00000000 		.4byte	0
+ 1025              		.section	.debug_ranges,"",%progbits
+ 1026              	.Ldebug_ranges0:
+ 1027 0000 00000000 		.4byte	.LFB33
+ 1028 0004 0C000000 		.4byte	.LFE33
+ 1029 0008 00000000 		.4byte	.LFB34
+ 1030 000c 40000000 		.4byte	.LFE34
+ 1031 0010 00000000 		.4byte	.LFB35
+ 1032 0014 40000000 		.4byte	.LFE35
+ 1033 0018 00000000 		.4byte	.LFB36
+ 1034 001c 40000000 		.4byte	.LFE36
+ 1035 0020 00000000 		.4byte	.LFB37
+ 1036 0024 5A000000 		.4byte	.LFE37
+ 1037 0028 00000000 		.4byte	.LFB38
+ 1038 002c 46000000 		.4byte	.LFE38
+ 1039 0030 00000000 		.4byte	.LFB39
+ 1040 0034 38000000 		.4byte	.LFE39
+ 1041 0038 00000000 		.4byte	.LFB40
+ 1042 003c 38000000 		.4byte	.LFE40
+ 1043 0040 00000000 		.4byte	.LFB41
+ 1044 0044 38000000 		.4byte	.LFE41
+ 1045 0048 00000000 		.4byte	.LFB42
+ 1046 004c 12000000 		.4byte	.LFE42
+ 1047 0050 00000000 		.4byte	0
+ 1048 0054 00000000 		.4byte	0
+ 1049              		.section	.debug_line,"",%progbits
+ 1050              	.Ldebug_line0:
+ 1051 0000 47010000 		.section	.debug_str,"MS",%progbits,1
+ 1051      02005D00 
+ 1051      00000201 
+ 1051      FB0E0D00 
+ 1051      01010101 
+ 1052              	.LASF20:
+ 1053 0000 6C696768 		.ascii	"light\000"
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 22
 
 
- 1051 0011 6C6F6E67 		.ascii	"long int\000"
- 1051      20696E74 
- 1051      00
- 1052              	.LASF3:
- 1053 001a 73686F72 		.ascii	"short unsigned int\000"
- 1053      7420756E 
- 1053      7369676E 
- 1053      65642069 
- 1053      6E7400
- 1054              	.LASF31:
- 1055 002d 72657370 		.ascii	"respondIrri\000"
- 1055      6F6E6449 
- 1055      72726900 
- 1056              	.LASF12:
- 1057 0039 666C6F61 		.ascii	"float\000"
- 1057      7400
- 1058              	.LASF33:
- 1059 003f 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1059      4320342E 
- 1059      382E3420 
- 1059      32303134 
- 1059      30353236 
- 1060 0072 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 1060      20726576 
- 1060      6973696F 
- 1060      6E203231 
- 1060      31333538 
- 1061 00a5 30202D66 		.ascii	"0 -ffunction-sections\000"
- 1061      66756E63 
- 1061      74696F6E 
- 1061      2D736563 
- 1061      74696F6E 
- 1062              	.LASF1:
- 1063 00bb 756E7369 		.ascii	"unsigned char\000"
- 1063      676E6564 
- 1063      20636861 
- 1063      7200
- 1064              	.LASF26:
- 1065 00c9 6F6E4F66 		.ascii	"onOff\000"
- 1065      6600
- 1066              	.LASF36:
- 1067 00cf 696E6974 		.ascii	"initUART\000"
- 1067      55415254 
- 1067      00
- 1068              	.LASF5:
- 1069 00d8 6C6F6E67 		.ascii	"long unsigned int\000"
- 1069      20756E73 
- 1069      69676E65 
- 1069      6420696E 
- 1069      7400
- 1070              	.LASF18:
- 1071 00ea 74656D70 		.ascii	"temp\000"
- 1071      00
- 1072              	.LASF9:
- 1073 00ef 75696E74 		.ascii	"uint8\000"
- 1073      3800
- 1074              	.LASF27:
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 23
+ 1053      7400
+ 1054              	.LASF25:
+ 1055 0006 68656174 		.ascii	"heatStatus\000"
+ 1055      53746174 
+ 1055      757300
+ 1056              	.LASF4:
+ 1057 0011 6C6F6E67 		.ascii	"long int\000"
+ 1057      20696E74 
+ 1057      00
+ 1058              	.LASF3:
+ 1059 001a 73686F72 		.ascii	"short unsigned int\000"
+ 1059      7420756E 
+ 1059      7369676E 
+ 1059      65642069 
+ 1059      6E7400
+ 1060              	.LASF31:
+ 1061 002d 72657370 		.ascii	"respondIrri\000"
+ 1061      6F6E6449 
+ 1061      72726900 
+ 1062              	.LASF12:
+ 1063 0039 666C6F61 		.ascii	"float\000"
+ 1063      7400
+ 1064              	.LASF33:
+ 1065 003f 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1065      4320342E 
+ 1065      382E3420 
+ 1065      32303134 
+ 1065      30353236 
+ 1066 0072 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1066      20726576 
+ 1066      6973696F 
+ 1066      6E203231 
+ 1066      31333538 
+ 1067 00a5 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1067      66756E63 
+ 1067      74696F6E 
+ 1067      2D736563 
+ 1067      74696F6E 
+ 1068              	.LASF1:
+ 1069 00bb 756E7369 		.ascii	"unsigned char\000"
+ 1069      676E6564 
+ 1069      20636861 
+ 1069      7200
+ 1070              	.LASF26:
+ 1071 00c9 6F6E4F66 		.ascii	"onOff\000"
+ 1071      6600
+ 1072              	.LASF36:
+ 1073 00cf 696E6974 		.ascii	"initUART\000"
+ 1073      55415254 
+ 1073      00
+ 1074              	.LASF5:
+ 1075 00d8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1075      20756E73 
+ 1075      69676E65 
+ 1075      6420696E 
+ 1075      7400
+ 1076              	.LASF18:
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 23
 
 
- 1075 00f5 72657370 		.ascii	"respondWin\000"
- 1075      6F6E6457 
- 1075      696E00
- 1076              	.LASF13:
- 1077 0100 646F7562 		.ascii	"double\000"
- 1077      6C6500
- 1078              	.LASF23:
- 1079 0107 736F696C 		.ascii	"soilHum\000"
- 1079      48756D00 
- 1080              	.LASF37:
- 1081 010f 646B5265 		.ascii	"dkRequest\000"
- 1081      71756573 
- 1081      7400
- 1082              	.LASF30:
- 1083 0119 76656E74 		.ascii	"ventStatus\000"
- 1083      53746174 
- 1083      757300
- 1084              	.LASF11:
- 1085 0124 696E7438 		.ascii	"int8\000"
- 1085      00
- 1086              	.LASF10:
- 1087 0129 75696E74 		.ascii	"uint32\000"
- 1087      333200
- 1088              	.LASF8:
- 1089 0130 756E7369 		.ascii	"unsigned int\000"
- 1089      676E6564 
- 1089      20696E74 
- 1089      00
- 1090              	.LASF17:
- 1091 013d 72657370 		.ascii	"respondHum\000"
- 1091      6F6E6448 
- 1091      756D00
- 1092              	.LASF29:
- 1093 0148 72657370 		.ascii	"respondVent\000"
- 1093      6F6E6456 
- 1093      656E7400 
- 1094              	.LASF7:
- 1095 0154 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1095      206C6F6E 
- 1095      6720756E 
- 1095      7369676E 
- 1095      65642069 
- 1096              	.LASF16:
- 1097 016b 72657370 		.ascii	"respondTemp\000"
- 1097      6F6E6454 
- 1097      656D7000 
- 1098              	.LASF19:
- 1099 0177 72657370 		.ascii	"respondLight\000"
- 1099      6F6E644C 
- 1099      69676874 
- 1099      00
- 1100              	.LASF35:
- 1101 0184 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
- 1101      73657273 
- 1101      5C536E75 
- 1101      666B696E 
- 1101      5C446F63 
-ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\cc84T36g.s 			page 24
+ 1077 00ea 74656D70 		.ascii	"temp\000"
+ 1077      00
+ 1078              	.LASF9:
+ 1079 00ef 75696E74 		.ascii	"uint8\000"
+ 1079      3800
+ 1080              	.LASF27:
+ 1081 00f5 72657370 		.ascii	"respondWin\000"
+ 1081      6F6E6457 
+ 1081      696E00
+ 1082              	.LASF13:
+ 1083 0100 646F7562 		.ascii	"double\000"
+ 1083      6C6500
+ 1084              	.LASF23:
+ 1085 0107 736F696C 		.ascii	"soilHum\000"
+ 1085      48756D00 
+ 1086              	.LASF37:
+ 1087 010f 646B5265 		.ascii	"dkRequest\000"
+ 1087      71756573 
+ 1087      7400
+ 1088              	.LASF30:
+ 1089 0119 76656E74 		.ascii	"ventStatus\000"
+ 1089      53746174 
+ 1089      757300
+ 1090              	.LASF11:
+ 1091 0124 696E7438 		.ascii	"int8\000"
+ 1091      00
+ 1092              	.LASF10:
+ 1093 0129 75696E74 		.ascii	"uint32\000"
+ 1093      333200
+ 1094              	.LASF8:
+ 1095 0130 756E7369 		.ascii	"unsigned int\000"
+ 1095      676E6564 
+ 1095      20696E74 
+ 1095      00
+ 1096              	.LASF17:
+ 1097 013d 72657370 		.ascii	"respondHum\000"
+ 1097      6F6E6448 
+ 1097      756D00
+ 1098              	.LASF29:
+ 1099 0148 72657370 		.ascii	"respondVent\000"
+ 1099      6F6E6456 
+ 1099      656E7400 
+ 1100              	.LASF7:
+ 1101 0154 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1101      206C6F6E 
+ 1101      6720756E 
+ 1101      7369676E 
+ 1101      65642069 
+ 1102              	.LASF16:
+ 1103 016b 72657370 		.ascii	"respondTemp\000"
+ 1103      6F6E6454 
+ 1103      656D7000 
+ 1104              	.LASF19:
+ 1105 0177 72657370 		.ascii	"respondLight\000"
+ 1105      6F6E644C 
+ 1105      69676874 
+ 1105      00
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 24
 
 
- 1102 01b2 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
- 1102      5F4D6173 
- 1102      7465725C 
- 1102      50536F43 
- 1102      5F4D6173 
- 1103              	.LASF28:
- 1104 01d0 77696E53 		.ascii	"winStatus\000"
- 1104      74617475 
- 1104      7300
- 1105              	.LASF38:
- 1106 01da 72656365 		.ascii	"receivedCommand\000"
- 1106      69766564 
- 1106      436F6D6D 
- 1106      616E6400 
- 1107              	.LASF15:
- 1108 01ea 73697A65 		.ascii	"sizetype\000"
- 1108      74797065 
- 1108      00
- 1109              	.LASF6:
- 1110 01f3 6C6F6E67 		.ascii	"long long int\000"
- 1110      206C6F6E 
- 1110      6720696E 
- 1110      7400
- 1111              	.LASF14:
- 1112 0201 63686172 		.ascii	"char\000"
- 1112      00
- 1113              	.LASF24:
- 1114 0206 72657370 		.ascii	"respondHeat\000"
- 1114      6F6E6448 
- 1114      65617400 
- 1115              	.LASF32:
- 1116 0212 69727269 		.ascii	"irriStatus\000"
- 1116      53746174 
- 1116      757300
- 1117              	.LASF2:
- 1118 021d 73686F72 		.ascii	"short int\000"
- 1118      7420696E 
- 1118      7400
- 1119              	.LASF22:
- 1120 0227 696E6465 		.ascii	"index\000"
- 1120      7800
- 1121              	.LASF34:
- 1122 022d 2E5C5541 		.ascii	".\\UART_Class.c\000"
- 1122      52545F43 
- 1122      6C617373 
- 1122      2E6300
- 1123              	.LASF21:
- 1124 023c 72657370 		.ascii	"respondSoilHum\000"
- 1124      6F6E6453 
- 1124      6F696C48 
- 1124      756D00
- 1125              	.LASF0:
- 1126 024b 7369676E 		.ascii	"signed char\000"
- 1126      65642063 
- 1126      68617200 
- 1127              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
+ 1106              	.LASF35:
+ 1107 0184 433A5C55 		.ascii	"C:\\Users\\Snufkin\\Documents\\GitHub\\PSoC_Master\\"
+ 1107      73657273 
+ 1107      5C536E75 
+ 1107      666B696E 
+ 1107      5C446F63 
+ 1108 01b2 50536F43 		.ascii	"PSoC_Master\\PSoC_Master.cydsn\000"
+ 1108      5F4D6173 
+ 1108      7465725C 
+ 1108      50536F43 
+ 1108      5F4D6173 
+ 1109              	.LASF28:
+ 1110 01d0 77696E53 		.ascii	"winStatus\000"
+ 1110      74617475 
+ 1110      7300
+ 1111              	.LASF38:
+ 1112 01da 72656365 		.ascii	"receivedCommand\000"
+ 1112      69766564 
+ 1112      436F6D6D 
+ 1112      616E6400 
+ 1113              	.LASF15:
+ 1114 01ea 73697A65 		.ascii	"sizetype\000"
+ 1114      74797065 
+ 1114      00
+ 1115              	.LASF6:
+ 1116 01f3 6C6F6E67 		.ascii	"long long int\000"
+ 1116      206C6F6E 
+ 1116      6720696E 
+ 1116      7400
+ 1117              	.LASF14:
+ 1118 0201 63686172 		.ascii	"char\000"
+ 1118      00
+ 1119              	.LASF24:
+ 1120 0206 72657370 		.ascii	"respondHeat\000"
+ 1120      6F6E6448 
+ 1120      65617400 
+ 1121              	.LASF32:
+ 1122 0212 69727269 		.ascii	"irriStatus\000"
+ 1122      53746174 
+ 1122      757300
+ 1123              	.LASF2:
+ 1124 021d 73686F72 		.ascii	"short int\000"
+ 1124      7420696E 
+ 1124      7400
+ 1125              	.LASF22:
+ 1126 0227 696E6465 		.ascii	"index\000"
+ 1126      7800
+ 1127              	.LASF34:
+ 1128 022d 2E5C5541 		.ascii	".\\UART_Class.c\000"
+ 1128      52545F43 
+ 1128      6C617373 
+ 1128      2E6300
+ 1129              	.LASF21:
+ 1130 023c 72657370 		.ascii	"respondSoilHum\000"
+ 1130      6F6E6453 
+ 1130      6F696C48 
+ 1130      756D00
+ARM GAS  C:\Users\Snufkin\AppData\Local\Temp\ccAggAlr.s 			page 25
+
+
+ 1131              	.LASF0:
+ 1132 024b 7369676E 		.ascii	"signed char\000"
+ 1132      65642063 
+ 1132      68617200 
+ 1133              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

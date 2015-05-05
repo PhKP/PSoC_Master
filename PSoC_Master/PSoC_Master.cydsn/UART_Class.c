@@ -63,10 +63,10 @@ int8 respondLight(uint8 light){
 }
 
 int8 respondSoilHum(uint8 index, uint8 soilHum){
-    if(soilHum){
+    if(soilHum <= 10 && soilHum >= 1){
         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent to DevKit8000
         UART_UartPutChar('S');
-        UART_UartPutChar(index);
+        UART_UartPutChar(index + 48 + 1); //Conevert to ASCII and convert to 1-6.
         UART_UartPutChar(soilHum);
         return 0;
     }

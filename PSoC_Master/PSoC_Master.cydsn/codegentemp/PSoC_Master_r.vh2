@@ -1,6 +1,6 @@
 -- Project:   PSoC_Master
--- Generated: 04/28/2015 11:39:29
--- PSoC Creator  3.1 SP2
+-- Generated: 05/05/2015 16:31:42
+-- PSoC Creator  3.1 SP3
 
 ENTITY PSoC_Master IS
     PORT(

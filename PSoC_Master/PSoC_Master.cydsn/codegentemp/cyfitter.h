@@ -597,7 +597,7 @@
 #define Timer_TimerUDB_sT32_timerdp_u3__F1_REG CYREG_UDB_W8_F1_03
 
 /* Miscellaneous */
-#define CY_VERSION "PSoC Creator  3.1 SP2"
+#define CY_VERSION "PSoC Creator  3.1 SP3"
 #define CYDEV_BCLK__HFCLK__HZ 24000000U
 #define CYDEV_BCLK__HFCLK__KHZ 24000U
 #define CYDEV_BCLK__HFCLK__MHZ 24U

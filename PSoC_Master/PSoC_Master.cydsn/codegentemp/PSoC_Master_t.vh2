@@ -1,6 +1,6 @@
--- Project:   C:\Users\Snufkin\Documents\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj
--- Generated: 04/28/2015 11:39:30
--- PSoC Creator  3.1 SP2
+-- Project:   C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master\PSoC_Master.cydsn\PSoC_Master.cyprj
+-- Generated: 05/05/2015 16:31:43
+-- PSoC Creator  3.1 SP3
 
 ENTITY PSoC_Master IS
     PORT(

@@ -146,14 +146,17 @@ void uartIntHandler(void){
         }
         else if(theState == ADJI){
             if (!irrigationIndex){
-                irrigationIndex = buff;
+                irrigationIndex = buff - CONVERT_TO_ASCII;
             }
             else{
                 if (buff-CONVERT_TO_ASCII == 1){
-                    respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0xFF));
+                    respondIrri(adjustIrrigation(irrigationIndex - 1, 0xFF));
+                }
+                else if(buff - CONVERT_TO_ASCII == 0){
+                    respondIrri(adjustIrrigation(irrigationIndex - 1, 0x00));
                 }
                 else{
-                    respondIrri(adjustIrrigation(irrigationIndex-CONVERT_TO_ASCII-1, 0x00));
+                    respondIrri(-1); //Bad argument
                 }
                 irrigationIndex = 0;
                 theState = IDLE;

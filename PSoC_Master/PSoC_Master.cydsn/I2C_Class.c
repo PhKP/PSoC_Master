@@ -26,8 +26,8 @@
 //#define debugging 
 
 // Private data members
-static uint8 irrigationStatus = 0b11000000;
 static int size = 1;
+uint8 irrigationStatus = 0;
 
 // Private prototypes
 
@@ -46,6 +46,8 @@ void initI2C(void){
     //uint8 lightControl = 0b00001100;
     
     result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_COMMAND_ADDRESS, lightCommand, size, I2C_I2C_MODE_COMPLETE_XFER);
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    CyDelay(60);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
         result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_CONTROL_ADDRESS, lightControl, size, I2C_I2C_MODE_COMPLETE_XFER);
@@ -67,6 +69,8 @@ int8 adjustWindow(uint8 pos){
         // Close window
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,closeWindow,size,I2C_I2C_MODE_COMPLETE_XFER);  // This goes wrong, see if you can figure it out tomorrow??
     }
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    CyDelay(60);
     
     if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(&tempWindow, NULL, NULL, NULL))){
         if (tempWindow == pos >> 4 ){  //hacky solution when dealing with fully open/closed window
@@ -98,6 +102,8 @@ int8 adjustHeat(uint8 heat){
         // Turn off heat
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffHeat,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    CyDelay(60);
 
     if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, &temp, NULL, NULL))){
         if (temp == heat){
@@ -127,6 +133,8 @@ int8 adjustVentilation(uint8 speed){
         // Turn vent off
         result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS,turnOffVent,size,I2C_I2C_MODE_COMPLETE_XFER);
     }
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    CyDelay(60);
     
     if ((result == I2C_I2C_MSTR_NO_ERROR) && (!getActuatorStatus(NULL, NULL, &temp, NULL))){
         if (temp == speed >> 5){ //Hacky solution when not dealing with more than 2 steps
@@ -142,55 +150,44 @@ int8 adjustVentilation(uint8 speed){
 }
 
 int8 adjustIrrigation(uint8 index, uint8 onOff){
-    uint8 irriTransfer[size];
-    uint8 temp = 0xFF;
-    uint8 result = 0;
+    uint8 irriTransfer[1];
+    uint8 result;
+    
+    //getActuatorStatus(NULL, NULL, NULL, &irrigationStatus);
 
         /* In order for this code to function properly, the static int "irrigation" 
         has to get updated each time this function is called. */
-    if (onOff == 1){    // Irrigation turn on
-        irriTransfer[0] = (irrigationStatus |= (1 << index));
-        irrigationStatus = irriTransfer[0];
+    if (onOff == 0xFF){    // Irrigation turn on
+        irriTransfer[0] = (irrigationStatus |= (1 << index)) | 0b11000000;
     }
-    else if (onOff == 0){   // Irrigation turn off
-        irriTransfer[0] = (irrigationStatus &= ~(1 << index));
-        irrigationStatus = irriTransfer[0];
+    else if (onOff == 0x00){   // Irrigation turn off
+        irriTransfer[0] = (irrigationStatus &= ~(1 << index)) | 0b11000000;
     }
     else{
-    // Bad argument.
-    return -1;
+        return -1; // Bad argument.
     }
     
-    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer ,size ,I2C_I2C_MODE_COMPLETE_XFER);
- 
-    getActuatorStatus(NULL, NULL, NULL, &temp);
+    result = I2C_I2CMasterWriteBuf(ACTUATOR_ADRESS, irriTransfer, 1, I2C_I2C_MODE_COMPLETE_XFER);
+    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    CyDelay(60);
+    
+    getActuatorStatus(NULL, NULL, NULL, irriTransfer);
     
     if (result == I2C_I2C_MSTR_NO_ERROR){
-        if(temp == irrigationStatus){
+        if(irrigationStatus == irriTransfer[0]){
             return 0;
         }
-        else {
-            return -1;
-        }
     }
-    else {
-        return -1;
-    }
+    return -1;
 }
 
 int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
     uint8 result = 0;
-    int RDbuf = 2;
-    uint8 dataget[RDbuf];
-    
-    //I2C_I2CMasterClearStatus();     // Clear status flags TODO test
-    
-    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
+    uint8 dataget[2] = {0, 0};
     
     CyDelay(60);
-    
     I2C_I2CMasterClearReadBuf();
-    result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLETE_XFER);
+    result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
     
     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the dataget array to be updated
     

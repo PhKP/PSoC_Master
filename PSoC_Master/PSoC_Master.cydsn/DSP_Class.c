@@ -163,7 +163,7 @@ void avgSoilHum(uint8 index){
         else if(soilHumInRH > 100){
             soilHumInRH = 100;
         }
-        soilHum[index] = (uint8)soilHumInRH;
+        soilHum[index] = (uint8)soilHumInRH/10;
     }
     else{
     soilHum[index] = 0;

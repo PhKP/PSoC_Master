@@ -31,6 +31,7 @@ int32 tempLight;
 CY_ISR_PROTO(timer_ISR);
 CY_ISR_PROTO(UART_ISR);
 
+//----------flags0----------
 // Buffers / flags
 typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI, RESP_SOIL_HUM} state;
 volatile state theState = IDLE;
@@ -38,6 +39,7 @@ volatile int8 irrigationIndex = 0;
 uint8 uartInt = 0;
 uint8 buff;
 uint8 timerInt = 0;
+//----------flags1----------
 
 void initPSoC_Master(void){
 	tempTemp = 0;
@@ -68,13 +70,16 @@ CY_ISR(timer_ISR){
     timerInt = 1;
 }
 
+//----------UART_ISR0----------
 // UART ISR
 CY_ISR(UART_ISR){
     uartInt = 1;
     buff = dkRequest();
     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
 }
+//----------UART_ISR1----------
 
+//----------uartIntHandler0----------
 void uartIntHandler(void){
     if (uartInt){
         uartInt = 0;
@@ -173,6 +178,7 @@ void uartIntHandler(void){
         BlueLED_Write(LED_OFF);         // Turn off blue LED
     }
 }
+//----------uartIntHandler1----------
 
 void timerIntHandler(void){
     if(timerInt){

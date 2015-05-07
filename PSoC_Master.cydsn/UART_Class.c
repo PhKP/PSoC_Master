@@ -17,6 +17,7 @@ void initUART(void){
     UART_Start();                   // Starts UART component
 }
 
+//----------respondTemp0----------
 int8 respondTemp(uint8 temp){
     if(temp){
         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
@@ -31,6 +32,7 @@ int8 respondTemp(uint8 temp){
         return -1;
     }
 }
+//----------respondTemp1----------
 
 int8 respondHum(uint8 hum){
     if(hum){
@@ -134,9 +136,11 @@ int8 respondIrri(int8 irriStatus){
     }
 }
 
+//----------dkRequest0----------
 uint8 dkRequest(void){
     // Reads the UART buffer
     return UART_UartGetChar();
 }
+//----------dkRequest1----------
 
 /* [] END OF FILE */

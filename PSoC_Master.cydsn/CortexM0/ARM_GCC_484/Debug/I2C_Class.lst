@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
   18:.\I2C_Class.c **** #define ACTUATOR_ADRESS 0x42
   19:.\I2C_Class.c **** #define LIGHT_SENSOR_COMMAND_ADDRESS 0x00
   20:.\I2C_Class.c **** #define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 2
 
 
   21:.\I2C_Class.c **** #define LIGHT_SENSOR_LSB 0x04  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
   71 0024 630F     		lsr	r3, r4, #29
   72 0026 E900     		lsl	r1, r5, #3
   73 0028 7963     		str	r1, [r7, #52]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 3
 
 
   74 002a 796B     		ldr	r1, [r7, #52]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  128 0096 7960     		str	r1, [r7, #4]
  129 0098 7968     		ldr	r1, [r7, #4]
  130 009a 1143     		orr	r1, r2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 4
 
 
  131 009c 7960     		str	r1, [r7, #4]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
   51:.\I2C_Class.c ****     
   52:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
  176              		.loc 1 52 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 5
 
 
  177 00ee 3B1C     		mov	r3, r7
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  226 0002 97B0     		sub	sp, sp, #92
  227              		.cfi_def_cfa_offset 112
  228 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 6
 
 
  229              		.cfi_def_cfa_register 7
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  282 006c 0022     		mov	r2, #0
  283 006e FA61     		str	r2, [r7, #28]
  284 0070 B969     		ldr	r1, [r7, #24]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 7
 
 
  285 0072 4A0F     		lsr	r2, r1, #29
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
   63:.\I2C_Class.c ****         
   64:.\I2C_Class.c ****     if(pos == 0xFF){
  335              		.loc 1 64 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 8
 
 
  336 00ce 3B1C     		mov	r3, r7
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  382 011c FFF7FEFF 		bl	I2C_I2CMasterStatus
  383 0120 021C     		mov	r2, r0
  384 0122 0223     		mov	r3, #2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 9
 
 
  385 0124 1340     		and	r3, r2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  427 016a FF23     		mov	r3, #255
  428              	.L12:
  429 016c B546     		mov	sp, r6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 10
 
 
  430 016e 5BB2     		sxtb	r3, r3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  479 0020 1D1C     		mov	r5, r3
  480 0022 630F     		lsr	r3, r4, #29
  481 0024 E900     		lsl	r1, r5, #3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 11
 
 
  482 0026 7963     		str	r1, [r7, #52]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  536 0092 C900     		lsl	r1, r1, #3
  537 0094 7960     		str	r1, [r7, #4]
  538 0096 7968     		ldr	r1, [r7, #4]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 12
 
 
  539 0098 1143     		orr	r1, r2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  583 00e4 111C     		mov	r1, r2
  584 00e6 1A1C     		mov	r2, r3
  585 00e8 0023     		mov	r3, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 13
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 13
 
 
  586 00ea FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  631 0138 002B     		cmp	r3, #0
  632 013a 16D1     		bne	.L21
  633              		.loc 1 108 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 14
 
 
  634 013c 3B1C     		mov	r3, r7
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  677              	.LFE35:
  678              		.size	adjustHeat, .-adjustHeat
  679              		.section	.text.adjustVentilation,"ax",%progbits
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 15
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 15
 
 
  680              		.align	2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  731 0042 796A     		ldr	r1, [r7, #36]
  732 0044 1943     		orr	r1, r3
  733 0046 7962     		str	r1, [r7, #36]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 16
 
 
  734 0048 BB6A     		ldr	r3, [r7, #40]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  787              		.loc 1 123 0
  788 00b2 FB6C     		ldr	r3, [r7, #76]
  789 00b4 8722     		mov	r2, #135
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 17
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 17
 
 
  790 00b6 1A70     		strb	r2, [r3]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  833 00fe 7A6C     		ldr	r2, [r7, #68]
  834 0100 1D4B     		ldr	r3, .L37
  835 0102 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 18
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 18
 
 
  836 0104 4220     		mov	r0, #66
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  884 015a 4333     		add	r3, r3, #67
  885 015c 1B78     		ldrb	r3, [r3]
  886 015e 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 19
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 19
 
 
  887 0160 01D1     		bne	.L33
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  929              		.cfi_def_cfa_offset 24
  930 0004 00AF     		add	r7, sp, #0
  931              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 20
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 20
 
 
  932 0006 0A1C     		mov	r2, r1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  164:.\I2C_Class.c ****         irriTransfer[0] = (irrigationStatus &= ~(1 << index)) | 0b11000000;
  975              		.loc 1 164 0
  976 0054 FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 21
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 21
 
 
  977 0056 1B78     		ldrb	r3, [r3]
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1024 00a8 FFF7FEFF 		bl	I2C_I2CMasterStatus
  1025 00ac 021C     		mov	r2, r0
  1026 00ae 0223     		mov	r3, #2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 22
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 22
 
 
  1027 00b0 1340     		and	r3, r2
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1070 00f0 00000000 		.word	irrigationStatus
  1071              		.cfi_endproc
  1072              	.LFE37:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 23
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 23
 
 
  1073              		.size	adjustIrrigation, .-adjustIrrigation
@@ -1331,8 +1331,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1080              	getActuatorStatus:
  1081              	.LFB38:
  183:.\I2C_Class.c **** 
- 184:.\I2C_Class.c **** int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
- 1082              		.loc 1 184 0
+ 184:.\I2C_Class.c **** //----------getActuatorStatus0----------
+ 185:.\I2C_Class.c **** int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
+ 1082              		.loc 1 185 0
  1083              		.cfi_startproc
  1084 0000 80B5     		push	{r7, lr}
  1085              		.cfi_def_cfa_offset 8
@@ -1346,14 +1347,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1093 0008 B960     		str	r1, [r7, #8]
  1094 000a 7A60     		str	r2, [r7, #4]
  1095 000c 3B60     		str	r3, [r7]
- 185:.\I2C_Class.c ****     uint8 result = 0;
- 1096              		.loc 1 185 0
+ 186:.\I2C_Class.c ****     uint8 result = 0;
+ 1096              		.loc 1 186 0
  1097 000e 3B1C     		mov	r3, r7
  1098 0010 1733     		add	r3, r3, #23
  1099 0012 0022     		mov	r2, #0
  1100 0014 1A70     		strb	r2, [r3]
- 186:.\I2C_Class.c ****     uint8 dataget[2] = {0, 0};
- 1101              		.loc 1 186 0
+ 187:.\I2C_Class.c ****     uint8 dataget[2] = {0, 0};
+ 1101              		.loc 1 187 0
  1102 0016 3B1C     		mov	r3, r7
  1103 0018 1433     		add	r3, r3, #20
  1104 001a 0022     		mov	r2, #0
@@ -1362,61 +1363,61 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1107 0020 1433     		add	r3, r3, #20
  1108 0022 0022     		mov	r2, #0
  1109 0024 5A70     		strb	r2, [r3, #1]
- 187:.\I2C_Class.c ****     
- 188:.\I2C_Class.c ****     CyDelay(60);
- 1110              		.loc 1 188 0
+ 188:.\I2C_Class.c ****     
+ 189:.\I2C_Class.c ****     CyDelay(60);
+ 1110              		.loc 1 189 0
  1111 0026 3C20     		mov	r0, #60
  1112 0028 FFF7FEFF 		bl	CyDelay
- 189:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
- 1113              		.loc 1 189 0
+ 190:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
+ 1113              		.loc 1 190 0
  1114 002c FFF7FEFF 		bl	I2C_I2CMasterClearReadBuf
- 190:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
- 1115              		.loc 1 190 0
+ 191:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(ACTUATOR_ADRESS, dataget, 2, I2C_I2C_MODE_COMPLETE_XFER);
+ 1115              		.loc 1 191 0
  1116 0030 3B1C     		mov	r3, r7
  1117 0032 1433     		add	r3, r3, #20
  1118 0034 4220     		mov	r0, #66
  1119 0036 191C     		mov	r1, r3
  1120 0038 0222     		mov	r2, #2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 24
+
+
  1121 003a 0023     		mov	r3, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 24
-
-
  1122 003c FFF7FEFF 		bl	I2C_I2CMasterReadBuf
  1123 0040 021C     		mov	r2, r0
  1124 0042 3B1C     		mov	r3, r7
  1125 0044 1733     		add	r3, r3, #23
  1126 0046 1A70     		strb	r2, [r3]
- 191:.\I2C_Class.c ****     
- 192:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the dataget array to
- 1127              		.loc 1 192 0
+ 192:.\I2C_Class.c ****     
+ 193:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the dataget array to
+ 1127              		.loc 1 193 0
  1128 0048 C046     		mov	r8, r8
  1129              	.L50:
- 1130              		.loc 1 192 0 is_stmt 0 discriminator 1
+ 1130              		.loc 1 193 0 is_stmt 0 discriminator 1
  1131 004a FFF7FEFF 		bl	I2C_I2CMasterStatus
  1132 004e 021C     		mov	r2, r0
  1133 0050 0123     		mov	r3, #1
  1134 0052 1340     		and	r3, r2
  1135 0054 F9D0     		beq	.L50
- 193:.\I2C_Class.c ****     
- 194:.\I2C_Class.c ****     if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){
- 1136              		.loc 1 194 0 is_stmt 1
+ 194:.\I2C_Class.c ****     
+ 195:.\I2C_Class.c ****     if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){
+ 1136              		.loc 1 195 0 is_stmt 1
  1137 0056 3B1C     		mov	r3, r7
  1138 0058 1733     		add	r3, r3, #23
  1139 005a 1B78     		ldrb	r3, [r3]
  1140 005c 002B     		cmp	r3, #0
  1141 005e 44D1     		bne	.L51
- 1142              		.loc 1 194 0 is_stmt 0 discriminator 1
+ 1142              		.loc 1 195 0 is_stmt 0 discriminator 1
  1143 0060 FFF7FEFF 		bl	I2C_I2CMasterGetReadBufSize
  1144 0064 031C     		mov	r3, r0
  1145 0066 002B     		cmp	r3, #0
  1146 0068 3FD0     		beq	.L51
- 195:.\I2C_Class.c ****         if (window){                                   // Expecting to receive MSB first 
- 1147              		.loc 1 195 0 is_stmt 1
+ 196:.\I2C_Class.c ****         if (window){                                   // Expecting to receive MSB first 
+ 1147              		.loc 1 196 0 is_stmt 1
  1148 006a FB68     		ldr	r3, [r7, #12]
  1149 006c 002B     		cmp	r3, #0
  1150 006e 06D0     		beq	.L52
- 196:.\I2C_Class.c ****             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
- 1151              		.loc 1 196 0
+ 197:.\I2C_Class.c ****             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
+ 1151              		.loc 1 197 0
  1152 0070 3B1C     		mov	r3, r7
  1153 0072 1433     		add	r3, r3, #20
  1154 0074 1B78     		ldrb	r3, [r3]
@@ -1425,22 +1426,22 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1157 007a FB68     		ldr	r3, [r7, #12]
  1158 007c 1A70     		strb	r2, [r3]
  1159              	.L52:
- 197:.\I2C_Class.c ****             #ifdef debugging
- 198:.\I2C_Class.c ****                 UART_UartPutChar(*window+48);
- 199:.\I2C_Class.c ****             #endif
- 200:.\I2C_Class.c ****         }
- 201:.\I2C_Class.c ****         if (heat){
- 1160              		.loc 1 201 0
+ 198:.\I2C_Class.c ****             #ifdef debugging
+ 199:.\I2C_Class.c ****                 UART_UartPutChar(*window+48);
+ 200:.\I2C_Class.c ****             #endif
+ 201:.\I2C_Class.c ****         }
+ 202:.\I2C_Class.c ****         if (heat){
+ 1160              		.loc 1 202 0
  1161 007e BB68     		ldr	r3, [r7, #8]
  1162 0080 002B     		cmp	r3, #0
  1163 0082 09D0     		beq	.L53
- 202:.\I2C_Class.c ****             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and 
- 1164              		.loc 1 202 0
+ 203:.\I2C_Class.c ****             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and 
+ 1164              		.loc 1 203 0
  1165 0084 3B1C     		mov	r3, r7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 25
+
+
  1166 0086 1433     		add	r3, r3, #20
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 25
-
-
  1167 0088 1B78     		ldrb	r3, [r3]
  1168 008a 1A1C     		mov	r2, r3
  1169 008c 0E23     		mov	r3, #14
@@ -1450,17 +1451,17 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1173 0094 BB68     		ldr	r3, [r7, #8]
  1174 0096 1A70     		strb	r2, [r3]
  1175              	.L53:
- 203:.\I2C_Class.c ****             #ifdef debugging
- 204:.\I2C_Class.c ****                 UART_UartPutChar(*heat+48);
- 205:.\I2C_Class.c ****             #endif
- 206:.\I2C_Class.c ****         }
- 207:.\I2C_Class.c ****         if (vent){
- 1176              		.loc 1 207 0
+ 204:.\I2C_Class.c ****             #ifdef debugging
+ 205:.\I2C_Class.c ****                 UART_UartPutChar(*heat+48);
+ 206:.\I2C_Class.c ****             #endif
+ 207:.\I2C_Class.c ****         }
+ 208:.\I2C_Class.c ****         if (vent){
+ 1176              		.loc 1 208 0
  1177 0098 7B68     		ldr	r3, [r7, #4]
  1178 009a 002B     		cmp	r3, #0
  1179 009c 18D0     		beq	.L54
- 208:.\I2C_Class.c ****             if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way
- 1180              		.loc 1 208 0
+ 209:.\I2C_Class.c ****             if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way
+ 1180              		.loc 1 209 0
  1181 009e 3B1C     		mov	r3, r7
  1182 00a0 1433     		add	r3, r3, #20
  1183 00a2 1B78     		ldrb	r3, [r3]
@@ -1468,8 +1469,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1185 00a6 0123     		mov	r3, #1
  1186 00a8 1340     		and	r3, r2
  1187 00aa 0AD0     		beq	.L55
- 209:.\I2C_Class.c ****                 *vent = (dataget[1] >> 6) | 0b00000100;          // The if statements checks if bit
- 1188              		.loc 1 209 0
+ 210:.\I2C_Class.c ****                 *vent = (dataget[1] >> 6) | 0b00000100;          // The if statements checks if bit
+ 1188              		.loc 1 210 0
  1189 00ac 3B1C     		mov	r3, r7
  1190 00ae 1433     		add	r3, r3, #20
  1191 00b0 5B78     		ldrb	r3, [r3, #1]
@@ -1482,13 +1483,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1198 00be 1A70     		strb	r2, [r3]
  1199 00c0 06E0     		b	.L54
  1200              	.L55:
- 210:.\I2C_Class.c ****                 #ifdef debugging
- 211:.\I2C_Class.c ****                     UART_UartPutChar(*vent+48);                         // Shifting 5 right so only
- 212:.\I2C_Class.c ****                 #endif
- 213:.\I2C_Class.c ****             }                                                    
- 214:.\I2C_Class.c ****             else {
- 215:.\I2C_Class.c ****                 *vent = (dataget[1] >> 6) | 0b00000000;          // shifting 5 right since only the
- 1201              		.loc 1 215 0
+ 211:.\I2C_Class.c ****                 #ifdef debugging
+ 212:.\I2C_Class.c ****                     UART_UartPutChar(*vent+48);                         // Shifting 5 right so only
+ 213:.\I2C_Class.c ****                 #endif
+ 214:.\I2C_Class.c ****             }                                                    
+ 215:.\I2C_Class.c ****             else {
+ 216:.\I2C_Class.c ****                 *vent = (dataget[1] >> 6) | 0b00000000;          // shifting 5 right since only the
+ 1201              		.loc 1 216 0
  1202 00c2 3B1C     		mov	r3, r7
  1203 00c4 1433     		add	r3, r3, #20
  1204 00c6 5B78     		ldrb	r3, [r3, #1]
@@ -1497,21 +1498,21 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1207 00cc 7B68     		ldr	r3, [r7, #4]
  1208 00ce 1A70     		strb	r2, [r3]
  1209              	.L54:
- 216:.\I2C_Class.c ****                 #ifdef debugging
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 26
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 26
 
 
- 217:.\I2C_Class.c ****                     UART_UartPutChar(*vent+48);
- 218:.\I2C_Class.c ****                 #endif
- 219:.\I2C_Class.c ****             }
- 220:.\I2C_Class.c ****         }
- 221:.\I2C_Class.c ****         if (irrigation){
- 1210              		.loc 1 221 0
+ 217:.\I2C_Class.c ****                 #ifdef debugging
+ 218:.\I2C_Class.c ****                     UART_UartPutChar(*vent+48);
+ 219:.\I2C_Class.c ****                 #endif
+ 220:.\I2C_Class.c ****             }
+ 221:.\I2C_Class.c ****         }
+ 222:.\I2C_Class.c ****         if (irrigation){
+ 1210              		.loc 1 222 0
  1211 00d0 3B68     		ldr	r3, [r7]
  1212 00d2 002B     		cmp	r3, #0
  1213 00d4 07D0     		beq	.L56
- 222:.\I2C_Class.c ****             *irrigation = (dataget[1] & 0b00111111);             // Ignoring two most significant b
- 1214              		.loc 1 222 0
+ 223:.\I2C_Class.c ****             *irrigation = (dataget[1] & 0b00111111);             // Ignoring two most significant b
+ 1214              		.loc 1 223 0
  1215 00d6 3B1C     		mov	r3, r7
  1216 00d8 1433     		add	r3, r3, #20
  1217 00da 5A78     		ldrb	r2, [r3, #1]
@@ -1521,25 +1522,25 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1221 00e2 3B68     		ldr	r3, [r7]
  1222 00e4 1A70     		strb	r2, [r3]
  1223              	.L56:
- 223:.\I2C_Class.c ****             #ifdef debugging
- 224:.\I2C_Class.c ****                 UART_UartPutChar(*irrigation);
- 225:.\I2C_Class.c ****             #endif
- 226:.\I2C_Class.c ****         }   
- 227:.\I2C_Class.c ****         return 0;
- 1224              		.loc 1 227 0
+ 224:.\I2C_Class.c ****             #ifdef debugging
+ 225:.\I2C_Class.c ****                 UART_UartPutChar(*irrigation);
+ 226:.\I2C_Class.c ****             #endif
+ 227:.\I2C_Class.c ****         }   
+ 228:.\I2C_Class.c ****         return 0;
+ 1224              		.loc 1 228 0
  1225 00e6 0023     		mov	r3, #0
  1226 00e8 00E0     		b	.L58
  1227              	.L51:
- 228:.\I2C_Class.c ****     }
- 229:.\I2C_Class.c ****     else {
- 230:.\I2C_Class.c ****         return -1;   
- 1228              		.loc 1 230 0
+ 229:.\I2C_Class.c ****     }
+ 230:.\I2C_Class.c ****     else {
+ 231:.\I2C_Class.c ****         return -1;   
+ 1228              		.loc 1 231 0
  1229 00ea FF23     		mov	r3, #255
  1230              	.L58:
  1231 00ec 5BB2     		sxtb	r3, r3
- 231:.\I2C_Class.c ****     }
- 232:.\I2C_Class.c **** }
- 1232              		.loc 1 232 0
+ 232:.\I2C_Class.c ****     }
+ 233:.\I2C_Class.c **** }
+ 1232              		.loc 1 233 0
  1233 00ee 181C     		mov	r0, r3
  1234 00f0 BD46     		mov	sp, r7
  1235 00f2 06B0     		add	sp, sp, #24
@@ -1557,36 +1558,38 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1247              		.align	2
  1248              		.global	getTemp
  1249              		.code	16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 27
+
+
  1250              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 27
-
-
  1251              		.type	getTemp, %function
  1252              	getTemp:
  1253              	.LFB39:
- 233:.\I2C_Class.c **** 
- 234:.\I2C_Class.c **** /*
- 235:.\I2C_Class.c **** int8 getTempAndHum(int32* temp, int32* hum){
- 236:.\I2C_Class.c ****     int32 RDbuf = 4;
- 237:.\I2C_Class.c ****     uint8 dataget[RDbuf];
- 238:.\I2C_Class.c ****     uint8 result = 0;
- 239:.\I2C_Class.c ****     
- 240:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLET
+ 234:.\I2C_Class.c **** //----------getActuatorStatus1----------
+ 235:.\I2C_Class.c **** 
+ 236:.\I2C_Class.c **** /*
+ 237:.\I2C_Class.c **** int8 getTempAndHum(int32* temp, int32* hum){
+ 238:.\I2C_Class.c ****     int32 RDbuf = 4;
+ 239:.\I2C_Class.c ****     uint8 dataget[RDbuf];
+ 240:.\I2C_Class.c ****     uint8 result = 0;
  241:.\I2C_Class.c ****     
- 242:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
- 243:.\I2C_Class.c ****         // Expecting to receive MSB first.
- 244:.\I2C_Class.c ****         *hum = ((dataget[0] << 8) | dataget[1]);   
- 245:.\I2C_Class.c ****         *temp = (((dataget[2] << 8) | dataget[3]) >> 2);
- 246:.\I2C_Class.c ****         return 0;   // No error 
- 247:.\I2C_Class.c ****     }
- 248:.\I2C_Class.c ****     else {
- 249:.\I2C_Class.c ****         return -1;
- 250:.\I2C_Class.c ****     }
- 251:.\I2C_Class.c **** }
- 252:.\I2C_Class.c **** */
- 253:.\I2C_Class.c **** 
- 254:.\I2C_Class.c **** int8 getTemp(int32* temp){
- 1254              		.loc 1 254 0
+ 242:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLET
+ 243:.\I2C_Class.c ****     
+ 244:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 245:.\I2C_Class.c ****         // Expecting to receive MSB first.
+ 246:.\I2C_Class.c ****         *hum = ((dataget[0] << 8) | dataget[1]);   
+ 247:.\I2C_Class.c ****         *temp = (((dataget[2] << 8) | dataget[3]) >> 2);
+ 248:.\I2C_Class.c ****         return 0;   // No error 
+ 249:.\I2C_Class.c ****     }
+ 250:.\I2C_Class.c ****     else {
+ 251:.\I2C_Class.c ****         return -1;
+ 252:.\I2C_Class.c ****     }
+ 253:.\I2C_Class.c **** }
+ 254:.\I2C_Class.c **** */
+ 255:.\I2C_Class.c **** 
+ 256:.\I2C_Class.c **** //----------getTemp0----------
+ 257:.\I2C_Class.c **** int8 getTemp(int32* temp){
+ 1254              		.loc 1 257 0
  1255              		.cfi_startproc
  1256 0000 80B5     		push	{r7, lr}
  1257              		.cfi_def_cfa_offset 8
@@ -1597,9 +1600,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1262 0004 00AF     		add	r7, sp, #0
  1263              		.cfi_def_cfa_register 7
  1264 0006 7860     		str	r0, [r7, #4]
- 255:.\I2C_Class.c **** 
- 256:.\I2C_Class.c ****     uint8 dataget[2] = {0,0};
- 1265              		.loc 1 256 0
+ 258:.\I2C_Class.c **** 
+ 259:.\I2C_Class.c ****     uint8 dataget[2] = {0,0};
+ 1265              		.loc 1 259 0
  1266 0008 3B1C     		mov	r3, r7
  1267 000a 1433     		add	r3, r3, #20
  1268 000c 0022     		mov	r2, #0
@@ -1608,22 +1611,22 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1271 0012 1433     		add	r3, r3, #20
  1272 0014 0022     		mov	r2, #0
  1273 0016 5A70     		strb	r2, [r3, #1]
- 257:.\I2C_Class.c ****     uint32 errorStatus[2] = {9,9};      // For debugging and error handling
- 1274              		.loc 1 257 0
+ 260:.\I2C_Class.c ****     uint32 errorStatus[2] = {9,9};      // For debugging and error handling
+ 1274              		.loc 1 260 0
  1275 0018 3B1C     		mov	r3, r7
  1276 001a 0C33     		add	r3, r3, #12
  1277 001c 1F4A     		ldr	r2, .L64
  1278 001e 03CA     		ldmia	r2!, {r0, r1}
  1279 0020 03C3     		stmia	r3!, {r0, r1}
- 258:.\I2C_Class.c ****     
- 259:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
- 1280              		.loc 1 259 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 28
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 28
 
 
+ 261:.\I2C_Class.c ****     
+ 262:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
+ 1280              		.loc 1 262 0
  1281 0022 FFF7FEFF 		bl	I2C_I2CMasterClearReadBuf
- 260:.\I2C_Class.c ****     errorStatus[0] = I2C_I2CMasterSendStart(TEMP_SENSOR_ADDRESS, I2C_I2C_READ_XFER_MODE);
- 1282              		.loc 1 260 0
+ 263:.\I2C_Class.c ****     errorStatus[0] = I2C_I2CMasterSendStart(TEMP_SENSOR_ADDRESS, I2C_I2C_READ_XFER_MODE);
+ 1282              		.loc 1 263 0
  1283 0026 4820     		mov	r0, #72
  1284 0028 0121     		mov	r1, #1
  1285 002a FFF7FEFF 		bl	I2C_I2CMasterSendStart
@@ -1631,15 +1634,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1287 0030 3B1C     		mov	r3, r7
  1288 0032 0C33     		add	r3, r3, #12
  1289 0034 1A60     		str	r2, [r3]
- 261:.\I2C_Class.c ****     if (errorStatus[0] == I2C_I2C_MSTR_NO_ERROR){
- 1290              		.loc 1 261 0
+ 264:.\I2C_Class.c ****     if (errorStatus[0] == I2C_I2C_MSTR_NO_ERROR){
+ 1290              		.loc 1 264 0
  1291 0036 3B1C     		mov	r3, r7
  1292 0038 0C33     		add	r3, r3, #12
  1293 003a 1B68     		ldr	r3, [r3]
  1294 003c 002B     		cmp	r3, #0
  1295 003e 25D1     		bne	.L60
- 262:.\I2C_Class.c ****         dataget[0] = I2C_I2CMasterReadByte(I2C_I2C_ACK_DATA);
- 1296              		.loc 1 262 0
+ 265:.\I2C_Class.c ****         dataget[0] = I2C_I2CMasterReadByte(I2C_I2C_ACK_DATA);
+ 1296              		.loc 1 265 0
  1297 0040 0020     		mov	r0, #0
  1298 0042 FFF7FEFF 		bl	I2C_I2CMasterReadByte
  1299 0046 031C     		mov	r3, r0
@@ -1647,8 +1650,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1301 004a 3B1C     		mov	r3, r7
  1302 004c 1433     		add	r3, r3, #20
  1303 004e 1A70     		strb	r2, [r3]
- 263:.\I2C_Class.c ****         dataget[1] = I2C_I2CMasterReadByte(I2C_I2C_NAK_DATA);
- 1304              		.loc 1 263 0
+ 266:.\I2C_Class.c ****         dataget[1] = I2C_I2CMasterReadByte(I2C_I2C_NAK_DATA);
+ 1304              		.loc 1 266 0
  1305 0050 0120     		mov	r0, #1
  1306 0052 FFF7FEFF 		bl	I2C_I2CMasterReadByte
  1307 0056 031C     		mov	r3, r0
@@ -1656,31 +1659,31 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1309 005a 3B1C     		mov	r3, r7
  1310 005c 1433     		add	r3, r3, #20
  1311 005e 5A70     		strb	r2, [r3, #1]
- 264:.\I2C_Class.c ****         errorStatus[1] = I2C_I2CMasterSendStop();
- 1312              		.loc 1 264 0
+ 267:.\I2C_Class.c ****         errorStatus[1] = I2C_I2CMasterSendStop();
+ 1312              		.loc 1 267 0
  1313 0060 FFF7FEFF 		bl	I2C_I2CMasterSendStop
  1314 0064 021C     		mov	r2, r0
  1315 0066 3B1C     		mov	r3, r7
  1316 0068 0C33     		add	r3, r3, #12
  1317 006a 5A60     		str	r2, [r3, #4]
- 265:.\I2C_Class.c ****     }
- 266:.\I2C_Class.c ****     else{
- 267:.\I2C_Class.c ****         I2C_I2CMasterSendStop();
- 268:.\I2C_Class.c ****         return -1;
- 269:.\I2C_Class.c ****     }
- 270:.\I2C_Class.c **** 
- 271:.\I2C_Class.c ****     // The data is converted directly to UART protocol because of the ,5 resolution
- 272:.\I2C_Class.c ****     *temp = (dataget[0]*2)+(dataget[1] >> 7)+40;
- 1318              		.loc 1 272 0
+ 268:.\I2C_Class.c ****     }
+ 269:.\I2C_Class.c ****     else{
+ 270:.\I2C_Class.c ****         I2C_I2CMasterSendStop();
+ 271:.\I2C_Class.c ****         return -1;
+ 272:.\I2C_Class.c ****     }
+ 273:.\I2C_Class.c **** 
+ 274:.\I2C_Class.c ****     // The data is converted directly to UART protocol because of the ,5 resolution
+ 275:.\I2C_Class.c ****     *temp = (dataget[0]*2)+(dataget[1] >> 7)+40;
+ 1318              		.loc 1 275 0
  1319 006c 3B1C     		mov	r3, r7
  1320 006e 1433     		add	r3, r3, #20
  1321 0070 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 29
+
+
  1322 0072 5A00     		lsl	r2, r3, #1
  1323 0074 3B1C     		mov	r3, r7
  1324 0076 1433     		add	r3, r3, #20
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 29
-
-
  1325 0078 5B78     		ldrb	r3, [r3, #1]
  1326 007a DB09     		lsr	r3, r3, #7
  1327 007c DBB2     		uxtb	r3, r3
@@ -1689,22 +1692,22 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1330 0082 2832     		add	r2, r2, #40
  1331 0084 7B68     		ldr	r3, [r7, #4]
  1332 0086 1A60     		str	r2, [r3]
- 273:.\I2C_Class.c **** 
- 274:.\I2C_Class.c ****     return 0;
- 1333              		.loc 1 274 0
+ 276:.\I2C_Class.c **** 
+ 277:.\I2C_Class.c ****     return 0;
+ 1333              		.loc 1 277 0
  1334 0088 0023     		mov	r3, #0
  1335 008a 02E0     		b	.L63
  1336              	.L60:
- 267:.\I2C_Class.c ****         I2C_I2CMasterSendStop();
- 1337              		.loc 1 267 0
+ 270:.\I2C_Class.c ****         I2C_I2CMasterSendStop();
+ 1337              		.loc 1 270 0
  1338 008c FFF7FEFF 		bl	I2C_I2CMasterSendStop
- 268:.\I2C_Class.c ****         return -1;
- 1339              		.loc 1 268 0
+ 271:.\I2C_Class.c ****         return -1;
+ 1339              		.loc 1 271 0
  1340 0090 FF23     		mov	r3, #255
  1341              	.L63:
  1342 0092 5BB2     		sxtb	r3, r3
- 275:.\I2C_Class.c **** }
- 1343              		.loc 1 275 0
+ 278:.\I2C_Class.c **** }
+ 1343              		.loc 1 278 0
  1344 0094 181C     		mov	r0, r3
  1345 0096 BD46     		mov	sp, r7
  1346 0098 06B0     		add	sp, sp, #24
@@ -1725,22 +1728,23 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1361              		.type	getLight, %function
  1362              	getLight:
  1363              	.LFB40:
- 276:.\I2C_Class.c **** 
- 277:.\I2C_Class.c **** int8 getLight(int32* light){
- 1364              		.loc 1 277 0
+ 279:.\I2C_Class.c **** //----------getTemp1----------
+ 280:.\I2C_Class.c **** 
+ 281:.\I2C_Class.c **** int8 getLight(int32* light){
+ 1364              		.loc 1 281 0
  1365              		.cfi_startproc
  1366 0000 F0B5     		push	{r4, r5, r6, r7, lr}
  1367              		.cfi_def_cfa_offset 20
  1368              		.cfi_offset 4, -20
  1369              		.cfi_offset 5, -16
  1370              		.cfi_offset 6, -12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 30
+
+
  1371              		.cfi_offset 7, -8
  1372              		.cfi_offset 14, -4
  1373 0002 4746     		mov	r7, r8
  1374 0004 80B4     		push	{r7}
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 30
-
-
  1375              		.cfi_def_cfa_offset 24
  1376              		.cfi_offset 8, -24
  1377 0006 88B0     		sub	sp, sp, #32
@@ -1750,27 +1754,27 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1381 000a F860     		str	r0, [r7, #12]
  1382 000c 6846     		mov	r0, sp
  1383 000e 8046     		mov	r8, r0
- 278:.\I2C_Class.c ****     
- 279:.\I2C_Class.c ****     /* 
- 280:.\I2C_Class.c ****     Command register: Adress 0x00.
- 281:.\I2C_Class.c ****     Bit 7: resets '0' or enables '1' ADC.
- 282:.\I2C_Class.c ****     Bit 6: Power down mode. Normal operation '0' or power down mode '1'.
- 283:.\I2C_Class.c ****     Bit 5: Decides whether integration time (ADC is of integration type) is done internally '0' or 
- 284:.\I2C_Class.c ****     Bit 4: Has to be zero.
- 285:.\I2C_Class.c ****     Bit 3-2: Photodiode select 0:0 and 0:1 = disable ADC. 1:0 = Light count DATA output in signed (
- 286:.\I2C_Class.c ****     Bit 1-0: Prescaler or number of clockcycles 2^(n). 0:0 = 2^(16), 0:1 = 2^(12), 1:0 = 2^(8) and 
- 287:.\I2C_Class.c ****     
- 288:.\I2C_Class.c ****     RW Control register: Adress 0x01.
- 289:.\I2C_Class.c ****     Bit 3-2: Set lux range. watch table in page 6.
- 290:.\I2C_Class.c ****     All other bits has to be zero.
+ 282:.\I2C_Class.c ****     
+ 283:.\I2C_Class.c ****     /* 
+ 284:.\I2C_Class.c ****     Command register: Adress 0x00.
+ 285:.\I2C_Class.c ****     Bit 7: resets '0' or enables '1' ADC.
+ 286:.\I2C_Class.c ****     Bit 6: Power down mode. Normal operation '0' or power down mode '1'.
+ 287:.\I2C_Class.c ****     Bit 5: Decides whether integration time (ADC is of integration type) is done internally '0' or 
+ 288:.\I2C_Class.c ****     Bit 4: Has to be zero.
+ 289:.\I2C_Class.c ****     Bit 3-2: Photodiode select 0:0 and 0:1 = disable ADC. 1:0 = Light count DATA output in signed (
+ 290:.\I2C_Class.c ****     Bit 1-0: Prescaler or number of clockcycles 2^(n). 0:0 = 2^(16), 0:1 = 2^(12), 1:0 = 2^(8) and 
  291:.\I2C_Class.c ****     
- 292:.\I2C_Class.c ****     I2C Sensor data reg: Adress 0x04(LSB) and 0x05()
- 293:.\I2C_Class.c ****     The sensor sends a 15 bit value that can be acceMSBssed by the adresses 0x04 and 0x05
- 294:.\I2C_Class.c ****     these registers are automatically refreshed each new integration period.
- 295:.\I2C_Class.c ****     */
- 296:.\I2C_Class.c ****     
- 297:.\I2C_Class.c ****     uint8 dataget[size];
- 1384              		.loc 1 297 0
+ 292:.\I2C_Class.c ****     RW Control register: Adress 0x01.
+ 293:.\I2C_Class.c ****     Bit 3-2: Set lux range. watch table in page 6.
+ 294:.\I2C_Class.c ****     All other bits has to be zero.
+ 295:.\I2C_Class.c ****     
+ 296:.\I2C_Class.c ****     I2C Sensor data reg: Adress 0x04(LSB) and 0x05()
+ 297:.\I2C_Class.c ****     The sensor sends a 15 bit value that can be acceMSBssed by the adresses 0x04 and 0x05
+ 298:.\I2C_Class.c ****     these registers are automatically refreshed each new integration period.
+ 299:.\I2C_Class.c ****     */
+ 300:.\I2C_Class.c ****     
+ 301:.\I2C_Class.c ****     uint8 dataget[size];
+ 1384              		.loc 1 301 0
  1385 0010 3B48     		ldr	r0, .L73
  1386 0012 0068     		ldr	r0, [r0]
  1387 0014 421E     		sub	r2, r0, #1
@@ -1794,13 +1798,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1405 0038 021C     		mov	r2, r0
  1406 003a 131C     		mov	r3, r2
  1407 003c 0022     		mov	r2, #0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 31
+
+
  1408 003e 141C     		mov	r4, r2
  1409 0040 5A0F     		lsr	r2, r3, #29
  1410 0042 E600     		lsl	r6, r4, #3
  1411 0044 1643     		orr	r6, r2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 31
-
-
  1412 0046 DD00     		lsl	r5, r3, #3
  1413 0048 031C     		mov	r3, r0
  1414 004a 0733     		add	r3, r3, #7
@@ -1812,18 +1816,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1420 0056 6B46     		mov	r3, sp
  1421 0058 0033     		add	r3, r3, #0
  1422 005a BB61     		str	r3, [r7, #24]
- 298:.\I2C_Class.c ****     uint8 result = 0;
- 1423              		.loc 1 298 0
+ 302:.\I2C_Class.c ****     uint8 result = 0;
+ 1423              		.loc 1 302 0
  1424 005c 3B1C     		mov	r3, r7
  1425 005e 1733     		add	r3, r3, #23
  1426 0060 0022     		mov	r2, #0
  1427 0062 1A70     		strb	r2, [r3]
- 299:.\I2C_Class.c ****     
- 300:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
- 1428              		.loc 1 300 0
+ 303:.\I2C_Class.c ****     
+ 304:.\I2C_Class.c ****     I2C_I2CMasterClearReadBuf();
+ 1428              		.loc 1 304 0
  1429 0064 FFF7FEFF 		bl	I2C_I2CMasterClearReadBuf
- 301:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_MSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
- 1430              		.loc 1 301 0
+ 305:.\I2C_Class.c ****     result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_MSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
+ 1430              		.loc 1 305 0
  1431 0068 BA69     		ldr	r2, [r7, #24]
  1432 006a 254B     		ldr	r3, .L73
  1433 006c 1B68     		ldr	r3, [r3]
@@ -1836,37 +1840,37 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1440 007c 3B1C     		mov	r3, r7
  1441 007e 1733     		add	r3, r3, #23
  1442 0080 1A70     		strb	r2, [r3]
- 302:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT));
- 1443              		.loc 1 302 0
+ 306:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT));
+ 1443              		.loc 1 306 0
  1444 0082 C046     		mov	r8, r8
  1445              	.L67:
- 1446              		.loc 1 302 0 is_stmt 0 discriminator 1
+ 1446              		.loc 1 306 0 is_stmt 0 discriminator 1
  1447 0084 FFF7FEFF 		bl	I2C_I2CMasterStatus
  1448 0088 021C     		mov	r2, r0
  1449 008a 0123     		mov	r3, #1
  1450 008c 1340     		and	r3, r2
  1451 008e F9D0     		beq	.L67
- 303:.\I2C_Class.c ****         
- 304:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
- 1452              		.loc 1 304 0 is_stmt 1
+ 307:.\I2C_Class.c ****         
+ 308:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 1452              		.loc 1 308 0 is_stmt 1
  1453 0090 3B1C     		mov	r3, r7
  1454 0092 1733     		add	r3, r3, #23
  1455 0094 1B78     		ldrb	r3, [r3]
  1456 0096 002B     		cmp	r3, #0
  1457 0098 28D1     		bne	.L68
- 305:.\I2C_Class.c ****         // Expecting to receive MSB first.
- 306:.\I2C_Class.c ****         *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
- 1458              		.loc 1 306 0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 32
+
+
+ 309:.\I2C_Class.c ****         // Expecting to receive MSB first.
+ 310:.\I2C_Class.c ****         *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
+ 1458              		.loc 1 310 0
  1459 009a BB69     		ldr	r3, [r7, #24]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 32
-
-
  1460 009c 1B78     		ldrb	r3, [r3]
  1461 009e DA01     		lsl	r2, r3, #7
  1462 00a0 FB68     		ldr	r3, [r7, #12]
  1463 00a2 1A60     		str	r2, [r3]
- 307:.\I2C_Class.c ****         result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER);
- 1464              		.loc 1 307 0
+ 311:.\I2C_Class.c ****         result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER);
+ 1464              		.loc 1 311 0
  1465 00a4 BA69     		ldr	r2, [r7, #24]
  1466 00a6 164B     		ldr	r3, .L73
  1467 00a8 1B68     		ldr	r3, [r3]
@@ -1879,25 +1883,25 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1474 00b8 3B1C     		mov	r3, r7
  1475 00ba 1733     		add	r3, r3, #23
  1476 00bc 1A70     		strb	r2, [r3]
- 308:.\I2C_Class.c ****         while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be r
- 1477              		.loc 1 308 0
+ 312:.\I2C_Class.c ****         while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be r
+ 1477              		.loc 1 312 0
  1478 00be C046     		mov	r8, r8
  1479              	.L69:
- 1480              		.loc 1 308 0 is_stmt 0 discriminator 1
+ 1480              		.loc 1 312 0 is_stmt 0 discriminator 1
  1481 00c0 FFF7FEFF 		bl	I2C_I2CMasterStatus
  1482 00c4 021C     		mov	r2, r0
  1483 00c6 0123     		mov	r3, #1
  1484 00c8 1340     		and	r3, r2
  1485 00ca F9D0     		beq	.L69
- 309:.\I2C_Class.c ****         if (result == I2C_I2C_MSTR_NO_ERROR){
- 1486              		.loc 1 309 0 is_stmt 1
+ 313:.\I2C_Class.c ****         if (result == I2C_I2C_MSTR_NO_ERROR){
+ 1486              		.loc 1 313 0 is_stmt 1
  1487 00cc 3B1C     		mov	r3, r7
  1488 00ce 1733     		add	r3, r3, #23
  1489 00d0 1B78     		ldrb	r3, [r3]
  1490 00d2 002B     		cmp	r3, #0
  1491 00d4 08D1     		bne	.L70
- 310:.\I2C_Class.c ****             *light |= dataget[0]; 
- 1492              		.loc 1 310 0
+ 314:.\I2C_Class.c ****             *light |= dataget[0]; 
+ 1492              		.loc 1 314 0
  1493 00d6 FB68     		ldr	r3, [r7, #12]
  1494 00d8 1A68     		ldr	r2, [r3]
  1495 00da BB69     		ldr	r3, [r7, #24]
@@ -1905,33 +1909,33 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1497 00de 1A43     		orr	r2, r3
  1498 00e0 FB68     		ldr	r3, [r7, #12]
  1499 00e2 1A60     		str	r2, [r3]
- 311:.\I2C_Class.c ****             return 0;   // No error 
- 1500              		.loc 1 311 0
+ 315:.\I2C_Class.c ****             return 0;   // No error 
+ 1500              		.loc 1 315 0
  1501 00e4 0023     		mov	r3, #0
  1502 00e6 02E0     		b	.L71
  1503              	.L70:
- 312:.\I2C_Class.c ****         }
- 313:.\I2C_Class.c ****         else {
- 314:.\I2C_Class.c ****             return -1;
- 1504              		.loc 1 314 0
+ 316:.\I2C_Class.c ****         }
+ 317:.\I2C_Class.c ****         else {
+ 318:.\I2C_Class.c ****             return -1;
+ 1504              		.loc 1 318 0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 33
+
+
  1505 00e8 FF23     		mov	r3, #255
  1506 00ea 00E0     		b	.L71
  1507              	.L68:
- 315:.\I2C_Class.c ****         }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 33
-
-
- 316:.\I2C_Class.c ****     }
- 317:.\I2C_Class.c ****     else {
- 318:.\I2C_Class.c ****         return -1;
- 1508              		.loc 1 318 0
+ 319:.\I2C_Class.c ****         }
+ 320:.\I2C_Class.c ****     }
+ 321:.\I2C_Class.c ****     else {
+ 322:.\I2C_Class.c ****         return -1;
+ 1508              		.loc 1 322 0
  1509 00ec FF23     		mov	r3, #255
  1510              	.L71:
  1511 00ee C546     		mov	sp, r8
  1512 00f0 5BB2     		sxtb	r3, r3
- 319:.\I2C_Class.c ****     }
- 320:.\I2C_Class.c **** }
- 1513              		.loc 1 320 0
+ 323:.\I2C_Class.c ****     }
+ 324:.\I2C_Class.c **** }
+ 1513              		.loc 1 324 0
  1514 00f2 181C     		mov	r0, r3
  1515 00f4 BD46     		mov	sp, r7
  1516 00f6 08B0     		add	sp, sp, #32
@@ -1954,9 +1958,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1533              		.type	getSoilHum, %function
  1534              	getSoilHum:
  1535              	.LFB41:
- 321:.\I2C_Class.c **** 
- 322:.\I2C_Class.c **** int8 getSoilHum(uint8 index, int16* soilHum){
- 1536              		.loc 1 322 0
+ 325:.\I2C_Class.c **** 
+ 326:.\I2C_Class.c **** int8 getSoilHum(uint8 index, int16* soilHum){
+ 1536              		.loc 1 326 0
  1537              		.cfi_startproc
  1538 0000 80B5     		push	{r7, lr}
  1539              		.cfi_def_cfa_offset 8
@@ -1970,24 +1974,24 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1547 0008 3960     		str	r1, [r7]
  1548 000a FB1D     		add	r3, r7, #7
  1549 000c 1A70     		strb	r2, [r3]
- 323:.\I2C_Class.c ****     uint32 result;
- 324:.\I2C_Class.c ****     uint8 soilTransfer[1] = {index};
- 1550              		.loc 1 324 0
+ 327:.\I2C_Class.c ****     uint32 result;
+ 328:.\I2C_Class.c ****     uint8 soilTransfer[1] = {index};
+ 1550              		.loc 1 328 0
  1551 000e 3B1C     		mov	r3, r7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 34
+
+
  1552 0010 0833     		add	r3, r3, #8
  1553 0012 FA1D     		add	r2, r7, #7
  1554 0014 1278     		ldrb	r2, [r2]
  1555 0016 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 34
-
-
- 325:.\I2C_Class.c ****     
- 326:.\I2C_Class.c ****     /*pseudo kode
- 327:.\I2C_Class.c ****     write, address, 0-5 (LSB)
- 328:.\I2C_Class.c ****     read, address, 7 = status, 0-6 = value (1-100)*/
  329:.\I2C_Class.c ****     
- 330:.\I2C_Class.c ****     result = I2C_I2CMasterWriteBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLETE_X
- 1556              		.loc 1 330 0
+ 330:.\I2C_Class.c ****     /*pseudo kode
+ 331:.\I2C_Class.c ****     write, address, 0-5 (LSB)
+ 332:.\I2C_Class.c ****     read, address, 7 = status, 0-6 = value (1-100)*/
+ 333:.\I2C_Class.c ****     
+ 334:.\I2C_Class.c ****     result = I2C_I2CMasterWriteBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLETE_X
+ 1556              		.loc 1 334 0
  1557 0018 3B1C     		mov	r3, r7
  1558 001a 0833     		add	r3, r3, #8
  1559 001c 3220     		mov	r0, #50
@@ -1997,28 +2001,28 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1563 0024 FFF7FEFF 		bl	I2C_I2CMasterWriteBuf
  1564 0028 031C     		mov	r3, r0
  1565 002a FB60     		str	r3, [r7, #12]
- 331:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
- 1566              		.loc 1 331 0
+ 335:.\I2C_Class.c ****     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
+ 1566              		.loc 1 335 0
  1567 002c C046     		mov	r8, r8
  1568              	.L76:
- 1569              		.loc 1 331 0 is_stmt 0 discriminator 1
+ 1569              		.loc 1 335 0 is_stmt 0 discriminator 1
  1570 002e FFF7FEFF 		bl	I2C_I2CMasterStatus
  1571 0032 021C     		mov	r2, r0
  1572 0034 0223     		mov	r3, #2
  1573 0036 1340     		and	r3, r2
  1574 0038 F9D0     		beq	.L76
- 332:.\I2C_Class.c ****         
- 333:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
- 1575              		.loc 1 333 0 is_stmt 1
+ 336:.\I2C_Class.c ****         
+ 337:.\I2C_Class.c ****     if (result == I2C_I2C_MSTR_NO_ERROR){
+ 1575              		.loc 1 337 0 is_stmt 1
  1576 003a FB68     		ldr	r3, [r7, #12]
  1577 003c 002B     		cmp	r3, #0
  1578 003e 25D1     		bne	.L77
- 334:.\I2C_Class.c ****         CyDelay(60);
- 1579              		.loc 1 334 0
+ 338:.\I2C_Class.c ****         CyDelay(60);
+ 1579              		.loc 1 338 0
  1580 0040 3C20     		mov	r0, #60
  1581 0042 FFF7FEFF 		bl	CyDelay
- 335:.\I2C_Class.c ****         result = I2C_I2CMasterReadBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLET
- 1582              		.loc 1 335 0
+ 339:.\I2C_Class.c ****         result = I2C_I2CMasterReadBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLET
+ 1582              		.loc 1 339 0
  1583 0046 3B1C     		mov	r3, r7
  1584 0048 0833     		add	r3, r3, #8
  1585 004a 3220     		mov	r0, #50
@@ -2028,26 +2032,26 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1589 0052 FFF7FEFF 		bl	I2C_I2CMasterReadBuf
  1590 0056 031C     		mov	r3, r0
  1591 0058 FB60     		str	r3, [r7, #12]
- 336:.\I2C_Class.c ****         while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be r
- 1592              		.loc 1 336 0
+ 340:.\I2C_Class.c ****         while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be r
+ 1592              		.loc 1 340 0
  1593 005a C046     		mov	r8, r8
  1594              	.L78:
- 1595              		.loc 1 336 0 is_stmt 0 discriminator 1
+ 1595              		.loc 1 340 0 is_stmt 0 discriminator 1
  1596 005c FFF7FEFF 		bl	I2C_I2CMasterStatus
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 35
+
+
  1597 0060 021C     		mov	r2, r0
  1598 0062 0123     		mov	r3, #1
  1599 0064 1340     		and	r3, r2
  1600 0066 F9D0     		beq	.L78
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 35
-
-
- 337:.\I2C_Class.c ****         if (result == I2C_I2C_MSTR_NO_ERROR){
- 1601              		.loc 1 337 0 is_stmt 1
+ 341:.\I2C_Class.c ****         if (result == I2C_I2C_MSTR_NO_ERROR){
+ 1601              		.loc 1 341 0 is_stmt 1
  1602 0068 FB68     		ldr	r3, [r7, #12]
  1603 006a 002B     		cmp	r3, #0
  1604 006c 0ED1     		bne	.L77
- 338:.\I2C_Class.c ****             if ((soilTransfer[0] >> 7) == 0){
- 1605              		.loc 1 338 0
+ 342:.\I2C_Class.c ****             if ((soilTransfer[0] >> 7) == 0){
+ 1605              		.loc 1 342 0
  1606 006e 3B1C     		mov	r3, r7
  1607 0070 0833     		add	r3, r3, #8
  1608 0072 1B78     		ldrb	r3, [r3]
@@ -2055,29 +2059,29 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1610 0076 5BB2     		sxtb	r3, r3
  1611 0078 002B     		cmp	r3, #0
  1612 007a 07DB     		blt	.L77
- 339:.\I2C_Class.c ****                 *soilHum = soilTransfer[0];
- 1613              		.loc 1 339 0
+ 343:.\I2C_Class.c ****                 *soilHum = soilTransfer[0];
+ 1613              		.loc 1 343 0
  1614 007c 3B1C     		mov	r3, r7
  1615 007e 0833     		add	r3, r3, #8
  1616 0080 1B78     		ldrb	r3, [r3]
  1617 0082 1A1C     		mov	r2, r3
  1618 0084 3B68     		ldr	r3, [r7]
  1619 0086 1A80     		strh	r2, [r3]
- 340:.\I2C_Class.c ****                 return 0;
- 1620              		.loc 1 340 0
+ 344:.\I2C_Class.c ****                 return 0;
+ 1620              		.loc 1 344 0
  1621 0088 0023     		mov	r3, #0
  1622 008a 00E0     		b	.L80
  1623              	.L77:
- 341:.\I2C_Class.c ****             }
- 342:.\I2C_Class.c ****         }
- 343:.\I2C_Class.c ****     }
- 344:.\I2C_Class.c ****     return -1;
- 1624              		.loc 1 344 0
+ 345:.\I2C_Class.c ****             }
+ 346:.\I2C_Class.c ****         }
+ 347:.\I2C_Class.c ****     }
+ 348:.\I2C_Class.c ****     return -1;
+ 1624              		.loc 1 348 0
  1625 008c FF23     		mov	r3, #255
  1626              	.L80:
  1627 008e 5BB2     		sxtb	r3, r3
- 345:.\I2C_Class.c **** }
- 1628              		.loc 1 345 0
+ 349:.\I2C_Class.c **** }
+ 1628              		.loc 1 349 0
  1629 0090 181C     		mov	r0, r3
  1630 0092 BD46     		mov	sp, r7
  1631 0094 04B0     		add	sp, sp, #16
@@ -2091,33 +2095,33 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1639              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
  1640              		.section	.debug_info,"",%progbits
  1641              	.Ldebug_info0:
- 1642 0000 E3040000 		.4byte	0x4e3
+ 1642 0000 E5040000 		.4byte	0x4e5
  1643 0004 0400     		.2byte	0x4
  1644 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 36
+
+
  1645 000a 04       		.byte	0x4
  1646 000b 01       		.uleb128 0x1
  1647 000c 90000000 		.4byte	.LASF52
  1648 0010 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 36
-
-
  1649 0011 3E000000 		.4byte	.LASF53
- 1650 0015 80010000 		.4byte	.LASF54
+ 1650 0015 0C010000 		.4byte	.LASF54
  1651 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1652 001d 00000000 		.4byte	0
  1653 0021 00000000 		.4byte	.Ldebug_line0
  1654 0025 02       		.uleb128 0x2
  1655 0026 01       		.byte	0x1
  1656 0027 06       		.byte	0x6
- 1657 0028 57010000 		.4byte	.LASF0
+ 1657 0028 90010000 		.4byte	.LASF0
  1658 002c 02       		.uleb128 0x2
  1659 002d 01       		.byte	0x1
  1660 002e 08       		.byte	0x8
- 1661 002f 6B010000 		.4byte	.LASF1
+ 1661 002f A4010000 		.4byte	.LASF1
  1662 0033 02       		.uleb128 0x2
  1663 0034 02       		.byte	0x2
  1664 0035 05       		.byte	0x5
- 1665 0036 95020000 		.4byte	.LASF2
+ 1665 0036 84020000 		.4byte	.LASF2
  1666 003a 02       		.uleb128 0x2
  1667 003b 02       		.byte	0x2
  1668 003c 07       		.byte	0x7
@@ -2125,11 +2129,11 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1670 0041 02       		.uleb128 0x2
  1671 0042 04       		.byte	0x4
  1672 0043 05       		.byte	0x5
- 1673 0044 B2020000 		.4byte	.LASF4
+ 1673 0044 A1020000 		.4byte	.LASF4
  1674 0048 02       		.uleb128 0x2
  1675 0049 04       		.byte	0x4
  1676 004a 07       		.byte	0x7
- 1677 004b 2D010000 		.4byte	.LASF5
+ 1677 004b 66010000 		.4byte	.LASF5
  1678 004f 02       		.uleb128 0x2
  1679 0050 08       		.byte	0x8
  1680 0051 05       		.byte	0x5
@@ -2154,13 +2158,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1699 0076 04       		.uleb128 0x4
  1700 0077 D6010000 		.4byte	.LASF10
  1701 007b 02       		.byte	0x2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 37
+
+
  1702 007c A2       		.byte	0xa2
  1703 007d 3A000000 		.4byte	0x3a
  1704 0081 04       		.uleb128 0x4
  1705 0082 E2010000 		.4byte	.LASF11
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 37
-
-
  1706 0086 02       		.byte	0x2
  1707 0087 A3       		.byte	0xa3
  1708 0088 48000000 		.4byte	0x48
@@ -2170,12 +2174,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1712 0092 A4       		.byte	0xa4
  1713 0093 25000000 		.4byte	0x25
  1714 0097 04       		.uleb128 0x4
- 1715 0098 27010000 		.4byte	.LASF13
+ 1715 0098 60010000 		.4byte	.LASF13
  1716 009c 02       		.byte	0x2
  1717 009d A5       		.byte	0xa5
  1718 009e 33000000 		.4byte	0x33
  1719 00a2 04       		.uleb128 0x4
- 1720 00a3 51010000 		.4byte	.LASF14
+ 1720 00a3 8A010000 		.4byte	.LASF14
  1721 00a7 02       		.byte	0x2
  1722 00a8 A6       		.byte	0xa6
  1723 00a9 41000000 		.4byte	0x41
@@ -2186,7 +2190,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1728 00b4 02       		.uleb128 0x2
  1729 00b5 08       		.byte	0x8
  1730 00b6 04       		.byte	0x4
- 1731 00b7 79010000 		.4byte	.LASF16
+ 1731 00b7 B2010000 		.4byte	.LASF16
  1732 00bb 02       		.uleb128 0x2
  1733 00bc 01       		.byte	0x1
  1734 00bd 08       		.byte	0x8
@@ -2208,19 +2212,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1750 00df 9C       		.byte	0x9c
  1751 00e0 11010000 		.4byte	0x111
  1752 00e4 07       		.uleb128 0x7
- 1753 00e5 E9020000 		.4byte	.LASF19
+ 1753 00e5 DD020000 		.4byte	.LASF19
  1754 00e9 01       		.byte	0x1
  1755 00ea 29       		.byte	0x29
  1756 00eb 11010000 		.4byte	0x111
  1757 00ef 03       		.uleb128 0x3
  1758 00f0 91       		.byte	0x91
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 38
+
+
  1759 00f1 60       		.sleb128 -32
  1760 00f2 06       		.byte	0x6
  1761 00f3 07       		.uleb128 0x7
  1762 00f4 5F000000 		.4byte	.LASF20
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 38
-
-
  1763 00f8 01       		.byte	0x1
  1764 00f9 29       		.byte	0x29
  1765 00fa 24010000 		.4byte	0x124
@@ -2274,13 +2278,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1813 0157 6B000000 		.4byte	0x6b
  1814 015b 02       		.uleb128 0x2
  1815 015c 91       		.byte	0x91
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 39
+
+
  1816 015d 4F       		.sleb128 -49
  1817 015e 07       		.uleb128 0x7
  1818 015f 1E020000 		.4byte	.LASF22
  1819 0163 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 39
-
-
  1820 0164 3A       		.byte	0x3a
  1821 0165 99010000 		.4byte	0x199
  1822 0169 03       		.uleb128 0x3
@@ -2305,7 +2309,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1841 0188 91       		.byte	0x91
  1842 0189 67       		.sleb128 -25
  1843 018a 07       		.uleb128 0x7
- 1844 018b 1C010000 		.4byte	.LASF24
+ 1844 018b 55010000 		.4byte	.LASF24
  1845 018f 01       		.byte	0x1
  1846 0190 3E       		.byte	0x3e
  1847 0191 6B000000 		.4byte	0x6b
@@ -2334,13 +2338,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1870 01bd 06       		.byte	0x6
  1871 01be 00       		.byte	0
  1872 01bf 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 40
+
+
  1873 01c0 40020000 		.4byte	.LASF26
  1874 01c4 01       		.byte	0x1
  1875 01c5 58       		.byte	0x58
  1876 01c6 8C000000 		.4byte	0x8c
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 40
-
-
  1877 01ca 00000000 		.4byte	.LFB35
  1878 01ce 7C010000 		.4byte	.LFE35-.LFB35
  1879 01d2 01       		.uleb128 0x1
@@ -2355,7 +2359,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1888 01e4 91       		.byte	0x91
  1889 01e5 4F       		.sleb128 -49
  1890 01e6 07       		.uleb128 0x7
- 1891 01e7 8A020000 		.4byte	.LASF28
+ 1891 01e7 79020000 		.4byte	.LASF28
  1892 01eb 01       		.byte	0x1
  1893 01ec 59       		.byte	0x59
  1894 01ed 21020000 		.4byte	0x221
@@ -2394,13 +2398,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1927 0226 34020000 		.4byte	0x234
  1928 022a 09       		.uleb128 0x9
  1929 022b C2000000 		.4byte	0xc2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 41
+
+
  1930 022f 03       		.uleb128 0x3
  1931 0230 91       		.byte	0x91
  1932 0231 60       		.sleb128 -32
  1933 0232 06       		.byte	0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 41
-
-
  1934 0233 00       		.byte	0
  1935 0234 08       		.uleb128 0x8
  1936 0235 6B000000 		.4byte	0x6b
@@ -2431,7 +2435,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1961 026c 91       		.byte	0x91
  1962 026d 4F       		.sleb128 -49
  1963 026e 07       		.uleb128 0x7
- 1964 026f BB020000 		.4byte	.LASF33
+ 1964 026f AA020000 		.4byte	.LASF33
  1965 0273 01       		.byte	0x1
  1966 0274 7A       		.byte	0x7a
  1967 0275 A9020000 		.4byte	0x2a9
@@ -2454,13 +2458,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  1984 0292 7D       		.byte	0x7d
  1985 0293 6B000000 		.4byte	0x6b
  1986 0297 02       		.uleb128 0x2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 42
+
+
  1987 0298 91       		.byte	0x91
  1988 0299 67       		.sleb128 -25
  1989 029a 07       		.uleb128 0x7
  1990 029b F6010000 		.4byte	.LASF30
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 42
-
-
  1991 029f 01       		.byte	0x1
  1992 02a0 7E       		.byte	0x7e
  1993 02a1 6B000000 		.4byte	0x6b
@@ -2489,7 +2493,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2016 02cd 06       		.byte	0x6
  2017 02ce 00       		.byte	0
  2018 02cf 0A       		.uleb128 0xa
- 2019 02d0 D8020000 		.4byte	.LASF35
+ 2019 02d0 C7020000 		.4byte	.LASF35
  2020 02d4 01       		.byte	0x1
  2021 02d5 98       		.byte	0x98
  2022 02d6 8C000000 		.4byte	0x8c
@@ -2507,20 +2511,20 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2034 02f4 91       		.byte	0x91
  2035 02f5 6F       		.sleb128 -17
  2036 02f6 0C       		.uleb128 0xc
- 2037 02f7 16010000 		.4byte	.LASF37
+ 2037 02f7 4F010000 		.4byte	.LASF37
  2038 02fb 01       		.byte	0x1
  2039 02fc 98       		.byte	0x98
  2040 02fd 6B000000 		.4byte	0x6b
  2041 0301 02       		.uleb128 0x2
  2042 0302 91       		.byte	0x91
  2043 0303 6E       		.sleb128 -18
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 43
+
+
  2044 0304 07       		.uleb128 0x7
  2045 0305 1F000000 		.4byte	.LASF38
  2046 0309 01       		.byte	0x1
  2047 030a 99       		.byte	0x99
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 43
-
-
  2048 030b 21030000 		.4byte	0x321
  2049 030f 02       		.uleb128 0x2
  2050 0310 91       		.byte	0x91
@@ -2542,9 +2546,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2066 032f 00       		.byte	0
  2067 0330 00       		.byte	0
  2068 0331 0A       		.uleb128 0xa
- 2069 0332 3F010000 		.4byte	.LASF39
+ 2069 0332 78010000 		.4byte	.LASF39
  2070 0336 01       		.byte	0x1
- 2071 0337 B8       		.byte	0xb8
+ 2071 0337 B9       		.byte	0xb9
  2072 0338 8C000000 		.4byte	0x8c
  2073 033c 00000000 		.4byte	.LFB38
  2074 0340 F6000000 		.4byte	.LFE38-.LFB38
@@ -2552,9 +2556,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2076 0345 9C       		.byte	0x9c
  2077 0346 9F030000 		.4byte	0x39f
  2078 034a 0C       		.uleb128 0xc
- 2079 034b C6020000 		.4byte	.LASF40
+ 2079 034b B5020000 		.4byte	.LASF40
  2080 034f 01       		.byte	0x1
- 2081 0350 B8       		.byte	0xb8
+ 2081 0350 B9       		.byte	0xb9
  2082 0351 C9000000 		.4byte	0xc9
  2083 0355 02       		.uleb128 0x2
  2084 0356 91       		.byte	0x91
@@ -2562,26 +2566,26 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2086 0358 0C       		.uleb128 0xc
  2087 0359 19020000 		.4byte	.LASF27
  2088 035d 01       		.byte	0x1
- 2089 035e B8       		.byte	0xb8
+ 2089 035e B9       		.byte	0xb9
  2090 035f C9000000 		.4byte	0xc9
  2091 0363 02       		.uleb128 0x2
  2092 0364 91       		.byte	0x91
  2093 0365 68       		.sleb128 -24
  2094 0366 0C       		.uleb128 0xc
- 2095 0367 11010000 		.4byte	.LASF41
+ 2095 0367 4A010000 		.4byte	.LASF41
  2096 036b 01       		.byte	0x1
- 2097 036c B8       		.byte	0xb8
+ 2097 036c B9       		.byte	0xb9
  2098 036d C9000000 		.4byte	0xc9
  2099 0371 02       		.uleb128 0x2
  2100 0372 91       		.byte	0x91
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 44
+
+
  2101 0373 64       		.sleb128 -28
  2102 0374 0C       		.uleb128 0xc
- 2103 0375 9F020000 		.4byte	.LASF42
+ 2103 0375 8E020000 		.4byte	.LASF42
  2104 0379 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 44
-
-
- 2105 037a B8       		.byte	0xb8
+ 2105 037a B9       		.byte	0xb9
  2106 037b C9000000 		.4byte	0xc9
  2107 037f 02       		.uleb128 0x2
  2108 0380 91       		.byte	0x91
@@ -2589,15 +2593,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2110 0382 07       		.uleb128 0x7
  2111 0383 12020000 		.4byte	.LASF21
  2112 0387 01       		.byte	0x1
- 2113 0388 B9       		.byte	0xb9
+ 2113 0388 BA       		.byte	0xba
  2114 0389 6B000000 		.4byte	0x6b
  2115 038d 02       		.uleb128 0x2
  2116 038e 91       		.byte	0x91
  2117 038f 77       		.sleb128 -9
  2118 0390 07       		.uleb128 0x7
- 2119 0391 63010000 		.4byte	.LASF43
+ 2119 0391 9C010000 		.4byte	.LASF43
  2120 0395 01       		.byte	0x1
- 2121 0396 BA       		.byte	0xba
+ 2121 0396 BB       		.byte	0xbb
  2122 0397 9F030000 		.4byte	0x39f
  2123 039b 02       		.uleb128 0x2
  2124 039c 91       		.byte	0x91
@@ -2610,169 +2614,169 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2131 03a9 C2000000 		.4byte	0xc2
  2132 03ad 01       		.byte	0x1
  2133 03ae 00       		.byte	0
- 2134 03af 0A       		.uleb128 0xa
+ 2134 03af 0E       		.uleb128 0xe
  2135 03b0 59020000 		.4byte	.LASF44
  2136 03b4 01       		.byte	0x1
- 2137 03b5 FE       		.byte	0xfe
- 2138 03b6 8C000000 		.4byte	0x8c
- 2139 03ba 00000000 		.4byte	.LFB39
- 2140 03be A0000000 		.4byte	.LFE39-.LFB39
- 2141 03c2 01       		.uleb128 0x1
- 2142 03c3 9C       		.byte	0x9c
- 2143 03c4 F5030000 		.4byte	0x3f5
- 2144 03c8 0C       		.uleb128 0xc
- 2145 03c9 F6010000 		.4byte	.LASF30
- 2146 03cd 01       		.byte	0x1
- 2147 03ce FE       		.byte	0xfe
- 2148 03cf F5030000 		.4byte	0x3f5
- 2149 03d3 02       		.uleb128 0x2
- 2150 03d4 91       		.byte	0x91
- 2151 03d5 64       		.sleb128 -28
- 2152 03d6 0E       		.uleb128 0xe
- 2153 03d7 63010000 		.4byte	.LASF43
- 2154 03db 01       		.byte	0x1
- 2155 03dc 0001     		.2byte	0x100
- 2156 03de 9F030000 		.4byte	0x39f
- 2157 03e2 02       		.uleb128 0x2
- 2158 03e3 91       		.byte	0x91
- 2159 03e4 74       		.sleb128 -12
- 2160 03e5 0E       		.uleb128 0xe
- 2161 03e6 78000000 		.4byte	.LASF45
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 45
+ 2137 03b5 0101     		.2byte	0x101
+ 2138 03b7 8C000000 		.4byte	0x8c
+ 2139 03bb 00000000 		.4byte	.LFB39
+ 2140 03bf A0000000 		.4byte	.LFE39-.LFB39
+ 2141 03c3 01       		.uleb128 0x1
+ 2142 03c4 9C       		.byte	0x9c
+ 2143 03c5 F7030000 		.4byte	0x3f7
+ 2144 03c9 0F       		.uleb128 0xf
+ 2145 03ca F6010000 		.4byte	.LASF30
+ 2146 03ce 01       		.byte	0x1
+ 2147 03cf 0101     		.2byte	0x101
+ 2148 03d1 F7030000 		.4byte	0x3f7
+ 2149 03d5 02       		.uleb128 0x2
+ 2150 03d6 91       		.byte	0x91
+ 2151 03d7 64       		.sleb128 -28
+ 2152 03d8 10       		.uleb128 0x10
+ 2153 03d9 9C010000 		.4byte	.LASF43
+ 2154 03dd 01       		.byte	0x1
+ 2155 03de 0301     		.2byte	0x103
+ 2156 03e0 9F030000 		.4byte	0x39f
+ 2157 03e4 02       		.uleb128 0x2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 45
 
 
- 2162 03ea 01       		.byte	0x1
- 2163 03eb 0101     		.2byte	0x101
- 2164 03ed FB030000 		.4byte	0x3fb
- 2165 03f1 02       		.uleb128 0x2
- 2166 03f2 91       		.byte	0x91
- 2167 03f3 6C       		.sleb128 -20
- 2168 03f4 00       		.byte	0
- 2169 03f5 05       		.uleb128 0x5
- 2170 03f6 04       		.byte	0x4
- 2171 03f7 A2000000 		.4byte	0xa2
- 2172 03fb 08       		.uleb128 0x8
- 2173 03fc 81000000 		.4byte	0x81
- 2174 0400 0B040000 		.4byte	0x40b
- 2175 0404 0D       		.uleb128 0xd
- 2176 0405 C2000000 		.4byte	0xc2
- 2177 0409 01       		.byte	0x1
- 2178 040a 00       		.byte	0
- 2179 040b 0F       		.uleb128 0xf
- 2180 040c F6020000 		.4byte	.LASF46
- 2181 0410 01       		.byte	0x1
- 2182 0411 1501     		.2byte	0x115
- 2183 0413 8C000000 		.4byte	0x8c
- 2184 0417 00000000 		.4byte	.LFB40
- 2185 041b 04010000 		.4byte	.LFE40-.LFB40
- 2186 041f 01       		.uleb128 0x1
- 2187 0420 9C       		.byte	0x9c
- 2188 0421 54040000 		.4byte	0x454
- 2189 0425 10       		.uleb128 0x10
- 2190 0426 0C000000 		.4byte	.LASF47
- 2191 042a 01       		.byte	0x1
- 2192 042b 1501     		.2byte	0x115
- 2193 042d F5030000 		.4byte	0x3f5
- 2194 0431 02       		.uleb128 0x2
- 2195 0432 91       		.byte	0x91
- 2196 0433 54       		.sleb128 -44
- 2197 0434 0E       		.uleb128 0xe
- 2198 0435 63010000 		.4byte	.LASF43
- 2199 0439 01       		.byte	0x1
- 2200 043a 2901     		.2byte	0x129
- 2201 043c 54040000 		.4byte	0x454
- 2202 0440 03       		.uleb128 0x3
- 2203 0441 91       		.byte	0x91
- 2204 0442 60       		.sleb128 -32
- 2205 0443 06       		.byte	0x6
- 2206 0444 0E       		.uleb128 0xe
- 2207 0445 12020000 		.4byte	.LASF21
- 2208 0449 01       		.byte	0x1
- 2209 044a 2A01     		.2byte	0x12a
- 2210 044c 6B000000 		.4byte	0x6b
- 2211 0450 02       		.uleb128 0x2
- 2212 0451 91       		.byte	0x91
- 2213 0452 5F       		.sleb128 -33
- 2214 0453 00       		.byte	0
- 2215 0454 08       		.uleb128 0x8
- 2216 0455 6B000000 		.4byte	0x6b
- 2217 0459 67040000 		.4byte	0x467
- 2218 045d 09       		.uleb128 0x9
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 46
+ 2158 03e5 91       		.byte	0x91
+ 2159 03e6 74       		.sleb128 -12
+ 2160 03e7 10       		.uleb128 0x10
+ 2161 03e8 78000000 		.4byte	.LASF45
+ 2162 03ec 01       		.byte	0x1
+ 2163 03ed 0401     		.2byte	0x104
+ 2164 03ef FD030000 		.4byte	0x3fd
+ 2165 03f3 02       		.uleb128 0x2
+ 2166 03f4 91       		.byte	0x91
+ 2167 03f5 6C       		.sleb128 -20
+ 2168 03f6 00       		.byte	0
+ 2169 03f7 05       		.uleb128 0x5
+ 2170 03f8 04       		.byte	0x4
+ 2171 03f9 A2000000 		.4byte	0xa2
+ 2172 03fd 08       		.uleb128 0x8
+ 2173 03fe 81000000 		.4byte	0x81
+ 2174 0402 0D040000 		.4byte	0x40d
+ 2175 0406 0D       		.uleb128 0xd
+ 2176 0407 C2000000 		.4byte	0xc2
+ 2177 040b 01       		.byte	0x1
+ 2178 040c 00       		.byte	0
+ 2179 040d 0E       		.uleb128 0xe
+ 2180 040e EA020000 		.4byte	.LASF46
+ 2181 0412 01       		.byte	0x1
+ 2182 0413 1901     		.2byte	0x119
+ 2183 0415 8C000000 		.4byte	0x8c
+ 2184 0419 00000000 		.4byte	.LFB40
+ 2185 041d 04010000 		.4byte	.LFE40-.LFB40
+ 2186 0421 01       		.uleb128 0x1
+ 2187 0422 9C       		.byte	0x9c
+ 2188 0423 56040000 		.4byte	0x456
+ 2189 0427 0F       		.uleb128 0xf
+ 2190 0428 0C000000 		.4byte	.LASF47
+ 2191 042c 01       		.byte	0x1
+ 2192 042d 1901     		.2byte	0x119
+ 2193 042f F7030000 		.4byte	0x3f7
+ 2194 0433 02       		.uleb128 0x2
+ 2195 0434 91       		.byte	0x91
+ 2196 0435 54       		.sleb128 -44
+ 2197 0436 10       		.uleb128 0x10
+ 2198 0437 9C010000 		.4byte	.LASF43
+ 2199 043b 01       		.byte	0x1
+ 2200 043c 2D01     		.2byte	0x12d
+ 2201 043e 56040000 		.4byte	0x456
+ 2202 0442 03       		.uleb128 0x3
+ 2203 0443 91       		.byte	0x91
+ 2204 0444 60       		.sleb128 -32
+ 2205 0445 06       		.byte	0x6
+ 2206 0446 10       		.uleb128 0x10
+ 2207 0447 12020000 		.4byte	.LASF21
+ 2208 044b 01       		.byte	0x1
+ 2209 044c 2E01     		.2byte	0x12e
+ 2210 044e 6B000000 		.4byte	0x6b
+ 2211 0452 02       		.uleb128 0x2
+ 2212 0453 91       		.byte	0x91
+ 2213 0454 5F       		.sleb128 -33
+ 2214 0455 00       		.byte	0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 46
 
 
- 2219 045e C2000000 		.4byte	0xc2
- 2220 0462 03       		.uleb128 0x3
- 2221 0463 91       		.byte	0x91
- 2222 0464 64       		.sleb128 -28
- 2223 0465 06       		.byte	0x6
- 2224 0466 00       		.byte	0
- 2225 0467 0F       		.uleb128 0xf
- 2226 0468 CD020000 		.4byte	.LASF48
- 2227 046c 01       		.byte	0x1
- 2228 046d 4201     		.2byte	0x142
- 2229 046f 8C000000 		.4byte	0x8c
- 2230 0473 00000000 		.4byte	.LFB41
- 2231 0477 98000000 		.4byte	.LFE41-.LFB41
- 2232 047b 01       		.uleb128 0x1
- 2233 047c 9C       		.byte	0x9c
- 2234 047d BE040000 		.4byte	0x4be
- 2235 0481 10       		.uleb128 0x10
- 2236 0482 66020000 		.4byte	.LASF36
- 2237 0486 01       		.byte	0x1
- 2238 0487 4201     		.2byte	0x142
- 2239 0489 6B000000 		.4byte	0x6b
- 2240 048d 02       		.uleb128 0x2
- 2241 048e 91       		.byte	0x91
- 2242 048f 6F       		.sleb128 -17
- 2243 0490 10       		.uleb128 0x10
- 2244 0491 AA020000 		.4byte	.LASF49
- 2245 0495 01       		.byte	0x1
- 2246 0496 4201     		.2byte	0x142
- 2247 0498 BE040000 		.4byte	0x4be
- 2248 049c 02       		.uleb128 0x2
- 2249 049d 91       		.byte	0x91
- 2250 049e 68       		.sleb128 -24
- 2251 049f 0E       		.uleb128 0xe
- 2252 04a0 12020000 		.4byte	.LASF21
- 2253 04a4 01       		.byte	0x1
- 2254 04a5 4301     		.2byte	0x143
- 2255 04a7 81000000 		.4byte	0x81
- 2256 04ab 02       		.uleb128 0x2
- 2257 04ac 91       		.byte	0x91
- 2258 04ad 74       		.sleb128 -12
- 2259 04ae 0E       		.uleb128 0xe
- 2260 04af 7D020000 		.4byte	.LASF50
- 2261 04b3 01       		.byte	0x1
- 2262 04b4 4401     		.2byte	0x144
- 2263 04b6 21030000 		.4byte	0x321
- 2264 04ba 02       		.uleb128 0x2
- 2265 04bb 91       		.byte	0x91
- 2266 04bc 70       		.sleb128 -16
- 2267 04bd 00       		.byte	0
- 2268 04be 05       		.uleb128 0x5
- 2269 04bf 04       		.byte	0x4
- 2270 04c0 97000000 		.4byte	0x97
- 2271 04c4 07       		.uleb128 0x7
- 2272 04c5 0C010000 		.4byte	.LASF51
- 2273 04c9 01       		.byte	0x1
- 2274 04ca 1D       		.byte	0x1d
- 2275 04cb 5D000000 		.4byte	0x5d
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 47
+ 2215 0456 08       		.uleb128 0x8
+ 2216 0457 6B000000 		.4byte	0x6b
+ 2217 045b 69040000 		.4byte	0x469
+ 2218 045f 09       		.uleb128 0x9
+ 2219 0460 C2000000 		.4byte	0xc2
+ 2220 0464 03       		.uleb128 0x3
+ 2221 0465 91       		.byte	0x91
+ 2222 0466 64       		.sleb128 -28
+ 2223 0467 06       		.byte	0x6
+ 2224 0468 00       		.byte	0
+ 2225 0469 0E       		.uleb128 0xe
+ 2226 046a BC020000 		.4byte	.LASF48
+ 2227 046e 01       		.byte	0x1
+ 2228 046f 4601     		.2byte	0x146
+ 2229 0471 8C000000 		.4byte	0x8c
+ 2230 0475 00000000 		.4byte	.LFB41
+ 2231 0479 98000000 		.4byte	.LFE41-.LFB41
+ 2232 047d 01       		.uleb128 0x1
+ 2233 047e 9C       		.byte	0x9c
+ 2234 047f C0040000 		.4byte	0x4c0
+ 2235 0483 0F       		.uleb128 0xf
+ 2236 0484 66020000 		.4byte	.LASF36
+ 2237 0488 01       		.byte	0x1
+ 2238 0489 4601     		.2byte	0x146
+ 2239 048b 6B000000 		.4byte	0x6b
+ 2240 048f 02       		.uleb128 0x2
+ 2241 0490 91       		.byte	0x91
+ 2242 0491 6F       		.sleb128 -17
+ 2243 0492 0F       		.uleb128 0xf
+ 2244 0493 99020000 		.4byte	.LASF49
+ 2245 0497 01       		.byte	0x1
+ 2246 0498 4601     		.2byte	0x146
+ 2247 049a C0040000 		.4byte	0x4c0
+ 2248 049e 02       		.uleb128 0x2
+ 2249 049f 91       		.byte	0x91
+ 2250 04a0 68       		.sleb128 -24
+ 2251 04a1 10       		.uleb128 0x10
+ 2252 04a2 12020000 		.4byte	.LASF21
+ 2253 04a6 01       		.byte	0x1
+ 2254 04a7 4701     		.2byte	0x147
+ 2255 04a9 81000000 		.4byte	0x81
+ 2256 04ad 02       		.uleb128 0x2
+ 2257 04ae 91       		.byte	0x91
+ 2258 04af 74       		.sleb128 -12
+ 2259 04b0 10       		.uleb128 0x10
+ 2260 04b1 6C020000 		.4byte	.LASF50
+ 2261 04b5 01       		.byte	0x1
+ 2262 04b6 4801     		.2byte	0x148
+ 2263 04b8 21030000 		.4byte	0x321
+ 2264 04bc 02       		.uleb128 0x2
+ 2265 04bd 91       		.byte	0x91
+ 2266 04be 70       		.sleb128 -16
+ 2267 04bf 00       		.byte	0
+ 2268 04c0 05       		.uleb128 0x5
+ 2269 04c1 04       		.byte	0x4
+ 2270 04c2 97000000 		.4byte	0x97
+ 2271 04c6 07       		.uleb128 0x7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 47
 
 
- 2276 04cf 05       		.uleb128 0x5
- 2277 04d0 03       		.byte	0x3
- 2278 04d1 00000000 		.4byte	size
- 2279 04d5 11       		.uleb128 0x11
- 2280 04d6 6C020000 		.4byte	.LASF56
- 2281 04da 01       		.byte	0x1
- 2282 04db 1E       		.byte	0x1e
- 2283 04dc 6B000000 		.4byte	0x6b
- 2284 04e0 05       		.uleb128 0x5
- 2285 04e1 03       		.byte	0x3
- 2286 04e2 00000000 		.4byte	irrigationStatus
- 2287 04e6 00       		.byte	0
+ 2272 04c7 D8020000 		.4byte	.LASF51
+ 2273 04cb 01       		.byte	0x1
+ 2274 04cc 1D       		.byte	0x1d
+ 2275 04cd 5D000000 		.4byte	0x5d
+ 2276 04d1 05       		.uleb128 0x5
+ 2277 04d2 03       		.byte	0x3
+ 2278 04d3 00000000 		.4byte	size
+ 2279 04d7 11       		.uleb128 0x11
+ 2280 04d8 B9010000 		.4byte	.LASF56
+ 2281 04dc 01       		.byte	0x1
+ 2282 04dd 1E       		.byte	0x1e
+ 2283 04de 6B000000 		.4byte	0x6b
+ 2284 04e2 05       		.uleb128 0x5
+ 2285 04e3 03       		.byte	0x3
+ 2286 04e4 00000000 		.4byte	irrigationStatus
+ 2287 04e8 00       		.byte	0
  2288              		.section	.debug_abbrev,"",%progbits
  2289              	.Ldebug_abbrev0:
  2290 0000 01       		.uleb128 0x1
@@ -2814,13 +2818,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2326 0024 0B       		.uleb128 0xb
  2327 0025 03       		.uleb128 0x3
  2328 0026 08       		.uleb128 0x8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 48
+
+
  2329 0027 00       		.byte	0
  2330 0028 00       		.byte	0
  2331 0029 04       		.uleb128 0x4
  2332 002a 16       		.uleb128 0x16
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 48
-
-
  2333 002b 00       		.byte	0
  2334 002c 03       		.uleb128 0x3
  2335 002d 0E       		.uleb128 0xe
@@ -2874,13 +2878,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2383 005e 3A       		.uleb128 0x3a
  2384 005f 0B       		.uleb128 0xb
  2385 0060 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 49
+
+
  2386 0061 0B       		.uleb128 0xb
  2387 0062 49       		.uleb128 0x49
  2388 0063 13       		.uleb128 0x13
  2389 0064 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 49
-
-
  2390 0065 18       		.uleb128 0x18
  2391 0066 00       		.byte	0
  2392 0067 00       		.byte	0
@@ -2934,13 +2938,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2440 0098 00       		.byte	0
  2441 0099 03       		.uleb128 0x3
  2442 009a 08       		.uleb128 0x8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 50
+
+
  2443 009b 3A       		.uleb128 0x3a
  2444 009c 0B       		.uleb128 0xb
  2445 009d 3B       		.uleb128 0x3b
  2446 009e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 50
-
-
  2447 009f 49       		.uleb128 0x49
  2448 00a0 13       		.uleb128 0x13
  2449 00a1 02       		.uleb128 0x2
@@ -2972,52 +2976,52 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2475 00bb 00       		.byte	0
  2476 00bc 00       		.byte	0
  2477 00bd 0E       		.uleb128 0xe
- 2478 00be 34       		.uleb128 0x34
- 2479 00bf 00       		.byte	0
- 2480 00c0 03       		.uleb128 0x3
- 2481 00c1 0E       		.uleb128 0xe
- 2482 00c2 3A       		.uleb128 0x3a
- 2483 00c3 0B       		.uleb128 0xb
- 2484 00c4 3B       		.uleb128 0x3b
- 2485 00c5 05       		.uleb128 0x5
- 2486 00c6 49       		.uleb128 0x49
- 2487 00c7 13       		.uleb128 0x13
- 2488 00c8 02       		.uleb128 0x2
- 2489 00c9 18       		.uleb128 0x18
- 2490 00ca 00       		.byte	0
- 2491 00cb 00       		.byte	0
- 2492 00cc 0F       		.uleb128 0xf
- 2493 00cd 2E       		.uleb128 0x2e
- 2494 00ce 01       		.byte	0x1
- 2495 00cf 3F       		.uleb128 0x3f
- 2496 00d0 19       		.uleb128 0x19
- 2497 00d1 03       		.uleb128 0x3
- 2498 00d2 0E       		.uleb128 0xe
- 2499 00d3 3A       		.uleb128 0x3a
- 2500 00d4 0B       		.uleb128 0xb
- 2501 00d5 3B       		.uleb128 0x3b
- 2502 00d6 05       		.uleb128 0x5
- 2503 00d7 27       		.uleb128 0x27
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 51
+ 2478 00be 2E       		.uleb128 0x2e
+ 2479 00bf 01       		.byte	0x1
+ 2480 00c0 3F       		.uleb128 0x3f
+ 2481 00c1 19       		.uleb128 0x19
+ 2482 00c2 03       		.uleb128 0x3
+ 2483 00c3 0E       		.uleb128 0xe
+ 2484 00c4 3A       		.uleb128 0x3a
+ 2485 00c5 0B       		.uleb128 0xb
+ 2486 00c6 3B       		.uleb128 0x3b
+ 2487 00c7 05       		.uleb128 0x5
+ 2488 00c8 27       		.uleb128 0x27
+ 2489 00c9 19       		.uleb128 0x19
+ 2490 00ca 49       		.uleb128 0x49
+ 2491 00cb 13       		.uleb128 0x13
+ 2492 00cc 11       		.uleb128 0x11
+ 2493 00cd 01       		.uleb128 0x1
+ 2494 00ce 12       		.uleb128 0x12
+ 2495 00cf 06       		.uleb128 0x6
+ 2496 00d0 40       		.uleb128 0x40
+ 2497 00d1 18       		.uleb128 0x18
+ 2498 00d2 9642     		.uleb128 0x2116
+ 2499 00d4 19       		.uleb128 0x19
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 51
 
 
- 2504 00d8 19       		.uleb128 0x19
- 2505 00d9 49       		.uleb128 0x49
- 2506 00da 13       		.uleb128 0x13
- 2507 00db 11       		.uleb128 0x11
- 2508 00dc 01       		.uleb128 0x1
- 2509 00dd 12       		.uleb128 0x12
- 2510 00de 06       		.uleb128 0x6
- 2511 00df 40       		.uleb128 0x40
- 2512 00e0 18       		.uleb128 0x18
- 2513 00e1 9642     		.uleb128 0x2116
- 2514 00e3 19       		.uleb128 0x19
- 2515 00e4 01       		.uleb128 0x1
- 2516 00e5 13       		.uleb128 0x13
+ 2500 00d5 01       		.uleb128 0x1
+ 2501 00d6 13       		.uleb128 0x13
+ 2502 00d7 00       		.byte	0
+ 2503 00d8 00       		.byte	0
+ 2504 00d9 0F       		.uleb128 0xf
+ 2505 00da 05       		.uleb128 0x5
+ 2506 00db 00       		.byte	0
+ 2507 00dc 03       		.uleb128 0x3
+ 2508 00dd 0E       		.uleb128 0xe
+ 2509 00de 3A       		.uleb128 0x3a
+ 2510 00df 0B       		.uleb128 0xb
+ 2511 00e0 3B       		.uleb128 0x3b
+ 2512 00e1 05       		.uleb128 0x5
+ 2513 00e2 49       		.uleb128 0x49
+ 2514 00e3 13       		.uleb128 0x13
+ 2515 00e4 02       		.uleb128 0x2
+ 2516 00e5 18       		.uleb128 0x18
  2517 00e6 00       		.byte	0
  2518 00e7 00       		.byte	0
  2519 00e8 10       		.uleb128 0x10
- 2520 00e9 05       		.uleb128 0x5
+ 2520 00e9 34       		.uleb128 0x34
  2521 00ea 00       		.byte	0
  2522 00eb 03       		.uleb128 0x3
  2523 00ec 0E       		.uleb128 0xe
@@ -3054,13 +3058,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2554 0004 0200     		.2byte	0x2
  2555 0006 00000000 		.4byte	.Ldebug_info0
  2556 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 52
+
+
  2557 000b 00       		.byte	0
  2558 000c 0000     		.2byte	0
  2559 000e 0000     		.2byte	0
  2560 0010 00000000 		.4byte	.LFB33
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 52
-
-
  2561 0014 20010000 		.4byte	.LFE33-.LFB33
  2562 0018 00000000 		.4byte	.LFB34
  2563 001c 7C010000 		.4byte	.LFE34-.LFB34
@@ -3114,13 +3118,13 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2606      4F666656 
  2606      656E7400 
  2607              	.LASF47:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 53
+
+
  2608 000c 6C696768 		.ascii	"light\000"
  2608      7400
  2609              	.LASF25:
  2610 0012 61646A75 		.ascii	"adjustWindow\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 53
-
-
  2610      73745769 
  2610      6E646F77 
  2610      00
@@ -3174,76 +3178,79 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2631 00c3 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
  2631      20726576 
  2631      6973696F 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 54
+
+
  2631      6E203231 
  2631      31333538 
  2632 00f6 30202D66 		.ascii	"0 -ffunction-sections\000"
  2632      66756E63 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 54
-
-
  2632      74696F6E 
  2632      2D736563 
  2632      74696F6E 
- 2633              	.LASF51:
- 2634 010c 73697A65 		.ascii	"size\000"
- 2634      00
- 2635              	.LASF41:
- 2636 0111 76656E74 		.ascii	"vent\000"
- 2636      00
- 2637              	.LASF37:
- 2638 0116 6F6E4F66 		.ascii	"onOff\000"
- 2638      6600
- 2639              	.LASF24:
- 2640 011c 74656D70 		.ascii	"tempWindow\000"
- 2640      57696E64 
- 2640      6F7700
- 2641              	.LASF13:
- 2642 0127 696E7431 		.ascii	"int16\000"
- 2642      3600
- 2643              	.LASF5:
- 2644 012d 6C6F6E67 		.ascii	"long unsigned int\000"
- 2644      20756E73 
- 2644      69676E65 
- 2644      6420696E 
- 2644      7400
- 2645              	.LASF39:
- 2646 013f 67657441 		.ascii	"getActuatorStatus\000"
- 2646      63747561 
- 2646      746F7253 
- 2646      74617475 
- 2646      7300
- 2647              	.LASF14:
- 2648 0151 696E7433 		.ascii	"int32\000"
- 2648      3200
- 2649              	.LASF0:
- 2650 0157 7369676E 		.ascii	"signed char\000"
- 2650      65642063 
- 2650      68617200 
- 2651              	.LASF43:
- 2652 0163 64617461 		.ascii	"dataget\000"
- 2652      67657400 
- 2653              	.LASF1:
- 2654 016b 756E7369 		.ascii	"unsigned char\000"
- 2654      676E6564 
- 2654      20636861 
- 2654      7200
- 2655              	.LASF16:
- 2656 0179 646F7562 		.ascii	"double\000"
- 2656      6C6500
- 2657              	.LASF54:
- 2658 0180 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 2658      73657273 
- 2658      5C506869 
- 2658      6C69705C 
- 2658      4F6E6544 
- 2659 01ad 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 2659      4D617374 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 55
+ 2633              	.LASF54:
+ 2634 010c 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 2634      73657273 
+ 2634      5C506869 
+ 2634      6C69705C 
+ 2634      4F6E6544 
+ 2635 0139 536F435F 		.ascii	"SoC_Master.cydsn\000"
+ 2635      4D617374 
+ 2635      65722E63 
+ 2635      7964736E 
+ 2635      00
+ 2636              	.LASF41:
+ 2637 014a 76656E74 		.ascii	"vent\000"
+ 2637      00
+ 2638              	.LASF37:
+ 2639 014f 6F6E4F66 		.ascii	"onOff\000"
+ 2639      6600
+ 2640              	.LASF24:
+ 2641 0155 74656D70 		.ascii	"tempWindow\000"
+ 2641      57696E64 
+ 2641      6F7700
+ 2642              	.LASF13:
+ 2643 0160 696E7431 		.ascii	"int16\000"
+ 2643      3600
+ 2644              	.LASF5:
+ 2645 0166 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2645      20756E73 
+ 2645      69676E65 
+ 2645      6420696E 
+ 2645      7400
+ 2646              	.LASF39:
+ 2647 0178 67657441 		.ascii	"getActuatorStatus\000"
+ 2647      63747561 
+ 2647      746F7253 
+ 2647      74617475 
+ 2647      7300
+ 2648              	.LASF14:
+ 2649 018a 696E7433 		.ascii	"int32\000"
+ 2649      3200
+ 2650              	.LASF0:
+ 2651 0190 7369676E 		.ascii	"signed char\000"
+ 2651      65642063 
+ 2651      68617200 
+ 2652              	.LASF43:
+ 2653 019c 64617461 		.ascii	"dataget\000"
+ 2653      67657400 
+ 2654              	.LASF1:
+ 2655 01a4 756E7369 		.ascii	"unsigned char\000"
+ 2655      676E6564 
+ 2655      20636861 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 55
 
 
- 2659      65725C50 
- 2659      536F435F 
- 2659      4D617374 
+ 2655      7200
+ 2656              	.LASF16:
+ 2657 01b2 646F7562 		.ascii	"double\000"
+ 2657      6C6500
+ 2658              	.LASF56:
+ 2659 01b9 69727269 		.ascii	"irrigationStatus\000"
+ 2659      67617469 
+ 2659      6F6E5374 
+ 2659      61747573 
+ 2659      00
  2660              	.LASF23:
  2661 01ca 636C6F73 		.ascii	"closeWindow\000"
  2661      6557696E 
@@ -3291,6 +3298,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2685 0237 73697A65 		.ascii	"sizetype\000"
  2685      74797065 
  2685      00
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 56
+
+
  2686              	.LASF26:
  2687 0240 61646A75 		.ascii	"adjustHeat\000"
  2687      73744865 
@@ -3298,9 +3308,6 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2688              	.LASF6:
  2689 024b 6C6F6E67 		.ascii	"long long int\000"
  2689      206C6F6E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 56
-
-
  2689      6720696E 
  2689      7400
  2690              	.LASF44:
@@ -3312,63 +3319,60 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 1
  2694              	.LASF36:
  2695 0266 696E6465 		.ascii	"index\000"
  2695      7800
- 2696              	.LASF56:
- 2697 026c 69727269 		.ascii	"irrigationStatus\000"
- 2697      67617469 
- 2697      6F6E5374 
- 2697      61747573 
+ 2696              	.LASF50:
+ 2697 026c 736F696C 		.ascii	"soilTransfer\000"
+ 2697      5472616E 
+ 2697      73666572 
  2697      00
- 2698              	.LASF50:
- 2699 027d 736F696C 		.ascii	"soilTransfer\000"
- 2699      5472616E 
- 2699      73666572 
- 2699      00
- 2700              	.LASF28:
- 2701 028a 7475726E 		.ascii	"turnHeatOn\000"
- 2701      48656174 
- 2701      4F6E00
- 2702              	.LASF2:
- 2703 0295 73686F72 		.ascii	"short int\000"
- 2703      7420696E 
- 2703      7400
- 2704              	.LASF42:
- 2705 029f 69727269 		.ascii	"irrigation\000"
- 2705      67617469 
- 2705      6F6E00
- 2706              	.LASF49:
- 2707 02aa 736F696C 		.ascii	"soilHum\000"
- 2707      48756D00 
- 2708              	.LASF4:
- 2709 02b2 6C6F6E67 		.ascii	"long int\000"
- 2709      20696E74 
- 2709      00
- 2710              	.LASF33:
- 2711 02bb 7475726E 		.ascii	"turnOnVent\000"
- 2711      4F6E5665 
- 2711      6E7400
- 2712              	.LASF40:
- 2713 02c6 77696E64 		.ascii	"window\000"
- 2713      6F7700
- 2714              	.LASF48:
- 2715 02cd 67657453 		.ascii	"getSoilHum\000"
- 2715      6F696C48 
- 2715      756D00
- 2716              	.LASF35:
- 2717 02d8 61646A75 		.ascii	"adjustIrrigation\000"
- 2717      73744972 
- 2717      72696761 
- 2717      74696F6E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccyKN0Td.s 			page 57
+ 2698              	.LASF28:
+ 2699 0279 7475726E 		.ascii	"turnHeatOn\000"
+ 2699      48656174 
+ 2699      4F6E00
+ 2700              	.LASF2:
+ 2701 0284 73686F72 		.ascii	"short int\000"
+ 2701      7420696E 
+ 2701      7400
+ 2702              	.LASF42:
+ 2703 028e 69727269 		.ascii	"irrigation\000"
+ 2703      67617469 
+ 2703      6F6E00
+ 2704              	.LASF49:
+ 2705 0299 736F696C 		.ascii	"soilHum\000"
+ 2705      48756D00 
+ 2706              	.LASF4:
+ 2707 02a1 6C6F6E67 		.ascii	"long int\000"
+ 2707      20696E74 
+ 2707      00
+ 2708              	.LASF33:
+ 2709 02aa 7475726E 		.ascii	"turnOnVent\000"
+ 2709      4F6E5665 
+ 2709      6E7400
+ 2710              	.LASF40:
+ 2711 02b5 77696E64 		.ascii	"window\000"
+ 2711      6F7700
+ 2712              	.LASF48:
+ 2713 02bc 67657453 		.ascii	"getSoilHum\000"
+ 2713      6F696C48 
+ 2713      756D00
+ 2714              	.LASF35:
+ 2715 02c7 61646A75 		.ascii	"adjustIrrigation\000"
+ 2715      73744972 
+ 2715      72696761 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccfwKE4j.s 			page 57
 
 
+ 2715      74696F6E 
+ 2715      00
+ 2716              	.LASF51:
+ 2717 02d8 73697A65 		.ascii	"size\000"
  2717      00
  2718              	.LASF19:
- 2719 02e9 6C696768 		.ascii	"lightCommand\000"
+ 2719 02dd 6C696768 		.ascii	"lightCommand\000"
  2719      74436F6D 
  2719      6D616E64 
  2719      00
  2720              	.LASF46:
- 2721 02f6 6765744C 		.ascii	"getLight\000"
+ 2721 02ea 6765744C 		.ascii	"getLight\000"
  2721      69676874 
  2721      00
  2722              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

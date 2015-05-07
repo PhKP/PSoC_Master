@@ -12,6 +12,7 @@
 // Include files
 #include "DSP_Class.h"
 
+//----------PrivateDataMembers0----------
 // Private data members
 int32 tempArray[ARRAYSIZE];
 int32* tempArrayPtr;
@@ -22,6 +23,7 @@ int16* soilHumPtr[NBR_OF_SOILHUM_SENSORS];
 int32 lightArray[ARRAYSIZE];
 int32* lightArrayPtr;
 uint8 temp, hum, soilHum[NBR_OF_SOILHUM_SENSORS], light;
+//----------PrivateDataMembers1----------
 
 // Private prototypes
 void avgTemp(void);
@@ -77,6 +79,7 @@ uint8 getLight_DSP(void){
     return light;
 }
 
+//----------avgTemp0----------
 void avgTemp(void){
     uint8 skip = 0;
     int64 total = 0;
@@ -93,7 +96,7 @@ void avgTemp(void){
     }
     // Makes sure that enough datapoints are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        int32 avg = total/(ARRAYSIZE-skip);                         // Calculate the average value
+        int32 avg = total/(ARRAYSIZE-skip);     // Calculate the average value
         
         // TODO limit temp output to 1 and 200
         
@@ -103,6 +106,7 @@ void avgTemp(void){
         temp = 0;
     }
 }
+//----------avgTemp1----------
 
 void avgHum(void){
     uint8 skip = 0;
@@ -208,6 +212,7 @@ void avgLight(void){
     }
   }
 
+//----------inputTemp0----------
 void inputTemp(int32* temp){
     *tempArrayPtr = *temp;      // The input value is written to the array
     tempArrayPtr++;             // The pointer is moved to the next place in array
@@ -217,6 +222,7 @@ void inputTemp(int32* temp){
     
     avgTemp();      // The average value is calculated and onverted into temp(globel) 
 }
+//----------inputTemp1----------
 
 void inputHum(int32* hum){
     *humArrayPtr = *hum;        // The input value is written to the array
@@ -227,6 +233,7 @@ void inputHum(int32* hum){
     
     avgHum();      // The average value is calculated and onverted into hum(globel)
 }
+
 
 void inputSoilHum(uint8 index, int16* soilHum){
     *soilHumPtr[index] = *soilHum;          // The input value is written to the array

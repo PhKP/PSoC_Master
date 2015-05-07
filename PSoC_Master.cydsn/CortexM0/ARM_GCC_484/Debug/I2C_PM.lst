@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
   23:.\Generated_Source\PSoC4/I2C_PM.c **** #endif /* (I2C_SCB_MODE_I2C_INC) */
   24:.\Generated_Source\PSoC4/I2C_PM.c **** 
   25:.\Generated_Source\PSoC4/I2C_PM.c **** #if(I2C_SCB_MODE_EZI2C_INC)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 2
 
 
   26:.\Generated_Source\PSoC4/I2C_PM.c ****     #include "I2C_EZI2C_PVT.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
   72:.\Generated_Source\PSoC4/I2C_PM.c ****     {
   73:.\Generated_Source\PSoC4/I2C_PM.c ****         if(I2C_SCB_MODE_I2C_RUNTM_CFG)
   74:.\Generated_Source\PSoC4/I2C_PM.c ****         {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 3
 
 
   75:.\Generated_Source\PSoC4/I2C_PM.c ****             I2C_I2CSaveConfig();
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
   47 000e 064B     		ldr	r3, .L3+4
   48 0010 1A70     		strb	r2, [r3]
  123:.\Generated_Source\PSoC4/I2C_PM.c **** 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 4
 
 
  124:.\Generated_Source\PSoC4/I2C_PM.c ****         if(0u != I2C_backup.enableState)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  150:.\Generated_Source\PSoC4/I2C_PM.c **** *
  151:.\Generated_Source\PSoC4/I2C_PM.c **** *******************************************************************************/
  152:.\Generated_Source\PSoC4/I2C_PM.c **** void I2C_Wakeup(void)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 5
 
 
  153:.\Generated_Source\PSoC4/I2C_PM.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  199:.\Generated_Source\PSoC4/I2C_PM.c **** 
  200:.\Generated_Source\PSoC4/I2C_PM.c ****     #elif (I2C_SCB_MODE_UART_CONST_CFG && I2C_UART_WAKE_ENABLE_CONST)
  201:.\Generated_Source\PSoC4/I2C_PM.c ****         I2C_UartRestoreConfig();
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 6
 
 
  202:.\Generated_Source\PSoC4/I2C_PM.c **** 
@@ -343,40 +343,40 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  112 0006 00000000 		.4byte	.Ldebug_abbrev0
  113 000a 04       		.byte	0x4
  114 000b 01       		.uleb128 0x1
- 115 000c 8A000000 		.4byte	.LASF19
+ 115 000c C8000000 		.4byte	.LASF19
  116 0010 01       		.byte	0x1
  117 0011 2E000000 		.4byte	.LASF20
- 118 0015 3B010000 		.4byte	.LASF21
+ 118 0015 5B000000 		.4byte	.LASF21
  119 0019 00000000 		.4byte	.Ldebug_ranges0+0
  120 001d 00000000 		.4byte	0
  121 0021 00000000 		.4byte	.Ldebug_line0
  122 0025 02       		.uleb128 0x2
  123 0026 01       		.byte	0x1
  124 0027 06       		.byte	0x6
- 125 0028 9E010000 		.4byte	.LASF0
+ 125 0028 92010000 		.4byte	.LASF0
  126 002c 02       		.uleb128 0x2
  127 002d 01       		.byte	0x1
  128 002e 08       		.byte	0x8
- 129 002f 18010000 		.4byte	.LASF1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 7
+ 129 002f 56010000 		.4byte	.LASF1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 7
 
 
  130 0033 02       		.uleb128 0x2
  131 0034 02       		.byte	0x2
  132 0035 05       		.byte	0x5
- 133 0036 BB010000 		.4byte	.LASF2
+ 133 0036 AF010000 		.4byte	.LASF2
  134 003a 02       		.uleb128 0x2
  135 003b 02       		.byte	0x2
  136 003c 07       		.byte	0x7
- 137 003d 8B010000 		.4byte	.LASF3
+ 137 003d 7F010000 		.4byte	.LASF3
  138 0041 02       		.uleb128 0x2
  139 0042 04       		.byte	0x4
  140 0043 05       		.byte	0x5
- 141 0044 2B010000 		.4byte	.LASF4
+ 141 0044 69010000 		.4byte	.LASF4
  142 0048 02       		.uleb128 0x2
  143 0049 04       		.byte	0x4
  144 004a 07       		.byte	0x7
- 145 004b 61000000 		.4byte	.LASF5
+ 145 004b 9F000000 		.4byte	.LASF5
  146 004f 02       		.uleb128 0x2
  147 0050 08       		.byte	0x8
  148 0051 05       		.byte	0x5
@@ -384,7 +384,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  150 0056 02       		.uleb128 0x2
  151 0057 08       		.byte	0x8
  152 0058 07       		.byte	0x7
- 153 0059 73000000 		.4byte	.LASF7
+ 153 0059 B1000000 		.4byte	.LASF7
  154 005d 03       		.uleb128 0x3
  155 005e 04       		.byte	0x4
  156 005f 05       		.byte	0x5
@@ -394,7 +394,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  160 0066 07       		.byte	0x7
  161 0067 21000000 		.4byte	.LASF8
  162 006b 04       		.uleb128 0x4
- 163 006c 5B000000 		.4byte	.LASF9
+ 163 006c 99000000 		.4byte	.LASF9
  164 0070 02       		.byte	0x2
  165 0071 A1       		.byte	0xa1
  166 0072 2C000000 		.4byte	0x2c
@@ -406,19 +406,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  172 0081 02       		.uleb128 0x2
  173 0082 04       		.byte	0x4
  174 0083 04       		.byte	0x4
- 175 0084 AA010000 		.4byte	.LASF11
+ 175 0084 9E010000 		.4byte	.LASF11
  176 0088 02       		.uleb128 0x2
  177 0089 08       		.byte	0x8
  178 008a 04       		.byte	0x4
- 179 008b 34010000 		.4byte	.LASF12
+ 179 008b 72010000 		.4byte	.LASF12
  180 008f 02       		.uleb128 0x2
  181 0090 01       		.byte	0x1
  182 0091 08       		.byte	0x8
- 183 0092 26010000 		.4byte	.LASF13
+ 183 0092 64010000 		.4byte	.LASF13
  184 0096 05       		.uleb128 0x5
- 185 0097 85010000 		.4byte	.LASF14
+ 185 0097 79010000 		.4byte	.LASF14
  186 009b 02       		.byte	0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 8
 
 
  187 009c 4D01     		.2byte	0x14d
@@ -428,7 +428,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  191 00a7 02       		.uleb128 0x2
  192 00a8 04       		.byte	0x4
  193 00a9 07       		.byte	0x7
- 194 00aa CF010000 		.4byte	.LASF15
+ 194 00aa C3010000 		.4byte	.LASF15
  195 00ae 07       		.uleb128 0x7
  196 00af 01       		.byte	0x1
  197 00b0 03       		.byte	0x3
@@ -442,12 +442,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  205 00c1 00       		.byte	0
  206 00c2 00       		.byte	0
  207 00c3 04       		.uleb128 0x4
- 208 00c4 06010000 		.4byte	.LASF16
+ 208 00c4 44010000 		.4byte	.LASF16
  209 00c8 03       		.byte	0x3
  210 00c9 5B       		.byte	0x5b
  211 00ca AE000000 		.4byte	0xae
  212 00ce 09       		.uleb128 0x9
- 213 00cf C5010000 		.4byte	.LASF17
+ 213 00cf B9010000 		.4byte	.LASF17
  214 00d3 01       		.byte	0x1
  215 00d4 43       		.byte	0x43
  216 00d5 00000000 		.4byte	.LFB0
@@ -463,7 +463,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  226 00ee 01       		.uleb128 0x1
  227 00ef 9C       		.byte	0x9c
  228 00f0 0A       		.uleb128 0xa
- 229 00f1 B0010000 		.4byte	.LASF23
+ 229 00f1 A4010000 		.4byte	.LASF23
  230 00f5 01       		.byte	0x1
  231 00f6 2C       		.byte	0x2c
  232 00f7 C3000000 		.4byte	0xc3
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  241 0002 01       		.byte	0x1
  242 0003 25       		.uleb128 0x25
  243 0004 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 9
 
 
  244 0005 13       		.uleb128 0x13
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  298 003b 3A       		.uleb128 0x3a
  299 003c 0B       		.uleb128 0xb
  300 003d 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 10
 
 
  301 003e 05       		.uleb128 0x5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  355 0074 01       		.uleb128 0x1
  356 0075 12       		.uleb128 0x12
  357 0076 06       		.uleb128 0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 11
 
 
  358 0077 40       		.uleb128 0x40
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  408 0000 6C6F6E67 		.ascii	"long long int\000"
  408      206C6F6E 
  408      6720696E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 12
 
 
  408      7400
@@ -684,105 +684,105 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 1
  418 0050 4932435F 		.ascii	"I2C_Wakeup\000"
  418      57616B65 
  418      757000
- 419              	.LASF9:
- 420 005b 75696E74 		.ascii	"uint8\000"
- 420      3800
- 421              	.LASF5:
- 422 0061 6C6F6E67 		.ascii	"long unsigned int\000"
- 422      20756E73 
- 422      69676E65 
- 422      6420696E 
- 422      7400
- 423              	.LASF7:
- 424 0073 6C6F6E67 		.ascii	"long long unsigned int\000"
- 424      206C6F6E 
- 424      6720756E 
- 424      7369676E 
- 424      65642069 
- 425              	.LASF19:
- 426 008a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 426      4320342E 
- 426      382E3420 
- 426      32303134 
- 426      30353236 
- 427 00bd 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 427      20726576 
- 427      6973696F 
- 427      6E203231 
- 427      31333538 
- 428 00f0 30202D66 		.ascii	"0 -ffunction-sections\000"
- 428      66756E63 
- 428      74696F6E 
- 428      2D736563 
- 428      74696F6E 
- 429              	.LASF16:
- 430 0106 4932435F 		.ascii	"I2C_BACKUP_STRUCT\000"
- 430      4241434B 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 13
+ 419              	.LASF21:
+ 420 005b 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 420      73657273 
+ 420      5C506869 
+ 420      6C69705C 
+ 420      4F6E6544 
+ 421 0088 536F435F 		.ascii	"SoC_Master.cydsn\000"
+ 421      4D617374 
+ 421      65722E63 
+ 421      7964736E 
+ 421      00
+ 422              	.LASF9:
+ 423 0099 75696E74 		.ascii	"uint8\000"
+ 423      3800
+ 424              	.LASF5:
+ 425 009f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 425      20756E73 
+ 425      69676E65 
+ 425      6420696E 
+ 425      7400
+ 426              	.LASF7:
+ 427 00b1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 427      206C6F6E 
+ 427      6720756E 
+ 427      7369676E 
+ 427      65642069 
+ 428              	.LASF19:
+ 429 00c8 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 429      4320342E 
+ 429      382E3420 
+ 429      32303134 
+ 429      30353236 
+ 430 00fb 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 430      20726576 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 13
 
 
- 430      55505F53 
- 430      54525543 
- 430      5400
- 431              	.LASF1:
- 432 0118 756E7369 		.ascii	"unsigned char\000"
- 432      676E6564 
- 432      20636861 
- 432      7200
- 433              	.LASF13:
- 434 0126 63686172 		.ascii	"char\000"
- 434      00
- 435              	.LASF4:
- 436 012b 6C6F6E67 		.ascii	"long int\000"
- 436      20696E74 
- 436      00
- 437              	.LASF12:
- 438 0134 646F7562 		.ascii	"double\000"
- 438      6C6500
- 439              	.LASF21:
- 440 013b 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 440      73657273 
- 440      5C506869 
- 440      6C69705C 
- 440      4F6E6544 
- 441 0168 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 441      4D617374 
- 441      65725C50 
- 441      536F435F 
- 441      4D617374 
+ 430      6973696F 
+ 430      6E203231 
+ 430      31333538 
+ 431 012e 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 431      66756E63 
+ 431      74696F6E 
+ 431      2D736563 
+ 431      74696F6E 
+ 432              	.LASF16:
+ 433 0144 4932435F 		.ascii	"I2C_BACKUP_STRUCT\000"
+ 433      4241434B 
+ 433      55505F53 
+ 433      54525543 
+ 433      5400
+ 434              	.LASF1:
+ 435 0156 756E7369 		.ascii	"unsigned char\000"
+ 435      676E6564 
+ 435      20636861 
+ 435      7200
+ 436              	.LASF13:
+ 437 0164 63686172 		.ascii	"char\000"
+ 437      00
+ 438              	.LASF4:
+ 439 0169 6C6F6E67 		.ascii	"long int\000"
+ 439      20696E74 
+ 439      00
+ 440              	.LASF12:
+ 441 0172 646F7562 		.ascii	"double\000"
+ 441      6C6500
  442              	.LASF14:
- 443 0185 72656733 		.ascii	"reg32\000"
+ 443 0179 72656733 		.ascii	"reg32\000"
  443      3200
  444              	.LASF3:
- 445 018b 73686F72 		.ascii	"short unsigned int\000"
+ 445 017f 73686F72 		.ascii	"short unsigned int\000"
  445      7420756E 
  445      7369676E 
  445      65642069 
  445      6E7400
  446              	.LASF0:
- 447 019e 7369676E 		.ascii	"signed char\000"
+ 447 0192 7369676E 		.ascii	"signed char\000"
  447      65642063 
  447      68617200 
  448              	.LASF11:
- 449 01aa 666C6F61 		.ascii	"float\000"
+ 449 019e 666C6F61 		.ascii	"float\000"
  449      7400
  450              	.LASF23:
- 451 01b0 4932435F 		.ascii	"I2C_backup\000"
+ 451 01a4 4932435F 		.ascii	"I2C_backup\000"
  451      6261636B 
  451      757000
  452              	.LASF2:
- 453 01bb 73686F72 		.ascii	"short int\000"
+ 453 01af 73686F72 		.ascii	"short int\000"
  453      7420696E 
  453      7400
  454              	.LASF17:
- 455 01c5 4932435F 		.ascii	"I2C_Sleep\000"
+ 455 01b9 4932435F 		.ascii	"I2C_Sleep\000"
  455      536C6565 
  455      7000
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccJBmERk.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5E2tKd.s 			page 14
 
 
  456              	.LASF15:
- 457 01cf 73697A65 		.ascii	"sizetype\000"
+ 457 01c3 73697A65 		.ascii	"sizetype\000"
  457      74797065 
  457      00
  458              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

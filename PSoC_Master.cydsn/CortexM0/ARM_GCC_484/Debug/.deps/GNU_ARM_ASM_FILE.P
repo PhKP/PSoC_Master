@@ -1,8 +1,8 @@
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/CortexM0/ARM_GCC_484/Debug/CyBootAsmGnu.o : C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfittergnu.inc C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/CortexM0/ARM_GCC_484/Debug/CyBootAsmGnu.o : C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfittergnu.inc C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s 
 
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
 
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
 
-C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+C:/Users/Philip/OneDrive/GitHub/PSoC_Master/PSoC_Master.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
 

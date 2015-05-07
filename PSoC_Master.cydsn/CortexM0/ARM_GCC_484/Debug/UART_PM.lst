@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
   23:.\Generated_Source\PSoC4/UART_PM.c **** #endif /* (UART_SCB_MODE_I2C_INC) */
   24:.\Generated_Source\PSoC4/UART_PM.c **** 
   25:.\Generated_Source\PSoC4/UART_PM.c **** #if(UART_SCB_MODE_EZI2C_INC)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 2
 
 
   26:.\Generated_Source\PSoC4/UART_PM.c ****     #include "UART_EZI2C_PVT.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
   72:.\Generated_Source\PSoC4/UART_PM.c ****     {
   73:.\Generated_Source\PSoC4/UART_PM.c ****         if(UART_SCB_MODE_I2C_RUNTM_CFG)
   74:.\Generated_Source\PSoC4/UART_PM.c ****         {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 3
 
 
   75:.\Generated_Source\PSoC4/UART_PM.c ****             UART_I2CSaveConfig();
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
   47 000e 064B     		ldr	r3, .L3+4
   48 0010 1A70     		strb	r2, [r3]
  123:.\Generated_Source\PSoC4/UART_PM.c **** 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 4
 
 
  124:.\Generated_Source\PSoC4/UART_PM.c ****         if(0u != UART_backup.enableState)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  150:.\Generated_Source\PSoC4/UART_PM.c **** *
  151:.\Generated_Source\PSoC4/UART_PM.c **** *******************************************************************************/
  152:.\Generated_Source\PSoC4/UART_PM.c **** void UART_Wakeup(void)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 5
 
 
  153:.\Generated_Source\PSoC4/UART_PM.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  199:.\Generated_Source\PSoC4/UART_PM.c **** 
  200:.\Generated_Source\PSoC4/UART_PM.c ****     #elif (UART_SCB_MODE_UART_CONST_CFG && UART_UART_WAKE_ENABLE_CONST)
  201:.\Generated_Source\PSoC4/UART_PM.c ****         UART_UartRestoreConfig();
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 6
 
 
  202:.\Generated_Source\PSoC4/UART_PM.c **** 
@@ -343,40 +343,40 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  112 0006 00000000 		.4byte	.Ldebug_abbrev0
  113 000a 04       		.byte	0x4
  114 000b 01       		.uleb128 0x1
- 115 000c 97000000 		.4byte	.LASF19
+ 115 000c D5000000 		.4byte	.LASF19
  116 0010 01       		.byte	0x1
- 117 0011 39000000 		.4byte	.LASF20
- 118 0015 55010000 		.4byte	.LASF21
+ 117 0011 77000000 		.4byte	.LASF20
+ 118 0015 39000000 		.4byte	.LASF21
  119 0019 00000000 		.4byte	.Ldebug_ranges0+0
  120 001d 00000000 		.4byte	0
  121 0021 00000000 		.4byte	.Ldebug_line0
  122 0025 02       		.uleb128 0x2
  123 0026 01       		.byte	0x1
  124 0027 06       		.byte	0x6
- 125 0028 B8010000 		.4byte	.LASF0
+ 125 0028 AC010000 		.4byte	.LASF0
  126 002c 02       		.uleb128 0x2
  127 002d 01       		.byte	0x1
  128 002e 08       		.byte	0x8
- 129 002f 13010000 		.4byte	.LASF1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 7
+ 129 002f 51010000 		.4byte	.LASF1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 7
 
 
  130 0033 02       		.uleb128 0x2
  131 0034 02       		.byte	0x2
  132 0035 05       		.byte	0x5
- 133 0036 CA010000 		.4byte	.LASF2
+ 133 0036 BE010000 		.4byte	.LASF2
  134 003a 02       		.uleb128 0x2
  135 003b 02       		.byte	0x2
  136 003c 07       		.byte	0x7
- 137 003d A5010000 		.4byte	.LASF3
+ 137 003d 99010000 		.4byte	.LASF3
  138 0041 02       		.uleb128 0x2
  139 0042 04       		.byte	0x4
  140 0043 05       		.byte	0x5
- 141 0044 4C010000 		.4byte	.LASF4
+ 141 0044 8A010000 		.4byte	.LASF4
  142 0048 02       		.uleb128 0x2
  143 0049 04       		.byte	0x4
  144 004a 07       		.byte	0x7
- 145 004b 62000000 		.4byte	.LASF5
+ 145 004b A0000000 		.4byte	.LASF5
  146 004f 02       		.uleb128 0x2
  147 0050 08       		.byte	0x8
  148 0051 05       		.byte	0x5
@@ -384,7 +384,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  150 0056 02       		.uleb128 0x2
  151 0057 08       		.byte	0x8
  152 0058 07       		.byte	0x7
- 153 0059 74000000 		.4byte	.LASF7
+ 153 0059 B2000000 		.4byte	.LASF7
  154 005d 03       		.uleb128 0x3
  155 005e 04       		.byte	0x4
  156 005f 05       		.byte	0x5
@@ -394,7 +394,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  160 0066 07       		.byte	0x7
  161 0067 21000000 		.4byte	.LASF8
  162 006b 04       		.uleb128 0x4
- 163 006c 5C000000 		.4byte	.LASF9
+ 163 006c 9A000000 		.4byte	.LASF9
  164 0070 02       		.byte	0x2
  165 0071 A1       		.byte	0xa1
  166 0072 2C000000 		.4byte	0x2c
@@ -406,19 +406,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  172 0081 02       		.uleb128 0x2
  173 0082 04       		.byte	0x4
  174 0083 04       		.byte	0x4
- 175 0084 C4010000 		.4byte	.LASF11
+ 175 0084 B8010000 		.4byte	.LASF11
  176 0088 02       		.uleb128 0x2
  177 0089 08       		.byte	0x8
  178 008a 04       		.byte	0x4
- 179 008b 45010000 		.4byte	.LASF12
+ 179 008b 83010000 		.4byte	.LASF12
  180 008f 02       		.uleb128 0x2
  181 0090 01       		.byte	0x1
  182 0091 08       		.byte	0x8
- 183 0092 21010000 		.4byte	.LASF13
+ 183 0092 5F010000 		.4byte	.LASF13
  184 0096 05       		.uleb128 0x5
- 185 0097 9F010000 		.4byte	.LASF14
+ 185 0097 93010000 		.4byte	.LASF14
  186 009b 02       		.byte	0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 8
 
 
  187 009c 4D01     		.2byte	0x14d
@@ -428,21 +428,21 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  191 00a7 02       		.uleb128 0x2
  192 00a8 04       		.byte	0x4
  193 00a9 07       		.byte	0x7
- 194 00aa D4010000 		.4byte	.LASF15
+ 194 00aa C8010000 		.4byte	.LASF15
  195 00ae 07       		.uleb128 0x7
  196 00af 01       		.byte	0x1
  197 00b0 03       		.byte	0x3
  198 00b1 58       		.byte	0x58
  199 00b2 C3000000 		.4byte	0xc3
  200 00b6 08       		.uleb128 0x8
- 201 00b7 39010000 		.4byte	.LASF22
+ 201 00b7 77010000 		.4byte	.LASF22
  202 00bb 03       		.byte	0x3
  203 00bc 5A       		.byte	0x5a
  204 00bd 6B000000 		.4byte	0x6b
  205 00c1 00       		.byte	0
  206 00c2 00       		.byte	0
  207 00c3 04       		.uleb128 0x4
- 208 00c4 26010000 		.4byte	.LASF16
+ 208 00c4 64010000 		.4byte	.LASF16
  209 00c8 03       		.byte	0x3
  210 00c9 5B       		.byte	0x5b
  211 00ca AE000000 		.4byte	0xae
@@ -455,7 +455,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  218 00dd 01       		.uleb128 0x1
  219 00de 9C       		.byte	0x9c
  220 00df 09       		.uleb128 0x9
- 221 00e0 8B000000 		.4byte	.LASF18
+ 221 00e0 C9000000 		.4byte	.LASF18
  222 00e4 01       		.byte	0x1
  223 00e5 98       		.byte	0x98
  224 00e6 00000000 		.4byte	.LFB1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  241 0002 01       		.byte	0x1
  242 0003 25       		.uleb128 0x25
  243 0004 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 9
 
 
  244 0005 13       		.uleb128 0x13
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  298 003b 3A       		.uleb128 0x3a
  299 003c 0B       		.uleb128 0xb
  300 003d 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 10
 
 
  301 003e 05       		.uleb128 0x5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  355 0074 01       		.uleb128 0x1
  356 0075 12       		.uleb128 0x12
  357 0076 06       		.uleb128 0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 11
 
 
  358 0077 40       		.uleb128 0x40
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  408 0000 6C6F6E67 		.ascii	"long long int\000"
  408      206C6F6E 
  408      6720696E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 12
 
 
  408      7400
@@ -678,111 +678,111 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 1
  416 002e 55415254 		.ascii	"UART_Sleep\000"
  416      5F536C65 
  416      657000
- 417              	.LASF20:
- 418 0039 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\UART_PM.c\000"
- 418      6E657261 
- 418      7465645F 
- 418      536F7572 
- 418      63655C50 
- 419              	.LASF9:
- 420 005c 75696E74 		.ascii	"uint8\000"
- 420      3800
- 421              	.LASF5:
- 422 0062 6C6F6E67 		.ascii	"long unsigned int\000"
- 422      20756E73 
- 422      69676E65 
- 422      6420696E 
- 422      7400
- 423              	.LASF7:
- 424 0074 6C6F6E67 		.ascii	"long long unsigned int\000"
- 424      206C6F6E 
- 424      6720756E 
- 424      7369676E 
- 424      65642069 
- 425              	.LASF18:
- 426 008b 55415254 		.ascii	"UART_Wakeup\000"
- 426      5F57616B 
- 426      65757000 
- 427              	.LASF19:
- 428 0097 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 428      4320342E 
- 428      382E3420 
- 428      32303134 
- 428      30353236 
- 429 00ca 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 429      20726576 
- 429      6973696F 
- 429      6E203231 
- 429      31333538 
- 430 00fd 30202D66 		.ascii	"0 -ffunction-sections\000"
- 430      66756E63 
- 430      74696F6E 
- 430      2D736563 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 13
+ 417              	.LASF21:
+ 418 0039 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 418      73657273 
+ 418      5C506869 
+ 418      6C69705C 
+ 418      4F6E6544 
+ 419 0066 536F435F 		.ascii	"SoC_Master.cydsn\000"
+ 419      4D617374 
+ 419      65722E63 
+ 419      7964736E 
+ 419      00
+ 420              	.LASF20:
+ 421 0077 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\UART_PM.c\000"
+ 421      6E657261 
+ 421      7465645F 
+ 421      536F7572 
+ 421      63655C50 
+ 422              	.LASF9:
+ 423 009a 75696E74 		.ascii	"uint8\000"
+ 423      3800
+ 424              	.LASF5:
+ 425 00a0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 425      20756E73 
+ 425      69676E65 
+ 425      6420696E 
+ 425      7400
+ 426              	.LASF7:
+ 427 00b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 427      206C6F6E 
+ 427      6720756E 
+ 427      7369676E 
+ 427      65642069 
+ 428              	.LASF18:
+ 429 00c9 55415254 		.ascii	"UART_Wakeup\000"
+ 429      5F57616B 
+ 429      65757000 
+ 430              	.LASF19:
+ 431 00d5 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 431      4320342E 
+ 431      382E3420 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 13
 
 
- 430      74696F6E 
- 431              	.LASF1:
- 432 0113 756E7369 		.ascii	"unsigned char\000"
- 432      676E6564 
- 432      20636861 
- 432      7200
- 433              	.LASF13:
- 434 0121 63686172 		.ascii	"char\000"
- 434      00
- 435              	.LASF16:
- 436 0126 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
- 436      5F424143 
- 436      4B55505F 
- 436      53545255 
- 436      435400
- 437              	.LASF22:
- 438 0139 656E6162 		.ascii	"enableState\000"
- 438      6C655374 
- 438      61746500 
- 439              	.LASF12:
- 440 0145 646F7562 		.ascii	"double\000"
- 440      6C6500
- 441              	.LASF4:
- 442 014c 6C6F6E67 		.ascii	"long int\000"
- 442      20696E74 
- 442      00
- 443              	.LASF21:
- 444 0155 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 444      73657273 
- 444      5C506869 
- 444      6C69705C 
- 444      4F6E6544 
- 445 0182 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 445      4D617374 
- 445      65725C50 
- 445      536F435F 
- 445      4D617374 
+ 431      32303134 
+ 431      30353236 
+ 432 0108 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 432      20726576 
+ 432      6973696F 
+ 432      6E203231 
+ 432      31333538 
+ 433 013b 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 433      66756E63 
+ 433      74696F6E 
+ 433      2D736563 
+ 433      74696F6E 
+ 434              	.LASF1:
+ 435 0151 756E7369 		.ascii	"unsigned char\000"
+ 435      676E6564 
+ 435      20636861 
+ 435      7200
+ 436              	.LASF13:
+ 437 015f 63686172 		.ascii	"char\000"
+ 437      00
+ 438              	.LASF16:
+ 439 0164 55415254 		.ascii	"UART_BACKUP_STRUCT\000"
+ 439      5F424143 
+ 439      4B55505F 
+ 439      53545255 
+ 439      435400
+ 440              	.LASF22:
+ 441 0177 656E6162 		.ascii	"enableState\000"
+ 441      6C655374 
+ 441      61746500 
+ 442              	.LASF12:
+ 443 0183 646F7562 		.ascii	"double\000"
+ 443      6C6500
+ 444              	.LASF4:
+ 445 018a 6C6F6E67 		.ascii	"long int\000"
+ 445      20696E74 
+ 445      00
  446              	.LASF14:
- 447 019f 72656733 		.ascii	"reg32\000"
+ 447 0193 72656733 		.ascii	"reg32\000"
  447      3200
  448              	.LASF3:
- 449 01a5 73686F72 		.ascii	"short unsigned int\000"
+ 449 0199 73686F72 		.ascii	"short unsigned int\000"
  449      7420756E 
  449      7369676E 
  449      65642069 
  449      6E7400
  450              	.LASF0:
- 451 01b8 7369676E 		.ascii	"signed char\000"
+ 451 01ac 7369676E 		.ascii	"signed char\000"
  451      65642063 
  451      68617200 
  452              	.LASF11:
- 453 01c4 666C6F61 		.ascii	"float\000"
+ 453 01b8 666C6F61 		.ascii	"float\000"
  453      7400
  454              	.LASF2:
- 455 01ca 73686F72 		.ascii	"short int\000"
+ 455 01be 73686F72 		.ascii	"short int\000"
  455      7420696E 
  455      7400
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAMSd61.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccPnLxsZ.s 			page 14
 
 
  456              	.LASF15:
- 457 01d4 73697A65 		.ascii	"sizetype\000"
+ 457 01c8 73697A65 		.ascii	"sizetype\000"
  457      74797065 
  457      00
  458              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

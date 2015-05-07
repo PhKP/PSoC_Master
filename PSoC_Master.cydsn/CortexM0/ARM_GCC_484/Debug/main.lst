@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
   21:.\main.c      ****     // Init
   22:.\main.c      ****     initDSP();
   35              		.loc 1 22 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 2
 
 
   36 0004 FFF7FEFF 		bl	initDSP
@@ -104,40 +104,40 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
   66 0006 00000000 		.4byte	.Ldebug_abbrev0
   67 000a 04       		.byte	0x4
   68 000b 01       		.uleb128 0x1
-  69 000c 4F000000 		.4byte	.LASF13
+  69 000c 8D000000 		.4byte	.LASF13
   70 0010 01       		.byte	0x1
-  71 0011 77010000 		.4byte	.LASF14
-  72 0015 08010000 		.4byte	.LASF15
+  71 0011 6B010000 		.4byte	.LASF14
+  72 0015 20000000 		.4byte	.LASF15
   73 0019 00000000 		.4byte	.Ldebug_ranges0+0
   74 001d 00000000 		.4byte	0
   75 0021 00000000 		.4byte	.Ldebug_line0
   76 0025 02       		.uleb128 0x2
   77 0026 01       		.byte	0x1
   78 0027 06       		.byte	0x6
-  79 0028 65010000 		.4byte	.LASF0
+  79 0028 59010000 		.4byte	.LASF0
   80 002c 02       		.uleb128 0x2
   81 002d 01       		.byte	0x1
   82 002e 08       		.byte	0x8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 3
 
 
-  83 002f DB000000 		.4byte	.LASF1
+  83 002f 19010000 		.4byte	.LASF1
   84 0033 02       		.uleb128 0x2
   85 0034 02       		.byte	0x2
   86 0035 05       		.byte	0x5
-  87 0036 F7000000 		.4byte	.LASF2
+  87 0036 35010000 		.4byte	.LASF2
   88 003a 02       		.uleb128 0x2
   89 003b 02       		.byte	0x2
   90 003c 07       		.byte	0x7
-  91 003d 52010000 		.4byte	.LASF3
+  91 003d 46010000 		.4byte	.LASF3
   92 0041 02       		.uleb128 0x2
   93 0042 04       		.byte	0x4
   94 0043 05       		.byte	0x5
-  95 0044 EE000000 		.4byte	.LASF4
+  95 0044 2C010000 		.4byte	.LASF4
   96 0048 02       		.uleb128 0x2
   97 0049 04       		.byte	0x4
   98 004a 07       		.byte	0x7
-  99 004b 26000000 		.4byte	.LASF5
+  99 004b 64000000 		.4byte	.LASF5
  100 004f 02       		.uleb128 0x2
  101 0050 08       		.byte	0x8
  102 0051 05       		.byte	0x5
@@ -145,7 +145,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  104 0056 02       		.uleb128 0x2
  105 0057 08       		.byte	0x8
  106 0058 07       		.byte	0x7
- 107 0059 38000000 		.4byte	.LASF7
+ 107 0059 76000000 		.4byte	.LASF7
  108 005d 03       		.uleb128 0x3
  109 005e 04       		.byte	0x4
  110 005f 05       		.byte	0x5
@@ -155,30 +155,30 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  114 0066 07       		.byte	0x7
  115 0067 0E000000 		.4byte	.LASF8
  116 006b 04       		.uleb128 0x4
- 117 006c 20000000 		.4byte	.LASF16
+ 117 006c 5E000000 		.4byte	.LASF16
  118 0070 02       		.byte	0x2
  119 0071 A1       		.byte	0xa1
  120 0072 2C000000 		.4byte	0x2c
  121 0076 02       		.uleb128 0x2
  122 0077 04       		.byte	0x4
  123 0078 04       		.byte	0x4
- 124 0079 71010000 		.4byte	.LASF9
+ 124 0079 65010000 		.4byte	.LASF9
  125 007d 02       		.uleb128 0x2
  126 007e 08       		.byte	0x8
  127 007f 04       		.byte	0x4
- 128 0080 01010000 		.4byte	.LASF10
+ 128 0080 3F010000 		.4byte	.LASF10
  129 0084 02       		.uleb128 0x2
  130 0085 01       		.byte	0x1
  131 0086 08       		.byte	0x8
- 132 0087 E9000000 		.4byte	.LASF11
+ 132 0087 27010000 		.4byte	.LASF11
  133 008b 02       		.uleb128 0x2
  134 008c 04       		.byte	0x4
  135 008d 07       		.byte	0x7
- 136 008e 80010000 		.4byte	.LASF12
+ 136 008e 74010000 		.4byte	.LASF12
  137 0092 05       		.uleb128 0x5
  138 0093 1B000000 		.4byte	.LASF17
  139 0097 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 4
 
 
  140 0098 14       		.byte	0x14
@@ -188,7 +188,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  144 00a5 01       		.uleb128 0x1
  145 00a6 9C       		.byte	0x9c
  146 00a7 06       		.uleb128 0x6
- 147 00a8 CB000000 		.4byte	.LASF18
+ 147 00a8 09010000 		.4byte	.LASF18
  148 00ac 03       		.byte	0x3
  149 00ad 12       		.byte	0x12
  150 00ae 6B000000 		.4byte	0x6b
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  194 0025 03       		.uleb128 0x3
  195 0026 08       		.uleb128 0x8
  196 0027 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 5
 
 
  197 0028 00       		.byte	0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  251 005f 00       		.byte	0
  252              		.section	.debug_aranges,"",%progbits
  253 0000 1C000000 		.4byte	0x1c
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 6
 
 
  254 0004 0200     		.2byte	0x2
@@ -337,97 +337,97 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 1
  277              	.LASF17:
  278 001b 6D61696E 		.ascii	"main\000"
  278      00
- 279              	.LASF16:
- 280 0020 75696E74 		.ascii	"uint8\000"
- 280      3800
- 281              	.LASF5:
- 282 0026 6C6F6E67 		.ascii	"long unsigned int\000"
- 282      20756E73 
- 282      69676E65 
- 282      6420696E 
- 282      7400
- 283              	.LASF7:
- 284 0038 6C6F6E67 		.ascii	"long long unsigned int\000"
- 284      206C6F6E 
- 284      6720756E 
- 284      7369676E 
- 284      65642069 
- 285              	.LASF13:
- 286 004f 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 286      4320342E 
- 286      382E3420 
- 286      32303134 
- 286      30353236 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 7
+ 279              	.LASF15:
+ 280 0020 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 280      73657273 
+ 280      5C506869 
+ 280      6C69705C 
+ 280      4F6E6544 
+ 281 004d 536F435F 		.ascii	"SoC_Master.cydsn\000"
+ 281      4D617374 
+ 281      65722E63 
+ 281      7964736E 
+ 281      00
+ 282              	.LASF16:
+ 283 005e 75696E74 		.ascii	"uint8\000"
+ 283      3800
+ 284              	.LASF5:
+ 285 0064 6C6F6E67 		.ascii	"long unsigned int\000"
+ 285      20756E73 
+ 285      69676E65 
+ 285      6420696E 
+ 285      7400
+ 286              	.LASF7:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 7
 
 
- 287 0082 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
- 287      20726576 
- 287      6973696F 
- 287      6E203231 
- 287      31333538 
- 288 00b5 30202D66 		.ascii	"0 -ffunction-sections\000"
- 288      66756E63 
- 288      74696F6E 
- 288      2D736563 
- 288      74696F6E 
- 289              	.LASF18:
- 290 00cb 72656365 		.ascii	"receivedCommand\000"
- 290      69766564 
- 290      436F6D6D 
- 290      616E6400 
- 291              	.LASF1:
- 292 00db 756E7369 		.ascii	"unsigned char\000"
- 292      676E6564 
- 292      20636861 
- 292      7200
- 293              	.LASF11:
- 294 00e9 63686172 		.ascii	"char\000"
- 294      00
- 295              	.LASF4:
- 296 00ee 6C6F6E67 		.ascii	"long int\000"
- 296      20696E74 
- 296      00
- 297              	.LASF2:
- 298 00f7 73686F72 		.ascii	"short int\000"
- 298      7420696E 
- 298      7400
- 299              	.LASF10:
- 300 0101 646F7562 		.ascii	"double\000"
- 300      6C6500
- 301              	.LASF15:
- 302 0108 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 302      73657273 
- 302      5C506869 
- 302      6C69705C 
- 302      4F6E6544 
- 303 0135 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 303      4D617374 
- 303      65725C50 
- 303      536F435F 
- 303      4D617374 
+ 287 0076 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 287      206C6F6E 
+ 287      6720756E 
+ 287      7369676E 
+ 287      65642069 
+ 288              	.LASF13:
+ 289 008d 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 289      4320342E 
+ 289      382E3420 
+ 289      32303134 
+ 289      30353236 
+ 290 00c0 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 290      20726576 
+ 290      6973696F 
+ 290      6E203231 
+ 290      31333538 
+ 291 00f3 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 291      66756E63 
+ 291      74696F6E 
+ 291      2D736563 
+ 291      74696F6E 
+ 292              	.LASF18:
+ 293 0109 72656365 		.ascii	"receivedCommand\000"
+ 293      69766564 
+ 293      436F6D6D 
+ 293      616E6400 
+ 294              	.LASF1:
+ 295 0119 756E7369 		.ascii	"unsigned char\000"
+ 295      676E6564 
+ 295      20636861 
+ 295      7200
+ 296              	.LASF11:
+ 297 0127 63686172 		.ascii	"char\000"
+ 297      00
+ 298              	.LASF4:
+ 299 012c 6C6F6E67 		.ascii	"long int\000"
+ 299      20696E74 
+ 299      00
+ 300              	.LASF2:
+ 301 0135 73686F72 		.ascii	"short int\000"
+ 301      7420696E 
+ 301      7400
+ 302              	.LASF10:
+ 303 013f 646F7562 		.ascii	"double\000"
+ 303      6C6500
  304              	.LASF3:
- 305 0152 73686F72 		.ascii	"short unsigned int\000"
+ 305 0146 73686F72 		.ascii	"short unsigned int\000"
  305      7420756E 
  305      7369676E 
  305      65642069 
  305      6E7400
  306              	.LASF0:
- 307 0165 7369676E 		.ascii	"signed char\000"
+ 307 0159 7369676E 		.ascii	"signed char\000"
  307      65642063 
  307      68617200 
  308              	.LASF9:
- 309 0171 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc5J8Kbm.s 			page 8
+ 309 0165 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccuaDdsP.s 			page 8
 
 
  309      7400
  310              	.LASF14:
- 311 0177 2E5C6D61 		.ascii	".\\main.c\000"
+ 311 016b 2E5C6D61 		.ascii	".\\main.c\000"
  311      696E2E63 
  311      00
  312              	.LASF12:
- 313 0180 73697A65 		.ascii	"sizetype\000"
+ 313 0174 73697A65 		.ascii	"sizetype\000"
  313      74797065 
  313      00
  314              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

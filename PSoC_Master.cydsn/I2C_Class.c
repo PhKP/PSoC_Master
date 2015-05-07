@@ -181,6 +181,7 @@ int8 adjustIrrigation(uint8 index, uint8 onOff){
     return -1;
 }
 
+//----------getActuatorStatus0----------
 int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation){
     uint8 result = 0;
     uint8 dataget[2] = {0, 0};
@@ -230,6 +231,7 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
         return -1;   
     }
 }
+//----------getActuatorStatus1----------
 
 /*
 int8 getTempAndHum(int32* temp, int32* hum){
@@ -251,6 +253,7 @@ int8 getTempAndHum(int32* temp, int32* hum){
 }
 */
 
+//----------getTemp0----------
 int8 getTemp(int32* temp){
 
     uint8 dataget[2] = {0,0};
@@ -273,6 +276,7 @@ int8 getTemp(int32* temp){
 
     return 0;
 }
+//----------getTemp1----------
 
 int8 getLight(int32* light){
     

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
   21:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** #if(I2C_I2C_MASTER_CONST)
   22:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
   23:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** /***************************************
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 2
 
 
   24:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *      I2C Master Private Vars
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
   78:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *
   79:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *******************************************************************************/
   80:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** uint32 I2C_I2CMasterWriteBuf(uint32 slaveAddress, uint8 * wrData, uint32 cnt, uint32 mode)
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 3
 
 
   81:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
   75              		.loc 1 94 0 discriminator 2
   76 0036 0023     		mov	r3, #0
   77              	.L5:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 4
 
 
   78              		.loc 1 94 0 discriminator 1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  118:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         I2C_mstrWrBufIndexTmp = 0u;
  109              		.loc 1 118 0
  110 0066 224B     		ldr	r3, .L10+12
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 5
 
 
  111 0068 0022     		mov	r2, #0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  131:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  132:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         /* Generate Start or ReStart */
  133:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         if(I2C_CHECK_I2C_MODE_RESTART(mode))
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 6
 
 
  153              		.loc 1 133 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  189              		@ sp needed
  190 00e0 80BD     		pop	{r7, pc}
  191              	.L11:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 7
 
 
  192 00e2 C046     		.align	2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  179:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  or without the Stop generation.
  180:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  I2C_mstrRdBufPtr - used to store pointer to master write buffer.
  181:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  I2C_mstrRdBufIndex - used to current index within master write
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 8
 
 
  182:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  buffer.
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  254 0030 01D0     		beq	.L15
  255              		.loc 1 200 0 is_stmt 0 discriminator 1
  256 0032 0823     		mov	r3, #8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 9
 
 
  257 0034 00E0     		b	.L16
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  223:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         I2C_state = I2C_I2C_FSM_MSTR_RD_ADDR;
  289              		.loc 1 223 0
  290 0060 254B     		ldr	r3, .L22
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 10
 
 
  291 0062 2922     		mov	r2, #41
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  238:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         if(I2C_CHECK_I2C_MODE_RESTART(mode))
  331              		.loc 1 238 0
  332 00a4 3A68     		ldr	r2, [r7]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 11
 
 
  333 00a6 0123     		mov	r3, #1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  369 00dc 4900     		lsl	r1, r1, #1
  370 00de 0A43     		orr	r2, r1
  371 00e0 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 12
 
 
  257:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****             I2C_SetRxInterruptMode(I2C_INTR_RX_FULL);
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  268:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Function Name: I2C_I2CMasterSendStart
  269:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** ********************************************************************************
  270:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 13
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 13
 
 
  271:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Summary:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  301:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         if(I2C_CHECK_I2C_STATUS(I2C_I2C_STATUS_BUS_BUSY))
  439              		.loc 1 301 0
  440 001c 364B     		ldr	r3, .L35+4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 14
 
 
  441 001e 1A68     		ldr	r2, [r3]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  473              		.loc 1 323 0
  474 0050 7B68     		ldr	r3, [r7, #4]
  475 0052 0122     		mov	r2, #1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 15
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 15
 
 
  476 0054 1343     		orr	r3, r2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  347:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****             {
  348:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****                 errStatus = I2C_I2C_MSTR_NO_ERROR;
  507              		.loc 1 348 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 16
 
 
  508 0082 0023     		mov	r3, #0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  547 00ba 5B00     		lsl	r3, r3, #1
  548 00bc BB60     		str	r3, [r7, #8]
  364:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****                              resetIp   = I2C_I2C_RESET_ERROR;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 17
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 17
 
 
  549              		.loc 1 364 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  586              		.align	2
  587              	.L35:
  588 00f4 00000000 		.word	I2C_state
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 18
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 18
 
 
  589 00f8 64000640 		.word	1074135140
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  617 0008 3960     		str	r1, [r7]
  408:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     uint32 resetIp;
  409:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     uint32 errStatus;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 19
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 19
 
 
  410:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  655 0042 0122     		mov	r2, #1
  656 0044 1343     		orr	r3, r2
  657 0046 7B60     		str	r3, [r7, #4]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 20
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 20
 
 
  658              	.L40:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  451:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****                                                   I2C_INTR_MASTER_I2C_ARB_LOST |
  452:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****                                                   I2C_INTR_MASTER_I2C_BUS_ERROR))
  453:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 21
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 21
 
 
  454:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****             /* Wait until address has been transferred */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  725 00a8 FB60     		str	r3, [r7, #12]
  726 00aa 07E0     		b	.L44
  727              	.L46:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 22
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 22
 
 
  471:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         }
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  489:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     }
  490:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  491:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     return(errStatus);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 23
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 23
 
 
  764              		.loc 1 491 0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  518:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Global variables:
  519:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  I2C_state - used to store current state of software FSM.
  520:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 24
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 24
 
 
  521:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *******************************************************************************/
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  829 002e 1022     		mov	r2, #16
  830              	.L53:
  831              		.loc 1 537 0 discriminator 3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 25
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 25
 
 
  832 0030 1A60     		str	r2, [r3]
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  556:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         else /* I2C_INTR_MASTER_I2C_BUS_ERROR is set */
  557:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         {
  558:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****             errStatus = I2C_I2C_MSTR_ERR_BUS_ERR;
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 26
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 26
 
 
  868              		.loc 1 558 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  905 009c 3B68     		ldr	r3, [r7]
  576:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** }
  906              		.loc 1 576 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 27
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 27
 
 
  907 009e 181C     		mov	r0, r3
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  933 0000 80B5     		push	{r7, lr}
  934              		.cfi_def_cfa_offset 8
  935              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 28
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 28
 
 
  936              		.cfi_offset 14, -4
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  624:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         /* Check results after byte was sent */
  625:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         if(I2C_CHECK_INTR_MASTER(I2C_INTR_MASTER_I2C_ACK))
  971              		.loc 1 625 0 is_stmt 1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 29
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 29
 
 
  972 0034 234B     		ldr	r3, .L69+8
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1013 0072 BB60     		str	r3, [r7, #8]
  639:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****                          resetIp   = I2C_I2C_RESET_ERROR;
  1014              		.loc 1 639 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 30
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 30
 
 
  1015 0074 0123     		mov	r3, #1
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1052 00ae 0A43     		orr	r2, r1
  1053 00b0 1A60     		str	r2, [r3]
  1054              	.L62:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 31
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 31
 
 
  657:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         }
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  685:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  function. This function does nothing and returns invalid byte value
  686:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  if Start or ReStart conditions failed before this function was called.
  687:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 32
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 32
 
 
  688:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Global variables:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1119 0032 1340     		and	r3, r2
  702:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         while((!I2C_CHECK_INTR_RX(I2C_INTR_RX_NOT_EMPTY)) &&
  1120              		.loc 1 702 0 discriminator 2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 33
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 33
 
 
  1121 0034 F4D0     		beq	.L74
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  726:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         else
  727:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         {
  728:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****             I2C_ClearMasterInterruptSource(I2C_INTR_MASTER_ALL);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 34
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 34
 
 
  1153              		.loc 1 728 0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1199              	I2C_I2CMasterGetReadBufSize:
  1200              	.LFB7:
  737:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 35
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 35
 
 
  738:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1226              		.global	I2C_I2CMasterGetWriteBufSize
  1227              		.code	16
  1228              		.thumb_func
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 36
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 36
 
 
  1229              		.type	I2C_I2CMasterGetWriteBufSize, %function
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1253              	.LFE8:
  1254              		.size	I2C_I2CMasterGetWriteBufSize, .-I2C_I2CMasterGetWriteBufSize
  1255              		.section	.text.I2C_I2CMasterClearReadBuf,"ax",%progbits
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 37
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 37
 
 
  1256              		.align	2
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1283 0018 9343     		bic	r3, r2
  1284 001a 9AB2     		uxth	r2, r3
  1285 001c 044B     		ldr	r3, .L90+4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 38
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 38
 
 
  1286 001e 1A80     		strh	r2, [r3]
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1314              		.cfi_offset 7, -8
  1315              		.cfi_offset 14, -4
  1316 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 39
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 39
 
 
  1317              		.cfi_def_cfa_register 7
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  864:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  Returns the master's communication status.
  865:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *
  866:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Parameters:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 40
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 40
 
 
  867:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** *  None
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  888:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     }
  889:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  890:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     I2C_EnableInt();   /* Release lock */
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 41
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 41
 
 
  1390              		.loc 1 890 0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1420              		.cfi_def_cfa_offset 8
  1421              		.cfi_offset 7, -8
  1422              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 42
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 42
 
 
  1423 0002 82B0     		sub	sp, sp, #8
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  927:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  928:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  929:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** /*******************************************************************************
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 43
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 43
 
 
  930:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** * Function Name: I2C_I2CReStartGeneration
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  970:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c **** 
  971:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****     while(I2C_WAIT_SDA_SET_HIGH)
  1479              		.loc 1 971 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 44
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 44
 
 
  1480 000c C046     		mov	r8, r8
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  991:.\Generated_Source\PSoC4/I2C_I2C_MASTER.c ****         I2C_SET_I2C_SCL_DR(I2C_I2C_SCL_HIGH);
  1515              		.loc 1 991 0
  1516 004a 0120     		mov	r0, #1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 45
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 45
 
 
  1517 004c FFF7FEFF 		bl	I2C_scl_Write
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1552 0088 0F21     		mov	r1, #15
  1553 008a 8A43     		bic	r2, r1
  1554 008c 0E21     		mov	r1, #14
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 46
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 46
 
 
  1555 008e 0A43     		orr	r2, r1
@@ -2749,7 +2749,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1586 000c DF000000 		.4byte	.LASF50
  1587 0010 01       		.byte	0x1
  1588 0011 79000000 		.4byte	.LASF51
- 1589 0015 A7010000 		.4byte	.LASF52
+ 1589 0015 AB020000 		.4byte	.LASF52
  1590 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1591 001d 00000000 		.4byte	0
  1592 0021 00000000 		.4byte	.Ldebug_line0
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1595 0027 06       		.byte	0x6
  1596 0028 5B010000 		.4byte	.LASF0
  1597 002c 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 47
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 47
 
 
  1598 002d 01       		.byte	0x1
@@ -2767,7 +2767,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1601 0033 02       		.uleb128 0x2
  1602 0034 02       		.byte	0x2
  1603 0035 05       		.byte	0x5
- 1604 0036 E5020000 		.4byte	.LASF2
+ 1604 0036 E9020000 		.4byte	.LASF2
  1605 003a 02       		.uleb128 0x2
  1606 003b 02       		.byte	0x2
  1607 003c 07       		.byte	0x7
@@ -2775,19 +2775,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1609 0041 02       		.uleb128 0x2
  1610 0042 04       		.byte	0x4
  1611 0043 05       		.byte	0x5
- 1612 0044 4D030000 		.4byte	.LASF4
+ 1612 0044 51030000 		.4byte	.LASF4
  1613 0048 02       		.uleb128 0x2
  1614 0049 04       		.byte	0x4
  1615 004a 07       		.byte	0x7
- 1616 004b F1010000 		.4byte	.LASF5
+ 1616 004b B7010000 		.4byte	.LASF5
  1617 004f 02       		.uleb128 0x2
  1618 0050 08       		.byte	0x8
  1619 0051 05       		.byte	0x5
- 1620 0052 BB020000 		.4byte	.LASF6
+ 1620 0052 81020000 		.4byte	.LASF6
  1621 0056 02       		.uleb128 0x2
  1622 0057 08       		.byte	0x8
  1623 0058 07       		.byte	0x7
- 1624 0059 7A020000 		.4byte	.LASF7
+ 1624 0059 40020000 		.4byte	.LASF7
  1625 005d 03       		.uleb128 0x3
  1626 005e 04       		.byte	0x4
  1627 005f 05       		.byte	0x5
@@ -2795,19 +2795,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1629 0064 02       		.uleb128 0x2
  1630 0065 04       		.byte	0x4
  1631 0066 07       		.byte	0x7
- 1632 0067 66020000 		.4byte	.LASF8
+ 1632 0067 2C020000 		.4byte	.LASF8
  1633 006b 04       		.uleb128 0x4
- 1634 006c 19020000 		.4byte	.LASF9
+ 1634 006c DF010000 		.4byte	.LASF9
  1635 0070 02       		.byte	0x2
  1636 0071 A1       		.byte	0xa1
  1637 0072 2C000000 		.4byte	0x2c
  1638 0076 04       		.uleb128 0x4
- 1639 0077 3F020000 		.4byte	.LASF10
+ 1639 0077 05020000 		.4byte	.LASF10
  1640 007b 02       		.byte	0x2
  1641 007c A2       		.byte	0xa2
  1642 007d 3A000000 		.4byte	0x3a
  1643 0081 04       		.uleb128 0x4
- 1644 0082 4D020000 		.4byte	.LASF11
+ 1644 0082 13020000 		.4byte	.LASF11
  1645 0086 02       		.byte	0x2
  1646 0087 A3       		.byte	0xa3
  1647 0088 48000000 		.4byte	0x48
@@ -2818,14 +2818,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1652 0093 02       		.uleb128 0x2
  1653 0094 08       		.byte	0x8
  1654 0095 04       		.byte	0x4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 48
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 48
 
 
- 1655 0096 31020000 		.4byte	.LASF13
+ 1655 0096 F7010000 		.4byte	.LASF13
  1656 009a 02       		.uleb128 0x2
  1657 009b 01       		.byte	0x1
  1658 009c 08       		.byte	0x8
- 1659 009d C9020000 		.4byte	.LASF14
+ 1659 009d 8F020000 		.4byte	.LASF14
  1660 00a1 05       		.uleb128 0x5
  1661 00a2 6B000000 		.4byte	0x6b
  1662 00a6 05       		.uleb128 0x5
@@ -2840,9 +2840,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1671 00bc 02       		.uleb128 0x2
  1672 00bd 04       		.byte	0x4
  1673 00be 07       		.byte	0x7
- 1674 00bf B2020000 		.4byte	.LASF16
+ 1674 00bf 78020000 		.4byte	.LASF16
  1675 00c3 07       		.uleb128 0x7
- 1676 00c4 03020000 		.4byte	.LASF20
+ 1676 00c4 C9010000 		.4byte	.LASF20
  1677 00c8 01       		.byte	0x1
  1678 00c9 50       		.byte	0x50
  1679 00ca 81000000 		.4byte	0x81
@@ -2852,7 +2852,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1683 00d7 9C       		.byte	0x9c
  1684 00d8 23010000 		.4byte	0x123
  1685 00dc 08       		.uleb128 0x8
- 1686 00dd 96020000 		.4byte	.LASF17
+ 1686 00dd 5C020000 		.4byte	.LASF17
  1687 00e1 01       		.byte	0x1
  1688 00e2 50       		.byte	0x50
  1689 00e3 81000000 		.4byte	0x81
@@ -2860,7 +2860,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1691 00e8 91       		.byte	0x91
  1692 00e9 6C       		.sleb128 -20
  1693 00ea 08       		.uleb128 0x8
- 1694 00eb 73020000 		.4byte	.LASF18
+ 1694 00eb 39020000 		.4byte	.LASF18
  1695 00ef 01       		.byte	0x1
  1696 00f0 50       		.byte	0x50
  1697 00f1 23010000 		.4byte	0x123
@@ -2876,9 +2876,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1707 0104 91       		.byte	0x91
  1708 0105 64       		.sleb128 -28
  1709 0106 08       		.uleb128 0x8
- 1710 0107 91020000 		.4byte	.LASF19
+ 1710 0107 57020000 		.4byte	.LASF19
  1711 010b 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 49
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 49
 
 
  1712 010c 50       		.byte	0x50
@@ -2887,7 +2887,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1715 0112 91       		.byte	0x91
  1716 0113 60       		.sleb128 -32
  1717 0114 0A       		.uleb128 0xa
- 1718 0115 27020000 		.4byte	.LASF23
+ 1718 0115 ED010000 		.4byte	.LASF23
  1719 0119 01       		.byte	0x1
  1720 011a 52       		.byte	0x52
  1721 011b 81000000 		.4byte	0x81
@@ -2899,7 +2899,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1727 0124 04       		.byte	0x4
  1728 0125 6B000000 		.4byte	0x6b
  1729 0129 07       		.uleb128 0x7
- 1730 012a 98030000 		.4byte	.LASF21
+ 1730 012a 9C030000 		.4byte	.LASF21
  1731 012e 01       		.byte	0x1
  1732 012f BA       		.byte	0xba
  1733 0130 81000000 		.4byte	0x81
@@ -2909,7 +2909,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1737 013d 9C       		.byte	0x9c
  1738 013e 89010000 		.4byte	0x189
  1739 0142 08       		.uleb128 0x8
- 1740 0143 96020000 		.4byte	.LASF17
+ 1740 0143 5C020000 		.4byte	.LASF17
  1741 0147 01       		.byte	0x1
  1742 0148 BA       		.byte	0xba
  1743 0149 81000000 		.4byte	0x81
@@ -2917,7 +2917,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1745 014e 91       		.byte	0x91
  1746 014f 6C       		.sleb128 -20
  1747 0150 08       		.uleb128 0x8
- 1748 0151 46020000 		.4byte	.LASF22
+ 1748 0151 0C020000 		.4byte	.LASF22
  1749 0155 01       		.byte	0x1
  1750 0156 BA       		.byte	0xba
  1751 0157 23010000 		.4byte	0x123
@@ -2933,18 +2933,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1761 016a 91       		.byte	0x91
  1762 016b 64       		.sleb128 -28
  1763 016c 08       		.uleb128 0x8
- 1764 016d 91020000 		.4byte	.LASF19
+ 1764 016d 57020000 		.4byte	.LASF19
  1765 0171 01       		.byte	0x1
  1766 0172 BA       		.byte	0xba
  1767 0173 81000000 		.4byte	0x81
  1768 0177 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 50
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 50
 
 
  1769 0178 91       		.byte	0x91
  1770 0179 60       		.sleb128 -32
  1771 017a 0A       		.uleb128 0xa
- 1772 017b 27020000 		.4byte	.LASF23
+ 1772 017b ED010000 		.4byte	.LASF23
  1773 017f 01       		.byte	0x1
  1774 0180 BC       		.byte	0xbc
  1775 0181 81000000 		.4byte	0x81
@@ -2963,7 +2963,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1788 019e 9C       		.byte	0x9c
  1789 019f E0010000 		.4byte	0x1e0
  1790 01a3 0D       		.uleb128 0xd
- 1791 01a4 96020000 		.4byte	.LASF17
+ 1791 01a4 5C020000 		.4byte	.LASF17
  1792 01a8 01       		.byte	0x1
  1793 01a9 2101     		.2byte	0x121
  1794 01ab 81000000 		.4byte	0x81
@@ -2971,7 +2971,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1796 01b0 91       		.byte	0x91
  1797 01b1 6C       		.sleb128 -20
  1798 01b2 0D       		.uleb128 0xd
- 1799 01b3 38020000 		.4byte	.LASF25
+ 1799 01b3 FE010000 		.4byte	.LASF25
  1800 01b7 01       		.byte	0x1
  1801 01b8 2101     		.2byte	0x121
  1802 01ba 81000000 		.4byte	0x81
@@ -2987,7 +2987,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1812 01ce 91       		.byte	0x91
  1813 01cf 74       		.sleb128 -12
  1814 01d0 0E       		.uleb128 0xe
- 1815 01d1 27020000 		.4byte	.LASF23
+ 1815 01d1 ED010000 		.4byte	.LASF23
  1816 01d5 01       		.byte	0x1
  1817 01d6 2401     		.2byte	0x124
  1818 01d8 81000000 		.4byte	0x81
@@ -2996,9 +2996,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1821 01de 70       		.sleb128 -16
  1822 01df 00       		.byte	0
  1823 01e0 0C       		.uleb128 0xc
- 1824 01e1 F7020000 		.4byte	.LASF27
+ 1824 01e1 FB020000 		.4byte	.LASF27
  1825 01e5 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 51
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 51
 
 
  1826 01e6 9601     		.2byte	0x196
@@ -3009,7 +3009,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1831 01f5 9C       		.byte	0x9c
  1832 01f6 37020000 		.4byte	0x237
  1833 01fa 0D       		.uleb128 0xd
- 1834 01fb 96020000 		.4byte	.LASF17
+ 1834 01fb 5C020000 		.4byte	.LASF17
  1835 01ff 01       		.byte	0x1
  1836 0200 9601     		.2byte	0x196
  1837 0202 81000000 		.4byte	0x81
@@ -3017,7 +3017,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1839 0207 91       		.byte	0x91
  1840 0208 6C       		.sleb128 -20
  1841 0209 0D       		.uleb128 0xd
- 1842 020a 38020000 		.4byte	.LASF25
+ 1842 020a FE010000 		.4byte	.LASF25
  1843 020e 01       		.byte	0x1
  1844 020f 9601     		.2byte	0x196
  1845 0211 81000000 		.4byte	0x81
@@ -3033,7 +3033,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1855 0225 91       		.byte	0x91
  1856 0226 74       		.sleb128 -12
  1857 0227 0E       		.uleb128 0xe
- 1858 0228 27020000 		.4byte	.LASF23
+ 1858 0228 ED010000 		.4byte	.LASF23
  1859 022c 01       		.byte	0x1
  1860 022d 9901     		.2byte	0x199
  1861 022f 81000000 		.4byte	0x81
@@ -3042,7 +3042,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1864 0235 70       		.sleb128 -16
  1865 0236 00       		.byte	0
  1866 0237 0F       		.uleb128 0xf
- 1867 0238 E0030000 		.4byte	.LASF28
+ 1867 0238 D4030000 		.4byte	.LASF28
  1868 023c 01       		.byte	0x1
  1869 023d 0A02     		.2byte	0x20a
  1870 023f 81000000 		.4byte	0x81
@@ -3058,12 +3058,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1880 0259 81000000 		.4byte	0x81
  1881 025d 02       		.uleb128 0x2
  1882 025e 91       		.byte	0x91
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 52
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 52
 
 
  1883 025f 74       		.sleb128 -12
  1884 0260 0E       		.uleb128 0xe
- 1885 0261 27020000 		.4byte	.LASF23
+ 1885 0261 ED010000 		.4byte	.LASF23
  1886 0265 01       		.byte	0x1
  1887 0266 0D02     		.2byte	0x20d
  1888 0268 81000000 		.4byte	0x81
@@ -3072,7 +3072,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1891 026e 70       		.sleb128 -16
  1892 026f 00       		.byte	0
  1893 0270 0F       		.uleb128 0xf
- 1894 0271 CE020000 		.4byte	.LASF29
+ 1894 0271 94020000 		.4byte	.LASF29
  1895 0275 01       		.byte	0x1
  1896 0276 5B02     		.2byte	0x25b
  1897 0278 81000000 		.4byte	0x81
@@ -3082,7 +3082,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1901 0285 9C       		.byte	0x9c
  1902 0286 B8020000 		.4byte	0x2b8
  1903 028a 0D       		.uleb128 0xd
- 1904 028b EF020000 		.4byte	.LASF30
+ 1904 028b F3020000 		.4byte	.LASF30
  1905 028f 01       		.byte	0x1
  1906 0290 5B02     		.2byte	0x25b
  1907 0292 81000000 		.4byte	0x81
@@ -3098,7 +3098,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1917 02a6 91       		.byte	0x91
  1918 02a7 74       		.sleb128 -12
  1919 02a8 0E       		.uleb128 0xe
- 1920 02a9 27020000 		.4byte	.LASF23
+ 1920 02a9 ED010000 		.4byte	.LASF23
  1921 02ad 01       		.byte	0x1
  1922 02ae 5E02     		.2byte	0x25e
  1923 02b0 81000000 		.4byte	0x81
@@ -3107,7 +3107,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1926 02b6 70       		.sleb128 -16
  1927 02b7 00       		.byte	0
  1928 02b8 0F       		.uleb128 0xf
- 1929 02b9 10030000 		.4byte	.LASF31
+ 1929 02b9 14030000 		.4byte	.LASF31
  1930 02bd 01       		.byte	0x1
  1931 02be B402     		.2byte	0x2b4
  1932 02c0 81000000 		.4byte	0x81
@@ -3117,8 +3117,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1936 02cd 9C       		.byte	0x9c
  1937 02ce F1020000 		.4byte	0x2f1
  1938 02d2 0D       		.uleb128 0xd
- 1939 02d3 1F020000 		.4byte	.LASF32
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 53
+ 1939 02d3 E5010000 		.4byte	.LASF32
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 53
 
 
  1940 02d7 01       		.byte	0x1
@@ -3128,7 +3128,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1944 02df 91       		.byte	0x91
  1945 02e0 6C       		.sleb128 -20
  1946 02e1 0E       		.uleb128 0xe
- 1947 02e2 EF020000 		.4byte	.LASF30
+ 1947 02e2 F3020000 		.4byte	.LASF30
  1948 02e6 01       		.byte	0x1
  1949 02e7 B602     		.2byte	0x2b6
  1950 02e9 81000000 		.4byte	0x81
@@ -3146,7 +3146,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1962 0305 01       		.uleb128 0x1
  1963 0306 9C       		.byte	0x9c
  1964 0307 10       		.uleb128 0x10
- 1965 0308 56030000 		.4byte	.LASF34
+ 1965 0308 5A030000 		.4byte	.LASF34
  1966 030c 01       		.byte	0x1
  1967 030d 1903     		.2byte	0x319
  1968 030f 81000000 		.4byte	0x81
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  1994 034d 00000000 		.4byte	.LFB11
  1995 0351 44000000 		.4byte	.LFE11-.LFB11
  1996 0355 01       		.uleb128 0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 54
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 54
 
 
  1997 0356 9C       		.byte	0x9c
@@ -3193,7 +3193,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2006 0369 74       		.sleb128 -12
  2007 036a 00       		.byte	0
  2008 036b 0C       		.uleb128 0xc
- 2009 036c BD030000 		.4byte	.LASF39
+ 2009 036c B1030000 		.4byte	.LASF39
  2010 0370 01       		.byte	0x1
  2011 0371 9103     		.2byte	0x391
  2012 0373 81000000 		.4byte	0x81
@@ -3230,15 +3230,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2043 03b9 74       		.sleb128 -12
  2044 03ba 00       		.byte	0
  2045 03bb 13       		.uleb128 0x13
- 2046 03bc D6030000 		.4byte	.LASF40
+ 2046 03bc CA030000 		.4byte	.LASF40
  2047 03c0 03       		.byte	0x3
  2048 03c1 1D       		.byte	0x1d
  2049 03c2 A1000000 		.4byte	0xa1
  2050 03c6 14       		.uleb128 0x14
- 2051 03c7 A3020000 		.4byte	.LASF41
+ 2051 03c7 69020000 		.4byte	.LASF41
  2052 03cb 01       		.byte	0x1
  2053 03cc 1C       		.byte	0x1c
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 55
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 55
 
 
  2054 03cd A6000000 		.4byte	0xa6
@@ -3246,7 +3246,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2056 03d2 03       		.byte	0x3
  2057 03d3 00000000 		.4byte	I2C_mstrStatus
  2058 03d7 14       		.uleb128 0x14
- 2059 03d8 AD030000 		.4byte	.LASF42
+ 2059 03d8 A7010000 		.4byte	.LASF42
  2060 03dc 01       		.byte	0x1
  2061 03dd 1D       		.byte	0x1d
  2062 03de A1000000 		.4byte	0xa1
@@ -3254,7 +3254,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2064 03e3 03       		.byte	0x3
  2065 03e4 00000000 		.4byte	I2C_mstrControl
  2066 03e8 14       		.uleb128 0x14
- 2067 03e9 26030000 		.4byte	.LASF43
+ 2067 03e9 2A030000 		.4byte	.LASF43
  2068 03ed 01       		.byte	0x1
  2069 03ee 20       		.byte	0x20
  2070 03ef F9030000 		.4byte	0x3f9
@@ -3265,7 +3265,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2075 03fa 04       		.byte	0x4
  2076 03fb A1000000 		.4byte	0xa1
  2077 03ff 14       		.uleb128 0x14
- 2078 0400 54020000 		.4byte	.LASF44
+ 2078 0400 1A020000 		.4byte	.LASF44
  2079 0404 01       		.byte	0x1
  2080 0405 21       		.byte	0x21
  2081 0406 B7000000 		.4byte	0xb7
@@ -3289,7 +3289,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2099 042d 03       		.byte	0x3
  2100 042e 00000000 		.4byte	I2C_mstrWrBufPtr
  2101 0432 14       		.uleb128 0x14
- 2102 0433 86030000 		.4byte	.LASF47
+ 2102 0433 8A030000 		.4byte	.LASF47
  2103 0437 01       		.byte	0x1
  2104 0438 26       		.byte	0x26
  2105 0439 B7000000 		.4byte	0xb7
@@ -3297,8 +3297,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2107 043e 03       		.byte	0x3
  2108 043f 00000000 		.4byte	I2C_mstrWrBufSize
  2109 0443 14       		.uleb128 0x14
- 2110 0444 73030000 		.4byte	.LASF48
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 56
+ 2110 0444 77030000 		.4byte	.LASF48
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 56
 
 
  2111 0448 01       		.byte	0x1
@@ -3308,7 +3308,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2115 044f 03       		.byte	0x3
  2116 0450 00000000 		.4byte	I2C_mstrWrBufIndex
  2117 0454 14       		.uleb128 0x14
- 2118 0455 37030000 		.4byte	.LASF49
+ 2118 0455 3B030000 		.4byte	.LASF49
  2119 0459 01       		.byte	0x1
  2120 045a 28       		.byte	0x28
  2121 045b B7000000 		.4byte	0xb7
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2165 0025 03       		.uleb128 0x3
  2166 0026 08       		.uleb128 0x8
  2167 0027 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 57
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 57
 
 
  2168 0028 00       		.byte	0
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2222 005e 18       		.uleb128 0x18
  2223 005f 9642     		.uleb128 0x2116
  2224 0061 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 58
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 58
 
 
  2225 0062 01       		.uleb128 0x1
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2279 0098 49       		.uleb128 0x49
  2280 0099 13       		.uleb128 0x13
  2281 009a 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 59
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 59
 
 
  2282 009b 00       		.byte	0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2336 00d2 02       		.uleb128 0x2
  2337 00d3 18       		.uleb128 0x18
  2338 00d4 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 60
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 60
 
 
  2339 00d5 00       		.byte	0
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2393 010d 2E       		.uleb128 0x2e
  2394 010e 00       		.byte	0
  2395 010f 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 61
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 61
 
 
  2396 0110 19       		.uleb128 0x19
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2450 0148 13       		.uleb128 0x13
  2451 0149 3F       		.uleb128 0x3f
  2452 014a 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 62
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 62
 
 
  2453 014b 3C       		.uleb128 0x3c
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2507 0070 00000000 		.4byte	.LFB12
  2508 0074 30000000 		.4byte	.LFE12-.LFB12
  2509 0078 00000000 		.4byte	.LFB13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 63
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 63
 
 
  2510 007c B0000000 		.4byte	.LFE13-.LFB13
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2553      57724275 
  2553      66507472 
  2553      00
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 64
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 64
 
 
  2554              	.LASF53:
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2574      6E203231 
  2574      31333538 
  2575 0145 30202D66 		.ascii	"0 -ffunction-sections\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 65
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 65
 
 
  2575      66756E63 
@@ -3866,190 +3866,190 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 1
  2583      61737465 
  2583      72436C65 
  2583      61725772 
- 2584              	.LASF52:
- 2585 01a7 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
- 2585      73657273 
- 2585      5C506869 
- 2585      6C69705C 
- 2585      4F6E6544 
- 2586 01d4 536F435F 		.ascii	"SoC_Master\\PSoC_Master.cydsn\000"
- 2586      4D617374 
- 2586      65725C50 
- 2586      536F435F 
- 2586      4D617374 
- 2587              	.LASF5:
- 2588 01f1 6C6F6E67 		.ascii	"long unsigned int\000"
- 2588      20756E73 
- 2588      69676E65 
- 2588      6420696E 
- 2588      7400
- 2589              	.LASF20:
- 2590 0203 4932435F 		.ascii	"I2C_I2CMasterWriteBuf\000"
- 2590      4932434D 
- 2590      61737465 
- 2590      72577269 
- 2590      74654275 
- 2591              	.LASF9:
- 2592 0219 75696E74 		.ascii	"uint8\000"
- 2592      3800
- 2593              	.LASF32:
- 2594 021f 61636B4E 		.ascii	"ackNack\000"
- 2594      61636B00 
- 2595              	.LASF23:
- 2596 0227 65727253 		.ascii	"errStatus\000"
- 2596      74617475 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 66
+ 2584              	.LASF42:
+ 2585 01a7 4932435F 		.ascii	"I2C_mstrControl\000"
+ 2585      6D737472 
+ 2585      436F6E74 
+ 2585      726F6C00 
+ 2586              	.LASF5:
+ 2587 01b7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2587      20756E73 
+ 2587      69676E65 
+ 2587      6420696E 
+ 2587      7400
+ 2588              	.LASF20:
+ 2589 01c9 4932435F 		.ascii	"I2C_I2CMasterWriteBuf\000"
+ 2589      4932434D 
+ 2589      61737465 
+ 2589      72577269 
+ 2589      74654275 
+ 2590              	.LASF9:
+ 2591 01df 75696E74 		.ascii	"uint8\000"
+ 2591      3800
+ 2592              	.LASF32:
+ 2593 01e5 61636B4E 		.ascii	"ackNack\000"
+ 2593      61636B00 
+ 2594              	.LASF23:
+ 2595 01ed 65727253 		.ascii	"errStatus\000"
+ 2595      74617475 
+ 2595      7300
+ 2596              	.LASF13:
+ 2597 01f7 646F7562 		.ascii	"double\000"
+ 2597      6C6500
+ 2598              	.LASF25:
+ 2599 01fe 62697452 		.ascii	"bitRnW\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 66
 
 
- 2596      7300
- 2597              	.LASF13:
- 2598 0231 646F7562 		.ascii	"double\000"
- 2598      6C6500
- 2599              	.LASF25:
- 2600 0238 62697452 		.ascii	"bitRnW\000"
- 2600      6E5700
- 2601              	.LASF10:
- 2602 023f 75696E74 		.ascii	"uint16\000"
- 2602      313600
- 2603              	.LASF22:
- 2604 0246 72644461 		.ascii	"rdData\000"
- 2604      746100
- 2605              	.LASF11:
- 2606 024d 75696E74 		.ascii	"uint32\000"
- 2606      333200
- 2607              	.LASF44:
- 2608 0254 4932435F 		.ascii	"I2C_mstrRdBufSize\000"
- 2608      6D737472 
- 2608      52644275 
- 2608      6653697A 
- 2608      6500
- 2609              	.LASF8:
- 2610 0266 756E7369 		.ascii	"unsigned int\000"
- 2610      676E6564 
- 2610      20696E74 
- 2610      00
- 2611              	.LASF18:
- 2612 0273 77724461 		.ascii	"wrData\000"
- 2612      746100
- 2613              	.LASF7:
- 2614 027a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2614      206C6F6E 
- 2614      6720756E 
- 2614      7369676E 
- 2614      65642069 
- 2615              	.LASF19:
- 2616 0291 6D6F6465 		.ascii	"mode\000"
- 2616      00
- 2617              	.LASF17:
- 2618 0296 736C6176 		.ascii	"slaveAddress\000"
- 2618      65416464 
- 2618      72657373 
- 2618      00
- 2619              	.LASF41:
- 2620 02a3 4932435F 		.ascii	"I2C_mstrStatus\000"
- 2620      6D737472 
- 2620      53746174 
- 2620      757300
- 2621              	.LASF16:
- 2622 02b2 73697A65 		.ascii	"sizetype\000"
- 2622      74797065 
- 2622      00
- 2623              	.LASF6:
- 2624 02bb 6C6F6E67 		.ascii	"long long int\000"
- 2624      206C6F6E 
- 2624      6720696E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 67
+ 2599      6E5700
+ 2600              	.LASF10:
+ 2601 0205 75696E74 		.ascii	"uint16\000"
+ 2601      313600
+ 2602              	.LASF22:
+ 2603 020c 72644461 		.ascii	"rdData\000"
+ 2603      746100
+ 2604              	.LASF11:
+ 2605 0213 75696E74 		.ascii	"uint32\000"
+ 2605      333200
+ 2606              	.LASF44:
+ 2607 021a 4932435F 		.ascii	"I2C_mstrRdBufSize\000"
+ 2607      6D737472 
+ 2607      52644275 
+ 2607      6653697A 
+ 2607      6500
+ 2608              	.LASF8:
+ 2609 022c 756E7369 		.ascii	"unsigned int\000"
+ 2609      676E6564 
+ 2609      20696E74 
+ 2609      00
+ 2610              	.LASF18:
+ 2611 0239 77724461 		.ascii	"wrData\000"
+ 2611      746100
+ 2612              	.LASF7:
+ 2613 0240 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2613      206C6F6E 
+ 2613      6720756E 
+ 2613      7369676E 
+ 2613      65642069 
+ 2614              	.LASF19:
+ 2615 0257 6D6F6465 		.ascii	"mode\000"
+ 2615      00
+ 2616              	.LASF17:
+ 2617 025c 736C6176 		.ascii	"slaveAddress\000"
+ 2617      65416464 
+ 2617      72657373 
+ 2617      00
+ 2618              	.LASF41:
+ 2619 0269 4932435F 		.ascii	"I2C_mstrStatus\000"
+ 2619      6D737472 
+ 2619      53746174 
+ 2619      757300
+ 2620              	.LASF16:
+ 2621 0278 73697A65 		.ascii	"sizetype\000"
+ 2621      74797065 
+ 2621      00
+ 2622              	.LASF6:
+ 2623 0281 6C6F6E67 		.ascii	"long long int\000"
+ 2623      206C6F6E 
+ 2623      6720696E 
+ 2623      7400
+ 2624              	.LASF14:
+ 2625 028f 63686172 		.ascii	"char\000"
+ 2625      00
+ 2626              	.LASF29:
+ 2627 0294 4932435F 		.ascii	"I2C_I2CMasterWriteByte\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 67
 
 
- 2624      7400
- 2625              	.LASF14:
- 2626 02c9 63686172 		.ascii	"char\000"
- 2626      00
- 2627              	.LASF29:
- 2628 02ce 4932435F 		.ascii	"I2C_I2CMasterWriteByte\000"
- 2628      4932434D 
- 2628      61737465 
- 2628      72577269 
- 2628      74654279 
- 2629              	.LASF2:
- 2630 02e5 73686F72 		.ascii	"short int\000"
- 2630      7420696E 
- 2630      7400
- 2631              	.LASF30:
- 2632 02ef 74686542 		.ascii	"theByte\000"
- 2632      79746500 
- 2633              	.LASF27:
- 2634 02f7 4932435F 		.ascii	"I2C_I2CMasterSendRestart\000"
- 2634      4932434D 
- 2634      61737465 
- 2634      7253656E 
- 2634      64526573 
- 2635              	.LASF31:
- 2636 0310 4932435F 		.ascii	"I2C_I2CMasterReadByte\000"
+ 2627      4932434D 
+ 2627      61737465 
+ 2627      72577269 
+ 2627      74654279 
+ 2628              	.LASF52:
+ 2629 02ab 433A5C55 		.ascii	"C:\\Users\\Philip\\OneDrive\\GitHub\\PSoC_Master\\P"
+ 2629      73657273 
+ 2629      5C506869 
+ 2629      6C69705C 
+ 2629      4F6E6544 
+ 2630 02d8 536F435F 		.ascii	"SoC_Master.cydsn\000"
+ 2630      4D617374 
+ 2630      65722E63 
+ 2630      7964736E 
+ 2630      00
+ 2631              	.LASF2:
+ 2632 02e9 73686F72 		.ascii	"short int\000"
+ 2632      7420696E 
+ 2632      7400
+ 2633              	.LASF30:
+ 2634 02f3 74686542 		.ascii	"theByte\000"
+ 2634      79746500 
+ 2635              	.LASF27:
+ 2636 02fb 4932435F 		.ascii	"I2C_I2CMasterSendRestart\000"
  2636      4932434D 
  2636      61737465 
- 2636      72526561 
- 2636      64427974 
- 2637              	.LASF43:
- 2638 0326 4932435F 		.ascii	"I2C_mstrRdBufPtr\000"
- 2638      6D737472 
- 2638      52644275 
- 2638      66507472 
- 2638      00
- 2639              	.LASF49:
- 2640 0337 4932435F 		.ascii	"I2C_mstrWrBufIndexTmp\000"
+ 2636      7253656E 
+ 2636      64526573 
+ 2637              	.LASF31:
+ 2638 0314 4932435F 		.ascii	"I2C_I2CMasterReadByte\000"
+ 2638      4932434D 
+ 2638      61737465 
+ 2638      72526561 
+ 2638      64427974 
+ 2639              	.LASF43:
+ 2640 032a 4932435F 		.ascii	"I2C_mstrRdBufPtr\000"
  2640      6D737472 
- 2640      57724275 
- 2640      66496E64 
- 2640      6578546D 
- 2641              	.LASF4:
- 2642 034d 6C6F6E67 		.ascii	"long int\000"
- 2642      20696E74 
- 2642      00
- 2643              	.LASF34:
- 2644 0356 4932435F 		.ascii	"I2C_I2CMasterGetWriteBufSize\000"
- 2644      4932434D 
- 2644      61737465 
- 2644      72476574 
- 2644      57726974 
- 2645              	.LASF48:
- 2646 0373 4932435F 		.ascii	"I2C_mstrWrBufIndex\000"
- 2646      6D737472 
- 2646      57724275 
- 2646      66496E64 
- 2646      657800
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8YQ1Z7.s 			page 68
+ 2640      52644275 
+ 2640      66507472 
+ 2640      00
+ 2641              	.LASF49:
+ 2642 033b 4932435F 		.ascii	"I2C_mstrWrBufIndexTmp\000"
+ 2642      6D737472 
+ 2642      57724275 
+ 2642      66496E64 
+ 2642      6578546D 
+ 2643              	.LASF4:
+ 2644 0351 6C6F6E67 		.ascii	"long int\000"
+ 2644      20696E74 
+ 2644      00
+ 2645              	.LASF34:
+ 2646 035a 4932435F 		.ascii	"I2C_I2CMasterGetWriteBufSize\000"
+ 2646      4932434D 
+ 2646      61737465 
+ 2646      72476574 
+ 2646      57726974 
+ 2647              	.LASF48:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccDK0IvU.s 			page 68
 
 
- 2647              	.LASF47:
- 2648 0386 4932435F 		.ascii	"I2C_mstrWrBufSize\000"
+ 2648 0377 4932435F 		.ascii	"I2C_mstrWrBufIndex\000"
  2648      6D737472 
  2648      57724275 
- 2648      6653697A 
- 2648      6500
- 2649              	.LASF21:
- 2650 0398 4932435F 		.ascii	"I2C_I2CMasterReadBuf\000"
- 2650      4932434D 
- 2650      61737465 
- 2650      72526561 
- 2650      64427566 
- 2651              	.LASF42:
- 2652 03ad 4932435F 		.ascii	"I2C_mstrControl\000"
- 2652      6D737472 
- 2652      436F6E74 
- 2652      726F6C00 
+ 2648      66496E64 
+ 2648      657800
+ 2649              	.LASF47:
+ 2650 038a 4932435F 		.ascii	"I2C_mstrWrBufSize\000"
+ 2650      6D737472 
+ 2650      57724275 
+ 2650      6653697A 
+ 2650      6500
+ 2651              	.LASF21:
+ 2652 039c 4932435F 		.ascii	"I2C_I2CMasterReadBuf\000"
+ 2652      4932434D 
+ 2652      61737465 
+ 2652      72526561 
+ 2652      64427566 
  2653              	.LASF39:
- 2654 03bd 4932435F 		.ascii	"I2C_I2CMasterClearStatus\000"
+ 2654 03b1 4932435F 		.ascii	"I2C_I2CMasterClearStatus\000"
  2654      4932434D 
  2654      61737465 
  2654      72436C65 
  2654      61725374 
  2655              	.LASF40:
- 2656 03d6 4932435F 		.ascii	"I2C_state\000"
+ 2656 03ca 4932435F 		.ascii	"I2C_state\000"
  2656      73746174 
  2656      6500
  2657              	.LASF28:
- 2658 03e0 4932435F 		.ascii	"I2C_I2CMasterSendStop\000"
+ 2658 03d4 4932435F 		.ascii	"I2C_I2CMasterSendStop\000"
  2658      4932434D 
  2658      61737465 
  2658      7253656E 

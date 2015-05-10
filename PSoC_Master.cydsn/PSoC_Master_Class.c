@@ -180,6 +180,7 @@ void uartIntHandler(void){
 }
 //----------uartIntHandler1----------
 
+//----------timerIntHandler0----------
 void timerIntHandler(void){
     if(timerInt){
         timerInt = 0;   // Reset flag
@@ -203,5 +204,5 @@ void timerIntHandler(void){
         RedLED_Write(LED_OFF);              // Turn off red LED    
     }    
 }
-
+//----------timerIntHandler1----------
 /* [] END OF FILE */

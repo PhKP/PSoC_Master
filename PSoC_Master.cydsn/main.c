@@ -16,7 +16,7 @@
 #include "PSoC_Master_Class.h"
 #include "UART_Class.h"
 
-
+//----------main0----------
 int main(){
     // Init
     initDSP();
@@ -30,9 +30,9 @@ int main(){
         uartIntHandler();
         timerIntHandler();
     }
-    
     return 0;
 }
+//----------main1----------
 
 
 /* [] END OF FILE */

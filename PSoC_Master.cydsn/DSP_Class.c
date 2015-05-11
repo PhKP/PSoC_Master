@@ -63,9 +63,11 @@ void initDSP(void){
     light = 0;
 }
 
+//----------getTemp_DSP0----------
 uint8 getTemp_DSP(void){
     return temp;
 }
+//----------getTemp_DSP1----------
 
 uint8 getHum_DSP(void){
     return hum;
@@ -98,9 +100,16 @@ void avgTemp(void){
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
         int32 avg = total/(ARRAYSIZE-skip);     // Calculate the average value
         
-        // TODO limit temp output to 1 and 200
-        
-        temp = (uint8)avg;
+        // temp is limited to 1 and 200
+        if (avg>200){
+            temp = 200;
+        }
+        else if (avg < 1){
+            temp = 1;
+        }
+        else{
+            temp = (uint8)avg;
+        }
     }
     else{
         temp = 0;
@@ -134,7 +143,9 @@ void avgHum(void){
         else if(humInRH > 100){
             humInRH = 100;
         }
-        hum = humInRH;
+        else{
+            hum = humInRH;
+        }
     }
     else{
     hum = 0;

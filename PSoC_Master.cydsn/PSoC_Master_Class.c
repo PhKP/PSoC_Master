@@ -26,7 +26,6 @@ int32 tempHum;
 int16 tempSoilHum[6];
 int32 tempLight;
 
-
 // Private prototypes
 CY_ISR_PROTO(timer_ISR);
 CY_ISR_PROTO(UART_ISR);
@@ -36,8 +35,8 @@ CY_ISR_PROTO(UART_ISR);
 typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI, RESP_SOIL_HUM} state;
 volatile state theState = IDLE;
 volatile int8 irrigationIndex = 0;
-uint8 uartInt = 0;
 uint8 buff;
+uint8 uartInt = 0;
 uint8 timerInt = 0;
 //----------flags1----------
 
@@ -66,8 +65,8 @@ void initPSoC_Master(void){
 
 // Timer ISR
 CY_ISR(timer_ISR){
-    Timer_ReadStatusRegister(); //Resets the interrupt
     timerInt = 1;
+    Timer_ReadStatusRegister(); // Resets the interrupt
 }
 
 //----------UART_ISR0----------
@@ -183,14 +182,14 @@ void uartIntHandler(void){
 //----------timerIntHandler0----------
 void timerIntHandler(void){
     if(timerInt){
-        timerInt = 0;   // Reset flag
-        RedLED_Write(LED_ON);           // Turn on red LED
+        timerInt = 0;           // Reset flag
+        RedLED_Write(LED_ON);   // Turn on red LED
         
-        // getTempAndHum(&tempTemp, &tempHum);  // TODO this is old
+        // Measure temp and indput to DSP class 
         getTemp(&tempTemp);
-        
         inputTemp(&tempTemp);
-        // inputHum(&tempHum);      // TODO there is no way to take Hum measurements
+        
+        // Measure soilhum and indput to DSP class 
         {
             uint8 i;
             for(i = 0; i<6 ; i++){
@@ -198,10 +197,12 @@ void timerIntHandler(void){
                 inputSoilHum(i, &tempSoilHum[i]);
             }
         }
-        getLight(&tempLight);
-        inputLight(&tempLight);
         
-        RedLED_Write(LED_OFF);              // Turn off red LED    
+        // getLight(&tempLight);                    // This is outdated
+        // inputLight(&tempLight);                  // This is outdated
+        // getTempAndHum(&tempTemp, &tempHum);      // This is outdated
+        // inputHum(&tempHum);                      // This is outdated
+        RedLED_Write(LED_OFF);                      // Turn off red LED    
     }    
 }
 //----------timerIntHandler1----------

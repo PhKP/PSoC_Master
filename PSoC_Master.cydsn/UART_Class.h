@@ -14,10 +14,9 @@
 // Include files
 #include <project.h>
 
-// Data members
-uint8 receivedCommand;
+// Public data members
 
-// Prototypes
+// Public prototypes
 void initUART(void);
 int8 respondTemp(uint8 temp);
 int8 respondHum(uint8 hum);

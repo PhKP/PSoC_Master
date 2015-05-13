@@ -23,12 +23,11 @@ int main(){
     initI2C();
     initPSoC_Master();
     initUART();
-
     CyGlobalIntEnable;      // Global interrupt enable
 
     for(;;){
-        uartIntHandler();
-        timerIntHandler();
+        uartIntHandler();   // Check if UART flag has been set
+        timerIntHandler();  // Check if Timer flag has been set
     }
     return 0;
 }

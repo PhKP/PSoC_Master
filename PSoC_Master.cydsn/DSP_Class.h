@@ -15,8 +15,8 @@
     #include <project.h>
     
     // Definitions
-    #define ARRAYSIZE 10
-    #define NMR_OF_VALID_DATAPOINTS_NEEDED 10
+    #define ARRAYSIZE 2
+    #define NMR_OF_VALID_DATAPOINTS_NEEDED 2
     #define NBR_OF_SOILHUM_SENSORS 6
     #define EMPTY -1
     

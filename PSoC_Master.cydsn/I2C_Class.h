@@ -25,9 +25,8 @@ int8 adjustVentilation(uint8 speed);
 int8 adjustIrrigation(uint8 index, uint8 onOff);
 int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigation);
 int8 getTemp(int32* temp);
-int8 getLight(int32* light);
 int8 getSoilHum(uint8 index, int16* soilHum);
-// int8 getTempAndHum(int32* temp, int32* hum);     // This function is outdated
+
 
 #endif /* I2C_Class_H */
 /* [] END OF FILE */

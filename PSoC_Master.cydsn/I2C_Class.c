@@ -16,11 +16,6 @@
 #define TEMP_SENSOR_ADDRESS 0x48            // For LM75 temp sensor with A0 = 0, A1 = 0 and A3 = 0
 #define SOILHUM_SENSOR_ADDRESS 0x32
 #define ACTUATOR_ADRESS 0x42
-#define LIGHT_SENSOR_COMMAND_ADDRESS 0x00
-#define LIGHT_SENSOR_CONTROL_ADDRESS 0x01
-#define LIGHT_SENSOR_LSB 0x04  
-#define LIGHT_SENSOR_MSB 0x05
-//#define TEMP_AND_HUM_SENSOR_ADDRESS 0x27  // This is outdated
 //#define debugging // Uncomment to enable debugging
 
 // Private data members
@@ -36,22 +31,6 @@ void initI2C(void){
     I2C_I2CMasterClearStatus();     // Clear status flags
     CyGlobalIntEnable;
     
-    // Light sensor init.
-    /*sensor is set up to internal integration timing, light count data in signed and 2^(8) clock cycles.*/
-    uint8 lightCommand[size], lightControl[size];
-    lightCommand[0] = 0b10001010;       //ADC-normal, Normal operation, Internal timing, signed output, n = 8 (intern)
-    lightControl[0] = 0b00001100;       // Lux-range = 128000. Calculation: ((range(k)?*(100k/100k))/2^8)*data
-	uint8 result;
-    // lux range is set to 128.000 lux if REXT is set up to 50K resistor.
-    //uint8 lightControl = 0b00001100;
-    
-    result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_COMMAND_ADDRESS, lightCommand, size, I2C_I2C_MODE_COMPLETE_XFER);
-    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT)); //Wait for the bus to be ready
-    CyDelay(60);
-    
-    if (result == I2C_I2C_MSTR_NO_ERROR){
-        result = I2C_I2CMasterWriteBuf(LIGHT_SENSOR_CONTROL_ADDRESS, lightControl, size, I2C_I2C_MODE_COMPLETE_XFER);
-    }
 }
 
 int8 adjustWindow(uint8 pos){
@@ -282,74 +261,5 @@ int8 getSoilHum(uint8 index, int16* soilHum){
     }
     return -1;
 }
-
-int8 getLight(int32* light){
-    
-    /* 
-    Command register: Adress 0x00.
-    Bit 7: resets '0' or enables '1' ADC.
-    Bit 6: Power down mode. Normal operation '0' or power down mode '1'.
-    Bit 5: Decides whether integration time (ADC is of integration type) is done internally '0' or externally. Page 6 in datasheet has formulas
-    Bit 4: Has to be zero.
-    Bit 3-2: Photodiode select 0:0 and 0:1 = disable ADC. 1:0 = Light count DATA output in signed (n-1)bit, n is decided in bit 1:0. Last mode 1:1 is no operation.
-    Bit 1-0: Prescaler or number of clockcycles 2^(n). 0:0 = 2^(16), 0:1 = 2^(12), 1:0 = 2^(8) and 1:1 = 2^(4).
-    
-    RW Control register: Adress 0x01.
-    Bit 3-2: Set lux range. watch table in page 6.
-    All other bits has to be zero.
-    
-    I2C Sensor data reg: Adress 0x04(LSB) and 0x05()
-    The sensor sends a 15 bit value that can be acceMSBssed by the adresses 0x04 and 0x05
-    these registers are automatically refreshed each new integration period.
-    */
-    
-    /*
-    uint8 dataget[size];
-    uint8 result = 0;
-    
-    I2C_I2CMasterClearReadBuf();
-    result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_MSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER); 
-    while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT));
-        
-    if (result == I2C_I2C_MSTR_NO_ERROR){
-        // Expecting to receive MSB first.
-        *light = (dataget[0] << 7);     // TODO: TEST THIS WITH THE PROPER SENSOR!!
-        result = I2C_I2CMasterReadBuf(LIGHT_SENSOR_LSB, dataget, size, I2C_I2C_MODE_COMPLETE_XFER);
-        while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be ready
-        if (result == I2C_I2C_MSTR_NO_ERROR){
-            *light |= dataget[0]; 
-            return 0;   // No error 
-        }
-        else {
-            return -1;
-        }
-    }
-    else {
-        return -1;
-    }
-    */
-    *light = 0;
-    return -1;
-}
-
-/*
-int8 getTempAndHum(int32* temp, int32* hum){
-    int32 RDbuf = 4;
-    uint8 dataget[RDbuf];
-    uint8 result = 0;
-    
-    result = I2C_I2CMasterReadBuf(TEMP_AND_HUM_SENSOR_ADDRESS, dataget, RDbuf, I2C_I2C_MODE_COMPLETE_XFER);
-    
-    if (result == I2C_I2C_MSTR_NO_ERROR){
-        // Expecting to receive MSB first.
-        *hum = ((dataget[0] << 8) | dataget[1]);   
-        *temp = (((dataget[2] << 8) | dataget[3]) >> 2);
-        return 0;   // No error 
-    }
-    else {
-        return -1;
-    }
-}
-*/
 
 /* [] END OF FILE */

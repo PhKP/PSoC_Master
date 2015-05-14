@@ -22,9 +22,8 @@
 
 // Private data members
 int32 tempTemp;
-int32 tempHum;
 int16 tempSoilHum[6];
-int32 tempLight;
+
 
 // Private prototypes
 CY_ISR_PROTO(timer_ISR);
@@ -42,14 +41,12 @@ uint8 timerInt = 0;
 
 void initPSoC_Master(void){
 	tempTemp = 0;
-    tempHum = 0;
     tempSoilHum[0] = 0;
     tempSoilHum[1] = 0;
     tempSoilHum[2] = 0;
     tempSoilHum[3] = 0;
     tempSoilHum[4] = 0;
     tempSoilHum[5] = 0;
-    tempLight = 0;
 	
     // ISR
     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
@@ -89,15 +86,7 @@ void uartIntHandler(void){
                 case 'T':{ //RequestTemp
                     respondTemp(getTemp_DSP());		
                     break;
-                }
-                case 'L':{ //RequestLight
-                    respondLight(getLight_DSP());
-                    break;
-                }
-                case 'A':{ //RequestAirhum
-                    respondHum(getHum_DSP());
-                    break;
-                }        
+                }     
                 case 'H':{ //TurnHeatOn
                     // 0x7 is the maximum value.
                     respondHeat(adjustHeat(0x7), 'H');
@@ -198,10 +187,6 @@ void timerIntHandler(void){
             }
         }
         
-        // getLight(&tempLight);                    // This is outdated
-        // inputLight(&tempLight);                  // This is outdated
-        // getTempAndHum(&tempTemp, &tempHum);      // This is outdated
-        // inputHum(&tempHum);                      // This is outdated
         RedLED_Write(LED_OFF);                      // Turn off red LED    
     }    
 }

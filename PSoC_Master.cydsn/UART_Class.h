@@ -19,8 +19,6 @@
 // Public prototypes
 void initUART(void);
 int8 respondTemp(uint8 temp);
-int8 respondHum(uint8 hum);
-int8 respondLight(uint8 light);
 int8 respondSoilHum(uint8 index, uint8 soilHum);
 int8 respondHeat(int8 heatStatus, uint8 onOff);
 int8 respondWin(int8 winStatus);

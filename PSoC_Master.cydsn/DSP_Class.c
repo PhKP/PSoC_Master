@@ -16,20 +16,14 @@
 // Private data members
 int32 tempArray[ARRAYSIZE];
 int32* tempArrayPtr;
-int32 humArray[ARRAYSIZE];
-int32* humArrayPtr;
 int16 soilHumArray[NBR_OF_SOILHUM_SENSORS][ARRAYSIZE];
 int16* soilHumPtr[NBR_OF_SOILHUM_SENSORS];
-int32 lightArray[ARRAYSIZE];
-int32* lightArrayPtr;
-uint8 temp, hum, soilHum[NBR_OF_SOILHUM_SENSORS], light;
+uint8 temp, soilHum[NBR_OF_SOILHUM_SENSORS];
 //----------PrivateDataMembers1----------
 
 // Private prototypes
 void avgTemp(void);
-void avgHum(void);
 void avgSoilHum(uint8 index);
-void avgLight(void);
 
 // Init: All datamebers are initialized with -1, meaning they are empty
 void initDSP(void){
@@ -37,19 +31,16 @@ void initDSP(void){
         uint8 i;
         for(i = 0 ; i<ARRAYSIZE ; i++){
             tempArray[i] = EMPTY;
-            humArray[i] = EMPTY;
             {
                 uint8 j;
                 for(j = 0 ; j<NBR_OF_SOILHUM_SENSORS ; j++){
                     soilHumArray[j][i] = EMPTY;
                 }
             }
-            lightArray[i] = EMPTY;
             
         }
     }
     tempArrayPtr = & tempArray[0];
-    humArrayPtr = & humArray[0];
     {
         uint8 k;
         for(k = 0 ; k<NBR_OF_SOILHUM_SENSORS ; k++){
@@ -57,10 +48,7 @@ void initDSP(void){
             soilHum[k] = 0; 
             }
     }
-    lightArrayPtr = & lightArray[0];
     temp = 0;
-    hum = 0;
-    light = 0;
 }
 
 //----------getTemp_DSP0----------
@@ -69,17 +57,11 @@ uint8 getTemp_DSP(void){
 }
 //----------getTemp_DSP1----------
 
-uint8 getHum_DSP(void){
-    return hum;
-}
 
 uint8 getSoilHum_DSP(uint8 index){
     return soilHum[index];
 }
 
-uint8 getLight_DSP(void){
-    return light;
-}
 
 //----------avgTemp0----------
 void avgTemp(void){
@@ -117,41 +99,6 @@ void avgTemp(void){
 }
 //----------avgTemp1----------
 
-void avgHum(void){
-    uint8 skip = 0;
-    int64 total = 0;
-    {
-        uint8 i;
-        for(i = 0 ; i<ARRAYSIZE ; i++){
-            if(humArray[i]>=0){
-                total += humArray[i];
-            }
-            else{
-                skip++;
-            }
-        }
-    }
-    // Makes sure that enough datapoits are pressent
-    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        float avg = total/(ARRAYSIZE-skip);                     // Calculate the average value
-        float humInRH = (avg/(16380-2))*100;                // Conversion formula from datasheet
-        
-        // humInRH is limited to 1 and 100 RH
-        if(humInRH <= 0){
-            humInRH = 1;
-        }
-        else if(humInRH > 100){
-            humInRH = 100;
-        }
-        else{
-            hum = humInRH;
-        }
-    }
-    else{
-    hum = 0;
-    }
-}
-
 void avgSoilHum(uint8 index){
     uint8 skip = 0;
     int64 total = 0;
@@ -185,44 +132,6 @@ void avgSoilHum(uint8 index){
     }
 }
 
-void avgLight(void){
-    uint8 skip = 0;
-    int64 total = 0;
-    {
-        uint8 i;
-        for(i = 0 ; i<ARRAYSIZE ; i++){
-            if(lightArray[i]>=0){
-                total += lightArray[i];
-            }
-            else{
-                skip++;
-            }
-        }
-    }
-    // Makes sure that enough datapoits are pressent
-    if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
-        float avg = total/(ARRAYSIZE-skip);                              // Calculate the average value
-        
-        // Conversion to lux formula from datasheet
-        // Range = 128000, R_EXT = 100kOhm, n = 7 and DATA max 128
-        int32 lightInLux = ((128000*(100/100))/(128))*avg;
-        
-        uint8 lightInUartVarSteps = lightInLux/1000;     // Conversion to UART ready value, 1 = 1000 lux
-        
-        // lightInLux is limited to 1 and 100 RH
-        if(lightInUartVarSteps <= 0){
-            lightInUartVarSteps = 1;
-        }
-        else if(lightInUartVarSteps > 100){
-            lightInUartVarSteps = 100;
-        }
-        light = lightInUartVarSteps;
-    }
-    else{
-    light = 0;
-    }
-  }
-
 //----------inputTemp0----------
 void inputTemp(int32* temp){
     *tempArrayPtr = *temp;      // The input value is written to the array
@@ -235,16 +144,6 @@ void inputTemp(int32* temp){
 }
 //----------inputTemp1----------
 
-void inputHum(int32* hum){
-    *humArrayPtr = *hum;        // The input value is written to the array
-    humArrayPtr++;              // The pointer is moved to the next place in array
-    if(humArrayPtr > &humArray[ARRAYSIZE-1]){
-        humArrayPtr = &humArray[0];     // If the pointer is pointing past the end of the array it's reset
-    }
-    
-    avgHum();      // The average value is calculated and onverted into hum(globel)
-}
-
 
 void inputSoilHum(uint8 index, int16* soilHum){
     *soilHumPtr[index] = *soilHum;          // The input value is written to the array
@@ -256,14 +155,5 @@ void inputSoilHum(uint8 index, int16* soilHum){
     avgSoilHum(index);          // The average value is calculated and onverted into soilHum(globel)
 }
 
-void inputLight(int32* light){
-    *lightArrayPtr = *light;        // The input value is written to the array
-    lightArrayPtr++;                // The pointer is moved to the next place in array
-    if(lightArrayPtr > &lightArray[ARRAYSIZE-1]){
-        lightArrayPtr = &lightArray[0];     // If the pointer is pointing past the end of the array it's reset
-    }
-    
-    avgLight();      // The average value is calculated and onverted into hum(globel)
-}
 
 /* [] END OF FILE */

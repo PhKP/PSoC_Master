@@ -34,36 +34,6 @@ int8 respondTemp(uint8 temp){
 }
 //----------respondTemp1----------
 
-int8 respondHum(uint8 hum){
-    if(hum){
-        // If hum is between 1 and 100(both inclusive) "A" and hum is sent to DevKit8000
-        UART_UartPutChar('A');
-        UART_UartPutChar(hum);
-        return 0;
-    }
-    else{
-        // If temp isn't between 1 and 100(both inclusive) "XA" is sent to DevKit8000
-        UART_UartPutChar('X');
-        UART_UartPutChar('A');
-        return -1;
-    }
-}
-
-int8 respondLight(uint8 light){
-    if(light){
-        // If light is between 1 and 100(both inclusive) "L" and light is sent to DevKit8000
-        UART_UartPutChar('L');
-        UART_UartPutChar(light);
-        return 0;
-    }
-    else{
-        // If light isn't between 1 and 100(both inclusive) "XL" is sent to DevKit8000
-        UART_UartPutChar('X');
-        UART_UartPutChar('L');
-        return -1;
-    }
-}
-
 int8 respondSoilHum(uint8 index, uint8 soilHum){
     if(soilHum <= 10 && soilHum >= 1){
         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent to DevKit8000

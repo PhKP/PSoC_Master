@@ -73,6 +73,7 @@ void initPSoC_Master(void){
 // Timer ISR
 CY_ISR(timer_ISR){
     timerInt = 1;
+    RedLED_Write(LED_ON);   // Turn on red LED
     Timer_ReadStatusRegister(); // Resets the interrupt
 }
 
@@ -80,6 +81,7 @@ CY_ISR(timer_ISR){
 // UART ISR
 CY_ISR(UART_ISR){
     uartInt = 1;
+    BlueLED_Write(LED_ON);       // Turn on blue LED
     buff = dkRequest();
     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
 }
@@ -89,7 +91,6 @@ CY_ISR(UART_ISR){
 void uartIntHandler(void){
     if (uartInt){
         uartInt = 0;
-        BlueLED_Write(LED_ON);       // Turn on blue LED
         
         if(theState == IDLE){
             switch (buff){
@@ -182,7 +183,6 @@ void uartIntHandler(void){
 void timerIntHandler(void){
     if(timerInt){
         timerInt = 0;           // Reset flag
-        RedLED_Write(LED_ON);   // Turn on red LED
         
         // Measure temp and indput to DSP class 
         getTemp(&tempTemp);

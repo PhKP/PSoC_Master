@@ -648,17 +648,17 @@ END GROUP
                 0x00000ed8       0x8c .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
                 0x00000ed8                initPSoC_Master
  .text.timer_ISR
-                0x00000f64       0x18 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
+                0x00000f64       0x1c .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
                 0x00000f64                timer_ISR
  .text.UART_ISR
-                0x00000f7c       0x34 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
-                0x00000f7c                UART_ISR
+                0x00000f80       0x38 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
+                0x00000f80                UART_ISR
  .text.uartIntHandler
-                0x00000fb0      0x1e8 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
-                0x00000fb0                uartIntHandler
+                0x00000fb8      0x1e4 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
+                0x00000fb8                uartIntHandler
  .text.timerIntHandler
-                0x00001198       0x88 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
-                0x00001198                timerIntHandler
+                0x0000119c       0x84 .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o
+                0x0000119c                timerIntHandler
  .text.initUART
                 0x00001220        0xc .\CortexM0\ARM_GCC_484\Debug\UART_Class.o
                 0x00001220                initUART

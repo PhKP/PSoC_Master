@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
    6:.\PSoC_Master_Class.c ****  * PRJ3 - GRP9
    7:.\PSoC_Master_Class.c ****  * 2015-04-15
    8:.\PSoC_Master_Class.c ****  *
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 2
 
 
    9:.\PSoC_Master_Class.c ****  * ========================================
@@ -79,23 +79,22 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
   24:.\PSoC_Master_Class.c **** int32 tempTemp;
   25:.\PSoC_Master_Class.c **** int16 tempSoilHum[6];
   26:.\PSoC_Master_Class.c **** 
-  27:.\PSoC_Master_Class.c **** 
-  28:.\PSoC_Master_Class.c **** // Private prototypes
-  29:.\PSoC_Master_Class.c **** CY_ISR_PROTO(timer_ISR);
-  30:.\PSoC_Master_Class.c **** CY_ISR_PROTO(UART_ISR);
-  31:.\PSoC_Master_Class.c **** 
-  32:.\PSoC_Master_Class.c **** //----------flags0----------
-  33:.\PSoC_Master_Class.c **** // Buffers / flags
-  34:.\PSoC_Master_Class.c **** typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI, RESP_SOIL_HUM} state;
-  35:.\PSoC_Master_Class.c **** volatile state theState = IDLE;
-  36:.\PSoC_Master_Class.c **** volatile int8 irrigationIndex = 0;
-  37:.\PSoC_Master_Class.c **** uint8 buff;
-  38:.\PSoC_Master_Class.c **** uint8 uartInt = 0;
-  39:.\PSoC_Master_Class.c **** uint8 timerInt = 0;
-  40:.\PSoC_Master_Class.c **** //----------flags1----------
-  41:.\PSoC_Master_Class.c **** 
-  42:.\PSoC_Master_Class.c **** void initPSoC_Master(void){
-  50              		.loc 1 42 0
+  27:.\PSoC_Master_Class.c **** // Private prototypes
+  28:.\PSoC_Master_Class.c **** CY_ISR_PROTO(timer_ISR);
+  29:.\PSoC_Master_Class.c **** CY_ISR_PROTO(UART_ISR);
+  30:.\PSoC_Master_Class.c **** 
+  31:.\PSoC_Master_Class.c **** //----------flags0----------
+  32:.\PSoC_Master_Class.c **** // Buffers / flags
+  33:.\PSoC_Master_Class.c **** typedef enum {IDLE, ADJW, ADJH, ADJV, ADJI, RESP_SOIL_HUM} state;
+  34:.\PSoC_Master_Class.c **** volatile state theState = IDLE;
+  35:.\PSoC_Master_Class.c **** volatile int8 irrigationIndex = 0;
+  36:.\PSoC_Master_Class.c **** uint8 buff;
+  37:.\PSoC_Master_Class.c **** uint8 uartInt = 0;
+  38:.\PSoC_Master_Class.c **** uint8 timerInt = 0;
+  39:.\PSoC_Master_Class.c **** //----------flags1----------
+  40:.\PSoC_Master_Class.c **** 
+  41:.\PSoC_Master_Class.c **** void initPSoC_Master(void){
+  50              		.loc 1 41 0
   51              		.cfi_startproc
   52 0000 80B5     		push	{r7, lr}
   53              		.cfi_def_cfa_offset 8
@@ -103,85 +102,85 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
   55              		.cfi_offset 14, -4
   56 0002 00AF     		add	r7, sp, #0
   57              		.cfi_def_cfa_register 7
-  43:.\PSoC_Master_Class.c **** 	tempTemp = 0;
-  58              		.loc 1 43 0
+  42:.\PSoC_Master_Class.c **** 	tempTemp = 0;
+  58              		.loc 1 42 0
   59 0004 144B     		ldr	r3, .L2
   60 0006 0022     		mov	r2, #0
   61 0008 1A60     		str	r2, [r3]
-  44:.\PSoC_Master_Class.c ****     tempSoilHum[0] = 0;
-  62              		.loc 1 44 0
+  43:.\PSoC_Master_Class.c ****     tempSoilHum[0] = 0;
+  62              		.loc 1 43 0
   63 000a 144B     		ldr	r3, .L2+4
   64 000c 0022     		mov	r2, #0
   65 000e 1A80     		strh	r2, [r3]
-  45:.\PSoC_Master_Class.c ****     tempSoilHum[1] = 0;
-  66              		.loc 1 45 0
+  44:.\PSoC_Master_Class.c ****     tempSoilHum[1] = 0;
+  66              		.loc 1 44 0
   67 0010 124B     		ldr	r3, .L2+4
   68 0012 0022     		mov	r2, #0
   69 0014 5A80     		strh	r2, [r3, #2]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 3
+  45:.\PSoC_Master_Class.c ****     tempSoilHum[2] = 0;
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 3
 
 
-  46:.\PSoC_Master_Class.c ****     tempSoilHum[2] = 0;
-  70              		.loc 1 46 0
+  70              		.loc 1 45 0
   71 0016 114B     		ldr	r3, .L2+4
   72 0018 0022     		mov	r2, #0
   73 001a 9A80     		strh	r2, [r3, #4]
-  47:.\PSoC_Master_Class.c ****     tempSoilHum[3] = 0;
-  74              		.loc 1 47 0
+  46:.\PSoC_Master_Class.c ****     tempSoilHum[3] = 0;
+  74              		.loc 1 46 0
   75 001c 0F4B     		ldr	r3, .L2+4
   76 001e 0022     		mov	r2, #0
   77 0020 DA80     		strh	r2, [r3, #6]
-  48:.\PSoC_Master_Class.c ****     tempSoilHum[4] = 0;
-  78              		.loc 1 48 0
+  47:.\PSoC_Master_Class.c ****     tempSoilHum[4] = 0;
+  78              		.loc 1 47 0
   79 0022 0E4B     		ldr	r3, .L2+4
   80 0024 0022     		mov	r2, #0
   81 0026 1A81     		strh	r2, [r3, #8]
-  49:.\PSoC_Master_Class.c ****     tempSoilHum[5] = 0;
-  82              		.loc 1 49 0
+  48:.\PSoC_Master_Class.c ****     tempSoilHum[5] = 0;
+  82              		.loc 1 48 0
   83 0028 0C4B     		ldr	r3, .L2+4
   84 002a 0022     		mov	r2, #0
   85 002c 5A81     		strh	r2, [r3, #10]
-  50:.\PSoC_Master_Class.c **** 	
-  51:.\PSoC_Master_Class.c ****     // ISR
-  52:.\PSoC_Master_Class.c ****     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
-  86              		.loc 1 52 0
+  49:.\PSoC_Master_Class.c **** 	
+  50:.\PSoC_Master_Class.c ****     // ISR
+  51:.\PSoC_Master_Class.c ****     UART_ISR_StartEx(UART_ISR);     // Starts UART interrupt component
+  86              		.loc 1 51 0
   87 002e 0C4B     		ldr	r3, .L2+8
   88 0030 181C     		mov	r0, r3
   89 0032 FFF7FEFF 		bl	UART_ISR_StartEx
-  53:.\PSoC_Master_Class.c ****     timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
-  90              		.loc 1 53 0
+  52:.\PSoC_Master_Class.c ****     timer_ISR_StartEx(timer_ISR);   // Starts timer interrupt component
+  90              		.loc 1 52 0
   91 0036 0B4B     		ldr	r3, .L2+12
   92 0038 181C     		mov	r0, r3
   93 003a FFF7FEFF 		bl	timer_ISR_StartEx
-  54:.\PSoC_Master_Class.c ****     
-  55:.\PSoC_Master_Class.c ****     UART_Start();                   //  Starts UART component
-  94              		.loc 1 55 0
+  53:.\PSoC_Master_Class.c ****     
+  54:.\PSoC_Master_Class.c ****     UART_Start();                   //  Starts UART component
+  94              		.loc 1 54 0
   95 003e FFF7FEFF 		bl	UART_Start
-  56:.\PSoC_Master_Class.c ****     Timer_Start();                  // Starts timer component
-  96              		.loc 1 56 0
+  55:.\PSoC_Master_Class.c ****     Timer_Start();                  // Starts timer component
+  96              		.loc 1 55 0
   97 0042 FFF7FEFF 		bl	Timer_Start
-  57:.\PSoC_Master_Class.c ****     
-  58:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
-  98              		.loc 1 58 0
+  56:.\PSoC_Master_Class.c ****     
+  57:.\PSoC_Master_Class.c ****     RedLED_Write(LED_OFF);              // Turn off red LED
+  98              		.loc 1 57 0
   99 0046 0120     		mov	r0, #1
  100 0048 FFF7FEFF 		bl	RedLED_Write
-  59:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_OFF);             // Turn off blue LED
- 101              		.loc 1 59 0
+  58:.\PSoC_Master_Class.c ****     BlueLED_Write(LED_OFF);             // Turn off blue LED
+ 101              		.loc 1 58 0
  102 004c 0120     		mov	r0, #1
  103 004e FFF7FEFF 		bl	BlueLED_Write
-  60:.\PSoC_Master_Class.c **** 
-  61:.\PSoC_Master_Class.c **** }
- 104              		.loc 1 61 0
+  59:.\PSoC_Master_Class.c **** 
+  60:.\PSoC_Master_Class.c **** }
+ 104              		.loc 1 60 0
  105 0052 BD46     		mov	sp, r7
  106              		@ sp needed
  107 0054 80BD     		pop	{r7, pc}
  108              	.L3:
  109 0056 C046     		.align	2
  110              	.L2:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 4
-
-
  111 0058 00000000 		.word	tempTemp
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 4
+
+
  112 005c 00000000 		.word	tempSoilHum
  113 0060 00000000 		.word	UART_ISR
  114 0064 00000000 		.word	timer_ISR
@@ -196,10 +195,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  123              		.type	timer_ISR, %function
  124              	timer_ISR:
  125              	.LFB34:
-  62:.\PSoC_Master_Class.c **** 
-  63:.\PSoC_Master_Class.c **** // Timer ISR
-  64:.\PSoC_Master_Class.c **** CY_ISR(timer_ISR){
- 126              		.loc 1 64 0
+  61:.\PSoC_Master_Class.c **** 
+  62:.\PSoC_Master_Class.c **** // Timer ISR
+  63:.\PSoC_Master_Class.c **** CY_ISR(timer_ISR){
+ 126              		.loc 1 63 0
  127              		.cfi_startproc
  128 0000 80B5     		push	{r7, lr}
  129              		.cfi_def_cfa_offset 8
@@ -207,16 +206,16 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  131              		.cfi_offset 14, -4
  132 0002 00AF     		add	r7, sp, #0
  133              		.cfi_def_cfa_register 7
-  65:.\PSoC_Master_Class.c ****     timerInt = 1;
- 134              		.loc 1 65 0
+  64:.\PSoC_Master_Class.c ****     timerInt = 1;
+ 134              		.loc 1 64 0
  135 0004 034B     		ldr	r3, .L5
  136 0006 0122     		mov	r2, #1
  137 0008 1A70     		strb	r2, [r3]
-  66:.\PSoC_Master_Class.c ****     Timer_ReadStatusRegister(); // Resets the interrupt
- 138              		.loc 1 66 0
+  65:.\PSoC_Master_Class.c ****     Timer_ReadStatusRegister(); // Resets the interrupt
+ 138              		.loc 1 65 0
  139 000a FFF7FEFF 		bl	Timer_ReadStatusRegister
-  67:.\PSoC_Master_Class.c **** }
- 140              		.loc 1 67 0
+  66:.\PSoC_Master_Class.c **** }
+ 140              		.loc 1 66 0
  141 000e BD46     		mov	sp, r7
  142              		@ sp needed
  143 0010 80BD     		pop	{r7, pc}
@@ -235,14 +234,14 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  156              		.type	UART_ISR, %function
  157              	UART_ISR:
  158              	.LFB35:
-  68:.\PSoC_Master_Class.c **** 
-  69:.\PSoC_Master_Class.c **** //----------UART_ISR0----------
-  70:.\PSoC_Master_Class.c **** // UART ISR
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 5
+  67:.\PSoC_Master_Class.c **** 
+  68:.\PSoC_Master_Class.c **** //----------UART_ISR0----------
+  69:.\PSoC_Master_Class.c **** // UART ISR
+  70:.\PSoC_Master_Class.c **** CY_ISR(UART_ISR){
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 5
 
 
-  71:.\PSoC_Master_Class.c **** CY_ISR(UART_ISR){
- 159              		.loc 1 71 0
+ 159              		.loc 1 70 0
  160              		.cfi_startproc
  161 0000 80B5     		push	{r7, lr}
  162              		.cfi_def_cfa_offset 8
@@ -250,26 +249,26 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  164              		.cfi_offset 14, -4
  165 0002 00AF     		add	r7, sp, #0
  166              		.cfi_def_cfa_register 7
-  72:.\PSoC_Master_Class.c ****     uartInt = 1;
- 167              		.loc 1 72 0
+  71:.\PSoC_Master_Class.c ****     uartInt = 1;
+ 167              		.loc 1 71 0
  168 0004 074B     		ldr	r3, .L8
  169 0006 0122     		mov	r2, #1
  170 0008 1A70     		strb	r2, [r3]
-  73:.\PSoC_Master_Class.c ****     buff = dkRequest();
- 171              		.loc 1 73 0
+  72:.\PSoC_Master_Class.c ****     buff = dkRequest();
+ 171              		.loc 1 72 0
  172 000a FFF7FEFF 		bl	dkRequest
  173 000e 031C     		mov	r3, r0
  174 0010 1A1C     		mov	r2, r3
  175 0012 054B     		ldr	r3, .L8+4
  176 0014 1A70     		strb	r2, [r3]
-  74:.\PSoC_Master_Class.c ****     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
- 177              		.loc 1 74 0
+  73:.\PSoC_Master_Class.c ****     UART_ClearRxInterruptSource(UART_GetRxInterruptSourceMasked());     // Clear interrupt flag
+ 177              		.loc 1 73 0
  178 0016 054B     		ldr	r3, .L8+8
  179 0018 054A     		ldr	r2, .L8+12
  180 001a 1268     		ldr	r2, [r2]
  181 001c 1A60     		str	r2, [r3]
-  75:.\PSoC_Master_Class.c **** }
- 182              		.loc 1 75 0
+  74:.\PSoC_Master_Class.c **** }
+ 182              		.loc 1 74 0
  183 001e BD46     		mov	sp, r7
  184              		@ sp needed
  185 0020 80BD     		pop	{r7, pc}
@@ -291,50 +290,50 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  201              		.type	uartIntHandler, %function
  202              	uartIntHandler:
  203              	.LFB36:
-  76:.\PSoC_Master_Class.c **** //----------UART_ISR1----------
-  77:.\PSoC_Master_Class.c **** 
-  78:.\PSoC_Master_Class.c **** //----------uartIntHandler0----------
-  79:.\PSoC_Master_Class.c **** void uartIntHandler(void){
- 204              		.loc 1 79 0
+  75:.\PSoC_Master_Class.c **** //----------UART_ISR1----------
+  76:.\PSoC_Master_Class.c **** 
+  77:.\PSoC_Master_Class.c **** //----------uartIntHandler0----------
+  78:.\PSoC_Master_Class.c **** void uartIntHandler(void){
+ 204              		.loc 1 78 0
  205              		.cfi_startproc
  206 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 6
-
-
  207              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 6
+
+
  208              		.cfi_offset 7, -8
  209              		.cfi_offset 14, -4
  210 0002 82B0     		sub	sp, sp, #8
  211              		.cfi_def_cfa_offset 16
  212 0004 00AF     		add	r7, sp, #0
  213              		.cfi_def_cfa_register 7
-  80:.\PSoC_Master_Class.c ****     if (uartInt){
- 214              		.loc 1 80 0
+  79:.\PSoC_Master_Class.c ****     if (uartInt){
+ 214              		.loc 1 79 0
  215 0006 734B     		ldr	r3, .L37
  216 0008 1B78     		ldrb	r3, [r3]
  217 000a 002B     		cmp	r3, #0
  218 000c 00D1     		bne	.LCB139
  219 000e DEE0     		b	.L10	@long jump
  220              	.LCB139:
-  81:.\PSoC_Master_Class.c ****         uartInt = 0;
- 221              		.loc 1 81 0
+  80:.\PSoC_Master_Class.c ****         uartInt = 0;
+ 221              		.loc 1 80 0
  222 0010 704B     		ldr	r3, .L37
  223 0012 0022     		mov	r2, #0
  224 0014 1A70     		strb	r2, [r3]
-  82:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_ON);       // Turn on blue LED
- 225              		.loc 1 82 0
+  81:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_ON);       // Turn on blue LED
+ 225              		.loc 1 81 0
  226 0016 0020     		mov	r0, #0
  227 0018 FFF7FEFF 		bl	BlueLED_Write
-  83:.\PSoC_Master_Class.c ****         
-  84:.\PSoC_Master_Class.c ****         if(theState == IDLE){
- 228              		.loc 1 84 0
+  82:.\PSoC_Master_Class.c ****         
+  83:.\PSoC_Master_Class.c ****         if(theState == IDLE){
+ 228              		.loc 1 83 0
  229 001c 6E4B     		ldr	r3, .L37+4
  230 001e 1B78     		ldrb	r3, [r3]
  231 0020 DBB2     		uxtb	r3, r3
  232 0022 002B     		cmp	r3, #0
  233 0024 34D1     		bne	.L12
-  85:.\PSoC_Master_Class.c ****             switch (buff){
- 234              		.loc 1 85 0
+  84:.\PSoC_Master_Class.c ****             switch (buff){
+ 234              		.loc 1 84 0
  235 0026 6D4B     		ldr	r3, .L37+8
  236 0028 1B78     		ldrb	r3, [r3]
  237 002a 463B     		sub	r3, r3, #70
@@ -358,10 +357,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  255 001c 8C000000 		.word	.L36
  256 0020 8C000000 		.word	.L36
  257 0024 8C000000 		.word	.L36
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 7
-
-
  258 0028 8C000000 		.word	.L36
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 7
+
+
  259 002c 8C000000 		.word	.L36
  260 0030 8C000000 		.word	.L36
  261 0034 84000000 		.word	.L18
@@ -371,124 +370,124 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  265 0044 6C000000 		.word	.L21
  266              		.section	.text.uartIntHandler
  267              	.L19:
-  86:.\PSoC_Master_Class.c ****                 case 'T':{ //RequestTemp
-  87:.\PSoC_Master_Class.c ****                     respondTemp(getTemp_DSP());		
- 268              		.loc 1 87 0
+  85:.\PSoC_Master_Class.c ****                 case 'T':{ //RequestTemp
+  86:.\PSoC_Master_Class.c ****                     respondTemp(getTemp_DSP());		
+ 268              		.loc 1 86 0
  269 003a FFF7FEFF 		bl	getTemp_DSP
  270 003e 031C     		mov	r3, r0
  271 0040 181C     		mov	r0, r3
  272 0042 FFF7FEFF 		bl	respondTemp
-  88:.\PSoC_Master_Class.c ****                     break;
- 273              		.loc 1 88 0
+  87:.\PSoC_Master_Class.c ****                     break;
+ 273              		.loc 1 87 0
  274 0046 22E0     		b	.L22
  275              	.L16:
-  89:.\PSoC_Master_Class.c ****                 }     
-  90:.\PSoC_Master_Class.c ****                 case 'H':{ //TurnHeatOn
-  91:.\PSoC_Master_Class.c ****                     // 0x7 is the maximum value.
-  92:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x7), 'H');
- 276              		.loc 1 92 0
+  88:.\PSoC_Master_Class.c ****                 }     
+  89:.\PSoC_Master_Class.c ****                 case 'H':{ //TurnHeatOn
+  90:.\PSoC_Master_Class.c ****                     // 0x7 is the maximum value.
+  91:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x7), 'H');
+ 276              		.loc 1 91 0
  277 0048 0720     		mov	r0, #7
  278 004a FFF7FEFF 		bl	adjustHeat
  279 004e 031C     		mov	r3, r0
  280 0050 181C     		mov	r0, r3
  281 0052 4821     		mov	r1, #72
  282 0054 FFF7FEFF 		bl	respondHeat
-  93:.\PSoC_Master_Class.c ****                     break;
- 283              		.loc 1 93 0
+  92:.\PSoC_Master_Class.c ****                     break;
+ 283              		.loc 1 92 0
  284 0058 19E0     		b	.L22
  285              	.L17:
-  94:.\PSoC_Master_Class.c ****                 }
-  95:.\PSoC_Master_Class.c ****                 case 'K':{ //TurnHeatOff
-  96:.\PSoC_Master_Class.c ****                     // 0x0 is the minimum value.
-  97:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x0), 'K');
- 286              		.loc 1 97 0
+  93:.\PSoC_Master_Class.c ****                 }
+  94:.\PSoC_Master_Class.c ****                 case 'K':{ //TurnHeatOff
+  95:.\PSoC_Master_Class.c ****                     // 0x0 is the minimum value.
+  96:.\PSoC_Master_Class.c ****                     respondHeat(adjustHeat(0x0), 'K');
+ 286              		.loc 1 96 0
  287 005a 0020     		mov	r0, #0
  288 005c FFF7FEFF 		bl	adjustHeat
  289 0060 031C     		mov	r3, r0
  290 0062 181C     		mov	r0, r3
  291 0064 4B21     		mov	r1, #75
  292 0066 FFF7FEFF 		bl	respondHeat
-  98:.\PSoC_Master_Class.c ****                     break;
- 293              		.loc 1 98 0
+  97:.\PSoC_Master_Class.c ****                     break;
+ 293              		.loc 1 97 0
  294 006a 10E0     		b	.L22
  295              	.L21:
-  99:.\PSoC_Master_Class.c ****                 }
- 100:.\PSoC_Master_Class.c ****                 case 'W':{ //AdjustWindow
- 101:.\PSoC_Master_Class.c ****                     theState = ADJW;
- 296              		.loc 1 101 0
+  98:.\PSoC_Master_Class.c ****                 }
+  99:.\PSoC_Master_Class.c ****                 case 'W':{ //AdjustWindow
+ 100:.\PSoC_Master_Class.c ****                     theState = ADJW;
+ 296              		.loc 1 100 0
  297 006c 5A4B     		ldr	r3, .L37+4
  298 006e 0122     		mov	r2, #1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 8
-
-
  299 0070 1A70     		strb	r2, [r3]
- 102:.\PSoC_Master_Class.c ****                     break;
- 300              		.loc 1 102 0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 8
+
+
+ 101:.\PSoC_Master_Class.c ****                     break;
+ 300              		.loc 1 101 0
  301 0072 0CE0     		b	.L22
  302              	.L20:
- 103:.\PSoC_Master_Class.c ****                 }
- 104:.\PSoC_Master_Class.c ****                 case 'V':{ //Ventilation
- 105:.\PSoC_Master_Class.c ****                     theState = ADJV;
- 303              		.loc 1 105 0
+ 102:.\PSoC_Master_Class.c ****                 }
+ 103:.\PSoC_Master_Class.c ****                 case 'V':{ //Ventilation
+ 104:.\PSoC_Master_Class.c ****                     theState = ADJV;
+ 303              		.loc 1 104 0
  304 0074 584B     		ldr	r3, .L37+4
  305 0076 0322     		mov	r2, #3
  306 0078 1A70     		strb	r2, [r3]
- 106:.\PSoC_Master_Class.c ****                     break;
- 307              		.loc 1 106 0
+ 105:.\PSoC_Master_Class.c ****                     break;
+ 307              		.loc 1 105 0
  308 007a 08E0     		b	.L22
  309              	.L14:
- 107:.\PSoC_Master_Class.c ****                 }
- 108:.\PSoC_Master_Class.c ****                 case 'F':{ //Watering
- 109:.\PSoC_Master_Class.c ****                     theState = ADJI;
- 310              		.loc 1 109 0
+ 106:.\PSoC_Master_Class.c ****                 }
+ 107:.\PSoC_Master_Class.c ****                 case 'F':{ //Watering
+ 108:.\PSoC_Master_Class.c ****                     theState = ADJI;
+ 310              		.loc 1 108 0
  311 007c 564B     		ldr	r3, .L37+4
  312 007e 0422     		mov	r2, #4
  313 0080 1A70     		strb	r2, [r3]
- 110:.\PSoC_Master_Class.c ****                     break;
- 314              		.loc 1 110 0
+ 109:.\PSoC_Master_Class.c ****                     break;
+ 314              		.loc 1 109 0
  315 0082 04E0     		b	.L22
  316              	.L18:
- 111:.\PSoC_Master_Class.c ****                 }
- 112:.\PSoC_Master_Class.c ****                 case 'S':{
- 113:.\PSoC_Master_Class.c ****                     theState = RESP_SOIL_HUM;
- 317              		.loc 1 113 0
+ 110:.\PSoC_Master_Class.c ****                 }
+ 111:.\PSoC_Master_Class.c ****                 case 'S':{
+ 112:.\PSoC_Master_Class.c ****                     theState = RESP_SOIL_HUM;
+ 317              		.loc 1 112 0
  318 0084 544B     		ldr	r3, .L37+4
  319 0086 0522     		mov	r2, #5
  320 0088 1A70     		strb	r2, [r3]
- 114:.\PSoC_Master_Class.c ****                     break;
- 321              		.loc 1 114 0
+ 113:.\PSoC_Master_Class.c ****                     break;
+ 321              		.loc 1 113 0
  322 008a 00E0     		b	.L22
  323              	.L36:
- 115:.\PSoC_Master_Class.c ****                 }
- 116:.\PSoC_Master_Class.c ****                 default:{
- 117:.\PSoC_Master_Class.c ****                     // Do nothing - let the DevKit8000 timeout
- 118:.\PSoC_Master_Class.c ****                     break;
- 324              		.loc 1 118 0
+ 114:.\PSoC_Master_Class.c ****                 }
+ 115:.\PSoC_Master_Class.c ****                 default:{
+ 116:.\PSoC_Master_Class.c ****                     // Do nothing - let the DevKit8000 timeout
+ 117:.\PSoC_Master_Class.c ****                     break;
+ 324              		.loc 1 117 0
  325 008c C046     		mov	r8, r8
  326              	.L22:
  327 008e 98E0     		b	.L23
  328              	.L12:
- 119:.\PSoC_Master_Class.c ****                 }
- 120:.\PSoC_Master_Class.c ****             }
- 121:.\PSoC_Master_Class.c ****         }
- 122:.\PSoC_Master_Class.c ****         else if(theState == ADJW){
- 329              		.loc 1 122 0
+ 118:.\PSoC_Master_Class.c ****                 }
+ 119:.\PSoC_Master_Class.c ****             }
+ 120:.\PSoC_Master_Class.c ****         }
+ 121:.\PSoC_Master_Class.c ****         else if(theState == ADJW){
+ 329              		.loc 1 121 0
  330 0090 514B     		ldr	r3, .L37+4
  331 0092 1B78     		ldrb	r3, [r3]
  332 0094 DBB2     		uxtb	r3, r3
  333 0096 012B     		cmp	r3, #1
  334 0098 16D1     		bne	.L24
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 9
+ 122:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 9
 
 
- 123:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
- 335              		.loc 1 123 0
+ 335              		.loc 1 122 0
  336 009a 504B     		ldr	r3, .L37+8
  337 009c 1B78     		ldrb	r3, [r3]
  338 009e 312B     		cmp	r3, #49
  339 00a0 07D1     		bne	.L25
- 124:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0xFF));
- 340              		.loc 1 124 0
+ 123:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0xFF));
+ 340              		.loc 1 123 0
  341 00a2 FF20     		mov	r0, #255
  342 00a4 FFF7FEFF 		bl	adjustWindow
  343 00a8 031C     		mov	r3, r0
@@ -496,40 +495,40 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  345 00ac FFF7FEFF 		bl	respondWin
  346 00b0 06E0     		b	.L26
  347              	.L25:
- 125:.\PSoC_Master_Class.c ****             }
- 126:.\PSoC_Master_Class.c ****             else{
- 127:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0x00));
- 348              		.loc 1 127 0
+ 124:.\PSoC_Master_Class.c ****             }
+ 125:.\PSoC_Master_Class.c ****             else{
+ 126:.\PSoC_Master_Class.c ****                 respondWin(adjustWindow(0x00));
+ 348              		.loc 1 126 0
  349 00b2 0020     		mov	r0, #0
  350 00b4 FFF7FEFF 		bl	adjustWindow
  351 00b8 031C     		mov	r3, r0
  352 00ba 181C     		mov	r0, r3
  353 00bc FFF7FEFF 		bl	respondWin
  354              	.L26:
- 128:.\PSoC_Master_Class.c ****             }
- 129:.\PSoC_Master_Class.c ****             theState = IDLE;
- 355              		.loc 1 129 0 discriminator 1
+ 127:.\PSoC_Master_Class.c ****             }
+ 128:.\PSoC_Master_Class.c ****             theState = IDLE;
+ 355              		.loc 1 128 0 discriminator 1
  356 00c0 454B     		ldr	r3, .L37+4
  357 00c2 0022     		mov	r2, #0
  358 00c4 1A70     		strb	r2, [r3]
  359 00c6 7CE0     		b	.L23
  360              	.L24:
- 130:.\PSoC_Master_Class.c ****         }
- 131:.\PSoC_Master_Class.c ****         else if(theState == ADJV){
- 361              		.loc 1 131 0
+ 129:.\PSoC_Master_Class.c ****         }
+ 130:.\PSoC_Master_Class.c ****         else if(theState == ADJV){
+ 361              		.loc 1 130 0
  362 00c8 434B     		ldr	r3, .L37+4
  363 00ca 1B78     		ldrb	r3, [r3]
  364 00cc DBB2     		uxtb	r3, r3
  365 00ce 032B     		cmp	r3, #3
  366 00d0 16D1     		bne	.L27
- 132:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
- 367              		.loc 1 132 0
+ 131:.\PSoC_Master_Class.c ****             if(buff-CONVERT_TO_ASCII == 1){
+ 367              		.loc 1 131 0
  368 00d2 424B     		ldr	r3, .L37+8
  369 00d4 1B78     		ldrb	r3, [r3]
  370 00d6 312B     		cmp	r3, #49
  371 00d8 07D1     		bne	.L28
- 133:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0xFF));
- 372              		.loc 1 133 0
+ 132:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0xFF));
+ 372              		.loc 1 132 0
  373 00da FF20     		mov	r0, #255
  374 00dc FFF7FEFF 		bl	adjustVentilation
  375 00e0 031C     		mov	r3, r0
@@ -537,44 +536,44 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  377 00e4 FFF7FEFF 		bl	respondVent
  378 00e8 06E0     		b	.L29
  379              	.L28:
- 134:.\PSoC_Master_Class.c ****             }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 10
+ 133:.\PSoC_Master_Class.c ****             }
+ 134:.\PSoC_Master_Class.c ****             else{
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 10
 
 
- 135:.\PSoC_Master_Class.c ****             else{
- 136:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0x00));
- 380              		.loc 1 136 0
+ 135:.\PSoC_Master_Class.c ****                 respondVent(adjustVentilation(0x00));
+ 380              		.loc 1 135 0
  381 00ea 0020     		mov	r0, #0
  382 00ec FFF7FEFF 		bl	adjustVentilation
  383 00f0 031C     		mov	r3, r0
  384 00f2 181C     		mov	r0, r3
  385 00f4 FFF7FEFF 		bl	respondVent
  386              	.L29:
- 137:.\PSoC_Master_Class.c ****             }
- 138:.\PSoC_Master_Class.c ****             theState = IDLE;
- 387              		.loc 1 138 0 discriminator 2
+ 136:.\PSoC_Master_Class.c ****             }
+ 137:.\PSoC_Master_Class.c ****             theState = IDLE;
+ 387              		.loc 1 137 0 discriminator 2
  388 00f8 374B     		ldr	r3, .L37+4
  389 00fa 0022     		mov	r2, #0
  390 00fc 1A70     		strb	r2, [r3]
  391 00fe 60E0     		b	.L23
  392              	.L27:
- 139:.\PSoC_Master_Class.c ****         }
- 140:.\PSoC_Master_Class.c ****         else if(theState == ADJI){
- 393              		.loc 1 140 0
+ 138:.\PSoC_Master_Class.c ****         }
+ 139:.\PSoC_Master_Class.c ****         else if(theState == ADJI){
+ 393              		.loc 1 139 0
  394 0100 354B     		ldr	r3, .L37+4
  395 0102 1B78     		ldrb	r3, [r3]
  396 0104 DBB2     		uxtb	r3, r3
  397 0106 042B     		cmp	r3, #4
  398 0108 3ED1     		bne	.L30
- 141:.\PSoC_Master_Class.c ****             if (!irrigationIndex){
- 399              		.loc 1 141 0
+ 140:.\PSoC_Master_Class.c ****             if (!irrigationIndex){
+ 399              		.loc 1 140 0
  400 010a 364B     		ldr	r3, .L37+16
  401 010c 1B78     		ldrb	r3, [r3]
  402 010e DBB2     		uxtb	r3, r3
  403 0110 002B     		cmp	r3, #0
  404 0112 07D1     		bne	.L31
- 142:.\PSoC_Master_Class.c ****                 irrigationIndex = buff - CONVERT_TO_ASCII;
- 405              		.loc 1 142 0
+ 141:.\PSoC_Master_Class.c ****                 irrigationIndex = buff - CONVERT_TO_ASCII;
+ 405              		.loc 1 141 0
  406 0114 314B     		ldr	r3, .L37+8
  407 0116 1B78     		ldrb	r3, [r3]
  408 0118 303B     		sub	r3, r3, #48
@@ -584,24 +583,24 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  412 0120 1A70     		strb	r2, [r3]
  413 0122 4EE0     		b	.L23
  414              	.L31:
- 143:.\PSoC_Master_Class.c ****             }
- 144:.\PSoC_Master_Class.c ****             else{
- 145:.\PSoC_Master_Class.c ****                 if (buff-CONVERT_TO_ASCII == 1){
- 415              		.loc 1 145 0
+ 142:.\PSoC_Master_Class.c ****             }
+ 143:.\PSoC_Master_Class.c ****             else{
+ 144:.\PSoC_Master_Class.c ****                 if (buff-CONVERT_TO_ASCII == 1){
+ 415              		.loc 1 144 0
  416 0124 2D4B     		ldr	r3, .L37+8
  417 0126 1B78     		ldrb	r3, [r3]
  418 0128 312B     		cmp	r3, #49
  419 012a 0ED1     		bne	.L33
- 146:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex - 1, 0xFF));
- 420              		.loc 1 146 0
+ 145:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex - 1, 0xFF));
+ 420              		.loc 1 145 0
  421 012c 2D4B     		ldr	r3, .L37+16
  422 012e 1B78     		ldrb	r3, [r3]
  423 0130 DBB2     		uxtb	r3, r3
  424 0132 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 11
-
-
  425 0134 013B     		sub	r3, r3, #1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 11
+
+
  426 0136 DBB2     		uxtb	r3, r3
  427 0138 181C     		mov	r0, r3
  428 013a FF21     		mov	r1, #255
@@ -611,15 +610,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  432 0144 FFF7FEFF 		bl	respondIrri
  433 0148 17E0     		b	.L34
  434              	.L33:
- 147:.\PSoC_Master_Class.c ****                 }
- 148:.\PSoC_Master_Class.c ****                 else if(buff - CONVERT_TO_ASCII == 0){
- 435              		.loc 1 148 0
+ 146:.\PSoC_Master_Class.c ****                 }
+ 147:.\PSoC_Master_Class.c ****                 else if(buff - CONVERT_TO_ASCII == 0){
+ 435              		.loc 1 147 0
  436 014a 244B     		ldr	r3, .L37+8
  437 014c 1B78     		ldrb	r3, [r3]
  438 014e 302B     		cmp	r3, #48
  439 0150 0ED1     		bne	.L35
- 149:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex - 1, 0x00));
- 440              		.loc 1 149 0
+ 148:.\PSoC_Master_Class.c ****                     respondIrri(adjustIrrigation(irrigationIndex - 1, 0x00));
+ 440              		.loc 1 148 0
  441 0152 244B     		ldr	r3, .L37+16
  442 0154 1B78     		ldrb	r3, [r3]
  443 0156 DBB2     		uxtb	r3, r3
@@ -634,56 +633,56 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  452 016a FFF7FEFF 		bl	respondIrri
  453 016e 04E0     		b	.L34
  454              	.L35:
- 150:.\PSoC_Master_Class.c ****                 }
- 151:.\PSoC_Master_Class.c ****                 else{
- 152:.\PSoC_Master_Class.c ****                     respondIrri(-1); //Bad argument
- 455              		.loc 1 152 0
+ 149:.\PSoC_Master_Class.c ****                 }
+ 150:.\PSoC_Master_Class.c ****                 else{
+ 151:.\PSoC_Master_Class.c ****                     respondIrri(-1); //Bad argument
+ 455              		.loc 1 151 0
  456 0170 0123     		mov	r3, #1
  457 0172 5B42     		neg	r3, r3
  458 0174 181C     		mov	r0, r3
  459 0176 FFF7FEFF 		bl	respondIrri
  460              	.L34:
- 153:.\PSoC_Master_Class.c ****                 }
- 154:.\PSoC_Master_Class.c ****                 irrigationIndex = 0;
- 461              		.loc 1 154 0
+ 152:.\PSoC_Master_Class.c ****                 }
+ 153:.\PSoC_Master_Class.c ****                 irrigationIndex = 0;
+ 461              		.loc 1 153 0
  462 017a 1A4B     		ldr	r3, .L37+16
  463 017c 0022     		mov	r2, #0
  464 017e 1A70     		strb	r2, [r3]
- 155:.\PSoC_Master_Class.c ****                 theState = IDLE;
- 465              		.loc 1 155 0
+ 154:.\PSoC_Master_Class.c ****                 theState = IDLE;
+ 465              		.loc 1 154 0
  466 0180 154B     		ldr	r3, .L37+4
  467 0182 0022     		mov	r2, #0
  468 0184 1A70     		strb	r2, [r3]
  469 0186 1CE0     		b	.L23
  470              	.L30:
- 156:.\PSoC_Master_Class.c ****             }
- 157:.\PSoC_Master_Class.c ****         }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 12
+ 155:.\PSoC_Master_Class.c ****             }
+ 156:.\PSoC_Master_Class.c ****         }
+ 157:.\PSoC_Master_Class.c ****         else if(theState == RESP_SOIL_HUM){
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 12
 
 
- 158:.\PSoC_Master_Class.c ****         else if(theState == RESP_SOIL_HUM){
- 471              		.loc 1 158 0
+ 471              		.loc 1 157 0
  472 0188 134B     		ldr	r3, .L37+4
  473 018a 1B78     		ldrb	r3, [r3]
  474 018c DBB2     		uxtb	r3, r3
  475 018e 052B     		cmp	r3, #5
  476 0190 17D1     		bne	.L23
  477              	.LBB2:
- 159:.\PSoC_Master_Class.c ****             uint8 temp = buff - CONVERT_TO_ASCII - 1; //incoming number is in ASCII 1-6, DSP works 
- 478              		.loc 1 159 0
+ 158:.\PSoC_Master_Class.c ****             uint8 temp = buff - CONVERT_TO_ASCII - 1; //incoming number is in ASCII 1-6, DSP works 
+ 478              		.loc 1 158 0
  479 0192 124B     		ldr	r3, .L37+8
  480 0194 1A78     		ldrb	r2, [r3]
  481 0196 FB1D     		add	r3, r7, #7
  482 0198 313A     		sub	r2, r2, #49
  483 019a 1A70     		strb	r2, [r3]
- 160:.\PSoC_Master_Class.c ****             if (temp <= 5 && temp >= 0){
- 484              		.loc 1 160 0
+ 159:.\PSoC_Master_Class.c ****             if (temp <= 5 && temp >= 0){
+ 484              		.loc 1 159 0
  485 019c FB1D     		add	r3, r7, #7
  486 019e 1B78     		ldrb	r3, [r3]
  487 01a0 052B     		cmp	r3, #5
  488 01a2 0ED8     		bhi	.L23
- 161:.\PSoC_Master_Class.c ****                 respondSoilHum(temp, getSoilHum_DSP(temp));
- 489              		.loc 1 161 0
+ 160:.\PSoC_Master_Class.c ****                 respondSoilHum(temp, getSoilHum_DSP(temp));
+ 489              		.loc 1 160 0
  490 01a4 FB1D     		add	r3, r7, #7
  491 01a6 1B78     		ldrb	r3, [r3]
  492 01a8 181C     		mov	r0, r3
@@ -694,34 +693,34 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  497 01b4 101C     		mov	r0, r2
  498 01b6 191C     		mov	r1, r3
  499 01b8 FFF7FEFF 		bl	respondSoilHum
- 162:.\PSoC_Master_Class.c ****                 theState = IDLE;
- 500              		.loc 1 162 0
+ 161:.\PSoC_Master_Class.c ****                 theState = IDLE;
+ 500              		.loc 1 161 0
  501 01bc 064B     		ldr	r3, .L37+4
  502 01be 0022     		mov	r2, #0
  503 01c0 1A70     		strb	r2, [r3]
  504              	.L23:
  505              	.LBE2:
- 163:.\PSoC_Master_Class.c ****             }
- 164:.\PSoC_Master_Class.c ****         }
- 165:.\PSoC_Master_Class.c ****         buff = 0;
- 506              		.loc 1 165 0
+ 162:.\PSoC_Master_Class.c ****             }
+ 163:.\PSoC_Master_Class.c ****         }
+ 164:.\PSoC_Master_Class.c ****         buff = 0;
+ 506              		.loc 1 164 0
  507 01c2 064B     		ldr	r3, .L37+8
  508 01c4 0022     		mov	r2, #0
  509 01c6 1A70     		strb	r2, [r3]
- 166:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_OFF);         // Turn off blue LED
- 510              		.loc 1 166 0
+ 165:.\PSoC_Master_Class.c ****         BlueLED_Write(LED_OFF);         // Turn off blue LED
+ 510              		.loc 1 165 0
  511 01c8 0120     		mov	r0, #1
  512 01ca FFF7FEFF 		bl	BlueLED_Write
  513              	.L10:
- 167:.\PSoC_Master_Class.c ****     }
- 168:.\PSoC_Master_Class.c **** }
- 514              		.loc 1 168 0
+ 166:.\PSoC_Master_Class.c ****     }
+ 167:.\PSoC_Master_Class.c **** }
+ 514              		.loc 1 167 0
  515 01ce BD46     		mov	sp, r7
  516 01d0 02B0     		add	sp, sp, #8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 13
-
-
  517              		@ sp needed
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 13
+
+
  518 01d2 80BD     		pop	{r7, pc}
  519              	.L38:
  520              		.align	2
@@ -742,11 +741,11 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  535              		.type	timerIntHandler, %function
  536              	timerIntHandler:
  537              	.LFB37:
- 169:.\PSoC_Master_Class.c **** //----------uartIntHandler1----------
- 170:.\PSoC_Master_Class.c **** 
- 171:.\PSoC_Master_Class.c **** //----------timerIntHandler0----------
- 172:.\PSoC_Master_Class.c **** void timerIntHandler(void){
- 538              		.loc 1 172 0
+ 168:.\PSoC_Master_Class.c **** //----------uartIntHandler1----------
+ 169:.\PSoC_Master_Class.c **** 
+ 170:.\PSoC_Master_Class.c **** //----------timerIntHandler0----------
+ 171:.\PSoC_Master_Class.c **** void timerIntHandler(void){
+ 538              		.loc 1 171 0
  539              		.cfi_startproc
  540 0000 80B5     		push	{r7, lr}
  541              		.cfi_def_cfa_offset 8
@@ -756,50 +755,50 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  545              		.cfi_def_cfa_offset 16
  546 0004 00AF     		add	r7, sp, #0
  547              		.cfi_def_cfa_register 7
- 173:.\PSoC_Master_Class.c ****     if(timerInt){
- 548              		.loc 1 173 0
+ 172:.\PSoC_Master_Class.c ****     if(timerInt){
+ 548              		.loc 1 172 0
  549 0006 1D4B     		ldr	r3, .L43
  550 0008 1B78     		ldrb	r3, [r3]
  551 000a 002B     		cmp	r3, #0
  552 000c 33D0     		beq	.L39
- 174:.\PSoC_Master_Class.c ****         timerInt = 0;           // Reset flag
- 553              		.loc 1 174 0
+ 173:.\PSoC_Master_Class.c ****         timerInt = 0;           // Reset flag
+ 553              		.loc 1 173 0
  554 000e 1B4B     		ldr	r3, .L43
  555 0010 0022     		mov	r2, #0
  556 0012 1A70     		strb	r2, [r3]
- 175:.\PSoC_Master_Class.c ****         RedLED_Write(LED_ON);   // Turn on red LED
- 557              		.loc 1 175 0
+ 174:.\PSoC_Master_Class.c ****         RedLED_Write(LED_ON);   // Turn on red LED
+ 557              		.loc 1 174 0
  558 0014 0020     		mov	r0, #0
  559 0016 FFF7FEFF 		bl	RedLED_Write
- 176:.\PSoC_Master_Class.c ****         
- 177:.\PSoC_Master_Class.c ****         // Measure temp and indput to DSP class 
- 178:.\PSoC_Master_Class.c ****         getTemp(&tempTemp);
- 560              		.loc 1 178 0
+ 175:.\PSoC_Master_Class.c ****         
+ 176:.\PSoC_Master_Class.c ****         // Measure temp and indput to DSP class 
+ 177:.\PSoC_Master_Class.c ****         getTemp(&tempTemp);
+ 560              		.loc 1 177 0
  561 001a 194B     		ldr	r3, .L43+4
  562 001c 181C     		mov	r0, r3
  563 001e FFF7FEFF 		bl	getTemp
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 14
+ 178:.\PSoC_Master_Class.c ****         inputTemp(&tempTemp);
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 14
 
 
- 179:.\PSoC_Master_Class.c ****         inputTemp(&tempTemp);
- 564              		.loc 1 179 0
+ 564              		.loc 1 178 0
  565 0022 174B     		ldr	r3, .L43+4
  566 0024 181C     		mov	r0, r3
  567 0026 FFF7FEFF 		bl	inputTemp
  568              	.LBB3:
- 180:.\PSoC_Master_Class.c ****         
- 181:.\PSoC_Master_Class.c ****         // Measure soilhum and indput to DSP class 
- 182:.\PSoC_Master_Class.c ****         {
- 183:.\PSoC_Master_Class.c ****             uint8 i;
- 184:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
- 569              		.loc 1 184 0
+ 179:.\PSoC_Master_Class.c ****         
+ 180:.\PSoC_Master_Class.c ****         // Measure soilhum and indput to DSP class 
+ 181:.\PSoC_Master_Class.c ****         {
+ 182:.\PSoC_Master_Class.c ****             uint8 i;
+ 183:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
+ 569              		.loc 1 183 0
  570 002a FB1D     		add	r3, r7, #7
  571 002c 0022     		mov	r2, #0
  572 002e 1A70     		strb	r2, [r3]
  573 0030 1AE0     		b	.L41
  574              	.L42:
- 185:.\PSoC_Master_Class.c ****                 getSoilHum(i, &tempSoilHum[i]);
- 575              		.loc 1 185 0 discriminator 2
+ 184:.\PSoC_Master_Class.c ****                 getSoilHum(i, &tempSoilHum[i]);
+ 575              		.loc 1 184 0 discriminator 2
  576 0032 FB1D     		add	r3, r7, #7
  577 0034 1B78     		ldrb	r3, [r3]
  578 0036 5A00     		lsl	r2, r3, #1
@@ -810,8 +809,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  583 0040 101C     		mov	r0, r2
  584 0042 191C     		mov	r1, r3
  585 0044 FFF7FEFF 		bl	getSoilHum
- 186:.\PSoC_Master_Class.c ****                 inputSoilHum(i, &tempSoilHum[i]);
- 586              		.loc 1 186 0 discriminator 2
+ 185:.\PSoC_Master_Class.c ****                 inputSoilHum(i, &tempSoilHum[i]);
+ 586              		.loc 1 185 0 discriminator 2
  587 0048 FB1D     		add	r3, r7, #7
  588 004a 1B78     		ldrb	r3, [r3]
  589 004c 5A00     		lsl	r2, r3, #1
@@ -822,35 +821,35 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  594 0056 101C     		mov	r0, r2
  595 0058 191C     		mov	r1, r3
  596 005a FFF7FEFF 		bl	inputSoilHum
- 184:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
- 597              		.loc 1 184 0 discriminator 2
+ 183:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
+ 597              		.loc 1 183 0 discriminator 2
  598 005e FB1D     		add	r3, r7, #7
  599 0060 1A78     		ldrb	r2, [r3]
  600 0062 FB1D     		add	r3, r7, #7
  601 0064 0132     		add	r2, r2, #1
  602 0066 1A70     		strb	r2, [r3]
  603              	.L41:
- 184:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
- 604              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 183:.\PSoC_Master_Class.c ****             for(i = 0; i<6 ; i++){
+ 604              		.loc 1 183 0 is_stmt 0 discriminator 1
  605 0068 FB1D     		add	r3, r7, #7
  606 006a 1B78     		ldrb	r3, [r3]
  607 006c 052B     		cmp	r3, #5
  608 006e E0D9     		bls	.L42
  609              	.LBE3:
- 187:.\PSoC_Master_Class.c ****             }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 15
+ 186:.\PSoC_Master_Class.c ****             }
+ 187:.\PSoC_Master_Class.c ****         }
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 15
 
 
- 188:.\PSoC_Master_Class.c ****         }
- 189:.\PSoC_Master_Class.c ****         
- 190:.\PSoC_Master_Class.c ****         RedLED_Write(LED_OFF);                      // Turn off red LED    
- 610              		.loc 1 190 0 is_stmt 1
+ 188:.\PSoC_Master_Class.c ****         
+ 189:.\PSoC_Master_Class.c ****         RedLED_Write(LED_OFF);                      // Turn off red LED    
+ 610              		.loc 1 189 0 is_stmt 1
  611 0070 0120     		mov	r0, #1
  612 0072 FFF7FEFF 		bl	RedLED_Write
  613              	.L39:
- 191:.\PSoC_Master_Class.c ****     }    
- 192:.\PSoC_Master_Class.c **** }
- 614              		.loc 1 192 0
+ 190:.\PSoC_Master_Class.c ****     }    
+ 191:.\PSoC_Master_Class.c **** }
+ 614              		.loc 1 191 0
  615 0076 BD46     		mov	sp, r7
  616 0078 02B0     		add	sp, sp, #8
  617              		@ sp needed
@@ -898,10 +897,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  659 003c 07       		.byte	0x7
  660 003d 48000000 		.4byte	.LASF3
  661 0041 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 16
-
-
  662 0042 04       		.byte	0x4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 16
+
+
  663 0043 05       		.byte	0x5
  664 0044 31020000 		.4byte	.LASF4
  665 0048 02       		.uleb128 0x2
@@ -958,10 +957,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  716 00ab 04       		.byte	0x4
  717 00ac 7D010000 		.4byte	.LASF15
  718 00b0 02       		.uleb128 0x2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 17
-
-
  719 00b1 01       		.byte	0x1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 17
+
+
  720 00b2 08       		.byte	0x8
  721 00b3 07020000 		.4byte	.LASF16
  722 00b7 05       		.uleb128 0x5
@@ -978,7 +977,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  733 00cf 07       		.uleb128 0x7
  734 00d0 01       		.byte	0x1
  735 00d1 01       		.byte	0x1
- 736 00d2 22       		.byte	0x22
+ 736 00d2 21       		.byte	0x21
  737 00d3 FC000000 		.4byte	0xfc
  738 00d7 08       		.uleb128 0x8
  739 00d8 5B000000 		.4byte	.LASF19
@@ -1002,12 +1001,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  757 00fc 04       		.uleb128 0x4
  758 00fd 1C000000 		.4byte	.LASF25
  759 0101 01       		.byte	0x1
- 760 0102 22       		.byte	0x22
+ 760 0102 21       		.byte	0x21
  761 0103 CF000000 		.4byte	0xcf
  762 0107 09       		.uleb128 0x9
  763 0108 1B020000 		.4byte	.LASF26
  764 010c 01       		.byte	0x1
- 765 010d 2A       		.byte	0x2a
+ 765 010d 29       		.byte	0x29
  766 010e 00000000 		.4byte	.LFB33
  767 0112 68000000 		.4byte	.LFE33-.LFB33
  768 0116 01       		.uleb128 0x1
@@ -1015,18 +1014,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  770 0118 09       		.uleb128 0x9
  771 0119 06000000 		.4byte	.LASF27
  772 011d 01       		.byte	0x1
- 773 011e 40       		.byte	0x40
+ 773 011e 3F       		.byte	0x3f
  774 011f 00000000 		.4byte	.LFB34
  775 0123 18000000 		.4byte	.LFE34-.LFB34
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 18
-
-
  776 0127 01       		.uleb128 0x1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 18
+
+
  777 0128 9C       		.byte	0x9c
  778 0129 09       		.uleb128 0x9
  779 012a DF010000 		.4byte	.LASF28
  780 012e 01       		.byte	0x1
- 781 012f 47       		.byte	0x47
+ 781 012f 46       		.byte	0x46
  782 0130 00000000 		.4byte	.LFB35
  783 0134 34000000 		.4byte	.LFE35-.LFB35
  784 0138 01       		.uleb128 0x1
@@ -1034,7 +1033,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  786 013a 0A       		.uleb128 0xa
  787 013b 99010000 		.4byte	.LASF29
  788 013f 01       		.byte	0x1
- 789 0140 4F       		.byte	0x4f
+ 789 0140 4E       		.byte	0x4e
  790 0141 00000000 		.4byte	.LFB36
  791 0145 E8010000 		.4byte	.LFE36-.LFB36
  792 0149 01       		.uleb128 0x1
@@ -1046,7 +1045,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  798 0158 0C       		.uleb128 0xc
  799 0159 4F010000 		.4byte	.LASF31
  800 015d 01       		.byte	0x1
- 801 015e 9F       		.byte	0x9f
+ 801 015e 9E       		.byte	0x9e
  802 015f 6B000000 		.4byte	0x6b
  803 0163 02       		.uleb128 0x2
  804 0164 91       		.byte	0x91
@@ -1056,7 +1055,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  808 0168 0A       		.uleb128 0xa
  809 0169 38000000 		.4byte	.LASF30
  810 016d 01       		.byte	0x1
- 811 016e AC       		.byte	0xac
+ 811 016e AB       		.byte	0xab
  812 016f 00000000 		.4byte	.LFB37
  813 0173 88000000 		.4byte	.LFE37-.LFB37
  814 0177 01       		.uleb128 0x1
@@ -1068,7 +1067,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  820 0186 0D       		.uleb128 0xd
  821 0187 6900     		.ascii	"i\000"
  822 0189 01       		.byte	0x1
- 823 018a B7       		.byte	0xb7
+ 823 018a B6       		.byte	0xb6
  824 018b 6B000000 		.4byte	0x6b
  825 018f 02       		.uleb128 0x2
  826 0190 91       		.byte	0x91
@@ -1078,10 +1077,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  830 0194 0E       		.uleb128 0xe
  831 0195 84010000 		.4byte	.LASF32
  832 0199 01       		.byte	0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 19
-
-
  833 019a 18       		.byte	0x18
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 19
+
+
  834 019b 97000000 		.4byte	0x97
  835 019f 05       		.uleb128 0x5
  836 01a0 03       		.byte	0x3
@@ -1104,7 +1103,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  853 01c6 0E       		.uleb128 0xe
  854 01c7 6A010000 		.4byte	.LASF34
  855 01cb 01       		.byte	0x1
- 856 01cc 23       		.byte	0x23
+ 856 01cc 22       		.byte	0x22
  857 01cd D7010000 		.4byte	0x1d7
  858 01d1 05       		.uleb128 0x5
  859 01d2 03       		.byte	0x3
@@ -1114,7 +1113,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  863 01dc 0E       		.uleb128 0xe
  864 01dd 5A010000 		.4byte	.LASF35
  865 01e1 01       		.byte	0x1
- 866 01e2 24       		.byte	0x24
+ 866 01e2 23       		.byte	0x23
  867 01e3 ED010000 		.4byte	0x1ed
  868 01e7 05       		.uleb128 0x5
  869 01e8 03       		.byte	0x3
@@ -1124,7 +1123,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  873 01f2 0E       		.uleb128 0xe
  874 01f3 73010000 		.4byte	.LASF36
  875 01f7 01       		.byte	0x1
- 876 01f8 25       		.byte	0x25
+ 876 01f8 24       		.byte	0x24
  877 01f9 6B000000 		.4byte	0x6b
  878 01fd 05       		.uleb128 0x5
  879 01fe 03       		.byte	0x3
@@ -1132,18 +1131,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  881 0203 0E       		.uleb128 0xe
  882 0204 E8010000 		.4byte	.LASF37
  883 0208 01       		.byte	0x1
- 884 0209 26       		.byte	0x26
+ 884 0209 25       		.byte	0x25
  885 020a 6B000000 		.4byte	0x6b
  886 020e 05       		.uleb128 0x5
  887 020f 03       		.byte	0x3
  888 0210 00000000 		.4byte	uartInt
  889 0214 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 20
-
-
  890 0215 60000000 		.4byte	.LASF38
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 20
+
+
  891 0219 01       		.byte	0x1
- 892 021a 27       		.byte	0x27
+ 892 021a 26       		.byte	0x26
  893 021b 6B000000 		.4byte	0x6b
  894 021f 05       		.uleb128 0x5
  895 0220 03       		.byte	0x3
@@ -1198,10 +1197,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  944 002c 03       		.uleb128 0x3
  945 002d 0E       		.uleb128 0xe
  946 002e 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 21
-
-
  947 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 21
+
+
  948 0030 3B       		.uleb128 0x3b
  949 0031 0B       		.uleb128 0xb
  950 0032 49       		.uleb128 0x49
@@ -1258,10 +1257,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1001 0065 03       		.uleb128 0x3
  1002 0066 0E       		.uleb128 0xe
  1003 0067 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 22
-
-
  1004 0068 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 22
+
+
  1005 0069 3B       		.uleb128 0x3b
  1006 006a 0B       		.uleb128 0xb
  1007 006b 27       		.uleb128 0x27
@@ -1318,10 +1317,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1058 00a0 3A       		.uleb128 0x3a
  1059 00a1 0B       		.uleb128 0xb
  1060 00a2 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 23
-
-
  1061 00a3 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 23
+
+
  1062 00a4 49       		.uleb128 0x49
  1063 00a5 13       		.uleb128 0x13
  1064 00a6 02       		.uleb128 0x2
@@ -1378,10 +1377,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1115 00d9 0B       		.uleb128 0xb
  1116 00da 00       		.byte	0
  1117 00db 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 24
-
-
  1118 00dc 00       		.byte	0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 24
+
+
  1119              		.section	.debug_aranges,"",%progbits
  1120 0000 3C000000 		.4byte	0x3c
  1121 0004 0200     		.2byte	0x2
@@ -1438,10 +1437,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1163 001c 73746174 		.ascii	"state\000"
  1163      6500
  1164              	.LASF40:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 25
-
-
  1165 0022 2E5C5053 		.ascii	".\\PSoC_Master_Class.c\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 25
+
+
  1165      6F435F4D 
  1165      61737465 
  1165      725F436C 
@@ -1498,10 +1497,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1184      4D617374 
  1184      65722E63 
  1184      7964736E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 26
-
-
  1184      00
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 26
+
+
  1185              	.LASF12:
  1186 0137 696E7431 		.ascii	"int16\000"
  1186      3600
@@ -1558,10 +1557,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1214      676E6564 
  1214      20636861 
  1214      7200
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 27
-
-
  1215              	.LASF8:
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccLDItxU.s 			page 27
+
+
  1216 01bb 756E7369 		.ascii	"unsigned int\000"
  1216      676E6564 
  1216      20696E74 
@@ -1618,6 +1617,3 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 1
  1242 0246 41444A56 		.ascii	"ADJV\000"
  1242      00
  1243              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccEYDDpp.s 			page 28
-
-

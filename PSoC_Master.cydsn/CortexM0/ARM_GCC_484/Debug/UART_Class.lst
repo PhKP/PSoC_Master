@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -40,9 +40,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
   12:.\UART_Class.c **** // Include files
   13:.\UART_Class.c **** #include "UART_Class.h"
   14:.\UART_Class.c **** 
-  15:.\UART_Class.c **** // Init
-  16:.\UART_Class.c **** void initUART(void){
-  26              		.loc 1 16 0
+  15:.\UART_Class.c **** //Definitions
+  16:.\UART_Class.c **** #define CONVERT_TO_ASCII 48
+  17:.\UART_Class.c **** 
+  18:.\UART_Class.c **** // Init
+  19:.\UART_Class.c **** void initUART(void){
+  26              		.loc 1 19 0
   27              		.cfi_startproc
   28 0000 80B5     		push	{r7, lr}
   29              		.cfi_def_cfa_offset 8
@@ -50,17 +53,17 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
   31              		.cfi_offset 14, -4
   32 0002 00AF     		add	r7, sp, #0
   33              		.cfi_def_cfa_register 7
-  17:.\UART_Class.c ****     UART_Start();                   // Starts UART component
-  34              		.loc 1 17 0
+  20:.\UART_Class.c ****     UART_Start();                   // Starts UART component
+  34              		.loc 1 20 0
   35 0004 FFF7FEFF 		bl	UART_Start
-  18:.\UART_Class.c **** }
-  36              		.loc 1 18 0
+  21:.\UART_Class.c **** }
+  36              		.loc 1 21 0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 2
+
+
   37 0008 BD46     		mov	sp, r7
   38              		@ sp needed
   39 000a 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 2
-
-
   40              		.cfi_endproc
   41              	.LFE33:
   42              		.size	initUART, .-initUART
@@ -72,10 +75,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
   48              		.type	respondTemp, %function
   49              	respondTemp:
   50              	.LFB34:
-  19:.\UART_Class.c **** 
-  20:.\UART_Class.c **** //----------respondTemp0----------
-  21:.\UART_Class.c **** int8 respondTemp(uint8 temp){
-  51              		.loc 1 21 0
+  22:.\UART_Class.c **** 
+  23:.\UART_Class.c **** //----------respondTemp0----------
+  24:.\UART_Class.c **** int8 respondTemp(uint8 temp){
+  51              		.loc 1 24 0
   52              		.cfi_startproc
   53 0000 80B5     		push	{r7, lr}
   54              		.cfi_def_cfa_offset 8
@@ -88,50 +91,50 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
   61 0006 021C     		mov	r2, r0
   62 0008 FB1D     		add	r3, r7, #7
   63 000a 1A70     		strb	r2, [r3]
-  22:.\UART_Class.c ****     if(temp){
-  64              		.loc 1 22 0
+  25:.\UART_Class.c ****     if(temp){
+  64              		.loc 1 25 0
   65 000c FB1D     		add	r3, r7, #7
   66 000e 1B78     		ldrb	r3, [r3]
   67 0010 002B     		cmp	r3, #0
   68 0012 09D0     		beq	.L3
-  23:.\UART_Class.c ****         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
-  24:.\UART_Class.c ****         UART_UartPutChar('T');
-  69              		.loc 1 24 0
+  26:.\UART_Class.c ****         // If temp is between 1 and 200(both inclusive) "T" and temp is sent to DevKit8000
+  27:.\UART_Class.c ****         UART_UartPutChar('T');
+  69              		.loc 1 27 0
   70 0014 5420     		mov	r0, #84
   71 0016 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  25:.\UART_Class.c ****         UART_UartPutChar(temp);
-  72              		.loc 1 25 0
+  28:.\UART_Class.c ****         UART_UartPutChar(temp);
+  72              		.loc 1 28 0
   73 001a FB1D     		add	r3, r7, #7
   74 001c 1B78     		ldrb	r3, [r3]
   75 001e 181C     		mov	r0, r3
   76 0020 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  26:.\UART_Class.c ****         return 0;
-  77              		.loc 1 26 0
+  29:.\UART_Class.c ****         return 0;
+  77              		.loc 1 29 0
   78 0024 0023     		mov	r3, #0
   79 0026 06E0     		b	.L4
   80              	.L3:
-  27:.\UART_Class.c ****     }
-  28:.\UART_Class.c ****     else{
-  29:.\UART_Class.c ****         // If temp isn't between 1 and 200(both inclusive) "XT" is sent to DevKit8000
-  30:.\UART_Class.c ****         UART_UartPutChar('X');
-  81              		.loc 1 30 0
+  30:.\UART_Class.c ****     }
+  31:.\UART_Class.c ****     else{
+  32:.\UART_Class.c ****         // If temp isn't between 1 and 200(both inclusive) "XT" is sent to DevKit8000
+  33:.\UART_Class.c ****         UART_UartPutChar('X');
+  81              		.loc 1 33 0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 3
+
+
   82 0028 5820     		mov	r0, #88
   83 002a FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  31:.\UART_Class.c ****         UART_UartPutChar('T');
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 3
-
-
-  84              		.loc 1 31 0
+  34:.\UART_Class.c ****         UART_UartPutChar('T');
+  84              		.loc 1 34 0
   85 002e 5420     		mov	r0, #84
   86 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  32:.\UART_Class.c ****         return -1;
-  87              		.loc 1 32 0
+  35:.\UART_Class.c ****         return -1;
+  87              		.loc 1 35 0
   88 0034 FF23     		mov	r3, #255
   89              	.L4:
   90 0036 5BB2     		sxtb	r3, r3
-  33:.\UART_Class.c ****     }
-  34:.\UART_Class.c **** }
-  91              		.loc 1 34 0
+  36:.\UART_Class.c ****     }
+  37:.\UART_Class.c **** }
+  91              		.loc 1 37 0
   92 0038 181C     		mov	r0, r3
   93 003a BD46     		mov	sp, r7
   94 003c 02B0     		add	sp, sp, #8
@@ -148,10 +151,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  105              		.type	respondSoilHum, %function
  106              	respondSoilHum:
  107              	.LFB35:
-  35:.\UART_Class.c **** //----------respondTemp1----------
-  36:.\UART_Class.c **** 
-  37:.\UART_Class.c **** int8 respondSoilHum(uint8 index, uint8 soilHum){
- 108              		.loc 1 37 0
+  38:.\UART_Class.c **** //----------respondTemp1----------
+  39:.\UART_Class.c **** 
+  40:.\UART_Class.c **** int8 respondSoilHum(uint8 index, uint8 soilHum){
+ 108              		.loc 1 40 0
  109              		.cfi_startproc
  110 0000 80B5     		push	{r7, lr}
  111              		.cfi_def_cfa_offset 8
@@ -167,62 +170,62 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  121 000c 1970     		strb	r1, [r3]
  122 000e BB1D     		add	r3, r7, #6
  123 0010 1A70     		strb	r2, [r3]
-  38:.\UART_Class.c ****     if(soilHum <= 10 && soilHum >= 1){
- 124              		.loc 1 38 0
+  41:.\UART_Class.c ****     if(soilHum <= 10 && soilHum >= 1){
+ 124              		.loc 1 41 0
  125 0012 BB1D     		add	r3, r7, #6
  126 0014 1B78     		ldrb	r3, [r3]
  127 0016 0A2B     		cmp	r3, #10
  128 0018 13D8     		bhi	.L6
- 129              		.loc 1 38 0 is_stmt 0 discriminator 1
+ 129              		.loc 1 41 0 is_stmt 0 discriminator 1
  130 001a BB1D     		add	r3, r7, #6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 4
+
+
  131 001c 1B78     		ldrb	r3, [r3]
  132 001e 002B     		cmp	r3, #0
  133 0020 0FD0     		beq	.L6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 4
-
-
-  39:.\UART_Class.c ****         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent
-  40:.\UART_Class.c ****         UART_UartPutChar('S');
- 134              		.loc 1 40 0 is_stmt 1
+  42:.\UART_Class.c ****         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent
+  43:.\UART_Class.c ****         UART_UartPutChar('S');
+ 134              		.loc 1 43 0 is_stmt 1
  135 0022 5320     		mov	r0, #83
  136 0024 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  41:.\UART_Class.c ****         UART_UartPutChar(index + 48 + 1); //Conevert to ASCII and convert to 1-6.
- 137              		.loc 1 41 0
+  44:.\UART_Class.c ****         UART_UartPutChar(index + CONVERT_TO_ASCII + 1); //Conevert to ASCII and convert to 1-6.
+ 137              		.loc 1 44 0
  138 0028 FB1D     		add	r3, r7, #7
  139 002a 1B78     		ldrb	r3, [r3]
  140 002c 3133     		add	r3, r3, #49
  141 002e 181C     		mov	r0, r3
  142 0030 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  42:.\UART_Class.c ****         UART_UartPutChar(soilHum);
- 143              		.loc 1 42 0
+  45:.\UART_Class.c ****         UART_UartPutChar(soilHum);
+ 143              		.loc 1 45 0
  144 0034 BB1D     		add	r3, r7, #6
  145 0036 1B78     		ldrb	r3, [r3]
  146 0038 181C     		mov	r0, r3
  147 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  43:.\UART_Class.c ****         return 0;
- 148              		.loc 1 43 0
+  46:.\UART_Class.c ****         return 0;
+ 148              		.loc 1 46 0
  149 003e 0023     		mov	r3, #0
  150 0040 06E0     		b	.L7
  151              	.L6:
-  44:.\UART_Class.c ****     }
-  45:.\UART_Class.c ****     else{
-  46:.\UART_Class.c ****         // If soilHum isn't between 1 and 10(both inclusive) "XS" is sent to DevKit8000
-  47:.\UART_Class.c ****         UART_UartPutChar('X');
- 152              		.loc 1 47 0
+  47:.\UART_Class.c ****     }
+  48:.\UART_Class.c ****     else{
+  49:.\UART_Class.c ****         // If soilHum isn't between 1 and 10(both inclusive) "XS" is sent to DevKit8000
+  50:.\UART_Class.c ****         UART_UartPutChar('X');
+ 152              		.loc 1 50 0
  153 0042 5820     		mov	r0, #88
  154 0044 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  48:.\UART_Class.c ****         UART_UartPutChar('S');
- 155              		.loc 1 48 0
+  51:.\UART_Class.c ****         UART_UartPutChar('S');
+ 155              		.loc 1 51 0
  156 0048 5320     		mov	r0, #83
  157 004a FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  49:.\UART_Class.c ****         return -1;
- 158              		.loc 1 49 0
+  52:.\UART_Class.c ****         return -1;
+ 158              		.loc 1 52 0
  159 004e FF23     		mov	r3, #255
  160              	.L7:
  161 0050 5BB2     		sxtb	r3, r3
-  50:.\UART_Class.c ****     }
-  51:.\UART_Class.c **** }
- 162              		.loc 1 51 0
+  53:.\UART_Class.c ****     }
+  54:.\UART_Class.c **** }
+ 162              		.loc 1 54 0
  163 0052 181C     		mov	r0, r3
  164 0054 BD46     		mov	sp, r7
  165 0056 02B0     		add	sp, sp, #8
@@ -235,16 +238,16 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  172              		.align	2
  173              		.global	respondHeat
  174              		.code	16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 5
+
+
  175              		.thumb_func
  176              		.type	respondHeat, %function
  177              	respondHeat:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 5
-
-
  178              	.LFB36:
-  52:.\UART_Class.c **** 
-  53:.\UART_Class.c **** int8 respondHeat(int8 heatStatus, uint8 onOff){
- 179              		.loc 1 53 0
+  55:.\UART_Class.c **** 
+  56:.\UART_Class.c **** int8 respondHeat(int8 heatStatus, uint8 onOff){
+ 179              		.loc 1 56 0
  180              		.cfi_startproc
  181 0000 80B5     		push	{r7, lr}
  182              		.cfi_def_cfa_offset 8
@@ -260,49 +263,49 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  192 000c 1970     		strb	r1, [r3]
  193 000e BB1D     		add	r3, r7, #6
  194 0010 1A70     		strb	r2, [r3]
-  54:.\UART_Class.c ****     if(heatStatus == 0){
- 195              		.loc 1 54 0
+  57:.\UART_Class.c ****     if(heatStatus == 0){
+ 195              		.loc 1 57 0
  196 0012 FB1D     		add	r3, r7, #7
  197 0014 1B78     		ldrb	r3, [r3]
  198 0016 5BB2     		sxtb	r3, r3
  199 0018 002B     		cmp	r3, #0
  200 001a 06D1     		bne	.L9
-  55:.\UART_Class.c ****         // If heatStatus is 0 then onOff('H' or 'K') is sent to DevKit8000
-  56:.\UART_Class.c ****         UART_UartPutChar(onOff);
- 201              		.loc 1 56 0
+  58:.\UART_Class.c ****         // If heatStatus is 0 then onOff('H' or 'K') is sent to DevKit8000
+  59:.\UART_Class.c ****         UART_UartPutChar(onOff);
+ 201              		.loc 1 59 0
  202 001c BB1D     		add	r3, r7, #6
  203 001e 1B78     		ldrb	r3, [r3]
  204 0020 181C     		mov	r0, r3
  205 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  57:.\UART_Class.c ****         return 0;
- 206              		.loc 1 57 0
+  60:.\UART_Class.c ****         return 0;
+ 206              		.loc 1 60 0
  207 0026 0023     		mov	r3, #0
  208 0028 08E0     		b	.L10
  209              	.L9:
-  58:.\UART_Class.c ****     }
-  59:.\UART_Class.c ****     else{
-  60:.\UART_Class.c ****         // If heatStatus isn't 0 then 'X' and onOff('H' or 'K') is sent to DevKit8000
-  61:.\UART_Class.c ****         UART_UartPutChar('X');
- 210              		.loc 1 61 0
+  61:.\UART_Class.c ****     }
+  62:.\UART_Class.c ****     else{
+  63:.\UART_Class.c ****         // If heatStatus isn't 0 then 'X' and onOff('H' or 'K') is sent to DevKit8000
+  64:.\UART_Class.c ****         UART_UartPutChar('X');
+ 210              		.loc 1 64 0
  211 002a 5820     		mov	r0, #88
  212 002c FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  62:.\UART_Class.c ****         UART_UartPutChar(onOff);
- 213              		.loc 1 62 0
+  65:.\UART_Class.c ****         UART_UartPutChar(onOff);
+ 213              		.loc 1 65 0
  214 0030 BB1D     		add	r3, r7, #6
  215 0032 1B78     		ldrb	r3, [r3]
  216 0034 181C     		mov	r0, r3
  217 0036 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  63:.\UART_Class.c ****         return -1;
- 218              		.loc 1 63 0
+  66:.\UART_Class.c ****         return -1;
+ 218              		.loc 1 66 0
  219 003a FF23     		mov	r3, #255
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 6
+
+
  220              	.L10:
  221 003c 5BB2     		sxtb	r3, r3
-  64:.\UART_Class.c ****     }
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 6
-
-
-  65:.\UART_Class.c **** }
- 222              		.loc 1 65 0
+  67:.\UART_Class.c ****     }
+  68:.\UART_Class.c **** }
+ 222              		.loc 1 68 0
  223 003e 181C     		mov	r0, r3
  224 0040 BD46     		mov	sp, r7
  225 0042 02B0     		add	sp, sp, #8
@@ -319,9 +322,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  236              		.type	respondWin, %function
  237              	respondWin:
  238              	.LFB37:
-  66:.\UART_Class.c **** 
-  67:.\UART_Class.c **** int8 respondWin(int8 winStatus){
- 239              		.loc 1 67 0
+  69:.\UART_Class.c **** 
+  70:.\UART_Class.c **** int8 respondWin(int8 winStatus){
+ 239              		.loc 1 70 0
  240              		.cfi_startproc
  241 0000 80B5     		push	{r7, lr}
  242              		.cfi_def_cfa_offset 8
@@ -334,45 +337,45 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  249 0006 021C     		mov	r2, r0
  250 0008 FB1D     		add	r3, r7, #7
  251 000a 1A70     		strb	r2, [r3]
-  68:.\UART_Class.c ****     if(winStatus == 0){
- 252              		.loc 1 68 0
+  71:.\UART_Class.c ****     if(winStatus == 0){
+ 252              		.loc 1 71 0
  253 000c FB1D     		add	r3, r7, #7
  254 000e 1B78     		ldrb	r3, [r3]
  255 0010 5BB2     		sxtb	r3, r3
  256 0012 002B     		cmp	r3, #0
  257 0014 04D1     		bne	.L12
-  69:.\UART_Class.c ****         // If winStatus is 0 then 'W' is sent to DevKit8000
-  70:.\UART_Class.c ****         UART_UartPutChar('W');
- 258              		.loc 1 70 0
+  72:.\UART_Class.c ****         // If winStatus is 0 then 'W' is sent to DevKit8000
+  73:.\UART_Class.c ****         UART_UartPutChar('W');
+ 258              		.loc 1 73 0
  259 0016 5720     		mov	r0, #87
  260 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  71:.\UART_Class.c ****         return 0;
- 261              		.loc 1 71 0
+  74:.\UART_Class.c ****         return 0;
+ 261              		.loc 1 74 0
  262 001c 0023     		mov	r3, #0
  263 001e 06E0     		b	.L13
  264              	.L12:
-  72:.\UART_Class.c ****     }
-  73:.\UART_Class.c ****     else{
-  74:.\UART_Class.c ****         // If heatStatus isn't 0 then "XW" is sent to DevKit8000
-  75:.\UART_Class.c ****         UART_UartPutChar('X');
- 265              		.loc 1 75 0
+  75:.\UART_Class.c ****     }
+  76:.\UART_Class.c ****     else{
+  77:.\UART_Class.c ****         // If heatStatus isn't 0 then "XW" is sent to DevKit8000
+  78:.\UART_Class.c ****         UART_UartPutChar('X');
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 7
+
+
+ 265              		.loc 1 78 0
  266 0020 5820     		mov	r0, #88
  267 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 7
-
-
-  76:.\UART_Class.c ****         UART_UartPutChar('W');
- 268              		.loc 1 76 0
+  79:.\UART_Class.c ****         UART_UartPutChar('W');
+ 268              		.loc 1 79 0
  269 0026 5720     		mov	r0, #87
  270 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  77:.\UART_Class.c ****         return -1;
- 271              		.loc 1 77 0
+  80:.\UART_Class.c ****         return -1;
+ 271              		.loc 1 80 0
  272 002c FF23     		mov	r3, #255
  273              	.L13:
  274 002e 5BB2     		sxtb	r3, r3
-  78:.\UART_Class.c ****     }
-  79:.\UART_Class.c **** }
- 275              		.loc 1 79 0
+  81:.\UART_Class.c ****     }
+  82:.\UART_Class.c **** }
+ 275              		.loc 1 82 0
  276 0030 181C     		mov	r0, r3
  277 0032 BD46     		mov	sp, r7
  278 0034 02B0     		add	sp, sp, #8
@@ -389,9 +392,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  289              		.type	respondVent, %function
  290              	respondVent:
  291              	.LFB38:
-  80:.\UART_Class.c **** 
-  81:.\UART_Class.c **** int8 respondVent(int8 ventStatus){
- 292              		.loc 1 81 0
+  83:.\UART_Class.c **** 
+  84:.\UART_Class.c **** int8 respondVent(int8 ventStatus){
+ 292              		.loc 1 84 0
  293              		.cfi_startproc
  294 0000 80B5     		push	{r7, lr}
  295              		.cfi_def_cfa_offset 8
@@ -404,45 +407,45 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  302 0006 021C     		mov	r2, r0
  303 0008 FB1D     		add	r3, r7, #7
  304 000a 1A70     		strb	r2, [r3]
-  82:.\UART_Class.c ****     if(ventStatus == 0){
- 305              		.loc 1 82 0
+  85:.\UART_Class.c ****     if(ventStatus == 0){
+ 305              		.loc 1 85 0
  306 000c FB1D     		add	r3, r7, #7
  307 000e 1B78     		ldrb	r3, [r3]
  308 0010 5BB2     		sxtb	r3, r3
  309 0012 002B     		cmp	r3, #0
  310 0014 04D1     		bne	.L15
-  83:.\UART_Class.c ****         // If ventStatus is 0 then 'V' is sent to DevKit8000
-  84:.\UART_Class.c ****         UART_UartPutChar('V');
- 311              		.loc 1 84 0
+  86:.\UART_Class.c ****         // If ventStatus is 0 then 'V' is sent to DevKit8000
+  87:.\UART_Class.c ****         UART_UartPutChar('V');
+ 311              		.loc 1 87 0
  312 0016 5620     		mov	r0, #86
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 8
+
+
  313 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  85:.\UART_Class.c ****         return 0;
- 314              		.loc 1 85 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 8
-
-
+  88:.\UART_Class.c ****         return 0;
+ 314              		.loc 1 88 0
  315 001c 0023     		mov	r3, #0
  316 001e 06E0     		b	.L16
  317              	.L15:
-  86:.\UART_Class.c ****     }
-  87:.\UART_Class.c ****     else{
-  88:.\UART_Class.c ****         // If ventStatus isn't 0 then "XV" is sent to DevKit8000
-  89:.\UART_Class.c ****         UART_UartPutChar('X');
- 318              		.loc 1 89 0
+  89:.\UART_Class.c ****     }
+  90:.\UART_Class.c ****     else{
+  91:.\UART_Class.c ****         // If ventStatus isn't 0 then "XV" is sent to DevKit8000
+  92:.\UART_Class.c ****         UART_UartPutChar('X');
+ 318              		.loc 1 92 0
  319 0020 5820     		mov	r0, #88
  320 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  90:.\UART_Class.c ****         UART_UartPutChar('V');
- 321              		.loc 1 90 0
+  93:.\UART_Class.c ****         UART_UartPutChar('V');
+ 321              		.loc 1 93 0
  322 0026 5620     		mov	r0, #86
  323 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  91:.\UART_Class.c ****         return -1;
- 324              		.loc 1 91 0
+  94:.\UART_Class.c ****         return -1;
+ 324              		.loc 1 94 0
  325 002c FF23     		mov	r3, #255
  326              	.L16:
  327 002e 5BB2     		sxtb	r3, r3
-  92:.\UART_Class.c ****     }
-  93:.\UART_Class.c **** }
- 328              		.loc 1 93 0
+  95:.\UART_Class.c ****     }
+  96:.\UART_Class.c **** }
+ 328              		.loc 1 96 0
  329 0030 181C     		mov	r0, r3
  330 0032 BD46     		mov	sp, r7
  331 0034 02B0     		add	sp, sp, #8
@@ -459,9 +462,9 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  342              		.type	respondIrri, %function
  343              	respondIrri:
  344              	.LFB39:
-  94:.\UART_Class.c **** 
-  95:.\UART_Class.c **** int8 respondIrri(int8 irriStatus){
- 345              		.loc 1 95 0
+  97:.\UART_Class.c **** 
+  98:.\UART_Class.c **** int8 respondIrri(int8 irriStatus){
+ 345              		.loc 1 98 0
  346              		.cfi_startproc
  347 0000 80B5     		push	{r7, lr}
  348              		.cfi_def_cfa_offset 8
@@ -474,45 +477,45 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  355 0006 021C     		mov	r2, r0
  356 0008 FB1D     		add	r3, r7, #7
  357 000a 1A70     		strb	r2, [r3]
-  96:.\UART_Class.c ****     if(irriStatus == 0){
- 358              		.loc 1 96 0
+  99:.\UART_Class.c ****     if(irriStatus == 0){
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 9
+
+
+ 358              		.loc 1 99 0
  359 000c FB1D     		add	r3, r7, #7
  360 000e 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 9
-
-
  361 0010 5BB2     		sxtb	r3, r3
  362 0012 002B     		cmp	r3, #0
  363 0014 04D1     		bne	.L18
-  97:.\UART_Class.c ****         // If irriStatus is 0 then 'F' is sent to DevKit8000
-  98:.\UART_Class.c ****         UART_UartPutChar('F');
- 364              		.loc 1 98 0
+ 100:.\UART_Class.c ****         // If irriStatus is 0 then 'F' is sent to DevKit8000
+ 101:.\UART_Class.c ****         UART_UartPutChar('F');
+ 364              		.loc 1 101 0
  365 0016 4620     		mov	r0, #70
  366 0018 FFF7FEFF 		bl	UART_SpiUartWriteTxData
-  99:.\UART_Class.c ****         return 0;
- 367              		.loc 1 99 0
+ 102:.\UART_Class.c ****         return 0;
+ 367              		.loc 1 102 0
  368 001c 0023     		mov	r3, #0
  369 001e 06E0     		b	.L19
  370              	.L18:
- 100:.\UART_Class.c ****     }
- 101:.\UART_Class.c ****     else{
- 102:.\UART_Class.c ****         // If irriStatus isn't 0 then "XF" is sent to DevKit8000
- 103:.\UART_Class.c ****         UART_UartPutChar('X');
- 371              		.loc 1 103 0
+ 103:.\UART_Class.c ****     }
+ 104:.\UART_Class.c ****     else{
+ 105:.\UART_Class.c ****         // If irriStatus isn't 0 then "XF" is sent to DevKit8000
+ 106:.\UART_Class.c ****         UART_UartPutChar('X');
+ 371              		.loc 1 106 0
  372 0020 5820     		mov	r0, #88
  373 0022 FFF7FEFF 		bl	UART_SpiUartWriteTxData
- 104:.\UART_Class.c ****         UART_UartPutChar('F');
- 374              		.loc 1 104 0
+ 107:.\UART_Class.c ****         UART_UartPutChar('F');
+ 374              		.loc 1 107 0
  375 0026 4620     		mov	r0, #70
  376 0028 FFF7FEFF 		bl	UART_SpiUartWriteTxData
- 105:.\UART_Class.c ****         return -1;
- 377              		.loc 1 105 0
+ 108:.\UART_Class.c ****         return -1;
+ 377              		.loc 1 108 0
  378 002c FF23     		mov	r3, #255
  379              	.L19:
  380 002e 5BB2     		sxtb	r3, r3
- 106:.\UART_Class.c ****     }
- 107:.\UART_Class.c **** }
- 381              		.loc 1 107 0
+ 109:.\UART_Class.c ****     }
+ 110:.\UART_Class.c **** }
+ 381              		.loc 1 110 0
  382 0030 181C     		mov	r0, r3
  383 0032 BD46     		mov	sp, r7
  384 0034 02B0     		add	sp, sp, #8
@@ -529,28 +532,28 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  395              		.type	dkRequest, %function
  396              	dkRequest:
  397              	.LFB40:
- 108:.\UART_Class.c **** 
- 109:.\UART_Class.c **** //----------dkRequest0----------
- 110:.\UART_Class.c **** uint8 dkRequest(void){
- 398              		.loc 1 110 0
+ 111:.\UART_Class.c **** 
+ 112:.\UART_Class.c **** //----------dkRequest0----------
+ 113:.\UART_Class.c **** uint8 dkRequest(void){
+ 398              		.loc 1 113 0
  399              		.cfi_startproc
  400 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 10
+
+
  401              		.cfi_def_cfa_offset 8
  402              		.cfi_offset 7, -8
  403              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 10
-
-
  404 0002 00AF     		add	r7, sp, #0
  405              		.cfi_def_cfa_register 7
- 111:.\UART_Class.c ****     // Reads the UART buffer
- 112:.\UART_Class.c ****     return UART_UartGetChar();
- 406              		.loc 1 112 0
+ 114:.\UART_Class.c ****     // Reads the UART buffer
+ 115:.\UART_Class.c ****     return UART_UartGetChar();
+ 406              		.loc 1 115 0
  407 0004 FFF7FEFF 		bl	UART_UartGetChar
  408 0008 031C     		mov	r3, r0
  409 000a DBB2     		uxtb	r3, r3
- 113:.\UART_Class.c **** }
- 410              		.loc 1 113 0
+ 116:.\UART_Class.c **** }
+ 410              		.loc 1 116 0
  411 000c 181C     		mov	r0, r3
  412 000e BD46     		mov	sp, r7
  413              		@ sp needed
@@ -595,12 +598,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  452 0042 04       		.byte	0x4
  453 0043 05       		.byte	0x5
  454 0044 0B000000 		.4byte	.LASF4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 11
+
+
  455 0048 02       		.uleb128 0x2
  456 0049 04       		.byte	0x4
  457 004a 07       		.byte	0x7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 11
-
-
  458 004b D2000000 		.4byte	.LASF5
  459 004f 02       		.uleb128 0x2
  460 0050 08       		.byte	0x8
@@ -652,18 +655,18 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  506 00a8 05       		.uleb128 0x5
  507 00a9 C9000000 		.4byte	.LASF33
  508 00ad 01       		.byte	0x1
- 509 00ae 10       		.byte	0x10
+ 509 00ae 13       		.byte	0x13
  510 00af 00000000 		.4byte	.LFB33
  511 00b3 0C000000 		.4byte	.LFE33-.LFB33
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 12
+
+
  512 00b7 01       		.uleb128 0x1
  513 00b8 9C       		.byte	0x9c
  514 00b9 06       		.uleb128 0x6
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 12
-
-
  515 00ba 4F010000 		.4byte	.LASF16
  516 00be 01       		.byte	0x1
- 517 00bf 15       		.byte	0x15
+ 517 00bf 18       		.byte	0x18
  518 00c0 81000000 		.4byte	0x81
  519 00c4 00000000 		.4byte	.LFB34
  520 00c8 40000000 		.4byte	.LFE34-.LFB34
@@ -673,7 +676,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  524 00d2 07       		.uleb128 0x7
  525 00d3 E4000000 		.4byte	.LASF18
  526 00d7 01       		.byte	0x1
- 527 00d8 15       		.byte	0x15
+ 527 00d8 18       		.byte	0x18
  528 00d9 6B000000 		.4byte	0x6b
  529 00dd 02       		.uleb128 0x2
  530 00de 91       		.byte	0x91
@@ -682,7 +685,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  533 00e1 06       		.uleb128 0x6
  534 00e2 00020000 		.4byte	.LASF17
  535 00e6 01       		.byte	0x1
- 536 00e7 25       		.byte	0x25
+ 536 00e7 28       		.byte	0x28
  537 00e8 81000000 		.4byte	0x81
  538 00ec 00000000 		.4byte	.LFB35
  539 00f0 5A000000 		.4byte	.LFE35-.LFB35
@@ -692,7 +695,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  543 00fa 07       		.uleb128 0x7
  544 00fb EB010000 		.4byte	.LASF19
  545 00ff 01       		.byte	0x1
- 546 0100 25       		.byte	0x25
+ 546 0100 28       		.byte	0x28
  547 0101 6B000000 		.4byte	0x6b
  548 0105 02       		.uleb128 0x2
  549 0106 91       		.byte	0x91
@@ -700,7 +703,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  551 0108 07       		.uleb128 0x7
  552 0109 01010000 		.4byte	.LASF20
  553 010d 01       		.byte	0x1
- 554 010e 25       		.byte	0x25
+ 554 010e 28       		.byte	0x28
  555 010f 6B000000 		.4byte	0x6b
  556 0113 02       		.uleb128 0x2
  557 0114 91       		.byte	0x91
@@ -709,20 +712,20 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  560 0117 06       		.uleb128 0x6
  561 0118 8C010000 		.4byte	.LASF21
  562 011c 01       		.byte	0x1
- 563 011d 35       		.byte	0x35
+ 563 011d 38       		.byte	0x38
  564 011e 81000000 		.4byte	0x81
  565 0122 00000000 		.4byte	.LFB36
  566 0126 46000000 		.4byte	.LFE36-.LFB36
  567 012a 01       		.uleb128 0x1
  568 012b 9C       		.byte	0x9c
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 13
+
+
  569 012c 4D010000 		.4byte	0x14d
  570 0130 07       		.uleb128 0x7
  571 0131 00000000 		.4byte	.LASF22
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 13
-
-
  572 0135 01       		.byte	0x1
- 573 0136 35       		.byte	0x35
+ 573 0136 38       		.byte	0x38
  574 0137 81000000 		.4byte	0x81
  575 013b 02       		.uleb128 0x2
  576 013c 91       		.byte	0x91
@@ -730,7 +733,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  578 013e 07       		.uleb128 0x7
  579 013f C3000000 		.4byte	.LASF23
  580 0143 01       		.byte	0x1
- 581 0144 35       		.byte	0x35
+ 581 0144 38       		.byte	0x38
  582 0145 6B000000 		.4byte	0x6b
  583 0149 02       		.uleb128 0x2
  584 014a 91       		.byte	0x91
@@ -739,7 +742,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  587 014d 06       		.uleb128 0x6
  588 014e EF000000 		.4byte	.LASF24
  589 0152 01       		.byte	0x1
- 590 0153 43       		.byte	0x43
+ 590 0153 46       		.byte	0x46
  591 0154 81000000 		.4byte	0x81
  592 0158 00000000 		.4byte	.LFB37
  593 015c 38000000 		.4byte	.LFE37-.LFB37
@@ -749,7 +752,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  597 0166 07       		.uleb128 0x7
  598 0167 5B010000 		.4byte	.LASF25
  599 016b 01       		.byte	0x1
- 600 016c 43       		.byte	0x43
+ 600 016c 46       		.byte	0x46
  601 016d 81000000 		.4byte	0x81
  602 0171 02       		.uleb128 0x2
  603 0172 91       		.byte	0x91
@@ -758,7 +761,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  606 0175 06       		.uleb128 0x6
  607 0176 2C010000 		.4byte	.LASF26
  608 017a 01       		.byte	0x1
- 609 017b 51       		.byte	0x51
+ 609 017b 54       		.byte	0x54
  610 017c 81000000 		.4byte	0x81
  611 0180 00000000 		.4byte	.LFB38
  612 0184 38000000 		.4byte	.LFE38-.LFB38
@@ -768,19 +771,19 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  616 018e 07       		.uleb128 0x7
  617 018f 65010000 		.4byte	.LASF27
  618 0193 01       		.byte	0x1
- 619 0194 51       		.byte	0x51
+ 619 0194 54       		.byte	0x54
  620 0195 81000000 		.4byte	0x81
  621 0199 02       		.uleb128 0x2
  622 019a 91       		.byte	0x91
  623 019b 77       		.sleb128 -9
  624 019c 00       		.byte	0
  625 019d 06       		.uleb128 0x6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 14
+
+
  626 019e 27000000 		.4byte	.LASF28
  627 01a2 01       		.byte	0x1
- 628 01a3 5F       		.byte	0x5f
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 14
-
-
+ 628 01a3 62       		.byte	0x62
  629 01a4 81000000 		.4byte	0x81
  630 01a8 00000000 		.4byte	.LFB39
  631 01ac 38000000 		.4byte	.LFE39-.LFB39
@@ -790,7 +793,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  635 01b6 07       		.uleb128 0x7
  636 01b7 D6010000 		.4byte	.LASF29
  637 01bb 01       		.byte	0x1
- 638 01bc 5F       		.byte	0x5f
+ 638 01bc 62       		.byte	0x62
  639 01bd 81000000 		.4byte	0x81
  640 01c1 02       		.uleb128 0x2
  641 01c2 91       		.byte	0x91
@@ -799,7 +802,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  644 01c5 08       		.uleb128 0x8
  645 01c6 09010000 		.4byte	.LASF34
  646 01ca 01       		.byte	0x1
- 647 01cb 6E       		.byte	0x6e
+ 647 01cb 71       		.byte	0x71
  648 01cc 6B000000 		.4byte	0x6b
  649 01d0 00000000 		.4byte	.LFB40
  650 01d4 12000000 		.4byte	.LFE40-.LFB40
@@ -835,12 +838,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  680 0018 3E       		.uleb128 0x3e
  681 0019 0B       		.uleb128 0xb
  682 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 15
+
+
  683 001b 0E       		.uleb128 0xe
  684 001c 00       		.byte	0
  685 001d 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 15
-
-
  686 001e 03       		.uleb128 0x3
  687 001f 24       		.uleb128 0x24
  688 0020 00       		.byte	0
@@ -895,12 +898,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  737 0052 19       		.uleb128 0x19
  738 0053 03       		.uleb128 0x3
  739 0054 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 16
+
+
  740 0055 3A       		.uleb128 0x3a
  741 0056 0B       		.uleb128 0xb
  742 0057 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 16
-
-
  743 0058 0B       		.uleb128 0xb
  744 0059 27       		.uleb128 0x27
  745 005a 19       		.uleb128 0x19
@@ -955,12 +958,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  794 008c 40       		.uleb128 0x40
  795 008d 18       		.uleb128 0x18
  796 008e 9642     		.uleb128 0x2116
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 17
+
+
  797 0090 19       		.uleb128 0x19
  798 0091 00       		.byte	0
  799 0092 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 17
-
-
  800 0093 00       		.byte	0
  801              		.section	.debug_aranges,"",%progbits
  802 0000 54000000 		.4byte	0x54
@@ -1015,12 +1018,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  849      00000201 
  849      FB0E0D00 
  849      01010101 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 18
+
+
  850              	.LASF22:
  851 0000 68656174 		.ascii	"heatStatus\000"
  851      53746174 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 18
-
-
  851      757300
  852              	.LASF4:
  853 000b 6C6F6E67 		.ascii	"long int\000"
@@ -1075,12 +1078,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  871      7400
  872              	.LASF18:
  873 00e4 74656D70 		.ascii	"temp\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 19
+
+
  873      00
  874              	.LASF9:
  875 00e9 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 19
-
-
  875      3800
  876              	.LASF24:
  877 00ef 72657370 		.ascii	"respondWin\000"
@@ -1135,12 +1138,12 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 1
  901      00
  902              	.LASF6:
  903 0179 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccXVy9Ip.s 			page 20
+
+
  903      206C6F6E 
  903      6720696E 
  903      7400
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccOFzbTC.s 			page 20
-
-
  904              	.LASF14:
  905 0187 63686172 		.ascii	"char\000"
  905      00

@@ -1,4 +1,4 @@
---------------- Rebuild Started: 05/14/2015 09:16:08 Project: PSoC_Master, Configuration: ARM GCC 4.8.4 Debug ---------------
+--------------- Rebuild Started: 05/14/2015 09:50:49 Project: PSoC_Master, Configuration: ARM GCC 4.8.4 Debug ---------------
 Deleting file ".\CortexM0\ARM_GCC_484\Debug\main.o"
 Deleting file ".\CortexM0\ARM_GCC_484\Debug\DSP_Class.o"
 Deleting file ".\CortexM0\ARM_GCC_484\Debug\I2C_Class.o"
@@ -110,6 +110,6 @@ arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_484\Debug\PSoC_Master.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM0\ARM_GCC_484\Debug\PSoC_Master.elf .\CortexM0\ARM_GCC_484\Debug\main.o .\CortexM0\ARM_GCC_484\Debug\DSP_Class.o .\CortexM0\ARM_GCC_484\Debug\I2C_Class.o .\CortexM0\ARM_GCC_484\Debug\PSoC_Master_Class.o .\CortexM0\ARM_GCC_484\Debug\UART_Class.o .\CortexM0\ARM_GCC_484\Debug\cymetadata.o .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o .\CortexM0\ARM_GCC_484\Debug\PSoC_Master.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_484\Debug\CyComponentLibrary.a" -mthumb -march=armv6-m -Wl,-Map,.\CortexM0\ARM_GCC_484\Debug/PSoC_Master.map -T .\Generated_Source\PSoC4\cm0gcc.ld -g -specs=nano.specs "-u _printf_float" "" -Wl,--gc-sections -Wl,--end-group
 cyelftool.exe -C C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master.cydsn\CortexM0\ARM_GCC_484\Debug\PSoC_Master.elf --flash_size 32768 --flash_row_size 128
 cyelftool.exe -S C:\Users\Philip\OneDrive\GitHub\PSoC_Master\PSoC_Master.cydsn\CortexM0\ARM_GCC_484\Debug\PSoC_Master.elf
-Flash used: 18536 of 32768 bytes (56,6 %).
+Flash used: 18568 of 32768 bytes (56,7 %).
 SRAM used: 1572 of 4096 bytes (38,4 %). Stack: 1024 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 05/14/2015 09:16:31 ---------------
+--------------- Rebuild Succeeded: 05/14/2015 09:51:11 ---------------

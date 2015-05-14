@@ -12,6 +12,9 @@
 // Include files
 #include "UART_Class.h"
 
+//Definitions
+#define CONVERT_TO_ASCII 48
+
 // Init
 void initUART(void){
     UART_Start();                   // Starts UART component
@@ -38,7 +41,7 @@ int8 respondSoilHum(uint8 index, uint8 soilHum){
     if(soilHum <= 10 && soilHum >= 1){
         // If soilHum is between 1 and 10(both inclusive) "S", the index number and soilHum is sent to DevKit8000
         UART_UartPutChar('S');
-        UART_UartPutChar(index + 48 + 1); //Conevert to ASCII and convert to 1-6.
+        UART_UartPutChar(index + CONVERT_TO_ASCII + 1); //Conevert to ASCII and convert to 1-6.
         UART_UartPutChar(soilHum);
         return 0;
     }

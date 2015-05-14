@@ -13,6 +13,7 @@
 #include "I2C_Class.h"
 
 // Definitions
+#define CONVERT_TO_ASCII 48
 #define TEMP_SENSOR_ADDRESS 0x48            // For LM75 temp sensor with A0 = 0, A1 = 0 and A3 = 0
 #define SOILHUM_SENSOR_ADDRESS 0x32
 #define ACTUATOR_ADRESS 0x42
@@ -29,8 +30,6 @@ static int size = 1;
 void initI2C(void){
     I2C_Start();                    // Starts I2C component
     I2C_I2CMasterClearStatus();     // Clear status flags
-    CyGlobalIntEnable;
-    
 }
 
 int8 adjustWindow(uint8 pos){
@@ -175,26 +174,26 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
         if (window){                                   // Expecting to receive MSB first 
             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
             #ifdef debugging
-                UART_UartPutChar(*window+48);
+                UART_UartPutChar(*window+CONVERT_TO_ASCII);
             #endif
         }
         if (heat){
             *heat = ((dataget[0] & 0b00001110) >> 1);       // Ignoring everything but bit 1-3 and shifting 1 right.
             #ifdef debugging
-                UART_UartPutChar(*heat+48);
+                UART_UartPutChar(*heat+CONVERT_TO_ASCII);
             #endif
         }
         if (vent){
             if ((dataget[0] & 0b00000001) == 0b00000001){        // Maybe we can find a smarter way to do this?
                 *vent = (dataget[1] >> 6) | 0b00000100;          // The if statements checks if bit 1 of dataget[0] is 1 or not and then sends it onwards.
                 #ifdef debugging
-                    UART_UartPutChar(*vent+48);                         // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
+                    UART_UartPutChar(*vent+CONVERT_TO_ASCII);                         // Shifting 5 right so only 2 bits are left and adding bit 1 of dataget[0] in the 3rd bit.
                 #endif
             }                                                    
             else {
                 *vent = (dataget[1] >> 6) | 0b00000000;          // shifting 5 right since only the to most significant bits are relevant.
                 #ifdef debugging
-                    UART_UartPutChar(*vent+48);
+                    UART_UartPutChar(*vent+CONVERT_TO_ASCII);
                 #endif
             }
         }
@@ -256,6 +255,9 @@ int8 getSoilHum(uint8 index, int16* soilHum){
             if ((soilTransfer[0] >> 7) == 0){
                 *soilHum = soilTransfer[0];
                 return 0;
+            }
+            else {
+                *soilHum = -1;
             }
         }
     }

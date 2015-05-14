@@ -24,7 +24,6 @@
 int32 tempTemp;
 int16 tempSoilHum[6];
 
-
 // Private prototypes
 CY_ISR_PROTO(timer_ISR);
 CY_ISR_PROTO(UART_ISR);

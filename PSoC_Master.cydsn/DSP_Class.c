@@ -116,7 +116,7 @@ void avgSoilHum(uint8 index){
     // Makes sure that enough datapoits are pressent
     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
         float avg = total/(ARRAYSIZE-skip);         // Calculate the average value (assuming input from sensor is in RH)
-        uint8 soilHumInRH = (uint8)avg;                    // Takes care of conversion ( NB no conversion in this version)
+        uint8 soilHumInRH = (uint8)avg;             // Takes care of conversion ( NB no conversion in this version)
         
         // soilHumInRH is limited to 1 and 100 RH
         if(soilHumInRH <= 0){
@@ -147,6 +147,7 @@ void inputTemp(int32* temp){
 
 void inputSoilHum(uint8 index, int16* soilHum){
     *soilHumPtr[index] = *soilHum;          // The input value is written to the array
+  
     soilHumPtr[index]++;                    // The pointer is moved to the next place in array
     if(soilHumPtr[index] > &soilHumArray[index][ARRAYSIZE-1]){
         soilHumPtr[index] = &soilHumArray[index][0];            // If the pointer is pointing past the end of the array it's reset
@@ -154,6 +155,5 @@ void inputSoilHum(uint8 index, int16* soilHum){
     
     avgSoilHum(index);          // The average value is calculated and onverted into soilHum(globel)
 }
-
 
 /* [] END OF FILE */

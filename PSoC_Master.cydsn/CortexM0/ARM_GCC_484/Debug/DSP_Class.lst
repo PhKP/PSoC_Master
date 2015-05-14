@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
   24:.\DSP_Class.c **** // Private prototypes
   25:.\DSP_Class.c **** void avgTemp(void);
   26:.\DSP_Class.c **** void avgSoilHum(uint8 index);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 2
 
 
   27:.\DSP_Class.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
   75 0038 D152     		strh	r1, [r2, r3]
   36:.\DSP_Class.c ****                 for(j = 0 ; j<NBR_OF_SOILHUM_SENSORS ; j++){
   76              		.loc 1 36 0 discriminator 2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 3
 
 
   77 003a BB1D     		add	r3, r7, #6
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  118 0074 9900     		lsl	r1, r3, #2
  119 0076 0D4B     		ldr	r3, .L8+4
  120 0078 C918     		add	r1, r1, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 4
 
 
  121 007a 0E4B     		ldr	r3, .L8+12
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  168              		.thumb_func
  169              		.type	getTemp_DSP, %function
  170              	getTemp_DSP:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 5
 
 
  171              	.LFB34:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
   62:.\DSP_Class.c ****     return soilHum[index];
  216              		.loc 1 62 0
  217 000c FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 6
 
 
  218 000e 1B78     		ldrb	r3, [r3]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  265 0014 FE60     		str	r6, [r7, #12]
  266              	.LBB5:
   70:.\DSP_Class.c ****     {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 7
 
 
   71:.\DSP_Class.c ****         uint8 i;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  313              	.L19:
   72:.\DSP_Class.c ****         for(i = 0 ; i<ARRAYSIZE ; i++){
  314              		.loc 1 72 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 8
 
 
  315 0062 F81D     		add	r0, r7, #7
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  357 00a8 3B68     		ldr	r3, [r7]
  358 00aa 002B     		cmp	r3, #0
  359 00ac 03DC     		bgt	.L26
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 9
 
 
   90:.\DSP_Class.c ****             temp = 1;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  404              	avgSoilHum:
  405              	.LFB37:
  100:.\DSP_Class.c **** //----------avgTemp1----------
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 10
 
 
  101:.\DSP_Class.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  452 003c 0028     		cmp	r0, #0
  453 003e 14DB     		blt	.L32
  109:.\DSP_Class.c ****                 total += soilHumArray[index][i];
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 11
 
 
  454              		.loc 1 109 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  114:.\DSP_Class.c ****         }
  115:.\DSP_Class.c ****     }
  116:.\DSP_Class.c ****     // Makes sure that enough datapoits are pressent
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 12
 
 
  117:.\DSP_Class.c ****     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
@@ -693,7 +693,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  529 00c2 FFF7FEFF 		bl	__aeabi_l2f
  530 00c6 031C     		add	r3, r0, #0
  531 00c8 BB60     		str	r3, [r7, #8]
- 119:.\DSP_Class.c ****         uint8 soilHumInRH = (uint8)avg;                    // Takes care of conversion ( NB no conv
+ 119:.\DSP_Class.c ****         uint8 soilHumInRH = (uint8)avg;             // Takes care of conversion ( NB no conversion 
  532              		.loc 1 119 0
  533 00ca 3C1C     		mov	r4, r7
  534 00cc 0E34     		add	r4, r4, #14
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  549 00e8 1A70     		strb	r2, [r3]
  550 00ea 08E0     		b	.L37
  551              	.L36:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 13
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 13
 
 
  124:.\DSP_Class.c ****         }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  132:.\DSP_Class.c ****     }
  133:.\DSP_Class.c **** }
  598              		.loc 1 133 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 14
 
 
  599 013c BD46     		mov	sp, r7
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  647 0024 02D9     		bls	.L42
  140:.\DSP_Class.c ****         tempArrayPtr = &tempArray[0];   // If the pointer is pointing past the end of the array it'
  648              		.loc 1 140 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 15
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 15
 
 
  649 0026 044B     		ldr	r3, .L43
@@ -898,14 +898,15 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  694 0012 174B     		ldr	r3, .L47
  695 0014 9200     		lsl	r2, r2, #2
  696 0016 D358     		ldr	r3, [r2, r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 16
 
 
  697 0018 3A68     		ldr	r2, [r7]
  698 001a 1288     		ldrh	r2, [r2]
  699 001c 1A80     		strh	r2, [r3]
- 150:.\DSP_Class.c ****     soilHumPtr[index]++;                    // The pointer is moved to the next place in array
- 700              		.loc 1 150 0
+ 150:.\DSP_Class.c ****   
+ 151:.\DSP_Class.c ****     soilHumPtr[index]++;                    // The pointer is moved to the next place in array
+ 700              		.loc 1 151 0
  701 001e FB1D     		add	r3, r7, #7
  702 0020 1B78     		ldrb	r3, [r3]
  703 0022 134A     		ldr	r2, .L47
@@ -915,8 +916,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  707 002a 114A     		ldr	r2, .L47
  708 002c 9B00     		lsl	r3, r3, #2
  709 002e 9950     		str	r1, [r3, r2]
- 151:.\DSP_Class.c ****     if(soilHumPtr[index] > &soilHumArray[index][ARRAYSIZE-1]){
- 710              		.loc 1 151 0
+ 152:.\DSP_Class.c ****     if(soilHumPtr[index] > &soilHumArray[index][ARRAYSIZE-1]){
+ 710              		.loc 1 152 0
  711 0030 FB1D     		add	r3, r7, #7
  712 0032 1A78     		ldrb	r2, [r3]
  713 0034 0E4B     		ldr	r3, .L47
@@ -930,8 +931,8 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  721 0044 CB18     		add	r3, r1, r3
  722 0046 9A42     		cmp	r2, r3
  723 0048 09D9     		bls	.L46
- 152:.\DSP_Class.c ****         soilHumPtr[index] = &soilHumArray[index][0];            // If the pointer is pointing past 
- 724              		.loc 1 152 0
+ 153:.\DSP_Class.c ****         soilHumPtr[index] = &soilHumArray[index][0];            // If the pointer is pointing past 
+ 724              		.loc 1 153 0
  725 004a FB1D     		add	r3, r7, #7
  726 004c 1A78     		ldrb	r2, [r3]
  727 004e FB1D     		add	r3, r7, #7
@@ -943,24 +944,24 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  733 005a 9200     		lsl	r2, r2, #2
  734 005c D150     		str	r1, [r2, r3]
  735              	.L46:
- 153:.\DSP_Class.c ****     }
- 154:.\DSP_Class.c ****     
- 155:.\DSP_Class.c ****     avgSoilHum(index);          // The average value is calculated and onverted into soilHum(globel
- 736              		.loc 1 155 0
+ 154:.\DSP_Class.c ****     }
+ 155:.\DSP_Class.c ****     
+ 156:.\DSP_Class.c ****     avgSoilHum(index);          // The average value is calculated and onverted into soilHum(globel
+ 736              		.loc 1 156 0
  737 005e FB1D     		add	r3, r7, #7
  738 0060 1B78     		ldrb	r3, [r3]
  739 0062 181C     		mov	r0, r3
  740 0064 FFF7FEFF 		bl	avgSoilHum
- 156:.\DSP_Class.c **** }
- 741              		.loc 1 156 0
+ 157:.\DSP_Class.c **** }
+ 741              		.loc 1 157 0
  742 0068 BD46     		mov	sp, r7
  743 006a 02B0     		add	sp, sp, #8
  744              		@ sp needed
  745 006c 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 17
+
+
  746              	.L48:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 17
-
-
  747 006e C046     		.align	2
  748              	.L47:
  749 0070 00000000 		.word	soilHumPtr
@@ -1017,10 +1018,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  800 0057 08       		.byte	0x8
  801 0058 07       		.byte	0x7
  802 0059 49010000 		.4byte	.LASF7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 18
+
+
  803 005d 03       		.uleb128 0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 18
-
-
  804 005e 04       		.byte	0x4
  805 005f 05       		.byte	0x5
  806 0060 696E7400 		.ascii	"int\000"
@@ -1077,10 +1078,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  857 00c9 06000000 		.4byte	.LBB2
  858 00cd 58000000 		.4byte	.LBE2-.LBB2
  859 00d1 F8000000 		.4byte	0xf8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 19
+
+
  860 00d5 07       		.uleb128 0x7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 19
-
-
  861 00d6 6900     		.ascii	"i\000"
  862 00d8 01       		.byte	0x1
  863 00d9 1F       		.byte	0x1f
@@ -1137,10 +1138,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  914 013e 9A010000 		.4byte	.LASF22
  915 0142 01       		.byte	0x1
  916 0143 3D       		.byte	0x3d
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 20
+
+
  917 0144 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 20
-
-
  918 0148 02       		.uleb128 0x2
  919 0149 91       		.byte	0x91
  920 014a 77       		.sleb128 -9
@@ -1197,10 +1198,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  971 01ae 00       		.byte	0
  972 01af 00       		.byte	0
  973 01b0 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 21
+
+
  974 01b1 8F010000 		.4byte	.LASF21
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 21
-
-
  975 01b5 01       		.byte	0x1
  976 01b6 66       		.byte	0x66
  977 01b7 00000000 		.4byte	.LFB37
@@ -1257,10 +1258,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1028 021e 91       		.byte	0x91
  1029 021f 50       		.sleb128 -48
  1030 0220 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 22
+
+
  1031 0221 3D010000 		.4byte	.LASF23
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 22
-
-
  1032 0225 01       		.byte	0x1
  1033 0226 77       		.byte	0x77
  1034 0227 6B000000 		.4byte	0x6b
@@ -1317,10 +1318,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1085 028a 70       		.sleb128 -16
  1086 028b 00       		.byte	0
  1087 028c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 23
+
+
  1088 028d 04       		.byte	0x4
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 23
-
-
  1089 028e 76000000 		.4byte	0x76
  1090 0292 0F       		.uleb128 0xf
  1091 0293 81000000 		.4byte	0x81
@@ -1377,10 +1378,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1142 0302 EB020000 		.4byte	0x2eb
  1143 0306 05       		.uleb128 0x5
  1144 0307 03       		.byte	0x3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 24
+
+
  1145 0308 00000000 		.4byte	soilHumPtr
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 24
-
-
  1146 030c 11       		.uleb128 0x11
  1147 030d 38010000 		.4byte	.LASF25
  1148 0311 01       		.byte	0x1
@@ -1437,10 +1438,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1199 001b 0E       		.uleb128 0xe
  1200 001c 00       		.byte	0
  1201 001d 00       		.byte	0
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 25
+
+
  1202 001e 03       		.uleb128 0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 25
-
-
  1203 001f 24       		.uleb128 0x24
  1204 0020 00       		.byte	0
  1205 0021 0B       		.uleb128 0xb
@@ -1497,10 +1498,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1256 0055 12       		.uleb128 0x12
  1257 0056 06       		.uleb128 0x6
  1258 0057 01       		.uleb128 0x1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 26
+
+
  1259 0058 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 26
-
-
  1260 0059 00       		.byte	0
  1261 005a 00       		.byte	0
  1262 005b 07       		.uleb128 0x7
@@ -1557,10 +1558,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1313 008f 01       		.byte	0x1
  1314 0090 3F       		.uleb128 0x3f
  1315 0091 19       		.uleb128 0x19
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 27
+
+
  1316 0092 03       		.uleb128 0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 27
-
-
  1317 0093 0E       		.uleb128 0xe
  1318 0094 3A       		.uleb128 0x3a
  1319 0095 0B       		.uleb128 0xb
@@ -1617,10 +1618,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1370 00c9 40       		.uleb128 0x40
  1371 00ca 18       		.uleb128 0x18
  1372 00cb 9642     		.uleb128 0x2116
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 28
+
+
  1373 00cd 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 28
-
-
  1374 00ce 01       		.uleb128 0x1
  1375 00cf 13       		.uleb128 0x13
  1376 00d0 00       		.byte	0
@@ -1677,10 +1678,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1427 0103 3B       		.uleb128 0x3b
  1428 0104 0B       		.uleb128 0xb
  1429 0105 49       		.uleb128 0x49
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 29
+
+
  1430 0106 13       		.uleb128 0x13
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 29
-
-
  1431 0107 3F       		.uleb128 0x3f
  1432 0108 19       		.uleb128 0x19
  1433 0109 02       		.uleb128 0x2
@@ -1737,10 +1738,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1482      00000201 
  1482      FB0E0D00 
  1482      01010101 
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 30
+
+
  1483              	.LASF30:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 30
-
-
  1484 0000 736F696C 		.ascii	"soilHumArray\000"
  1484      48756D41 
  1484      72726179 
@@ -1797,10 +1798,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1504      69676E65 
  1504      6420696E 
  1504      7400
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 31
+
+
  1505              	.LASF35:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 31
-
-
  1506 00e8 67657454 		.ascii	"getTemp_DSP\000"
  1506      656D705F 
  1506      44535000 
@@ -1857,10 +1858,10 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 1
  1532      00
  1533              	.LASF6:
  1534 017c 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\cc8vDS5X.s 			page 32
+
+
  1534      206C6F6E 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cctFHL6V.s 			page 32
-
-
  1534      6720696E 
  1534      7400
  1535              	.LASF15:

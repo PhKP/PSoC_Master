@@ -19,6 +19,7 @@
 #define CONVERT_TO_ASCII 48
 #define LED_ON 0
 #define LED_OFF 1
+#define TIME_BETWEEN_TIMER_INT 2000 // Time between every interrupt in ms
 
 // Private data members
 int32 tempTemp;
@@ -53,6 +54,16 @@ void initPSoC_Master(void){
     
     UART_Start();                   //  Starts UART component
     Timer_Start();                  // Starts timer component
+    
+    // Setup of timer interrupt
+    uint32 maxPeriod = 0xFFFFFFFF;  // The max period ((2^32)-1) = 179s
+    uint32 period = TIME_BETWEEN_TIMER_INT * 24000;
+    
+    if (period > maxPeriod){
+        period = maxPeriod;
+    }
+    
+    Timer_WritePeriod(period);
     
     RedLED_Write(LED_OFF);              // Turn off red LED
     BlueLED_Write(LED_OFF);             // Turn off blue LED

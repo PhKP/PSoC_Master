@@ -184,11 +184,11 @@ void timerIntHandler(void){
     if(timerInt){
         timerInt = 0;           // Reset flag
         
-        // Measure temp and indput to DSP class 
+        // Measure temp and input to DSP class 
         getTemp(&tempTemp);
         inputTemp(&tempTemp);
         
-        // Measure soilhum and indput to DSP class 
+        // Measure soilhum and input to DSP class 
         {
             uint8 i;
             for(i = 0; i<6 ; i++){

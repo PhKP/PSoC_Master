@@ -226,6 +226,7 @@ int8 getTemp(int32* temp){
     }
     else{
         I2C_I2CMasterSendStop();
+        *temp = -1;
         return -1;
     }
 
@@ -251,16 +252,15 @@ int8 getSoilHum(uint8 index, int16* soilHum){
         CyDelay(60);
         result = I2C_I2CMasterReadBuf(SOILHUM_SENSOR_ADDRESS, soilTransfer, 1, I2C_I2C_MODE_COMPLETE_XFER);
         while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the data to be ready
-        if (result == I2C_I2C_MSTR_NO_ERROR){
+        if (result == I2C_I2C_MSTR_NO_ERROR && (I2C_I2CMasterGetReadBufSize() != 0)){
             if ((soilTransfer[0] >> 7) == 0){
                 *soilHum = soilTransfer[0];
                 return 0;
             }
-            else {
-                *soilHum = -1;
-            }
+                        
         }
     }
+    *soilHum = -1;
     return -1;
 }
 

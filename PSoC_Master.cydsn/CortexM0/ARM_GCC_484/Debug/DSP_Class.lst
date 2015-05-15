@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
   24:.\DSP_Class.c **** // Private prototypes
   25:.\DSP_Class.c **** void avgTemp(void);
   26:.\DSP_Class.c **** void avgSoilHum(uint8 index);
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 2
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 2
 
 
   27:.\DSP_Class.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
   75 0038 D152     		strh	r1, [r2, r3]
   36:.\DSP_Class.c ****                 for(j = 0 ; j<NBR_OF_SOILHUM_SENSORS ; j++){
   76              		.loc 1 36 0 discriminator 2
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 3
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 3
 
 
   77 003a BB1D     		add	r3, r7, #6
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  118 0074 9900     		lsl	r1, r3, #2
  119 0076 0D4B     		ldr	r3, .L8+4
  120 0078 C918     		add	r1, r1, r3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 4
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 4
 
 
  121 007a 0E4B     		ldr	r3, .L8+12
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  168              		.thumb_func
  169              		.type	getTemp_DSP, %function
  170              	getTemp_DSP:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 5
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 5
 
 
  171              	.LFB34:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
   62:.\DSP_Class.c ****     return soilHum[index];
  216              		.loc 1 62 0
  217 000c FB1D     		add	r3, r7, #7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 6
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 6
 
 
  218 000e 1B78     		ldrb	r3, [r3]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  265 0014 FE60     		str	r6, [r7, #12]
  266              	.LBB5:
   70:.\DSP_Class.c ****     {
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 7
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 7
 
 
   71:.\DSP_Class.c ****         uint8 i;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  313              	.L19:
   72:.\DSP_Class.c ****         for(i = 0 ; i<ARRAYSIZE ; i++){
  314              		.loc 1 72 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 8
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 8
 
 
  315 0062 F81D     		add	r0, r7, #7
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  357 00a8 3B68     		ldr	r3, [r7]
  358 00aa 002B     		cmp	r3, #0
  359 00ac 03DC     		bgt	.L26
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 9
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 9
 
 
   90:.\DSP_Class.c ****             temp = 1;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  404              	avgSoilHum:
  405              	.LFB37:
  100:.\DSP_Class.c **** //----------avgTemp1----------
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 10
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 10
 
 
  101:.\DSP_Class.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  452 003c 0028     		cmp	r0, #0
  453 003e 14DB     		blt	.L32
  109:.\DSP_Class.c ****                 total += soilHumArray[index][i];
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 11
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 11
 
 
  454              		.loc 1 109 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  114:.\DSP_Class.c ****         }
  115:.\DSP_Class.c ****     }
  116:.\DSP_Class.c ****     // Makes sure that enough datapoits are pressent
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 12
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 12
 
 
  117:.\DSP_Class.c ****     if(ARRAYSIZE-skip>=NMR_OF_VALID_DATAPOINTS_NEEDED){    
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  549 00e8 1A70     		strb	r2, [r3]
  550 00ea 08E0     		b	.L37
  551              	.L36:
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 13
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 13
 
 
  124:.\DSP_Class.c ****         }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  132:.\DSP_Class.c ****     }
  133:.\DSP_Class.c **** }
  598              		.loc 1 133 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 14
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 14
 
 
  599 013c BD46     		mov	sp, r7
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  647 0024 02D9     		bls	.L42
  140:.\DSP_Class.c ****         tempArrayPtr = &tempArray[0];   // If the pointer is pointing past the end of the array it'
  648              		.loc 1 140 0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 15
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 15
 
 
  649 0026 044B     		ldr	r3, .L43
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  694 0012 174B     		ldr	r3, .L47
  695 0014 9200     		lsl	r2, r2, #2
  696 0016 D358     		ldr	r3, [r2, r3]
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 16
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 16
 
 
  697 0018 3A68     		ldr	r2, [r7]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  743 006a 02B0     		add	sp, sp, #8
  744              		@ sp needed
  745 006c 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 17
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 17
 
 
  746              	.L48:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  800 0057 08       		.byte	0x8
  801 0058 07       		.byte	0x7
  802 0059 49010000 		.4byte	.LASF7
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 18
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 18
 
 
  803 005d 03       		.uleb128 0x3
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  857 00c9 06000000 		.4byte	.LBB2
  858 00cd 58000000 		.4byte	.LBE2-.LBB2
  859 00d1 F8000000 		.4byte	0xf8
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 19
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 19
 
 
  860 00d5 07       		.uleb128 0x7
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  914 013e 9A010000 		.4byte	.LASF22
  915 0142 01       		.byte	0x1
  916 0143 3D       		.byte	0x3d
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 20
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 20
 
 
  917 0144 6B000000 		.4byte	0x6b
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  971 01ae 00       		.byte	0
  972 01af 00       		.byte	0
  973 01b0 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 21
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 21
 
 
  974 01b1 8F010000 		.4byte	.LASF21
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1028 021e 91       		.byte	0x91
  1029 021f 50       		.sleb128 -48
  1030 0220 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 22
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 22
 
 
  1031 0221 3D010000 		.4byte	.LASF23
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1085 028a 70       		.sleb128 -16
  1086 028b 00       		.byte	0
  1087 028c 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 23
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 23
 
 
  1088 028d 04       		.byte	0x4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1142 0302 EB020000 		.4byte	0x2eb
  1143 0306 05       		.uleb128 0x5
  1144 0307 03       		.byte	0x3
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 24
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 24
 
 
  1145 0308 00000000 		.4byte	soilHumPtr
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1199 001b 0E       		.uleb128 0xe
  1200 001c 00       		.byte	0
  1201 001d 00       		.byte	0
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 25
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 25
 
 
  1202 001e 03       		.uleb128 0x3
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1256 0055 12       		.uleb128 0x12
  1257 0056 06       		.uleb128 0x6
  1258 0057 01       		.uleb128 0x1
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 26
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 26
 
 
  1259 0058 13       		.uleb128 0x13
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1313 008f 01       		.byte	0x1
  1314 0090 3F       		.uleb128 0x3f
  1315 0091 19       		.uleb128 0x19
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 27
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 27
 
 
  1316 0092 03       		.uleb128 0x3
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1370 00c9 40       		.uleb128 0x40
  1371 00ca 18       		.uleb128 0x18
  1372 00cb 9642     		.uleb128 0x2116
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 28
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 28
 
 
  1373 00cd 19       		.uleb128 0x19
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1427 0103 3B       		.uleb128 0x3b
  1428 0104 0B       		.uleb128 0xb
  1429 0105 49       		.uleb128 0x49
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 29
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 29
 
 
  1430 0106 13       		.uleb128 0x13
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1482      00000201 
  1482      FB0E0D00 
  1482      01010101 
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 30
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 30
 
 
  1483              	.LASF30:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1504      69676E65 
  1504      6420696E 
  1504      7400
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 31
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 31
 
 
  1505              	.LASF35:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 1
  1532      00
  1533              	.LASF6:
  1534 017c 6C6F6E67 		.ascii	"long long int\000"
-ARM GAS  C:\Users\Philip\AppData\Local\Temp\cceiFkFy.s 			page 32
+ARM GAS  C:\Users\Philip\AppData\Local\Temp\ccAb8SEO.s 			page 32
 
 
  1534      206C6F6E 

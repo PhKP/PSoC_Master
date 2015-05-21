@@ -170,7 +170,8 @@ int8 getActuatorStatus(uint8* window, uint8* heat, uint8* vent, uint8* irrigatio
     
     while (0u == (I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT)); //Wait for the dataget array to be updated
     
-    if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){				//----------getActuatorStatus1----------
+    if ((result == I2C_I2C_MSTR_NO_ERROR) && (I2C_I2CMasterGetReadBufSize() != 0)){
+//----------getActuatorStatus1----------
         if (window){                                   // Expecting to receive MSB first                                
             *window = (dataget[0] >> 4);      // Shifting out the 4 least significant bits.
             #ifdef debugging

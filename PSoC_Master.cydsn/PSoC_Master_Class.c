@@ -97,7 +97,8 @@ void uartIntHandler(void){
                 case 'T':{ //RequestTemp
                     respondTemp(getTemp_DSP());		
                     break;
-                }     
+                }
+//----------uartIntHandler1----------
                 case 'H':{ //TurnHeatOn
                     // 0x7 is the maximum value.
                     respondHeat(adjustHeat(0x7), 'H');
@@ -130,6 +131,7 @@ void uartIntHandler(void){
                 }
             }
         }
+//----------uartIntHandler2----------
         else if(theState == ADJW){
             if(buff-CONVERT_TO_ASCII == 1){
                 respondWin(adjustWindow(0xFF));
@@ -139,6 +141,7 @@ void uartIntHandler(void){
             }
             theState = IDLE;
         }
+//----------uartIntHandler3----------
         else if(theState == ADJV){
             if(buff-CONVERT_TO_ASCII == 1){
                 respondVent(adjustVentilation(0xFF));
@@ -177,7 +180,7 @@ void uartIntHandler(void){
         BlueLED_Write(LED_OFF);         // Turn off blue LED
     }
 }
-//----------uartIntHandler1----------
+
 
 //----------timerIntHandler0----------
 void timerIntHandler(void){
